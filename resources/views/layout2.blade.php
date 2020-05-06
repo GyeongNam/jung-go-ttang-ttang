@@ -6,8 +6,8 @@
 
         <!-- Styles -->
         <script src="https://kit.fontawesome.com/7cfb0a1075.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href ="{{asset('/css/headcss.css')}}" />
-        <link rel="stylesheet" href ="{{asset('/css/sidemenu.css')}}" />
+        <link rel="stylesheet" href ="{{asset('/css/headcss-1.css')}}" />
+        <link rel="stylesheet" href ="{{asset('/css/sidemenu-1.css')}}" />
         <link rel="stylesheet" href ="{{asset('/css/footer.css')}}" />
         <script scr="{{asset('sidemenu.js')}}"></script>
         <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
