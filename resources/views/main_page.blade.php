@@ -254,6 +254,17 @@
             </div>
           </div>
         </div>
-
+        <footer class="bd-footer p-4 p-md-5 mt-8 text-center text-muted bg-light">
+<div class="container-fluid">
+  <ul class="bd-footer-links">
+    <li><a href="https://www.joongbu.ac.kr/home">중부대학교</a></li>
+    <li><a href="https://www.naver.com">네이버</a></li>
+    <li><a href="https://getbootstrap.com/docs/4.4/examples/">Examples</a></li>
+    <li><a href="https://getbootstrap.com/docs/4.4/about/overview/">About</a></li>
+  </ul>
+  <p class="mb-0">Designed by <a href="https://www.instagram.com/jin__uu0.jpeg/?hl=ko">Dorumamu</a> with the help of <a href="https://github.com/JGN97/CCIT_TEST.git">CCIT_A team our Project</a>.</p>
+  <p class="mb-0">중고 땅땅 1.0 ver</p>
+</div>
+</footer>
     </body>
 </html>
