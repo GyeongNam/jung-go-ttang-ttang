@@ -1,0 +1,81 @@
+header{
+
+}
+
+body{
+  margin: 0;
+  font-family: 'Do Hyeon Sans';
+}
+
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+i{
+  color: #e1bee7;
+}
+
+.navbar{
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #263343;
+padding: 8px 12px;>
+}
+
+.nav_logo {
+  color:ffffff;
+  font-size: 40px;
+}
+
+.nav_menu{
+  /*margin: auto;*/
+  display: flex;
+  list-style: none;
+}
+
+.nav_menu li{
+  display: inline;
+  font-size: 20px;
+  padding: 8px 20px;
+}
+
+.nav_login{
+  float: right;
+  display: flex;
+  list-style: none;
+}
+
+.nav_login li{
+  display: block;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 5px;>
+}
+
+@media screen and (max-width: 1000px) {
+  .nav_logo{
+    font-size: 20px;
+  }
+  .nav_menu li{
+    font-size: 15px;
+    padding: 8px 10px;
+  }
+  .nav_login li{
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .nav_logo{
+    font-size: 10px;
+  }
+  .nav_menu li{
+    display:
+    font-size:8px;
+  }
+  .nav_login li{
+    font-size: 8px;
+  }
+}
