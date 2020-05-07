@@ -5,13 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Styles -->
-        <link rel="stylesheet" href ="{{asset('/css/head.css')}}" />
         <script src="https://kit.fontawesome.com/7cfb0a1075.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
         <link rel="stylesheet" href ="{{asset('/css/footer.css')}}" />
+        <link rel="stylesheet" href ="{{asset('/css/head.css')}}" />
 
 
         <nav class="navbar">
+          <div class ="sidemenu">
+            <i class="fas fa-bars"></i>
+          </div>
+
           <div class="nav_logo">
             <i class="fas fa-gavel"></i>
             <a href="/">중고땅땅</a>

@@ -1,3 +1,6 @@
+a{
+  text-decoration: none;
+}
 a:hover {
   color: #ccc
 }
@@ -7,6 +10,7 @@ li{
 ul{
   padding-left: 0;
 }
+
 .tang-footer {
   color: #848484;
   font-size: 18px;
@@ -18,7 +22,7 @@ ul{
 @media screen and (max-width: 1200px) {
 
   .tang-footer {
-    font-size: 15px;
+    font-size: 12px;
   }
 }
 

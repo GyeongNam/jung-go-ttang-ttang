@@ -1,18 +1,15 @@
-header{
-
-}
-
-body{
+head{
   margin: 0;
   font-family: 'Do Hyeon Sans';
 }
 
 a{
+  text-decoration: none;
   color: #fff;
 }
 
 a:hover {
-  display: none;
+  color: #ccc;
 }
 
 i{
@@ -20,10 +17,14 @@ i{
 }
 
 .navbar{
+display: flex;
 justify-content: space-between;
 align-items: center;
 background-color: #263343;
 padding: 8px 12px;>
+}
+.sidemenu{
+  display: none;
 }
 
 .nav_logo {
@@ -31,14 +32,14 @@ padding: 8px 12px;>
 }
 
 .nav_menu{
-  /*margin: auto;*/
+  margin: auto;
   display: flex;
   list-style: none;
   padding left: 0;
 }
 
 .nav_menu li{
-  /*display: inline;*/
+  display: inline;
   font-size: 20px;
   padding: 8px 20px;
 }
@@ -54,26 +55,35 @@ padding: 8px 12px;>
   padding: 5px;>
 }
 
-@media screen and (max-width: 1200px) {
-  
+@media screen and (max-width:1200px) {
   .nav_logo{
-    font-size: 35px;
+    font-size: 30px;
   }
   .nav_menu li{
-    font-size: 15px;
+    font-size: 14px;
   }
   .nav_login li{
     font-size: 12px;
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width:800px) {
+  .navbar{
+    padding: 8px 8px;
+  }
+  .sidemenu{
+    display: block;
+  }
+  .nav_menu{
+    display: none;
+  }
   .nav_logo{
-    font-size: 25px;
+    align-items: center;
+    font-size: 20px;
     float: none;
   }
-
   .nav_login li{
-    font-size: 10px;
+    font-size: 8px;
+    padding: 3px;
   }
 }
