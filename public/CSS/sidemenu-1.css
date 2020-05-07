@@ -44,7 +44,7 @@
   font-size: 30px;
 }
 /* 미디어쿼리 적용 */
-@media screen and max-height:450px {
+@media screen and (max-height:450px) {
   .sidenav {
     padding-top:15px;
   }

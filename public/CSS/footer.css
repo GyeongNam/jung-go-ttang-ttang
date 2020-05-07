@@ -10,6 +10,9 @@ li{
 ul{
   padding-left: 0;
 }
+footer{
+  margin: 0;
+}
 
 .tang-footer {
   color: #848484;

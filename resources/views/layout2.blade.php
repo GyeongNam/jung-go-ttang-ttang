@@ -36,14 +36,14 @@
 
     <body>
       <div id="mysidenav" class="sidenav">
-		<a href="#" class="closebtn" onclick='closeNav()'><i class="fas fa-gavel"></i>중고땅땅</a>
-		<a href="#">전체 카테고리</a>
-		<a href="#">경매 판매하기</a>
-		<a href="#">내 관심</a>
-		<a href="#">내 정보</a>
-		<a href="#">SNS</a>
-	</div>
-  <script>
+    		<a href="#" class="closebtn" onclick='closeNav()'><i class="fas fa-gavel"></i>중고땅땅</a>
+    		<a href="#">전체 카테고리</a>
+    		<a href="#">경매 판매하기</a>
+    		<a href="#">내 관심</a>
+    		<a href="#">내 정보</a>
+    		<a href="#">SNS</a>
+    	</div>
+    <script>
   		function openNav() {
   			document.getElementById('mysidenav').style.width = '250px';
   		}

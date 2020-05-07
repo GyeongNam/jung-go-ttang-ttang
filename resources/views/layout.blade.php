@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <script src="https://kit.fontawesome.com/7cfb0a1075.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href ="css/footer.css" />
+  <link rel="stylesheet" href ="css/head.css" />
+  <link rel="stylesheet" href ="css/side.css" />
+  <script scr="{{asset('sidemenu.js')}}"></script>
+  <script>
+
+    function openNav() {
+      document.getElementById('mysidenav').style.width ='100%';
+    }
+    function closeNav() {
+      document.getElementById('mysidenav').style.width ='0';
+    }
+  </script>
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Styles -->
-        <script src="https://kit.fontawesome.com/7cfb0a1075.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href ="{{asset('/css/footer.css')}}" />
-        <link rel="stylesheet" href ="{{asset('/css/head.css')}}" />
-
-
         <nav class="navbar">
-          <div class ="sidemenu">
+          <span class="openmenu" onclick='openNav()'>
             <i class="fas fa-bars"></i>
+          </span>
+
+          <div id="mysidenav" class ="sidemenu">
+            <a class="closebtn" onclick='closeNav()'> <i class="fas fa-angle-left"></i></a>
+            <a href="#">전체 카테고리</a>
+            <a href="#">경매 판매하기</a>
+            <a href="#">내 정보</a>
+            <a href="#">내 관심</a>
+            <a href="#">쪽지</a>
           </div>
 
           <div class="nav_logo">
@@ -29,10 +47,9 @@
             <li><a href="#">쪽지</a></li>
           </ul>
 
-
           <div class = "nav_login">
             <li><a href="#">Login</a></li>
-            <li><a href="#">Register</a></li>
+            <li><a href="http://localhost/CCIT_TEST/public/2">Register</a></li>
           </div>
         </nav>
     </head>

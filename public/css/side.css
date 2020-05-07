@@ -1,0 +1,25 @@
+
+
+.sidemenu{
+  height:100%;
+  width:0;
+  position: fixed;
+  z-index:1;
+  top: 0;
+  left: 0;
+  background-color: #263343;
+  overflow-x: hidden;
+  transition:0.5s ease-in-out;
+  padding-top:0px;
+}
+.sidemenu a{
+  padding: 8px 12px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  display: block;
+  transition: ease-in-out;
+}
+.sidemenu a:hover{
+  color: #ccc;
+}
