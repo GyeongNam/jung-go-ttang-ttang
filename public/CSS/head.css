@@ -32,7 +32,7 @@ padding: 8px 12px;>
 
 .nav_menu{
   /*margin: auto;*/
-  /*display: flex;*/
+  display: flex;
   list-style: none;
   padding left: 0;
 }
@@ -55,6 +55,7 @@ padding: 8px 12px;>
 }
 
 @media screen and (max-width: 1200px) {
+  
   .nav_logo{
     font-size: 35px;
   }
