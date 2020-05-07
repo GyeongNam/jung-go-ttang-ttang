@@ -1,6 +1,29 @@
+a:hover {
+  color: #ccc
+}
+li{
+  list-style: none;
+}
+ul{
+  padding-left: 0;
+}
 .tang-footer {
+  color: #848484;
   font-size: 18px;
-  background-color: #F1F1F1;
+  background-color: #263343;
   text-align: center;
   padding: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+
+  .tang-footer {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .tang-footer {
+    font-size: 10px;
+  }
 }
