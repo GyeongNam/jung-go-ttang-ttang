@@ -15,7 +15,7 @@
     <ul>
       <li>
         <label>아이디<br>
-          <input type="text" id="new_id" required>
+          <input type="text" id="new_id" maxlength=10 required>
         </label>
       </li>
 
