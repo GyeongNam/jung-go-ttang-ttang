@@ -6,29 +6,28 @@
 
 @section('content')
     <link rel="stylesheet" href ="css/sign_up.css"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/head.css"/>
     <!-- J QUERY -->
     <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
-<div class="sign_up_main">
   <div class="sign_up">
   <img src="main_img.png"  alt="로고" class="center-block">
   <form>
     <ul>
       <li>
         <label>아이디<br>
-          <input type="text" id="new_id" size="61" required>
+          <input type="text" id="new_id" required>
         </label>
       </li>
 
       <li>
         <label>비밀번호<br>
-          <input type="password" name="userPwd" id="pwd1" size="61" class="form-control" required />
+          <input type="password" name="userPwd" id="pwd1" class="form-control" required />
         </label>
       </li>
 
       <li>
         <label>비밀번호 확인<br>
-          <input type="password" name="reuserPwd" id="pwd2" size="61" class="form-control" required />
+          <input type="password" name="reuserPwd" id="pwd2" class="form-control" required />
         </label>
         <div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
          <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
@@ -47,7 +46,7 @@
 
       <li>
         <label>이름<br>
-          <input type="text" id="new_name" size="61" required></label>
+          <input type="text" id="new_name" required></label>
       </li>
 
       <li>
@@ -126,6 +125,5 @@
     </ul>
    </form>
   </div>
-</div>
 
 @endsection

@@ -22,8 +22,24 @@ li{
 input, select{
   height:50px;
 }
-#sign_up_main{
-  border: 2px solid #263343;
+.sign_up{
+  border: 10px solid #263343;
+  border-radius: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+}
+#new_id{
+  width:460px;
+}
+#pwd1{
+  width:460px;
+}
+#pwd2{
+  width:460px;
+}
+#new_name{
+  width:460px;
 }
 #birthday{
   width:460px;
@@ -31,7 +47,6 @@ input, select{
 #em{
    size:10px;
 }
-
 #alert-success{
   color:green;
 }
