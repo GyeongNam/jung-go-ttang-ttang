@@ -20,6 +20,16 @@ Route::get('/', function () {
 Route::get('/2', function () {
     return view('layout2');
 });
+
 Route::get('/register', function () {
     return view('register');
+});
+
+Route::get('/sign_up', function () {
+    return view('sign_up');
+});
+
+// 모듈화 Ver
+Route::get('/register2', function () {
+    return view('user.register');
 });
