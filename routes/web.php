@@ -33,3 +33,11 @@ Route::get('/sign_up', function () {
 Route::get('/register2', function () {
     return view('user.register');
 });
+
+Route::get('/mypage', function () {
+    return view('user.mypage');
+});
+
+Route::get('/mypage/update', function () {
+    return view('user.mypage_update');
+});

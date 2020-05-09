@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{-- css --}}
-    <link rel="stylesheet" href ="css/footer.css" />
-    <link rel="stylesheet" href ="css/head.css" />
-    <link rel="stylesheet" href ="css/side.css" />
+    <link rel="stylesheet" href ="/css/footer.css" />
+    <link rel="stylesheet" href ="/css/head.css" />
+    <link rel="stylesheet" href ="/css/side.css" />
 
     {{-- Input custom css --}}
     @yield('css')
