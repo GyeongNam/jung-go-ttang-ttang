@@ -14,24 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout');
+    return view('layout.layout_main');
 });
 
-Route::get('/2', function () {
-    return view('layout2');
-});
-
-Route::get('/register', function () {
-    return view('register');
+Route::get('/Login', function () {
+    return view('user.Login');
 });
 
 Route::get('/sign_up', function () {
-    return view('sign_up');
-});
-
-// 모듈화 Ver
-Route::get('/register2', function () {
-    return view('user.register');
+    return view('user.sign_up');
 });
 
 Route::get('/mypage', function () {

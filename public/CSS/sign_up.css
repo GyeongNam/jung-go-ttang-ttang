@@ -15,14 +15,17 @@ img{
 }
 
 li{
+
   list-style: none;
   margin: 15px 0;
+
 }
 
 input, select{
   height:50px;
 }
 .sign_up{
+
   border: 10px solid #263343;
   border-radius: 12px;
   margin-left: auto;

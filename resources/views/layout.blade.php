@@ -49,7 +49,7 @@
 
           <div class = "nav_login">
             <li><a href="#">Login</a></li>
-            <li><a href="http://localhost/CCIT_TEST/public/2">Register</a></li>
+            <li><a href="http://localhost/CCIT_TEST/public/2"></a></li>
           </div>
         </nav>
     </head>

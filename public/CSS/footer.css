@@ -1,13 +1,15 @@
-a{
+footer a{
+  color: #fff;
   text-decoration: none;
 }
-a:hover {
+footer a:hover {
   color: #ccc
 }
-li{
+footer li{
   list-style: none;
 }
-ul{
+footer ul{
+
   padding-left: 0;
 }
 footer{

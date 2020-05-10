@@ -10,7 +10,7 @@
 
     {{-- css --}}
     <link rel="stylesheet" href ="/css/footer.css" />
-    <link rel="stylesheet" href ="/css/head.css" />
+    <link rel="stylesheet" href ="/css/header.css" />
     <link rel="stylesheet" href ="/css/side.css" />
 
     {{-- Input custom css --}}
@@ -47,7 +47,7 @@
   </head>
 
   <body>
-
+    <header>
     {{-- Layout Header Start --}}
       <nav class="navbar">
         <span class="openmenu" onclick='openNav()'>
@@ -58,7 +58,7 @@
           <a class="closebtn" onclick='closeNav()'> <i class="fas fa-angle-left"></i></a>
           <a href="#">전체 카테고리</a>
           <a href="#">경매 판매하기</a>
-          <a href="#">내 정보</a>
+          <a href="/mypage">내 정보</a>
           <a href="#">내 관심</a>
           <a href="#">쪽지</a>
         </div>
@@ -71,16 +71,17 @@
         <ul class="nav_menu">
           <li><a href="#">전체 카테고리</a></li>
           <li><a href="#">경매 판매하기</a></li>
-          <li><a href="#">내 정보</a></li>
+          <li><a href="/mypage">내 정보</a></li>
           <li><a href="#">내 관심</a></li>
           <li><a href="#">쪽지</a></li>
         </ul>
 
         <div class = "nav_login">
-          <li><a href="#">Login</a></li>
-          <li><a href="http://localhost/CCIT_TEST/public/2">Register</a></li>
+          <li><a href="/Login">Login</a></li>
+          <li><a href="/sign_up">sign up</a></li>
         </div>
       </nav>
+    </header>
     {{-- Layout Header End --}}
 
     {{-- Layout Content Start --}}
