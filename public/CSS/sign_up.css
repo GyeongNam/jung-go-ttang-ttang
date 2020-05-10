@@ -3,25 +3,19 @@
   padding:0;
 }
 
-div{
-  width:460px;
-  margin:30px auto;
-}
-img{
+.sign_up img{
   width:35%;
   margin-left: auto;
   margin-right: auto;
   display:block;
 }
 
-li{
-
+.sign_up li{
   list-style: none;
   margin: 15px 0;
-
 }
 
-input, select{
+.sign_up input, select{
   height:50px;
 }
 .sign_up{
@@ -31,6 +25,8 @@ input, select{
   margin-left: auto;
   margin-right: auto;
   padding: 2rem;
+  width:460px;
+  margin:30px auto;*/
 }
 #new_id{
   width:460px;
@@ -56,11 +52,11 @@ input, select{
 #alert-danger{
   color:red;
 }
-label{
+.sign_up label{
   line-height: 30px;
 }
 
- button{
+.sign_up button{
    font-size: 15px;
    cursor: pointer;
    color:white;

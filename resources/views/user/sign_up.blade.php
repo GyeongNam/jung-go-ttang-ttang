@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href ="css/sign_up.css"/>
+  <link rel="stylesheet" href ="/css/sign_up.css"/>
 @endsection
 
 @section('js')
@@ -46,7 +46,7 @@
 
 @section('content')
   <div class="sign_up">
-  <img src="main_img.png"  alt="로고" class="center-block">
+  <img src="/img/main_img.png"  alt="로고" class="center-block">
   <form>
     <ul>
       <li>

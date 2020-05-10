@@ -1,8 +1,8 @@
 @extends('layout.layout_main')
-
+<!--
 @section('title')
   중고땅땅-내 정보
-@endsection
+@endsection-->
 
 @section('css')
   <style media="screen">
@@ -14,6 +14,7 @@
       width: 524px;
       margin: 30px auto;
       color: #263343;
+      padding: 2rem;
     }
 
     .mp_header{

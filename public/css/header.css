@@ -1,5 +1,9 @@
-body{
+* {
   margin: 0;
+  padding: 0;
+}
+body{
+
   font-family: 'Do Hyeon Sans';
 }
 
@@ -27,6 +31,7 @@ header i{
 .openmenu{
   font-size: 30px;
   display: none;
+  cursor: pointer;
 }
 .openmenu:hover {
   color:#ccc;
@@ -37,10 +42,9 @@ header i{
 }
 
 .nav_menu{
-  margin: auto;
+  margin: 0;
   display: flex;
   list-style: none;
-  padding left: 0;
 }
 
 .nav_menu li{

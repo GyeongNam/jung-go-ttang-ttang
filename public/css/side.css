@@ -9,8 +9,11 @@
   left: 0;
   background-color: #263343;
   overflow-x: hidden;
+  overflow-y: hidden;
+
   transition:0.5s ease-in-out;
-  padding-top:0px;
+  padding-top: 8px;
+
 }
 .sidemenu a{
   padding: 8px 12px;
@@ -18,7 +21,9 @@
   font-size: 20px;
   color: #fff;
   display: block;
-  transition: ease-in-out;
+  overflow-x: hidden;
+  transition: 0.3s;
+
 }
 .sidemenu a:hover{
   color: #ccc;
