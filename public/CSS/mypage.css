@@ -11,16 +11,10 @@
 
   }
 
-  @media screen and (max-width: 1200px) {
-
+  @media screen and (max-width: 800px){
     .mp_layout{
-      font-size: 12px;
-    }
-  }
-
-  @media screen and (max-width: 800px) {
-    .mp_layout {
-      font-size: 10px;
+      width: auto;
+      height: auto;
     }
   }
 
