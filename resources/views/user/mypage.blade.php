@@ -5,51 +5,7 @@
 @endsection-->
 
 @section('css')
-  <style media="screen">
-    .mp_layout{
-      border: 10px solid #263343;
-      border-radius: 12px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 524px;
-      margin: 30px auto;
-      color: #263343;
-      padding: 2rem;
-    }
-
-    .mp_header{
-      padding: 10px;
-      padding-bottom: 20px;
-    }
-
-    .mp_header .mp_img{
-      text-align: center;
-    }
-
-    .mp_menu{
-      text-align: right;
-      padding-bottom: 10px;
-    }
-
-    .mp_menu a{
-      color: #263343;
-    }
-
-    .mp_row{
-      padding: 10px;
-    }
-
-    .mp_head{
-      background-color: rgba(172, 71, 159, 0.87);
-      padding: 7px;
-      color: white;
-    }
-
-    .mp_data{
-      padding: 7px;
-    }
-
-  </style>
+  <link rel="stylesheet" href ="/css/mypage.css"/>
 @endsection
 
 @section('js')
