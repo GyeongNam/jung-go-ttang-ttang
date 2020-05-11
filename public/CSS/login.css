@@ -1,6 +1,7 @@
 *{
-  margin:0;
+  margin: auto;
   padding:0;
+
 }
 .login_form li{
   list-style: none;
@@ -27,7 +28,7 @@
 }
 
 #id, #pw, #login_bt{
-    margin: 10px auto;
+    margin: 2%;
     width: 90%;
     height: 50px;
 
@@ -39,4 +40,9 @@
     width: 60%;
     height: auto;
 }
-@media screen and (max-width"800px)
+@media screen and (max-width: 800px){
+  .login_layout{
+    width: auto;
+    height: auto;
+  }
+}
