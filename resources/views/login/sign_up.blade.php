@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href ="/css/sign_up.css"/>
+  <link rel="stylesheet" href ="/css/login/sign_up.css"/>
 @endsection
 
 @section('js')
@@ -48,7 +48,6 @@
   <div class="sign_up">
     <div class="sign_form">
       <form action="{{ url('/login')}}" method="post">
-        @csrf
         <ul>
           <li>
             <img src="/img/main_img.png"  alt="로고" class="center-block">
