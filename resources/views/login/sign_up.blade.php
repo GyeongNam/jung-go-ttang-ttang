@@ -47,14 +47,15 @@
 @section('content')
   <div class="sign_up">
     <div class="sign_form">
-      <form>
+      <form action="{{ url('/login')}}" method="post">
+        @csrf
         <ul>
           <li>
             <img src="/img/main_img.png"  alt="로고" class="center-block">
           </li>
           <li>
             <label><strong>아이디</strong><br>
-              <input type="text" id="new_id" maxlength=10 required>
+              <input type="text" name="userid" id="new_id" maxlength=10 required>
             </label>
           </li>
           <li>
@@ -84,7 +85,7 @@
           <li>
             <label>
               <strong>이름</strong><br>
-              <input type="text" id="new_name" required>
+              <input type="text" name="userName" id="new_name" required>
             </label>
           </li>
 
@@ -99,7 +100,7 @@
 
           <li>
             <label><strong>성별</strong><br>
-              <select id = "gender">
+              <select name="gender" id = "gender">
                 <option value="select">성별</option>
                 <option value="m">남자</option>
                 <option value="w">여자</option>
@@ -108,7 +109,7 @@
           </li>
           <li>
             <label><strong>이메일</strong></label><br>
-            <input type="text" name="str_email01" id="str_email01" > @
+            <input type="text" name="str_email01" id="str_email01" >
             <input type="text" name="str_email02" id="str_email02" placeholder="직접입력" disabled value="">
             <select name="selectEmail" id="selectEmail">
               <option value="1">직접입력</option>
@@ -153,7 +154,7 @@
        </li>
 
        <li>
-         <input type="tel" id="tel" placeholder=" 전화번호 입력" required>
+         <input type="tel" name="tel" id="tel" placeholder=" 전화번호 입력" required>
          <button type = "button" id ="bt_secu"><b>인증번호 전송</b></button>
        </li>
 

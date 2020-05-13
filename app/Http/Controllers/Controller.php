@@ -11,5 +11,6 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function index() {
-      return view('main_page');
+      return view('layout.layout_main');
+    }
 }

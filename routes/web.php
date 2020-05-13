@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/Login', function () {
-    return view('login.Login');
+    return view('login.login');
 });
 
 Route::get('/sign_up', function () {
@@ -33,4 +33,4 @@ Route::get('/mypage/update', function () {
     return view('user.mypage_update');
 });
 // DB연동
-/*Route::get('/add_user', SignupController@add)->name(login.sign_up);*/
+Route::post('/login', 'UserController@store');
