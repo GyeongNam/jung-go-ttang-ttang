@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href ="/css/mypage_update.css"/>
+  <link rel="stylesheet" href ="/css/user/mypage_update.css"/>
 @endsection
 
 @section('js')

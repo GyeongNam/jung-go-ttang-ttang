@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href ="/css/sign_up.css"/>
+  <link rel="stylesheet" href ="/css/login/sign_up.css"/>
 @endsection
 
 @section('js')
@@ -57,13 +57,13 @@
 
       <li>
         <label>비밀번호<br>
-          <input type="password" name="userPwd" id="pwd1" class="form-control" required />
+          <input type="password" name="userPwd" id="pwd1" class="form-control" required>
         </label>
       </li>
 
       <li>
         <label>비밀번호 확인<br>
-          <input type="password" name="reuserPwd" id="pwd2" class="form-control" required />
+          <input type="password" name="reuserPwd" id="pwd2" class="form-control" required>
         </label>
         <div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
          <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
@@ -77,7 +77,6 @@
          $("#submit").removeAttr("disabled"); }else{ $("#alert-success").hide();
          $("#alert-danger").show(); $("#submit").attr("disabled", "disabled"); } } }); });
          </script>
-
       </li>
 
       <li>
@@ -103,7 +102,7 @@
         </label>
       </li>
       <label>이메일</label><br>
-      <input type="text" name="str_email01" id="str_email01" style="width:141px"> @
+      <input type="text" name="str_email01" id="str_email01" style="width:141px">
       <input type="text" name="str_email02" id="str_email02" style="width:138px;" placeholder="직접입력" disabled value="">
       <select style="width:130px;margin-right:10px" name="selectEmail" id="selectEmail">
         <option value="1">직접입력</option>
@@ -133,31 +132,31 @@
         }else{    //직접입력이 아닐경우
         $("#str_email02").val($(this).text()); //선택값 입력
         $("#str_email02").attr("disabled",true); //비활성화
-         }
+           }
+         });
        });
-     });
-   </script>
-   <li>
-     <label> 휴대전화 </label><br>
-     <select id = "sel_tel">
-       <option value ="korea"> 대한민국 +82</option>
-     </select>
-     <br>
-   </li>
+       </script>
+       <li>
+         <label> 휴대전화 </label><br>
+         <select id = "sel_tel">
+           <option value ="korea"> 대한민국 +82</option>
+         </select>
+         <br>
+       </li>
 
-   <li>
-     <input type="tel" id="tel" size="32" placeholder=" 전화번호 입력" required>
-     <button type = "button" id ="bt_secu">
-       <b>인증번호 받기</b>
-     </button>
-   </li>
+       <li>
+         <input type="tel" id="tel" size="32" placeholder=" 전화번호 입력" required>
+         <button type = "button" id ="bt_secu">
+           <b>인증번호 받기</b>
+         </button>
+       </li>
 
-   <input type="text" id="security" size="61" placeholder=" 인증번호 입력하세요" required>
-   <li>
-     <button type="submit" class="sub" onclick="return to_submit();">
-         <b>가입하기</b>
-     </button>
-   </li>
+       <input type="text" id="security" size="61" placeholder=" 인증번호 입력하세요" required>
+       <li>
+         <button type="submit" class="sub" onclick="return to_submit();">
+             <b>가입하기</b>
+         </button>
+      </li>
     </ul>
    </form>
   </div>
