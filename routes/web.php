@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// 페이지 이동
 Route::get('/', function () {
     return view('layout.layout_main');
 });
@@ -32,3 +32,5 @@ Route::get('/mypage', function () {
 Route::get('/mypage/update', function () {
     return view('user.mypage_update');
 });
+// DB연동
+/*Route::get('/add_user', SignupController@add)->name(login.sign_up);*/
