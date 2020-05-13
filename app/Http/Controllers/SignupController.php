@@ -9,6 +9,7 @@ class SignupController extends Controller
 {
     public function add()
     {
-      
+
     }
 }
+ 
