@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href ="/css/sign_up.css"/>
+  <link rel="stylesheet" href ="/css/login/sign_up.css"/>
 @endsection
 
 @section('js')
@@ -47,14 +47,14 @@
 @section('content')
   <div class="sign_up">
 
-  <img src="/img/main_img.png"  alt="로고" class="center-block">
+<!--  <img src="/img/main_img.png"  alt="로고" class="center-block">
   <form>
     <ul>
       <li>
         <label>아이디<br>
           <input type="text" name=userName id="new_id" maxlength=10 required>
         </label>
-      </li>
+      </li>-->
 
     <div class="sign_form">
       <form>
