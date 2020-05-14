@@ -32,3 +32,7 @@ Route::get('/mypage', function () {
 Route::get('/mypage/update', function () {
     return view('user.mypage_update');
 });
+
+Route::get('/kategorie', function () {
+    return view('kategorie');
+});
