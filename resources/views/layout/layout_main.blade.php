@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{-- css --}}
-    <link rel="stylesheet" href ="/css/footer.css" />
-    <link rel="stylesheet" href ="/css/header.css" />
-    <link rel="stylesheet" href ="/css/side.css" />
+    <link rel="stylesheet" href ="/css/layout/footer.css" />
+    <link rel="stylesheet" href ="/css/layout/header.css" />
+    <link rel="stylesheet" href ="/css/layout/side.css" />
 
     {{-- Input custom css --}}
     @yield('css')
@@ -65,7 +65,7 @@
 
         <div class="nav_logo">
           <i class="fas fa-gavel"></i>
-          <a href="/">중고땅땅</a>
+          <a href="/main">중고땅땅</a>
         </div>
 
         <ul class="nav_menu">

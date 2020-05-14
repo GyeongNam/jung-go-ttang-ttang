@@ -1,0 +1,124 @@
+*{
+  margin:0;
+  padding:0;
+}
+
+.center-block{
+  margin:auto;
+  padding: 10%;
+  width: 60%;
+  height: auto;
+  display: block;
+}
+.sign_up li{
+  list-style: none;
+  display: block;
+  margin: 15px 0;
+}
+
+.sign_up{
+  border: 10px solid #263343;
+  border-radius: 12px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding: 2rem;
+  width:460px;
+  background-image: url("/img/dadang.jpg");
+}
+
+.sign_form{
+    padding: 70px 0;
+    text-align: left;
+    display: block;
+    margin-left: 5%;
+  }
+
+#new_id, #pwd1, #pwd2, #new_name, #birthday{
+  margin: 2%;
+  width:90%;
+  height: 50px;
+}
+
+#em{
+   size:10px;
+}
+#alert-success{
+  color:green;
+}
+#alert-danger{
+  color:red;
+}
+
+.sign_up button{
+   font-size: 15px;
+   padding: 1px;
+   cursor: pointer;
+   color:white;
+   display: block;
+   background-color: #263343;
+   border:0px solid #263343;
+  }
+
+  #bt_secu{
+    padding: 17px 30px; float:right;
+    margin-top: 2%;
+    margin-right: 8%;
+    height: 55px;
+    width: 40%;
+    display: block;
+
+  }
+
+  .sub{
+    padding:20px 200px;
+
+  }
+
+  lebel{
+    font-weight: bold;
+  }
+  #str_email01, #str_email01, #str_email02, #selectEmail{
+    margin: 1%;
+    width:26%;
+    height:50px;
+  }
+  /*
+  #str_email02{
+    margin: auto;
+    width: 130px;
+    height:50px;
+  }
+  #selectEmail{
+    margin: auto;
+    width:125px;
+    height:50px;
+  }
+  */
+  #gender, #sel_tel, #security, #sub{
+    margin: 2%;
+    width:90%;
+    height: 50px;
+  }
+
+  #tel{
+    margin: 2%;
+    width:45%;
+    height: 50px;
+  }
+
+
+  small{
+    color: #263343;
+  }
+  @media screen and (max-width: 800px){
+    .sign_up{
+      width: auto;
+      height: auto;
+    }
+    .sign_up button{
+      font-size: auto;
+    }
+  }

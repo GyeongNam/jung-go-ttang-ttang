@@ -12,17 +12,17 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// 페이지 이동
 Route::get('/', function () {
     return view('layout.layout_main');
 });
 
 Route::get('/Login', function () {
-    return view('user.Login');
+    return view('login.login');
 });
 
 Route::get('/sign_up', function () {
-    return view('user.sign_up');
+    return view('login.sign_up');
 });
 
 Route::get('/mypage', function () {
@@ -32,7 +32,12 @@ Route::get('/mypage', function () {
 Route::get('/mypage/update', function () {
     return view('user.mypage_update');
 });
+<<<<<<< HEAD
 
 Route::get('/kategorie', function () {
     return view('kategorie');
 });
+=======
+// DB연동
+Route::post('/login', 'UserController@store');
+>>>>>>> eaf3014e321e2ad2734fe68822d88129edf803c9

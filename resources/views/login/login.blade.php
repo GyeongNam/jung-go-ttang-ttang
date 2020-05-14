@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/login/login.css">
 
 @section('content')
     <div class="login_layout">
@@ -29,8 +29,10 @@
             <button type="submit" id="login_bt" name="login" onclick="return to_submit();">로그인</button>
           </li>
           <li>
-            <a href="#">ID/Password 찾기</a>
+            <a href="/find_act">ID/Password 찾기</a>
             <a href="/sign_up">회원가입</a>
+          </li>
+         </ul>
         </form>
       </div>
     </div>
