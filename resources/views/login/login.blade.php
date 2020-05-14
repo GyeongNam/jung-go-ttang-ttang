@@ -10,7 +10,8 @@
 @section('content')
     <div class="login_layout">
       <div class="login_form">
-        <form>
+        <form action="{{ url('/logins') }}" method="post">
+          @csrf
           <ul>
             <li>
               <img src="/img/main_img.png"  alt="로고" class="center-block">

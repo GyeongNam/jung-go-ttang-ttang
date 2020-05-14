@@ -47,7 +47,7 @@
 @section('content')
   <div class="sign_up">
     <div class="sign_form">
-      <form action="{{ url('/login')}}" method="post">
+      <form action="{{ url('/signup')}}" method="post">
         @csrf
         <ul>
           <li>
@@ -111,7 +111,7 @@
             <label><strong>이메일</strong></label><br>
             <input type="text" name="str_email01" id="str_email01" >
             <input type="text" name="str_email02" id="str_email02" placeholder="직접입력" disabled value="">
-            <select name="selectEmail" id="selectEmail">
+            <select name="str_email03" id="selectEmail">
               <option value="1">직접입력</option>
               <option value="naver.com" selected>naver.com</option>
               <option value="hanmail.net">hanmail.net</option>
@@ -142,8 +142,10 @@
             $("#str_email02").val($(this).text()); //선택값 입력
             $("#str_email02").attr("disabled",true); //비활성화
              }
+
            });
          });
+
        </script>
        <li>
          <label><strong>휴대전화</strong></label><br>
