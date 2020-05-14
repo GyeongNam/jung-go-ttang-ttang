@@ -17,7 +17,7 @@
           <!--아이디 입력-->
           <label><strong>ID찾기</strong><br>
             <p>내 정보에 등록한 정보로<br>아이디를 찾을 수 있습니다.</p>
-            <input type="text" name="id" id="my_id" placeholder="ID입력(필수)" required><br>
+            <input type="text" name="name" id="my_name" placeholder="이름입력" required><br>
           </label>
         </li>
         <li>
@@ -37,7 +37,7 @@
       <ul>
         <li>
           <label><strong>비밀번호찾기</strong><br>
-            <input type="text" name="name" id="my_name" placeholder="이름 입력" required><br>
+            <input type="text" name="id" id="my_id" placeholder="ID입력" required><br>
           </label>
         </li>
         <li>
