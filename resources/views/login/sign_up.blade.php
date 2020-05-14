@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href ="/css/sign_up.css"/>
+  <link rel="stylesheet" href ="/css/login/sign_up.css"/>
 @endsection
 
 @section('js')
