@@ -32,12 +32,14 @@ Route::get('/mypage', function () {
 Route::get('/mypage/update', function () {
     return view('user.mypage_update');
 });
-<<<<<<< HEAD
 
 Route::get('/kategorie', function () {
     return view('kategorie');
 });
-=======
+
+
+
+
+
 // DB연동
 Route::post('/login', 'UserController@store');
->>>>>>> eaf3014e321e2ad2734fe68822d88129edf803c9
