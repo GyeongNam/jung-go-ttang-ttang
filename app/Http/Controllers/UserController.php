@@ -30,7 +30,8 @@ class UserController extends Controller
         'name' => $request->get('userName'),
         'birthday'=> $request->get('birthday'),
         'gender'=> $request->get('gender'),
-        'email'=> $request->get('selectEmail'),
+        'email'=> $request->get('str_email01'),
+        'email_domain'=>$request->get('str_email03'),
       	'phone'=> $request->get('tel')
       ]);
       $user->save();

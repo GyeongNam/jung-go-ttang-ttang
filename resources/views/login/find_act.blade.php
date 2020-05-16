@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href="/css/account.css">
+  <link rel="stylesheet" href="/css/login/account.css">
 @endsection
 
 @section('content')
@@ -31,7 +31,7 @@
       </li>
     </form>
   </div>
-  <hr class="line"> 
+  <hr class="line">
   <div class="find_password">
     <form>
       <ul>

@@ -37,9 +37,9 @@ Route::get('/kategorie', function () {
     return view('kategorie');
 });
 
-
-
-
+Route::get('/find_act', function () {
+    return view('login.find_act');
+});
 
 // DB연동
-Route::post('/login', 'UserController@store');
+Route::post('/singup', 'UserController@store');
