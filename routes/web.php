@@ -43,3 +43,4 @@ Route::get('/find_act', function () {
 
 // DB연동
 Route::post('/singup', 'UserController@store');
+Route::post('/loging', 'UserController@loging');

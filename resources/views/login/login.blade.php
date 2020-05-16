@@ -10,7 +10,7 @@
 @section('content')
     <div class="login_layout">
       <div class="login_form">
-        <form action="{{ url('/logins') }}" method="post">
+        <form action="{{ url('/loging') }}" method="post">
          @csrf
           <ul>
             <li>

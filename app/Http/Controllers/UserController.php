@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use DB;
 
 class UserController extends Controller
 {
@@ -38,7 +39,16 @@ class UserController extends Controller
       //return redirect()->back();
       return view('login.login');
     }
-    /*public function index(){
-      return view('login.Login');
-    }*/
+    public function loging(Request $request){
+      $id = $request->get('id');
+      $pwd = $request->get('PW');
+      $data = /*DB::table('users')->*/User::where(['id'=>$id,'password'=>$pwd])->get();
+
+      if(count($data)>0){
+        print_r("로그인 성공 회원정보:".$data);
+      }
+      else {
+        print_r("로그인 실패");
+      }
+    }
 }
