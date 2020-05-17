@@ -1,35 +1,140 @@
+/* ------배경화면----- */
 .article{
-  border: 5px solid #263343;
   border-radius: 10px;
+  border-top: 10px #e1f5fe;
+  border-bottom: 10px #e1f5fe;
   margin-left: auto;
   margin-right: auto;
   padding: 2rem;
+  height: auto;
   width:1200px;
   margin:30px auto;
+  background: 5px, 5px;
+
 }
-.pagination {
-  display: inline-block;
+/*슬라이드 배너*/
+
+/* ---경매건수 표시--- */
+h1{
+  margin-top: 30px;
+  padding: 1%;
+  width: 1090px;
+  border-bottom: solid 1px #bdbdbd;
+}
+.list_name{
+  float: left;
+
 }
 
-.pagination a{
-  color: black;
+.categorybar{
+  background-color: #bdbdbd;
+  position: absolute;
+  width: 1250px;
+  height: 50px;
+}
+.categorybar a {
   float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  width: 12%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  text-align: center; /* If you want the text to be centered */
+}
+
+
+/* --제품 --*/
+.product {
+  overflow: visible;
+}
+.best_item{
+  border-left: solid 1px #bdbdbd;
+  border-right: solid 1px #bdbdbd;
+  margin: 0 auto;
+  padding: 2%;
+  width: 1200px;
+  height: 950px;
+  overflow: auto;
+
+}
+.item_list{
+  margin-left: 25px;
+  width: 1115px;
+  height:660px;
+  display: inline-block;
+  border-bottom: solid 1px #bdbdbd;
+
+}
+
+.item{
+  margin-top: 10px;
+  margin-left: 15px;
+  background-size: auto;
+  background-color: #ffffff;
+  border: solid 1px #efefef;
+  float: left;
+  display: block;
+}
+.item a,p{
+  padding-left: 8px;
+  padding-right: 8px;
+  width: auto; height: auto;
+}
+
+.item img {
+    width: 200px;
+    height: 200px;
+}
+
+.page {
+  width: 1200px;
+  height:50px;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  text-align: center!important;
+  display: block;
+}
+/*
+.p_center{
+    text-align: center !important;
+}
+*/
+.page a{
+  color: #black;
   padding: 8px 16px;
   text-decoration: none;
   transition: background-color .3s;
+  width:auto;
+  height: 100px;
   border: 1px solid #ddd;
-  display: block;
-
 }
 
 
-.pagination a:hover:not(.active) {
-  background-color: #263343;
+.page a:hover:not(.active) {
+  background-color: #aab6fe;
+}
+.tag a{
+  border-radius: 20px;
+  font-size: 5px;
+  float: left;
+  width: 1200px;
+  background-color: #ccc;
 }
 
 @media screen and (max-width: 800px){
   .article{
     width: auto;
     height: auto;
+  }
+  .best_item{
+    width: auto;
+  }
+  .page{
+    width:auto;
+    height:auto;
+  }
+  .categorybar{
+    width:auto;
+    font-size: 5px;
   }
 }
