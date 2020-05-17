@@ -1,5 +1,5 @@
 .mp_layout{
-  border: 10px solid #263343;
+  border: 1px solid #bdbdbd;
   border-radius: 12px;
   margin-left: auto;
   margin-right: auto;
@@ -27,10 +27,18 @@
 #img_click{
   cursor:pointer;
 }
+#View_area{
+  position:relative;
+  height: 100px;
+  color: black;
+  border: 0px solid black;
+  float: left;
+  text-align: center;
+}
 
 .mp_menu{
   text-align: right;
-  padding-bottom: 10px;
+  padding: 10px;
 }
 
 .mp_menu a{
@@ -42,7 +50,7 @@
 }
 
 .mp_head{
-  background-color: rgba(172, 71, 159, 0.87);
+  background-color: #bdbdbd;
   padding: 7px;
   color: white;
 }

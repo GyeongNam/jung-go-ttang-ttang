@@ -1,32 +1,30 @@
 @extends('layout.layout_main')
 
 @section('title')
-  중고땅땅-내 정보
+중고땅땅-내 정보
 @endsection
 
 @section('css')
-  <link rel="stylesheet" href ="/css/user/mypage_update.css"/>
+<link rel="stylesheet" href="/css/mypage_update.css">
 @endsection
 
 @section('js')
-  <script type="text/javascript">
-    $(function(){
-      $("#img_click").click(function(){
-        $("input[type=file]").click();
-      })
-    })
-  </script>
+<script type="text/javascript">
+$(function(){
+  $("#img_click").click(function(){
+    $("input[type=file]").click();
+  })
+})
+</script>
 @endsection
 
 @section('content')
+<div class="mysidnav">
   <div class="mp_layout">
-    <form class="" action="index.html" method="post" enctype="multipart/form-data">
-
+    <form class="mypage_re" action="index.html" method="post" enctype="multipart/form-data">
       <div class="mp_header">
-        <div class="mp_menu">
-          <a id="mp_submit" href="#"><b>수정 완료</b></a>
-        </div>
         <div class="mp_img">
+          <label for="">프로필사진 변경</label><br>
           <img id="img_click" src="/img/mp_img.png">
           <input class="hide" type="file" name="" value="" accept=".png, .jpg, .jpeg, .gif">
         </div>
@@ -34,6 +32,14 @@
 
       <div class="mp_main">
         <div class="mp_row">
+          <div>
+            <div class="mp_head">
+              이메일
+            </div>
+            <div class="mp_data">
+              <input type="text" name="" value="">
+            </div>
+          </div>
           <div>
             <div class="mp_head">
               전화번호
@@ -65,7 +71,10 @@
           </div>
 
         </div>
+        <div class="mp_menu">
+          <a id="mp_submit" href="#"><b>수정 완료</b></a>
+        </div>
       </div>
     </form>
   </div>
-@endsection
+  @endsection
