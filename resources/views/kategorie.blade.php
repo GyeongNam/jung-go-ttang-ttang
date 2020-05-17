@@ -6,69 +6,7 @@
 
 @section('css')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-
-
-.kg_layout{
-  border: 12px solid #263343;
-  border-radius: 12px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-  margin: 2% auto;
-  color: #263343;
-
-}
-
-  @media screen and (max-width: 800px){
-    .kg_layout{
-      width: auto;
-      height: auto;
-    }
-  }
-
-.kg_menu{
-  text-align: center;
-  margin:2% auto;
-
-}
-.kg_menu_lime{
-  border: 10%;
-}
-
-.ca_icon{
- padding: 15px ;
- width: 64px;
- text-decoration: none!important;
- color: black;
-
-
-}
-.kg_main{
-  padding:12px ;
-  margin: 3%;
-  display: flex;
-  flex-wrap:wrap;
-  flex:auto;
-  text-align: center;
-  margin-left: 2em;
-
-}
-.ca_icon_name{
-  padding-top: : 3%;
-  font-size: 14px!important;
-  padding: auto;
-  text-align:center;
-}
-.category_Img{
-  width: 64px!important;
-
-
-}
-.cg_name{
-  padding-bottom: 1em;
-}
-</style>
+  <link rel="stylesheet" href ="/css/kategorie.css"/>
 @endsection
 
 @section('js')

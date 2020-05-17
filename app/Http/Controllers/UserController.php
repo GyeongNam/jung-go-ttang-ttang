@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use DB;
 
 class UserController extends Controller
 {
@@ -30,14 +31,26 @@ class UserController extends Controller
         'name' => $request->get('userName'),
         'birthday'=> $request->get('birthday'),
         'gender'=> $request->get('gender'),
-        'email'=> $request->get('selectEmail'),
+        'email'=> $request->get('str_email01'),
+        'email_domain'=>$request->get('str_email03'),
       	'phone'=> $request->get('tel')
       ]);
       $user->save();
       //return redirect()->back();
       return view('login.login');
     }
-    /*public function index(){
-      return view('login.Login');
-    }*/
+    public function loging(Request $request){
+      $id = $request->get('id');
+      $pwd = $request->get('PW');
+      $data = /*DB::table('users')->*/User::select('ID','PASSWORD','NAME')->where(['id'=>$id,'password'=>$pwd])->get();
+
+      if(count($data)>0){
+        print_r("<script>alert('안녕하세요 \\n".$data[0]->NAME." 님 반갑습니다!');</script>");
+        return view('layout.layout_main');
+      }
+      else {
+        print_r("<script>alert('없는 아이디거나 틀린 비밀번호입니다.');</script>");
+        return view('login.login');
+      }
+    }
 }

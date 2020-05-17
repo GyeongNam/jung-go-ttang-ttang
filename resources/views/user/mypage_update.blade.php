@@ -32,7 +32,17 @@ $(function(){
 
       <div class="mp_main">
         <div class="mp_row">
-          <div>
+            <div class="mp_head">
+              이메일
+            </div>
+            <div class="mp_data">
+              <input type="text" name="" value="asd123@naver.com">
+            </div>
+          </div>
+
+
+
+        <div class="mp_row">
             <div class="mp_head">
               이메일
             </div>
@@ -47,9 +57,11 @@ $(function(){
             <div class="mp_data">
               <input type="text" name="" value="010-1111-1111">
             </div>
-          </div>
 
-          <div>
+       </div>
+
+
+          <div class="mp_row">
             <div class="mp_head">
               생년월일
             </div>
@@ -58,7 +70,7 @@ $(function(){
             </div>
           </div>
 
-          <div>
+          <div class="mp_row">
             <div class="mp_head">
               성별
             </div>
@@ -69,7 +81,6 @@ $(function(){
               </select>
             </div>
           </div>
-
         </div>
         <div class="mp_menu">
           <a id="mp_submit" href="#"><b>수정 완료</b></a>
