@@ -42,13 +42,15 @@ class UserController extends Controller
     public function loging(Request $request){
       $id = $request->get('id');
       $pwd = $request->get('PW');
-      $data = /*DB::table('users')->*/User::where(['id'=>$id,'password'=>$pwd])->get();
+      $data = /*DB::table('users')->*/User::select('ID','PASSWORD','NAME')->where(['id'=>$id,'password'=>$pwd])->get();
 
       if(count($data)>0){
-        print_r("로그인 성공 회원정보:".$data);
+        print_r("<script>alert('안녕하세요 \\n".$data[0]->NAME." 님 반갑습니다!');</script>");
+        return view('layout.layout_main');
       }
       else {
-        print_r("로그인 실패");
+        print_r("<script>alert('없는 아이디거나 틀린 비밀번호입니다.');</script>");
+        return view('login.login');
       }
     }
 }
