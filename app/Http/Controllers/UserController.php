@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use DB;
+use Session;
 
 class UserController extends Controller
 {
@@ -43,8 +44,9 @@ class UserController extends Controller
       $id = $request->get('id');
       $pwd = $request->get('PW');
       $data = /*DB::table('users')->*/User::select('ID','PASSWORD','NAME')->where(['id'=>$id,'password'=>$pwd])->get();
-
+      
       if(count($data)>0){
+        session()->put('ID',$id);
         print_r("<script>alert('안녕하세요 \\n".$data[0]->NAME." 님 반갑습니다!');</script>");
         return view('layout.layout_main');
       }
