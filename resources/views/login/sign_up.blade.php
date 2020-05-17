@@ -9,39 +9,57 @@
 @endsection
 
 @section('js')
-  <script type="text/javascript">
-    // $("#new_pw").keyup(function (){
-    //   alert(  $("#new_pw").val());
-    // })
-    // var id_check = false;
-    // var pw_check = false;
-    //
-    // $("#new_ppw, #new_pw").keyup(function (){
-    //   if($("#new_pw").val() == $("#new_ppw").val()){
-    //     if ($("#new_ppw").val() != "" && $("#new_pw").val() != "") {
-    //       $("#notice").html("비밀번호가 일치합니다!");
-    //       $("#notice").css("color", "green");
-    //
-    //       pw_check  = true;
-    //     }else{
-    //       $("#notice").html("");
-    //       pw_check  = false;
-    //     }
-    //   }else{
-    //     $("#notice").html("비밀번호가 일치하지 않습니다!");
-    //     $("#notice").css("color", "red");
-    //     pw_check  = false;
-    //   }
-    // })
-    //
-    // function to_submit(){
-    //   if(pw_check == false){
-    //     alert("비밀번호를 확인해주세요!");
-    //     return false;
-    //
-    //   }
-    // }
-  </script>
+  <script>
+  var compare_result = false;
+  function passwordcheck(){
+    var password1 = $('#pwd1').val();
+    var password2 = $('#pwd2').val();
+    var s_relult2 = $('#s_relult2');
+    if (password1 == password2) {
+      if (password2.length == 0) {
+        s_relult2.text("");
+      }else {
+        compare_result = true;
+        s_relult2.text('비밀번호가 일치합니다.');
+      }
+
+    }else {
+      compare_result = false;
+       s_relult2.text('비밀번호가 일치하지 않습니다.');
+    }
+  }
+
+  function chkpw(){
+   var pw = $("#pwd1").val();
+   var num = pw.search(/[0-9]/g);
+   var eng = pw.search(/[A-z]/ig);
+   var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+   var s_relult1 = $('#s_relult1');
+
+    if(pw.length < 8 || pw.length > 20){
+      if(pw.length == 0){
+        s_relult1.text("영문, 숫자, 특수문자를 포함한 8자리 이상 입력하세요.");
+      }else {
+
+
+       s_relult1.text("8자리 ~ 20자리 이내로 입력해주세요.");
+     }
+    }else if(pw.search(/\s/) != -1){
+       s_relult1.text("비밀번호는 공백 없이 입력해주세요.");
+
+    }else if(num < 0 || eng < 0 || spe < 0 ){
+       s_relult1.text("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+
+    }else {
+      s_relult1.text("");
+
+    }
+
+   }
+
+
+ </script>
+
 @endsection
 
 @section('content')
@@ -56,29 +74,23 @@
           <li>
             <label><strong>아이디</strong><br>
               <input type="text" name="userid" id="new_id" maxlength=10 required>
+              <button type ="submit" id="sub1" onclick="#"><b>중복확인</b></button>
             </label>
           </li>
+        
           <li>
             <label><strong>비밀번호</strong><br>
-              <input type="password" name="userPwd" id="pwd1" class="form-control" required>
+              <input type="password" name="userPwd" id="pwd1" onKeyup="chkpw()" class="form-control" required>
+
             </label>
+            <p><spen id=s_relult1>영문, 숫자, 특수문자를 포함한 8자리 이상 입력하세요.</spen></p>
           </li>
           <li>
             <label><strong>비밀번호 확인</strong><br>
-              <input type="password" name="reuserPwd" id="pwd2" class="form-control" required>
+              <input type="password" name="reuserPwd" id="pwd2"  onKeyup="passwordcheck()" class="form-control" required>
             </label>
-            <div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
-             <div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
+            <p><spen id= "s_relult2"></spen></p>
 
-             <script type="text/javascript">
-             $(function(){ $("#alert-success").hide();
-             $("#alert-danger").hide();
-             $("input").keyup(function(){ var pwd1=$("#pwd1").val();
-             var pwd2=$("#pwd2").val(); if(pwd1 != "" || pwd2 != ""){ if(pwd1 == pwd2){
-             $("#alert-success").show(); $("#alert-danger").hide();
-             $("#submit").removeAttr("disabled"); }else{ $("#alert-success").hide();
-             $("#alert-danger").show(); $("#submit").attr("disabled", "disabled"); } } }); });
-             </script>
 
           </li>
 
