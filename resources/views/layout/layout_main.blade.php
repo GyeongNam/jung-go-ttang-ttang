@@ -77,8 +77,12 @@
         </ul>
 
         <div class = "nav_login">
+        @if(session('login_ID') == false)
           <li><a href="/Login">Login</a></li>
           <li><a href="/sign_up">sign up</a></li>
+        @else
+          <li><a href="/Logout">Log Out</a></li>
+        @endif
         </div>
       </nav>
     </header>
