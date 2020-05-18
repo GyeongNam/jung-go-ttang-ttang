@@ -10,13 +10,58 @@
 
 @section('js')
   <script>
+
+  // 아이디 유효성 검사(1 = 중복 / 0 != 중복)
+	$("#new_id").blur(function() {
+		// id = "id_reg" / name = "userId"
+		var user_id = $('#new_id').val();
+		$.ajax({
+			url : '${pageContext.request.contextPath}='+ user_id,
+			type : 'get',
+			success : function(data) {
+				console.log("1 = 중복o / 0 = 중복x : "+ data);
+
+				if (data == 1) {
+						// 1 : 아이디가 중복되는 문구
+						$("#id_result").text("사용중인 아이디입니다 :p");
+
+						$("#join_member").attr("disabled", true);
+					} else {
+
+						if(idJ.test(user_id)){
+							// 0 : 아이디 길이 / 문자열 검사
+							$("#id_check").text("");
+							$("#join_member").attr("disabled", false);
+
+						} else if(user_id == ""){
+
+							$('#id_result').text('아이디를 입력해주세요 :)');
+
+							$("#join_member").attr("disabled", true);
+
+						} else {
+
+							$('#id_result').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
+
+							$("#reg_submit").attr("disabled", true);
+						}
+
+					}
+				}, error : function() {
+						console.log("실패");
+				}
+			});
+		});
+
+
+
   var compare_result = false;
   function passwordcheck(){
     var password1 = $('#pwd1').val();
     var password2 = $('#pwd2').val();
     var s_relult2 = $('#s_relult2');
     if (password1 == password2) {
-      if (password2.length == 0) {
+      if (password2 == 0) {
         s_relult2.text("");
       }else {
         compare_result = true;
@@ -57,7 +102,17 @@
 
    }
 
+  function join_member(){
 
+    if (compare_result == true) {
+      alert("비밀번호가 일치합니다.")
+    }else {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+
+  }
  </script>
 
 @endsection
@@ -65,7 +120,7 @@
 @section('content')
   <div class="sign_up">
     <div class="sign_form">
-      <form action="{{ url('/singup')}}" method="post">
+      <form action="{{ url('/singup')}}" method="post" type="submit">
         @csrf
         <ul>
           <li>
@@ -73,11 +128,11 @@
           </li>
           <li>
             <label><strong>아이디</strong><br>
-              <input type="text" name="userid" id="new_id" maxlength=10 required>
-              <button type ="submit" id="sub1" onclick="#"><b>중복확인</b></button>
+              <input type="text" name="user_id" id="new_id" onkeyup="id_check" maxlength=10 required class="id_b">
+              <p><spen id= "id_result"></spen></p>
             </label>
           </li>
-        
+
           <li>
             <label><strong>비밀번호</strong><br>
               <input type="password" name="userPwd" id="pwd1" onKeyup="chkpw()" class="form-control" required>
@@ -106,7 +161,8 @@
               <strong>생년월일</strong><br>
               <input type="date" id="birthday" name="birthday"
                      value="dualtime"
-                     min="1930-01-01" max="2070-12-31">
+                     min="1930-01-01" max="2070-12-31"
+                     >
             </label>
           </li>
 
@@ -172,9 +228,10 @@
 
        <input type="text" id="security" size="61" placeholder=" 인증번호 입력하세요" required>
        <li>
-         <button type="submit" id="sub" onclick="return to_submit();">
-             <b>가입하기</b>
+         <button  id="sub" onclick="join_member" >
+           <b>가입하기</b>
          </button>
+
        </li>
         </ul>
        </form>
