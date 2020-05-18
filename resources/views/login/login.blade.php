@@ -23,7 +23,7 @@
             </li>
             <li>
               <label><strong>Password(비밀번호)</strong><br>
-                <input type="text" name="PW" id="pw" placeholder="비밀번호" required><br>
+                <input type="password" name="PW" id="pw" placeholder="비밀번호" required><br>
               </label>
             </li>
             <li>
