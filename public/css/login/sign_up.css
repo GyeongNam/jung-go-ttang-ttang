@@ -35,13 +35,9 @@
     display: block;
     margin-left: 5%;
   }
-  #new_id{
-  margin: 2%;
-  width: 55%;
-  height: 50px;
-}
 
- #pwd1, #pwd2, #new_name, #birthday{
+
+ #new_id,#pwd1, #pwd2, #new_name, #birthday{
   margin: 2%;
   width:90%;
   height: 50px;
@@ -127,10 +123,3 @@
       font-size: auto;
     }
   }
-  #sub1{
-  padding:  17px 30px; float: right;
-  margin-top: 2%;
-  margin-right: 8%;
-  width:30%;
-  display: block;
-}
