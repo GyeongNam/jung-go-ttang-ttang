@@ -63,4 +63,25 @@ class UserController extends Controller
       print_r("<script>alert('정상적으로 로그아웃 되었습니다.');</script>");
       return view('layout.layout_main');
     }
+
+    public function mypage(Request $request){
+
+      //return  User::all();
+    //  return view('user.mypage');
+      $id = session()->get('login_ID');
+      $data = User::select('ID','EMAIL','EMAIL_DOMAIN','PHONE','BIRTHDAY','GENDER')->where(['id'=>$id])->get();
+   return view('user.mypage', ['data'=>$data]);
+    //  $data = User::where('ID','phone')->get();
+    //  return view('user.mypage',['data'=> $data]);
+    //  $data = User::all()->where(['id'=>$id])->get();
+      //return view('user.mypage'['data'=>$data]);
+      //  return $data;
+     //return view('user.mypage', $data);
+     //return User::make('ID')->with('ID', $data);
+    // return view('user.mypage', ['ID' => $data]);
+  //  echo  "$data";
+//  return User::all();
+//  $data=DB::table('ID')->get();
+//  return view('user.mypage',['ID'=>$data]);
+    }
 }
