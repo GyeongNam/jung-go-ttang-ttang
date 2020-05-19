@@ -34,7 +34,7 @@
             이메일
           </div>
           <div class="mp_data">
-          {{$data[0]->EMAIL}}@ {{$data[0]->EMAIL_DOMAIN}}
+          {{$data[0]->EMAIL}} @ {{$data[0]->EMAIL_DOMAIN}}
           </div>
         </div>
 

@@ -65,7 +65,6 @@ class UserController extends Controller
     }
 
     public function mypage(Request $request){
-
       //return  User::all();
     //  return view('user.mypage');
       $id = session()->get('login_ID');
