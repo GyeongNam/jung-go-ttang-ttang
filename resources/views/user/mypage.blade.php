@@ -14,9 +14,6 @@
 @section('content')
   <div class="mp_layout">
     <div class="mp_header">
-      <div class="mp_menu">
-        <a href="/mypage/update"><b>회원 정보 수정</b></a>
-      </div>
       <div class="mp_img">
         <img src="/img/mp_img.png">
       </div>
@@ -70,6 +67,11 @@
 
       </div>
     </div>
-  </form>
+    <div class="mp_menu">
+      <a href="/mypage/update"><b>회원 정보 수정</b></a>
+    </div>
+    <div class="mf_out">
+      <a href="#"><strong>회원 탈퇴</strong></a>
+    </div>
   </div>
 @endsection
