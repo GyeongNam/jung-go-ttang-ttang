@@ -9,117 +9,86 @@
 @endsection
 
 @section('js')
-  <script>
-
-  // 아이디 유효성 검사(1 = 중복 / 0 != 중복)
-	$("#new_id").blur(function() {
-		// id = "id_reg" / name = "userId"
-		var user_id = $('#new_id').val();
-		$.ajax({
-			url : '${pageContext.request.contextPath}='+ user_id,
-			type : 'get',
-			success : function(data) {
-				console.log("1 = 중복o / 0 = 중복x : "+ data);
-
-				if (data == 1) {
-						// 1 : 아이디가 중복되는 문구
-						$("#id_result").text("사용중인 아이디입니다 :p");
-
-						$("#join_member").attr("disabled", true);
-					} else {
-
-						if(idJ.test(user_id)){
-							// 0 : 아이디 길이 / 문자열 검사
-							$("#id_check").text("");
-							$("#join_member").attr("disabled", false);
-
-						} else if(user_id == ""){
-
-							$('#id_result').text('아이디를 입력해주세요 :)');
-
-							$("#join_member").attr("disabled", true);
-
-						} else {
-
-							$('#id_result').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
-
-							$("#reg_submit").attr("disabled", true);
-						}
-
-					}
-				}, error : function() {
-						console.log("실패");
-				}
-			});
-		});
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+function id_check(){
+  var user_id = $('#new_id').val();
+  var id_result = $('#id_result');
+  $.ajax({
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    url: "/idcheck",
+    dataType: 'json',
+    type: "POST",
+    success:function(data){
+      id_result.text('성공');
+    }
+  });
+}
 
 
-
-  var compare_result = false;
-  function passwordcheck(){
-    var password1 = $('#pwd1').val();
-    var password2 = $('#pwd2').val();
-    var s_relult2 = $('#s_relult2');
-    if (password1 == password2) {
-      if (password2 == 0) {
-        s_relult2.text("");
-      }else {
-        compare_result = true;
-        s_relult2.text('비밀번호가 일치합니다.');
-      }
-
-    }else {
-      compare_result = false;
-       s_relult2.text('비밀번호가 일치하지 않습니다.');
+var compare_result = false;
+function passwordcheck(){
+  var password1 = $('#pwd1').val();
+  var password2 = $('#pwd2').val();
+  var s_relult2 = $('#s_relult2');
+  if (password1 == password2) {
+    if (password2 == 0) {
+      s_relult2.text("");
+    }
+    else {
+      compare_result = true;
+      s_relult2.text('비밀번호가 일치합니다.');
     }
   }
-
-  function chkpw(){
-   var pw = $("#pwd1").val();
-   var num = pw.search(/[0-9]/g);
-   var eng = pw.search(/[A-z]/ig);
-   var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-   var s_relult1 = $('#s_relult1');
-
-    if(pw.length < 8 || pw.length > 20){
-      if(pw.length == 0){
-        s_relult1.text("영문, 숫자, 특수문자를 포함한 8자리 이상 입력하세요.");
-      }else {
-
-
-       s_relult1.text("8자리 ~ 20자리 이내로 입력해주세요.");
-     }
-    }else if(pw.search(/\s/) != -1){
-       s_relult1.text("비밀번호는 공백 없이 입력해주세요.");
-
-    }else if(num < 0 || eng < 0 || spe < 0 ){
-       s_relult1.text("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
-
-    }else {
-      s_relult1.text("");
-
-    }
-
-   }
-
-  function join_member(){
-
-    if (compare_result == true) {
-      alert("비밀번호가 일치합니다.")
-    }else {
-      alert("비밀번호가 일치하지 않습니다.");
-      return;
-    }
-
-
+  else {
+    compare_result = false;
+     s_relult2.text('비밀번호가 일치하지 않습니다.');
   }
- </script>
+}
+
+function chkpw(){
+  var pw = $("#pwd1").val();
+  var num = pw.search(/[0-9]/g);
+  var eng = pw.search(/[A-z]/ig);
+  var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+  var s_relult1 = $('#s_relult1');
+
+  if(pw.length < 8 || pw.length > 20){
+    if(pw.length == 0){
+      s_relult1.text("영문, 숫자, 특수문자를 포함한 8자리 이상 입력하세요.");
+    }
+    else{
+     s_relult1.text("8자리 ~ 20자리 이내로 입력해주세요.");
+    }
+  }
+  else if(pw.search(/\s/) != -1){
+     s_relult1.text("비밀번호는 공백 없이 입력해주세요.");
+  }
+  else if(num < 0 || eng < 0 || spe < 0 ){
+     s_relult1.text("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+  }
+  else {
+    s_relult1.text("");
+  }
+ }
+
+function join_member(){
+  if (compare_result == true) {
+    alert("비밀번호가 일치합니다.")
+  }
+  else {
+    alert("비밀번호가 일치하지 않습니다.");
+    return;
+  }
+ }
+</script>
 
 @endsection
 
 @section('content')
   <div class="sign_up">
     <div class="sign_form">
+      <meta name="csrf-token" content="{{ csrf_token() }}">
       <form action="{{ url('/singup')}}" method="post" type="submit">
         @csrf
         <ul>
@@ -128,8 +97,8 @@
           </li>
           <li>
             <label><strong>아이디</strong><br>
-              <input type="text" name="user_id" id="new_id" onkeyup="id_check" maxlength=10 required class="id_b">
-              <p><spen id= "id_result"></spen></p>
+              <input type="text" name="user_id" id="new_id" onkeyup="id_check()" maxlength=10 required class="id_b">
+              <p><spen id= "id_result" >아이디 중복확인</spen></p>
             </label>
           </li>
 
@@ -197,7 +166,6 @@
             </select>
           </li>
 
-          <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
           <script type="text/javascript">
            //이메일 입력방식 선택
            $('#selectEmail').change(function()

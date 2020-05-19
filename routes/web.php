@@ -41,14 +41,10 @@ Route::get('/find_act', function () {
     return view('login.find_act');
 });
 
-Route::get('/qewqwew',function(){
-  return view('user.qewqwew');
-});
-
-
-// DB연동
+// 컨트롤러
 Route::post('/singup', 'UserController@store');
 Route::post('/loging', 'UserController@loging');
 Route::get('/mypage', 'UserController@mypage')->middleware('login');
 Route::get('/Logout', 'UserController@logout')->middleware('login');
 Route::post('/mypage_update', 'UserController@mypage_update')->middleware('login');
+Route::post('/idcheck', 'UserController@idcheck');
