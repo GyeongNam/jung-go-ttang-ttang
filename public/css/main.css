@@ -1,4 +1,5 @@
 /* ------배경화면----- */
+
 .article{
   border-radius: 10px;
   border-top: 10px #e1f5fe;
@@ -12,68 +13,182 @@
   background: 5px, 5px;
 
 }
+/* 실시간 인기 검색어 */
+
+#search {
+	margin:0px;
+	padding:0px;
+	width:100%;
+}
+
+.container_item {
+	width:1150px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+a,img {
+	border:0px;
+	text-decoration:none;
+}
+ul,li {
+	list-style:none;
+	padding:0px;
+	margin:0px;
+}
+
+#best_search {
+  border: 1px solid #bdbdbd;
+  border-radius: 10px;
+	width:auto;
+	margin:0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+	text-align:center;
+}
+#best_search li,dd {
+	display:inline-block;
+	vertical-align:middle;
+}
+button {
+	width:121px;
+	background-color:#0085e2;
+	color:#fff;
+	border:0px;
+	height:63px;
+	margin-left:-5px;
+	padding:0px;
+	font-size:18px;
+}
+#best_search li p {
+	color:#393939;
+	font-size:17px;
+	font-weight:bold;
+	margin:0px;
+	padding-right:30px;
+}
+dd {
+	margin:0px;
+}
+dd  a.t{
+	cursor:pointer;
+	margin:0px;
+	color:#4b4b4b;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	width:120px;
+	white-space:nowrap;
+	display:inline-block;
+	font-size:17px;
+	text-align:left;
+	padding-right:13px;
+	font-weight:700;
+	vertical-align:middle;
+}
+dd .num {
+	background-color:#4b4b4b;
+	color:#fff;
+	font-size:10px;
+	margin-right:10px;
+	vertical-align:middle;
+	width:18px;
+	height:18px;
+	float:left;
+	line-height:18px;
+	text-align:center;
+}
+.best_add {
+	border:1px solid #bebebe;
+	color:#4b4b4b;
+	padding:0px 4px;
+	margin-top:10px;
+}
+
+
+@media screen and (max-width:800px) {
+    .container_item{
+      width:auto;
+    }
+    .best_search{
+      width:auto;
+    }
+}
 /*슬라이드 배너*/
 
 /* ---경매건수 표시--- */
 h1{
-  margin-top: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-bottom: 20px;
+  width: 1150px;
+  border-top: solid 1px #bdbdbd;
+}
+
+h2{
+  margin-top: 50px;
   padding: 1%;
-  width: 1090px;
+  width: 1060px;
+  border-top: solid 1px #bdbdbd;
   border-bottom: solid 1px #bdbdbd;
 }
+
 .list_name{
   float: left;
 
 }
 
+
 .categorybar{
   background-color: #bdbdbd;
   position: absolute;
-  width: 1250px;
-  height: 50px;
+  width: 1150px;
+  height: 55px;
 }
 .categorybar a {
+  margin-left: 25px;
+  margin-top: 7px;
+  padding: 10px;
   float: left;
-  padding: 12px;
   color: white;
   text-decoration: none;
-  font-size: 17px;
-  width: 12%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  font-size: 15px;
+  width: 10%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
   text-align: center; /* If you want the text to be centered */
 }
 
 
 /* --제품 --*/
-.product {
-  overflow: visible;
-}
 .best_item{
   border-left: solid 1px #bdbdbd;
   border-right: solid 1px #bdbdbd;
-  margin: 0 auto;
+  /*margin-left: 20px;*/
+  margin-right: 20px;
   padding: 2%;
-  width: 1200px;
-  height: 950px;
-  overflow: auto;
+  width: 1100px;
+  height: auto;
+}
+#favorit{
 
 }
+
 .item_list{
-  margin-left: 25px;
-  width: 1115px;
-  height:660px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  width: 1110px;
+  height: 700px;
   display: inline-block;
-  border-bottom: solid 1px #bdbdbd;
 
 }
 
 .item{
-  margin-top: 10px;
-  margin-left: 15px;
+  margin-top: 8px;
+  margin-left: 10px;
   background-size: auto;
   background-color: #ffffff;
   border: solid 1px #efefef;
   float: left;
-  display: block;
+  display: inline-block;
 }
 .item a,p{
   padding-left: 8px;
@@ -82,8 +197,8 @@ h1{
 }
 
 .item img {
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 }
 
 .page {
@@ -96,7 +211,7 @@ h1{
 }
 /*
 .p_center{
-    text-align: center !important;
+text-align: center !important;
 }
 */
 .page a{
@@ -128,13 +243,130 @@ h1{
   }
   .best_item{
     width: auto;
+    height: auto;
   }
   .page{
     width:auto;
     height:auto;
   }
   .categorybar{
+    display: none;
+    width:auto;
+    font-size: 3px;
+  }
+  .item_list{
+    width: auto;
+    height: auto;
+    font-size: 5px;
+  }
+  .item{
+    width: auto;
+    height: auto;
+  }
+  h1{
     width:auto;
     font-size: 5px;
   }
+  h2{
+    width:auto;
+    height: auto;
+    font-size:  5px;
+
+  }
+  .fade img {
+    display: none;
+  }
+  .slideshow-container {
+    width: auto;
+    height: auto;
+    display: none;
+  }
+}
+
+/* swiper */
+/* Slideshow container */
+.slideshow-container {
+  width: 1150px;
+  height: 200px;
+  position: relative;
+}
+.fade img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.Swiper {
+  margin-bottom: 20px;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
