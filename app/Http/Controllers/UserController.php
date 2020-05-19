@@ -83,4 +83,34 @@ class UserController extends Controller
 //  $data=DB::table('ID')->get();
 //  return view('user.mypage',['ID'=>$data]);
     }
+    public function mypage_update(Request $request){
+      $id = session()->get('login_ID');
+      $email = $request->get('str_email01');
+      $email_domain = $request->get('str_email03');
+      $phone = $request->get('phone');
+      $birthday = $request->get('birthday');
+      $gender = $request->get('gender');
+      if (empty($email))
+      {
+        return redirect()->back();
+        /*session('error','이메일없음');
+        return redirect('/mypage_update');*/
+      }
+      //$user_image = $request->get('user_image_update');
+
+      $update = User::/*select('email','email_domain','phone','birthday','gender')*/where(['id'=>$id]/*'user_image_update'*/)->update([
+      'email'=>$email,
+      'email_domain'=>$email_domain,
+      'phone'=>$phone,
+      'birthday'=>$birthday,
+      'gender'=>$gender
+      //'user_image_update'=>$user_image
+    ]);
+
+
+
+      return redirect('/mypage');
+//    print_r("<script>alert('정보가 수정되었습니다.');</script>");
+//    return view('/main');
+    }
 }

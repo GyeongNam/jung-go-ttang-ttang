@@ -5,7 +5,7 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="/css/mypage_update.css">
+<link rel="stylesheet" href="/css/user/mypage_update.css">
 @endsection
 
 @section('js')
@@ -21,12 +21,13 @@ $(function(){
 @section('content')
 <div class="mysidnav">
   <div class="mp_layout">
-    <form class="mypage_re" action="index.html" method="post" enctype="multipart/form-data">
+    <form class="mypage_re" action="{{url('/mypage_update')}}" method="post" enctype="multipart/form-data">
+      @csrf
       <div class="mp_header">
         <div class="mp_img">
           <label for="">프로필사진 변경</label><br>
           <img id="img_click" src="/img/mp_img.png">
-          <input class="hide" type="file" name="" value="" accept=".png, .jpg, .jpeg, .gif">
+          <input class="hide" type="file" name="user_image" value="" accept=".png, .jpg, .jpeg, .gif">
         </div>
       </div>
 
@@ -37,9 +38,9 @@ $(function(){
               <label>이메일</label><br>
             </div>
             <div class="mp_e">
-              <input type="text" class="mp_data_e" name="str_email01" id="str_email01" > @
+              <input type="text" class="mp_data_e" name="str_email01" id="str_email01" >
               <input type="text" class="mp_data_e" name="str_email02" id="str_email02" placeholder="직접입력" disabled value="">
-              <select name="selectEmail" class="mp_data_e" id="selectEmail">
+              <select name="str_email03" class="mp_data_e" id="selectEmail">
                 <option value="1">직접입력</option>
                 <option value="naver.com" selected>naver.com</option>
                 <option value="hanmail.net">hanmail.net</option>
@@ -57,28 +58,12 @@ $(function(){
               </select>
             </div>
           </div>
-          <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-          <script type="text/javascript">
-          //이메일 입력방식 선택
-          $('#selectEmail').change(function()
-          { $("#selectEmail option:selected").each(function ()
-          { if($(this).val()== '1'){ //직접입력일 경우
-            $("#str_email02").val('');
-            //값 초기화
-            $("#str_email02").attr("disabled",false); //활성화
-          }else{    //직접입력이 아닐경우
-            $("#str_email02").val($(this).text()); //선택값 입력
-            $("#str_email02").attr("disabled",true); //비활성화
-          }
-        });
-      });
-      </script>
           <div>
             <div class="mp_head">
               전화번호
             </div>
             <div class="mp_data">
-              <input type="text" name="" value="010-1111-1111">
+              <input type="text" name="phone" value="">
             </div>
           </div>
 
@@ -87,7 +72,7 @@ $(function(){
               생년월일
             </div>
             <div class="mp_data">
-              <input type="date" name="" value="1996-01-01">
+              <input type="date" name="birthday" value="">
             </div>
           </div>
 
@@ -95,19 +80,35 @@ $(function(){
             <div class="mp_head">
               성별
             </div>
-            <div class="mp_data">
-              <select class="" name="">
-                <option value="">남성</option>
-                <option value="">여성</option>
+            <div class="mp_data" name="gender">
+              <select name="gender" class="gender">
+                <option value="m">남성</option>
+                <option value="w">여성</option>
               </select>
             </div>
+            <div class="mp_menu">
+              <button id="mp_submit" type="submit"><b>수정 완료</b></button>
+            </div>
           </div>
-
-        </div>
-        <div class="mp_menu">
-          <a id="mp_submit" href="#"><b>수정 완료</b></a>
         </div>
       </div>
+
     </form>
   </div>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript">
+  //이메일 입력방식 선택
+  $('#selectEmail').change(function()
+  { $("#selectEmail option:selected").each(function ()
+  { if($(this).val()== '1'){ //직접입력일 경우
+    $("#str_email02").val('');
+    //값 초기화
+    $("#str_email02").attr("disabled",false); //활성화
+  }else{    //직접입력이 아닐경우
+    $("#str_email02").val($(this).text()); //선택값 입력
+    $("#str_email02").attr("disabled",true); //비활성화
+  }
+});
+});
+</script>
   @endsection
