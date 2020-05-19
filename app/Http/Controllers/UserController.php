@@ -90,7 +90,12 @@ class UserController extends Controller
       $phone = $request->get('phone');
       $birthday = $request->get('birthday');
       $gender = $request->get('gender');
-
+      if (empty($email))
+      {
+        return redirect()->back();
+        /*session('error','이메일없음');
+        return redirect('/mypage_update');*/
+      }
       //$user_image = $request->get('user_image_update');
 
       $update = User::/*select('email','email_domain','phone','birthday','gender')*/where(['id'=>$id]/*'user_image_update'*/)->update([
@@ -103,7 +108,8 @@ class UserController extends Controller
     ]);
 
 
- return redirect('/mypage');
+
+      return redirect('/mypage');
 //    print_r("<script>alert('정보가 수정되었습니다.');</script>");
 //    return view('/main');
     }

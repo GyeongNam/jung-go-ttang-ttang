@@ -63,7 +63,7 @@ $(function(){
               전화번호
             </div>
             <div class="mp_data">
-              <input type="text" name="phone" value="010-1111-1111">
+              <input type="text" name="phone" value="">
             </div>
           </div>
 
@@ -72,7 +72,7 @@ $(function(){
               생년월일
             </div>
             <div class="mp_data">
-              <input type="date" name="birthday" value="1996-01-01">
+              <input type="date" name="birthday" value="">
             </div>
           </div>
 
