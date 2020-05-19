@@ -27,7 +27,7 @@ class UserController extends Controller
         return redirect()->back;
       );*/
       $user = new user([
-        'id' => $request->get('userid'),
+        'id' => $request->get('user_id'),
         'password'=> $request->get('userPwd'),
         'name' => $request->get('userName'),
         'birthday'=> $request->get('birthday'),
