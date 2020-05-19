@@ -5,7 +5,7 @@
 @endsection-->
 
 @section('css')
-  <link rel="stylesheet" href ="/css/user/mypage.css"/>
+  <link rel="stylesheet" href ="/css/mypage.css"/>
 @endsection
 
 @section('js')
@@ -14,9 +14,6 @@
 @section('content')
   <div class="mp_layout">
     <div class="mp_header">
-      <div class="mp_menu">
-        <a href="/mypage/update"><b>회원 정보 수정</b></a>
-      </div>
       <div class="mp_img">
         <img src="/img/mp_img.png">
       </div>
@@ -69,6 +66,12 @@
         </div>
 
       </div>
+    </div>
+    <div class="mp_menu">
+      <a href="/mypage/update"><b>회원 정보 수정</b></a>
+    </div>
+    <div class="mf_out">
+      <a href="#"><strong>회원 탈퇴</strong></a>
     </div>
   </div>
 @endsection
