@@ -33,9 +33,6 @@ Route::get('/mypage/update', function () {
     return view('user.mypage_update');
 })->middleware('login');
 
-Route::get('/Logout', 'UserController@logout')->middleware('login');
-
-
 Route::get('/kategorie', function () {
     return view('kategorie');
 });
@@ -44,6 +41,13 @@ Route::get('/find_act', function () {
     return view('login.find_act');
 });
 
+Route::get('/qewqwew',function(){
+  return view('user.qewqwew');
+});
+
+
 // DB연동
 Route::post('/singup', 'UserController@store');
 Route::post('/loging', 'UserController@loging');
+Route::get('/mypage', 'UserController@mypage')->middleware('login');
+Route::get('/Logout', 'UserController@logout')->middleware('login');

@@ -25,8 +25,8 @@
             아이디
           </div>
           <div class="mp_data">
-            asd123
-          </div>
+            {{$data[0]->ID}}
+        </div>
         </div>
 
         <div>
@@ -34,7 +34,7 @@
             이메일
           </div>
           <div class="mp_data">
-            asd123@naver.com
+          {{$data[0]->EMAIL}} @ {{$data[0]->EMAIL_DOMAIN}}
           </div>
         </div>
 
@@ -43,7 +43,7 @@
             전화번호
           </div>
           <div class="mp_data">
-            010-1111-1111
+          {{$data[0]->PHONE}}
           </div>
         </div>
 
@@ -52,7 +52,7 @@
             생년월일
           </div>
           <div class="mp_data">
-            1996-01-01
+             {{$data[0]->BIRTHDAY}}
           </div>
         </div>
 
@@ -61,7 +61,7 @@
             성별
           </div>
           <div class="mp_data">
-            남성
+              {{$data[0]->GENDER}}
           </div>
         </div>
 
