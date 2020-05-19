@@ -26,12 +26,12 @@ Route::get('/sign_up', function () {
 });
 
 Route::get('/mypage', function () {
-    return view('user.mypage');
+    return view('user.mypage')->middleware('login');
 });
 
 Route::get('/mypage/update', function () {
     return view('user.mypage_update');
-});
+})->middleware('login');
 
 Route::get('/kategorie', function () {
     return view('kategorie');
@@ -50,3 +50,4 @@ Route::get('/qewqwew',function(){
 Route::post('/singup', 'UserController@store');
 Route::post('/loging', 'UserController@loging');
 Route::get('/mypage', 'UserController@mypage');
+Route::get('/Logout', 'UserController@logout')->middleware('login');
