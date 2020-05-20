@@ -10,9 +10,11 @@ use Session;
 
 class UserController extends Controller
 {
-    /*public function create(){
-      return view('login.sign_up');
-    }*/
+    public function idcheck(){
+      $id = $request->get('id');
+      $data = User::select('ID')->where(['id'=>$id])->get();
+      return response()->json(array('data'=>$data[0]->ID));
+    }
 
     public function store(Request $request){
       /*DB::table('users')->insert(
@@ -65,24 +67,23 @@ class UserController extends Controller
     }
 
     public function mypage(Request $request){
-      //return  User::all();
-    //  return view('user.mypage');
       $id = session()->get('login_ID');
       $data = User::select('ID','EMAIL','EMAIL_DOMAIN','PHONE','BIRTHDAY','GENDER')->where(['id'=>$id])->get();
-   return view('user.mypage', ['data'=>$data]);
-    //  $data = User::where('ID','phone')->get();
-    //  return view('user.mypage',['data'=> $data]);
-    //  $data = User::all()->where(['id'=>$id])->get();
+      return view('user.mypage', ['data'=>$data]);
+      /*$data = User::where('ID','phone')->get();
+      return view('user.mypage',['data'=> $data]);
+      //  $data = User::all()->where(['id'=>$id])->get();
       //return view('user.mypage'['data'=>$data]);
       //  return $data;
-     //return view('user.mypage', $data);
-     //return User::make('ID')->with('ID', $data);
-    // return view('user.mypage', ['ID' => $data]);
-  //  echo  "$data";
-//  return User::all();
-//  $data=DB::table('ID')->get();
-//  return view('user.mypage',['ID'=>$data]);
+      //return view('user.mypage', $data);
+      //return User::make('ID')->with('ID', $data);
+      // return view('user.mypage', ['ID' => $data]);
+      //  echo  "$data";
+      //  return User::all();
+      //  $data=DB::table('ID')->get();
+      //  return view('user.mypage',['ID'=>$data]);*/
     }
+
     public function mypage_update(Request $request){
       $id = session()->get('login_ID');
       $email = $request->get('str_email01');
@@ -90,13 +91,13 @@ class UserController extends Controller
       $phone = $request->get('phone');
       $birthday = $request->get('birthday');
       $gender = $request->get('gender');
-      if (empty($email))
-      {
-        return redirect()->back();
-        /*session('error','이메일없음');
-        return redirect('/mypage_update');*/
-      }
-      //$user_image = $request->get('user_image_update');
+        if (empty($email))
+        {
+          return redirect()->back();
+          /*session('error','이메일없음');
+          return redirect('/mypage_update');*/
+        }
+        //$user_image = $request->get('user_image_update');
 
       $update = User::/*select('email','email_domain','phone','birthday','gender')*/where(['id'=>$id]/*'user_image_update'*/)->update([
       'email'=>$email,
@@ -105,12 +106,9 @@ class UserController extends Controller
       'birthday'=>$birthday,
       'gender'=>$gender
       //'user_image_update'=>$user_image
-    ]);
-
-
-
+      ]);
       return redirect('/mypage');
-//    print_r("<script>alert('정보가 수정되었습니다.');</script>");
-//    return view('/main');
+      //    print_r("<script>alert('정보가 수정되었습니다.');</script>");
+      //    return view('/main');
     }
 }
