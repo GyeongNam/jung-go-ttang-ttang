@@ -1,5 +1,4 @@
 /* ------배경화면----- */
-
 .article{
   border-radius: 10px;
   border-top: 10px #e1f5fe;
@@ -11,8 +10,30 @@
   width:1200px;
   margin:30px auto;
   background: 5px, 5px;
+}
+/* ----퀵메뉴---- */
+.quickBox{
+  position: absolute;
+  margin: auto;
+  right:200px;
+  top: 120px;
+  hight: auto;
+  border: 1px solid #bdbdbd;
+  background-color: #ffffff;
+  text-align: center;
+}
+.re_view{
+  border: 1px solid #bdbdbd;
+  background-color: #ffffff;
+  height: 200px;
 
 }
+.btn_top{
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid #bdbdbd;
+}
+
 /* 실시간 인기 검색어 */
 
 #search {
@@ -83,13 +104,13 @@ dd  a.t{
 	text-align:left;
 	padding-right:13px;
 	font-weight:700;
-	vertical-align:middle;
 }
 dd .num {
 	background-color:#4b4b4b;
 	color:#fff;
 	font-size:10px;
 	margin-right:10px;
+  margin-top: 3px;
 	vertical-align:middle;
 	width:18px;
 	height:18px;
@@ -280,6 +301,11 @@ text-align: center !important;
     width: auto;
     height: auto;
     display: none;
+  }
+  .quickBox{
+    display: none;
+    width:auto;
+    height:auto;
   }
 }
 
