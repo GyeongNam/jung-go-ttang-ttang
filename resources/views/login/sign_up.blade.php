@@ -10,21 +10,31 @@
 
 @section('js')
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-function id_check(){
-  var user_id = $('#new_id').val();
-  var id_result = $('#id_result');
+<script type="text/javascript">
+function check(){
+  var userid = $('#new_id').val();
+  var id_result = $('#id_result').val();
   $.ajax({
     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-    url: "/idcheck",
-    dataType: 'json',
-    type: "POST",
-    success:function(data){
-      id_result.text('성공');
-    }
+      url: " /idcheck",
+      dataType: 'json',
+      data: {id:userid},
+      type: "POST",
+      success:function(data){
+        var datas = data.data;
+        console.log(datas);
+        if(datas==1){
+          $("#id_result").text("사용중인 아이디입니다!");
+        }
+        else {
+          $("#id_result").text("사용 가능한 아이디입니다.");
+        }
+      },
+      error : function(){
+        console.log("실패");
+      }
   });
 }
-
 
 var compare_result = false;
 function passwordcheck(){
@@ -97,7 +107,7 @@ function join_member(){
           </li>
           <li>
             <label><strong>아이디</strong><br>
-              <input type="text" name="user_id" id="new_id" onkeyup="id_check()" maxlength=10 required class="id_b">
+              <input type="text" name="user_id" id="new_id" onkeyup="check()" maxlength=10 required class="id_b">
               <p><spen id= "id_result" >아이디 중복확인</spen></p>
             </label>
           </li>

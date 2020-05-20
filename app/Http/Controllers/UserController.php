@@ -10,10 +10,10 @@ use Session;
 
 class UserController extends Controller
 {
-    public function idcheck(){
+    public function idcheck(Request $request){
       $id = $request->get('id');
-      $data = User::select('ID')->where(['id'=>$id])->get();
-      return response()->json(array('data'=>$data[0]->ID));
+      $data = User::select('ID')->where(['id'=>$id])->get()->count();
+      return response()->json(['data'=>$data]);
     }
 
     public function store(Request $request){
