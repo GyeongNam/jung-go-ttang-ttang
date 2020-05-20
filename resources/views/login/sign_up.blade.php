@@ -14,6 +14,7 @@
 function check(){
   var userid = $('#new_id').val();
   var id_result = $('#id_result').val();
+
   $.ajax({
     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
       url: " /idcheck",
@@ -25,9 +26,11 @@ function check(){
         console.log(datas);
         if(datas==1){
           $("#id_result").text("사용중인 아이디입니다!");
+          $("#sub").attr("disabled",true);
         }
         else {
           $("#id_result").text("사용 가능한 아이디입니다.");
+          $("#sub").attr("disabled",false);
         }
       },
       error : function(){
@@ -48,11 +51,13 @@ function passwordcheck(){
     else {
       compare_result = true;
       s_relult2.text('비밀번호가 일치합니다.');
+      $("#sub").attr("disabled",false);
     }
   }
   else {
     compare_result = false;
      s_relult2.text('비밀번호가 일치하지 않습니다.');
+     $("#sub").attr("disabled",true);
   }
 }
 
@@ -66,28 +71,35 @@ function chkpw(){
   if(pw.length < 8 || pw.length > 20){
     if(pw.length == 0){
       s_relult1.text("영문, 숫자, 특수문자를 포함한 8자리 이상 입력하세요.");
+      $("#sub").attr("disabled",true);
     }
     else{
      s_relult1.text("8자리 ~ 20자리 이내로 입력해주세요.");
+     $("#sub").attr("disabled",true);
     }
   }
   else if(pw.search(/\s/) != -1){
      s_relult1.text("비밀번호는 공백 없이 입력해주세요.");
+     $("#sub").attr("disabled",true);
   }
   else if(num < 0 || eng < 0 || spe < 0 ){
      s_relult1.text("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+     $("#sub").attr("disabled",true);
   }
   else {
     s_relult1.text("");
+    $("#sub").attr("disabled",false);
   }
  }
 
 function join_member(){
   if (compare_result == true) {
     alert("비밀번호가 일치합니다.")
+    $("#sub").attr("disabled",false);
   }
   else {
     alert("비밀번호가 일치하지 않습니다.");
+    $("#sub").attr("disabled",false);
     return;
   }
  }
@@ -140,15 +152,14 @@ function join_member(){
               <strong>생년월일</strong><br>
               <input type="date" id="birthday" name="birthday"
                      value="dualtime"
-                     min="1930-01-01" max="2070-12-31"
+                     min="1930-01-01" max="2070-12-31" required
                      >
             </label>
           </li>
 
           <li>
             <label><strong>성별</strong><br>
-              <select name="gender" id = "gender">
-                <option value="select">성별</option>
+              <select name="gender" id = "gender" required="required">
                 <option value="m">남자</option>
                 <option value="w">여자</option>
               </select>
@@ -156,9 +167,9 @@ function join_member(){
           </li>
           <li>
             <label><strong>이메일</strong></label><br>
-            <input type="text" name="str_email01" id="str_email01" >
+            <input type="text" name="str_email01" id="str_email01" required="required">
             <input type="text" name="str_email02" id="str_email02" placeholder="직접입력" disabled value="">
-            <select name="str_email03" id="selectEmail">
+            <select name="str_email03" id="selectEmail" required="required">
               <option value="1">직접입력</option>
               <option value="naver.com" selected>naver.com</option>
               <option value="hanmail.net">hanmail.net</option>
