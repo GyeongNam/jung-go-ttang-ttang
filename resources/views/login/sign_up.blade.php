@@ -124,7 +124,7 @@
         @csrf
         <ul>
           <li>
-            <img src="/img/main_img.png"  alt="로고" class="center-block">
+            <img src="/img/tangtang.png"  alt="로고" class="center-block">
           </li>
           <li>
             <label><strong>아이디</strong><br>
