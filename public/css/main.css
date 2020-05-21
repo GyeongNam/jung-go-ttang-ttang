@@ -71,16 +71,6 @@ ul,li {
 	display:inline-block;
 	vertical-align:middle;
 }
-button {
-	width:121px;
-	background-color:#0085e2;
-	color:#fff;
-	border:0px;
-	height:63px;
-	margin-left:-5px;
-	padding:0px;
-	font-size:18px;
-}
 #best_search li p {
 	color:#393939;
 	font-size:17px;
