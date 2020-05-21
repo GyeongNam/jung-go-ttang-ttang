@@ -25,7 +25,7 @@ class UserController extends Controller
         'gender'=> $request->get('gender'),
         'email'=> $request->get('selectEmail'),
       	'phone'=> $request->get('tel')
-
+//
         return redirect()->back;
       );*/
       $user = new user([
