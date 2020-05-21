@@ -18,9 +18,9 @@ class ItemController extends Controller
       'item_deadline' => $request->get(''),
       'item_startday' => $request->get(''),
       'item_startprice' => $request->get(''),
-      'item_success' => $request->get(''),
-      'success' => $request->get(''),
-      'seller_id' => $request->get(''),
+      // 'item_success' => $request->get(''), 진행상태
+      // 'success' => $request->get(''),      낙찰여부
+      'seller_id' => session()->get('login_ID')
     ]);
     $item->save();
     //return view(''); 내가 올린 경매 페이지로 이동
@@ -28,7 +28,6 @@ class ItemController extends Controller
   public function mainview(Request $request){
     //$top = 시간당 조회수가 높은 페이지에 item_nurnber를 가져온다
     $topview = Item::select('item_name', 'item_buy', 'item_pictuer')->where(['item_nurnber'=>$top])->get();
-
     return view('main', [
       'item_name' => $topview[0]->item_name,
       'item_buy' => $topview[0]->item_buy,
@@ -36,14 +35,21 @@ class ItemController extends Controller
     ]);
   }
   public function myview(Request $request){
+    $id = session()->get('login_ID');
     //$m_Participation = 내가 참여한 경매의 물건번호
-    //$m_srat =
-    $myParticipation = Item::select('item_picture', 'item_startprice', 'item_success', 'success')->where(['item_nurnber'=>])->get();
-    $mystat = Item::select('')->where([])
-    // return view('내가 올린 경매, 내가 참여한 경매', [
-    //   'item_name' => $myview[0]->item_name,
-    //   'item_buy' => $myview[0]->item_buy,
-    //   'item_pictuer' => $myview[0]->item_pictuer
-    // ]);
+    $myParticipation = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['item_nurnber'=> $m_Participation])->get();
+    $myStat = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> $id])->get();
+    return view('내가 올린 경매, 내가 참여한 경매', [
+      'mp_item_name' => $myParticipation[0]->item_name,
+      'mp_item_picture' => $myParticipation[0]->item_picture,
+      'mp_item_startprice' => $myParticipation[0]->item_startprice,
+      'mp_item_success' => $myParticipation[0]->item_success,
+      'mp_success' => $myParticipation[0]->success,
+      'ms_item_name' => $myStat[0]->item_name,
+      'ms_item_picture' => $myStat[0]->item_picture,
+      'ms_item_startprice' => $myStat[0]->item_startprice,
+      'ms_item_success' => $myStat[0]->item_success,
+      'ms_success' => $myStat[0]->success
+    ]);
   }
 }
