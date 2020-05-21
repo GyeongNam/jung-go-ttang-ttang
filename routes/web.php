@@ -41,10 +41,13 @@ Route::get('/find_act', function () {
     return view('login.find_act');
 });
 
-// 컨트롤러
+// user Controller
 Route::post('/singup', 'UserController@store');
 Route::post('/loging', 'UserController@loging');
 Route::get('/mypage', 'UserController@mypage')->middleware('login');
 Route::get('/Logout', 'UserController@logout')->middleware('login');
 Route::post('/mypage_update', 'UserController@mypage_update')->middleware('login');
 Route::post('/idcheck', 'UserController@idcheck');
+// item Controller
+//Route::post('', 'ItemController@store');
+//Route::post('', 'ItemController@mainview');
