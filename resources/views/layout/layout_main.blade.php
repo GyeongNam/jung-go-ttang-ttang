@@ -66,7 +66,7 @@
 
         <div class="nav_logo">
           <i class="fas fa-gavel"></i>
-          <a href="/main">중고땅땅</a>
+          <a href="/">중고땅땅</a>
         </div>
 
         <ul class="nav_menu">

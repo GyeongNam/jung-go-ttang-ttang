@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 // 페이지 이동
 Route::get('/', function () {
-    return view('layout.layout_main');
+    return view('main');
 });
 
 Route::get('/Login', function () {
