@@ -77,32 +77,78 @@ function chkpw(){
      s_relult1.text("8자리 ~ 20자리 이내로 입력해주세요.");
      $("#sub").attr("disabled",true);
     }
-  }
-  else if(pw.search(/\s/) != -1){
+    }
+    else if(pw.search(/\s/) != -1){
      s_relult1.text("비밀번호는 공백 없이 입력해주세요.");
      $("#sub").attr("disabled",true);
-  }
-  else if(num < 0 || eng < 0 || spe < 0 ){
+   }
+    else if(num < 0 || eng < 0 || spe < 0 ){
      s_relult1.text("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
      $("#sub").attr("disabled",true);
-  }
-  else {
+   }
+   else {
     s_relult1.text("");
     $("#sub").attr("disabled",false);
   }
+
  }
 
-function join_member(){
-  if (compare_result == true) {
-    alert("비밀번호가 일치합니다.")
-    $("#sub").attr("disabled",false);
+
+
+ function checkValue(){
+    var form = document.userinfo;
+    var emil = $("#str_email01").val;
+    var pw = $("#pwd1").val();
+    var num = pw.search(/[0-9]/g);
+    var eng = pw.search(/[A-z]/ig);
+    var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+    var phoneJ =/^\d{3}\d{3,4}\d{4}$/;
+    var nameJ = /^[가-힣/\s/]{2,6}$/;
+    var mailJ =  /[`~!@@#$%^&*|₩₩₩'₩";:₩/?/\s/]/;
+
+
+
+
+    if (!form.user_id.value) {
+      alert("아이디를 입력하세요.");
+      return false;
+    }
+    if (!form.userPwd.value) {
+      alert("비밀번호를 입력하세요.");
+      return false;
+    }
+    if (!form.birthday.value) {
+      alert("생년월일을 입력하세요.");
+      return false;
+
+    }
+    if (form.userPwd.value != form.reuserPwd.value) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return false;
+    }
+    if (!nameJ.test($("#new_name").val())) {
+      alert("이름을 다시 입력하세요");
+      return false;
+
+    }
+    if (!phoneJ.test($("#tel").val())) {
+      alert("올바른 전화번호가 아닙니다.");
+      return false;
+
+    }
+    if (mailJ.test($("#str_email01").val())) {
+      alert("올바른 이메일이 아닙니다.");
+      return false;
+
+    }
+    if(pw.length < 8 || pw.length > 20){
+       alert("비밀번호를 8자리 ~ 20자리 이내로 입력해주세요.");
+       return false;
+    }
+
   }
-  else {
-    alert("비밀번호가 일치하지 않습니다.");
-    $("#sub").attr("disabled",false);
-    return;
-  }
- }
+
+
 </script>
 
 @endsection
@@ -111,7 +157,8 @@ function join_member(){
   <div class="sign_up">
     <div class="sign_form">
       <meta name="csrf-token" content="{{ csrf_token() }}">
-      <form action="{{ url('/singup')}}" method="post" type="submit">
+      <form action="{{ url('/singup')}}" method="post" type="submit" name="userinfo" onsubmit="return checkValue()"
+
         @csrf
         <ul>
           <li>
@@ -119,7 +166,7 @@ function join_member(){
           </li>
           <li>
             <label><strong>아이디</strong><br>
-              <input type="text" name="user_id" id="new_id" onkeyup="check()" maxlength=10 required class="id_b">
+              <input type="text" name="user_id" id="new_id" onkeyup="check()" minlength=6 maxlength=20 required class="id_b">
               <p><spen id= "id_result" >아이디 중복확인</spen></p>
             </label>
           </li>
@@ -152,7 +199,7 @@ function join_member(){
               <strong>생년월일</strong><br>
               <input type="date" id="birthday" name="birthday"
                      value="dualtime"
-                     min="1930-01-01" max="2070-12-31" required
+                     min="1930-01-01" max="2050-12-31" required
                      >
             </label>
           </li>
@@ -211,13 +258,13 @@ function join_member(){
        </li>
 
        <li>
-         <input type="tel" name="tel" id="tel" placeholder=" 전화번호 입력" required>
+         <input type="tel" name="tel" id="tel" placeholder=" 전화번호 입력" required maxlength=11 >
          <button type = "button" id ="bt_secu"><b>인증번호 전송</b></button>
        </li>
 
        <input type="text" id="security" size="61" placeholder=" 인증번호 입력하세요" required>
        <li>
-         <button  id="sub" onclick="join_member" >
+         <button  id="sub" onclick="return join_member();" >
            <b>가입하기</b>
          </button>
 
