@@ -25,7 +25,7 @@ class UserController extends Controller
         'gender'=> $request->get('gender'),
         'email'=> $request->get('selectEmail'),
       	'phone'=> $request->get('tel')
-
+//
         return redirect()->back;
       );*/
       $user = new user([
@@ -51,7 +51,7 @@ class UserController extends Controller
       if(count($data)>0){
         session()->put('login_ID',$id);
         print_r("<script>alert('안녕하세요 \\n".$data[0]->NAME." 님 반갑습니다!');</script>");
-        return view('layout.layout_main');
+        return view('main');
         //print_r(session()->all());
       }
       else {
@@ -63,7 +63,7 @@ class UserController extends Controller
     public function logout(Request $request){
       session()->forget('login_ID');
       print_r("<script>alert('정상적으로 로그아웃 되었습니다.');</script>");
-      return view('layout.layout_main');
+      return view('main');
     }
 
     public function mypage(Request $request){

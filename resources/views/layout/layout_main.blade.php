@@ -66,11 +66,31 @@
 
         <div class="nav_logo">
           <i class="fas fa-gavel"></i>
-          <a href="/main">중고땅땅</a>
+          <a href="/">중고땅땅</a>
         </div>
 
         <ul class="nav_menu">
-          <li><a href="#">전체 카테고리</a></li>
+          <li>
+            <div class="dropdown">
+              <a class="dropbtn">전체 카테고리</a>
+              <div class="dropdown-content">
+                <a href="#">남성의류</a>
+                <a href="#">여성의류</a>
+                <a href="#">패션잡화</a>
+                <a href="#">뷰티미용</a>
+                <a href="#">유아용/출산</a>
+                <a href="#">모바일/태블릿</a>
+                <a href="#">가전제품</a>
+                <a href="#">노트북/데스크탑</a>
+                <a href="#">카메라/캠코더</a>
+                <a href="#">가구/인테리어</a>
+                <a href="#">리빙/생활</a>
+                <a href="#">도서/음반/문구</a>
+                <a href="#">티켓/쿠폰</a>
+                <a href="#">스포츠</a>
+              </div>
+            </div>
+          </li>
           <li><a href="#">경매 판매하기</a></li>
           <li><a href="/mypage">내 정보</a></li>
           <li><a href="#">내 관심</a></li>

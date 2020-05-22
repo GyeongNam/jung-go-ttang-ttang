@@ -5,12 +5,16 @@
   border-bottom: 10px #e1f5fe;
   margin-left: auto;
   margin-right: auto;
-  padding: 2rem;
+  padding: auto;
   height: auto;
   width:1200px;
   margin:30px auto;
   background: 5px, 5px;
 }
+.right_side_form {
+
+}
+
 /* ----퀵메뉴---- */
 .quickBox{
   position: absolute;
@@ -21,13 +25,40 @@
   border: 1px solid #bdbdbd;
   background-color: #ffffff;
   text-align: center;
+  z-index: 1;
 }
 .re_view{
   border: 1px solid #bdbdbd;
   background-color: #ffffff;
   height: 200px;
+  width:auto;
 
 }
+
+.view_list {
+  display: block;
+  width: auto;
+  height: auto;
+  margin-bottom: 5px;
+  position: relative;
+  font-size: 13px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-image: initial;
+
+}
+.view_item{
+  width: auto;
+  height: auto;
+}
+.view_item img{
+  position: absolute; top:0; left: 0;
+  margin: 5px 10px;
+  width: 66px;
+  height: 66px;
+}
+
 .btn_top{
   position: relative;
   background-color: #ffffff;
@@ -37,102 +68,102 @@
 /* 실시간 인기 검색어 */
 
 #search {
-	margin:0px;
-	padding:0px;
-	width:100%;
+  margin:0px;
+  padding:0px;
+  width:100%;
 }
 
 .container_item {
-	width:1150px;
+  width:1150px;
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
-a,img {
-	border:0px;
-	text-decoration:none;
-}
+/*a,img {
+border:0px;
+text-decoration:none;
+}*/
 ul,li {
-	list-style:none;
-	padding:0px;
-	margin:0px;
+  list-style:none;
+  padding:0px;
+  margin:0px;
 }
 
 #best_search {
   border: 1px solid #bdbdbd;
   border-radius: 10px;
-	width:auto;
-	margin:0 auto;
+  width:auto;
+  margin:0 auto;
   padding-top: 20px;
   padding-bottom: 20px;
-	text-align:center;
+  text-align:center;
 }
 #best_search li,dd {
-	display:inline-block;
-	vertical-align:middle;
+  display:inline-block;
+  vertical-align:middle;
 }
-button {
-	width:121px;
-	background-color:#0085e2;
-	color:#fff;
-	border:0px;
-	height:63px;
-	margin-left:-5px;
-	padding:0px;
-	font-size:18px;
-}
+/*button {
+width:121px;
+background-color:#0085e2;
+color:#fff;
+border:0px;
+height:63px;
+margin-left:-5px;
+padding:0px;
+font-size:18px;
+}*/
 #best_search li p {
-	color:#393939;
-	font-size:17px;
-	font-weight:bold;
-	margin:0px;
-	padding-right:30px;
+  color:#393939;
+  font-size:17px;
+  font-weight:bold;
+  margin:0px;
+  padding-right:30px;
 }
 dd {
-	margin:0px;
+  margin:0px;
 }
 dd  a.t{
-	cursor:pointer;
-	margin:0px;
-	color:#4b4b4b;
-	text-overflow:ellipsis;
-	overflow:hidden;
-	width:120px;
-	white-space:nowrap;
-	display:inline-block;
-	font-size:17px;
-	text-align:left;
-	padding-right:13px;
-	font-weight:700;
+  cursor:pointer;
+  margin:0px;
+  color:#4b4b4b;
+  text-overflow:ellipsis;
+  overflow:hidden;
+  width:120px;
+  white-space:nowrap;
+  display:inline-block;
+  font-size:17px;
+  text-align:left;
+  padding-right:13px;
+  font-weight:700;
 }
 dd .num {
-	background-color:#4b4b4b;
-	color:#fff;
-	font-size:10px;
-	margin-right:10px;
+  background-color:#4b4b4b;
+  color:#fff;
+  font-size:10px;
+  margin-right:10px;
   margin-top: 3px;
-	vertical-align:middle;
-	width:18px;
-	height:18px;
-	float:left;
-	line-height:18px;
-	text-align:center;
+  vertical-align:middle;
+  width:18px;
+  height:18px;
+  float:left;
+  line-height:18px;
+  text-align:center;
 }
 .best_add {
-	border:1px solid #bebebe;
-	color:#4b4b4b;
-	padding:0px 4px;
-	margin-top:10px;
+  border:1px solid #bebebe;
+  color:#4b4b4b;
+  padding:0px 4px;
+  margin-top:10px;
 }
 
 
 @media screen and (max-width:800px) {
-    .container_item{
-      width:auto;
-    }
-    .best_search{
-      width:auto;
-    }
+  .container_item{
+    width:auto;
+  }
+  .best_search{
+    width:auto;
+  }
 }
 /*슬라이드 배너*/
 
@@ -182,6 +213,7 @@ h2{
 .best_item{
   border-left: solid 1px #bdbdbd;
   border-right: solid 1px #bdbdbd;
+  border-bottom: solid 50px #bdbdbd;
   /*margin-left: 20px;*/
   margin-right: 20px;
   padding: 2%;
@@ -388,11 +420,11 @@ text-align: center !important;
 }
 
 @-webkit-keyframes fade {
-  from {opacity: .4}
+  from {opacity: 0.4}
   to {opacity: 1}
 }
 
 @keyframes fade {
-  from {opacity: .4}
+  from {opacity: 0.4}
   to {opacity: 1}
 }

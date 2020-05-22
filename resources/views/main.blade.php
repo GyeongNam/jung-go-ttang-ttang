@@ -15,8 +15,55 @@
 @section('content')
 <div class="speace">
   <div class="article">
+    <div class="right_side_form">
+      <!-- 퀵 메뉴, top button -->
+      <div class="right_menu">
+        <div class="quickBox"><p>최근 본 상품</p>
+          <div class="re_view">
+            <div class="view_box">
+              <div class="view_list">
+                <a class="view_item" href="#">
+                  <img src="/img/product.png" alt="상품 이미지">
+                </a>
+                <a class="view_item" href="#">
+                  <img src="/img/product.png" alt="상품 이미지">
+                </a>
+                <a class="view_item" href="#">
+                  <img src="/img/product.png" alt="상품 이미지">
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="btn_top">
+            <p class="btn_top"><a href="#none">top</a></p>
+          </div>
+        </div>
+        <script type="text/javascript">
+        /* -----top 버튼, 스크롤 퀵 메뉴----- */
+        var quickBox = $('.quickBox'); //퀵메뉴 코딩한 div의 클래스 네임
+        var quick_top = 300; // 기준이 되는 높이 값입니다.
+        quickBox.css('top', $(window).height() );
+        $(document).ready(function(){
+          quickBox.animate( { "top": $(document).scrollTop() + quick_top +"px" },  500 ); //숫자값을 변경하면 속도변화
+          $(window).scroll(function(){
+            quickBox.stop();
+            quickBox.animate( { "top": $(document).scrollTop() + quick_top + "px" }, 500 ); //숫자값을 변경하면 속도변화
+          });
+        });
+        /* -----top 버튼----- */
+        $(function() {
+          $(".btn_top").click(function() {
+            $('html, body').animate({
+              scrollTop : 0
+            }, 400);
+            return false;
+          });
+        });
+        </script>
+    </div>
     <div class="main_form">
-      <h1><strong>현재 경매 건수는?</strong></h1>
+      <h1><strong>현재 경매 건수는?&nbsp;&nbsp;&nbsp;<b class="product_count"></b>건 입니다.</strong></h1>
+
       <!-- 메인 슬라이드 광고배너 -->
       <div class="swiper">
         <div class="slideshow-container">
@@ -134,37 +181,37 @@
             <div class="item">
               <img src="/img/product.png" alt=""><br>
               <a href="#">IPad Pro 64G 3세대</a><br>
-              <a href="#">상품정보</a>
+              <a href="#">상품가격 : </a>
               <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick='sucess()'>
             </div>
             <div class="item">
               <img src="/img/product.png" alt=""><br>
               <a href="#">IPad Pro 64G 3세대</a><br>
-              <a href="#">상품정보</a>
+              <a href="#">상품가격 : </a>
               <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick="alert('즐겨찾기에 추가되었습니다!')">-->
             </div>
             <div class="item">
               <img src="/img/product.png" alt=""><br>
               <a href="#">IPad Pro 64G 3세대</a><br>
-              <a href="#">상품정보</a>
+              <a href="#">상품가격 : </a>
               <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick="alert('즐겨찾기에 추가되었습니다!')">-->
             </div>
             <div class="item">
               <img src="/img/product.png" alt=""><br>
               <a href="#">IPad Pro 64G 3세대</a><br>
-              <a href="#">상품정보</a>
+              <a href="#">상품가격 : </a>
               <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick="alert('즐겨찾기에 추가되었습니다!')">-->
             </div>
             <div class="item">
               <img src="/img/product.png" alt=""><br>
               <a href="#">IPad Pro 64G 3세대</a><br>
-              <a href="#">상품정보</a>
+              <a href="#">상품가격 : </a>
               <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick="alert('즐겨찾기에 추가되었습니다!')">-->
             </div>
             <div class="item">
               <img src="/img/product.png" alt=""><br>
               <a href="#">IPad Pro 64G 3세대</a><br>
-              <a href="#">상품정보</a>
+              <a href="#">상품가격 : </a>
               <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick="alert('즐겨찾기에 추가되었습니다!')">-->
             </div>
           </div>
@@ -176,52 +223,52 @@
             <div class="item">
               <img src="/img/product.png" alt=""><br>
               <a href="#">IPad Pro 64G 3세대</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/iphone.png" alt=""><br>
               <a href="#">iPhone 11 Pro 64G</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/iphone12.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/iphoneSE2.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/ipadair.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/e300.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/rbgini.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/house.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/switch.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/catfol.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
           </div>
           <div class="item_list">
@@ -232,52 +279,52 @@
             <div class="item">
               <img src="/img/product.png" alt=""><br>
               <a href="#">IPad Pro 64G 3세대</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/iphone.png" alt=""><br>
               <a href="#">iPhone 11 Pro 64G</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/iphone12.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/iphoneSE2.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/ipadair.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/e300.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/rbgini.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/house.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/switch.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/catfol.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
           </div>
           <div class="item_list">
@@ -288,63 +335,53 @@
             <div class="item">
               <img src="/img/product.png" alt=""><br>
               <a href="#">IPad Pro 64G 3세대</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/iphone.png" alt=""><br>
               <a href="#">iPhone 11 Pro 64G</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/iphone12.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/iphoneSE2.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/ipadair.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/e300.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/rbgini.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/house.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/switch.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
             <div class="item">
               <img src="/img/catfol.png" alt=""><br>
               <a href="#">상품명을 입력하세요</a>
-              <p>상품정보</p>
+              <p>상품가격 : </p>
             </div>
-          </div>
-        </div>
-        <div class="pagination">
-          <div class="page">
-            <a href="#">«</a>
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">»</a>
           </div>
         </div>
       </div>
@@ -373,42 +410,9 @@
     slideIndex++;
     if (slideIndex > slides.length) {slideIndex = 1}
     slides[slideIndex-1].style.display = "block";
-    setTimeout(showSlides, 2000); // Change image every 2 seconds
+    setTimeout(showSlides, 3000); // Change image every 2 seconds
   }
   </script>
-  <div class="right_menu">
-    <div class="quickBox"><p>최근 본 상품</p>
-      <div class="re_view">
-        <div class="item_box">
-          <input type="image" name="" value="" href="#">
-        </div>
-      </div>
-      <div class="btn_top">
-        <p class="btn_top"><a href="#none">top</a></p>
-      </div>
-    </div>
-    <script type="text/javascript">
-    /* -----top 버튼, 스크롤 퀵 메뉴----- */
-    var quickBox = $('.quickBox'); //퀵메뉴 코딩한 div의 클래스 네임
-    var quick_top = 300; // 기준이 되는 높이 값입니다.
-    quickBox.css('top', $(window).height() );
-    $(document).ready(function(){
-      quickBox.animate( { "top": $(document).scrollTop() + quick_top +"px" },  500 ); //숫자값을 변경하면 속도변화
-      $(window).scroll(function(){
-        quickBox.stop();
-        quickBox.animate( { "top": $(document).scrollTop() + quick_top + "px" }, 500 ); //숫자값을 변경하면 속도변화
-      });
-    });
-    /* -----top 버튼----- */
-    $(function() {
-      $(".btn_top").click(function() {
-        $('html, body').animate({
-          scrollTop : 0
-        }, 400);
-        return false;
-      });
-    });
-    </script>
   </div>
 </div>
 
