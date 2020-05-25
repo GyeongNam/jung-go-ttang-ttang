@@ -20,7 +20,7 @@ class Item extends Model
       'item_startprice',
       'item_success',
       'success',
-      'remember_token'
+      'remember_token',
       'seller_id'
     ];
 }

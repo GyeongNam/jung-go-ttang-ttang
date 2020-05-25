@@ -58,7 +58,7 @@
         <div id="mysidenav" class ="sidemenu">
           <a class="closebtn" onclick='closeNav()'> <i class="fas fa-angle-left"></i></a>
           <a href="/kategorie">전체 카테고리</a>
-          <a href="#">경매 판매하기</a>
+          <a href="/itemcheck">경매 판매하기</a>
           <a href="/mypage">내 정보</a>
           <a href="#">내 관심</a>
           <a href="#">쪽지</a>
@@ -91,7 +91,7 @@
               </div>
             </div>
           </li>
-          <li><a href="#">경매 판매하기</a></li>
+          <li><a href="/itemcheck">경매 판매하기</a></li>
           <li><a href="/mypage">내 정보</a></li>
           <li><a href="#">내 관심</a></li>
           <li><a href="#">쪽지</a></li>

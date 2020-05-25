@@ -33,6 +33,9 @@ function chackprice(){
 @endsection
 @section('content')
 <div class="">
+  <form class="" action="{{url('/product')}}" method="post">
+    @csrf
+
   <div class="contents">
     <div class="product_header">
       <h1>경매물품 등록 <span ><strong>*필수항목</strong></span></h1>
@@ -57,7 +60,7 @@ function chackprice(){
             제조사
           </div>
           <div class="p_info">
-            <input class="p_maker input" type="text" name="product_name" value="" placeholder="(선택 입력)">
+            <input class="p_maker input" type="text" name="product_maker" value="" placeholder="(선택 입력)">
           </div>
         </div>
       </li>
@@ -77,7 +80,7 @@ function chackprice(){
             <span><strong>*</strong></span>상품 카테고리
           </div>
           <div class="p_info">
-            <select class="p_category" name="" required>
+            <select class="p_category" name="product_category" required>
               <option value="">카테고리 선택</option>
               <option value="">남성의류</option>
               <option value="">여성의류</option>
@@ -102,7 +105,7 @@ function chackprice(){
           <div class="n_lab">
             상품 개봉여부
           </div>
-          <div class="p_info">
+          <div class="p_info" name="open">
             <input type="radio" name="boxing" value="" checked>개봉</input>
             <input type="radio" name="boxing" value="" >미개봉</input>
           </div>
@@ -124,7 +127,7 @@ function chackprice(){
             <span><strong>*</strong></span>경매 시작가
           </div>
           <div class="p_info">
-            <input class="p_startprice input" type="text" name="" id="price" onKeyup="chackprice()"value=""placeholder="경매 시작가 최소 가격은 500원 부터 입니다!" required>
+            <input class="p_startprice input" type="text" name="Auction_start" id="price" onKeyup="chackprice()"value=""placeholder="경매 시작가 최소 가격은 500원 부터 입니다!" required>
             <p><spen id="s_reprice1"></spen></p>
           </div>
         </div>
@@ -166,7 +169,7 @@ function chackprice(){
         </ul>
 
         <div class="complete_btn">
-          <button type="button" name="button" onclick="return to submit();">등록하기</button>
+          <button type="submit" name="button" onclick="return to submit();">등록하기</button>
         </div>
       </div>
 
@@ -178,6 +181,7 @@ function chackprice(){
   <div class="s_right">
 
   </div>
+  </form>
 </div>
 
 
