@@ -25,6 +25,7 @@ function chackprice(){
   }
 }
 
+
 </script>
 @endsection
 @section('content')
@@ -143,10 +144,20 @@ function chackprice(){
               </div>
             </div>
           </li>
+          <li>
+            <div class="p_list">
+              <div class="n_lab">
+                <span></span>상품설명
+              </div>
+              <div class="p_info">
+                <textarea class="explanation" name="name" rows="8" cols="80" placeholder="상품 설명을 입력해주세요."></textarea>
+              </div>
+            </div>
+          </li>
         </ul>
       </ul>
       <div class="complete_btn">
-        <button type="submit" id="su_btn" name="button" onclick="return to submit()">등록하기</button>
+        <button type="submit" id="su_btn" name="button" onclick="return to submit();">등록하기</button>
       </div>
     </div>
     <div class="s_left">
