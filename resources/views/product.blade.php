@@ -114,7 +114,7 @@ function chackprice(){
               <span><strong>*</strong></span>경매 마감일자
             </div>
             <div class="p_info">
-              <input class="p_last_day" type="datetime-local" name="Auction_last_time"  min="2000-01-01T00:00" max="2100-12-31T00:00" required>
+              <input class="p_last_day" type="date" name="Auction_last_time"  min="2000-01-01T00:00" max="2100-12-31T00:00" required>
             </div>
           </div>
         </li>
