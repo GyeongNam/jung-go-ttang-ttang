@@ -146,7 +146,7 @@ function chackprice(){
         </ul>
       </ul>
       <div class="complete_btn">
-        <button type="submit" id="su_btn" name="button" onclick="return to submit();">등록하기</button>
+        <button type="submit" id="su_btn" name="button" onclick="return to submit()">등록하기</button>
       </div>
     </div>
     <div class="s_left">
