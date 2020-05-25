@@ -56,4 +56,5 @@ Route::post('/mypage_update', 'UserController@mypage_update')->middleware('login
 Route::post('/idcheck', 'UserController@idcheck');
 // item Controller
 Route::post('/product', 'ItemController@store');
-Route::get('/itemcheck', 'ItemController@mainview');
+Route::get('/', 'ItemController@mainview');
+Route::get('/itemcheck', 'ItemController@myview');

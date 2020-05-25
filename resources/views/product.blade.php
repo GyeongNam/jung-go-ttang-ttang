@@ -103,8 +103,8 @@ function chackprice(){
               상품 개봉여부
             </div>
             <div class="p_info" name="open">
-              <input type="radio" name="boxing" value="ture" checked>개봉</input>
-              <input type="radio" name="boxing" value="false" >미개봉</input>
+              <input type="radio" name="boxing" value="1" checked>개봉</input>
+              <input type="radio" name="boxing" value="0" >미개봉</input>
             </div>
           </div>
         </li>

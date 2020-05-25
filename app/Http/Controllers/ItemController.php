@@ -19,7 +19,7 @@ class ItemController extends Controller
       'item_maker' => $request->get('product_maker'),
       'item_buy' => $request->get('product_buy'),
       'item_category' => $request->get('product_category'),
-      'item_open' => $request->get('boxing'),
+      'item_open' => $request->get('open'),
       'item_deadline' => $request->get('Auction_last_time'),
       'item_startday' => date('Y-m-d'),
       'item_picture' => $item_data,
