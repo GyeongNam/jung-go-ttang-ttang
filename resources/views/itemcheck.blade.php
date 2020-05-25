@@ -9,6 +9,27 @@
 @endsection
 
 @section('js')
+  <script>
+
+  $(function(){
+    $(".it_manu2").hide();
+
+    $(".on").on("click",function(){
+      $(".it_manu1").hide();
+      $(".it_manu2").show();
+    });
+  });
+
+  $(function(){
+
+
+    $(".on1").on("click",function(){
+      $(".it_manu2").hide();
+      $(".it_manu1").show();
+    });
+  });
+
+  </script>
 
 @endsection
 
@@ -21,9 +42,11 @@
       </div>
     </div>
 
-      <div class="it_button">
-        <button id="but1" onclick=""><b>내가참여한경매</b> </button>
-        <button id="but2"onclick=""> <b>내가올린경매</b> </button>
+      <div class="it_button" id="it_but">
+        <button id="but1" class="on1"><a href="#" class="on1">
+          <b>내가참여한경매</b></a></button>
+        <button id="but2"class="on"><a href="#" class="on">
+          <b>내가올린경매</b> </a></button>
     </div>
 
     <div class="it_subbutton">
@@ -34,7 +57,7 @@
       <button id="su_but4" ><b>낙찰여부</b></button>
     </div>
 
-    <div class="it_manu">
+    <div class="it_manu1">
       <div class="it_img" name="#">
         <a href="#" class="it_link" name="#">
         <img src="/img/iphone.png" alt="상품사진" name="#">
@@ -44,16 +67,24 @@
         <span class="price2" name="#">진행중</span>
         <span class="price3" name="#">X</span>
       </div>
-      <div class="it_img">
-        <a href="#" class="it_link">
-        <img src="/img/iphone.png" alt="상품사진">
-        <p class="it_name">아이폰pro</p>
-        </a>
-        <span class="price">30000000원</span>
-        <span class="price2">진행중</span>
-        <span class="price3">X</span>
-      </div>
+
     </div>
+
+
+      <div class="it_manu2">
+        <div class="it_img" name="#">
+          <a href="#" class="it_link" name="#">
+          <img src="/img/iphone12.png" alt="상품사진" name="#">
+          <p class="it_name" name="#">아이폰12</p>
+          </a>
+          <span class="price" name="#">3000원</span>
+          <span class="price2" name="#">진행중</span>
+          <span class="price3" name="#">X</span>
+        </div>
+
+        </div>
+
+
 
 
 

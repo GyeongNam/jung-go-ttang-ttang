@@ -53,7 +53,7 @@ width: 40%;
 margin: 3%;
 margin-left: auto;
 padding: 18px 40px;
-  border-radius: 4%;
+border-radius: 4%;
 
 
 }
@@ -62,7 +62,7 @@ padding: 18px 40px;
   width: 30%;
   padding: 12px 14px;
   margin: 1%;
-    border-radius: 4%;
+  border-radius: 4%;
 
 }
 #su_but1,#su_but3{
@@ -70,7 +70,7 @@ padding: 18px 40px;
   width: 18%;
   margin: 1%;
   padding:12px 14px;
-    border-radius: 4%;
+  border-radius: 4%;
 
 }
 #su_but4{
@@ -81,7 +81,7 @@ padding: 18px 40px;
     border-radius: 4%;
 
 }
-.it_manu {
+.it_manu1 , .it_manu2 {
   margin: 1%;
   display: flex;
   flex-wrap:wrap;
@@ -98,6 +98,7 @@ padding: 18px 40px;
 }
 img{
   max-width: 100%;
+  width: 100%;
 
 }
 .it_img{
