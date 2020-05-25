@@ -9,25 +9,20 @@ function chackprice(){
   var price = $("#price").val();
   var num = price.search(/[0-9]/g);
   var s_reprice1 = $('#s_reprice1');
-
-  if( price < 500 ){
-    if(price == 0){
-      s_reprice1.text("가격을 500원 이상 입력해주세요!.");
-    }
-    else{
-
-    }
-
-  } else if(price.search(/\s/) != -1){
-    s_relult1.text("금액은 공백 없이 입력해주세요.");
-
-  } else {
-    s_relult1.text("");
+  if (num < 0){
+    s_reprice1.text("값을 입력하세요");
+    $("#su_btn").attr("disabled", true);
+  }
+  else if (price < 500 ) {
+    s_reprice1.text("500원 이상 입력해주세요");
+    $("#su_btn").attr("disabled", true);
+  }
+  else {
+    s_reprice1.text("");
+    $("#su_btn").attr("disabled", false);
 
   }
 }
-
-
 
 </script>
 @endsection
@@ -144,7 +139,7 @@ function chackprice(){
               <div class="p_info">
                 <div class="fr_pic">
                   <div class="p_picture input">
-                    <input type="file" name="" value="" required>
+                    <input type="file" name="item_pic" value="" required>
                   </div>
                 </div>
                 <div class="lefrig_pic">
@@ -169,7 +164,7 @@ function chackprice(){
         </ul>
 
         <div class="complete_btn">
-          <button type="submit" name="button" onclick="return to submit();">등록하기</button>
+          <button type="submit" id="su_btn" name="button" onclick="return to submit();">등록하기</button>
         </div>
       </div>
 
