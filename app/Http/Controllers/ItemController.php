@@ -9,15 +9,16 @@ use App\Item;
 class ItemController extends Controller
 {
   public function store(Request $request){
+    //$id = ;
     $item = new Item([
-      'item_name' => $request->get(''),
-      'item_maker' => $request->get(''),
-      'item_buy' => $request->get(''),
-      'item_category' => $request->get(''),
-      'item_open' => $request->get(''),
-      'item_deadline' => $request->get(''),
-      'item_startday' => $request->get(''),
-      'item_startprice' => $request->get(''),
+      'item_name' => $request->get('product_name'),
+      'item_maker' => $request->get('product_maker'),
+      'item_buy' => $request->get('product_buy'),
+      'item_category' => $request->get('product_category'),
+      'item_open' => $request->get('open'),
+      'item_deadline' => $request->get('Auction_last_time'),
+      'item_startday' => date("Y-m-d h:i:s a", time()),
+      'item_startprice' => $request->get('Auction_start'),
       // 'item_success' => $request->get(''), 진행상태
       // 'success' => $request->get(''),      낙찰여부
       'seller_id' => session()->get('login_ID')

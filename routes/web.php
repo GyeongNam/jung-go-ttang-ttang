@@ -40,6 +40,12 @@ Route::get('/kategorie', function () {
 Route::get('/find_act', function () {
     return view('login.find_act');
 });
+Route::get('/itemcheck', function () {
+    return view('itemcheck');
+});
+Route::get('/item/product', function () {
+    return view('product');
+});
 
 // user Controller
 Route::post('/singup', 'UserController@store');
@@ -49,5 +55,5 @@ Route::get('/Logout', 'UserController@logout')->middleware('login');
 Route::post('/mypage_update', 'UserController@mypage_update')->middleware('login');
 Route::post('/idcheck', 'UserController@idcheck');
 // item Controller
-//Route::post('', 'ItemController@store');
+Route::post('/product', 'ItemController@store');
 //Route::post('', 'ItemController@mainview');
