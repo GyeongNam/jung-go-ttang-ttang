@@ -30,7 +30,7 @@ function chackprice(){
 @endsection
 @section('content')
 <div class="">
-  <form class="" action="{{url('/product')}}" method="post">
+  <form class="" action="{{url('/product')}}" method="post" enctype="multipart/form-data">
     @csrf
 
     <div class="contents">

@@ -15,7 +15,7 @@ class Item extends Model
       'item_category',
       'item_open',
       'item_deadline',
-      'item_pictuer',
+      'item_picture',
       'item_startday',
       'item_startprice',
       'item_success',

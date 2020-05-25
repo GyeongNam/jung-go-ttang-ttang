@@ -26,7 +26,6 @@ class UserController extends Controller
         'gender'=> $request->get('gender'),
         'email'=> $request->get('selectEmail'),
       	'phone'=> $request->get('tel')
-//
 
         return redirect()->back;
       );*/
@@ -100,7 +99,7 @@ class UserController extends Controller
       $user_image = $request->file('user_image');
 
       $extension= $user_image->getClientOriginalName();  //\time() . '.' .
-      Image::make($user_image)->save(public_path('/img/' .$extension));
+      Image::make($user_image)->save(public_path('/img/user/' .$extension));
 
 
      if(empty($email))

@@ -5,25 +5,31 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Item;
+use Image;
 
 class ItemController extends Controller
 {
   public function store(Request $request){
-    //$id = ;
+    $item_pic = $request->file('item_pic');
+    $item_data = $item_pic->getClientOriginalName();
+    Image::make($item_pic)->save(public_path('/img/item/'.$item_data));
+
     $item = new Item([
       'item_name' => $request->get('product_name'),
       'item_maker' => $request->get('product_maker'),
       'item_buy' => $request->get('product_buy'),
       'item_category' => $request->get('product_category'),
-      'item_open' => $request->get('open'),
+      'item_open' => $request->get('boxing'),
       'item_deadline' => $request->get('Auction_last_time'),
-      'item_startday' => date("Y-m-d h:i:s a", time()),
+      'item_startday' => date('Y-m-d'),
+      'item_picture' => $item_data,
       'item_startprice' => $request->get('Auction_start'),
-      // 'item_success' => $request->get(''), 진행상태
-      // 'success' => $request->get(''),      낙찰여부
+      'item_success' => true,
+      'success' => false,
       'seller_id' => session()->get('login_ID')
     ]);
     $item->save();
+    return view('itemcheck');
     //return view(''); 내가 올린 경매 페이지로 이동
   }
   public function mainview(Request $request){
@@ -40,7 +46,7 @@ class ItemController extends Controller
     //$m_Participation = 내가 참여한 경매의 물건번호
     $myParticipation = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['item_nurnber'=> $m_Participation])->get();
     $myStat = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> $id])->get();
-    return view('내가 올린 경매, 내가 참여한 경매', [
+    return view('/itemcheck', [
       'mp_item_name' => $myParticipation[0]->item_name,
       'mp_item_picture' => $myParticipation[0]->item_picture,
       'mp_item_startprice' => $myParticipation[0]->item_startprice,
