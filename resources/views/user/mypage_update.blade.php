@@ -27,7 +27,7 @@ $(function(){
         <div class="mp_img">
           <label for="">프로필사진 변경</label><br>
           <img id="img_click" src="/img/mp_img.png">
-          <input class="hide" type="file" name="user_image" value="" accept=".png, .jpg, .jpeg, .gif">
+          <input class="" type="file" name="user_image" value="" multiple="multiple" accept=".png, .jpg, .jpeg, .gif">
         </div>
       </div>
 
