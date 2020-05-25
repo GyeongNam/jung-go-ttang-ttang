@@ -19,11 +19,11 @@ class CreateItemsTable extends Migration
      /*$table->string('seller_id');*/
      $table->string('item_name');
      $table->string('item_maker')->nullable();
-     $table->string('item_buy')->nullable();
+     $table->date('item_buy')->nullable();
      $table->string('item_category');
      $table->boolean('item_open')->nullable();
      $table->date('item_deadline');
-     $table->binary('item_picture');
+     $table->string('item_picture');
      $table->date('item_startday');
      $table->integer('item_startprice');
      $table->boolean('item_success');

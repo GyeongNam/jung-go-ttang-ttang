@@ -15,7 +15,8 @@
   <div class="mp_layout">
     <div class="mp_header">
       <div class="mp_img">
-        <img src="/img/mp_img.png">
+        <!--  {{$data[0]->USER_IMAGE}}  -->
+    <img src="/img/{{$data[0]->USER_IMAGE}}" style="width:200px; heigth:200px "  margin: 1.5rem; 0;>
       </div>
     </div>
     <div class="mp_main">

@@ -16,7 +16,7 @@ class User extends Model
       'gender',
       'birthday',
       'password',
-      //'user_image',
+      'user_image',
       'remember_token'
     ];
 }

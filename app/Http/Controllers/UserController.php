@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use DB;
 use Session;
+use Image;
 
 class UserController extends Controller
 {
@@ -26,6 +27,7 @@ class UserController extends Controller
         'email'=> $request->get('selectEmail'),
       	'phone'=> $request->get('tel')
 //
+
         return redirect()->back;
       );*/
       $user = new user([
@@ -68,7 +70,8 @@ class UserController extends Controller
 
     public function mypage(Request $request){
       $id = session()->get('login_ID');
-      $data = User::select('ID','EMAIL','EMAIL_DOMAIN','PHONE','BIRTHDAY','GENDER')->where(['id'=>$id])->get();
+    //  $data=User::select('USER_IMAGE')->where(['user_image'=>$id])->get();
+      $data = User::select('ID','EMAIL','EMAIL_DOMAIN','PHONE','BIRTHDAY','GENDER','USER_IMAGE')->where(['id'=>$id])->get();
       return view('user.mypage', ['data'=>$data]);
       /*$data = User::where('ID','phone')->get();
       return view('user.mypage',['data'=> $data]);
@@ -85,18 +88,34 @@ class UserController extends Controller
     }
 
     public function mypage_update(Request $request){
+      //$user_image = $filename;
+
+
       $id = session()->get('login_ID');
       $email = $request->get('str_email01');
       $email_domain = $request->get('str_email03');
       $phone = $request->get('phone');
       $birthday = $request->get('birthday');
       $gender = $request->get('gender');
-        if (empty($email))
-        {
-          return redirect()->back();
+      $user_image = $request->file('user_image');
+
+      $extension= $user_image->getClientOriginalName();  //\time() . '.' .
+      Image::make($user_image)->save(public_path('/img/' .$extension));
+
+
+     if(empty($email))
+       {
+
           /*session('error','이메일없음');
+
           return redirect('/mypage_update');*/
+          return redirect()->back();
         }
+
+
+
+
+      //  $user_image->save(src="/img/");
         //$user_image = $request->get('user_image_update');
 
       $update = User::/*select('email','email_domain','phone','birthday','gender')*/where(['id'=>$id]/*'user_image_update'*/)->update([
@@ -104,9 +123,10 @@ class UserController extends Controller
       'email_domain'=>$email_domain,
       'phone'=>$phone,
       'birthday'=>$birthday,
-      'gender'=>$gender
-      //'user_image_update'=>$user_image
+      'gender'=>$gender,
+      'user_image'=> $extension
       ]);
+
       return redirect('/mypage');
       //    print_r("<script>alert('정보가 수정되었습니다.');</script>");
       //    return view('/main');
