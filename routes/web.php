@@ -46,6 +46,9 @@ Route::get('/itemcheck', function () {
 Route::get('/item/product', function () {
     return view('product');
 });
+Route::get('/product-detail', function() {
+   return view('product-detail');
+});
 
 // user Controller
 Route::post('/singup', 'UserController@store');
