@@ -23,9 +23,15 @@ class CreateItemsTable extends Migration
      $table->string('item_category');
      $table->boolean('item_open')->nullable();
      $table->date('item_deadline');
-     $table->string('item_picture');
+     $table->binary('item_picture');
+     $table->binary('item_pictureup')->nullable();
+     $table->binary('item_picturefront')->nullable();
+     $table->binary('item_pictureback')->nullable();
+     $table->binary('item_pictureleft')->nullable();
+     $table->binary('item_picturerigth')->nullable();
+     $table->binary('item_picturebehind')->nullable();
      $table->date('item_startday');
-     $table->integer('item_startprice');
+     $table->string('item_startprice');
      $table->boolean('item_success');
      $table->boolean('success');
      $table->rememberToken();
