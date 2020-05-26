@@ -42,10 +42,10 @@ Route::get('/find_act', function () {
 });
 Route::get('/itemcheck', function () {
     return view('itemcheck');
-});
+})->middleware('login');
 Route::get('/item/product', function () {
     return view('product');
-});
+})->middleware('login');
 
 // user Controller
 Route::post('/singup', 'UserController@store');
@@ -57,4 +57,4 @@ Route::post('/idcheck', 'UserController@idcheck');
 // item Controller
 Route::post('/product', 'ItemController@store');
 //Route::get('/', 'ItemController@mainview');
-Route::get('/itemcheck', 'ItemController@myview');
+Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
