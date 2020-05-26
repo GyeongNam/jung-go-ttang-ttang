@@ -6,6 +6,8 @@
 @endsection
 @section('js')
 <script>
+
+//거래 시작가 확인검사
 function chackprice(){
   var price = $("#price").val();
   var num = price.search(/[0-9]/g);
@@ -25,12 +27,28 @@ function chackprice(){
   }
 }
 
+//이미지 파일 다중 삽입
+function setThumbnail(event) {
+  for (var image of event.target.files) {
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
+      var img = document.createElement("img"); //이미지 태그 동적 생
+      img.setAttribute("src", event.target.result);
+      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
+      document.querySelector("div#image_container").appendChild(img);
+      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
 
+    };
+    console.log(image); //정보(사진)를 출력
+    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
+  }
+}
 </script>
 @endsection
 @section('content')
 <div class="">
-  <form class="" action="{{url('/product')}}" method="post" enctype="multipart/form-data">
+  <form class="" action="{{url('/product')}}" method="post">
     @csrf
 
     <div class="contents">
@@ -67,7 +85,7 @@ function chackprice(){
               구매일
             </div>
             <div class="p_info">
-              <input class="p_buyday" type="date" name="product_buy"  placeholder="()">
+              <input class="p_buyday" type="date" name="product_buy">
             </div>
           </div>
         </li>
@@ -78,7 +96,6 @@ function chackprice(){
             </div>
             <div class="p_info">
               <select class="p_category" name="product_category" required>
-                <option value="카테고리 선택">카테고리 선택</option>
                 <option value="남성의류">남성의류</option>
                 <option value="여성의류">여성의류</option>
                 <option value="패션잡화">패션잡화</option>
@@ -103,8 +120,12 @@ function chackprice(){
               상품 개봉여부
             </div>
             <div class="p_info" name="open">
-              <input type="radio" name="boxing" value="1" checked>개봉</input>
-              <input type="radio" name="boxing" value="0" >미개봉</input>
+              <select class="ss" name="select_state">
+                <option value="개봉">개봉</option>
+                <option value="미개봉">미개봉</option>
+              </select>
+
+
             </div>
           </div>
         </li>
@@ -125,20 +146,23 @@ function chackprice(){
             </div>
             <div class="p_info">
               <input class="p_startprice input" type="number" name="Auction_start" id="price" onKeyup="chackprice()" placeholder="경매 시작가 최소 가격은 500원 부터 입니다!" required>
-              <p><spen id="s_reprice1"></spen></p>
+              <p id="s_reprice1"></p>
             </div>
           </div>
         </li>
         <div class="fileuplode">
-          <ul>
-            <li>
+          <ul class="sc-image">
+            <li class="li-box">
               <div class="p_list">
                 <div class="n_lab">
                   <span><strong>*</strong></span>사진등록
                 </div>
                 <div class="p_info">
                   <div class="p_picture input">
-                    <input type="file" name="item_pic" value="" required>
+                    <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/>
+                    <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
+                         multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                    <div id="image_container"></div>
                   </div>
                 </div>
               </div>
