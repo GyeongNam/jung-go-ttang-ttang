@@ -77,7 +77,7 @@
             <img src="/img/iphone12.png" alt="상품사진" name="#">
             <p class="it_name" name="#">{{$ms_item_name}}</p>
           </a>
-          <span class="price" name="#">{{$ms_item_startprice}}</span>
+          <span class="price" name="#">{{$ms_item_startprice}} 원</span>
           <span class="price2" name="#">진행중</span>
           <span class="price3" name="#">X</span>
         </div>

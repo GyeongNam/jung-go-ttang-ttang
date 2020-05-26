@@ -34,11 +34,11 @@ class ItemController extends Controller
   }
   public function mainview(Request $request){
     //$top = 시간당 조회수가 높은 페이지에 item_nurnber를 가져온다
-    $topview = Item::select('item_name', 'item_buy', 'item_pictuer')->where(['item_number'=>$top])->get();
+    $topview = Item::select('item_name', 'item_buy', 'item_picture')->where(['item_number'=>$top])->get();
     return view('main', [
       'item_name' => $topview[0]->item_name,
       'item_buy' => $topview[0]->item_buy,
-      'item_picture' => $topview[0]->item_pictuer
+      'item_picture' => $topview[0]->item_picture
     ]);
   }
   public function myview(Request $request){
