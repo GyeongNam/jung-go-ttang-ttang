@@ -26,7 +26,7 @@ class ItemController extends Controller
       'item_startprice' => $request->get('Auction_start'),
       'item_success' => true,
       'success' => false,
-      'seller_id' => session()->get('login_ID')
+      'seller_id' => decrypt(session()->get('login_ID'))
     ]);
     $item->save();
     return view('itemcheck');
@@ -45,18 +45,14 @@ class ItemController extends Controller
     $id = session()->get('login_ID');
     //$m_Participation = 내가 참여한 경매의 물건번호
     //$myParticipation = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['item_nurnber'=> $m_Participation])->get();
-    $myStat = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> $id])->get();
+    $myStat = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> decrypt($id)])->get();
     return view('/itemcheck', [
       // 'mp_item_name' => $myParticipation[0]->item_name,
       // 'mp_item_picture' => $myParticipation[0]->item_picture,
       // 'mp_item_startprice' => $myParticipation[0]->item_startprice,
       // 'mp_item_success' => $myParticipation[0]->item_success,
       // 'mp_success' => $myParticipation[0]->success,
-      'ms_item_name' => $myStat[0]->item_name,
-      'ms_item_picture' => $myStat[0]->item_picture,
-      'ms_item_startprice' => $myStat[0]->item_startprice,
-      'ms_item_success' => $myStat[0]->item_success,
-      'ms_success' => $myStat[0]->success
+      'myStat' => $myStat
     ]);
   }
 }

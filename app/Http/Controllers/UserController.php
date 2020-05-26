@@ -50,10 +50,10 @@ class UserController extends Controller
       $data = /*DB::table('users')->*/User::select('ID','PASSWORD','NAME')->where(['id'=>$id,'password'=>$pwd])->get();
 
       if(count($data)>0){
-        session()->put('login_ID',$id);
+        session()->put('login_ID',encrypt($id));
         print_r("<script>alert('안녕하세요 \\n".$data[0]->NAME." 님 반갑습니다!');</script>");
-        return view('main');
-        //print_r(session()->all());
+        //return view('main');
+        print_r(session()->all());
       }
       else {
         print_r("<script>alert('없는 아이디거나 틀린 비밀번호입니다.');</script>");
@@ -70,7 +70,7 @@ class UserController extends Controller
     public function mypage(Request $request){
       $id = session()->get('login_ID');
     //  $data=User::select('USER_IMAGE')->where(['user_image'=>$id])->get();
-      $data = User::select('ID','EMAIL','EMAIL_DOMAIN','PHONE','BIRTHDAY','GENDER','USER_IMAGE')->where(['id'=>$id])->get();
+      $data = User::select('ID','EMAIL','EMAIL_DOMAIN','PHONE','BIRTHDAY','GENDER','USER_IMAGE')->where(['id'=>decrypt($id)])->get();
       return view('user.mypage', ['data'=>$data]);
       /*$data = User::where('ID','phone')->get();
       return view('user.mypage',['data'=> $data]);
@@ -117,7 +117,7 @@ class UserController extends Controller
       //  $user_image->save(src="/img/");
         //$user_image = $request->get('user_image_update');
 
-      $update = User::/*select('email','email_domain','phone','birthday','gender')*/where(['id'=>$id]/*'user_image_update'*/)->update([
+      $update = User::/*select('email','email_domain','phone','birthday','gender')*/where(['id'=>decrypt($id)]/*'user_image_update'*/)->update([
       'email'=>$email,
       'email_domain'=>$email_domain,
       'phone'=>$phone,
