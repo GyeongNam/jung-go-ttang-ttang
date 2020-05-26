@@ -77,6 +77,20 @@ dots[slideIndex-1].className += " active";
         </div>
       </div>
     </div>
+    <div class="detail_product_info">
+      <div class="dpbox">
+        <div class="d_info">
+          <div class="tit_pri">
+            <div class="d_title">
+              아이패드프로1세대9.7
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="">
+
+      </div>
+    </div>
   </div>
 </div>
 @endsection
