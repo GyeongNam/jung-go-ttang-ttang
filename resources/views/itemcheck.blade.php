@@ -12,11 +12,11 @@
   <script>
 
   $(function(){
-    $(".it_manu2").hide();
+    $(".it_if2").hide();
 
     $(".on").on("click",function(){
-      $(".it_manu1").hide();
-      $(".it_manu2").show();
+      $(".it_if1").hide();
+      $(".it_if2").show();
     });
   });
 
@@ -24,8 +24,8 @@
 
 
     $(".on1").on("click",function(){
-      $(".it_manu2").hide();
-      $(".it_manu1").show();
+      $(".it_if2").hide();
+      $(".it_if1").show();
     });
   });
 
@@ -49,7 +49,7 @@
         <b>내가올린경매</b> </a></button>
       </div>
 
-      <div class="it_subbutton">
+      <div class="it_subbutton1">
 
         <button id="su_but1" ><b>목록</b></button>
         <button id="su_but2" ><b>내입찰가격</b></button>
@@ -57,33 +57,43 @@
         <button id="su_but4" ><b>낙찰여부</b></button>
       </div>
 
-      <div class="it_manu1">
-        <div class="it_img" name="#">
-          <a href="#" class="it_link" name="#">
-            <img src="/img/iphone.png" alt="상품사진" name="#">
-            <p class="it_name" name="#">아이폰pro</p>
-          </a>
-          <span class="price" name="#">30000000원</span>
-          <span class="price2" name="#">진행중</span>
-          <span class="price3" name="#">X</span>
-        </div>
-
+  <div class="it_if1">
+    <div class="it_img">
+      <a href="#" class="it_img1">
+        <img src="/img/item/{{$myStat[0]->item_picture}}" alt="상품사진" name="#" class="ite_img">
+        <div class="ite_na"> {{$myStat[0]->item_name}}</div>
+      </a>
+    </div>
+      <div class="price1">
+        {{$myStat[0]->item_startprice}} 원
       </div>
-
-
-      <div class="it_manu2">
-        <div class="it_img" name="#">
-          <a href="#" class="it_link" name="#">
-            <img src="/img/item/{{$myStat[3]->item_picture}}" alt="상품사진" name="#">
-            <p class="it_name" name="#">{{$myStat[3]->item_name}}</p>
-          </a>
-          <span class="price" name="#">{{$myStat[3]->item_startprice}} 원</span>
-          <span class="price2" name="#">진행중</span>
-          <span class="price3" name="#">X</span>
-        </div>
-
+      <div class="state1">
+        진행중
+      </div>
+      <div class="yesorno">
+        O
       </div>
     </div>
 
+    <div class="it_if2">
+      <div class="it_img">
+        <a href="#" class="it_img1">
+          <img src="/img/item/{{$myStat[2]->item_picture}}" alt="상품사진" name="#" class="ite_img">
+          <div class="ite_na"> {{$myStat[2]->item_name}}</div>
+        </a>
+      </div>
+        <div class="price1">
+          {{$myStat[2]->item_startprice}}원
+        </div>
+        <div class="state1">
+          진행중
+        </div>
+        <div class="yesorno">
+          O
+        </div>
+      </div>
+
+
+  </div>
 
 @endsection
