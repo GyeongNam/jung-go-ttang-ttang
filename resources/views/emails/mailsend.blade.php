@@ -6,6 +6,7 @@
   </head>
   <body>
     Thank you
-    {{$details}}
+    {{$details['title']}}
+    {{$details['body']}}
   </body>
 </html>

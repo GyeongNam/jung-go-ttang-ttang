@@ -17,9 +17,9 @@ class SendMail extends Mailable
      * @return void
      */
     public $details;
-    public function __construct()
+    public function __construct($details)
     {
-        //
+      $this->details =  $details;
     }
 
     /**
@@ -29,6 +29,6 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('서브젝트 공간은 어디?')->view('emails.mailsend');
+        return $this->subject('[중고땅땅] 인증번호')->view('emails.mailsend');
     }
 }
