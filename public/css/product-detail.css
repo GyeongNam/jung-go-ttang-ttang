@@ -26,17 +26,17 @@
 .pr_deta_pic{
   width:auto;
   height:auto;
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 
 .detailimg_list{
   position: relative;
 }
-.mySlides{
-  display: block;
-  width: 26.88rem;
-  height: 26.88rem;
-}
+
+/*.mySlides{
+  width: 26em;
+  height: 26em;
+}*/
 .btn-floating-left{
   position: absolute;
   top: 45%;
@@ -47,30 +47,50 @@
   top: 45%;
   right: 0;
 }
-/* Hide the images by default */
+/* Hide the images by default*/
 .mySlides {
   display: none;
-  width: 60%
-  height:auto;
+  width: 26rem;
+  height:26rem;
 }
 
 
 /*이미지 끝 */
 /* 판매자의 다른 상품 */
-.detail_seller_other{
+.detail_seller_info{
   position: relative;
+  margin-top: 1rem;
   width: auto;
   height: auto;
 }
 .seller_page{
   width:12rem;
   height:auto;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid #bdbdbd;
 }
+
+.seller_img{
+  width:2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  margin: 0 0.5rem;
+}
+
+.otr_prod_item_img{
+  width:5rem;
+  height: 5rem;
+  margin: 0 0.5rem;
+}
+
 /* 판매자의 다른 상품 끝 */
 .detail_product_info{
   display: block;
+  margin: 0 1rem;
+  padding-right: 1rem;
   width:26.88rem;
   height:26.88rem;
+  border-right: 1px solid #d5d3d3;
 }
 .tit_pri{
   border-bottom: 1px solid #bdbdbd;
@@ -127,6 +147,7 @@
 .otitm{
   margin-right: 1rem;
 }
+
 /* 연관상품  끝*/
 /* 이미지 슬라이드 container */
 
@@ -166,9 +187,24 @@
     height:auto;
     display: block;
   }
+  .slider{
+    align-items: center;
+    width: auto;
+    height: auto;
+  }
   .mySlides{
+    margin-left: 10px;
+    height:100%;
+    width: 100%;
+  }
+  .sliderFrame{
     width: auto;
     height:auto;
+
+  }
+  .detail_product_info{
+    width: auto;
+    height: auto;
   }
   .d_info{
     width: auto;

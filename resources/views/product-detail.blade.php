@@ -5,26 +5,7 @@
 @endsection
 
 @section('js')
-<script type="text/javascript">
-var slideIndex = 1;
-showDivs(slideIndex);
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length} ;
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  x[slideIndex-1].style.display = "block";
-}
-
-</script>
 @endsection
 @section('content')
 <div class="content">
@@ -156,14 +137,27 @@ function showDivs(n) {
           </div>
           <div class="seller_info">
             <div class="seller_name">
+              <div class="">
+
+              </div>
               <a href="#"><img src=""></a>
               <div class="seller_profile">
                 <div class="name_pdt">
-                  상점이름
-                  <a class="seller_name_link" href="#">junsik</a>
-                  <a class="productrottn" href="#">상품2</a>
+                  <img class="seller_img" name="" src="/img/dadang.jpg" alt="">
+                  <a class="seller_name_link" name="" href="#">junsik</a>
+                  <a class="productrottn" name="" href="#">상품 2</a>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="seller_other_product">
+          <div class="otr_prod_box">
+            <div class="otr_prod_item">
+              <img class="otr_prod_item_img" name="" src="/img/product.png" alt="">
+            </div>
+            <div class="otr_prod_item">
+              <img class="otr_prod_item_img" name="" src="/img/product.png" alt="">
             </div>
           </div>
         </div>
@@ -195,5 +189,33 @@ function showDivs(n) {
     </div>
   </div>
 </div>
+<script type="text/javascript">
 
+
+
+var slideIndex = 0;  /*slideIndex 로 설정 */
+showDivs(slideIndex); /* 첫번째 이미지를 표시하기 위해 showDivs 호출 */
+
+/*$(document).ready(function(){
+  showDivs(slideIndex += n);
+});*/
+
+function plusDivs(n) { /* slideIndex에 하나를 추가한다. */
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+
+}
+
+</script>
 @endsection
