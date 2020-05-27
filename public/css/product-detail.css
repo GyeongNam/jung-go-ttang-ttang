@@ -80,7 +80,8 @@
 .otr_prod_item_img{
   width:5rem;
   height: 5rem;
-  margin: 0 0.5rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem; 
 }
 
 /* 판매자의 다른 상품 끝 */

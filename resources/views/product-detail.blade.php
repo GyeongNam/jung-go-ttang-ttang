@@ -155,9 +155,16 @@
           <div class="otr_prod_box">
             <div class="otr_prod_item">
               <img class="otr_prod_item_img" name="" src="/img/product.png" alt="">
+              <div class="otr_prod_item_np">
+                <span>아이폰11pro</span>
+                <span>현재가격 : 600,000</span>
+              </div>
             </div>
             <div class="otr_prod_item">
               <img class="otr_prod_item_img" name="" src="/img/product.png" alt="">
+              <div class="otr_prod_item_np">
+
+              </div>
             </div>
           </div>
         </div>
