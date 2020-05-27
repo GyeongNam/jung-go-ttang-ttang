@@ -52,6 +52,7 @@
   display: none;
   width: 26rem;
   height:26rem;
+
 }
 
 
@@ -76,12 +77,18 @@
   border-radius: 1rem;
   margin: 0 0.5rem;
 }
-
+.otr_prod_item{
+  display: flex;
+}
 .otr_prod_item_img{
   width:5rem;
   height: 5rem;
   margin-left: 0.5rem;
-  margin-top: 0.5rem; 
+  margin-top: 0.5rem;
+}
+.otr_prod_item_np{
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 /* 판매자의 다른 상품 끝 */
@@ -150,8 +157,9 @@
 }
 
 /* 연관상품  끝*/
-/* 이미지 슬라이드 container */
+/* 상품정보, 댓글 페이지 */
 
+/* 상품정보, 댓글 페이지 끝*/
 
 
 
@@ -183,6 +191,9 @@
     width: auto;
     height: auto;
   }
+  .detail_product_info{
+    border: none;
+  }
   .detail_head{
     width:auto;
     height:auto;
@@ -195,8 +206,9 @@
   }
   .mySlides{
     margin-left: 10px;
-    height:100%;
-    width: 100%;
+    margin-right: 10px;
+    height:98%;
+    width: 98%;
   }
   .sliderFrame{
     width: auto;

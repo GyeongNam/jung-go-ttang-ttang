@@ -153,17 +153,21 @@
         </div>
         <div class="seller_other_product">
           <div class="otr_prod_box">
+            <div class="otr_prod_item_label">
+              <span>판매자가 경매중인 물품</span>
+            </div>
             <div class="otr_prod_item">
               <img class="otr_prod_item_img" name="" src="/img/product.png" alt="">
               <div class="otr_prod_item_np">
-                <span>아이폰11pro</span>
-                <span>현재가격 : 600,000</span>
+                <span class="otr_name" name="">아이폰11pro</span><br>
+                <span class="otr_price" name="">현재가격 : 600,000</span>
               </div>
             </div>
             <div class="otr_prod_item">
               <img class="otr_prod_item_img" name="" src="/img/product.png" alt="">
               <div class="otr_prod_item_np">
-
+                <span class="otr_name" name="">갤럭시노트10+</span><br>
+                <span class="otr_price" name="">현재가격 : 520,000</span>
               </div>
             </div>
           </div>
@@ -192,6 +196,12 @@
             <img src="/img/product.png" alt="" width="150" height="150">
           </div>
         </div>
+      </div>
+    </div>
+    <div class="detail_info_typing">
+      <div class="info_typing">
+        <button class="typing" type="button" name="button">상품정보</button>
+        <button class="comment" type="button" name="button">댓글달기</button>
       </div>
     </div>
   </div>
