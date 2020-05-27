@@ -34,15 +34,14 @@ function showDivs(n) {
         <div class="detailimg_list">
           <div id="sliderFrame">
             <div id="slider">
-              <img class="mySlides" src="/img/product.png" alt=""  />
-              <img class="mySlides" src="/img/iphone.png" />
-              <img class="mySlides" src="/img/iphone12.png" alt=""  />
-              <img class="mySlides" src="/img/iphoneSE2.png" alt="" />
-              <img class="mySlides" src="/img/macbookpro.png"  />
-
-              <a class="btn-floating-left" onclick="plusDivs(-1)">&#10094;</a>
-              <a class="btn-floating-right" onclick="plusDivs(+1)">&#10095;</a>
+              <img class="mySlides" name="" src="/img/product.png" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/iphone.png" />
+              <img class="mySlides" name="" src="/img/iphone12.png" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/iphoneSE2.png" alt="" val=""/>
+              <img class="mySlides" name="" src="/img/macbookpro.png"  val=""/>
             </div>
+            <a class="btn-floating-left" onclick="plusDivs(-1)">&#10094;</a>
+            <a class="btn-floating-right" onclick="plusDivs(+1)">&#10095;</a>
           </div>
 
         </div>
