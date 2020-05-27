@@ -11,6 +11,15 @@
 @section('js')
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+function mainsends(){
+  $.ajax({
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      url: " /mail",
+      type: "get",
+  });
+}
+
+
 function check(){
   var userid = $('#new_id').val();
   var id_result = $('#id_result').val();
@@ -22,19 +31,12 @@ function check(){
       data: {id:userid},
       type: "POST",
       success:function(data){
-        var datas = data.data;
-        console.log(datas);
-        if(datas==1){
-          $("#id_result").text("사용중인 아이디입니다!");
-          $("#sub").attr("disabled",true);
-        }
-        else {
-          $("#id_result").text("사용 가능한 아이디입니다.");
-          $("#sub").attr("disabled",false);
-        }
+        console.log("성공");
+
       },
       error : function(){
         console.log("실패");
+
       }
   });
 }
@@ -259,7 +261,7 @@ function chkpw(){
 
        <li>
          <input type="tel" name="tel" id="tel" placeholder=" 전화번호 입력" required maxlength=11 >
-         <button type = "button" id ="bt_secu"><b>인증번호 전송</b></button>
+         <button onclick="mainsends()" type ="button" id ="bt_secu"><b>인증번호 전송</b></button>
        </li>
 
        <input type="text" id="security" size="61" placeholder=" 인증번호 입력하세요" required>
