@@ -12,10 +12,23 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
 function mainsends(){
+  var random = Math.floor(Math.random() * 10000) + 1;
+  var email = $(str_email01).val();
+  var email_domain = $(selectEmail).val();
+  var mails = email+'@'+email_domain;
   $.ajax({
     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
       url: " /mail",
+      data: {mail:mails, random:random},
       type: "get",
+      success:function(data){
+        var datas = data.mail
+        console.log(datas);
+        alert(mails+"으로 인증번호를 발송했습니다.");
+      },
+      error : function(){
+        console.log("실패");
+      }
   });
 }
 
@@ -31,12 +44,19 @@ function check(){
       data: {id:userid},
       type: "POST",
       success:function(data){
-        console.log("성공");
-
+        var datas = data.data;
+        console.log(datas);
+        if(datas==1){
+          $("#id_result").text("사용중인 아이디입니다!");
+          $("#sub").attr("disabled",true);
+        }
+        else {
+          $("#id_result").text("사용 가능한 아이디입니다.");
+          $("#sub").attr("disabled",false);
+        }
       },
       error : function(){
-        console.log("실패");
-
+        console.log(datas);
       }
   });
 }
@@ -159,7 +179,7 @@ function chkpw(){
   <div class="sign_up">
     <div class="sign_form">
       <meta name="csrf-token" content="{{ csrf_token() }}">
-      <form action="{{ url('/singup')}}" method="post" type="submit" name="userinfo" onsubmit="return checkValue()"
+      <form action="{{ url('/singup')}}" method="post" type="submit" name="userinfo" onsubmit="return checkValue()">
 
         @csrf
         <ul>

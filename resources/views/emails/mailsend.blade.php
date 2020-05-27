@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ko" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>{{$details['title']}}</title>
   </head>
   <body>
-    Thank you
-    {{$details['title']}}
-    {{$details['body']}}
+    <h1>{{$details['body']}}</h1>
+    <p>{{$details['num']}}</p>
   </body>
 </html>
