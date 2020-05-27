@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use \App\Mail\SendMail;
 use App\User;
 use DB;
 use Session;
@@ -11,6 +12,15 @@ use Image;
 
 class UserController extends Controller
 {
+    public function mailsend(){
+      $details = [
+        'title' => '타이틀은 어디입니까?',
+        'body' => '바디는 어디입니까?'
+      ];
+
+      \Mail::to('ccittest@naver.com')->send(new SendMail($details));
+    }
+
     public function idcheck(Request $request){
       $id = $request->get('id');
       $data = User::select('ID')->where(['id'=>$id])->get()->count();

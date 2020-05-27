@@ -59,3 +59,6 @@ Route::post('/idcheck', 'UserController@idcheck');
 Route::post('/product', 'ItemController@store');
 //Route::get('/', 'ItemController@mainview');
 Route::get('/itemcheck', 'ItemController@myview');
+
+// mail
+Route::get('/mail', 'UserController@mailsend');
