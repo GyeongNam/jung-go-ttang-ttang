@@ -156,14 +156,14 @@
             <div class="otr_prod_item_label">
               <span>판매자가 경매중인 물품</span>
             </div>
-            <div class="otr_prod_item">
+            <div class="otr_prod_item" cursor:pointer; onclick="localhost/">
               <img class="otr_prod_item_img" name="" src="/img/product.png" alt="">
               <div class="otr_prod_item_np">
                 <span class="otr_name" name="">아이폰11pro</span><br>
                 <span class="otr_price" name="">현재가격 : 600,000</span>
               </div>
             </div>
-            <div class="otr_prod_item">
+            <div class="otr_prod_item" cursor:pointer; onclick="localhost/">
               <img class="otr_prod_item_img" name="" src="/img/product.png" alt="">
               <div class="otr_prod_item_np">
                 <span class="otr_name" name="">갤럭시노트10+</span><br>
@@ -200,8 +200,23 @@
     </div>
     <div class="detail_info_typing">
       <div class="info_typing">
-        <button class="typing" type="button" name="button">상품정보</button>
-        <button class="comment" type="button" name="button">댓글달기</button>
+        <button class="typing btdg" type="button" name="button">상품정보</button>
+        <button class="comment btdg" type="button" name="button">댓글달기</button>
+      </div>
+      <div class="typinginfo">
+        <div class="tkdvnainfo">
+          <div class="sc-info_detail">상품 정보</div>
+          <div class="sc-info-typing">
+            <div class="sc-info_sodyd">
+              아이패드프로1세대9에요 쓴지 한달도 안됬구요 그냥사세요
+              거의 이건 거져드리는거에요
+              보증서도 보내드립니다.
+            </div>
+          </div>
+        </div>
+        <div class="tkdvnaansdml">
+
+        </div>
       </div>
     </div>
   </div>

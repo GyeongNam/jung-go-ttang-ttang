@@ -162,7 +162,14 @@
 }
 /* 연관상품  끝*/
 /* 상품정보, 댓글 페이지 */
-
+ .tkdvnainfo{
+   display: flex;
+   height: 50%;
+ }
+ .btdg{
+   width: 30rem;
+   hight: 5rem;
+ }
 /* 상품정보, 댓글 페이지 끝*/
 
 
