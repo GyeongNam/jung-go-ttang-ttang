@@ -15,24 +15,7 @@ function mainsends(){
   $.ajax({
     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
       url: " /mail",
-      dataType: 'json',
-      
       type: "get",
-      success:function(data){
-        var datas = data.data;
-        console.log(datas);
-        if(datas==1){
-          $("#id_result").text("사용중인 아이디입니다!");
-          $("#sub").attr("disabled",true);
-        }
-        else {
-          $("#id_result").text("사용 가능한 아이디입니다.");
-          $("#sub").attr("disabled",false);
-        }
-      },
-      error : function(){
-        console.log("실패");
-      }
   });
 }
 
