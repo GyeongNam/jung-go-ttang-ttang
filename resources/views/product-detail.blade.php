@@ -159,8 +159,9 @@ function showDivs(n) {
               <a href="#"><img src=""></a>
               <div class="seller_profile">
                 <div class="name_pdt">
+                  상점이름
                   <a class="seller_name_link" href="#">junsik</a>
-                  <a class="productrottn" href="#">"상품""2"</a>
+                  <a class="productrottn" href="#">상품2</a>
                 </div>
               </div>
             </div>
