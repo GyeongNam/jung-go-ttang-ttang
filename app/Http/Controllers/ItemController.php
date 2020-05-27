@@ -19,7 +19,7 @@ class ItemController extends Controller
       'item_maker' => $request->get('product_maker'),
       'item_buy' => $request->get('product_buy'),
       'item_category' => $request->get('product_category'),
-      'item_open' => $request->get('open'),
+      'item_open' => $request->get('select_state'),
       'item_deadline' => $request->get('Auction_last_time'),
       'item_startday' => date('Y-m-d'),
       'item_picture' => $item_data,
@@ -29,7 +29,7 @@ class ItemController extends Controller
       'seller_id' => decrypt(session()->get('login_ID'))
     ]);
     $item->save();
-    return view('itemcheck');
+    return redirect('/itemcheck');
     //return view(''); 내가 올린 경매 페이지로 이동
   }
   public function mainview(Request $request){
@@ -46,12 +46,7 @@ class ItemController extends Controller
     //$m_Participation = 내가 참여한 경매의 물건번호
     //$myParticipation = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['item_nurnber'=> $m_Participation])->get();
     $myStat = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> decrypt($id)])->get();
-    return view('/itemcheck', [
-      // 'mp_item_name' => $myParticipation[0]->item_name,
-      // 'mp_item_picture' => $myParticipation[0]->item_picture,
-      // 'mp_item_startprice' => $myParticipation[0]->item_startprice,
-      // 'mp_item_success' => $myParticipation[0]->item_success,
-      // 'mp_success' => $myParticipation[0]->success,
+    return view('itemcheck', [
       'myStat' => $myStat
     ]);
   }

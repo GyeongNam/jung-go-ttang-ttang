@@ -48,7 +48,7 @@ function setThumbnail(event) {
 @endsection
 @section('content')
 <div class="">
-  <form class="" action="{{url('/product')}}" method="post">
+  <form class="" action="{{url('/product')}}" method="post" enctype="multipart/form-data">
     @csrf
 
     <div class="contents">
@@ -121,8 +121,8 @@ function setThumbnail(event) {
             </div>
             <div class="p_info" name="open">
               <select class="ss" name="select_state">
-                <option value="개봉">개봉</option>
-                <option value="미개봉">미개봉</option>
+                <option value=1>개봉</option>
+                <option value="0">미개봉</option>
               </select>
 
 
@@ -159,7 +159,7 @@ function setThumbnail(event) {
                 </div>
                 <div class="p_info">
                   <div class="p_picture input">
-                    <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/>
+                    <input type="file" name="item_pic" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/>
                     <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
                          multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
                     <div id="image_container"></div>

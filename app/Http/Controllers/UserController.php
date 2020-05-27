@@ -101,19 +101,12 @@ class UserController extends Controller
       $extension= $user_image->getClientOriginalName();  //\time() . '.' .
       Image::make($user_image)->save(public_path('/img/user/' .$extension));
 
-
      if(empty($email))
        {
-
           /*session('error','이메일없음');
-
           return redirect('/mypage_update');*/
           return redirect()->back();
         }
-
-
-
-
       //  $user_image->save(src="/img/");
         //$user_image = $request->get('user_image_update');
 
