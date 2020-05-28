@@ -96,6 +96,7 @@ class ItemController extends Controller
     return redirect('/itemcheck');
     //return view(''); 내가 올린 경매 페이지로 이동
   }
+
   public function mainview(Request $request){
     //$top = 시간당 조회수가 높은 페이지에 item_nurnber를 가져온다
     $topview = Item::select('item_name', 'item_buy', 'item_picture')->where(['item_number'=>$top])->get();
@@ -105,6 +106,7 @@ class ItemController extends Controller
       'item_picture' => $topview[0]->item_picture
     ]);
   }
+
   public function myview(Request $request){
     $id = session()->get('login_ID');
     //$m_Participation = 내가 참여한 경매의 물건번호
@@ -114,6 +116,7 @@ class ItemController extends Controller
       'myStat' => $myStat
     ]);
   }
+
   public function itemview(Request $request){
     $id= session()->get('login_ID');
     $myproduct= Item::select(
@@ -143,4 +146,5 @@ class ItemController extends Controller
       'data'=>$data
     ]);
   }
+  
 }

@@ -29,6 +29,6 @@ class PWselect extends Mailable
       */
      public function build()
      {
-         return $this->subject('[중고땅땅] 비밀번호')->view('emails.pwselect');
+         return $this->subject('[중고땅땅] 비밀번호 찾기')->view('emails.pwselect');
      }
 }

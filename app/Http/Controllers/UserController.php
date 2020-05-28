@@ -130,7 +130,7 @@ class UserController extends Controller
         $mail = $data[0]->email.'@'.$data[0]->email_domain;
         $details = [
           'title' => '안녕하세요 고객님',
-          'body' => '아이디를 확인하세요',
+          'body' => '비밀번호를 확인하세요',
           'pw' => $data[0]->PASSWORD
         ];
         \Mail::to($mail)->send(new PWselect($details));
