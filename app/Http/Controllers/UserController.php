@@ -20,7 +20,6 @@ class UserController extends Controller
         'body' => '인증번호를 확인하세요',
         'num' => $random
       ];
-
       \Mail::to($mail)->send(new SendMail($details));
     }
 
@@ -38,7 +37,7 @@ class UserController extends Controller
         'birthday'=> $request->get('birthday'),
         'gender'=> $request->get('gender'),
         'email'=> $request->get('str_email01'),
-        'email_domain'=>$request->get('str_email03'),
+        'email_domain'=>$request->get('str_email02'),
       	'phone'=> $request->get('tel')
       ]);
       $user->save();
@@ -76,7 +75,7 @@ class UserController extends Controller
     public function mypage_update(Request $request){
       $id = session()->get('login_ID');
       $email = $request->get('str_email01');
-      $email_domain = $request->get('str_email03');
+      $email_domain = $request->get('str_email02');
       $phone = $request->get('phone');
       $birthday = $request->get('birthday');
       $gender = $request->get('gender');

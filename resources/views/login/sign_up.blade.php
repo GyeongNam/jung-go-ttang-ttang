@@ -11,10 +11,13 @@
 @section('js')
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+var RandomNum;
+
 function mainsends(){
   var random = Math.floor(Math.random() * 10000) + 1;
-  var email = $(str_email01).val();
-  var email_domain = $(selectEmail).val();
+  var email = $('#str_email01').val();
+  var email_domain = $('str_email02').val();
+  RandomNum = random;
   var mails = email+'@'+email_domain;
   $.ajax({
     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -167,7 +170,10 @@ function chkpw(){
        alert("비밀번호를 8자리 ~ 20자리 이내로 입력해주세요.");
        return false;
     }
-
+    if (form.email_ck.value != RandomNum){
+      alert("인증번호가 틀립니다.");
+      return false;
+    }
   }
 
 
