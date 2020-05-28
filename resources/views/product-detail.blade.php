@@ -146,7 +146,7 @@
               <div class="seller_profile">
                 <div class="name_pdt">
                   <img class="seller_img" name="" src="/img/dadang.jpg" alt="">
-                  <a class="seller_name_link" name="" href="#">junsik</a>
+                  <a class="seller_name_link" name="" href="#">{{$myproduct[4]->seller_id}}</a>
                   <a class="productrottn" name="" href="#">상품 2</a>
                 </div>
               </div>
