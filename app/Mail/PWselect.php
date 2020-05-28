@@ -29,6 +29,6 @@ class PWselect extends Mailable
       */
      public function build()
      {
-         return $this->subject('[중고땅땅] 인증번호')->view('emails.mailsend');
+         return $this->subject('[중고땅땅] 비밀번호')->view('emails.pwselect');
      }
 }

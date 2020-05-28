@@ -7,6 +7,6 @@
   <body>
     <h1>{{$details['body']}}</h1>
     <h2>{{$details['title']}}</h2>
-    <p>{{$details['num']}}</p>
+    <p>{{$details['pw']}}</p>
   </body>
 </html>

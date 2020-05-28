@@ -35,6 +35,30 @@ function idselect(){
   });
 }
 
+function pwselect(){
+  var id = $('#my_id').val();
+  var phone = $('#phon_num').val();
+  $.ajax({
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      url: "/selectpw",
+      dataType: 'json',
+      data: {id:id, phone:phone},
+      type: "post",
+      success:function(data){
+        var datas = data.data;
+        console.log(datas);
+        if(datas == 0)
+            alert("일치하는 회원정보가 없습니다.")
+        else {
+            alert("메일로 비밀번호를 발송했습니다.");
+        }
+      },
+      error : function(){
+        console.log("실패");
+      }
+  });
+}
+
 </script>
 <div class="find_account">
   <div class="find_id">
@@ -66,16 +90,16 @@ function idselect(){
       <ul>
         <li>
           <label><strong>비밀번호찾기</strong><br>
-            <input type="text" name="name" id="my_name" placeholder="이름 입력" required><br>
+            <input type="text" name="id" id="my_id" placeholder="ID 입력" required><br>
           </label>
         </li>
         <li>
           <label>
-            <input type="text" name="phone" id="phon_num" placeholder=" ((-)없이 입력) " required><br>
+            <input type="text" name="phone" id="phon_num" placeholder="전화번호를 입력하세요" required><br>
           </label>
         </li>
         <li>
-          <button type="submit" id="find_pw" name="find_pass" onclick="return to_submit();">비밀번호 찾기</button>
+          <button type="button" id="find_pw" name="find_pass" onclick="pwselect()">비밀번호 찾기</button>
         </li>
       </ul>
     </form>
