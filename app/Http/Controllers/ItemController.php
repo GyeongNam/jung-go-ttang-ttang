@@ -17,30 +17,59 @@ class ItemController extends Controller
     $item_picture= $item_pic->getClientOriginalName();
     Image::make($item_pic)->save(public_path('/img/item/'.$item_picture));
 
-    $item_pic = $request->file('item_picturefront');
-    $item_picturefront = $item_pic->getClientOriginalName();
-    Image::make($item_pic)->save(public_path('/img/item/'.$item_picturefront));
+    if($request->hasFile('item_picturefront')){
+      $item_pic = $request->file('item_picturefront');
+      $item_picturefront = $item_pic->getClientOriginalName();
+      Image::make($item_pic)->save(public_path('/img/item/'.$item_picturefront));
+    }
+    else {
+      $item_picturefront = null;
+    }
 
-    $item_pic = $request->file('item_pictureup');
-    $item_pictureup = $item_pic->getClientOriginalName();
-    Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureup));
+    if($request->hasFile('item_pictureup')){
+      $item_pic = $request->file('item_pictureup');
+      $item_pictureup = $item_pic->getClientOriginalName();
+      Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureup));
+    }
+    else {
+      $item_pictureup = null;
+    }
 
-    $item_pic = $request->file('item_pictureback');
-    $item_pictureback = $item_pic->getClientOriginalName();
-    Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureback));
+    if($request->hasFile('item_pictureback')){
+      $item_pic = $request->file('item_pictureback');
+      $item_pictureback = $item_pic->getClientOriginalName();
+      Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureback));
+    }
+    else {
+      $item_pictureback = null;
+    }
 
-    $item_pic = $request->file('item_pictureleft');
-    $item_pictureleft = $item_pic->getClientOriginalName();
-    Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureleft));
+    if($request->hasFile('item_pictureleft')){
+      $item_pic = $request->file('item_pictureleft');
+      $item_pictureleft = $item_pic->getClientOriginalName();
+      Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureleft));
+    }
+    else {
+      $item_pictureleft = null;
+    }
 
-    $item_pic = $request->file('item_picturerigth');
-    $item_picturerigth = $item_pic->getClientOriginalName();
-    Image::make($item_pic)->save(public_path('/img/item/'.$item_picturerigth));
+    if($request->hasFile('item_picturerigth')){
+      $item_pic = $request->file('item_picturerigth');
+      $item_picturerigth = $item_pic->getClientOriginalName();
+      Image::make($item_pic)->save(public_path('/img/item/'.$item_picturerigth));
+    }
+    else {
+      $item_picturerigth = null;
+    }
 
-    $item_pic = $request->file('item_picturebehind');
-    $item_picturebehind = $item_pic->getClientOriginalName();
-    Image::make($item_pic)->save(public_path('/img/item/'.$item_picturebehind));
-
+    if($request->hasFile('item_picturebehind')){
+      $item_pic = $request->file('item_picturebehind');
+      $item_picturebehind = $item_pic->getClientOriginalName();
+      Image::make($item_pic)->save(public_path('/img/item/'.$item_picturebehind));
+    }
+    else {
+      $item_picturebehind = null;
+    }
 
     $item = new Item([
       'item_name' => $request->get('product_name'),
@@ -99,14 +128,14 @@ class ItemController extends Controller
       'item_category',
       'item_maker',
       'seller_id',
-    'item_picturefront',
-    'item_pictureback',
-    'item_picturebehind',
-     'item_pictureup',
-     'item_pictureleft',
-    'item_picturerigth',
-    'item_info',
-    'visit_count'
+      'item_picturefront',
+      'item_pictureback',
+      'item_picturebehind',
+      'item_pictureup',
+      'item_pictureleft',
+      'item_picturerigth',
+      'item_info',
+      'visit_count'
     )->where(['seller_id'=> decrypt($id)])->get();
     $data = User::select('user_image')->where(['ID' =>  $myproduct[0]->seller_id])->get();
       return view('product-detail', [

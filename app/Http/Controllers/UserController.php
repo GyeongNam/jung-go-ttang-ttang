@@ -120,7 +120,6 @@ class UserController extends Controller
       return response()->json(['data'=>$datas]);
     }
 
-
     public function selectpw(Request $request){
       $id = $request->get('id');
       $phone = $request->get('phone');
