@@ -159,10 +159,83 @@ function setThumbnail(event) {
                 </div>
                 <div class="p_info">
                   <div class="p_picture input">
-                    <input type="file" name="item_pic" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/>
-                    <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
-                         multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
-                    <div id="image_container"></div>
+                    <div class="inp_img">
+                      <div class="inp_img_lab">
+                        <p>썸네일 이미지</p>
+                      </div>
+                      <div class="thumbnail_img">
+                        <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="5" required/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
+                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                      </div>
+                      <div id="image_container"></div>
+                    </div>
+                    <div class="inp_img">
+                      <div class="inp_img_lab">
+                        전면사진
+                      </div>
+                      <div class="froint_img">
+                        <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="2"/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
+                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                        <div id="image_container"></div>
+                      </div>
+                    </div>
+                    <div class="inp_img">
+                      <div class="inp_img_lab">
+                        후면사진
+                      </div>
+                      <div class="back_img">
+                        <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="2"/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
+                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                        <div id="image_container"></div>
+                      </div>
+                    </div>
+                    <div class="inp_img">
+                      <div class="inp_img_lab">
+                       왼쪽 측면
+                      </div>
+                      <div class="l_img">
+                        <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="2"/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
+                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                        <div id="image_container"></div>
+                      </div>
+                    </div>
+                    <div class="inp_img">
+                     <div class="inp_img_lab">
+                       오른쪽 측면
+                     </div>
+                     <div class="r_img">
+                       <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="2"/>
+                       <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
+                            multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                       <div id="image_container"></div>
+                     </div>
+                    </div>
+                    <div class="inp_img">
+                      <div class="inp_img_lab">
+                        상단 측면
+                      </div>
+                      <div class="t_img">
+                        <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="2"/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
+                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                        <div id="image_container"></div>
+                      </div>
+                    </div>
+                    <div class="inp_img">
+                      <div class="inp_img_lab">
+                        하단 측면
+                      </div>
+                      <div class="b_img">
+                        <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="2"/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
+                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                        <div id="image_container"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
