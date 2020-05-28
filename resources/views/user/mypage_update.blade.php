@@ -39,7 +39,7 @@ $(function(){
             </div>
             <div class="mp_e">
               <input type="text" class="mp_data_e" name="str_email01" id="str_email01" >
-              <input type="text" class="mp_data_e" name="str_email02" id="str_email02" placeholder="직접입력" disabled value="">
+              <input type="text" class="mp_data_e" name="str_email02" id="str_email02" placeholder="직접입력">
               <select name="str_email03" class="mp_data_e" id="selectEmail">
                 <option value="1">직접입력</option>
                 <option value="naver.com" selected>naver.com</option>

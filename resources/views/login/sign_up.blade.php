@@ -237,10 +237,10 @@ function chkpw(){
           <li>
             <label><strong>이메일</strong></label><br>
             <input type="text" name="str_email01" id="str_email01" required="required">
-            <input type="text" name="str_email02" id="str_email02" placeholder="직접입력" disabled value="">
+            <input type="text" name="str_email02" id="str_email02" placeholder="직접입력">
             <select name="str_email03" id="selectEmail" required="required">
               <option value="1">직접입력</option>
-              <option value="naver.com" selected>naver.com</option>
+              <option value="naver.com" >naver.com</option>
               <option value="hanmail.net">hanmail.net</option>
               <option value="hotmail.com">hotmail.com</option>
               <option value="nate.com">nate.com</option>
@@ -255,18 +255,19 @@ function chkpw(){
               <option value="paran.com">paran.com</option>
             </select>
           </li>
-
           <script type="text/javascript">
            //이메일 입력방식 선택
            $('#selectEmail').change(function()
            { $("#selectEmail option:selected").each(function ()
            { if($(this).val()== '1'){ //직접입력일 경우
-             $("#str_email02").val('');
-            //값 초기화
-            $("#str_email02").attr("disabled",false); //활성화
+             $("#str_email02").val('');//값 초기화
+             $("#str_email02").attr("disabled",false); //활성화
+
+
             }else{    //직접입력이 아닐경우
-            $("#str_email02").val($(this).text()); //선택값 입력
             $("#str_email02").attr("disabled",true); //비활성화
+            $("#str_email02").val($(this).text()); //선택값 입력
+
              }
            });
          });
