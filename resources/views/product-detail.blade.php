@@ -1,4 +1,3 @@
-<<<<<<< current
 @extends('layout.layout_main')
 
 @section('css')
@@ -281,33 +280,6 @@
             <a class="btn-floating-left" onclick="plusDivs(-1)">&#10094;</a>
             <a class="btn-floating-right" onclick="plusDivs(+1)">&#10095;</a>
           </div>
-          <script type="text/javascript">
-
-          var slideIndex = 0;  /*slideIndex 로 설정 */
-          showDivs(slideIndex); /* 첫번째 이미지를 표시하기 위해 showDivs 호출 */
-
-          /*$(document).ready(function(){
-            showDivs(slideIndex += n);
-          });*/
-
-          function plusDivs(n) { /* slideIndex에 하나를 추가한다. */
-            showDivs(slideIndex += n);
-          }
-
-          function showDivs(n) {
-
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            if (n > x.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = x.length} ;
-            for (i = 0; i < x.length; i++) {
-              x[i].style.display = "none";
-            }
-            x[slideIndex-1].style.display = "block";
-
-          }
-
-          </script>
         </div>
       </div>
       <div class="detail_product_info">
@@ -530,6 +502,31 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
 
+var slideIndex = 0;  /*slideIndex 로 설정 */
+showDivs(slideIndex); /* 첫번째 이미지를 표시하기 위해 showDivs 호출 */
+
+/*$(document).ready(function(){
+  showDivs(slideIndex += n);
+});*/
+
+function plusDivs(n) { /* slideIndex에 하나를 추가한다. */
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length} ;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  x[slideIndex-1].style.display = "block";
+
+}
+
+</script>
 @endsection
->>>>>>> before discard
