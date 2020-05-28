@@ -74,7 +74,7 @@
             <div class="dropdown">
               <a class="dropbtn">전체 카테고리</a>
               <div class="dropdown-content">
-                <a href="#">남성의류</a>
+                <a href="manclothing">남성의류</a>
                 <a href="#">여성의류</a>
                 <a href="#">패션잡화</a>
                 <a href="#">뷰티미용</a>

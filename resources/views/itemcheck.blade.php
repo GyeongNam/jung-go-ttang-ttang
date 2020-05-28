@@ -49,10 +49,10 @@
   </div>
 
   <div class="it_button" id="it_but">
-    <button id="but1" class="on1"><a href="#" class="on1">
-      <b>내가참여한경매</b></a></button>
-      <button id="but2"class="on"><a href="#" class="on">
-        <b>내가올린경매</b> </a></button>
+    <button id="but1" class="on1">
+      <b>내가참여한경매</b></button>
+  <button id="but2"class="on">
+        <b>내가올린경매</b></button>
       </div>
 
       <div class="it_subbutton1">
@@ -62,16 +62,16 @@
         <button id="su_but3" ><b>진행상태</b> </button>
         <button id="su_but4" ><b>낙찰여부</b></button>
       </div>
-
-  <div class="it_if1">
+@foreach ($myStat as $key => $value)
+    <div class="it_if1">
     <div class="it_img">
       <a href="#" class="it_img1">
-        <img src="/img/item/{{$myStat[0]->item_picture}}" alt="상품사진" name="#" class="ite_img">
-        <div class="ite_na"> {{$myStat[0]->item_name}}</div>
+        <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
+        <div class="ite_na"> {{$value->item_name}}</div>
       </a>
     </div>
       <div class="price1">
-        {{$myStat[0]->item_startprice}} 원
+        {{$value->item_startprice}} 원
       </div>
       <div class="state1">
         진행중
@@ -80,16 +80,19 @@
         O
       </div>
     </div>
+@endforeach
+@foreach ($myStat as $key => $value)
+
 
     <div class="it_if2">
       <div class="it_img">
         <a href="#" class="it_img1">
-          <img src="/img/item/{{$myStat[2]->item_picture}}" alt="상품사진" name="#" class="ite_img">
-          <div class="ite_na"> {{$myStat[2]->item_name}}</div>
+          <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
+          <div class="ite_na"> {{$value->item_name}}</div>
         </a>
       </div>
         <div class="price1">
-          {{$myStat[2]->item_startprice}}원
+          {{$value->item_startprice}}원
         </div>
         <div class="state1">
           진행중
@@ -98,6 +101,7 @@
           O
         </div>
       </div>
+      @endforeach
   </div>
 
 @endsection

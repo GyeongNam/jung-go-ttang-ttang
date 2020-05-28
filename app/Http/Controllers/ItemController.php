@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Item;
+use App\User;
 use Image;
+use Session;
+use DB;
 
 class ItemController extends Controller
 {
@@ -78,9 +81,12 @@ class ItemController extends Controller
      'item_pictureleft',
     'item_picturerigth',
     'item_info',
-    'visit_count')->where(['seller_id'=> decrypt($id)])->get();
-    return view('product-detail', [
-      'myproduct' => $myproduct
+    'visit_count'
+    )->where(['seller_id'=> decrypt($id)])->get();
+    $data = User::select('user_image')->where(['ID' =>  $myproduct[0]->seller_id])->get();
+      return view('product-detail', [
+      'myproduct' => $myproduct,
+      'data'=>$data
     ]);
   }
 }
