@@ -17,9 +17,18 @@ word-break:break-all;
 }
 
 .it_main{
+display: flex;
 text-align: center;
 margin:2% auto;
+justify-content: space-between;
 
+}
+.namesize {
+margin-left: 30%;
+
+}
+.plus i {
+  margin-right: 10px;
 }
 .it_main_lime{
 border: 10%;
