@@ -23,6 +23,12 @@ class ItemController extends Controller
       'item_deadline' => $request->get('Auction_last_time'),
       'item_startday' => date('Y-m-d'),
       'item_picture' => $item_data,
+      'item_pictureup' => $item_data,
+      'item_picturedown' => $item_data,
+      'item_pictureleft' => $item_data,
+      'item_picturerigth' => $item_data,
+      'item_picturebehind' => $item_data,
+      'item_picturefront' => $item_data,
       'item_startprice' => $request->get('Auction_start'),
       'item_success' => true,
       'success' => false,
@@ -48,6 +54,23 @@ class ItemController extends Controller
     $myStat = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> decrypt($id)])->get();
     return view('itemcheck', [
       'myStat' => $myStat
+    ]);
+  }
+  public function itemview(Request $request){
+    $id= session()->get('login_ID');
+    $myproduct= Item::select(
+      'item_name',
+      'item_picture',
+      'item_startprice',
+      'item_success',
+      'success',
+      'item_startprice',
+      'item_open','item_buy','item_category','item_maker','seller_id',
+    'item_picturefront','item_pictureback',
+    'item_picturebehind', 'item_pictureup','item_pictureleft',
+    'item_picturerigth','visit_count')->where(['seller_id'=> decrypt($id)])->get();
+    return view('product-detail', [
+      'myproduct' => $myproduct
     ]);
   }
 }
