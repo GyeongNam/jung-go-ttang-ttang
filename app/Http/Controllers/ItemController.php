@@ -13,9 +13,34 @@ use DB;
 class ItemController extends Controller
 {
   public function store(Request $request){
-    $item_pic = $request->file('item_pic');
-    $item_data = $item_pic->getClientOriginalName();
-    Image::make($item_pic)->save(public_path('/img/item/'.$item_data));
+    $item_pic = $request->file('item_picture');
+    $item_picture= $item_pic->getClientOriginalName();
+    Image::make($item_pic)->save(public_path('/img/item/'.$item_picture));
+
+    $item_pic = $request->file('item_picturefront');
+    $item_picturefront = $item_pic->getClientOriginalName();
+    Image::make($item_pic)->save(public_path('/img/item/'.$item_picturefront));
+
+    $item_pic = $request->file('item_pictureup');
+    $item_pictureup = $item_pic->getClientOriginalName();
+    Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureup));
+
+    $item_pic = $request->file('item_pictureback');
+    $item_pictureback = $item_pic->getClientOriginalName();
+    Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureback));
+
+    $item_pic = $request->file('item_pictureleft');
+    $item_pictureleft = $item_pic->getClientOriginalName();
+    Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureleft));
+
+    $item_pic = $request->file('item_picturerigth');
+    $item_picturerigth = $item_pic->getClientOriginalName();
+    Image::make($item_pic)->save(public_path('/img/item/'.$item_picturerigth));
+
+    $item_pic = $request->file('item_picturebehind');
+    $item_picturebehind = $item_pic->getClientOriginalName();
+    Image::make($item_pic)->save(public_path('/img/item/'.$item_picturebehind));
+
 
     $item = new Item([
       'item_name' => $request->get('product_name'),
@@ -25,13 +50,13 @@ class ItemController extends Controller
       'item_open' => $request->get('select_state'),
       'item_deadline' => $request->get('Auction_last_time'),
       'item_startday' => date('Y-m-d'),
-      'item_picture' => $item_data,
-      'item_pictureup' => $item_data,
-      'item_picturedown' => $item_data,
-      'item_pictureleft' => $item_data,
-      'item_picturerigth' => $item_data,
-      'item_picturebehind' => $item_data,
-      'item_picturefront' => $item_data,
+      'item_picture' => $item_picture,
+      'item_pictureup' => $item_pictureup,
+      'item_pictureback' => $item_pictureback,
+      'item_pictureleft' => $item_pictureleft,
+      'item_picturerigth' => $item_picturerigth,
+      'item_picturebehind' => $item_picturebehind,
+      'item_picturefront' => $item_picturefront,
       'item_info' => $request->get('item_info'),
       'item_startprice' => $request->get('Auction_start'),
       'item_success' => true,
