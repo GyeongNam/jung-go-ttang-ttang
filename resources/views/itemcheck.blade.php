@@ -11,25 +11,31 @@
 @section('js')
   <script>
 
-  $(function(){
-    $(".it_if2").hide();
+ $(function(){
+   $(".it_if2").hide();
+   $(".on1").css("background-color","rgb(39, 188, 198)");
+   $(".on").css("background-color","rgb(147, 139, 142)");
 
-    $(".on").on("click",function(){
-      $(".it_if1").hide();
-      $(".it_if2").show();
-    });
-  });
+   $(".on").on("click",function(){
+     $(".it_if1").hide();
+     $(".it_if2").show();
+     $(".on").css("background-color","rgb(39, 188, 198)");
+     $(".on1").css("background-color","rgb(147, 139, 142)");
+   });
+ });
 
-  $(function(){
+ $(function(){
+   $(".on1").on("click",function(){
+     $(".it_if2").hide();
+     $(".it_if1").show();
+     $(".on").css("background-color","rgb(147, 139, 142)");
+     $(".on1").css("background-color","rgb(39, 188, 198)");
+   });
+ });
 
 
-    $(".on1").on("click",function(){
-      $(".it_if2").hide();
-      $(".it_if1").show();
-    });
-  });
 
-  </script>
+ </script>
 
 @endsection
 
