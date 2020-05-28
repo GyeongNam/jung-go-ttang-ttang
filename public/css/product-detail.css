@@ -163,12 +163,19 @@
 /* 연관상품  끝*/
 /* 상품정보, 댓글 페이지 */
  .tkdvnainfo{
-   display: flex;
    height: 50%;
  }
  .btdg{
    width: 30rem;
    hight: 5rem;
+ }
+ .sc-info_detail{
+   font-size: 2rem;
+   margin: 2rem 0;
+ }
+ .sc-info_sodyd{
+   font-size: 20px;
+   display: block;
  }
 /* 상품정보, 댓글 페이지 끝*/
 

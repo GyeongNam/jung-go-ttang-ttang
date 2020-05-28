@@ -80,11 +80,19 @@ li {
 /*-- 사진파일등록 css --*/
 .sc-image{
   display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
 }
+.inp_img{
+  display: flex;
+  margin: 1rem 0;
+}
+.thumbnail_img{
+  width:6rem;
+}
+img{
+  width: 10rem;
+  height:10rem;
+}
+/*-- 사진파일등록 css --*/
 
 @media screen and (max-width:800) {
   *{

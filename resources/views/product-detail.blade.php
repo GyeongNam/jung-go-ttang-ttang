@@ -214,9 +214,37 @@
             </div>
           </div>
         </div>
-        <div class="tkdvnaansdml">
-
-        </div>
+        <div class="deal_cat_location">
+          <div class="location_deal">
+            <div class="locat">
+              <img src="" alt="">
+              거래지역
+            </div>
+            <div class="locate_dnlcl">
+              <span>전국</span>
+            </div>
+          </div>
+          <div class="deal_cat">
+            <div class="catgo">
+              <img src="" alt="">
+              카테고리
+              </div>
+              <div class="">
+                <a href="#"><span>모바일/태블릿</span></a>
+              </div>
+            </div>
+            <div class="pro_tag">
+              <div class="tag_name">
+                <img src="" alt="">
+                상품태그
+              </div>
+              <div class="taglist">
+                <a href="#">#아이패드</a>
+                <a href="#">#아이패드에어</a>
+                <a href="#">#태블릿</a>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
