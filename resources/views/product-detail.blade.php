@@ -15,11 +15,13 @@
         <div class="detailimg_list">
           <div id="sliderFrame">
             <div id="slider">
-              <img class="mySlides" name="" src="/img/product.png" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/iphone.png" />
-              <img class="mySlides" name="" src="/img/iphone12.png" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/iphoneSE2.png" alt="" val=""/>
-              <img class="mySlides" name="" src="/img/macbookpro.png"  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_picture}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[4]->item_pictureup}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[4]->item_pictureback}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[4]->item_picturedown}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[4]->item_picturefront}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[4]->item_pictureleft}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[4]->item_pictureright}}" alt=""  val=""/>
             </div>
             <a class="btn-floating-left" onclick="plusDivs(-1)">&#10094;</a>
             <a class="btn-floating-right" onclick="plusDivs(+1)">&#10095;</a>
@@ -32,14 +34,14 @@
           <div class="d_info">
             <div class="tit_pri">
               <div class="d_title">
-                아이패드프로1세대9.7
+                {{$myproduct[4]->item_name}}
               </div>
               <div class="time_price">
                 <div class="d_price">
                   현재 최고가 :
                 </div>
                 <div class="d_price_info" name="" val="">
-                  280,000
+                  {{$myproduct[4]->item_startprice}}
                   <span>원</span>
                 </div>
               </div>
@@ -72,7 +74,7 @@
                     제조사 :
                   </div>
                   <div class="mak_info tnam" name="">
-                    애플
+                    {{$myproduct[4]->item_maker}}
                   </div>
                 </div>
                 <div class="pd_st">
@@ -80,7 +82,7 @@
                     구매일 :
                   </div>
                   <div class="by_info tnam" name="">
-                    2020-04-21
+                    {{$myproduct[4]->item_buy}}
                   </div>
                 </div>
                 <div class="pd_st">
@@ -88,7 +90,7 @@
                     상품 카테고리 :
                   </div>
                   <div class="cat_info tnam" name="">
-                    모바일/태블릿
+                    {{$myproduct[4]->item_category}}
                   </div>
                 </div>
                 <div class="pd_st">
@@ -96,7 +98,7 @@
                     상품 개봉여부 :
                   </div>
                   <div class="opcl_info tnam" name="">
-                    개봉
+                    {{$myproduct[4]->item_open}}
                   </div>
                 </div>
                 <div class="pd_st">
@@ -104,7 +106,7 @@
                     경매 시작가격 :
                   </div>
                   <div class="spric_info tnam" name="">
-                    200,000
+                    {{$myproduct[4]->item_startprice}}
                     <span>원</span>
                   </div>
                 </div>
