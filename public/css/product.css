@@ -82,11 +82,11 @@ li {
   display: block;
 }
 .inp_img{
-  display: flex;
+
   margin: 1rem 0;
 }
 .thumbnail_img{
-  width:6rem;
+  width:8rem;
   display: block;
 }
 img{

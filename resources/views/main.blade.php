@@ -84,85 +84,9 @@
             <img href="#" src="/img/pg3.png">
           </div>
 
-          <!-- Next and previous buttons -->
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
       </div>
-      <!--해시태그, 인기순위-->
-      <div id="search">
-        <div class="container_item">
-          <ul id="best_search">
-            <div class="such">
-              <li><p>인기검색어</p></li>
-              <li>
-                <dl class="time1" style="display:">
-                  <dd><a class="t" href="#"><div class="num">1</div>자전거</a></dd>
-                  <dd><a class="t" href="#"><div class="num">2</div>전동킥보드</a></dd>
-                  <dd><a class="t" href="#"><div class="num">3</div>비키니</a></dd>
-                  <dd><a class="t" href="#"><div class="num">4</div>모노키니</a></dd>
-                </dl>
-                <dl class="time2" style="display:none;">
-                  <dd><a class="t" href="#"><div class="num">5</div>등산화</a></dd>
-                  <dd><a class="t" href="#"><div class="num">6</div>풋살화</a></dd>
-                  <dd><a class="t" href="#"><div class="num">7</div>요가복</a></dd>
-                  <dd><a class="t" href="#"><div class="num">8</div>텐트</a></dd>
-                </dl>
-                <dl class="time3" style="display:none;">
-                  <dd><a class="t" href="#"><div class="num">9</div>수영복</a></dd>
-                  <dd><a class="t" href="#"><div class="num">10</div>디스커버리반팔티</a></dd>
-                  <dd><a class="t" href="#"><div class="num">11</div>축구화</a></dd>
-                  <dd><a class="t" href="#"><div class="num">12</div>노스페이스바람막이</a></dd>
-                </dl>
-                <dl class="time4" style="display:none;">
-                  <dd><a class="t" href="#"><div class="num">13</div>캠핑카</a></dd>
-                  <dd><a class="t" href="#"><div class="num">14</div>캠핑테이블</a></dd>
-                  <dd><a class="t" href="#"><div class="num">15</div>여성골프웨어</a></dd>
-                  <dd><a class="t" href="#"><div class="num">16</div>여성래쉬가드</a></dd>
-                </dl>
-              </li>
-              <li>
-                <a class="best_add ad1" style="cursor:pointer" onClick="javascript:view('0')">></a>
-                <a class="best_add ad2" onClick="javascript:view('1')" style="display:none;cursor:pointer" >></a>
-                <a class="best_add ad3" onClick="javascript:view('2')" style="display:none;cursor:pointer" >></a>
-                <a class="best_add ad4" onClick="javascript:view('3')" style="display:none;cursor:pointer" ><</a>
-              </li>
-              <script type="text/javascript">
-              /* -----실시간 인기 검색어----- */
-              function view(arg){
-                $(".time1, .time2, .time3, .time4, .ad1, .ad2, .ad3, .ad4").css("display","none");
-                if(arg=="0") {
-                  $(".time2, .ad2").css("display","block");
-                  viewcount = 1;
-                }
-                else if(arg=="1") {
-                  $(".time3, .ad3").css("display","block");
-                  viewcount = 2;
-                }
-                else if(arg=="2") {
-                  $(".time4, .ad4").css("display","block");
-                  viewcount = 3;
-                }
-                else if(arg=="3") {
-                  $(".time1, .ad1").css("display","block");
-                  viewcount = 0;
-                }
-              }
-              var viewcount = 0;
-              var rtcarousel = setInterval(function(){ view(viewcount) },5000);
 
-              $("#best_search").mouseenter(function() {
-                clearInterval(rtcarousel);
-              });
-
-              $("#best_search").mouseleave(function() {
-                rtcarousel = setInterval(function(){ view(viewcount) },5000);
-              });
-              </script>
-            </div>
-          </ul>
-        </div>
-      </div>
       <!--제품 정보 표시-->
       <div class="product">
         <div class="categorybar">
