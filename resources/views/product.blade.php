@@ -131,8 +131,16 @@ function tsetThumbnail(event) {
   }
 }
 
-
 function bosetThumbnail(event) {
+  var reader = new FileReader();
+  reader.onload = function(event) {
+    var img = document.createElement("img");
+    img.setAttribute("src", event.target.result);
+    document.querySelector("div#boimage_container").appendChild(img);
+  };
+  reader.readAsDataURL(event.target.files[0]);
+}
+/*function bosetThumbnail(event) {
   for (var image of event.target.files) {
     var reader = new FileReader();
     reader.onload = function(event) {
@@ -147,7 +155,7 @@ function bosetThumbnail(event) {
     console.log(image); //정보(사진)를 출력
     reader.readAsDataURL(image); // 이미지 파일을 읽는다.
   }
-}
+}*/
 </script>
 @endsection
 @section('content')
