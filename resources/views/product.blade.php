@@ -268,9 +268,8 @@ function bosetThumbnail(event) {
                         <p>썸네일 이미지</p>
                       </div>
                       <div class="thumbnail_img">
-                        <input type="file" name="item_picture" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="5" required/>
-                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
-                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                        <input type="file" name="item_picture" id="imageup" accept="image/*" onchange="setThumbnail(event);" required/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
                       </div>
                       <div class="" id="image_container"></div>
                     </div>
@@ -279,9 +278,8 @@ function bosetThumbnail(event) {
                         전면사진
                       </div>
                       <div class="froint_img">
-                        <input type="file" name="item_picturefront" id="imageup" accept="image/*" onchange="fsetThumbnail(event);" multiple maxlength="2"/>
-                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
-                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                        <input type="file" name="item_picturefront" id="imageup" accept="image/*" onchange="fsetThumbnail(event);"/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
                         <div class="" id="fimage_container"></div>
                       </div>
                     </div>
@@ -290,42 +288,38 @@ function bosetThumbnail(event) {
                         후면사진
                       </div>
                       <div class="back_img">
-                        <input type="file" name="item_pictureback" id="imageup" accept="image/*" onchange="bsetThumbnail(event);" multiple maxlength="2"/>
-                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
-                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                        <input type="file" name="item_pictureback" id="imageup" accept="image/*" onchange="bsetThumbnail(event);"/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
                         <div class="" id="bimage_container"></div>
                       </div>
                     </div>
                     <div class="inp_img">
                       <div class="inp_img_lab">
-                       왼쪽 측면
+                        왼쪽 측면
                       </div>
                       <div class="l_img">
-                        <input type="file" name="item_pictureleft" id="imageup" accept="image/*" onchange="lsetThumbnail(event);" multiple maxlength="2"/>
-                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
-                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                        <input type="file" name="item_pictureleft" id="imageup" accept="image/*" onchange="lsetThumbnail(event);"/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
                         <div class="" id="limage_container"></div>
                       </div>
                     </div>
                     <div class="inp_img">
-                     <div class="inp_img_lab">
-                       오른쪽 측면
-                     </div>
-                     <div class="r_img">
-                       <input type="file" name="item_picturerigth" id="imageup" accept="image/*" onchange="rsetThumbnail(event);" multiple maxlength="2"/>
-                       <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
-                            multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
-                       <div class="" id="rimage_container"></div>
-                     </div>
+                      <div class="inp_img_lab">
+                        오른쪽 측면
+                      </div>
+                      <div class="r_img">
+                        <input type="file" name="item_picturerigth" id="imageup" accept="image/*" onchange="rsetThumbnail(event);"/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
+                        <div class="" id="rimage_container"></div>
+                      </div>
                     </div>
                     <div class="inp_img">
                       <div class="inp_img_lab">
                         상단 측면
                       </div>
                       <div class="t_img">
-                        <input type="file" name="item_pictureup" id="imageup" accept="image/*" onchange="tsetThumbnail(event);" multiple maxlength="2"/>
-                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
-                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                        <input type="file" name="item_pictureup" id="imageup" accept="image/*" onchange="tsetThumbnail(event);"/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
                         <div class="" id="timage_container"></div>
                       </div>
                     </div>
@@ -334,40 +328,39 @@ function bosetThumbnail(event) {
                         하단 측면
                       </div>
                       <div class="b_img">
-                        <input type="file" name="item_picturebehind" id="imageup" accept="image/*" onchange="bosetThumbnail(event);" multiple maxlength="2"/>
-                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
-                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
+                        <input type="file" name="item_picturebehind" id="imageup" accept="image/*" onchange="bosetThumbnail(event);"/>
+                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
                         <div class="" id="boimage_container"></div>
                       </div>
+                    </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
-          <li>
-            <div class="p_list">
-              <div class="n_lab">
-                <span></span>상품설명
+            </li>
+            <li>
+              <div class="p_list">
+                <div class="n_lab">
+                  <span></span>상품설명
+                </div>
+                <div class="p_info">
+                  <textarea class="explanation" name="item_info" rows="8" cols="80" placeholder="상품 설명을 입력해주세요."></textarea>
+                </div>
               </div>
-              <div class="p_info">
-                <textarea class="explanation" name="item_info" rows="8" cols="80" placeholder="상품 설명을 입력해주세요."></textarea>
-              </div>
-            </div>
-          </li>
+            </li>
+          </ul>
         </ul>
-      </ul>
-      <div class="complete_btn">
-        <button type="submit" id="su_btn" name="button" onclick="return to submit();">등록하기</button>
+        <div class="complete_btn">
+          <button type="submit" id="su_btn" name="button" onclick="return to submit();">등록하기</button>
+        </div>
       </div>
-    </div>
-    <div class="s_left">
+      <div class="s_left">
 
-    </div>
-    <div class="s_right">
+      </div>
+      <div class="s_right">
 
-    </div>
-  </form>
-</div>
+      </div>
+    </form>
+  </div>
 
 @endsection
