@@ -18,7 +18,8 @@ class UserController extends Controller
       $mail = $request->get('mail');
       $random = $request->get('random');
       $details = [
-
+        'title' => '안녕하세요 고객님',
+        'body' => '인증번호를 확인하세요',
         'num' => $random
       ];
       \Mail::to($mail)->send(new SendMail($details));
