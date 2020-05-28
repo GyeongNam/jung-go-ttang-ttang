@@ -87,10 +87,15 @@ li {
 }
 .thumbnail_img{
   width:6rem;
+  display: block;
 }
 img{
   width: 10rem;
   height:10rem;
+}
+.image_container{
+  width:50%;
+  height:auto
 }
 /*-- 사진파일등록 css --*/
 

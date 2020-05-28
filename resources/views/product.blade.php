@@ -44,6 +44,110 @@ function setThumbnail(event) {
     reader.readAsDataURL(image); // 이미지 파일을 읽는다.
   }
 }
+
+function fsetThumbnail(event) {
+  for (var image of event.target.files) {
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
+      var img = document.createElement("img"); //이미지 태그 동적 생
+      img.setAttribute("src", event.target.result);
+      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
+      document.querySelector("div#fimage_container").appendChild(img);
+      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
+
+    };
+    console.log(image); //정보(사진)를 출력
+    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
+  }
+}
+
+function bsetThumbnail(event) {
+  for (var image of event.target.files) {
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
+      var img = document.createElement("img"); //이미지 태그 동적 생
+      img.setAttribute("src", event.target.result);
+      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
+      document.querySelector("div#bimage_container").appendChild(img);
+      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
+
+    };
+    console.log(image); //정보(사진)를 출력
+    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
+  }
+}
+
+function lsetThumbnail(event) {
+  for (var image of event.target.files) {
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
+      var img = document.createElement("img"); //이미지 태그 동적 생
+      img.setAttribute("src", event.target.result);
+      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
+      document.querySelector("div#limage_container").appendChild(img);
+      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
+
+    };
+    console.log(image); //정보(사진)를 출력
+    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
+  }
+}
+
+
+function rsetThumbnail(event) {
+  for (var image of event.target.files) {
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
+      var img = document.createElement("img"); //이미지 태그 동적 생
+      img.setAttribute("src", event.target.result);
+      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
+      document.querySelector("div#rimage_container").appendChild(img);
+      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
+
+    };
+    console.log(image); //정보(사진)를 출력
+    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
+  }
+}
+
+function tsetThumbnail(event) {
+  for (var image of event.target.files) {
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
+      var img = document.createElement("img"); //이미지 태그 동적 생
+      img.setAttribute("src", event.target.result);
+      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
+      document.querySelector("div#timage_container").appendChild(img);
+      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
+
+    };
+    console.log(image); //정보(사진)를 출력
+    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
+  }
+}
+
+
+function bosetThumbnail(event) {
+  for (var image of event.target.files) {
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
+      var img = document.createElement("img"); //이미지 태그 동적 생
+      img.setAttribute("src", event.target.result);
+      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
+      document.querySelector("div#boimage_container").appendChild(img);
+      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
+
+    };
+    console.log(image); //정보(사진)를 출력
+    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
+  }
+}
 </script>
 @endsection
 @section('content')
@@ -168,17 +272,17 @@ function setThumbnail(event) {
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
                              multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
                       </div>
-                      <div id="image_container"></div>
+                      <div class="" id="image_container"></div>
                     </div>
                     <div class="inp_img">
                       <div class="inp_img_lab">
                         전면사진
                       </div>
                       <div class="froint_img">
-                        <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="2"/>
+                        <input type="file" name="" id="imageup" accept="image/*" onchange="fsetThumbnail(event);" multiple maxlength="2"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
                              multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
-                        <div id="image_container"></div>
+                        <div class="" id="fimage_container"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -186,10 +290,10 @@ function setThumbnail(event) {
                         후면사진
                       </div>
                       <div class="back_img">
-                        <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="2"/>
+                        <input type="file" name="" id="imageup" accept="image/*" onchange="bsetThumbnail(event);" multiple maxlength="2"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
                              multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
-                        <div id="image_container"></div>
+                        <div class="" id="bimage_container"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -197,10 +301,10 @@ function setThumbnail(event) {
                        왼쪽 측면
                       </div>
                       <div class="l_img">
-                        <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="2"/>
+                        <input type="file" name="" id="imageup" accept="image/*" onchange="lsetThumbnail(event);" multiple maxlength="2"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
                              multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
-                        <div id="image_container"></div>
+                        <div class="" id="limage_container"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -208,10 +312,10 @@ function setThumbnail(event) {
                        오른쪽 측면
                      </div>
                      <div class="r_img">
-                       <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="2"/>
+                       <input type="file" name="" id="imageup" accept="image/*" onchange="rsetThumbnail(event);" multiple maxlength="2"/>
                        <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
                             multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
-                       <div id="image_container"></div>
+                       <div class="" id="rimage_container"></div>
                      </div>
                     </div>
                     <div class="inp_img">
@@ -219,10 +323,10 @@ function setThumbnail(event) {
                         상단 측면
                       </div>
                       <div class="t_img">
-                        <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="2"/>
+                        <input type="file" name="" id="imageup" accept="image/*" onchange="tsetThumbnail(event);" multiple maxlength="2"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
                              multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
-                        <div id="image_container"></div>
+                        <div class="" id="timage_container"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -230,10 +334,10 @@ function setThumbnail(event) {
                         하단 측면
                       </div>
                       <div class="b_img">
-                        <input type="file" name="" id="imageup" accept="image/*" onchange="setThumbnail(event);" multiple maxlength="2"/>
+                        <input type="file" name="" id="imageup" accept="image/*" onchange="bosetThumbnail(event);" multiple maxlength="2"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법
                              multiple 속성 : 사용자가 두 개 이상의 옵션을 동시에 선택할 수 있음을 명시.-->
-                        <div id="image_container"></div>
+                        <div class="" id="boimage_container"></div>
                       </div>
                     </div>
                   </div>
