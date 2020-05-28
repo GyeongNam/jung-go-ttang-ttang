@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \App\Mail\SendMail;
+use \App\Mail\IDselect;
+use \App\Mail\PWselect;
 use App\User;
 use DB;
 use Session;
@@ -16,8 +18,7 @@ class UserController extends Controller
       $mail = $request->get('mail');
       $random = $request->get('random');
       $details = [
-        'title' => '안녕하세요 고객님',
-        'body' => '인증번호를 확인하세요',
+
         'num' => $random
       ];
       \Mail::to($mail)->send(new SendMail($details));
@@ -99,5 +100,27 @@ class UserController extends Controller
       ]);
 
       return redirect('/mypage');
+    }
+
+    public function selectid(Request $request){
+      $name = $request->get('names');
+      $phone = $request->get('phone');
+      $data = User::select('ID', 'email', 'email_domain')->where(['name'=> $name, 'phone'=> $phone])->get();
+      $datas = count($data);
+      if($datas>0){
+        $mail = $data[0]->email.'@'.$data[0]->email_domain;
+        $details = [
+          'title' => '안녕하세요 고객님',
+          'body' => '아이디를 확인하세요',
+          'id' => $data[0]->ID
+        ];
+        \Mail::to($mail)->send(new IDselect($details));
+      }
+      return response()->json(['data'=>$datas]);
+    }
+
+
+    public function selectpw(Request $request){
+
     }
 }

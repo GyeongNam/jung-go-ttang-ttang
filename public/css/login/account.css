@@ -41,7 +41,7 @@
   display: block;
 }
 
-#my_id, #mail, #find_id, #my_name, #phon_num, #find_pw{
+#my_names, #phone, #find_id, #my_name, #phon_num, #find_pw{
     margin: 2%;
     width: 90%;
     height: 50px;
