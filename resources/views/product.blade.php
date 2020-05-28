@@ -174,7 +174,7 @@ function setThumbnail(event) {
                 <span></span>상품설명
               </div>
               <div class="p_info">
-                <textarea class="explanation" name="name" rows="8" cols="80" placeholder="상품 설명을 입력해주세요."></textarea>
+                <textarea class="explanation" name="item_info" rows="8" cols="80" placeholder="상품 설명을 입력해주세요."></textarea>
               </div>
             </div>
           </li>

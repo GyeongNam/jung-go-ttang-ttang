@@ -84,7 +84,7 @@ class UserController extends Controller
       $extension= $user_image->getClientOriginalName();  //\time() . '.' .
       Image::make($user_image)->save(public_path('/img/user/' .$extension));
 
-     if(empty($email))
+     if(empty($email&&$email_domain&&$phone&&$birthday&&$gender))
        {
           return redirect()->back();
         }

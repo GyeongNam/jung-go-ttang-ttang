@@ -16,12 +16,12 @@
           <div id="sliderFrame">
             <div id="slider">
               <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_picture}}" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[4]->item_pictureup}}" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[4]->item_pictureback}}" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[4]->item_picturedown}}" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[4]->item_picturefront}}" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[4]->item_pictureleft}}" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[4]->item_pictureright}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_pictureup}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_pictureback}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_picturedown}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_picturefront}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_pictureleft}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_pictureright}}" alt=""  val=""/>
             </div>
             <a class="btn-floating-left" onclick="plusDivs(-1)">&#10094;</a>
             <a class="btn-floating-right" onclick="plusDivs(+1)">&#10095;</a>
@@ -210,9 +210,7 @@
           <div class="sc-info_detail">상품 정보</div>
           <div class="sc-info-typing">
             <div class="sc-info_sodyd">
-              아이패드프로1세대9에요 쓴지 한달도 안됬구요 그냥사세요
-              거의 이건 거져드리는거에요
-              보증서도 보내드립니다.
+              {{$myproduct[4]->item_info}}
             </div>
           </div>
         </div>

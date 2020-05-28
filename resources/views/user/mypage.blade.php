@@ -15,8 +15,11 @@
   <div class="mp_layout">
     <div class="mp_header">
       <div class="mp_img">
-        <!--  {{$data[0]->USER_IMAGE}}  -->
+  @if($data[0]->USER_IMAGE == false)
+   <img id="" src="/img/mp_img.png">
+  @else
     <img src="/img/user/{{$data[0]->USER_IMAGE}}" style="width:200px; heigth:200px "  margin: 1.5rem; 0;>
+  @endif
       </div>
     </div>
     <div class="mp_main">

@@ -92,8 +92,6 @@
           O
         </div>
       </div>
-
-
   </div>
 
 @endsection

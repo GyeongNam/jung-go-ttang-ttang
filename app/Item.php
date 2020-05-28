@@ -22,6 +22,7 @@ class Item extends Model
       'item_picturefront',
       'item_picturerigth',
       'item_picturebehind',
+      'item_info',
       'item_startday',
       'item_startprice',
       'item_success',

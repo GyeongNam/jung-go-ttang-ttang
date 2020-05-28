@@ -29,6 +29,7 @@ class ItemController extends Controller
       'item_picturerigth' => $item_data,
       'item_picturebehind' => $item_data,
       'item_picturefront' => $item_data,
+      'item_info' => $request->get('item_info'),
       'item_startprice' => $request->get('Auction_start'),
       'item_success' => true,
       'success' => false,
@@ -65,10 +66,19 @@ class ItemController extends Controller
       'item_success',
       'success',
       'item_startprice',
-      'item_open','item_buy','item_category','item_maker','seller_id',
-    'item_picturefront','item_pictureback',
-    'item_picturebehind', 'item_pictureup','item_pictureleft',
-    'item_picturerigth','visit_count')->where(['seller_id'=> decrypt($id)])->get();
+      'item_open',
+      'item_buy',
+      'item_category',
+      'item_maker',
+      'seller_id',
+    'item_picturefront',
+    'item_pictureback',
+    'item_picturebehind',
+     'item_pictureup',
+     'item_pictureleft',
+    'item_picturerigth',
+    'item_info',
+    'visit_count')->where(['seller_id'=> decrypt($id)])->get();
     return view('product-detail', [
       'myproduct' => $myproduct
     ]);

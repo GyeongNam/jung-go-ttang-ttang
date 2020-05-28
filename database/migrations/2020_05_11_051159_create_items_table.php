@@ -30,6 +30,7 @@ class CreateItemsTable extends Migration
      $table->binary('item_pictureleft')->nullable();
      $table->binary('item_picturerigth')->nullable();
      $table->binary('item_picturebehind')->nullable();
+     $table->longText('item_info')->nullable();
      $table->date('item_startday');
      $table->string('item_startprice');
      $table->boolean('item_success');
