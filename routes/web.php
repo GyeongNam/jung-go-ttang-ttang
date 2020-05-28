@@ -49,6 +49,9 @@ Route::get('/item/product', function () {
 Route::get('/product-detail', function(){
    return view('product-detail');
 });
+Route::get('/manclothing', function () {
+    return view('manclothing');
+});
 
 
 // user Controller
