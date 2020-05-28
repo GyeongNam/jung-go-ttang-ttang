@@ -43,7 +43,7 @@ b{
   width: 40%;
   margin: 3%;
   padding: 18px 40px;
-  border-radius: 3%;
+  border-radius: 4%;
 }
 #but2{
 flex:none;
@@ -140,4 +140,8 @@ word-break:break-all;
   margin-right: :3%;
   margin-top: 5%;
   text-align: center;
+}
+
+.hide_but{
+  margin-top:50px;
 }
