@@ -60,8 +60,9 @@ Route::post('/mypage_update', 'UserController@mypage_update')->middleware('login
 Route::post('/idcheck', 'UserController@idcheck');
 // item Controller
 Route::post('/product', 'ItemController@store');
+Route::get('/product-detail', 'ItemController@itemview');
 //Route::get('/', 'ItemController@mainview');
-Route::get('/itemcheck', 'ItemController@myview');
+Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
 
 // mail
 Route::get('/mail', 'UserController@mailsend');
