@@ -27,6 +27,7 @@ class Item extends Model
       'item_success',
       'success',
       'remember_token',
+      'visit_count',
       'seller_id'
     ];
 }
