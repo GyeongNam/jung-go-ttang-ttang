@@ -14,7 +14,7 @@
           <h2>{{$details['body']}}</h2>
         </div>
         <div class="title_tname">
-          <h2>{{$details['title']}} 고객님의 인증번호는</h2>
+          <h2>{{$details['title']}} 고객님의 비밀번호는</h2>
         </div>
         <div class="">
               <p style="font-size: 30px; ">{{$details['pw']}}  입니다!</p>
