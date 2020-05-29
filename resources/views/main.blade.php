@@ -41,7 +41,7 @@
         <script type="text/javascript">
         /* -----top 버튼, 스크롤 퀵 메뉴----- */
         var quickBox = $('.quickBox'); //퀵메뉴 코딩한 div의 클래스 네임
-        var quick_top = 300; // 기준이 되는 높이 값입니다.
+        var quick_top = 300; // 퀵메뉴 배너 이미지의 기준이 되는 높이 값입니다.
         quickBox.css('top', $(window).height() );
         $(document).ready(function(){
           quickBox.animate( { "top": $(document).scrollTop() + quick_top +"px" },  500 ); //숫자값을 변경하면 속도변화
