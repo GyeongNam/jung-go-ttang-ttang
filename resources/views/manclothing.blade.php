@@ -26,7 +26,7 @@
     <hr class="mc_main_line">
     <div class="it_cago">
       <div class="ite_menu">
-        <table>
+         {{-- <table>
         <tbody>
           <tr>
             <td><a href="#">전체메뉴</a></td>
@@ -36,7 +36,7 @@
             <td><a href="#">셔츠/남방</a></td>
           </tr>
           <tr>
-            <td><a href="#">트레이닝</a></td>
+            <td><a href="#?id=남성의류">트레이닝</a></td>
             <td><a href="#">코트</a></td>
             <td><a href="#">가디건</a></td>
             <td><a href="#">청바지</a></td>
@@ -50,17 +50,23 @@
             <td><a href="#">조끼/베스트</a></td>
           </tr>
         </tbody>
-      </table>
+      </table> --}}
       </div>
     </div>
 
      <div class="ma_main">
        <div class="m_1">
-         남성의류 전체보기
+         <h1>
+           <?php
+             echo $_GET['id'];
+           ?>
+           전체보기
+         </h1>
 
        </div>
      </div>
-
+    {{-- @foreach ($# as $key => $value)
+    @if ($value -> == $_GET['id']) --}}
      <div class="m_info">
        <div class="m_img">
         <a href="#" class="am_1">
@@ -75,77 +81,9 @@
           </div>
         </a>
        </div>
+       {{-- @endif
+       @endforeach --}}
 
-       <div class="m_img">
-        <a href="#" class="am_1">
-          <div class="su_img">
-            <img src="/img/iphone12.png"  alt="" class="s_img1">
-          </div>
-          <div class="m_name">
-          아이폰x
-          </div>
-          <div class="m_money">
-            880,000원
-          </div>
-        </a>
-       </div>
-
-       <div class="m_img">
-        <a href="#" class="am_1">
-          <div class="su_img">
-            <img src="/img/iphone12.png"  alt="" class="s_img1">
-          </div>
-          <div class="m_name">
-          아이폰x
-          </div>
-          <div class="m_money">
-            880,000원
-          </div>
-        </a>
-       </div>
-       
-
-       <div class="m_img">
-        <a href="#" class="am_1">
-          <div class="su_img">
-            <img src="/img/iphone12.png"  alt="" class="s_img1">
-          </div>
-          <div class="m_name">
-          아이폰x
-          </div>
-          <div class="m_money">
-            880,000원
-          </div>
-        </a>
-       </div>
-
-       <div class="m_img">
-        <a href="#" class="am_1">
-          <div class="su_img">
-            <img src="/img/iphone12.png"  alt="" class="s_img1">
-          </div>
-          <div class="m_name">
-          아이폰x
-          </div>
-          <div class="m_money">
-            880,000원
-          </div>
-        </a>
-       </div>
-
-       <div class="m_img">
-        <a href="#" class="am_1">
-          <div class="su_img">
-            <img src="/img/iphone12.png"  alt="" class="s_img1">
-          </div>
-          <div class="m_name">
-          아이폰x
-          </div>
-          <div class="m_money">
-            880,000원
-          </div>
-        </a>
-     </div>
   </div>
 </div>
 
