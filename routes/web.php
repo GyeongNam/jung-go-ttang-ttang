@@ -46,6 +46,9 @@ Route::get('/itemcheck', function () {
 Route::get('/item/product', function () {
     return view('product');
 });
+Route::get('/product-Modify', function(){
+   return view('product-Modify');
+});
 Route::get('/product-detail', function(){
    return view('product-detail');
 });
