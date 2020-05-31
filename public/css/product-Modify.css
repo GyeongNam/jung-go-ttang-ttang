@@ -55,7 +55,11 @@ li {
   width: 100%;
   height: 100%;
 }
-#su_btn #del_btn {
+
+.button_content{
+  display: flex;
+}
+#fixed_btn, #del_btn {
   width: 5rem;
   height: 2rem;
   margin: 20px;
