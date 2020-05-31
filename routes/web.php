@@ -61,9 +61,6 @@ Route::get('/mypage', 'UserController@mypage')->middleware('login');
 Route::get('/Logout', 'UserController@logout')->middleware('login');
 Route::post('/mypage_update', 'UserController@mypage_update')->middleware('login');
 Route::post('/idcheck', 'UserController@idcheck');
-Route::post('/selectid', 'UserController@selectid');
-Route::post('/selectpw', 'UserController@selectpw');
-
 
 // item Controller
 Route::post('/product', 'ItemController@store');
@@ -71,5 +68,11 @@ Route::get('/product-detail', 'ItemController@itemview')->middleware('login');
 //Route::get('/', 'ItemController@mainview');
 Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
 
+// auction Controller
+// Route::post(/auction_in, 'AuctionController@auction_in');
+// Route::post(/auction_in, 'AuctionController@auction_view');
+
 // mail
 Route::get('/mail', 'UserController@mailsend');
+Route::post('/selectid', 'UserController@selectid');
+Route::post('/selectpw', 'UserController@selectpw');
