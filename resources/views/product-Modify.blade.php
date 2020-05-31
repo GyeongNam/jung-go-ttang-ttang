@@ -267,11 +267,11 @@ function previewImage(f){
           </li>
         </ul>
       </ul>
-      <div class="complete_btn">
+      <div class="change_btn">
         <button type="submit" id="su_btn" name="button" onclick="return to submit();">수정하기</button>
       </div>
-      <div class="complete_btn">
-        <button type="submit" id="su_btn" name="button" onclick="return to submit();">삭제하기</button>
+      <div class="delete_btn">
+        <button type="submit" id="del_btn" name="button" onclick="return to submit();">삭제하기</button>
       </div>
     </div>
     <div class="s_left">
