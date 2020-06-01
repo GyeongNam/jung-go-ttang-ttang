@@ -146,7 +146,8 @@ class ItemController extends Controller
       'data'=>$data
     ]);
   }
-    public function category(Request $request){
+
+  public function category(Request $request){
     $cat = $_GET['id'];
     $cate=Item::select('item_name','item_picture','item_startprice')->where(['item_category'=>$cat])->get();
     $cateF = count($cate);
@@ -154,7 +155,6 @@ class ItemController extends Controller
         'cate'=>$cate,
         'cateF' => $cateF
       ]);
-
-}
+    }
 
 }
