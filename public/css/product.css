@@ -114,4 +114,7 @@ img{
   .explanation{
     width:auto;
   }
+  .p_startprice{
+    font-size: auto;
+  }
 }

@@ -38,7 +38,7 @@ function previewImage(f){
 
     f.outerHTML = f.outerHTML;
 
-    document.getElementById('preview').innerHTML = '';
+    document.getElementsByClassName('pre0').innerHTML = '';
   }
   // 확장자 체크
   if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
@@ -47,7 +47,7 @@ function previewImage(f){
     // 선택한 파일 초기화
     f.outerHTML = f.outerHTML;
 
-    document.getElementById('preview').innerHTML = '';
+    document.getElementsByClassName('pre0').innerHTML = '';
 
   }
   else {
@@ -58,7 +58,10 @@ function previewImage(f){
     //File 혹은 Blob 객체를 이용해 파일의 내용을(혹은 raw data버퍼로) 읽고 사용자의
     //컴퓨터에 저장하는 것을 가능하게 해줍니다.
     reader.onload = function(rst){
-      document.getElementById('preview').innerHTML = '<img src="' + rst.target.result + '">';
+      if() {
+        document.getElementsByClassName('pre0').innerHTML = '<img src="' + rst.target.result + '">';
+      }
+
     }
     // 파일을 읽는다
     reader.readAsDataURL(file[0]);
@@ -188,7 +191,7 @@ function previewImage(f){
                         <input type="file" name="item_picture" id="imageup" accept="image/*" onchange="previewImage(this);" required/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
                       </div>
-                      <div class="" id="preview"></div>
+                      <div class="pre0" id="preview"></div>
                     </div>
                     <div class="inp_img">
                       <div class="inp_img_lab">
@@ -197,7 +200,7 @@ function previewImage(f){
                       <div class="froint_img">
                         <input type="file" name="item_picturefront" id="imageup" accept="image/*" onchange="previewImage(this);"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
-                        <div class="" id="preview"></div>
+                        <div class="pre0" id="preview"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -207,7 +210,7 @@ function previewImage(f){
                       <div class="back_img">
                         <input type="file" name="item_pictureback" id="imageup" accept="image/*" onchange="previewImage(this);"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
-                        <div class="" id="preview"></div>
+                        <div class="pre2" id="preview"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -217,7 +220,7 @@ function previewImage(f){
                       <div class="l_img">
                         <input type="file" name="item_pictureleft" id="imageup" accept="image/*" onchange="previewImage(this);"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
-                        <div class="" id="lpreview"></div>
+                        <div class="pre3" id="lpreview"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -227,7 +230,7 @@ function previewImage(f){
                       <div class="r_img">
                         <input type="file" name="item_picturerigth" id="imageup" accept="image/*" onchange="previewImage(this);"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
-                        <div class="" id="rpreview"></div>
+                        <div class="pre4" id="rpreview"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -237,7 +240,7 @@ function previewImage(f){
                       <div class="t_img">
                         <input type="file" name="item_pictureup" id="imageup" accept="image/*" onchange="previewImage(this);"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
-                        <div class="" id="tpreview"></div>
+                        <div class="pre5" id="tpreview"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -247,7 +250,7 @@ function previewImage(f){
                       <div class="b_img">
                         <input type="file" name="item_picturebehind" id="imageup" accept="image/*" onchange="previewImage(this);"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
-                        <div class="" id="bupreview"></div>
+                        <div class="pre6" id="bupreview"></div>
                       </div>
                     </div>
                     <input type="file" name="files1" accept="image/*" onchange="previewImage(this)" />
