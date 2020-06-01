@@ -42,7 +42,7 @@ function previewImage(f, divid){
     document.getElementById(divid).innerHTML = '';
   }
   // 확장자 체크
-  if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
+   else if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
     alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
 
     // 선택한 파일 초기화
