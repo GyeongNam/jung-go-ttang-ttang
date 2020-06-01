@@ -146,5 +146,13 @@ class ItemController extends Controller
       'data'=>$data
     ]);
   }
-  
+    public function category(Request $request){
+      $id= session()->get('login_ID');
+    $cate=Item::select('item_name','item_picture','item_startprice','item_category')->where(['seller_id'=> decrypt($id)])->get();
+      return view('manclothing',[
+        'cate'=>$cate
+      ]);
+
+}
+
 }

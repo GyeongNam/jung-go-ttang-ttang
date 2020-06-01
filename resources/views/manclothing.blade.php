@@ -47,13 +47,13 @@
        <div class="m_img">
         <a href="#" class="am_1">
           <div class="su_img">
-            <img src="/img/switch.png"  alt="" class="s_img1">
+            <img src="/img/item/{{$cate[0]->item_picture}}"  alt="" class="s_img1">
           </div>
           <div class="m_name">
-          닌텐도스위치dasdasdasdasdasdasdasd
+          {{$cate[0]->item_name}}
           </div>
           <div class="m_money">
-            50000원
+            {{$cate[0]->item_startprice}}
           </div>
         </a>
        </div>

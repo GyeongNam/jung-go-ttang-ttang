@@ -73,6 +73,7 @@ Route::post('/product', 'ItemController@store');
 Route::get('/product-detail', 'ItemController@itemview')->middleware('login');
 //Route::get('/', 'ItemController@mainview');
 Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
+Route::get('/manclothing', 'ItemController@category');
 
 // auction Controller
 // Route::post(/auction_in, 'AuctionController@auction_in');
