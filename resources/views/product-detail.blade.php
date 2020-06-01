@@ -247,6 +247,14 @@
           </div>
       </div>
     </div>
+    <div class="btn_class">
+      <div class="auction_revise">
+        <button type="button" name="button">경매 수정</button>
+      </div>
+      <div class="auction_del">
+        <button type="button" name="button">경매 삭제</button>
+      </div>
+    </div>
   </div>
 </div>
 <script type="text/javascript">

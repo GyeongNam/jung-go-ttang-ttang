@@ -177,7 +177,12 @@
    font-size: 20px;
    display: block;
  }
+
+ .btn_class{
+   display: flex;
+ }
 /* 상품정보, 댓글 페이지 끝*/
+
 
 
 
