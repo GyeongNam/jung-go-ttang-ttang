@@ -26,136 +26,44 @@ function chackprice(){
 
   }
 }
+</script>
+<script type="text/javascript">
+function previewImage(f){
 
-//이미지 파일 다중 삽입
-function setThumbnail(event) {
-  for (var image of event.target.files) {
+  var file = f.files;
+  // file[0].size 는 파일 용량 정보입니다.
+  if(file[0].size > 1024 * 1024 * 2){
+    // 용량 초과시 경고후 해당 파일의 용량도 보여줌
+    alert('2MB 이하 파일만 등록할 수 있습니다.\n\n' + '현재파일 용량 : ' + (Math.round(file[0].size / 1024 / 1024 * 100) / 100) + 'MB');
+
+    f.outerHTML = f.outerHTML;
+
+    document.getElementById('preview').innerHTML = '';
+  }
+  // 확장자 체크
+  if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
+    alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
+
+    // 선택한 파일 초기화
+    f.outerHTML = f.outerHTML;
+
+    document.getElementById('preview').innerHTML = '';
+
+  }
+  else {
+    // FileReader 객체 사용
     var reader = new FileReader();
-    reader.onload = function(event) {
-      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
-      var img = document.createElement("img"); //이미지 태그 동적 생
-      img.setAttribute("src", event.target.result);
-      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
-      document.querySelector("div#image_container").appendChild(img);
-      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
-
-    };
-    console.log(image); //정보(사진)를 출력
-    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
+    // 파일 읽기가 완료되었을때 실행
+    //FileReader 웹 애플리케이션이 비동기적으로 데이터를 읽기 위하여 읽을 파일을 가리키는
+    //File 혹은 Blob 객체를 이용해 파일의 내용을(혹은 raw data버퍼로) 읽고 사용자의
+    //컴퓨터에 저장하는 것을 가능하게 해줍니다.
+    reader.onload = function(rst){
+      document.getElementById('preview').innerHTML = '<img src="' + rst.target.result + '">';
+    }
+    // 파일을 읽는다
+    reader.readAsDataURL(file[0]);
   }
 }
-
-function fsetThumbnail(event) {
-  for (var image of event.target.files) {
-    var reader = new FileReader();
-    reader.onload = function(event) {
-      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
-      var img = document.createElement("img"); //이미지 태그 동적 생
-      img.setAttribute("src", event.target.result);
-      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
-      document.querySelector("div#fimage_container").appendChild(img);
-      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
-
-    };
-    console.log(image); //정보(사진)를 출력
-    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
-  }
-}
-
-function bsetThumbnail(event) {
-  for (var image of event.target.files) {
-    var reader = new FileReader();
-    reader.onload = function(event) {
-      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
-      var img = document.createElement("img"); //이미지 태그 동적 생
-      img.setAttribute("src", event.target.result);
-      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
-      document.querySelector("div#bimage_container").appendChild(img);
-      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
-
-    };
-    console.log(image); //정보(사진)를 출력
-    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
-  }
-}
-
-function lsetThumbnail(event) {
-  for (var image of event.target.files) {
-    var reader = new FileReader();
-    reader.onload = function(event) {
-      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
-      var img = document.createElement("img"); //이미지 태그 동적 생
-      img.setAttribute("src", event.target.result);
-      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
-      document.querySelector("div#limage_container").appendChild(img);
-      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
-
-    };
-    console.log(image); //정보(사진)를 출력
-    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
-  }
-}
-
-
-function rsetThumbnail(event) {
-  for (var image of event.target.files) {
-    var reader = new FileReader();
-    reader.onload = function(event) {
-      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
-      var img = document.createElement("img"); //이미지 태그 동적 생
-      img.setAttribute("src", event.target.result);
-      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
-      document.querySelector("div#rimage_container").appendChild(img);
-      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
-
-    };
-    console.log(image); //정보(사진)를 출력
-    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
-  }
-}
-
-function tsetThumbnail(event) {
-  for (var image of event.target.files) {
-    var reader = new FileReader();
-    reader.onload = function(event) {
-      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
-      var img = document.createElement("img"); //이미지 태그 동적 생
-      img.setAttribute("src", event.target.result);
-      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
-      document.querySelector("div#timage_container").appendChild(img);
-      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
-
-    };
-    console.log(image); //정보(사진)를 출력
-    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
-  }
-}
-
-function bosetThumbnail(event) {
-  var reader = new FileReader();
-  reader.onload = function(event) {
-    var img = document.createElement("img");
-    img.setAttribute("src", event.target.result);
-    document.querySelector("div#boimage_container").appendChild(img);
-  };
-  reader.readAsDataURL(event.target.files[0]);
-}
-/*function bosetThumbnail(event) {
-  for (var image of event.target.files) {
-    var reader = new FileReader();
-    reader.onload = function(event) {
-      //onload(읽기에 성공했을때 실행되는 이벤트 핸들러)
-      var img = document.createElement("img"); //이미지 태그 동적 생
-      img.setAttribute("src", event.target.result);
-      //.setAttribute()는 선택한 요소(element)의 속성(attribute) 값을 정합니다.
-      document.querySelector("div#boimage_container").appendChild(img);
-      //.querySelector('selector') 는 CSS선택자로 요소를 선택하게 해줍니다.
-
-    };
-    console.log(image); //정보(사진)를 출력
-    reader.readAsDataURL(image); // 이미지 파일을 읽는다.
-  }
-}*/
 </script>
 @endsection
 @section('content')
@@ -276,19 +184,19 @@ function bosetThumbnail(event) {
                         <p>썸네일 이미지</p>
                       </div>
                       <div class="thumbnail_img">
-                        <input type="file" name="item_picture" id="imageup" accept="image/*" onchange="setThumbnail(event);" required/>
+                        <input type="file" name="item_picture" id="imageup" accept="image/*" onchange="previewImage(this);" required/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
                       </div>
-                      <div class="" id="image_container"></div>
+                      <div class="" id="preview"></div>
                     </div>
                     <div class="inp_img">
                       <div class="inp_img_lab">
                         전면사진
                       </div>
                       <div class="froint_img">
-                        <input type="file" name="item_picturefront" id="imageup" accept="image/*" onchange="fsetThumbnail(event);"/>
+                        <input type="file" name="item_picturefront" id="imageup" accept="image/*" onchange="previewImage(this);"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
-                        <div class="" id="fimage_container"></div>
+                        <div class="" id="preview"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -296,9 +204,9 @@ function bosetThumbnail(event) {
                         후면사진
                       </div>
                       <div class="back_img">
-                        <input type="file" name="item_pictureback" id="imageup" accept="image/*" onchange="bsetThumbnail(event);"/>
+                        <input type="file" name="item_pictureback" id="imageup" accept="image/*" onchange="previewImage(this);"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
-                        <div class="" id="bimage_container"></div>
+                        <div class="" id="preview"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -306,9 +214,9 @@ function bosetThumbnail(event) {
                         왼쪽 측면
                       </div>
                       <div class="l_img">
-                        <input type="file" name="item_pictureleft" id="imageup" accept="image/*" onchange="lsetThumbnail(event);"/>
+                        <input type="file" name="item_pictureleft" id="imageup" accept="image/*" onchange="previewImage(this);"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
-                        <div class="" id="limage_container"></div>
+                        <div class="" id="lpreview"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -316,9 +224,9 @@ function bosetThumbnail(event) {
                         오른쪽 측면
                       </div>
                       <div class="r_img">
-                        <input type="file" name="item_picturerigth" id="imageup" accept="image/*" onchange="rsetThumbnail(event);"/>
+                        <input type="file" name="item_picturerigth" id="imageup" accept="image/*" onchange="previewImage(this);"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
-                        <div class="" id="rimage_container"></div>
+                        <div class="" id="rpreview"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -326,9 +234,9 @@ function bosetThumbnail(event) {
                         상단 측면
                       </div>
                       <div class="t_img">
-                        <input type="file" name="item_pictureup" id="imageup" accept="image/*" onchange="tsetThumbnail(event);"/>
+                        <input type="file" name="item_pictureup" id="imageup" accept="image/*" onchange="previewImage(this);"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
-                        <div class="" id="timage_container"></div>
+                        <div class="" id="tpreview"></div>
                       </div>
                     </div>
                     <div class="inp_img">
@@ -336,39 +244,41 @@ function bosetThumbnail(event) {
                         하단 측면
                       </div>
                       <div class="b_img">
-                        <input type="file" name="item_picturebehind" id="imageup" accept="image/*" onchange="bosetThumbnail(event);"/>
+                        <input type="file" name="item_picturebehind" id="imageup" accept="image/*" onchange="previewImage(this);"/>
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
-                        <div class="" id="boimage_container"></div>
+                        <div class="" id="bupreview"></div>
                       </div>
                     </div>
-                    </div>
+                    <input type="file" name="files1" accept="image/*" onchange="previewImage(this)" />
+                    <div id="preview"></div>
                   </div>
                 </div>
               </div>
-            </li>
-            <li>
-              <div class="p_list">
-                <div class="n_lab">
-                  <span></span>상품설명
-                </div>
-                <div class="p_info">
-                  <textarea class="explanation" name="item_info" rows="8" cols="80" placeholder="상품 설명을 입력해주세요."></textarea>
-                </div>
+            </div>
+          </li>
+          <li>
+            <div class="p_list">
+              <div class="n_lab">
+                <span></span>상품설명
               </div>
-            </li>
-          </ul>
+              <div class="p_info">
+                <textarea class="explanation" name="item_info" rows="8" cols="80" placeholder="상품 설명을 입력해주세요."></textarea>
+              </div>
+            </div>
+          </li>
         </ul>
-        <div class="complete_btn">
-          <button type="submit" id="su_btn" name="button" onclick="return to submit();">등록하기</button>
-        </div>
+      </ul>
+      <div class="complete_btn">
+        <button type="submit" id="su_btn" name="button" onclick="return to submit();">등록하기</button>
       </div>
-      <div class="s_left">
+    </div>
+    <div class="s_left">
 
-      </div>
-      <div class="s_right">
+    </div>
+    <div class="s_right">
 
-      </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>
 
 @endsection
