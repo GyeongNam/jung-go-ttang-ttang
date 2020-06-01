@@ -247,7 +247,7 @@
           </div>
       </div>
     </div>
-    <div class="btn_class">
+    <div class="btn_cl">
       <div class="auction_revise">
         <button type="button" name="button">경매 수정</button>
       </div>
