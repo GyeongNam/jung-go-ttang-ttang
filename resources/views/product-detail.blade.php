@@ -5,7 +5,9 @@
 @endsection
 
 @section('js')
+<script type="text/javascript">
 
+</script>
 @endsection
 @section('content')
 <div class="content">
@@ -45,7 +47,7 @@
                   <span>원</span>
                 </div>
               </div>
-
+              
             </div>
             <div class="d_kyeword">
               <div class="lvt">
@@ -228,42 +230,47 @@
             <div class="catgo">
               <img src="" alt="">
               카테고리
-              </div>
-              <div class="">
-                <a href="#"><span>모바일/태블릿</span></a>
-              </div>
             </div>
-            <div class="pro_tag">
-              <div class="tag_name">
-                <img src="" alt="">
-                상품태그
-              </div>
-              <div class="taglist">
-                <a href="#">#아이패드</a>
-                <a href="#">#아이패드에어</a>
-                <a href="#">#태블릿</a>
-              </div>
+            <div class="">
+              <a href="#"><span>모바일/태블릿</span></a>
             </div>
           </div>
+          <div class="pro_tag">
+            <div class="tag_name">
+              <img src="" alt="">
+              상품태그
+            </div>
+            <div class="taglist">
+              <a href="#">#아이패드</a>
+              <a href="#">#아이패드에어</a>
+              <a href="#">#태블릿</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="btn_cl">
       <div class="auction_revise">
-        <button type="button" name="button">경매 수정</button>
+        <button type="button" name="button" onclick="location.href='product-Modify'">경매 수정</button>
       </div>
       <div class="auction_del">
-        <button type="button" name="button">경매 삭제</button>
+        <button id="del_detailpage" type="button" name="button">경매 삭제</button>
       </div>
     </div>
   </div>
 </div>
 <script type="text/javascript">
 
+$('#del_detailpage').click(function(){
+  alert("정말 경매를 삭제하시겠습니까?<br>
+  삭제된 경매는 되돌릴 수 없습니다!")
+})
+
 var slideIndex = 0;  /*slideIndex 로 설정 */
 showDivs(slideIndex); /* 첫번째 이미지를 표시하기 위해 showDivs 호출 */
 
 /*$(document).ready(function(){
-  showDivs(slideIndex += n);
+showDivs(slideIndex += n);
 });*/
 
 function plusDivs(n) { /* slideIndex에 하나를 추가한다. */

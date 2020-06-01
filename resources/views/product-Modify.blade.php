@@ -115,6 +115,7 @@ function previewImage(f){
             </div>
             <div class="p_info">
               <select class="p_category" name="product_category" required>
+                <option value="">선택하세요</option>
                 <option value="남성의류">남성의류</option>
                 <option value="여성의류">여성의류</option>
                 <option value="패션잡화">패션잡화</option>
@@ -271,8 +272,23 @@ function previewImage(f){
         <div class="change_btn">
           <button type="submit" id="fixed_btn" name="button" onclick="return to submit();">수정하기</button>
         </div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div class="modal_header">
+              경매 수정하기
+            </div>
+            <span class="close">X</span>
+            <p>정말 경매를 삭제하시겠습니까?</p>
+            <p>삭제된 경매는 되돌릴 수 없습니다...!</p>
+            <button class="debtn" id="del_per" type="button" name="button" >삭제하기</button>
+          </div>
+
+        </div>
         <div class="delete_btn">
-          <button type="submit" id="del_btn" name="button" onclick="return to submit();">삭제하기</button>
+          <button type="button" id="del_btn" name="button">삭제하기</button>
         </div>
       </div>
     </div>
@@ -284,5 +300,31 @@ function previewImage(f){
     </div>
   </form>
 </div>
+<script type="text/javascript">
+// Get the modal
+var modal = document.getElementById("myModal");
 
+// Get the button that opens the modal
+var btn = document.getElementById("del_btn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 @endsection

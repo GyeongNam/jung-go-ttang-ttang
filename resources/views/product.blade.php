@@ -116,6 +116,7 @@ function previewImage(f){
             </div>
             <div class="p_info">
               <select class="p_category" name="product_category" required>
+                <option value="">선택하세요</option>
                 <option value="남성의류">남성의류</option>
                 <option value="여성의류">여성의류</option>
                 <option value="패션잡화">패션잡화</option>
