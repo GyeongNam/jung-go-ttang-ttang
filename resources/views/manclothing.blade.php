@@ -41,24 +41,26 @@
 
        </div>
      </div>
-    {{-- @foreach ($# as $key => $value)
-    @if ($value -> == $_GET['id']) --}}
+
+
+    @foreach ($cate as $key => $value)
+    @if ($value ->item_category == $_GET['id'])
      <div class="m_info">
        <div class="m_img">
         <a href="#" class="am_1">
           <div class="su_img">
-            <img src="/img/item/{{$cate[0]->item_picture}}"  alt="" class="s_img1">
+            <img src="/img/item/{{$value->item_picture}}"  alt="" class="s_img1">
           </div>
           <div class="m_name">
-          {{$cate[0]->item_name}}
+          {{$value->item_name}}
           </div>
           <div class="m_money">
-            {{$cate[0]->item_startprice}}
+            {{$value->item_startprice}}
           </div>
         </a>
        </div>
-       {{-- @endif
-       @endforeach --}}
+       @endif
+       @endforeach
 
   </div>
 </div>
