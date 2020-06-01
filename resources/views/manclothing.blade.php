@@ -33,9 +33,7 @@
      <div class="ma_main">
        <div class="m_1">
          <h1>
-           <?php
-             echo $_GET['id'];
-           ?>
+           <?php echo $_GET['id'];?>
            전체보기
          </h1>
 
@@ -44,7 +42,7 @@
 
 
     @foreach ($cate as $key => $value)
-    @if ($value ->item_category == $_GET['id'])
+    @if ($cateF > 0)
      <div class="m_info">
        <div class="m_img">
         <a href="#" class="am_1">

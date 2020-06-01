@@ -140,17 +140,19 @@ class ItemController extends Controller
       'item_info',
       'visit_count'
     )->where(['seller_id'=> decrypt($id)])->get();
-    $data = User::select('user_image')->where(['ID' =>  $myproduct[0]->seller_id])->get();
+    $data = User::select('user_image')->where(['id' =>  $myproduct[0]->seller_id])->get();
       return view('product-detail', [
       'myproduct' => $myproduct,
       'data'=>$data
     ]);
   }
     public function category(Request $request){
-      $id= session()->get('login_ID');
-    $cate=Item::select('item_name','item_picture','item_startprice','item_category')->where(['seller_id'=> decrypt($id)])->get();
+    $cat = $_GET['id'];
+    $cate=Item::select('item_name','item_picture','item_startprice')->where(['item_category'=>$cat])->get();
+    $cateF = count($cate);
       return view('manclothing',[
-        'cate'=>$cate
+        'cate'=>$cate,
+        'cateF' => $cateF
       ]);
 
 }
