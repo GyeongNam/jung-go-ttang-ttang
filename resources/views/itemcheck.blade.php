@@ -74,20 +74,22 @@
       <div class="price1">
         {{$value->item_startprice}}원
       </div>
-      @if ($value->item_success == 1 )
+      @if ($value->item_success == -1 )
 
       <div class="state1">
         <span>진행중</span>
-        <p><button class="hide_but">판매종료</button></p>
+
       </div>
     @else
       <div class="state1">
         낙찰
+        <button type="button" id="bid_info_btn" name="button">낙찰정보 확인</button>
       </div>
         @endif
         @if ($value->success != 1)
           <div class="yesorno">
             <span>O</span>
+            <p><button class="hide_but">구매하기</button></p>
           </div>
       @else
         <div class="yesorno">
@@ -112,17 +114,20 @@
 
     <div class="state1">
       <span>진행중</span>
-
+      <p><button class="hide_but">판매종료</button></p>
     </div>
   @else
     <div class="state1">
         낙찰
+        <div class="delete_btn">
+
+        </div>
     </div>
       @endif
     @if ($value->success != 1)
       <div class="yesorno">
         <span>O</span>
-        <p><button class="hide_but">쪽지하기</button></p>
+
       </div>
   @else
     <div class="yesorno">
@@ -132,5 +137,80 @@
   </div>
       @endforeach
   </div>
+  <!-- The Modal -->
+  <div id="bidmyModal" class="bidmodal">
 
+    <!-- Modal content -->
+    <div class="modal-bid">
+      <div class="modal_bidheader">
+        낙찰정보확인
+      </div>
+      <div class="bid_info">
+        <div class="nakchalgood">
+          낙찰이 정상적으로 완료되었습니다!
+        </div>
+        <div class="nak_info">
+          <div id="" class="nak_price">
+            <div class="nak_p_lab">
+              낙찰금액 :
+            </div>
+            <div class="nak_p">
+              130,000
+            </div>
+          </div>
+          <div class="nak_naeyong">
+            낙찰당첨!!
+            <div class="nak_sunwe">
+              1순위
+            </div>
+            <div class="nak_people">
+              낙찰 당첨자 : 민프로**
+            </div>
+            <div class="nak_time">
+              구매 가능시간 :
+            </div>
+            <div class="nak_date">
+              1일 이내에 거래 완료를 하지 않으면 다음 낙찰 대기자에게 상품이 넘어갑니다.
+            </div>
+          </div>
+        </div>
+        <div class="">
+
+        </div>
+      </div>
+      <div class="">
+        <button class="close" id="del_per" type="button" name="button" >돌아가기</button>
+        <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
+      </div>
+
+    </div>
+
+  </div>
+  <script type="text/javascript">
+  // Get the modal
+  var modal = document.getElementById("bidmyModal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("bid_info_btn");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  </script>
 @endsection
