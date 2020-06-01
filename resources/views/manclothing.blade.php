@@ -40,9 +40,10 @@
        </div>
      </div>
 
-
+<div class="m_layout">
     @foreach ($cate as $key => $value)
     @if ($cateF > 0)
+
      <div class="m_info">
        <div class="m_img">
         <a href="#" class="am_1">
@@ -57,11 +58,14 @@
           </div>
         </a>
        </div>
+       </div>
+
        @endif
        @endforeach
-
-  </div>
 </div>
+
+</div>
+
 
 
 
