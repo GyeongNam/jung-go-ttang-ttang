@@ -1,0 +1,121 @@
+* {box-sizing:border-box}
+.bd_layout{
+border-top: 1px solid #BDBDBD;
+border-bottom: 1px solid #BDBDBD;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+margin: 2% auto;
+color: #263343;
+
+}
+@media screen and (max-width: 800px){
+  .bd_layout{
+    width: auto;
+  }
+}
+.bd_headname{
+  font-size: 40px;
+
+}
+.bd_head{
+text-align: center;
+margin:2% auto;
+
+width: 150px;
+height: 30px;
+display: flex;
+
+
+
+}
+
+.bd_form{
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+.bd_if{
+  display: flex;
+  padding: 1.5rem 0;
+  margin: 1rem 0;
+  width: auto;
+  height:auto;
+  border-top: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
+}
+.bd_main{
+  width: auto;
+  height: 200px;
+  border-right: 1px solid black;
+  margin: 2%;
+  padding: 1%;
+}
+.bd_img{
+
+  height: 200px;
+}
+.bd_main2{
+  width:300px;
+  margin: 2%;
+  padding: 1%;
+  flex-wrap: wrap;
+
+}
+
+.bd_name{
+  font-size: 25px;
+  width: 300px;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid black;
+  text-overflow: ellipsis;
+  white-space : nowrap;
+  overflow: hidden;
+
+
+}
+.bd_name1{
+width: 300px;
+
+
+}
+
+.bd_price{
+  width: 300px;
+  font-size: 25px;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid black;
+}
+
+.bd_stprice{
+  width: 300px;
+  font-size: 25px;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid black;
+}
+.bid_name{
+  height: 30px;
+}
+.bd_bid{
+  font-size: 20px;
+}
+
+.but_head{
+  display: flex;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  justify-content: center;
+}
+.bd_button{
+  text-align: center;
+  justify-content: center;
+}
+.bd_but1{
+  width: 100px;
+  height: 40px;
+  margin-left: 3rem;
+  margin-right: 3rem;
+
+}

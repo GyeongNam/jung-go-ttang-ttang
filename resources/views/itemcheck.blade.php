@@ -10,7 +10,7 @@
 
 @section('js')
   <script>
-
+// 버튼 클릭시 발생되는 이벤트
  $(function(){
    $(".it_if2").hide();
    $(".on1").css("background-color","rgb(39, 188, 198)");
@@ -32,7 +32,6 @@
      $(".on1").css("background-color","rgb(39, 188, 198)");
    });
  });
-
 
 
  </script>
@@ -67,7 +66,7 @@
 @foreach ($myStat as $key => $value)
   <div class="it_if1">
     <div class="it_img">
-      <a href="#" class="it_img1">
+      <a href="product-detail" class="it_img1">
         <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
         <div class="ite_na"> {{$value->item_name}}</div>
       </a>

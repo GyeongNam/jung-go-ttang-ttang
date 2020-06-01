@@ -26,31 +26,7 @@
     <hr class="mc_main_line">
     <div class="it_cago">
       <div class="ite_menu">
-         {{-- <table>
-        <tbody>
-          <tr>
-            <td><a href="#">전체메뉴</a></td>
-            <td><a href="#">맨투맨/후드티</a></td>
-            <td><a href="#">반팔티셔츠</a></td>
-            <td><a href="#">점퍼/야상/패딩</a></td>
-            <td><a href="#">셔츠/남방</a></td>
-          </tr>
-          <tr>
-            <td><a href="#?id=남성의류">트레이닝</a></td>
-            <td><a href="#">코트</a></td>
-            <td><a href="#">가디건</a></td>
-            <td><a href="#">청바지</a></td>
-            <td><a href="#">반바지</a></td>
-          </tr>
-          <tr>
-            <td><a href="#">니트/스웨터</a></td>
-            <td><a href="#">긴팔티셔츠</a></td>
-            <td><a href="#">반팔티셔츠</a></td>
-            <td><a href="#">언더웨어/속옷</a></td>
-            <td><a href="#">조끼/베스트</a></td>
-          </tr>
-        </tbody>
-      </table> --}}
+
       </div>
     </div>
 
@@ -71,13 +47,13 @@
        <div class="m_img">
         <a href="#" class="am_1">
           <div class="su_img">
-            <img src="/img/iphone12.png"  alt="" class="s_img1">
+            <img src="/img/switch.png"  alt="" class="s_img1">
           </div>
           <div class="m_name">
-          아이폰x
+          닌텐도스위치dasdasdasdasdasdasdasd
           </div>
           <div class="m_money">
-            880,000원
+            50000원
           </div>
         </a>
        </div>

@@ -55,6 +55,9 @@ Route::get('/product-detail', function(){
 Route::get('/manclothing', function () {
     return view('manclothing');
 });
+Route::get('/bidding-info', function () {
+    return view('bidding-info');
+});
 
 
 // user Controller

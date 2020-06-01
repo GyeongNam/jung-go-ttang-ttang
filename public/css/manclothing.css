@@ -19,7 +19,7 @@ color: #263343;
 }
  /* 검색버튼  */
 .mc_main{
-
+text-align: center;
 margin:2% auto;
 width: 430px;
 height: 30px;
@@ -34,12 +34,6 @@ background:rgb(250, 250, 250)
 .it_sea{
   width:100%;
   border:0;
-
-}
-
-
-.plus{
-  text-align: right;
 
 }
 
@@ -71,33 +65,6 @@ background:rgb(250, 250, 250)
 }
 
 
-.ite_menu table{
-  width:100%;
-  text-align:center;
-}
-
-.ite_menu table td{
-  padding-top:10px;
-  padding-bottom:10px;
-  width:20%;
-  box-shadow: 1px 1px;
-}
-
-.ite_menu a:link {
-  color: red;
-  text-decoration: none;
-}
-
-.ite_menu a:visited {
-  color: #263343;
-  text-decoration: none;
-}
-
-.ite_menu a:hover {
-  font-weight: bold;
-  text-decoration:
-  underline;
-}
 .ma_main{
   margin:3%;
   border-bottom: 1px solid #263343;
@@ -110,14 +77,14 @@ background:rgb(250, 250, 250)
   margin-bottom: 3%;
   width:20%;
   display: flex;
-  border: 2px;
-  border-style: solid;
-  border-color: rgb(198, 214, 210)
+  border: 2px solid rgb(198, 214, 210);
+
 
 }
+
 .am_1{
   text-decoration: none;
-
+width: 100%;
 }
 .m_info{
   display: flex;
@@ -125,16 +92,22 @@ background:rgb(250, 250, 250)
   width: 100%;
   flex-wrap: wrap;
 }
-.su_img{
+.m_name{
+  border-top: 2px solid rgb(198, 214, 210);  
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
 
 }
 .s_img1{
   width: 100%;
   height: 200px;
-
 }
 .m_money{
-  margin-top: 5px;
+  margin-top: 10px;
+  width: 100%;
+  border-top : 2px solid rgb(198, 214, 210);
 }
 @media screen and(max-width:800px) {
   .m_info{
