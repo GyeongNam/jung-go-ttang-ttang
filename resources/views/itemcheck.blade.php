@@ -163,11 +163,19 @@
             <div class="nak_sunwe">
               1순위
             </div>
-            <div class="nak_people">
-              낙찰 당첨자 : 민프로**
+            <div class="nak_name">
+              <div class="nak_seller">
+                경매 판매자 :
+              </div>
+              <div class="nak_people">
+                민프로**
+              </div>
             </div>
             <div class="nak_time">
               구매 가능시간 :
+            </div>
+            <div class="buy_time">
+              36시간:12분:28초
             </div>
             <div class="nak_date">
               1일 이내에 거래 완료를 하지 않으면 다음 낙찰 대기자에게 상품이 넘어갑니다.
