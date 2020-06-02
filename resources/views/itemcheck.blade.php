@@ -150,14 +150,14 @@
           낙찰이 정상적으로 완료되었습니다!
         </div>
         <div class="nak_info">
-          <div id="" class="nak_price">
-            <div class="nak_p_lab">
-              낙찰금액 :
-            </div>
-            <div class="nak_p">
-              130,000
-            </div>
+          <!--<div id="" class="nak_price">-->
+          <div class="nak_p_lab">
+            낙찰금액 :
           </div>
+          <div class="nak_p">
+            130,000
+          </div>
+        <!--</div>-->
           <div class="nak_naeyong">
             낙찰당첨!!
             <div class="nak_sunwe">
