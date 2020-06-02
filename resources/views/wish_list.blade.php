@@ -5,6 +5,22 @@
 @endsection
 
 @section('js')
+<script type="text/javascript">
+$(function(){
+  $('#sel_delbt').click(function(){
+    var result = confirm('관심품목에서 삭제하시겠습니까?');
+
+    if(result) {
+      //맞으면
+      location.replace('wish_list.blade.php');
+    }else {
+      //
+    }
+  });
+});
+
+</script>
+
 @endsection
 @section('content')
 <div class="wish_list_page">
@@ -22,7 +38,12 @@
             <button type="button" name="button">V</button>
           </div>
           <div class="w_select_del">
-            <button type="button" name="button">선택 삭제</button>
+            <button class="sel_del" id="sel_delbt"type="button" name="button" onclick="delete_select">선택 삭제</button>
+          </div>
+          <div class="w_hyper">
+            <a href="#">최신순</a>
+            <a href="#">높은가격순</a>
+            <a href="#">낮은가격순</a>
           </div>
         </div>
       </div>
