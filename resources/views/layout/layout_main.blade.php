@@ -60,7 +60,7 @@
           <a href="/kategorie">전체 카테고리</a>
           <a href="/itemcheck">경매 판매하기</a>
           <a href="/mypage">내 정보</a>
-          <a href="#">내 관심</a>
+          <a href="/wish_list">내 관심</a>
           <a href="#">쪽지</a>
         </div>
 
