@@ -49,7 +49,6 @@ word-break:break-all;
   text-align: center;
 }
 .nak_price{
-  margin-left: 9rem;
   display: flex;
 }
 /* The Close Button */
@@ -67,6 +66,10 @@ word-break:break-all;
   .it_layout{
     width: auto;
     height: auto;
+  }
+
+  bid_info{
+    font-size: 5px;
   }
 }
 
