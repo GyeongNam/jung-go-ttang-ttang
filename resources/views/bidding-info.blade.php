@@ -11,6 +11,10 @@
 @section('js')
 
 <script>
+
+
+
+
 // $(function(){
 //
 //   $("#sus_but").click(function() {
@@ -20,33 +24,45 @@
 //     };
 //   });
 // })
-  $(function(){
-   var bid_test = confirm("낙찰을 하시겠습니까?");
-   var price = $(".bd_price1").val();
-   var bidprice = $(".bid_name").val();
+function checking(){
+  var form = document.bd_form;
+  if (!form.bdinput.value) {
+    alert("낙찰금액을 입력하세요.")
+    return false;
+
+  }
+}
+
+  $(function(){                   //html 목록이 준비되면? 함수시작
+           // 낙찰가격 변수지정
      $("#sus_but").click(function(){
-       if( bidprice < price){
-         alert("현재가격보다 낙찰가격이 낮아요")
+       var price=$(".bd_price1").attr("value");   // 현재가격에 value 추가하고 변수로지정
+       var bidprice=$(".bid_name").val();      //버튼 클릭시 함수 실행
+       // console.log(price)
+       // console.log(bidprice)
+       var num = Number(price);
+       // console.log(num);
+       // var ndm = Number(bidprice);
+       // console.log(ndm);
+
+       if( bidprice < num){             // 현재금액 보다 낙찰가격이 작으면 경고창켜짐
+         alert("현재가격보다 낙찰가격이 낮아요");
          return false;
 
-       }else if(bidprice.search(/\s/) != -1) {
-         alert("낙찰가를 입력해주세요.");
-         return false;
        }
-       else{
-         confirm("낙찰을 하시겠습니까?")
+       else {                             // 위에 if문이 거짓이라면 확인창 켜짐
+        var bid_test = confirm("낙찰을 하시겠습니까?");
+         if (bid_test == true) {          //확인창 확인을 누르면 팝업창켜짐
+              $("#popup").fadeIn();
+              $(".exit").click(function(){    // 종료누르면 팝업창 꺼짐
+                $("#popup").fadeOut();
+              });
+         }
 
        };
-       if (bid_test == true) {
-            $("#popup").fadeIn();
-            $(".exit").click(function(){
-            $("#popup").fadeOut();
-          });
-     };
+     });
    });
-
-   });
-
+   //
    // $(function(){
    //   $("#sus_but").click(function() {
    //     $("#popup").fadeIn();
@@ -56,6 +72,7 @@
    //   });
    //
    // });
+//
 
 
 
@@ -70,10 +87,17 @@
       <hr>
       <p class="po1"><h2>입찰이 정상적으로 완료되었습니다.</h2></p>
       <hr>
-      <p><h2>입찰금액:300000원</h2></p>
+      <p><h2>
+        <span>입찰금액:</span>
+        <span>300000</span>
+        <span>원</span>
+      </h2></p>
       <hr>
-      <p><b>이름:엄준식</b></p>
-      <p><b>00:00:00</b></p>
+      <p><b>
+        <span>이름:</span>
+        <span>엄준식</span>
+      </b></p>
+        <p><b>00:00:00</b></p>
       <div class="exit">
         <button type="button" name="button">닫기</button>
       </div>
@@ -88,7 +112,7 @@
 
       </div>
     </div>
-<form class="" method="post">
+<form class="" name="bd_form" method="post" onsubmit="return checking();">
   <div class="bd_if">
     <div class="bd_main">
     <img class="bd_img" src="img/item/bora.png">
@@ -98,14 +122,18 @@
       <span class="bd_name1">보라돌이</span>
     </div>
     <div class="bd_price">
-      <span class= "bd_price1" value="300000">현재가격:300000</span>
+      <span>현재가격:</span>
+      <span class="bd_price1" value="300000">300000</span>
+      <span>원</span>
     </div>
     <div class="bd_stprice">
-      <span class="bd_stprice1">시작가격:300000</span>
+      <span>시작가격:</span>
+      <span class="bd_stprice1" name="money1" >300000</span>
+      <span>원</span>
     </div>
     <div class="bd_bid">
       <span clsss="bid_pr"><b>낙찰할금액:</b></span>
-      <input type="number" name="" class="bid_name" required>
+      <input type="number" class="bid_name"  name="bdinput">
     </div>
   </div>
 </div>
