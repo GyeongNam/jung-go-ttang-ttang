@@ -63,8 +63,48 @@
         <button id="su_but4" ><b>낙찰여부</b></button>
       </div>
 {{-- 내가참여한경매 --}}
-@foreach ($myStat as $key => $value)
+@foreach ($myAuction as $key => $value)
   <div class="it_if1">
+  <div class="it_img">
+
+    <a href="#" class="it_img1">
+      <img src="/img/item/{{$value[0]->item_picture}}" alt="상품사진" name="#" class="ite_img">
+      <div class="ite_na"> {{$value[0]->item_name}}</div>
+    </a>
+  </div>
+    <div class="price1">
+      {{$value[0]->item_startprice}} 원
+    </div>
+    @if ($value[0]->item_success != 1 )
+
+    <div class="state1">
+      <span>진행중</span>
+      <p><button class="hide_but">판매종료</button></p>
+    </div>
+  @else
+    <div class="state1">
+        낙찰
+          <button type="button" id="bid_info_btn" name="button">낙찰정보 확인</button>
+        <div class="delete_btn">
+
+        </div>
+    </div>
+      @endif
+    @if ($value[0]->success != 1)
+      <div class="yesorno">
+        <span>O</span>
+        <p><button class="hide_but">구매하기</button></p>
+      </div>
+   @else
+    <div class="yesorno">
+      X
+    </div>
+     @endif
+  </div>
+      @endforeach
+{{-- 내가등록한경매 --}}
+@foreach ($myStat as $key => $value)
+  <div class="it_if2">
     <div class="it_img">
       <a href="product-detail" class="it_img1">
         <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
@@ -83,13 +123,13 @@
     @else
       <div class="state1">
         낙찰
-        <button type="button" id="bid_info_btn" name="button">낙찰정보 확인</button>
+
       </div>
         @endif
         @if ($value->success != 1)
           <div class="yesorno">
             <span>O</span>
-            <p><button class="hide_but">구매하기</button></p>
+
           </div>
       @else
         <div class="yesorno">
@@ -98,44 +138,6 @@
         @endif
     </div>
 @endforeach
-{{-- 내가등록한경매 --}}
-@foreach ($myStat as $key => $value)
-  <div class="it_if2">
-  <div class="it_img">
-    <a href="#" class="it_img1">
-      <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
-      <div class="ite_na"> {{$value->item_name}}</div>
-    </a>
-  </div>
-    <div class="price1">
-      {{$value->item_startprice}} 원
-    </div>
-    @if ($value->item_success != 1 )
-
-    <div class="state1">
-      <span>진행중</span>
-      <p><button class="hide_but">판매종료</button></p>
-    </div>
-  @else
-    <div class="state1">
-        낙찰
-        <div class="delete_btn">
-
-        </div>
-    </div>
-      @endif
-    @if ($value->success != 1)
-      <div class="yesorno">
-        <span>O</span>
-
-      </div>
-  @else
-    <div class="yesorno">
-      X
-    </div>
-    @endif
-  </div>
-      @endforeach
   </div>
   <!-- The Modal -->
   <div id="bidmyModal" class="bidmodal">
