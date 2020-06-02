@@ -58,7 +58,9 @@ Route::get('/manclothing', function () {
 Route::get('/bidding-info', function () {
     return view('bidding-info');
 });
-
+Route::get('/wish_list', function(){
+    return view('wish_list');
+});
 
 // user Controller
 Route::post('/singup', 'UserController@store');
