@@ -1,0 +1,39 @@
+*{
+  width: auto;
+  height: auto;
+}
+.wish_tag{
+  margin: 2rem 0;
+}
+.wish_content{
+  display: block;
+  width: 70%;
+  height: auto;
+  margin: auto;
+}
+.wish_header{
+  width:auto;
+  height:4rem;
+  margin: 2rem 0;
+  font-size: 5rem;
+}
+.mylike{
+  margin: 2rem 0;
+
+}
+.w_chack{
+  margin: 2rme 0;
+}
+.w_h_bt {
+  display: flex;
+  margin: 2rem 0;
+}
+
+.wish_item_info{
+  width:15rem;
+  border: 1px solid #bdbdbd;
+}
+.wish_item_img{
+  width:5rem;
+  height: 5rem;
+}
