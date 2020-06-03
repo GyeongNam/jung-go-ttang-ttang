@@ -79,7 +79,7 @@
 
     <div class="state1">
       <span>진행중</span>
-      <p><button class="hide_but">판매종료</button></p>
+
     </div>
   @else
     <div class="state1">
@@ -102,7 +102,7 @@
      @endif
   </div>
       @endforeach
-{{-- 내가등록한경매 --}}
+{{-- 내가올린경매 --}}
 @foreach ($myStat as $key => $value)
   <div class="it_if2">
     <div class="it_img">
@@ -114,16 +114,17 @@
       <div class="price1">
         {{$value->item_startprice}}원
       </div>
-      @if ($value->item_success == -1 )
+      @if ($value->item_success == 1 )
 
       <div class="state1">
         <span>진행중</span>
+          <p><button class="hide_but">판매종료</button></p>
 
       </div>
     @else
       <div class="state1">
-        낙찰
-
+        판매종료
+        <button type="button" id="bid_info_btn2" name="button">낙찰현황확인</button>
       </div>
         @endif
         @if ($value->success != 1)
@@ -196,6 +197,52 @@
     </div>
 
   </div>
+
+  <div id="bidmyModa2" class="bidmoda2">
+
+    <!-- Modal content -->
+    <div class="modal-bid">
+      <div class="modal_bidheader">
+        낙찰정보현황
+      </div>
+      <div class="bid_info">
+        <div class="nakchalgood">
+          1순위부터 5순위까지 확인해 주세요!
+        </div>
+
+        <div class="nak_info">
+          <!--<div id="" class="nak_price">-->
+          <span class="nak_p_lab">
+            1위:
+          </span>
+          <span class="nak_p">
+            minpro
+          </span>
+          <span class="nak_p_lab">
+            낙찰가:
+          </span>
+          <span class="nak_p_lab">
+             100000
+          </span>
+          <span class="nak_p_lab">
+             원
+          </span>
+          <span class="nak_p_lab">
+            <button>쪽지하기</button>
+          </span>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="">
+        <button class="close" id="del_per" type="button" name="button" >돌아가기</button>
+        <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
+      </div>
+
+    </div>
+
+  </div>
   <script type="text/javascript">
   // Get the modal
   var modal = document.getElementById("bidmyModal");
@@ -220,6 +267,32 @@
   window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
+    }
+  }
+
+  // Get the modal
+  var modal2 = document.getElementById("bidmyModa2");
+
+  // Get the button that opens the modal
+  var btn2 = document.getElementById("bid_info_btn2");
+
+  // Get the <span> element that closes the modal
+  var span2 = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal
+  btn2.onclick = function() {
+    modal2.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span2.onclick = function() {
+    modal2.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal2) {
+      modal2.style.display = "none";
     }
   }
   </script>
