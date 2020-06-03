@@ -14,8 +14,8 @@ class CreateAuctionTable extends Migration
     public function up()
     {
         Schema::create('auction', function (Blueprint $table) {
-            $table->integer('auction_num')->unique();
-            $table->primary('auction_num');
+            $table->bigIncrements('auction_num')->unique();
+            //$table->primary('auction_num');
             /*$table->integer('auction_itemnum');*/
             $table->string('buyer_ID');
             $table->integer('item_price');

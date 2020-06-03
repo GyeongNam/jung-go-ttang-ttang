@@ -145,5 +145,7 @@ class ItemController extends Controller
         ]);
       }
 
+  public function item_update(Request $request){
 
+  }
 }
