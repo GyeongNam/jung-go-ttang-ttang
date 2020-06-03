@@ -291,7 +291,7 @@ function chkpw(){
          <button onclick="mainsends()" type ="button" id ="bt_secu"><b>인증번호 전송</b></button>
        </li>
 
-       <input type="text" id="security" size="61" placeholder=" 인증번호 입력하세요" required>
+       <input type="text" name="email_ck" id="security" size="61" placeholder=" 인증번호 입력하세요" required>
        <li>
          <button  id="sub" onclick="return join_member();" >
            <b>가입하기</b>
