@@ -66,6 +66,9 @@ function previewImage(f, divid){
     reader.readAsDataURL(file[0]);
   }
 }
+$(function() {
+$("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
+});
 </script>
 @endsection
 @section('content')
@@ -158,7 +161,7 @@ function previewImage(f, divid){
               <span><strong>*</strong></span>경매 마감일자
             </div>
             <div class="p_info">
-              <input class="p_last_day" type="date" name="Auction_last_time"  min="2000-01-01T00:00" max="2100-12-31T00:00" required>
+                            <input id="datepicker" class="p_last_day" type="text" name="Auction_last_time" value=""  required>
             </div>
           </div>
         </li>
