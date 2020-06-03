@@ -6,6 +6,26 @@
 
 @section('js')
 <script type="text/javascript">
+//변경하는 함수 테스트중 절대 건들지마셈
+
+var slideIndex = 0;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlidess");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  slides[slideIndex-1].style.display = "block";
+}
 
 </script>
 @endsection
@@ -15,21 +35,39 @@
     <div class="detail_head">
       <div class="pr_deta_pic">
         <div class="detailimg_list">
-          <div id="sliderFrame">
-            <div id="slider">
+          <div class="slideshow-container">
+
+            <div class="mySlidess fade">
               <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picture}}" alt=""  val=""/>
+            </div>
+            <div class="mySlidess fade">
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picture}}" alt=""  val=""/>
+            </div>
+            <div class="mySlidess fade">
               <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureup}}" alt=""  val=""/>
+            </div>
+            <div class="mySlidess fade">
               <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureback}}" alt=""  val=""/>
+            </div>
+            <div class="mySlidess fade">
               <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturedown}}" alt=""  val=""/>
+            </div>
+            <div class="myslidess fade">
               <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturefront}}" alt=""  val=""/>
+            </div>
+            <div class="myslidess fade">
               <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureleft}}" alt=""  val=""/>
+            </div>
+            <div class="myslidess fade">
               <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureright}}" alt=""  val=""/>
             </div>
-            <a class="btn-floating-left" onclick="plusDivs(-1)">&#10094;</a>
-            <a class="btn-floating-right" onclick="plusDivs(+1)">&#10095;</a>
-          </div>
 
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+          </div>
         </div>
+
       </div>
       <div class="detail_product_info">
         <div class="dpbox">
@@ -266,29 +304,30 @@ $('#del_detailpage').click(function(){
   삭제된 경매는 되돌릴 수 없습니다!")
 })
 
-var slideIndex = 0;  /*slideIndex 로 설정 */
-showDivs(slideIndex); /* 첫번째 이미지를 표시하기 위해 showDivs 호출 */
+// var slideIndex = 0;  /*slideIndex 로 설정 */
+// showDivs(slideIndex); /* 첫번째 이미지를 표시하기 위해 showDivs 호출 */
+//
+// /*$(document).ready(function(){
+// showDivs(slideIndex += n);
+// });*/
+//
+// function plusDivs(n) { /* slideIndex에 하나를 추가한다. */
+//   showDivs(slideIndex += n);
+// }
+//
+// function showDivs(n) {
+//
+//   var i;
+//   var x = document.getElementsByClassName("mySlides");
+//   if (n > x.length) {slideIndex = 1}
+//   if (n < 1) {slideIndex = x.length} ;
+//   for (i = 0; i < x.length; i++) {
+//     x[i].style.display = "none";
+//   }
+//   x[slideIndex-1].style.display = "block";
+//
+// }
 
-/*$(document).ready(function(){
-showDivs(slideIndex += n);
-});*/
-
-function plusDivs(n) { /* slideIndex에 하나를 추가한다. */
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length} ;
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  x[slideIndex-1].style.display = "block";
-
-}
 
 </script>
 @endsection
