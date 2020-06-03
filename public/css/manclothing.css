@@ -76,11 +76,18 @@ background:rgb(250, 250, 250)
   margin-left: 3%;
   margin-bottom: 3%;
   width:100%;
+  height: 100%;
   border: 2px solid rgb(198, 214, 210);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
+
 .m_layout{
   flex-wrap: wrap;
   display:flex;
+  width: 100%;
+  height: 100%;
 }
 
 .am_1{
@@ -88,9 +95,12 @@ background:rgb(250, 250, 250)
 
 }
 .m_info{
-  margin-left: 1rem;
+  margin-left: 3.5%;
   margin-bottom: 2%;
-  width: 18%;
+  width: 20%;
+  height: 100%;
+
+
 
 }
 @media screen and (max-width: 800px){
@@ -108,13 +118,22 @@ background:rgb(250, 250, 250)
 
 
 }
-.s_img1{
+.de_form{
+  width: 100%;
+}
+.de_but{
   width: 100%;
   height: 200px;
+}
+.s_img1{
+  width: 100%;
+
 
 }
-.su_img{
+.ite_img{
   display:inline-block;
+  width: 100%;
+  height: 100%;
 
 }
 .m_money{

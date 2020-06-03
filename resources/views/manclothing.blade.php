@@ -46,8 +46,8 @@
 
      <div class="m_info">
        <div class="m_img">
-         <form class="" action="{{url('/product-detail')}}" method="get">
-           <button type="type="submit"" name="button">
+         <form class="de_form" action="{{url('/product-detail')}}" method="get">
+           <button type="type="class="de_but" submit"" name="button">
              <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
            </button>
            <input type="hidden" name="item_number" value="{{$value->item_number}}">
@@ -56,7 +56,7 @@
           {{$value->item_name}}
           </div>
           <div class="m_money">
-            {{$value->item_startprice}}
+            {{$value->item_startprice}}원
           </div>
         </a>
        </div>
