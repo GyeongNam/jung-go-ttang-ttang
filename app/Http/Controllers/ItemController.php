@@ -114,9 +114,14 @@ class ItemController extends Controller
       //$myParticipation = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['item_nurnber'=> $m_Participation])->get();
       $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> decrypt($id)])->get();
       $Auction = Auction::select('buyer_ID', 'item_price','auction_itemnum')->where(['buyer_ID'=>decrypt($id)])->get();
-
-      for($ct = 0 ; $ct<count($Auction) ; $ct++){
-        $myAuction[$ct] = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['item_number'=>$Auction[$ct]->auction_itemnum])->get();
+      if($Auction->isEmpty())
+      {
+        $myAuction = collect([]);
+      }
+      else {
+        for($ct = 0 ; $ct<count($Auction) ; $ct++){
+          $myAuction= Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['item_number'=>$Auction[$ct]->auction_itemnum])->get();
+        }
       }
       return view('itemcheck', [
         'myStat' => $myStat,

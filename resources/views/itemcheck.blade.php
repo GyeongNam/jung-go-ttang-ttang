@@ -62,49 +62,50 @@
         <button id="su_but3" ><b>진행상태</b> </button>
         <button id="su_but4" ><b>낙찰여부</b></button>
       </div>
-{{-- 내가참여한경매 --}}
-@foreach ($myAuction as $key => $value)
-  <div class="it_if1">
-  <div class="it_img">
-    <form class="" action="{{url('/product-detail')}}" method="get">
-      <button type="type="submit"" name="button">
-        <img src="/img/item/{{$value[0]->item_picture}}" alt="상품사진" name="#" class="ite_img">
-      </button>
-      <div class="ite_na" name="item_name" value="{{$value[0]->item_name}}"> {{$value[0]->item_name}}</div>
-      <input type="" name="item_number" value="{{$value[0]->item_number}}">
-    </form>
-  </div>
-    <div class="price1">
-      {{$value[0]->item_startprice}} 원
-    </div>
-    @if ($value[0]->item_success != 1 )
+      {{-- 내가참여한경매 --}}
 
-    <div class="state1">
-      <span>진행중</span>
-
-    </div>
-  @else
-    <div class="state1">
-        낙찰
-          <button type="button" id="bid_info_btn" name="button">낙찰정보 확인</button>
-        <div class="delete_btn">
-
+      @foreach ($myAuction as $key => $value)
+        <div class="it_if1">
+        <div class="it_img">
+          <form class="" action="{{url('/product-detail')}}" method="get">
+            <button type="type="submit"" name="button">
+              <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
+            </button>
+            <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
+            <input type="" name="item_number" value="{{$value->item_number}}">
+          </form>
         </div>
-    </div>
-      @endif
-    @if ($value[0]->success != 1)
-      <div class="yesorno">
-        <span>O</span>
-        <p><button class="hide_but">구매하기</button></p>
-      </div>
-   @else
-    <div class="yesorno">
-      X
-    </div>
-     @endif
-  </div>
-      @endforeach
-{{-- 내가올린경매 --}}
+          <div class="price1">
+            {{$value->item_startprice}} 원
+          </div>
+          @if ($value->item_success != 1 )
+
+          <div class="state1">
+            <span>진행중</span>
+
+          </div>
+        @else
+          <div class="state1">
+              낙찰
+                <button type="button" id="bid_info_btn" name="button">낙찰정보 확인</button>
+              <div class="delete_btn">
+
+              </div>
+          </div>
+            @endif
+          @if ($value->success != 1)
+            <div class="yesorno">
+              <span>O</span>
+              <p><button class="hide_but">구매하기</button></p>
+            </div>
+         @else
+          <div class="yesorno">
+            X
+          </div>
+           @endif
+        </div>
+            @endforeach
+      {{-- 내가올린경매 --}}
 @foreach ($myStat as $key => $value)
   <div class="it_if2">
     <div class="it_img">
@@ -253,7 +254,7 @@
   var btn = document.getElementById("bid_info_btn");
 
   // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
+  var span = document.getElementsByClassName("close");
 
   // When the user clicks the button, open the modal
   btn.onclick = function() {
@@ -279,7 +280,7 @@
   var btn2 = document.getElementById("bid_info_btn2");
 
   // Get the <span> element that closes the modal
-  var span2 = document.getElementsByClassName("close2")[0];
+  var span2 = document.getElementsByClassName("close2");
 
   // When the user clicks the button, open the modal
   btn2.onclick = function() {
