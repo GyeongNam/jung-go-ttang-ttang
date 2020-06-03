@@ -74,6 +74,28 @@ $(function(){
          </a>
           </div>
         </div>
+        <div class="wish_info">
+          <div class="wish_item_info">
+           <a href="#" class="prdt_link">
+             <div class="wish_item_img">
+             <img src="/img/item/릴카.png" alt="">
+           </div>
+           <div class="w_i_info">
+             <div class="w_i_pro_i">
+               <div class="wiproname">
+                 아이폰 프로 맥스
+               </div>
+               <div class="wiproprice">
+                 187,900원
+               </div>
+               <div class="wiprodate">
+                 5일전
+               </div>
+             </div>
+           </div>
+         </a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="tung"></div>
