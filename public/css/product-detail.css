@@ -60,10 +60,7 @@
 /* 스을라이드 쇼 쇼 */
 
 /* Slideshow container */
-.mySlidess{
-  width: 26rem;
-  height: 26rem;
-}
+
 .mySlidess {
   display: none;
   width: 26rem;
