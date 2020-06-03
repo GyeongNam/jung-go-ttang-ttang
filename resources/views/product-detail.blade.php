@@ -17,13 +17,13 @@
         <div class="detailimg_list">
           <div id="sliderFrame">
             <div id="slider">
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_picture}}" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_pictureup}}" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_pictureback}}" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_picturedown}}" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_picturefront}}" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_pictureleft}}" alt=""  val=""/>
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[2]->item_pictureright}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picture}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureup}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureback}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturedown}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturefront}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureleft}}" alt=""  val=""/>
+              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureright}}" alt=""  val=""/>
             </div>
             <a class="btn-floating-left" onclick="plusDivs(-1)">&#10094;</a>
             <a class="btn-floating-right" onclick="plusDivs(+1)">&#10095;</a>
@@ -36,18 +36,18 @@
           <div class="d_info">
             <div class="tit_pri">
               <div class="d_title">
-                {{$myproduct[4]->item_name}}
+                {{$myproduct[0]->item_name}}
               </div>
               <div class="time_price">
                 <div class="d_price">
                   현재 최고가 :
                 </div>
                 <div class="d_price_info" name="" val="">
-                  {{$myproduct[4]->item_startprice}}
+                  {{$myproduct[0]->item_startprice}}
                   <span>원</span>
                 </div>
               </div>
-              
+
             </div>
             <div class="d_kyeword">
               <div class="lvt">
@@ -76,7 +76,7 @@
                     제조사 :
                   </div>
                   <div class="mak_info tnam" name="">
-                    {{$myproduct[4]->item_maker}}
+                    {{$myproduct[0]->item_maker}}
                   </div>
                 </div>
                 <div class="pd_st">
@@ -84,7 +84,7 @@
                     구매일 :
                   </div>
                   <div class="by_info tnam" name="">
-                    {{$myproduct[4]->item_buy}}
+                    {{$myproduct[0]->item_buy}}
                   </div>
                 </div>
                 <div class="pd_st">
@@ -92,7 +92,7 @@
                     상품 카테고리 :
                   </div>
                   <div class="cat_info tnam" name="">
-                    {{$myproduct[4]->item_category}}
+                    {{$myproduct[0]->item_category}}
                   </div>
                 </div>
                 <div class="pd_st">
@@ -100,7 +100,7 @@
                     상품 개봉여부 :
                   </div>
                   <div class="opcl_info tnam" name="">
-                    {{$myproduct[4]->item_open}}
+                    {{$myproduct[0]->item_open}}
                   </div>
                 </div>
                 <div class="pd_st">
@@ -108,7 +108,7 @@
                     경매 시작가격 :
                   </div>
                   <div class="spric_info tnam" name="">
-                    {{$myproduct[4]->item_startprice}}
+                    {{$myproduct[0]->item_startprice}}
                     <span>원</span>
                   </div>
                 </div>
@@ -148,7 +148,7 @@
               <div class="seller_profile">
                 <div class="name_pdt">
                   <img class="seller_img" name="" src="/img/user/{{$data[0]->user_image}}" alt="">
-                  <a class="seller_name_link" name="" href="#">{{$myproduct[4]->seller_id}}</a>
+                  <a class="seller_name_link" name="" href="#">{{$myproduct[0]->seller_id}}</a>
                   <a class="productrottn" name="" href="#">상품 2</a>
                 </div>
               </div>
@@ -212,7 +212,7 @@
           <div class="sc-info_detail">상품 정보</div>
           <div class="sc-info-typing">
             <div class="sc-info_sodyd">
-              {{$myproduct[4]->item_info}}
+              {{$myproduct[0]->item_info}}
             </div>
           </div>
         </div>

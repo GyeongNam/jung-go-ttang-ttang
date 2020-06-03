@@ -116,7 +116,7 @@ class ItemController extends Controller
       $Auction = Auction::select('buyer_ID', 'item_price','auction_itemnum')->where(['buyer_ID'=>decrypt($id)])->get();
 
       for($ct = 0 ; $ct<count($Auction) ; $ct++){
-        $myAuction[$ct] = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['item_number'=>$Auction[$ct]->auction_itemnum])->get();
+        $myAuction[$ct] = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['item_number'=>$Auction[$ct]->auction_itemnum])->get();
       }
 
       return view('itemcheck', [
@@ -127,27 +127,8 @@ class ItemController extends Controller
 
   public function itemview(Request $request){
       $id= session()->get('login_ID');
-      $myproduct= Item::select(
-        'item_name',
-        'item_picture',
-        'item_startprice',
-        'item_success',
-        'success',
-        'item_startprice',
-        'item_open',
-        'item_buy',
-        'item_category',
-        'item_maker',
-        'seller_id',
-        'item_picturefront',
-        'item_pictureback',
-        'item_picturebehind',
-        'item_pictureup',
-        'item_pictureleft',
-        'item_picturerigth',
-        'item_info',
-        'visit_count'
-      )->where(['seller_id'=> decrypt($id)])->get();
+      $item_num = $request->get('item_number');
+      $myproduct= Item::select('*')->where(['item_number'=>$item_num])->get();
       $data = User::select('user_image')->where(['id' =>  $myproduct[0]->seller_id])->get();
         return view('product-detail', [
         'myproduct' => $myproduct,

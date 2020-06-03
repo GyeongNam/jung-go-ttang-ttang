@@ -66,11 +66,13 @@
 @foreach ($myAuction as $key => $value)
   <div class="it_if1">
   <div class="it_img">
-
-    <a href="#" class="it_img1">
-      <img src="/img/item/{{$value[0]->item_picture}}" alt="상품사진" name="#" class="ite_img">
-      <div class="ite_na"> {{$value[0]->item_name}}</div>
-    </a>
+    <form class="" action="{{url('/product-detail')}}" method="get">
+      <button type="type="submit"" name="button">
+        <img src="/img/item/{{$value[0]->item_picture}}" alt="상품사진" name="#" class="ite_img">
+      </button>
+      <div class="ite_na" name="item_name" value="{{$value[0]->item_name}}"> {{$value[0]->item_name}}</div>
+      <input type="" name="item_number" value="{{$value[0]->item_number}}">
+    </form>
   </div>
     <div class="price1">
       {{$value[0]->item_startprice}} 원
@@ -106,10 +108,13 @@
 @foreach ($myStat as $key => $value)
   <div class="it_if2">
     <div class="it_img">
-      <a href="product-detail" class="it_img1">
-        <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
-        <div class="ite_na"> {{$value->item_name}}</div>
-      </a>
+      <form class="" action="{{url('/product-detail')}}" method="get">
+        <button type="type="submit"" name="button">
+          <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
+        </button>
+        <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
+        <input type="" name="item_number" value="{{$value->item_number}}">
+      </form>
     </div>
       <div class="price1">
         {{$value->item_startprice}}원
@@ -185,9 +190,6 @@
             </div>
           </div>
         </div>
-        <div class="">
-
-        </div>
       </div>
       <div class="">
         <button class="close" id="del_per" type="button" name="button" >돌아가기</button>
@@ -236,7 +238,7 @@
 
       </div>
       <div class="">
-        <button class="close" id="del_per" type="button" name="button" >돌아가기</button>
+        <button class="close2" id="del_per" type="button" name="button" >돌아가기</button>
         <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
       </div>
 
@@ -277,7 +279,7 @@
   var btn2 = document.getElementById("bid_info_btn2");
 
   // Get the <span> element that closes the modal
-  var span2 = document.getElementsByClassName("close")[0];
+  var span2 = document.getElementsByClassName("close2")[0];
 
   // When the user clicks the button, open the modal
   btn2.onclick = function() {
