@@ -46,10 +46,12 @@
 
      <div class="m_info">
        <div class="m_img">
-        <a href="#" class="am_1">
-          <div class="su_img">
-            <img src="/img/item/{{$value->item_picture}}"  alt="" class="s_img1">
-          </div>
+         <form class="" action="{{url('/product-detail')}}" method="get">
+           <button type="type="submit"" name="button">
+             <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
+           </button>
+           <input type="hidden" name="item_number" value="{{$value->item_number}}">
+         </form>
           <div class="m_name">
           {{$value->item_name}}
           </div>

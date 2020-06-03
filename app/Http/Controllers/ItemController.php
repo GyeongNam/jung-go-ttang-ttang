@@ -118,7 +118,6 @@ class ItemController extends Controller
       for($ct = 0 ; $ct<count($Auction) ; $ct++){
         $myAuction[$ct] = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['item_number'=>$Auction[$ct]->auction_itemnum])->get();
       }
-
       return view('itemcheck', [
         'myStat' => $myStat,
         'myAuction' => $myAuction
@@ -138,7 +137,7 @@ class ItemController extends Controller
 
   public function category(Request $request){
       $cat = $_GET['id'];
-      $cate=Item::select('item_name','item_picture','item_startprice')->where(['item_category'=>$cat])->get();
+      $cate=Item::select('item_number','item_name','item_picture','item_startprice')->where(['item_category'=>$cat])->get();
       $cateF = count($cate);
         return view('manclothing',[
           'cate'=>$cate,
