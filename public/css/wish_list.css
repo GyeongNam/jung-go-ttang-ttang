@@ -3,7 +3,9 @@
   height: auto;
 }
 .wish_tag{
+  border: 1px 0 solid #bdbdbd;
   margin: 2rem 0;
+  display: block;
 }
 .wish_content{
   display: block;
@@ -15,25 +17,106 @@
   width:auto;
   height:auto;
   margin: 2rem 0;
-  font-size: 3rem;
+
+}
+.hyper{
+  float: right;
 }
 .mylike{
-  margin: 2rem 0;
+  font-size: 2rem;
 
 }
 .w_chack{
   margin: 2rme 0;
 }
 .w_h_bt {
+  border: 1px solid #bdbdbd;
   display: flex;
   margin: 2rem 0;
+  float: right;
 }
-
 .wish_item_info{
   width:15rem;
+  height: auto;
   border: 1px solid #bdbdbd;
 }
 .wish_item_img{
-  width:5rem;
-  height: 5rem;
+  position: relative;
+  width:15rem;
+  height: 15rem;
+}
+img{
+  position: relative;
+  width: 15rem;
+  height: 15rem;
+}
+.check_self{
+    position: absolute;
+    top: 20px;
+    right: 12px;
+}
+.check_qus{
+  content: "";
+  width: 24px;
+    height: 24px;
+    cursor: pointer;
+    position: absolute;
+    background: rgb(247, 47, 51);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(247, 47, 51);
+    border-image: initial;
+    transition: border 0.2s ease 0s, background-color 0.2s ease 0s;
+}
+.divsnost::before{
+  content: "";
+  width: 24px;
+    height: 24px;
+    cursor: pointer;
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(238, 238, 238);
+    border-image: initial;
+    transition: border 0.2s ease 0s, background-color 0.2s ease 0s;
+}
+.divsnost::after{
+  content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 2px;
+    width: 0px;
+    height: 0px;
+    transform: rotate(40deg);
+    transform-origin: 100% 100%;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    transition: width 0.1s ease-out 0s, height 0.1s ease-out 0.1s;
+}
+.nost::before{
+  content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 2px;
+    width: 8px;
+    height: 14px;
+    transform: rotate(40deg);
+    transform-origin: 100% 100%;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid rgb(204, 204, 204);
+    border-bottom: 2px solid rgb(204, 204, 204);
+}
+.nost::after{
+  content: "";
+    width: 8px;
+    height: 14px;
+    border-right: 2px solid rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(255, 255, 255);
+}
+.tung{
+  width:auto;
+  height: 100px;
 }
