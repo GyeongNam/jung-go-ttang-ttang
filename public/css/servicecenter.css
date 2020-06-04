@@ -1,0 +1,82 @@
+.headname{
+  align-items: center;
+}
+
+.service_content{
+  display: block;
+  width: 70%;
+  height: auto;
+  margin: auto;
+}
+
+.service_menu{
+  display: block;
+  height:auto%;
+}
+.tabbt{
+  display: flex;
+  width: auto;
+  height: 70%;
+}
+
+/* Style tab links */
+.tablink {
+  display: block;
+  color: black;
+  float: left;
+  border: none;
+  border-bottom: : black;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 35%;
+}
+
+.tablink:hover {
+  border-bottom: black;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#Home {background-color: #bdbdbd;}
+#News {background-color: #bdbdbd;}
+#Contact {background-color: #bdbdbd;}
+#About {background-color: #bdbdbd;}
+
+
+/* 아코디언 메뉴 */
+/* Style the buttons that are used to open and close the accordion panel */
+.accordionheader{
+
+}
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: #ffffff;
+  display: none;
+  overflow: hidden;
+}
+/* 아코디언 메뉴 끝 */
