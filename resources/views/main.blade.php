@@ -118,210 +118,50 @@
           <div class="best_item">
             <div class="item_list">
               <h2>인기상품</h2>
+              <!-- foreach ($variable as $key => $value) -->
               <div class="item">
                 <img src="/img/product.png" alt=""><br>
                 <a href="#">IPad Pro 64G 3세대</a><br>
                 <a href="#">상품가격 : </a>
                 <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick='sucess()'>
               </div>
-              <div class="item">
-                <img src="/img/product.png" alt=""><br>
-                <a href="#">IPad Pro 64G 3세대</a><br>
-                <a href="#">상품가격 : </a>
-                <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick="alert('즐겨찾기에 추가되었습니다!')">-->
-              </div>
-              <div class="item">
-                <img src="/img/product.png" alt=""><br>
-                <a href="#">IPad Pro 64G 3세대</a><br>
-                <a href="#">상품가격 : </a>
-                <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick="alert('즐겨찾기에 추가되었습니다!')">-->
-              </div>
-              <div class="item">
-                <img src="/img/product.png" alt=""><br>
-                <a href="#">IPad Pro 64G 3세대</a><br>
-                <a href="#">상품가격 : </a>
-                <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick="alert('즐겨찾기에 추가되었습니다!')">-->
-              </div>
-              <div class="item">
-                <img src="/img/product.png" alt=""><br>
-                <a href="#">IPad Pro 64G 3세대</a><br>
-                <a href="#">상품가격 : </a>
-                <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick="alert('즐겨찾기에 추가되었습니다!')">-->
-              </div>
-              <div class="item">
-                <img src="/img/product.png" alt=""><br>
-                <a href="#">IPad Pro 64G 3세대</a><br>
-                <a href="#">상품가격 : </a>
-                <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick="alert('즐겨찾기에 추가되었습니다!')">-->
-              </div>
+              <!-- endforeach; -->
             </div>
             <div class="item_list">
               <div class="list_hd">
                 <h2 id="man">남성의류 <a href="#">전체보기</a></h2>
               </div>
-
+              <!-- foreach ($variable as $key => $value) -->
               <div class="item">
                 <img src="/img/product.png" alt=""><br>
                 <a href="#">IPad Pro 64G 3세대</a>
                 <p>상품가격 : </p>
               </div>
-              <div class="item">
-                <img src="/img/iphone.png" alt=""><br>
-                <a href="#">iPhone 11 Pro 64G</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/iphone12.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/iphoneSE2.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/ipadair.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/e300.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/rbgini.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/house.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/switch.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/catfol.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
+              <!-- endforeach; -->
             </div>
             <div class="item_list">
               <div class="list_hd">
                 <h2 id="woman">여성의류 <a href="#">전체보기</a></h2>
               </div>
-
+              <!-- foreach ($variable as $key => $value) -->
               <div class="item">
                 <img src="/img/product.png" alt=""><br>
                 <a href="#">IPad Pro 64G 3세대</a>
                 <p>상품가격 : </p>
               </div>
-              <div class="item">
-                <img src="/img/iphone.png" alt=""><br>
-                <a href="#">iPhone 11 Pro 64G</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/iphone12.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/iphoneSE2.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/ipadair.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/e300.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/rbgini.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/house.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/switch.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/catfol.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
+              <!-- endforeach; -->
             </div>
             <div class="item_list">
               <div class="list_hd">
                 <h2 id="fashion">패션잡화 <a href="#">전체보기</a></h2>
               </div>
-
+              <!-- foreach ($variable as $key => $value) -->
               <div class="item">
                 <img src="/img/product.png" alt=""><br>
                 <a href="#">IPad Pro 64G 3세대</a>
                 <p>상품가격 : </p>
               </div>
-              <div class="item">
-                <img src="/img/iphone.png" alt=""><br>
-                <a href="#">iPhone 11 Pro 64G</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/iphone12.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/iphoneSE2.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/ipadair.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/e300.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/rbgini.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/house.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/switch.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
-              <div class="item">
-                <img src="/img/catfol.png" alt=""><br>
-                <a href="#">상품명을 입력하세요</a>
-                <p>상품가격 : </p>
-              </div>
+              <!-- endforeach; -->
             </div>
           </div>
         </div>
