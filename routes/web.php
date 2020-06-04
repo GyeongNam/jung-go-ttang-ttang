@@ -61,6 +61,9 @@ Route::get('/bidding-info', function () {
 Route::get('/wish_list', function(){
     return view('wish_list');
 });
+Route::get('/service', function(){
+    return view('service');
+});
 
 // user Controller
 Route::post('/singup', 'UserController@store');
