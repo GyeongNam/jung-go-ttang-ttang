@@ -98,19 +98,8 @@ document.getElementById("defaultOpen").click();
           <p>경매입찰 문의내역입니다.</p>
         </div>
         <div class="">
-          <button class="accordion" type="button" name="button">경매는 어떤 방식으로 이루어지나요??</button>
-          <div class="panel">
-            <p>Lorem ipsum dolor는 amet, condictetur adipisicing elit, sed do eiusmod tempor incididunt ut ee 및 dolore magna aliqua에 앉아 있습니다. 가장 좋은 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-          <button class="accordion" type="button" name="button">낙찰기준은 어떻게되나요?</button>
-          <div class="panel">
-            <p>Lorem ipsum dolor는 amet, condictetur adipisicing elit, sed do eiusmod tempor incididunt ut ee 및 dolore magna aliqua에 앉아 있습니다. 가장 좋은 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-          <button class="accordion" type="button" name="button">거래방법은 어떻게되나요??</button>
-          <div class="panel">
-            <p>Lorem ipsum dolor는 amet, condictetur adipisicing elit, sed do eiusmod tempor incididunt ut ee 및 dolore magna aliqua에 앉아 있습니다. 가장 좋은 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          </div>
-      </div>
+          
+        </div>
     </div>
   </div>
   <div class="tung"></div>
