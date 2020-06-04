@@ -301,9 +301,9 @@ function showSlides(n) {
   </div>
 </div>
 <script type="text/javascript">
-//경매 삭제 버튼(제발 제에발 건들지 말아주세요) 
+//경매 삭제 버튼(제발 제에발 건들지 말아주세요)
  $('#del_detailpage').click(function(){
-   if(confirm("경매를 삭제 하시겠습니까?<br>삭제된 경매는 낙찰 받을 수 없습니다!") == true){
+   if(confirm("경매를 삭제 하시겠습니까? 삭제된 경매는 낙찰 받을 수 없습니다!") == true){
        alert("삭제되었습니다.");
    }
   else{
