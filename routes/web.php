@@ -46,9 +46,9 @@ Route::get('/itemcheck', function () {
 Route::get('/item/product', function () {
     return view('product');
 });
-Route::get('/product-Modify', function(){
-   return view('product-Modify');
-});
+ Route::get('/product-Modify', function(){
+    return view('product-Modify');
+ });
 Route::get('/product-detail', function(){
    return view('product-detail');
 });
@@ -79,6 +79,8 @@ Route::get('/product-detail', 'ItemController@itemview')->middleware('login');
 //Route::get('/', 'ItemController@mainview');
 Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
 Route::get('/manclothing', 'ItemController@category');
+Route::post('/product-Modifystore', 'ItemController@product_update')->middleware('login');
+Route::get('/product-Modify', 'ItemController@sending_num');
 
 // auction Controller
 // Route::post(/auction_in, 'AuctionController@auction_in');

@@ -290,7 +290,10 @@ function showSlides(n) {
     </div>
     <div class="btn_cl">
       <div class="auction_revise">
-        <button type="button" name="button" onclick="location.href='product-Modify'">경매 수정</button>
+        <form class="" action="{{url('/product-Modify')}}" method="get">
+          <input type="hidden" name="item_key" value="{{$myproduct[0]->item_number}}">
+        <button type="submit" name="button"   >경매 수정</button>
+      </form>
       </div>
       <div class="auction_del">
         <button id="del_detailpage" type="button" name="button" >경매 삭제</button>

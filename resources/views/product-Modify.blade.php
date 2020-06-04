@@ -73,9 +73,9 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
 @endsection
 @section('content')
 <div class="">
-  <form class="" action="{{url('/product')}}" method="post" enctype="multipart/form-data">
+  <form class="" action="{{url('/product-Modifystore')}}" method="post" enctype="multipart/form-data">
     @csrf
-
+<input type="hidden" name="uwiei" value="{{$sending}}">
     <div class="contents">
       <div class="product_header">
         <h1>경매물품 등록 <span ><strong>*필수항목</strong></span></h1>
@@ -161,7 +161,7 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
               <span><strong>*</strong></span>경매 마감일자
             </div>
             <div class="p_info">
-                            <input id="datepicker" class="p_last_day" type="text" name="Auction_last_time" value=""  required>
+                            <input id="datepicker" class="p_last_day" type="datepicker" name="Auction_last_time" value=""  required>
             </div>
           </div>
         </li>
