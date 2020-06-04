@@ -8,8 +8,11 @@
 <script type="text/javascript">
 //변경하는 함수 테스트중 절대 건들지마셈
 
-var slideIndex = 0;
-showSlides(slideIndex);
+var slideIndex = 1; //이미지에 접근하는 인덱스
+window.onload = function(){ //문서가 로딩 된 이후 호출한다.
+  showSlides(slideIndex); //
+}
+
 
 function plusSlides(n) {
   showSlides(slideIndex += n);
@@ -17,19 +20,14 @@ function plusSlides(n) {
 
 function showSlides(n) {
   var i;
-  var slides = document.getElementsByClassName("mySlidess");
+  var slides = document.getElementsByClassName("mySlidess"); //mySlidess라는 클래스명을 가진 객체?를 불러온다.
   if (n > slides.length) {slideIndex = 1}
   if (n < 1) {slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+    slides[i].style.display = "none"; //반복문으로 전체 이미지를 display.none 로 감춘다.
   }
-
-  slides[slideIndex-1].style.display = "block";
+  slides[slideIndex-1].style.display = "block"; //block 처리를 해서 화면에 나타낸다.
 }
-
-// $('#del_detailpage').click(function(){
-//   alert("정말 경매를 삭제하시겠습니까? 삭제된 경매는 되돌릴 수 없습니다!");
-// })
 </script>
 @endsection
 @section('content')
