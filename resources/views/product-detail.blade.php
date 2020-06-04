@@ -27,6 +27,9 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
 }
 
+// $('#del_detailpage').click(function(){
+//   alert("정말 경매를 삭제하시겠습니까? 삭제된 경매는 되돌릴 수 없습니다!");
+// })
 </script>
 @endsection
 @section('content')
@@ -292,42 +295,20 @@ function showSlides(n) {
         <button type="button" name="button" onclick="location.href='product-Modify'">경매 수정</button>
       </div>
       <div class="auction_del">
-        <button id="del_detailpage" type="button" name="button">경매 삭제</button>
+        <button id="del_detailpage" type="button" name="button" >경매 삭제</button>
       </div>
     </div>
   </div>
 </div>
 <script type="text/javascript">
-
-$('#del_detailpage').click(function(){
-  alert("정말 경매를 삭제하시겠습니까?<br>
-  삭제된 경매는 되돌릴 수 없습니다!")
-})
-
-// var slideIndex = 0;  /*slideIndex 로 설정 */
-// showDivs(slideIndex); /* 첫번째 이미지를 표시하기 위해 showDivs 호출 */
-//
-// /*$(document).ready(function(){
-// showDivs(slideIndex += n);
-// });*/
-//
-// function plusDivs(n) { /* slideIndex에 하나를 추가한다. */
-//   showDivs(slideIndex += n);
-// }
-//
-// function showDivs(n) {
-//
-//   var i;
-//   var x = document.getElementsByClassName("mySlides");
-//   if (n > x.length) {slideIndex = 1}
-//   if (n < 1) {slideIndex = x.length} ;
-//   for (i = 0; i < x.length; i++) {
-//     x[i].style.display = "none";
-//   }
-//   x[slideIndex-1].style.display = "block";
-//
-// }
-
-
+//경매 삭제 버튼(제발 제에발 건들지 말아주세요) 
+ $('#del_detailpage').click(function(){
+   if(confirm("경매를 삭제 하시겠습니까?<br>삭제된 경매는 낙찰 받을 수 없습니다!") == true){
+       alert("삭제되었습니다.");
+   }
+  else{
+    return false;
+  }
+ });
 </script>
 @endsection
