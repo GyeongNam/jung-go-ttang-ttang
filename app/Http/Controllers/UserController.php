@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \App\Mail\SendMail;
@@ -22,7 +23,7 @@ class UserController extends Controller
         'body' => '인증번호를 확인하세요',
         'num' => $random
       ];
-      \Mail::to($mail)->send(new SendMail($details));
+      Mail::to($mail)->send(new SendMail($details));
     }
 
     public function idcheck(Request $request){
@@ -115,7 +116,7 @@ class UserController extends Controller
           'body' => '아이디를 확인하세요',
           'id' => $data[0]->ID
         ];
-        \Mail::to($mail)->send(new IDselect($details));
+        Mail::to($mail)->send(new IDselect($details));
       }
       return response()->json(['data'=>$datas]);
     }
@@ -133,7 +134,7 @@ class UserController extends Controller
           'body' => '비밀번호를 확인하세요',
           'pw' => $data[0]->PASSWORD
         ];
-        \Mail::to($mail)->send(new PWselect($details));
+        Mail::to($mail)->send(new PWselect($details));
       }
       return response()->json(['data'=>$datas]);
     }
