@@ -62,7 +62,7 @@ Route::get('/wish_list', function(){
     return view('wish_list');
 });
 Route::get('/service', function(){
-    return view('service');
+    return view('Servicecenter');
 });
 
 // user Controller

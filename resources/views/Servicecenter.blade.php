@@ -31,7 +31,6 @@
             </div>
           </div>
         </div>
-
       </div>
       <div class="wish_block">
         <div class="wish_info">
