@@ -146,10 +146,10 @@
     </div>
 @endforeach
   </div>
-  <!-- The Modal -->
+
   <div id="bidmyModal" class="bidmodal">
 
-    <!-- Modal content -->
+
     <div class="modal-bid">
       <div class="modal_bidheader">
         낙찰정보확인
@@ -159,7 +159,7 @@
           낙찰이 정상적으로 완료되었습니다!
         </div>
         <div class="nak_info">
-          <!--<div id="" class="nak_price">-->
+
           <div class="nak_p_lab">
             낙찰금액 :
           </div>
@@ -193,7 +193,7 @@
         </div>
       </div>
       <div class="">
-        <button class="close" id="del_per" type="button" name="button" >돌아가기</button>
+        <button class="close" id="del_per" type="button" name="button">돌아가기</button>
         <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
       </div>
 
@@ -203,7 +203,7 @@
 
   <div id="bidmyModa2" class="bidmoda2">
 
-    <!-- Modal content -->
+
     <div class="modal-bid">
       <div class="modal_bidheader">
         낙찰정보현황
@@ -214,7 +214,7 @@
         </div>
 
         <div class="nak_info">
-          <!--<div id="" class="nak_price">-->
+
           <span class="nak_p_lab">
             1위:
           </span>
@@ -247,26 +247,20 @@
 
   </div>
   <script type="text/javascript">
-  // Get the modal
   var modal = document.getElementById("bidmyModal");
-
-  // Get the button that opens the modal
   var btn = document.getElementById("bid_info_btn");
+  var bu = document.getElementsByClassName("close")[0]; //[0]이 붇는 이유  -> 클래스는 배열값으로 리턴받기 때문!
 
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close");
-
-  // When the user clicks the button, open the modal
+  // 버튼 클릭시 낙찰확인정보창 오픈
   btn.onclick = function() {
     modal.style.display = "block";
   }
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
+ // 버튼 클릭시 낙찰확인정보창 닫기
+  bu.onclick = function() {
     modal.style.display = "none";
   }
 
-  // When the user clicks anywhere outside of the modal, close it
+  // 낙찰확인정보창이 떴을때 창 외에 화면을 클릭시 모달창 닫기
   window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
@@ -280,7 +274,7 @@
   var btn2 = document.getElementById("bid_info_btn2");
 
   // Get the <span> element that closes the modal
-  var span2 = document.getElementsByClassName("close2");
+  var span2 = document.getElementsByClassName("close2")[0];
 
   // When the user clicks the button, open the modal
   btn2.onclick = function() {

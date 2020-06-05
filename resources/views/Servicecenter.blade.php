@@ -6,6 +6,7 @@
 
 @section('js')
 <script type="text/javascript">
+
 function openPage(pageName, elmnt, color) {
   // Hide all elements with class="tabcontent" by default */
   var i, tabcontent, tablinks;
@@ -14,23 +15,9 @@ function openPage(pageName, elmnt, color) {
     tabcontent[i].style.display = "none";
   }
 
-  // Remove the background color of all tablinks/buttons
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
-  }
-
   // Show the specific tab content
   document.getElementById(pageName).style.display = "block";
-
-  // Add the specific color to the button used to open the tab content
-  elmnt.style.backgroundColor = color;
 }
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-
-
 
 </script>
 
@@ -46,7 +33,7 @@ document.getElementById("defaultOpen").click();
     <div class="service_menu">
       <div class="tabbt">
         <button class="tablink" onclick="openPage('Home', this)">자주하는 질문</button>
-        <button class="tablink" onclick="openPage('News', this)" id="defaultOpen">경매/입찰문의</button>
+        <button class="tablink" onclick="openPage('News', this)">경매/입찰문의</button>
         <button class="tablink" onclick="openPage('Contact', this)">1:1상담</button>
       </div>
       <div id="Home" class="tabcontent">
@@ -73,7 +60,7 @@ document.getElementById("defaultOpen").click();
 
       <div id="News" class="tabcontent">
         <div class="accordionheader">
-          <h2>경매/입찰 문의</h2>
+          <h1>경매/입찰 문의</h1>
           <p>경매입찰 문의내역입니다.</p>
         </div>
         <div class="">
@@ -89,39 +76,37 @@ document.getElementById("defaultOpen").click();
           <div class="panel">
             <p>Lorem ipsum dolor는 amet, condictetur adipisicing elit, sed do eiusmod tempor incididunt ut ee 및 dolore magna aliqua에 앉아 있습니다. 가장 좋은 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
+        </div>
       </div>
-     </div>
 
       <div id="Contact" class="tabcontent">
         <div class="accordionheader">
-          <h2>1:1상담</h2>
+          <h1>1:1상담</h1>
           <p>경매입찰 문의내역입니다.</p>
         </div>
         <div class="">
-          
+
         </div>
+      </div>
     </div>
+    <div class="tung"></div>
   </div>
-  <div class="tung"></div>
-</div>
-<script type="text/javascript">
-var acc = document.getElementsByClassName("accordion");
-var i;
+  <script type="text/javascript">
+  var acc = document.getElementsByClassName("accordion");
+  var i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
 
-    /* Toggle between hiding and showing the active panel */
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
+      this.classList.toggle("active");
+
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
 </script>
 @endsection
