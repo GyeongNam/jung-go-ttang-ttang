@@ -61,7 +61,7 @@
           <a href="/itemcheck">경매 판매하기</a>
           <a href="/mypage">내 정보</a>
           <a href="/wish_list">내 관심</a>
-          <a href="#">쪽지</a>
+          <a href="/wish_list">쪽지</a>
         </div>
 
         <div class="nav_logo">
@@ -93,7 +93,7 @@
           </li>
           <li><a href="/itemcheck">경매 판매하기</a></li>
           <li><a href="/mypage">내 정보</a></li>
-          <li><a href="#">내 관심</a></li>
+          <li><a href="/wish_list">내 관심</a></li>
           <li><a href="#">쪽지</a></li>
         </ul>
 
