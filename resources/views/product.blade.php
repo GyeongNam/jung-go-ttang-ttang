@@ -45,8 +45,8 @@ function previewImage(f, divid){
     document.getElementById(divid).innerHTML = '';
   }
   // 확장자 체크
-   else if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){
-    alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name);
+   else if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){ //파일확장자 제한 정규식
+    alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name); //정규식에 없는 파일명이 선택될 경우 경고창 띄워짐
 
     // 선택한 파일 초기화
     f.outerHTML = f.outerHTML;
@@ -261,8 +261,6 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
                         <div class="pre6" id="bupreview"></div>
                       </div>
                     </div>
-                    <input type="file" name="files1" accept="image/*" onchange="previewImage(this, 'preview3')" />
-                    <div id="preview3"></div>
                   </div>
                 </div>
               </div>
