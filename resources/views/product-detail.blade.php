@@ -105,7 +105,8 @@ function showSlides(n) {
                 <div class="time isk">
                   <img src="/img/clock.png/" width="16" height="16" alt="업로드된시간">
                   <div class="time_num intf" name="">
-                    54분 전
+                    <p>{{date('F d,', strtotime($myproduct[0]->Created_at)) }}
+                     {{date('g:ia', strtotime($myproduct[0]->Created_at)) }}</p>
                   </div>
                 </div>
               </div>
