@@ -78,16 +78,6 @@ function openPage(pageName, elmnt, color) {
           </div>
         </div>
       </div>
-
-      <div id="Contact" class="tabcontent">
-        <div class="accordionheader">
-          <h1>1:1상담</h1>
-          <p>경매입찰 문의내역입니다.</p>
-        </div>
-        <div class="">
-
-        </div>
-      </div>
     </div>
     <div class="tung"></div>
   </div>
