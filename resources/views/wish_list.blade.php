@@ -19,6 +19,21 @@ $(function(){
   });
 });
 
+$(document).ready(function(){
+    //최상단 체크박스 클릭
+    $("#checkall").click(function(){
+        //클릭되었으면
+        if($("#checkall").prop("checked")){
+            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+            $("input[name=chk]").prop("checked",true);
+            //클릭이 안되있으면
+        }else{
+            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+            $("input[name=chk]").prop("checked",false);
+        }
+    })
+})
+
 </script>
 
 @endsection
@@ -34,7 +49,7 @@ $(function(){
       <div class="wish_tag">
         <div class="wish_btn">
           <div class="w_chack">
-            <button type="button" name="button">V</button>
+            <label>전체선택<input type="checkbox" id="checkall" /></label>
             <button class="sel_del" id="sel_delbt"type="button" name="button" onclick="delete_select">선택 삭제</button>
             <div class="hyper">
               <a href="#">최신순</a>
@@ -48,52 +63,48 @@ $(function(){
       <div class="wish_block">
         <div class="wish_info">
           <div class="wish_item_info">
-           <a href="#" class="prdt_link">
-             <div class="wish_item_img">
-             <img src="/img/item/릴카.png" alt="">
-             <div class="check_self">
-               <div class="check_qus nost divnost">
-                 ::before
-                 ::after
-               </div>
-             </div>
-           </div>
-           <div class="w_i_info">
-             <div class="w_i_pro_i">
-               <div class="wiproname">
-                 아이폰 프로 맥스
-               </div>
-               <div class="wiproprice">
-                 187,900원
-               </div>
-               <div class="wiprodate">
-                 5일전
-               </div>
-             </div>
-           </div>
-         </a>
+            <a href="#" class="prdt_link">
+              <div class="wish_item_img">
+                <input type="checkbox" name="chk" class="chackSelect" value="">
+                <img src="/img/item/릴카.png" alt="">
+              </div>
+              <div class="w_i_info">
+                <div class="w_i_pro_i">
+                  <div class="wiproname">
+                    아이폰 프로 맥스
+                  </div>
+                  <div class="wiproprice">
+                    187,900원
+                  </div>
+                  <div class="wiprodate">
+                    5일전
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
         <div class="wish_info">
           <div class="wish_item_info">
-           <a href="#" class="prdt_link">
-             <div class="wish_item_img">
-             <img src="/img/item/릴카.png" alt="">
-           </div>
-           <div class="w_i_info">
-             <div class="w_i_pro_i">
-               <div class="wiproname">
-                 아이폰 프로 맥스
-               </div>
-               <div class="wiproprice">
-                 187,900원
-               </div>
-               <div class="wiprodate">
-                 5일전
-               </div>
-             </div>
-           </div>
-         </a>
+            <a href="#" class="prdt_link">
+              <div class="wish_item_img">
+              <input type="checkbox" name="chk" class="chackSelect" value="">
+                <img src="/img/item/릴카.png" alt="">
+              </div>
+              <div class="w_i_info">
+                <div class="w_i_pro_i">
+                  <div class="wiproname">
+                    아이폰 프로 맥스
+                  </div>
+                  <div class="wiproprice">
+                    187,900원
+                  </div>
+                  <div class="wiprodate">
+                    5일전
+                  </div>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </div>

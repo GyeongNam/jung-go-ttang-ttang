@@ -11,6 +11,9 @@
   margin:30px auto;
   background: 5px, 5px;
 }
+.main_form{
+  margin:auto;
+}
 .right_side_form {
 
 }
@@ -153,9 +156,6 @@ h2{
   width: 1100px;
   height: auto;
 }
-#favorit{
-
-}
 
 .item_list{
   margin-left: 10px;
@@ -164,6 +164,7 @@ h2{
   width: 1110px;
   height: 700px;
   display: inline-block;
+  align-items: center;
 
 }
 

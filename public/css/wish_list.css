@@ -60,3 +60,8 @@ img{
   width:auto;
   height: 100px;
 }
+@media screen and (max-width:800px) {
+  .wish_block{
+    display: block;
+  }
+}
