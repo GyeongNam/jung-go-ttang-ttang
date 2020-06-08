@@ -8,7 +8,7 @@
 <script type="text/javascript">
 $(function(){
   $('#sel_delbt').click(function(){
-    var result = confirm('관심품목에서 삭제하시겠습니까?'); // 관심항목 삭제를 위한 선택창을 띄운다.
+    var result = confirm('선택된 항목을 관심품목에서 삭제하시겠습니까?'); // 관심항목 삭제를 위한 선택창을 띄운다.
 
     if(result) {
       //맞으면 아이템 삭제 (기능구현중)
