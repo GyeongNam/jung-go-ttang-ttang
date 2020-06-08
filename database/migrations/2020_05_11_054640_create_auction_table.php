@@ -18,7 +18,7 @@ class CreateAuctionTable extends Migration
             //$table->primary('auction_num');
             /*$table->integer('auction_itemnum');*/
             $table->string('buyer_ID');
-            $table->integer('item_price');
+            $table->integer('item_price')->nulluble();
             $table->rememberToken();
             $table->timestamps();
         });

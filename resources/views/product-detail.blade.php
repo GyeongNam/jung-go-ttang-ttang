@@ -173,8 +173,11 @@ function showSlides(n) {
                   <span class="click_Wlaact"> 찜목록에 추가되었습니다!</span>-->
                 </div>
               </div>
-              <button class="ckadu" type="button" name="rudaockadu"><a href = "bidding-info">경매참여 </a></button>
-              <button class="wjsghk"type="button" name="callseller">연락하기</button>
+              <form class="" action="{{url('/bidding-info')}}" method="get">
+                <input type="hidden" name="item_ki" value="{{$myproduct[0]->item_number}}">
+              <button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </a></button>
+            </form>
+            <button class="wjsghk"type="button" name="callseller">연락하기</button>
             </div>
           </div>
         </div>

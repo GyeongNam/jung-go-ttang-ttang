@@ -84,8 +84,8 @@ Route::get('/product-Modify', 'ItemController@sending_num');
 
 // auction Controller
 // Route::post(/auction_in, 'AuctionController@auction_in');
-// Route::post(/auction_in, 'AuctionController@auction_view');
-
+Route::get('/bidding-info', 'AuctionController@sendd');
+Route::post('/bidding-price', 'AuctionController@biddingprice');
 // mail
 Route::get('/mail', 'UserController@mailsend');
 Route::post('/selectid', 'UserController@selectid');

@@ -70,58 +70,55 @@
       </b></p>
         <p><b>00:00:00</b></p>
       <div class="exit">
+        <button type="submit" name="button">확인</button>
         <button type="button" name="button">닫기</button>
       </div>
     </div>
   </div>
+<form class="" name="bd_form" method="post" action="{{url('/bidding-price')}}" >
+@csrf
+<input type="hidden" name="num_s" value='{{$sendd[0]->item_number}}'>
 <div class="bd_layout">
   <div class="bd_form">
     <div class="bd_header">
-
-      <div class="bd_head">
-        <span class="bd_headname">입찰정보</span>
-
-      </div>
+        <div class="bd_head">
+          <span class="bd_headname">입찰정보</span>
+        </div>
     </div>
-<form class="" name="bd_form" method="post" onsubmit="return checking();">
   <div class="bd_if">
     <div class="bd_main">
-    <img class="bd_img" src="img/item/bora.png">
+    <img class="bd_img" src="/img/item/{{$sendd[0]->item_picture}}">
   </div>
   <div class="bd_main2">
     <div class="bd_name">
-      <span class="bd_name1">보라돌이</span>
+      <span class="bd_name1"></span>
     </div>
     <div class="bd_price">
       <span>현재가격:</span>
-      <span class="bd_price1" value="300000">300000</span>
+      <span class="bd_price1" value=""></span>
       <span>원</span>
     </div>
     <div class="bd_stprice">
       <span>시작가격:</span>
-      <span class="bd_stprice1" name="money1" >300000</span>
+      <span class="bd_stprice1" name="money1" >{{$sendd[0]->item_startprice}}</span>
       <span>원</span>
     </div>
     <div class="bd_bid">
       <span clsss="bid_pr"><b>낙찰할금액:</b></span>
       <input type="number" class="bid_name"  name="bdinput" placeholder="현재가격이상으로 설정해주세요">
-
     </div>
   </div>
-</div>
+  </div>
   <div class="but_head">
     <div class="bd_button">
       <button type="button" class="bd_but1">취소하기</button>
     </div>
     <div class="bd_button">
-      <button type="button"class="bd_but1" id="sus_but"  >입찰하기</button>
+      <button type="text"class="bd_but1" id="sus_but"  >입찰하기</button>
     </div>
-  </form>
+  </div>
   </div>
 </div>
 </div>
-
-
-
-</div>
+</form>
 @endsection
