@@ -184,10 +184,6 @@ function toggleImg() {
                     <span>72</span>
                   </button>
                 </div>
-                <div class="Wla">
-                  <!--<img src="/img/r_heart.png" alt="찜 아이콘" width="16" height="16">
-                  <span class="click_Wlaact"> 찜목록에 추가되었습니다!</span>-->
-                </div>
               </div>
               <form class="" action="{{url('/bidding-info')}}" method="get">
                 <input type="hidden" name="item_ki" value="{{$myproduct[0]->item_number}}">
