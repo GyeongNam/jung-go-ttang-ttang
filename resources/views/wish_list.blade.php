@@ -12,7 +12,7 @@ $(function(){
 
     if(result) {
       //맞으면 아이템 삭제 (기능구현중)
-      location.replace('wish_list.blade.php');
+      location.replace('wish_list');
     }else {
       //취소하면 페이지 그대로 유지
     }
