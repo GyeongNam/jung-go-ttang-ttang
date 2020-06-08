@@ -10,6 +10,21 @@
 @endsection
 @section('js')
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<script type="text/javascript">
+function toggleImg() {
+  var likhet = document.getElementById('likep');
+  console.log('likhet');
+      if(likhet.src.match("heart")) {
+        likhet.src="/img/b_gkxm.png";
+        alert("관심항목에 추가되었습니다.");
+
+      }
+      else if(likhet.src.match("b_gkxm")) {
+        likhet.src="/img/heart.png";
+        alert("관심항목에서 헤제되었습니다.");
+      }
+    }
+</script>
 @endsection
 
 @section('content')
@@ -120,10 +135,13 @@
               <h2>인기상품</h2>
               <!-- foreach ($variable as $key => $value) -->
               <div class="item">
-                <img src="/img/product.png" alt=""><br>
+                <img id="itmg" src="/img/product.png" alt=""><br>
                 <a href="#">IPad Pro 64G 3세대</a><br>
                 <a href="#">상품가격 : </a>
-                <input id="favorit" type="button" name="favorites" value="즐겨찾기" onclick='sucess()'>
+                <button   class="unWla" type="button" name="button" onclick="toggleImg()">
+                  <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16px" height="16px">
+                  <span>찜</span>
+                </button>
               </div>
               <!-- endforeach; -->
             </div>
@@ -133,9 +151,13 @@
               </div>
               <!-- foreach ($variable as $key => $value) -->
               <div class="item">
-                <img src="/img/product.png" alt=""><br>
+                <img id="itmg" src="/img/product.png" alt=""><br>
                 <a href="#">IPad Pro 64G 3세대</a>
                 <p>상품가격 : </p>
+                <button   class="unWla" type="button" name="button" onclick="toggleImg()">
+                  <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16px" height="16px">
+                  <span>찜</span>
+                </button>
               </div>
               <!-- endforeach; -->
             </div>
@@ -145,9 +167,13 @@
               </div>
               <!-- foreach ($variable as $key => $value) -->
               <div class="item">
-                <img src="/img/product.png" alt=""><br>
+                <img id="itmg" src="/img/product.png" alt=""><br>
                 <a href="#">IPad Pro 64G 3세대</a>
                 <p>상품가격 : </p>
+                <button   class="unWla" type="button" name="button" onclick="toggleImg()">
+                  <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16px" height="16px">
+                  <span>찜</span>
+                </button>
               </div>
               <!-- endforeach; -->
             </div>
@@ -157,9 +183,13 @@
               </div>
               <!-- foreach ($variable as $key => $value) -->
               <div class="item">
-                <img src="/img/product.png" alt=""><br>
+                <img id="itmg" src="/img/product.png" alt=""><br>
                 <a href="#">IPad Pro 64G 3세대</a>
                 <p>상품가격 : </p>
+                <button   class="unWla" type="button" name="button" onclick="toggleImg()">
+                  <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16px" height="16px">
+                  <span>찜</span>
+                </button>
               </div>
               <!-- endforeach; -->
             </div>

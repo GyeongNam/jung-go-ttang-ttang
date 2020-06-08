@@ -235,24 +235,6 @@
  }
 /* 상품정보, 댓글 페이지 끝*/
 
-/*  <원래 있던 ...> Fading animation */
-/* .fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-} */
-/* 여기 까지 원래 있던.. slideshow */
 @media screen and (max-width:800px) {
   .d_title{
     font-size: auto;

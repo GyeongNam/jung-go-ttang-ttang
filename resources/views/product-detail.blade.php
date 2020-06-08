@@ -32,6 +32,22 @@ function showSlides(n) {
   }
   slides[slideIndex-1].style.display = "block"; //block 처리를 해서 화면에 나타낸다.
 }
+
+function toggleImg() {
+  var likhet = document.getElementById('likep');
+  console.log('likhet');
+      if(likhet.src.match("heart")) {
+        likhet.src="/img/b_gkxm.png";
+        alert("관심항목에 추가되었습니다.");
+
+      }
+      else if(likhet.src.match("b_gkxm")) {
+        likhet.src="/img/heart.png";
+        alert("관심항목에서 헤제되었습니다.");
+      }
+    }
+
+
 </script>
 @endsection
 @section('content')
@@ -162,8 +178,8 @@ function showSlides(n) {
             <div class="bt_box">
               <div class="bt-Wla">
                 <div class="Wla_click">
-                  <button class="unWla" type="button" name="button">
-                    <img src="/img/b_heart.png" alt="찜 아이콘" width="16" height="16">
+                  <button   class="unWla" type="button" name="button" onclick="toggleImg()">
+                    <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
                     <span>찜</span>
                     <span>72</span>
                   </button>
