@@ -64,6 +64,12 @@ Route::get('/wish_list', function(){
 Route::get('/service', function(){
     return view('Servicecenter');
 });
+Route::get('/manager_main', function(){
+    return view('manager_main');
+});
+Route::get('/manager_item', function(){
+    return view('manager_item');
+});
 
 // user Controller
 Route::post('/singup', 'UserController@store');
