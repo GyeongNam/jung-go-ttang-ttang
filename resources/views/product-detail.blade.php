@@ -36,16 +36,16 @@ function showSlides(n) {
 function toggleImg() {
   var likhet = document.getElementById('likep');
   console.log('likhet');
-      if(likhet.src.match("heart")) {
-        likhet.src="/img/b_gkxm.png";
-        alert("관심항목에 추가되었습니다.");
+  if(likhet.src.match("heart")) {
+    likhet.src="/img/b_gkxm.png";
+    alert("관심항목에 추가되었습니다.");
 
-      }
-      else if(likhet.src.match("b_gkxm")) {
-        likhet.src="/img/heart.png";
-        alert("관심항목에서 헤제되었습니다.");
-      }
-    }
+  }
+  else if(likhet.src.match("b_gkxm")) {
+    likhet.src="/img/heart.png";
+    alert("관심항목에서 헤제되었습니다.");
+  }
+}
 
 
 </script>
@@ -177,19 +177,21 @@ function toggleImg() {
             </div>
             <div class="bt_box">
               <div class="bt-Wla">
-                <div class="Wla_click">
-                  <button   class="unWla" type="button" name="button" onclick="toggleImg()">
-                    <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
-                    <span>찜</span>
-                    <span>72</span>
-                  </button>
+                <form class="" action="{{url('/wish_lst')}}" method="get">
+                  <div class="Wla_click">
+                    <button   class="unWla" type="submit" name="likejim" value="{{$myproduct[0]->item_number}}" onclick="toggleImg()">
+                      <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
+                      <span>찜</span>
+                      <span>72</span>
+                    </button>
+                  </form>
                 </div>
               </div>
               <form class="" action="{{url('/bidding-info')}}" method="get">
                 <input type="hidden" name="item_ki" value="{{$myproduct[0]->item_number}}">
-              <button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </a></button>
-            </form>
-            <button class="wjsghk"type="button" name="callseller">연락하기</button>
+                <button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </a></button>
+              </form>
+              <button class="wjsghk"type="button" name="callseller">연락하기</button>
             </div>
           </div>
         </div>

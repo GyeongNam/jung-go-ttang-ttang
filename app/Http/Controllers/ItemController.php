@@ -247,4 +247,14 @@ class ItemController extends Controller
   public function item_update(Request $request){
 
   }
+
+  public function favorite_item(Request $request){
+    $id= session()->get('login_ID');
+    $item_num = $request->get('likejim');
+    $wish_itm = Item::select('item_name','item_startprice','item_picture')->where(['item_number'=>$item_num])->get();
+    return view ('wish_list',[
+      'item_num' => $item_num,
+      'wish_itm' => $wish_itm
+    ]);
+  }
 }

@@ -20,18 +20,18 @@ $(function(){
 });
 
 $(document).ready(function(){
-    //최상단 체크박스 클릭
-    $("#checkall").click(function(){
-        //클릭되었으면
-        if($("#checkall").prop("checked")){
-            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-            $("input[name=chk]").prop("checked",true);
-            //클릭이 안되있으면
-        }else{
-            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-            $("input[name=chk]").prop("checked",false);
-        }
-    })
+  //최상단 체크박스 클릭
+  $("#checkall").click(function(){
+    //클릭되었으면
+    if($("#checkall").prop("checked")){
+      //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+      $("input[name=chk]").prop("checked",true);
+      //클릭이 안되있으면
+    }else{
+      //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+      $("input[name=chk]").prop("checked",false);
+    }
+  })
 })
 
 </script>
@@ -62,19 +62,20 @@ $(document).ready(function(){
       </div>
       <div class="wish_block">
         <div class="wish_info">
+          @foreach ($wish_itm as $key => $value)
           <div class="wish_item_info">
             <a href="#" class="prdt_link">
               <div class="wish_item_img">
                 <input type="checkbox" name="chk" class="chackSelect" value="">
-                <img src="/img/item/릴카.png" alt="">
+                <img src="/img/item/{{$wish_itm[0]->item_picture}}" alt="" value="">
               </div>
               <div class="w_i_info">
                 <div class="w_i_pro_i">
                   <div class="wiproname">
-                    아이폰 프로 맥스
+                    {{$value->item_name}}
                   </div>
                   <div class="wiproprice">
-                    187,900원
+                    {{$value->item_startprice}}
                   </div>
                   <div class="wiprodate">
                     5일전
@@ -83,12 +84,13 @@ $(document).ready(function(){
               </div>
             </a>
           </div>
+          @endforeach
         </div>
         <div class="wish_info">
           <div class="wish_item_info">
             <a href="#" class="prdt_link">
               <div class="wish_item_img">
-              <input type="checkbox" name="chk" class="chackSelect" value="">
+                <input type="checkbox" name="chk" class="chackSelect" value="">
                 <img src="/img/item/릴카.png" alt="">
               </div>
               <div class="w_i_info">
