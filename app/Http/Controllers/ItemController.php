@@ -106,13 +106,8 @@ class ItemController extends Controller
   }
 
   public function product_update(Request $request){
-
-
     $uwiei= $request->get('uwiei');
-
-
     $id=session()->get('login_ID');
-
     $item_pic = $request->file('item_picture');
     $item_picture= $item_pic->getClientOriginalName();
     Image::make($item_pic)->save(public_path('/img/item/'.$item_picture));
@@ -170,8 +165,6 @@ class ItemController extends Controller
     else {
       $item_picturebehind = null;
     }
-
-
       $update=Item::where(['item_number'=> $uwiei])->update([
         'item_name'=> $request->get('product_name'),
         'item_maker'=> $request->get('product_maker'),
@@ -188,10 +181,10 @@ class ItemController extends Controller
         'item_picturerigth'=>$item_picturerigth,
         'item_picturebehind'=>$item_picturebehind,
         'item_info' =>$request->get('item_info')
-   ]);
+      ]);
    return redirect('/');
+   }
 
-}
   public function mainview(Request $request){
       //$top = 시간당 조회수가 높은 페이지에 item_nurnber를 가져온다
       $topview = Item::select('item_name', 'item_buy', 'item_picture')->where(['item_number'=>$top])->get();
@@ -204,22 +197,11 @@ class ItemController extends Controller
 
   public function myview(Request $request){
       $id = session()->get('login_ID');
-      //$m_Participation = 내가 참여한 경매의 물건번호
-      //$myParticipation = Item::select('item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['item_nurnber'=> $m_Participation])->get();
       $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> decrypt($id)])->get();
-      $Auction = Auction::select('buyer_ID', 'item_price','auction_itemnum')->where(['buyer_ID'=>decrypt($id)])->get();
-      if($Auction->isEmpty())
-      {
-        $myAuction = collect([]);
-      }
-      else {
-        for($ct = 0 ; $ct<count($Auction) ; $ct++){
-          $myAuction= Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['item_number'=>$Auction[$ct]->auction_itemnum])->get();
-        }
-      }
+      $Auction = Auction::join('items', 'items.item_number','=', 'auction.auction_itemnum')->select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['buyer_ID'=>decrypt($id)])->get();
       return view('itemcheck', [
         'myStat' => $myStat,
-        'myAuction' => $myAuction
+        'myAuction' => $Auction
       ]);
     }
 
