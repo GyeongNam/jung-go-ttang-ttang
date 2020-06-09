@@ -76,7 +76,7 @@
           </form>
         </div>
           <div class="price1">
-            {{$value->item_startprice}} 원
+            {{$value->item_price}} 원
           </div>
           @if ($value->item_success != 1 )
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Auction;
 use App\Item;
 
+
 class AuctionController extends Controller
 {
     public function auction_in(Request $request){
@@ -28,11 +29,10 @@ class AuctionController extends Controller
     public function biddingprice(Request $request){
       $bdp = $request->get('num_s');
       $id = session()->get('login_ID');
-      $data = Auction::all()->where(['auction_itemnum' => $bdp, 'buyer_ID'=>$id ]);
-
+      $data = Auction::select('*')->where(['auction_itemnum' => $bdp, 'buyer_ID'=>decrypt($id)])->get();
       if(count($data)>0)
       {
-        $update=Auction::where(['item_price'=>$bdp])->update([
+        $update=Auction::where(['auction_itemnum' => $bdp, 'buyer_ID'=>decrypt($id)])->update([
           'item_price' => $request->get('bdinput')
         ]);
         return redirect('/');

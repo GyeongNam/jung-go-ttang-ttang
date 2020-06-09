@@ -198,7 +198,15 @@ class ItemController extends Controller
   public function myview(Request $request){
       $id = session()->get('login_ID');
       $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> decrypt($id)])->get();
-      $Auction = Auction::join('items', 'items.item_number','=', 'auction.auction_itemnum')->select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['buyer_ID'=>decrypt($id)])->get();
+      $Auction = Auction::join('items', 'items.item_number','=', 'auction.auction_itemnum')->select(
+        'item_price',
+        'item_number',
+        'item_name',
+        'item_picture',
+        'item_startprice',
+        'item_success',
+        'success'
+        )->where(['buyer_ID'=>decrypt($id)])->get();
       return view('itemcheck', [
         'myStat' => $myStat,
         'myAuction' => $Auction
@@ -225,10 +233,6 @@ class ItemController extends Controller
           'cateF' => $cateF
         ]);
       }
-
-  public function item_update(Request $request){
-
-  }
 
   public function favorite_item(Request $request){
     $id= session()->get('login_ID');
