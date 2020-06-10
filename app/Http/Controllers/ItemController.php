@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Item;
 use App\User;
 use App\Auction;
+use App\Favorite;
 use Image;
 use Session;
 use DB;
@@ -236,10 +237,15 @@ class ItemController extends Controller
   public function favorite_item(Request $request){
     $id= session()->get('login_ID');
     $item_num = $request->get('likejim');
-    $wish_itm = Item::select('item_name','item_startprice','item_picture')->where(['item_number'=>$item_num])->get();
+    $favorite = new Favorite([
+      'favorite_itemnum'=>$request->get('likejim'),
+      'favorite_name'=>decrypt($id)
+    ]);
+    $favorite->save();
+    $wish_itm = Favorite::join('items','favorite.favorite_itemnum','=', 'items.item_number')->select('item_name','item_startprice','item_picture')->where(['favorite_itemnum'=>$item_num,'favorite_name'=>$id])->get();
     return view ('wish_list',[
-      'item_num' => $item_num,
       'wish_itm' => $wish_itm
     ]);
+
   }
 }
