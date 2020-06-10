@@ -213,10 +213,9 @@ class ItemController extends Controller
       ]);
     }
 
-  public function itemview(Request $request){
+  public function itemview($item_number){
       $id= session()->get('login_ID');
-      $item_num = $request->get('item_number');
-      $myproduct= Item::select('*')->where(['item_number'=>$item_num])->get();
+      $myproduct= Item::select('*')->where(['item_number'=>$item_number])->get();
       $data = User::select('user_image')->where(['id' =>  $myproduct[0]->seller_id])->get();
         return view('product-detail', [
         'myproduct' => $myproduct,

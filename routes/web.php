@@ -81,7 +81,7 @@ Route::post('/idcheck', 'UserController@idcheck');
 
 // item Controller
 Route::post('/product', 'ItemController@store');
-Route::get('/product-detail', 'ItemController@itemview')->middleware('login');
+Route::get('/product-detail/{item_number}', 'ItemController@itemview')->middleware('login');
 //Route::get('/', 'ItemController@mainview');
 Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
 Route::get('/manclothing', 'ItemController@category');
@@ -91,7 +91,7 @@ Route::get('/wish_lst', 'ItemController@favorite_item')->middleware('login');
 
 // auction Controller
 // Route::post(/auction_in, 'AuctionController@auction_in');
-Route::get('/bidding-info', 'AuctionController@sendd');
+Route::get('/bidding-info/{item_number}', 'AuctionController@sendd');
 Route::post('/bidding-price', 'AuctionController@biddingprice');
 // mail
 Route::get('/mail', 'UserController@mailsend');

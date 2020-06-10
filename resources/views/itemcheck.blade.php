@@ -67,13 +67,10 @@
       @foreach ($myAuction as $key => $value)
         <div class="it_if1">
         <div class="it_img">
-          <form class="" action="{{url('/product-detail')}}" method="get">
-            <button type="type="submit"" name="button">
-              <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
+            <button type="button" name="button">
+              <a href="/product-detail/{{$value->item_number}}"><img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img"></a>
             </button>
             <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
-            <input type="" name="item_number" value="{{$value->item_number}}">
-          </form>
         </div>
           <div class="price1">
             {{$value->item_price}} 원
@@ -109,13 +106,10 @@
 @foreach ($myStat as $key => $value)
   <div class="it_if2">
     <div class="it_img">
-      <form class="" action="{{url('/product-detail')}}" method="get">
-        <button type="type="submit"" name="button">
-          <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
+        <button type="button" name="button">
+          <a href="/product-detail/{{$value->item_number}}"><img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img"></a>
         </button>
         <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
-        <input type="" name="item_number" value="{{$value->item_number}}">
-      </form>
     </div>
       <div class="price1">
         {{$value->item_startprice}}원
