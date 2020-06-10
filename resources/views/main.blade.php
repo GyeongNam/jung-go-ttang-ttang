@@ -128,7 +128,7 @@
             </div>
             <div class="item_list">
               <div class="list_hd">
-                <h2 id="man">남성의류 <a href="/manclothing">전체보기</a></h2>
+                <h2 id="man">남성의류 <a href="/manclothing?id=남성의류">전체보기</a></h2>
               </div>
               <!-- foreach ($variable as $key => $value) -->
               <div class="item">
