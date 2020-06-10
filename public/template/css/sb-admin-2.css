@@ -150,6 +150,7 @@ sup {
   vertical-align: baseline;
 }
 
+
 sub {
   bottom: -.25em;
 }
@@ -1414,12 +1415,12 @@ pre code {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgb(217, 200, 205);
 }
 
 .table-hover tbody tr:hover {
   color: #858796;
-  background-color: rgba(0, 0, 0, 0.075);
+  background-color: rgb(146, 168, 226);
 }
 
 .table-primary,
@@ -1443,7 +1444,9 @@ pre code {
 .table-hover .table-primary:hover > th {
   background-color: #b7c7f2;
 }
-
+tr:hover{
+  background-color: rgb(165, 176, 228);
+}
 .table-secondary,
 .table-secondary > th,
 .table-secondary > td {
@@ -10995,4 +10998,7 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
+}
+.trhover{
+  background-color: rgb(171, 211, 237);
 }

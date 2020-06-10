@@ -70,6 +70,12 @@ Route::get('/manager_main', function(){
 Route::get('/manager_item', function(){
     return view('manager_item');
 });
+Route::get('/manager_user', function(){
+    return view('manager_user');
+});
+Route::get('/manager_tok', function(){
+    return view('manager_tok');
+});
 
 // user Controller
 Route::post('/singup', 'UserController@store');
