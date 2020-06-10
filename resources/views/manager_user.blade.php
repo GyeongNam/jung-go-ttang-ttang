@@ -181,7 +181,7 @@ $(function(){
 
           <!-- 관리자페이지 -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">상품관리</h1>
+            <h1 class="h3 mb-0 text-gray-800">회원관리</h1>
 
           </div>
 
@@ -195,20 +195,16 @@ $(function(){
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <button type="button" class="btn btn-danger" style= "float:right" >삭제하기</button>
-
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                      <tr >
-                        <th>상품번호</th>
-                        <th>상품이름</th>
-                        <th>경매시작가</th>
-                        <th>경매최고가</th>
+                      <tr>
+                        <th>아이디</th>
                         <th>이름</th>
                         <th>핸드폰</th>
-                        <th>경매등록일</th>
-                        <th>경매마감일</th>
-                        <th>낙찰여부</th>
+                        <th>이메일</th>
+                        <th>성별</th>
+                        <th>생년월일</th>
+                        <th>가입일</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -220,8 +216,7 @@ $(function(){
                         <td>2011/04/25</td>
                         <td>$320,800</td>
                         <td>2019/04/19</td>
-                        <td>2019/04/19</td>
-                        <td>O</td>
+
                       </tr>
                       <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
                         <td>Garrett Winters</td>
@@ -231,8 +226,7 @@ $(function(){
                         <td>2011/07/25</td>
                         <td>$170,750</td>
                         <td>2019/04/19</td>
-                        <td>2019/04/19</td>
-                        <td>O</td>
+
                       </tr>
                       <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
                         <td>Ashton Cox</td>
@@ -242,8 +236,7 @@ $(function(){
                         <td>2009/01/12</td>
                         <td>$86,000</td>
                         <td>2019/04/19</td>
-                        <td>2019/04/19</td>
-                        <td>O</td>
+
                       </tr>
                       <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
                         <td>Cedric Kelly</td>
@@ -253,8 +246,7 @@ $(function(){
                         <td>2012/03/29</td>
                         <td>$433,060</td>
                         <td>2019/04/19</td>
-                        <td>2019/04/19</td>
-                        <td>O</td>
+
                       </tr>
 
                     </tbody>

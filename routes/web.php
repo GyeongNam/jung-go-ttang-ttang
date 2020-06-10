@@ -70,6 +70,12 @@ Route::get('/manager_main', function(){
 Route::get('/manager_item', function(){
     return view('manager_item');
 });
+Route::get('/manager_user', function(){
+    return view('manager_user');
+});
+Route::get('/manager_tok', function(){
+    return view('manager_tok');
+});
 
 // user Controller
 Route::post('/singup', 'UserController@store');
@@ -81,7 +87,11 @@ Route::post('/idcheck', 'UserController@idcheck');
 
 // item Controller
 Route::post('/product', 'ItemController@store');
+<<<<<<< HEAD
 Route::get('/product-detail', 'ItemController@itemview');
+=======
+Route::get('/product-detail/{item_number}', 'ItemController@itemview')->middleware('login');
+>>>>>>> 9d3fedec0b795d8f5dd73e4205bd1bd2ff651adf
 //Route::get('/', 'ItemController@mainview');
 Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
 Route::get('/manclothing', 'ItemController@category');
@@ -91,7 +101,7 @@ Route::get('/wish_lst', 'ItemController@favorite_item')->middleware('login');
 
 // auction Controller
 // Route::post(/auction_in, 'AuctionController@auction_in');
-Route::get('/bidding-info', 'AuctionController@sendd');
+Route::get('/bidding-info/{item_number}', 'AuctionController@sendd');
 Route::post('/bidding-price', 'AuctionController@biddingprice');
 // mail
 Route::get('/mail', 'UserController@mailsend');

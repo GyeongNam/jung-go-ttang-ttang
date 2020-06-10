@@ -46,12 +46,9 @@
 
      <div class="m_info">
        <div class="m_img">
-         <form class="de_form" action="{{url('/product-detail')}}" method="get">
            <button type="type="class="de_but" submit"" name="button">
-             <img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img">
+              <a href="/product-detail/{{$value->item_number}}"><img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img"></a>
            </button>
-           <input type="hidden" name="item_number" value="{{$value->item_number}}">
-         </form>
           <div class="m_name">
           {{$value->item_name}}
           </div>

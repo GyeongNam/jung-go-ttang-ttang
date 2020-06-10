@@ -187,10 +187,7 @@ function toggleImg() {
                   </form>
                 </div>
               </div>
-              <form class="" action="{{url('/bidding-info')}}" method="get">
-                <input type="hidden" name="item_ki" value="{{$myproduct[0]->item_number}}">
-                <button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </a></button>
-              </form>
+                <a href="/bidding-info/{{$myproduct[0]->item_number}}"><button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </button></a>
               <button class="wjsghk"type="button" name="callseller">연락하기</button>
             </div>
           </div>

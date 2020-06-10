@@ -19,9 +19,8 @@ class AuctionController extends Controller
       $auction->save();
     }
 
-    public function sendd(Request $request){
-      $sendd = $request->get('item_ki');
-      $sendds = Item::select('item_number', 'item_picture', 'item_name', 'item_startprice')->where(['item_number'=>$sendd])->get();
+    public function sendd($item_number){
+      $sendds = Item::select('item_number', 'item_picture', 'item_name', 'item_startprice')->where(['item_number'=>$item_number])->get();
       return view('bidding-info', [
         'sendd' => $sendds
       ]);
