@@ -87,11 +87,8 @@ Route::post('/idcheck', 'UserController@idcheck');
 
 // item Controller
 Route::post('/product', 'ItemController@store');
-<<<<<<< HEAD
-Route::get('/product-detail', 'ItemController@itemview');
-=======
-Route::get('/product-detail/{item_number}', 'ItemController@itemview')->middleware('login');
->>>>>>> 9d3fedec0b795d8f5dd73e4205bd1bd2ff651adf
+Route::get('/product-detail/{item_number}', 'ItemController@itemview');
+
 //Route::get('/', 'ItemController@mainview');
 Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
 Route::get('/manclothing', 'ItemController@category');
