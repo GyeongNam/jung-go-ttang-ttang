@@ -43,7 +43,7 @@
       slideIndex = 1
 
     }
-    if (n < 0) {
+    if (n < 1) {
       slideIndex = slides.length //배열값 초기화
     }
     for (var i = 0; i < slides.length; i++) {
@@ -63,36 +63,36 @@
               <div class="mySlidess fade">
                 <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picture}}" alt=""  val=""/>
               </div>
-              {{-- @if($myproduct[0]->item_pictureup != null) --}}
+              @if($myproduct[0]->item_pictureup != null)
                 <div class="mySlidess fade">
                   <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureup}}" alt=""  val=""/>
                 </div>
-              {{-- @endif --}}
-              {{-- @if($myproduct[0]->item_picturebackp != null) --}}
+               @endif
+               @if($myproduct[0]->item_pictureback != null)
                 <div class="mySlidess fade">
                   <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureback}}" alt=""  val=""/>
                 </div>
-              {{-- @endif --}}
-              {{-- @if($myproduct[0]->item_picturedown != null) --}}
+              @endif
+              @if($myproduct[0]->item_picturebehind != null)
                 <div class="mySlidess fade">
                   <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturebehind}}" alt=""  val=""/>
                 </div>
-              {{-- @endif --}}
-              {{-- @if($myproduct[0]->item_picturefront != null) --}}
+              @endif
+              @if($myproduct[0]->item_picturefront != null)
                 <div class="mySlidess fade">
                   <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturefront}}" alt=""  val=""/>
                 </div>
-              {{-- @endif --}}
-              {{-- @if($myproduct[0]->item_pictureleft != null) --}}
+              @endif
+              @if($myproduct[0]->item_pictureleft != null)
                 <div class="mySlidess fade">
                   <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureleft}}" alt=""  val=""/>
                 </div>
-              {{-- @endif --}}
-              {{-- @if($myproduct[0]->item_pictureright != null) --}}
+              @endif
+              @if($myproduct[0]->item_picturerigth != null)
                 <div class="mySlidess fade">
-                  <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureright}}" alt=""  val=""/>
+                  <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturerigth}}" alt=""  val=""/>
                 </div>
-              {{-- @endif --}}
+              @endif
               <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
               <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>

@@ -20,7 +20,7 @@ class Item extends Model
       'item_pictureback',
       'item_pictureleft',
       'item_picturefront',
-      'item_pictureright',
+      'item_picturerigth',
       'item_picturebehind',
       'item_info',
       'item_startday',
