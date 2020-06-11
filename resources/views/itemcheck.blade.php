@@ -1,3 +1,4 @@
+
 @extends('layout.layout_main')
 
 @section('title')
@@ -22,16 +23,22 @@
      $(".on").css("background-color","rgb(39, 188, 198)");
      $(".on1").css("background-color","rgb(147, 139, 142)");
    });
- });
-
- $(function(){
    $(".on1").on("click",function(){
      $(".it_if2").hide();
      $(".it_if1").show();
      $(".on").css("background-color","rgb(147, 139, 142)");
      $(".on1").css("background-color","rgb(39, 188, 198)");
    });
+   $(".bid_info_btn").click(function(){
+     $("#bidmyModal").fadeIn();
+     $("#del_per").click(function(){
+    $("#bidmyModal").fadeOut();
+     });
+   });
  });
+
+
+
 
 
  </script>
@@ -84,7 +91,7 @@
         @else
           <div class="state1">
               낙찰
-                <button type="button" id="bid_info_btn" name="button">낙찰정보 확인</button>
+              <button type="button" id="bid_info_btn" class="bid_info_btn" name="button">낙찰정보 확인</button>
               <div class="delete_btn">
 
               </div>
@@ -103,6 +110,7 @@
         </div>
             @endforeach
       {{-- 내가올린경매 --}}
+
 @foreach ($myStat as $key => $value)
   <div class="it_if2">
     <div class="it_img">
@@ -115,19 +123,22 @@
         {{$value->item_startprice}}원
       </div>
       @if ($value->item_success == 1 )
+
       <div class="state1">
         <span>진행중</span>
           <p><button class="hide_but">판매종료</button></p>
+
       </div>
     @else
       <div class="state1">
         판매종료
-        <button type="button" id="bid_info_btn2" name="button">낙찰현황확인</button>
+        <button type="button" id="bid_info_btn2" class="bid_info_btn2" name="button">낙찰현황확인</button>
       </div>
         @endif
         @if ($value->success != 1)
           <div class="yesorno">
             <span>O</span>
+
           </div>
       @else
         <div class="yesorno">
@@ -137,6 +148,7 @@
     </div>
 @endforeach
   </div>
+
 
   <div id="bidmyModal" class="bidmodal">
     <div class="modal-bid">
@@ -153,7 +165,7 @@
             낙찰금액 :
           </div>
           <div class="nak_p">
-            130,000
+            {{$myAuction[0]->item_price}}
           </div>
         <!--</div>-->
           <div class="nak_naeyong">
@@ -166,7 +178,7 @@
                 경매 판매자 :
               </div>
               <div class="nak_people">
-                민프로**
+                {{$myAuction[0]->seller_id}}
               </div>
             </div>
             <div class="nak_time">
@@ -185,10 +197,15 @@
         <button class="close" id="del_per" type="button" name="button">돌아가기</button>
         <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
       </div>
+
     </div>
+
   </div>
 
+
   <div id="bidmyModa2" class="bidmoda2">
+
+
     <div class="modal-bid">
       <div class="modal_bidheader">
         낙찰정보현황
@@ -197,7 +214,9 @@
         <div class="nakchalgood">
           1순위부터 5순위까지 확인해 주세요!
         </div>
+
         <div class="nak_info">
+
           <span class="nak_p_lab">
             1위:
           </span>
@@ -217,16 +236,19 @@
             <button>쪽지하기</button>
           </span>
           </div>
+
         </div>
+
       </div>
       <div class="">
         <button class="close2" id="del_per" type="button" name="button" >돌아가기</button>
         <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
       </div>
-    </div>
-  </div>
 
-  <script type="text/javascript">
+    </div>
+
+  </div>
+  {{-- <script type="text/javascript">
   var modal = document.getElementById("bidmyModal");
   var btn = document.getElementById("bid_info_btn");
   var bu = document.getElementsByClassName("close")[0]; //[0]이 붇는 이유  -> 클래스는 배열값으로 리턴받기 때문!
@@ -247,10 +269,13 @@
     }
   }
 
+
   // Get the modal
   var modal2 = document.getElementById("bidmyModa2");
+
   // Get the button that opens the modal
   var btn2 = document.getElementById("bid_info_btn2");
+
   // Get the <span> element that closes the modal
   var span2 = document.getElementsByClassName("close2")[0];
 
@@ -270,5 +295,5 @@
       modal2.style.display = "none";
     }
   }
-  </script>
+  </script> --}}
 @endsection

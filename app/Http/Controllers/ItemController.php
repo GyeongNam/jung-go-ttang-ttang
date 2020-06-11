@@ -206,7 +206,8 @@ class ItemController extends Controller
         'item_picture',
         'item_startprice',
         'item_success',
-        'success'
+        'success',
+        'seller_id'
         )->where(['buyer_ID'=>decrypt($id)])->get();
       return view('itemcheck', [
         'myStat' => $myStat,
