@@ -35,7 +35,13 @@
     $("#bidmyModal").fadeOut();
      });
    });
+   $(".bid_info_btn2").click(function(){
+     $("#bidmyModa2").fadeIn();
+     $("#del_per2").click(function(){
+    $("#bidmyModa2").fadeOut();
  });
+});
+});
 
 
 
@@ -149,7 +155,6 @@
 @endforeach
   </div>
 
-
   <div id="bidmyModal" class="bidmodal">
     <div class="modal-bid">
       <div class="modal_bidheader">
@@ -165,7 +170,7 @@
             낙찰금액 :
           </div>
           <div class="nak_p">
-            {{$myAuction[0]->item_price}}
+            {{$myAuction[0] ->item_price}}
           </div>
         <!--</div>-->
           <div class="nak_naeyong">
@@ -173,6 +178,7 @@
             <div class="nak_sunwe">
               1순위
             </div>
+
             <div class="nak_name">
               <div class="nak_seller">
                 경매 판매자 :
@@ -197,15 +203,10 @@
         <button class="close" id="del_per" type="button" name="button">돌아가기</button>
         <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
       </div>
-
     </div>
-
   </div>
 
-
   <div id="bidmyModa2" class="bidmoda2">
-
-
     <div class="modal-bid">
       <div class="modal_bidheader">
         낙찰정보현황
@@ -214,15 +215,25 @@
         <div class="nakchalgood">
           1순위부터 5순위까지 확인해 주세요!
         </div>
-
         <div class="nak_info">
-
-          <span class="nak_p_lab">
+          <div class="nak_p_lab">
             1위:
           </span>
-          <span class="nak_p">
-            minpro
-          </span>
+          <div class="nak_p_lab">
+            2위:
+          </div>
+          <div class="nak_p_lab">
+            3위:
+          </div>
+          <sdiv class="nak_p_lab">
+            4위:
+          </div>
+          <div class="nak_p_lab">
+            5위:
+          </div>
+          <div class="nak_p">
+            당첨자:minpro
+          </div>
           <span class="nak_p_lab">
             낙찰가:
           </span>
@@ -232,22 +243,16 @@
           <span class="nak_p_lab">
              원
           </span>
-          <span class="nak_p_lab">
-            <button>쪽지하기</button>
-          </span>
-          </div>
-
         </div>
-
       </div>
+
       <div class="">
-        <button class="close2" id="del_per" type="button" name="button" >돌아가기</button>
+        <button class="close2" id="del_per2" type="button" name="button" >돌아가기</button>
         <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
       </div>
-
     </div>
-
   </div>
+</div>
   {{-- <script type="text/javascript">
   var modal = document.getElementById("bidmyModal");
   var btn = document.getElementById("bid_info_btn");
