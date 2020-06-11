@@ -218,19 +218,14 @@ function toggleImg() {
               <div class="otr_prod_item_label">
                 <span>판매자가 경매중인 물품</span>
               </div>
+              @foreach($myproduct as $key => $value)
               <div class="otr_prod_item" cursor:pointer; onclick="localhost/">
-                <img class="otr_prod_item_img" name="" src="/img/product.png" alt="">
+                <img class="otr_prod_item_img" name="" src="{{$value->item_number}}" alt="">
                 <div class="otr_prod_item_np">
                   <span class="otr_name" name="">아이폰11pro</span><br>
                   <span class="otr_price" name="">현재가격 : 600,000</span>
                 </div>
-              </div>
-              <div class="otr_prod_item" cursor:pointer; onclick="localhost/">
-                <img class="otr_prod_item_img" name="" src="/img/product.png" alt="">
-                <div class="otr_prod_item_np">
-                  <span class="otr_name" name="">갤럭시노트10+</span><br>
-                  <span class="otr_price" name="">현재가격 : 520,000</span>
-                </div>
+              @endforeach
               </div>
             </div>
           </div>
@@ -242,18 +237,6 @@ function toggleImg() {
             <div class="label">연관상품</div>
           </div>
           <div class="other_item">
-            <div class="otitm">
-              <img src="/img/product.png" alt="" width="150" height="150">
-            </div>
-            <div class="otitm">
-              <img src="/img/product.png" alt="" width="150" height="150">
-            </div>
-            <div class="otitm">
-              <img src="/img/product.png" alt="" width="150" height="150">
-            </div>
-            <div class="otitm">
-              <img src="/img/product.png" alt="" width="150" height="150">
-            </div>
             <div class="otitm">
               <img src="/img/product.png" alt="" width="150" height="150">
             </div>
