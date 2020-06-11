@@ -217,10 +217,12 @@ class ItemController extends Controller
   public function itemview($item_number){
       $id= session()->get('login_ID');
       $myproduct= Item::select('*')->where(['item_number'=>$item_number])->get();
+      $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=>$myproduct[0]->seller_id])->get();
       $data = User::select('user_image')->where(['id' =>  $myproduct[0]->seller_id])->get();
         return view('product-detail', [
         'myproduct' => $myproduct,
-        'data'=>$data
+        'data'=>$data,
+        'myStat'=>$myStat
       ]);
     }
 

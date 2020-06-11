@@ -218,14 +218,15 @@ function toggleImg() {
               <div class="otr_prod_item_label">
                 <span>판매자가 경매중인 물품</span>
               </div>
-              @foreach($myproduct as $key => $value)
-              <div class="otr_prod_item" cursor:pointer; onclick="localhost/">
-                <img class="otr_prod_item_img" name="" src="{{$value->item_number}}" alt="">
+              @for($key=0; $key<3; $key++)
+              <div class="otr_prod_item">
+                <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
                 <div class="otr_prod_item_np">
-                  <span class="otr_name" name="">아이폰11pro</span><br>
-                  <span class="otr_price" name="">현재가격 : 600,000</span>
+                  <span class="otr_name" name="">{{$myStat[$key]->item_name}}</span><br>
+                  <span class="otr_price" name="">현재가격 : {{$myStat[$key]->item_startprice}}</span>
                 </div>
-              @endforeach
+              </div>
+              @endfor
               </div>
             </div>
           </div>
