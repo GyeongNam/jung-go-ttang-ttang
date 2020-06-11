@@ -21,8 +21,11 @@ class AuctionController extends Controller
 
     public function sendd($item_number){
       $sendds = Item::select('item_number', 'item_picture', 'item_name', 'item_startprice')->where(['item_number'=>$item_number])->get();
+      $max = Auction::select('item_price')->where(['auction_itemnum'=>$item_number])->get();
+      $maxs =  $max->max('item_price');
       return view('bidding-info', [
-        'sendd' => $sendds
+        'sendd' => $sendds,
+        'max' => $maxs
       ]);
 }
     public function biddingprice(Request $request){
@@ -48,3 +51,4 @@ class AuctionController extends Controller
     }
     //  $price = Auction::all()->max('price')->get();
 }
+//

@@ -74,20 +74,20 @@
             <div class="dropdown">
               <a class="dropbtn">전체 카테고리</a>
               <div class="dropdown-content">
-                <a href="manclothing?id=남성의류">남성의류</a>
-                <a href="manclothing?id=여성의류">여성의류</a>
-                <a href="manclothing?id=패션잡화">패션잡화</a>
-                <a href="manclothing?id=뷰티미용">뷰티미용</a>
-                <a href="manclothing?id=유아용/출산">유아용/출산</a>
-                <a href="manclothing?id=모바일/태블릿">모바일/태블릿</a>
-                <a href="manclothing?id=가전제품">가전제품</a>
-                <a href="manclothing?id=노트북/데스크탑">노트북/데스크탑</a>
-                <a href="manclothing?id=카메라/캠코더">카메라/캠코더</a>
-                <a href="manclothing?id=가구/인테리어">가구/인테리어</a>
-                <a href="manclothing?id=리빙/생활">리빙/생활</a>
-                <a href="manclothing?id=도서/음반/문구">도서/음반/문구</a>
-                <a href="manclothing?id=티켓/쿠폰">티켓/쿠폰</a>
-                <a href="manclothing?id=스포츠">스포츠</a>
+                <a href="/manclothing?id=남성의류">남성의류</a>
+                <a href="/manclothing?id=여성의류">여성의류</a>
+                <a href="/manclothing?id=패션잡화">패션잡화</a>
+                <a href="/manclothing?id=뷰티미용">뷰티미용</a>
+                <a href="/manclothing?id=유아용/출산">유아용/출산</a>
+                <a href="/manclothing?id=모바일/태블릿">모바일/태블릿</a>
+                <a href="/manclothing?id=가전제품">가전제품</a>
+                <a href="/manclothing?id=노트북/데스크탑">노트북/데스크탑</a>
+                <a href="/manclothing?id=카메라/캠코더">카메라/캠코더</a>
+                <a href="/manclothing?id=가구/인테리어">가구/인테리어</a>
+                <a href="/manclothing?id=리빙/생활">리빙/생활</a>
+                <a href="/manclothing?id=도서/음반/문구">도서/음반/문구</a>
+                <a href="/manclothing?id=티켓/쿠폰">티켓/쿠폰</a>
+                <a href="/manclothing?id=스포츠">스포츠</a>
               </div>
             </div>
           </li>

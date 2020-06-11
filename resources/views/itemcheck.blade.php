@@ -115,11 +115,9 @@
         {{$value->item_startprice}}원
       </div>
       @if ($value->item_success == 1 )
-
       <div class="state1">
         <span>진행중</span>
           <p><button class="hide_but">판매종료</button></p>
-
       </div>
     @else
       <div class="state1">
@@ -130,7 +128,6 @@
         @if ($value->success != 1)
           <div class="yesorno">
             <span>O</span>
-
           </div>
       @else
         <div class="yesorno">
@@ -142,8 +139,6 @@
   </div>
 
   <div id="bidmyModal" class="bidmodal">
-
-
     <div class="modal-bid">
       <div class="modal_bidheader">
         낙찰정보확인
@@ -190,14 +185,10 @@
         <button class="close" id="del_per" type="button" name="button">돌아가기</button>
         <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
       </div>
-
     </div>
-
   </div>
 
   <div id="bidmyModa2" class="bidmoda2">
-
-
     <div class="modal-bid">
       <div class="modal_bidheader">
         낙찰정보현황
@@ -206,9 +197,7 @@
         <div class="nakchalgood">
           1순위부터 5순위까지 확인해 주세요!
         </div>
-
         <div class="nak_info">
-
           <span class="nak_p_lab">
             1위:
           </span>
@@ -228,18 +217,15 @@
             <button>쪽지하기</button>
           </span>
           </div>
-
         </div>
-
       </div>
       <div class="">
         <button class="close2" id="del_per" type="button" name="button" >돌아가기</button>
         <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
       </div>
-
     </div>
-
   </div>
+
   <script type="text/javascript">
   var modal = document.getElementById("bidmyModal");
   var btn = document.getElementById("bid_info_btn");
@@ -263,10 +249,8 @@
 
   // Get the modal
   var modal2 = document.getElementById("bidmyModa2");
-
   // Get the button that opens the modal
   var btn2 = document.getElementById("bid_info_btn2");
-
   // Get the <span> element that closes the modal
   var span2 = document.getElementsByClassName("close2")[0];
 

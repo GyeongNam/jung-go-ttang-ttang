@@ -95,8 +95,8 @@
     </div>
     <div class="bd_price">
       <span>현재가격:</span>
-      <span class="bd_price1" value=""></span>
-      <span>원</span>
+      <span class="bd_price1" value=""> {{$max}} </span>
+      <span> 원</span>
     </div>
     <div class="bd_stprice">
       <span>시작가격:</span>
