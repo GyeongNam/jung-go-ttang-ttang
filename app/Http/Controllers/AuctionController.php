@@ -27,7 +27,8 @@ class AuctionController extends Controller
         'sendd' => $sendds,
         'max' => $maxs
       ]);
-}
+    }
+
     public function biddingprice(Request $request){
       $bdp = $request->get('num_s');
       $id = session()->get('login_ID');
@@ -49,6 +50,6 @@ class AuctionController extends Controller
         return redirect('/');
       }
     }
-    //  $price = Auction::all()->max('price')->get();
+  
 }
 //
