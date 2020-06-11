@@ -227,7 +227,7 @@
                 <div class="otr_prod_item_label">
                   <span>판매자가 경매중인 물품</span>
                 </div>
-                @for($key=0; $key<3; $key++)
+                @for($key=0; $key < 3; $key++)
                   <div class="otr_prod_item">
                     <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
                     <div class="otr_prod_item_np">
