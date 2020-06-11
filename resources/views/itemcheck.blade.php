@@ -165,7 +165,9 @@
             낙찰금액 :
           </div>
           <div class="nak_p">
+            @if(count($myAuction)>0)
             {{$myAuction[0]->item_price}}
+            @endif
           </div>
         <!--</div>-->
           <div class="nak_naeyong">
@@ -178,7 +180,9 @@
                 경매 판매자 :
               </div>
               <div class="nak_people">
+                @if(count($myAuction)>0)
                 {{$myAuction[0]->seller_id}}
+                @endif
               </div>
             </div>
             <div class="nak_time">

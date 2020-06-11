@@ -16,8 +16,8 @@ use Image;
 class UserController extends Controller
 {
     public function mailsend(Request $request){
-      $mail = $request->get('mail');
-      $random = $request->get('random');
+      $mail = $request->input('mail');
+      $random = $request->input('random');
       $details = [
         'title' => '안녕하세요 고객님',
         'body' => '인증번호를 확인하세요',
@@ -27,29 +27,29 @@ class UserController extends Controller
     }
 
     public function idcheck(Request $request){
-      $id = $request->get('id');
+      $id = $request->input('id');
       $data = User::select('ID')->where(['id'=>$id])->get()->count();
       return response()->json(['data'=>$data]);
     }
 
     public function store(Request $request){
       $user = new user([
-        'id' => $request->get('user_id'),
-        'password'=> $request->get('userPwd'),
-        'name' => $request->get('userName'),
-        'birthday'=> $request->get('birthday'),
-        'gender'=> $request->get('gender'),
-        'email'=> $request->get('str_email01'),
-        'email_domain'=>$request->get('str_email02'),
-      	'phone'=> $request->get('tel')
+        'id' => $request->input('user_id'),
+        'password'=> $request->input('userPwd'),
+        'name' => $request->input('userName'),
+        'birthday'=> $request->input('birthday'),
+        'gender'=> $request->input('gender'),
+        'email'=> $request->input('str_email01'),
+        'email_domain'=>$request->input('str_email02'),
+      	'phone'=> $request->input('tel')
       ]);
       $user->save();
       return view('login.login');
     }
 
     public function loging(Request $request){
-      $id = $request->get('id');
-      $pwd = $request->get('PW');
+      $id = $request->input('id');
+      $pwd = $request->input('PW');
       $data = User::select('ID','PASSWORD','NAME')->where(['id'=>$id,'password'=>$pwd])->get();
 
       if(count($data)>0){
@@ -77,11 +77,11 @@ class UserController extends Controller
 
     public function mypage_update(Request $request){
       $id = session()->get('login_ID');
-      $email = $request->get('str_email01');
-      $email_domain = $request->get('str_email02');
-      $phone = $request->get('phone');
-      $birthday = $request->get('birthday');
-      $gender = $request->get('gender');
+      $email = $request->input('str_email01');
+      $email_domain = $request->input('str_email02');
+      $phone = $request->input('phone');
+      $birthday = $request->input('birthday');
+      $gender = $request->input('gender');
       $user_image = $request->file('user_image');
 
       $extension= $user_image->getClientOriginalName();  //\time() . '.' .
@@ -105,8 +105,8 @@ class UserController extends Controller
     }
 
     public function selectid(Request $request){
-      $name = $request->get('names');
-      $phone = $request->get('phone');
+      $name = $request->input('names');
+      $phone = $request->input('phone');
       $data = User::select('ID', 'email', 'email_domain')->where(['name'=> $name, 'phone'=> $phone])->get();
       $datas = count($data);
       if($datas>0){
@@ -122,8 +122,8 @@ class UserController extends Controller
     }
 
     public function selectpw(Request $request){
-      $id = $request->get('id');
-      $phone = $request->get('phone');
+      $id = $request->input('id');
+      $phone = $request->input('phone');
 
       $data = User::select('PASSWORD', 'email', 'email_domain')->where(['id'=> $id, 'phone'=> $phone])->get();
       $datas = count($data);

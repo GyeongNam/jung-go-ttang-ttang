@@ -195,7 +195,7 @@ function chkpw(){
           </li>
           <li>
             <label><strong>아이디</strong><br>
-              <input type="text" name="user_id" id="new_id" onkeyup="check()" minlength=6 maxlength=20 required class="id_b">
+              <input type="text" name="user_id" id="new_id" onblur="check()" minlength=6 maxlength=20 required class="id_b">
               <p><spen id= "id_result" >아이디 중복확인</spen></p>
             </label>
           </li>

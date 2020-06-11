@@ -74,12 +74,12 @@ class ItemController extends Controller
       }
 
       $item = new Item([
-        'item_name' => $request->get('product_name'),
-        'item_maker' => $request->get('product_maker'),
-        'item_buy' => $request->get('product_buy'),
-        'item_category' => $request->get('product_category'),
-        'item_open' => $request->get('select_state'),
-        'item_deadline' => $request->get('Auction_last_time'),
+        'item_name' => $request->input('product_name'),
+        'item_maker' => $request->input('product_maker'),
+        'item_buy' => $request->input('product_buy'),
+        'item_category' => $request->input('product_category'),
+        'item_open' => $request->input('select_state'),
+        'item_deadline' => $request->input('Auction_last_time'),
         'item_startday' => date('Y-m-d'),
         'item_picture' => $item_picture,
         'item_pictureup' => $item_pictureup,
@@ -88,8 +88,8 @@ class ItemController extends Controller
         'item_picturerigth' => $item_picturerigth,
         'item_picturebehind' => $item_picturebehind,
         'item_picturefront' => $item_picturefront,
-        'item_info' => $request->get('item_info'),
-        'item_startprice' => $request->get('Auction_start'),
+        'item_info' => $request->input('item_info'),
+        'item_startprice' => $request->input('Auction_start'),
         'item_success' => true,
         'success' => false,
         'seller_id' => decrypt(session()->get('login_ID'))
@@ -100,14 +100,14 @@ class ItemController extends Controller
     }
 
   public function sending_num(Request $request){
-    $sending = $request->get('item_key');
+    $sending = $request->input('item_key');
     return view('/product-Modify',[
       'sending' => $sending
     ]);
   }
 
   public function product_update(Request $request){
-    $uwiei= $request->get('uwiei');
+    $uwiei= $request->input('uwiei');
     $id=session()->get('login_ID');
     $item_pic = $request->file('item_picture');
     $item_picture= $item_pic->getClientOriginalName();
@@ -167,13 +167,13 @@ class ItemController extends Controller
       $item_picturebehind = null;
     }
       $update=Item::where(['item_number'=> $uwiei])->update([
-        'item_name'=> $request->get('product_name'),
-        'item_maker'=> $request->get('product_maker'),
-        'item_buy'=>$request->get('product_buy'),
-        'item_category'=>$request->get('product_category'),
-        'item_open'=>$request->get('open'),
-        'item_deadline'=>$request->get('Auction_last_time'),
-        'item_startprice'=>$request->get('Auction_start'),
+        'item_name'=> $request->input('product_name'),
+        'item_maker'=> $request->input('product_maker'),
+        'item_buy'=>$request->input('product_buy'),
+        'item_category'=>$request->input('product_category'),
+        'item_open'=>$request->input('open'),
+        'item_deadline'=>$request->input('Auction_last_time'),
+        'item_startprice'=>$request->input('Auction_start'),
         'item_picture'=>$item_picture,
         'item_picturefront'=>$item_picturefront,
         'item_pictureup'=>$item_pictureup,
@@ -181,7 +181,7 @@ class ItemController extends Controller
         'item_pictureleft'=>$item_pictureleft,
         'item_picturerigth'=>$item_picturerigth,
         'item_picturebehind'=>$item_picturebehind,
-        'item_info' =>$request->get('item_info')
+        'item_info' =>$request->input('item_info')
       ]);
    return redirect('/');
    }
