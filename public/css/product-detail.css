@@ -23,6 +23,10 @@
   border-bottom: 1px solid #bdbdbd;
 }
 
+.sc-info_detail{
+  border-bottom: solid 1px #bdbdbd;
+}
+
 /* 이미지슬라이드 */
 .pr_deta_pic{
   width:auto;
@@ -149,7 +153,7 @@
   margin: 0 1rem;
   padding-right: 1rem;
   width:26.88rem;
-  height:26.88rem;
+  height:26rem;
   border-right: 1px solid #d5d3d3;
 }
 .tit_pri{
@@ -195,8 +199,23 @@
 .bt_box{
   display: flex;
 }
+.unWla{
+  width: 10rem;
+  height: 2rem;
+  border-style: none;
+  margin-top: 3.3rem;
+}
 .ckadu{
-
+  width: 10rem;
+  height: 2rem;
+  border-style: none;
+  margin-top: 3.3rem;
+}
+.wjsghk{
+  width: 10rem;
+  height: 2rem;
+  border-style: none;
+  margin-top: 3.3rem;
 }
 /* 상품페이지 끝 */
 
@@ -219,7 +238,9 @@
  }
  .btdg{
    width: 30rem;
-   hight: 5rem;
+   height: 2rem;
+   border-style: none;
+   align-items: center;
  }
  .sc-info_detail{
    font-size: 2rem;
@@ -257,11 +278,24 @@
     height: auto;
   }
   .mySlides{
+    position: relative;
     margin-left: 10px;
     margin-right: 10px;
-    height:98%;
-    width: 98%;
+    height:auto;
+    width: auto;
   }
+  .mySlidess{
+    margin-left: 10px;
+    margin-right: 10px;
+    height:auto;
+    width: auto;
+  }
+  /* .fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  } */
   .sliderFrame{
     width: auto;
     height:auto;
@@ -283,5 +317,32 @@
   .other_item{
     display: block;
   }
+  .bt_box{
+    display: block;
+  }
+  .unWla{
+    width: 10rem;
+    height: 2rem;
+    margin: auto;
+    border-style: none;
+  }
+  .ckadu{
+    width: 10rem;
+    height: 2rem;
+    margin: auto;
+    border-style: none;
+  }
+  .wjsghk{
+    width: 10rem;
+    height: 2rem;
+    margin: auto;
+    border-style: none;
+  }
 
+  .btdg{
+    width: auto;
+    height: 2rem;
+    border-style: none;
+    align-items: center;
+  }
 }
