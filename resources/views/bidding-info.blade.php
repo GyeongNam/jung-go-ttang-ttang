@@ -52,6 +52,8 @@
 @endsection
 
 @section('content')
+<form class="" name="bd_form" method="post" action="{{url('/bidding-price')}}" >
+@csrf
   <div id ="popup">
     <div id="popmenu">
       <h1>입찰완료</h1>
@@ -75,8 +77,6 @@
       </div>
     </div>
   </div>
-<form class="" name="bd_form" method="post" action="{{url('/bidding-price')}}" >
-@csrf
 <input type="hidden" name="num_s" value='{{$sendd[0]->item_number}}'>
 <div class="bd_layout">
   <div class="bd_form">
@@ -114,7 +114,7 @@
       <button type="button" class="bd_but1" onclick="history.back(-1);">취소하기</button>
     </div>
     <div class="bd_button">
-      <button type="text"class="bd_but1" id="sus_but"  >입찰하기</button>
+      <button type="button" class="bd_but1" id="sus_but"  >입찰하기</button>
     </div>
   </div>
   </div>

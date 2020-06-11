@@ -99,7 +99,7 @@ Route::get('/wish_lst', 'ItemController@favorite_item')->middleware('login');
 // auction Controller
 // Route::post(/auction_in, 'AuctionController@auction_in');
 Route::get('/bidding-info/{item_number}', 'AuctionController@sendd');
-Route::post('/bidding-price', 'AuctionController@biddingprice');
+Route::post('/bidding-price', 'AuctionController@biddingprice')->middleware('login');
 // mail
 Route::get('/mail', 'UserController@mailsend');
 Route::post('/selectid', 'UserController@selectid');

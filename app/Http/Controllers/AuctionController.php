@@ -50,6 +50,6 @@ class AuctionController extends Controller
         return redirect('/');
       }
     }
-  
+
 }
 //
