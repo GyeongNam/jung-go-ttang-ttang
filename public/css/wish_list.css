@@ -38,6 +38,9 @@
 .wish_block{
   display: flex;
 }
+.wish_info{
+  display: flex;
+}
 .wish_item_info{
   width:15rem;
   height: auto;
