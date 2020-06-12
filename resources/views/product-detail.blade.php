@@ -52,6 +52,38 @@
     slides[slideIndex-1].style.display = "block"; //block 처리를 해서 화면에 나타낸다.
   }
 </script>
+<script type="text/ajax">
+function toggleImg() {
+var likhet = document.getElementById('likep');
+  console.log('likhet');
+    $.ajax({
+      url:"/wish_lst",
+      method: "post",
+      dataType:"json",
+      data: {likejim : likhet},
+      success:function(data){
+
+        if(likhet.src.match("heart")) {
+          likhet.src="/img/b_gkxm.png";
+          alert("관심항목에 추가되었습니다.");
+
+        }
+        else if(likhet.src.match("b_gkxm")) {
+          likhet.src="/img/heart.png";
+          alert("관심항목에서 헤제되었습니다.");
+        }
+
+      }
+    });
+
+  }
+  else if(likhet.src.match("b_gkxm")) {
+    likhet.src="/img/heart.png";
+    alert("관심항목에서 헤제되었습니다.");
+  }
+
+}
+</script>
 @endsection
 @section('content')
   <div class="content">
@@ -67,8 +99,8 @@
                 <div class="mySlidess fade">
                   <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureup}}" alt=""  val=""/>
                 </div>
-               @endif
-               @if($myproduct[0]->item_pictureback != null)
+              @endif
+              @if($myproduct[0]->item_pictureback != null)
                 <div class="mySlidess fade">
                   <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureback}}" alt=""  val=""/>
                 </div>
@@ -229,13 +261,13 @@
                 </div>
                 @for($key=0; $key < count($myStat) ; $key++)
                   @if($key < 3)
-                  <div class="otr_prod_item">
-                    <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
-                    <div class="otr_prod_item_np">
-                      <span class="otr_name" name="">{{$myStat[$key]->item_name}}</span><br>
-                      <span class="otr_price" name="">현재가격 : {{$myStat[$key]->item_startprice}}</span>
+                    <div class="otr_prod_item">
+                      <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
+                      <div class="otr_prod_item_np">
+                        <span class="otr_name" name="">{{$myStat[$key]->item_name}}</span><br>
+                        <span class="otr_price" name="">현재가격 : {{$myStat[$key]->item_startprice}}</span>
+                      </div>
                     </div>
-                  </div>
                   @endif
                 @endfor
               </div>
