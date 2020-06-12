@@ -168,8 +168,13 @@
                       <div class="pd_opcl">
                         상품 개봉여부 :
                       </div>
+
                       <div class="opcl_info tnam" name="">
-                        {{$myproduct[0]->item_open}}
+                      @if($myproduct[0]->item_open != 1)
+                        <span>미개봉</span>
+                      @else
+                        <span>개봉</span>
+                      @endif
                       </div>
                     </div>
                     <div class="pd_st">
