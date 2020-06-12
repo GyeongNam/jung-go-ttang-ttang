@@ -104,7 +104,7 @@
       <span>원</span>
     </div>
     <div class="bd_bid">
-      <span clsss="bid_pr"><b>낙찰할금액:</b></span>
+      <span clsss="bid_pr"><b>입찰할금액:</b></span>
       <input type="number" class="bid_name"  name="bdinput" placeholder="현재가격이상으로 설정해주세요">
     </div>
   </div>
