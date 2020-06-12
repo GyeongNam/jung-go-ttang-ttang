@@ -84,9 +84,51 @@ $(document).ready(function(){
               </div>
             </a>
           </div>
+          @endforeach
+          <div class="wish_item_info">
+            <a href="#" class="prdt_link">
+              <div class="wish_item_img">
+                <input type="checkbox" name="chk" class="chackSelect" value="">
+                <img src="/img/item/product.png" alt="" value="">
+              </div>
+              <div class="w_i_info">
+                <div class="w_i_pro_i">
+                  <div class="wiproname">
+                    준고타당
+                  </div>
+                  <div class="wiproprice">
+                    198,000
+                  </div>
+                  <div class="wiprodate">
+                    5일전
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="wish_item_info">
+            <a href="#" class="prdt_link">
+              <div class="wish_item_img">
+                <input type="checkbox" name="chk" class="chackSelect" value="">
+                <img src="/img/item/product.png" alt="" value="">
+              </div>
+              <div class="w_i_info">
+                <div class="w_i_pro_i">
+                  <div class="wiproname">
+                    준고타당
+                  </div>
+                  <div class="wiproprice">
+                    198,000
+                  </div>
+                  <div class="wiprodate">
+                    5일전
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
-        @endforeach
     </div>
     <div class="tung"></div>
   </div>
