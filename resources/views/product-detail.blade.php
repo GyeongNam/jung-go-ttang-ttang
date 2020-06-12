@@ -147,7 +147,11 @@ var likhet = document.getElementById('likep');
                     <span>원</span>
                   </div>
                 </div>
-
+                <div class="gm_dday">
+                  <div class="deadtime_lab">
+                    경매 마감일 : {{$myproduct[0]->item_deadline}}
+                  </div>
+                </div>
               </div>
               <div class="d_kyeword">
                 <div class="lvt">
