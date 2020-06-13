@@ -119,6 +119,7 @@
   margin-top: 1rem;
   width: auto;
   height: auto;
+  float: right;
 }
 .seller_page{
   width:12rem;
@@ -153,7 +154,7 @@
   display: block;
   margin: 0 1rem;
   padding-right: 1rem;
-  width:26.88rem;
+  width: auto;
   height:26rem;
   border-right: 1px solid #d5d3d3;
 }
@@ -229,20 +230,23 @@
 }
 .buyer_comment{
   display: flex;
+  width:auto;
 }
 .comment_dunglok{
   border-style: none;
   width: 5rem;
   height: 6.3rem;
   display: inline-block;
+
 }
 .comment_text{
-  width:500px;
+  width:800px;
   height:100px;
   resize:none;
 }
 .combox{
   display: flex;
+  margin-right: 12rem;
 }
 /* 상품페이지 끝 */
 
@@ -272,6 +276,7 @@
 .sc-info_detail{
   font-size: 2rem;
   margin: 2rem 0;
+  width: auto;
 }
 .sc-info_sodyd{
   font-size: 20px;
