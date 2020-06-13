@@ -242,46 +242,6 @@ var likhet = document.getElementById('likep');
               </div>
             </div>
           </div>
-          <div class="detail_seller_info">
-            <div class="seller_page">
-              <div class="seller">
-                판매자 정보
-              </div>
-              <div class="seller_info">
-                <div class="seller_name">
-                  <div class="">
-
-                  </div>
-                  <a href="#"><img src=""></a>
-                  <div class="seller_profile">
-                    <div class="name_pdt">
-                      <img class="seller_img" name="" src="/img/user/{{$data[0]->user_image}}" alt="">
-                      <a class="seller_name_link" name="" href="#">{{$myproduct[0]->seller_id}}</a>
-                      <a class="productrottn" name="" href="#">상품 2</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="seller_other_product">
-              <div class="otr_prod_box">
-                <div class="otr_prod_item_label">
-                  <span>판매자가 경매중인 물품</span>
-                </div>
-                @for($key=0; $key < count($myStat) ; $key++)
-                  @if($key < 3)
-                    <div class="otr_prod_item">
-                      <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
-                      <div class="otr_prod_item_np">
-                        <span class="otr_name" name="">{{$myStat[$key]->item_name}}</span><br>
-                        <span class="otr_price" name="">현재가격 : {{$myStat[$key]->item_startprice}}</span>
-                      </div>
-                    </div>
-                  @endif
-                @endfor
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <div class="detail_info_typing">
@@ -329,6 +289,58 @@ var likhet = document.getElementById('likep');
               </div>
             </div>
           </div>
+          <div class="buyer_comment">
+            <div class="people_comment">
+              <div class="dat_lab">
+                <h2>댓글달기</h2>
+              </div>
+              <div class="combox">
+                <textarea class="comment_text" name="name" rows="8" cols="80"></textarea>
+                <button type="button" class="comment_dunglok" name="button">댓글달기</button>
+              </div>
+            </div>
+            <div class="detail_seller_info">
+              <div class="seller_page">
+                <div class="seller">
+                  판매자 정보
+                </div>
+                <div class="seller_info">
+                  <div class="seller_name">
+                    <div class="">
+
+                    </div>
+                    <a href="#"><img src=""></a>
+                    <div class="seller_profile">
+                      <div class="name_pdt">
+                        <img class="seller_img" name="" src="/img/user/{{$data[0]->user_image}}" alt="">
+                        <a class="seller_name_link" name="" href="#">{{$myproduct[0]->seller_id}}</a>
+                        <a class="productrottn" name="" href="#">상품 2</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="seller_other_product">
+                <div class="otr_prod_box">
+                  <div class="otr_prod_item_label">
+                    <span>판매자가 경매중인 물품</span>
+                  </div>
+                  @for($key=0; $key < count($myStat) ; $key++)
+                    @if($key < 3)
+                      <div class="otr_prod_item">
+                        <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
+                        <div class="otr_prod_item_np">
+                          <span class="otr_name" name="">{{$myStat[$key]->item_name}}</span><br>
+                          <span class="otr_price" name="">현재가격 : {{$myStat[$key]->item_startprice}}</span>
+                        </div>
+                      </div>
+                    @endif
+                  @endfor
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="btn_cl">

@@ -148,6 +148,7 @@
 }
 
 /* 판매자의 다른 상품 끝 */
+
 .detail_product_info{
   display: block;
   margin: 0 1rem;
@@ -223,6 +224,26 @@
   border-style: none;
   margin-top: 3.3rem;
 }
+.dat_lab{
+  margin-top: 2rem;
+}
+.buyer_comment{
+  display: flex;
+}
+.comment_dunglok{
+  border-style: none;
+  width: 5rem;
+  height: 6.3rem;
+  display: inline-block;
+}
+.comment_text{
+  width:500px;
+  height:100px;
+  resize:none;
+}
+.combox{
+  display: flex;
+}
 /* 상품페이지 끝 */
 
 /* 연관상품 */
@@ -239,27 +260,27 @@
 }
 /* 연관상품  끝*/
 /* 상품정보, 댓글 페이지 */
- .tkdvnainfo{
-   height: 50%;
- }
- .btdg{
-   width: 30rem;
-   height: 2rem;
-   border-style: none;
-   align-items: center;
- }
- .sc-info_detail{
-   font-size: 2rem;
-   margin: 2rem 0;
- }
- .sc-info_sodyd{
-   font-size: 20px;
-   display: block;
- }
+.tkdvnainfo{
+  height: 50%;
+}
+.btdg{
+  width: 30rem;
+  height: 2rem;
+  border-style: none;
+  align-items: center;
+}
+.sc-info_detail{
+  font-size: 2rem;
+  margin: 2rem 0;
+}
+.sc-info_sodyd{
+  font-size: 20px;
+  display: block;
+}
 
- .btn_cl{
-   display: flex;
- }
+.btn_cl{
+  display: flex;
+}
 /* 상품정보, 댓글 페이지 끝*/
 
 @media screen and (max-width:800px) {
@@ -297,10 +318,10 @@
     width: auto;
   }
   /* .fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
   } */
   .sliderFrame{
     width: auto;
