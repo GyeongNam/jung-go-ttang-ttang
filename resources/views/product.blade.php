@@ -294,11 +294,11 @@ $(function() {
   </form>
 </div>
 <script>
-    // 3. CKEditor5를 생성할 textarea 지정
-    ClassicEditor
-        .create( document.querySelector( '#dpelxj' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-    </script>
+// 3. CKEditor5를 생성할 textarea 지정
+ClassicEditor
+.create( document.querySelector( '#dpelxj' ) )
+.catch( error => {
+  console.error( error );
+} );
+</script>
 @endsection

@@ -269,6 +269,10 @@ else if(likhet.src.match("b_gkxm")) {
             <div class="locate_dnlcl">
               <div id="map" style="width:100%;height:400px;"></div>
             </div>
+            <div id="floating-panel">
+              <input id="address" type="textbox" value="Sydney, NSW">
+              <input id="submit" type="button" value="Geocode">
+            </div>
           </div>
           <div class="deal_cat">
             <div class="catgo">
@@ -370,18 +374,33 @@ $('#del_detailpage').click(function(){
 });
 </script>
 <script>
-var map = new naver.maps.Map('map', {
-    center: new naver.maps.LatLng(37.3595704, 127.105399),
-    zoom: 10,
-    zoomControl: true,	//줌 컨트롤의 표시 여부
-    zoomControlOptions: {
-     position: naver.maps.Position.LEFT_BOTTOM
-   }
-});
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: {lat: 37.71159316, lng: 126.88842273}
+  });
+  var geocoder = new google.maps.Geocoder();
 
-var marker = new naver.maps.Marker({
-    position: new naver.maps.LatLng(37.3595704, 127.105399),
-    map: map
-});
+  document.getElementById('submit').addEventListener('click', function() {
+    geocodeAddress(geocoder, map);
+  });
+}
+
+function geocodeAddress(geocoder, resultsMap) {
+  var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === 'OK') {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
 </script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&callback=initMap"></script>
 @endsection
