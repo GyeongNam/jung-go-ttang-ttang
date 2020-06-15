@@ -18,7 +18,7 @@
           <h2>{{$details['title']}} 고객님의 비밀번호는 아래 링크에서 재설정 가능합니다.</h2>
         </div>
         <div class="">
-          <a href="ccit2020.cafe24.com:8080/repassword/{{$details['id']}}">ccit2020.cafe24.com:8080/repassword/{{$details['id']}}</a>
+          <a href="http://ccit2020.cafe24.com:8080/repassword/{{$details['id']}}">ccit2020.cafe24.com:8080/repassword/{{$details['id']}}</a>
         </div>
       </div>
       <div class="mailsand_footer" style="display:flex; border-top:1px solid  #bdbdbd">
