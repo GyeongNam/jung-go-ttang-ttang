@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEnditeamTable extends Migration
+class CreateEnditemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateEnditeamTable extends Migration
      */
     public function up()
     {
-        Schema::create('enditeam', function (Blueprint $table) {
-          $table->string('success_price1')->unique();
-          $table->primary('success_price1');
+        Schema::create('enditem', function (Blueprint $table) {
+          $table->bigIncrements('num')->unique();
+          $table->string('success_price1')->nullable();
           $table->string('success_price2')->nullable();
           $table->string('success_price3')->nullable();
           $table->string('success_price4')->nullable();
           $table->string('success_price5')->nullable();
-          /*$table->integer('end_number');*/
           $table->rememberToken();
           $table->timestamps();
         });
@@ -33,6 +32,6 @@ class CreateEnditeamTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enditeam');
+        Schema::dropIfExists('enditem');
     }
 }

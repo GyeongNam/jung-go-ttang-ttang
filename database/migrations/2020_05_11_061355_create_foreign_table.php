@@ -21,9 +21,9 @@ class CreateForeignTable extends Migration
              $table->unsignedBigInteger('auction_itemnum')->index();
              $table->foreign('auction_itemnum')->references('item_number')->on('items');
 });
-          Schema::table('enditeam', function (Blueprint $table) {
-             $table->unsignedBigInteger('end_number')->index();
-             $table->foreign('end_number')->references('auction_num')->on('auction');
+          Schema::table('enditem', function (Blueprint $table) {
+             $table->unsignedBigInteger('end_num')->index();
+             $table->foreign('end_num')->references('auction_num')->on('auction');
 });
           Schema::table('favorite', function (Blueprint $table) {
               $table->unsignedBigInteger('favorite_itemnum')->index();
@@ -51,7 +51,7 @@ class CreateForeignTable extends Migration
     {
         Schema::table('items',    function (Blueprint $table){});
         Schema::table('auction',  function (Blueprint $table){});
-        Schema::table('enditeam', function (Blueprint $table){});
+        Schema::table('enditem', function (Blueprint $table){});
         Schema::table('favorite', function (Blueprint $table){});
         Schema::table('chatroom', function (Blueprint $table){});
         Schema::table('messege',  function (Blueprint $table){});
