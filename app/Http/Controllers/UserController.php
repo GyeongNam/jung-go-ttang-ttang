@@ -159,6 +159,6 @@ class UserController extends Controller
       $data = User::where(['id'=>$ids])->update([
         'password' => $request->input('PW')
       ]);
-      return view('/');
+      return view('main');
     }
 }
