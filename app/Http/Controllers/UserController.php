@@ -75,6 +75,14 @@ class UserController extends Controller
       return view('user.mypage', ['data'=>$data]);
     }
 
+    public function user_binding(Request $request) {
+      $id = session()->get('login_ID');
+      $data = User::select('EMAIL','EMAIL_DOMAIN','PHONE','BIRTHDAY','GENDER','USER_IMAGE')->where(['id'=>decrypt($id)])->get();
+      $item_picturefront = User::select('USER_IMAGE')->where(['id'=>decrypt($id)])->get();;
+
+      return view('user.mypage_update', ['data'=>$data]);
+    }
+
     public function mypage_update(Request $request){
       $id = session()->get('login_ID');
       $email = $request->input('str_email01');
@@ -82,16 +90,20 @@ class UserController extends Controller
       $phone = $request->input('phone');
       $birthday = $request->input('birthday');
       $gender = $request->input('gender');
-      $user_image = $request->file('user_image');
 
-      $extension= $user_image->getClientOriginalName();  //\time() . '.' .
-      Image::make($user_image)->save(public_path('/img/user/' .$extension));
-
+      if($request->hasFile('item_picturefront')){
+        $user_image = $request->file('user_image');
+        $extension= $user_image->getClientOriginalName();
+        Image::make($user_image)->save(public_path('/img/user/' .$extension));
+      }
+      else {
+        $imgselect = User::select('USER_IMAGE')->where(['id'=>decrypt($id)])->get();;
+        $extension = $imgselect[0]->USER_IMAGE;
+      }
      if(empty($email&&$email_domain&&$phone&&$birthday&&$gender))
        {
           return redirect()->back();
         }
-
       $update = User::where(['id'=>decrypt($id)])->update([
       'email'=>$email,
       'email_domain'=>$email_domain,
@@ -100,7 +112,6 @@ class UserController extends Controller
       'gender'=>$gender,
       'user_image'=> $extension
       ]);
-
       return redirect('/mypage');
     }
 
