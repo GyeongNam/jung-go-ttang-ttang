@@ -53,7 +53,7 @@
           {{$value->item_name}}
           </div>
           <div class="m_money">
-            {{$value->item_startprice}}원
+            {{ number_format($value->item_startprice)}}원
           </div>
         </a>
        </div>

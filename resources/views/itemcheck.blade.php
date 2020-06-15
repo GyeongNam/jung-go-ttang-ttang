@@ -86,7 +86,7 @@
             <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
         </div>
           <div class="price1">
-            {{$value->item_price}} 원
+          {{ number_format($value->item_price)}}원
           </div>
           @if ($value->item_success != 1 )
 
@@ -126,7 +126,7 @@
         <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
     </div>
       <div class="price1">
-        {{$value->item_startprice}}원
+        {{ number_format($value->item_startprice)}}원
       </div>
       @if ($value->item_success == 1 )
 
@@ -171,7 +171,7 @@
           </div>
           <div class="nak_p">
             @if(count($myAuction)>0)
-            {{$myAuction[0]->item_price}}
+              {{ number_format($myAuction[0]->item_price)}}원
             @endif
           </div>
         <!--</div>-->

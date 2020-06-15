@@ -191,7 +191,7 @@ timeBefore();
                     현재 최고가 :
                   </div>
                   <div class="d_price_info" name="" val="">
-                    {{$myproduct[0]->item_startprice}}
+                    {{ number_format($max)}}
                     <span>원</span>
                   </div>
                 </div>
@@ -267,7 +267,7 @@ timeBefore();
                         경매 시작가격 :
                       </div>
                       <div class="spric_info tnam" name="">
-                        {{$myproduct[0]->item_startprice}}
+                        {{ number_format($myproduct[0]->item_startprice)}}
                         <span>원</span>
                       </div>
                     </div>
@@ -323,7 +323,7 @@ timeBefore();
                           <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
                           <div class="otr_prod_item_np">
                             <span class="otr_name" name="">{{$myStat[$key]->item_name}}</span><br>
-                            <span class="otr_price" name="">현재가격 : {{$myStat[$key]->item_startprice}}</span>
+                            <span class="otr_price" name="">현재가격{{ number_format($myStat[$key]->item_startprice)}}</span>
                           </div>
                         </div>
                       </a>
