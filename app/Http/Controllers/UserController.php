@@ -137,25 +137,28 @@ class UserController extends Controller
       $phone = $request->input('phone');
 
       $data = User::select('ID', 'email', 'email_domain')->where(['id'=> $id, 'phone'=> $phone])->get();
-      $idlink = encrypt($data[0]->ID);
-      session()->put('re_password', $idlink);
       $datas = count($data);
+
       if($datas>0){
         $mail = $data[0]->email.'@'.$data[0]->email_domain;
+        $idlink = encrypt($data[0]->ID);
         $details = [
           'title' => '안녕하세요 고객님',
           'body' => '비밀번호를 확인하세요',
           'id' => $idlink
         ];
+        User::where(['id'=>$id])->update(['password'=>$idlink]);
         Mail::to($mail)->send(new PWselect($details));
       }
       return response()->json(['data'=>$datas]);
     }
 
     public function user_repwd($id){
-
-      echo session()->all();
-      // return view('login.repassword', ['id'=>$id]);
+      $data = User::select('id')->where(['password'=>$id])->get()->count();
+      if($data>0){
+        return view('login.repassword', ['id'=>$id]);
+      }
+      print_r("<script>alert('유효하지 않는 링크입니다.');</script>");
     }
 
     public function user_pwd_update(Request $request, $id){
