@@ -64,7 +64,7 @@ function passwordcheck(){
 </script>
     <div class="login_layout">
       <div class="login_form">
-        <form action="user_pwd_update/{{id}}" method="post">
+        <form action="user_pwd_update/{{$id}}" method="post">
          @csrf
           <ul>
             <li>
