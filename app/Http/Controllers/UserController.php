@@ -159,6 +159,7 @@ class UserController extends Controller
         return view('login.repassword', ['id'=>$id]);
       }
       print_r("<script>alert('유효하지 않는 링크입니다.');</script>");
+      return redirect()->back();
     }
 
     public function user_pwd_update(Request $request, $id){
