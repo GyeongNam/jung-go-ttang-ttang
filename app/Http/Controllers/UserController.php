@@ -137,13 +137,15 @@ class UserController extends Controller
       $phone = $request->input('phone');
 
       $data = User::select('ID', 'email', 'email_domain')->where(['id'=> $id, 'phone'=> $phone])->get();
+      $idlink = encrypt($data[0]->ID);
+      session()->put('re_password', $idlink);
       $datas = count($data);
       if($datas>0){
         $mail = $data[0]->email.'@'.$data[0]->email_domain;
         $details = [
           'title' => '안녕하세요 고객님',
           'body' => '비밀번호를 확인하세요',
-          'id' => encrypt($data[0]->ID)
+          'id' => $idlink
         ];
         Mail::to($mail)->send(new PWselect($details));
       }
@@ -151,7 +153,9 @@ class UserController extends Controller
     }
 
     public function user_repwd($id){
-      return view('login.repassword', ['id'=>$id]);
+
+      echo session()->all();
+      // return view('login.repassword', ['id'=>$id]);
     }
 
     public function user_pwd_update(Request $request, $id){
@@ -159,5 +163,6 @@ class UserController extends Controller
       $data = User::where(['id'=>$ids])->update([
         'password' => $request->input('PW')
       ]);
+      return view('main');
     }
 }

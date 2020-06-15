@@ -16,23 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('main');
 });
-
 Route::get('/Login', function () {
     return view('login.login');
 });
-
 Route::get('/sign_up', function () {
     return view('login.sign_up');
 });
-
 Route::get('/mypage', function () {
     return view('user.mypage');
 })->middleware('login');
-
 Route::get('/kategorie', function () {
     return view('kategorie');
 });
-
 Route::get('/find_act', function () {
     return view('login.find_act');
 });
@@ -42,12 +37,9 @@ Route::get('/itemcheck', function () {
 Route::get('/item/product', function () {
     return view('product');
 });
- Route::get('/product-Modify', function(){
+Route::get('/product-Modify', function(){
     return view('product-Modify');
- });
-// Route::get('/product-detail', function(){
-//    return view('product-detail');
-// });
+});
 Route::get('/manclothing', function () {
     return view('manclothing');
 });
@@ -85,7 +77,7 @@ Route::post('/mypage_update', 'UserController@mypage_update')->middleware('login
 Route::post('/idcheck', 'UserController@idcheck');
 Route::get('/mypage/update', 'UserController@user_binding')->middleware('login');
 Route::get('/repassword/{id}', 'UserController@user_repwd');
-Route::post('user_pwd_update/{id}','UserController@user_pwd_update');
+Route::post('/user_pwd_update/{id}','UserController@user_pwd_update');
 
 // item Controller
 Route::post('/product', 'ItemController@store');
