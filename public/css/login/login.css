@@ -27,7 +27,7 @@
   text-align: center;
 }
 
-#id, #pw, #login_bt{
+#id, #pw, #repw, #login_bt{
     margin: 2%;
     width: 90%;
     height: 50px;

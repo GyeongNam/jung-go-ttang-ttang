@@ -136,17 +136,22 @@ class UserController extends Controller
       $id = $request->input('id');
       $phone = $request->input('phone');
 
-      $data = User::select('PASSWORD', 'email', 'email_domain')->where(['id'=> $id, 'phone'=> $phone])->get();
+      $data = User::select('ID', 'email', 'email_domain')->where(['id'=> $id, 'phone'=> $phone])->get();
       $datas = count($data);
       if($datas>0){
         $mail = $data[0]->email.'@'.$data[0]->email_domain;
         $details = [
           'title' => '안녕하세요 고객님',
           'body' => '비밀번호를 확인하세요',
-          'pw' => $data[0]->PASSWORD
+          'id' => encrypt($data[0]->ID)
         ];
         Mail::to($mail)->send(new PWselect($details));
       }
       return response()->json(['data'=>$datas]);
+    }
+
+    public function user_repwd($id){
+      $ids = decrypt($id);
+      return view('login.repassword', ['id'=>$ids]);
     }
 }

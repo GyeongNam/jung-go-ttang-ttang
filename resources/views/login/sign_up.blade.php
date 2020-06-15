@@ -119,8 +119,6 @@ function chkpw(){
 
  }
 
-
-
  function checkValue(){
     var form = document.userinfo;
     var emil = $("#str_email01").val;
@@ -131,9 +129,6 @@ function chkpw(){
     var phoneJ =/^\d{3}\d{3,4}\d{4}$/;
     var nameJ = /^[가-힣/\s/]{2,6}$/;
     var mailJ =  /[`~!@@#$%^&*|₩₩₩'₩";:₩/?/\s/]/;
-
-
-
 
     if (!form.user_id.value) {
       alert("아이디를 입력하세요.");
