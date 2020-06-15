@@ -222,11 +222,16 @@ class ItemController extends Controller
       $data = User::select('user_image')->where(['id' =>  $myproduct[0]->seller_id])->get();
       $max = Auction::select('item_price')->where(['auction_itemnum'=>$item_number])->get();
       $maxs =  $max->max('item_price');
+      $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
+      $poss = Item::where(['item_number'=>$item_number])->update([
+        'visit_count'=> $count[0]->visit_count + 1
+      ]);
         return view('product-detail', [
         'myproduct' => $myproduct,
         'data'=>$data,
         'myStat'=>$myStat,
-        'max'=>$maxs
+        'max'=>$maxs,
+        'count'=>$count
       ]);
     }
 
