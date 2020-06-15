@@ -167,7 +167,11 @@ else if(likhet.src.match("b_gkxm")) {
                   <div class="view isk">
                     <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
                     <div class="see_num intf" name="">
-                      2427621
+                      @if ($count[0]->visit_count !=0)
+                      <span>{{$count[0]->visit_count}}</span>
+                      @else
+                 <span>0</span>
+                      @endif
                     </div>
                   </div>
                   <div class="time isk">
