@@ -70,7 +70,7 @@ function passwordcheck(){
             <li>
               <img src="/img/tangtang.png"  alt="로고" class="center-block">
             </li>
-            <li>$id님의 아이디 재설정</li>
+            <li>{{$id}}님의 아이디 재설정</li>
             <li>
               <label><strong>NEW Password(비밀번호)</strong><br>
                 <input type="password" name="PW" id="pw" placeholder="비밀번호" onKeyup="chkpw()" required><br>
