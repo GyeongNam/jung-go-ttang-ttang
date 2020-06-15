@@ -84,6 +84,7 @@ var likhet = document.getElementById('likep');
 
 }
 </script>
+
 @endsection
 @section('content')
   <div class="content">
@@ -242,7 +243,63 @@ var likhet = document.getElementById('likep');
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="detail_info_typing">
+        <div class="info_typing">
+          <button class="typing btdg" type="button" name="button">상품정보</button>
+          <button class="comment btdg" type="button" name="button">댓글달기</button>
+        </div>
+        <div class="typinginfo">
+          <div class="tkdvnainfo">
+            <div class="sc-info_detail">상품 정보</div>
+            <div class="sc-info-typing">
+              <div class="sc-info_sodyd">
+                {{$myproduct[0]->item_info}}
+              </div>
+            </div>
+          </div>
+          <div class="deal_cat_location">
+            <div class="location_deal">
+              <div class="locat">
+                <img src="" alt="">
+                거래지역
+              </div>
+              <div class="locate_dnlcl">
+                <div class="daummap" style="width:500px;height:400px;"></div>
+              </div>
+            </div>
+            <div class="deal_cat">
+              <div class="catgo">
+                <img src="" alt="">
+                카테고리
+              </div>
+              <div class="">
+                <a href="#"><span>모바일/태블릿</span></a>
+              </div>
+            </div>
+            <div class="pro_tag">
+              <div class="tag_name">
+                <img src="" alt="">
+                상품태그
+              </div>
+              <div class="taglist">
+                <a href="#">#아이패드</a>
+                <a href="#">#아이패드에어</a>
+                <a href="#">#태블릿</a>
+              </div>
+            </div>
+          </div>
           <div class="detail_seller_info">
+            <div class="review">
+              <div class="comment_header">
+                댓글달기
+              </div>
+              <div class="comment_review">
+                <textarea class="textboxsize" name="" rows="8" cols="80"></textarea>
+              </div>
+          </div>
+          <div class="seller_info_box">
             <div class="seller_page">
               <div class="seller">
                 판매자 정보
@@ -284,52 +341,6 @@ var likhet = document.getElementById('likep');
           </div>
         </div>
       </div>
-      <div class="detail_info_typing">
-        <div class="info_typing">
-          <button class="typing btdg" type="button" name="button">상품정보</button>
-          <button class="comment btdg" type="button" name="button">댓글달기</button>
-        </div>
-        <div class="typinginfo">
-          <div class="tkdvnainfo">
-            <div class="sc-info_detail">상품 정보</div>
-            <div class="sc-info-typing">
-              <div class="sc-info_sodyd">
-                {{$myproduct[0]->item_info}}
-              </div>
-            </div>
-          </div>
-          <div class="deal_cat_location">
-            <div class="location_deal">
-              <div class="locat">
-                <img src="" alt="">
-                거래지역
-              </div>
-              <div class="locate_dnlcl">
-                <span>전국</span>
-              </div>
-            </div>
-            <div class="deal_cat">
-              <div class="catgo">
-                <img src="" alt="">
-                카테고리
-              </div>
-              <div class="">
-                <a href="#"><span>모바일/태블릿</span></a>
-              </div>
-            </div>
-            <div class="pro_tag">
-              <div class="tag_name">
-                <img src="" alt="">
-                상품태그
-              </div>
-              <div class="taglist">
-                <a href="#">#아이패드</a>
-                <a href="#">#아이패드에어</a>
-                <a href="#">#태블릿</a>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
       <div class="btn_cl">
         <div class="auction_revise">
@@ -355,4 +366,14 @@ var likhet = document.getElementById('likep');
     }
   });
 </script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a82332350bc18d282d500e361ee79da"></script>
+	<script>
+		var container = document.getElementById('daummap'); //지도를 담을 영역의 DOM 레퍼런스
+		var options = { //지도를 생성할 때 필요한 기본 옵션
+			center: new kakao.maps.LatLng(33.450701, 126.570667),  //지도의 중심좌표.
+			level: 3 //지도의 레벨(확대, 축소 정도)
+		};
+
+		var map = new kakao.maps.Map(container, options);  //지도 생성 및 객체 리턴
+	</script>
 @endsection

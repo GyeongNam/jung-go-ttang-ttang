@@ -13,11 +13,27 @@
   margin: auto;
 
 }
+.dpbox{
+  width:auto;
+}
+.seller_info_box{
+
+}
+.deal_cat_location{
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #bdbdbd;
+}
+.textboxsize{
+  width:500px;
+  height:100px;
+  resize:none;
+}
 .detail_head{
   display: flex;
   padding: 1.5rem 0;
   margin: 1rem 0;
-  width:auto;
+  /* width:55rem; */
   height:auto;
   border-top: 1px solid #bdbdbd;
   border-bottom: 1px solid #bdbdbd;
@@ -115,6 +131,7 @@
 
 /* 판매자의 다른 상품 */
 .detail_seller_info{
+  display:flex;
   position: relative;
   margin-top: 1rem;
   width: auto;
@@ -151,10 +168,8 @@
 .detail_product_info{
   display: block;
   margin: 0 1rem;
-  padding-right: 1rem;
-  width:26.88rem;
+  width:auto;
   height:26rem;
-  border-right: 1px solid #d5d3d3;
 }
 .tit_pri{
   border-bottom: 1px solid #bdbdbd;
@@ -189,13 +204,13 @@
   display: flex;
   width:auto;
   align-items: center;
-  margin-left: 0.5rem;
   margin-top: 0.8rem;
-  padding-left: 0.2rem;
+  padding-left: 1rem;
   border-left: 1px solid #bdbdbd;
 }
 .intf{
   margin-left: 0.5rem;
+  margin-right: 1rem;
 }
 .pd_st{
   display:flex;
@@ -204,24 +219,25 @@
 }
 .bt_box{
   display: flex;
+  width:auto;
 }
 .unWla{
-  width: 10rem;
+  width: 10.7rem;
   height: 2rem;
   border-style: none;
-  margin-top: 3.3rem;
+  margin-top: 1.7rem;
 }
 .ckadu{
-  width: 10rem;
+  width: 10.7rem;
   height: 2rem;
   border-style: none;
-  margin-top: 3.3rem;
+  margin-top: 1.7rem;
 }
 .wjsghk{
-  width: 10rem;
+  width: 10.7rem;
   height: 2rem;
   border-style: none;
-  margin-top: 3.3rem;
+  margin-top: 1.7rem;
 }
 /* 상품페이지 끝 */
 
