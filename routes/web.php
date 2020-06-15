@@ -29,10 +29,6 @@ Route::get('/mypage', function () {
     return view('user.mypage');
 })->middleware('login');
 
-Route::get('/mypage/update', function () {
-    return view('user.mypage_update');
-})->middleware('login');
-
 Route::get('/kategorie', function () {
     return view('kategorie');
 });
@@ -84,6 +80,7 @@ Route::get('/mypage', 'UserController@mypage')->middleware('login');
 Route::get('/Logout', 'UserController@logout')->middleware('login');
 Route::post('/mypage_update', 'UserController@mypage_update')->middleware('login');
 Route::post('/idcheck', 'UserController@idcheck');
+Route::get('/mypage/update', 'UserController@user_binding')->middleware('login');
 
 // item Controller
 Route::post('/product', 'ItemController@store');
