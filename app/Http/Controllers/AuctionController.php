@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Auction;
+use App\Enditem;
 use App\Item;
 
 
@@ -41,6 +42,5 @@ class AuctionController extends Controller
         return redirect('/itemcheck');
       }
     }
-
 }
 //
