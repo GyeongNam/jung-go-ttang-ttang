@@ -81,7 +81,7 @@ Route::get('/Logout', 'UserController@logout')->middleware('login');
 Route::post('/mypage_update', 'UserController@mypage_update')->middleware('login');
 Route::post('/idcheck', 'UserController@idcheck');
 Route::get('/mypage/update', 'UserController@user_binding')->middleware('login');
-Route::get('/repassword/{id}', 'UserController@user_repwd');
+Route::post('/repassword/{id}', 'UserController@user_repwd');
 Route::post('/user_pwd_update/{id}','UserController@user_pwd_update');
 
 // item Controller
