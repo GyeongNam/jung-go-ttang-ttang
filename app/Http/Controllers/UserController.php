@@ -156,8 +156,9 @@ class UserController extends Controller
 
     public function user_pwd_update(Request $request, $id){
       $ids = decrypt($id);
-      $data = User::where(['id'=>$ids])->update([
-        'password' => $request->input('PW')
-      ]);
+      echo $ids;
+      // $data = User::where(['id'=>$ids])->update([
+      //   'password' => $request->input('PW')
+      // ]);
     }
 }
