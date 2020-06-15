@@ -220,10 +220,13 @@ class ItemController extends Controller
       $myproduct= Item::select('*')->where(['item_number'=>$item_number])->get();
       $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success','item_deadline', 'success')->where(['seller_id'=>$myproduct[0]->seller_id])->get();
       $data = User::select('user_image')->where(['id' =>  $myproduct[0]->seller_id])->get();
+      $max = Auction::select('item_price')->where(['auction_itemnum'=>$item_number])->get();
+      $maxs =  $max->max('item_price');
         return view('product-detail', [
         'myproduct' => $myproduct,
         'data'=>$data,
-        'myStat'=>$myStat
+        'myStat'=>$myStat,
+        'max'=>$maxs
       ]);
     }
 
