@@ -11,9 +11,7 @@
 @section('js')
 
 <script>
-
   $(function(){
-
      $("#sus_but").click(function(){
        var price=$(".bd_price1").attr("value");
        var bidprice=$(".bid_name").val();
@@ -21,7 +19,6 @@
        if( bidprice < num){
          alert("낙찰가를 제대로 입력해 주세요");
          return false;
-
        }
        else {
         var bid_test = confirm("낙찰을 하시겠습니까?");
@@ -31,22 +28,16 @@
                 $("#popup").fadeOut();
               });
          }
-
        };
      });
    });
-
    $(function(){
-
     $(".bid_name").keyup(function(){
       var ip = $(".bid_name").val();
       console.log(ip)
       $("#moneyid").text(ip);
     });
   });
-
-
-
 </script>
 
 @endsection
@@ -95,7 +86,7 @@
     </div>
     <div class="bd_price">
       <span>현재가격:</span>
-      <span class="bd_price1" value="">{{ number_format($max)}}</span>
+      <span class="bd_price1" value="{{$max}}">{{ number_format($max)}}</span>
       <span> 원</span>
     </div>
     <div class="bd_stprice">

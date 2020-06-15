@@ -85,52 +85,7 @@ else if(likhet.src.match("b_gkxm")) {
 
 }
 </script>
-<script type="text/javascript">
-timeBefore();
-  function timeBefore(){
-      //현재시간
-      var now = new Date();
-      console.log(now);
-      //글쓴 시간
-      var writeDay = new Date('#timeplace');
-      var minus;
-      if(now.getFullYear() > writeDay.getFullYear()){
-          minus= now.getFullYear()-writeDay.getFullYear();
-          document.getElementsByClassName("sub")[0].innerHTML = minus+"년 전";
-          console.log(minus+"년 전");
-      }else if(now.getMonth() > writeDay.getMonth()){
-          minus= now.getMonth()-writeDay.getMonth();
-          document.getElementsByClassName("sub")[0].innerHTML = minus+"달 전";
-          console.log(minus+"달 전");
-      }else if(now.getDate() > writeDay.getDate()){
-          minus= now.getDate()-writeDay.getDate();
-          document.getElementsByClassName("sub")[0].innerHTML = minus+"일 전";
-          console.log(minus+"일 전");
-      }else if(now.getDate() == writeDay.getDate()){
-          var nowTime = now.getTime();
-          var writeTime = writeDay.getTime();
-          if(nowTime>writeTime){
-              sec =parseInt(nowTime - writeTime) / 1000;
-              day  = parseInt(sec/60/60/24);
-              sec = (sec - (day * 60 * 60 * 24));
-              hour = parseInt(sec/60/60);
-              sec = (sec - (hour*60*60));
-              min = parseInt(sec/60);
-              sec = parseInt(sec-(min*60));
-              if(hour>0){
-                  document.getElementsByClassName("sub")[0].innerHTML = hour+"시간 전";
-                  console.log(hour+"시간 전");
-              }else if(min>0){
-                  document.getElementsByClassName("sub")[0].innerHTML = min+"분 전";
-                  console.log(min+"분 전");
-              }else if(sec>0){
-                  document.getElementsByClassName("sub")[0].innerHTML = sec+"초 전";
-                  console.log(sec+"초 전");
-              }
-          }
-      }
-  }
-</script>
+
 
 @endsection
 @section('content')
@@ -340,10 +295,6 @@ timeBefore();
         </div>
       </div>
       <div class="detail_info_typing">
-        <div class="info_typing">
-          <button class="typing btdg" type="button" name="button">상품정보</button>
-          <button class="comment btdg" type="button" name="button">댓글달기</button>
-        </div>
         <div class="typinginfo">
           <div class="tkdvnainfo">
             <div class="sc-info_detail">상품 정보</div>
@@ -354,18 +305,6 @@ timeBefore();
             </div>
           </div>
           <div class="deal_cat_location">
-            <div class="location_deal">
-              <div class="locat">
-                거래지역
-              </div>
-              <div class="locate_dnlcl">
-                <div id="maploca" style="width:40rem;height:20rem;"></div>
-              </div>
-              <div id="floating-panel">
-                <input id="address" type="textbox" value="Sydney, NSW">
-                <input id="submit" type="button" value="Geocode">
-              </div>
-            </div>
             <div class="deal_cat">
               <div class="catgo">
                 <img src="" alt="">
@@ -423,42 +362,4 @@ timeBefore();
       }
     });
   </script>
-  <script>
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById('maploca'), {
-      zoom: 15,
-      center: {lat: 37.71159316, lng: 126.88842273}
-    });
-    var geocoder = new google.maps.Geocoder();
-
-    document.getElementById('submit').addEventListener('click', function() {
-      geocodeAddress(geocoder, map);
-    });
-  }
-
-  function geocodeAddress(geocoder, resultsMap) {
-    var address = document.getElementById('address').value;
-    geocoder.geocode({'address': address}, function(results, status) {
-      if (status === 'OK') {
-        resultsMap.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  }
-</script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a82332350bc18d282d500e361ee79da"></script>
-<script>
-var container = document.getElementById('daummap'); //지도를 담을 영역의 DOM 레퍼런스
-var options = { //지도를 생성할 때 필요한 기본 옵션
-  center: new kakao.maps.LatLng(33.450701, 126.570667),  //지도의 중심좌표.
-  level: 3 //지도의 레벨(확대, 축소 정도)
-};
-var map = new kakao.maps.Map(container, options);  //지도 생성 및 객체 리턴
-</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&callback=initMap"></script>
 @endsection

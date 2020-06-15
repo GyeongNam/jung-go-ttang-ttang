@@ -72,6 +72,9 @@ Route::get('/manager_user', function(){
 Route::get('/manager_tok', function(){
     return view('manager_tok');
 });
+Route::get('/sign_rull', function () {
+    return view('login.sign_rull');
+});
 
 // user Controller
 Route::post('/singup', 'UserController@store');
@@ -82,6 +85,7 @@ Route::post('/mypage_update', 'UserController@mypage_update')->middleware('login
 Route::post('/idcheck', 'UserController@idcheck');
 Route::get('/mypage/update', 'UserController@user_binding')->middleware('login');
 Route::get('/repassword/{id}', 'UserController@user_repwd');
+Route::post('user_pwd_update/{id}','UserController@user_pwd_update');
 
 // item Controller
 Route::post('/product', 'ItemController@store');

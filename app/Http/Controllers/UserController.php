@@ -151,7 +151,13 @@ class UserController extends Controller
     }
 
     public function user_repwd($id){
+      return view('login.repassword', ['id'=>$id]);
+    }
+
+    public function user_pwd_update(Request $request, $id){
       $ids = decrypt($id);
-      return view('login.repassword', ['id'=>$ids]);
+      $data = User::where(['id'=>$ids])->update([
+        'password' => $request->input('PW')
+      ]);
     }
 }

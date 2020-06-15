@@ -29,7 +29,7 @@ class AuctionController extends Controller
         $update=Auction::where(['auction_itemnum' => $bdp, 'buyer_ID'=>decrypt($id)])->update([
           'item_price' => $request->input('bdinput')
         ]);
-        return redirect('/');
+        return redirect('/itemcheck');
       }
       else {
         $action = new Auction([
@@ -38,7 +38,7 @@ class AuctionController extends Controller
           'auction_itemnum' => $bdp
         ]);
         $action->save();
-        return redirect('/');
+        return redirect('/itemcheck');
       }
     }
 

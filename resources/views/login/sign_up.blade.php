@@ -52,11 +52,11 @@ function check(){
         console.log(datas);
         if(datas==1){
           $("#id_result").text("사용중인 아이디입니다!");
-          $("#sub").attr("disabled",true);
+
         }
         else {
           $("#id_result").text("사용 가능한 아이디입니다.");
-          $("#sub").attr("disabled",false);
+
         }
       },
       error : function(){
@@ -97,7 +97,7 @@ function chkpw(){
   if(pw.length < 8 || pw.length > 20){
     if(pw.length == 0){
       s_relult1.text("영문, 숫자, 특수문자를 포함한 8자리 이상 입력하세요.");
-      $("#sub").attr("disabled",true);
+
     }
     else{
      s_relult1.text("8자리 ~ 20자리 이내로 입력해주세요.");
@@ -106,18 +106,20 @@ function chkpw(){
     }
     else if(pw.search(/\s/) != -1){
      s_relult1.text("비밀번호는 공백 없이 입력해주세요.");
-     $("#sub").attr("disabled",true);
+
    }
     else if(num < 0 || eng < 0 || spe < 0 ){
      s_relult1.text("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
-     $("#sub").attr("disabled",true);
+
    }
    else {
     s_relult1.text("");
-    $("#sub").attr("disabled",false);
+
   }
 
  }
+
+
 
  function checkValue(){
     var form = document.userinfo;
@@ -129,44 +131,72 @@ function chkpw(){
     var phoneJ =/^\d{3}\d{3,4}\d{4}$/;
     var nameJ = /^[가-힣/\s/]{2,6}$/;
     var mailJ =  /[`~!@@#$%^&*|₩₩₩'₩";:₩/?/\s/]/;
+    var na = $("#id_result").text("사용중인 아이디입니다!");
+
+
+
 
     if (!form.user_id.value) {
+      $('id_b').focus();
       alert("아이디를 입력하세요.");
       return false;
     }
     if (!form.userPwd.value) {
+      $('.form-control').focus();
       alert("비밀번호를 입력하세요.");
       return false;
     }
     if (!form.birthday.value) {
+      $('#birthday').focus();
       alert("생년월일을 입력하세요.");
       return false;
 
     }
     if (form.userPwd.value != form.reuserPwd.value) {
+      $('#pwd2').focus();
       alert("비밀번호가 일치하지 않습니다.");
       return false;
     }
     if (!nameJ.test($("#new_name").val())) {
+      $('#new_name').focus();
       alert("이름을 다시 입력하세요");
       return false;
 
     }
     if (!phoneJ.test($("#tel").val())) {
+      $('#tel').focus();
       alert("올바른 전화번호가 아닙니다.");
       return false;
 
     }
     if (mailJ.test($("#str_email01").val())) {
+      $('#str_email01').focus();
       alert("올바른 이메일이 아닙니다.");
       return false;
 
     }
     if(pw.length < 8 || pw.length > 20){
+      $('.form-control').focus();
        alert("비밀번호를 8자리 ~ 20자리 이내로 입력해주세요.");
        return false;
     }
+    if(num < 0 || eng < 0 || spe < 0 ){
+      $('.form-control').focus();
+       alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+       return false;
+    }
+    if(pw.search(/\s/) != -1){
+      $('.form-control').focus();
+       alert("공백없이 입력해주세요");
+       return false;
+    }
+    if(na = true){
+      $('.id_b').focus();
+       alert("사용중인 아이디 입니다.");
+       return false;
+    }
     if (form.email_ck.value != RandomNum){
+      $('#security').focus();
       alert("인증번호가 틀립니다.");
       return false;
     }
@@ -190,7 +220,7 @@ function chkpw(){
           </li>
           <li>
             <label><strong>아이디</strong><br>
-              <input type="text" name="user_id" id="new_id" onblur="check()" minlength=6 maxlength=20 required class="id_b">
+              <input type="text" name="user_id" id="new_id" onblur="check()" minlength=5 maxlength=20 required class="id_b">
               <p><spen id= "id_result" >아이디 중복확인</spen></p>
             </label>
           </li>
