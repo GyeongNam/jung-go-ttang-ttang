@@ -157,7 +157,6 @@
 .otr_prod_item_img{
   width:5rem;
   height: 5rem;
-  margin-left: 0.5rem;
   margin-top: 0.5rem;
 }
 .otr_prod_item_np{
@@ -170,12 +169,9 @@
 .detail_product_info{
   display: block;
   margin: 0 1rem;
-<<<<<<< HEAD
   width:auto;
-=======
   padding-right: 1rem;
   width: auto;
->>>>>>> 81a7365892540563a225de5f3e0a1039b7aec25e
   height:26rem;
 }
 .tit_pri{
@@ -256,13 +252,12 @@
 .comment_dunglok{
   border-style: none;
   width: 5rem;
-  height: 6.3rem;
   display: inline-block;
 
 }
 .comment_text{
-  width:800px;
-  height:100px;
+  width:40rem;
+  height:5rem;
   resize:none;
 }
 .combox{
@@ -358,6 +353,11 @@
     width: auto;
     height: auto;
   }
+  .detail_seller_info {
+      width: auto;
+      height: auto;
+  }
+
   .d_info{
     width: auto;
     height: auto;
