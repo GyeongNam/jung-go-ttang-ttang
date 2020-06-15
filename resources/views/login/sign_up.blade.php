@@ -190,7 +190,7 @@ function chkpw(){
        alert("공백없이 입력해주세요");
        return false;
     }
-    if(na = true){
+    if(na = false){
       $('.id_b').focus();
        alert("사용중인 아이디 입니다.");
        return false;
