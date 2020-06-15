@@ -72,6 +72,9 @@ Route::get('/manager_user', function(){
 Route::get('/manager_tok', function(){
     return view('manager_tok');
 });
+Route::get('/sign_rull', function () {
+    return view('login.sign_rull');
+});
 
 // user Controller
 Route::post('/singup', 'UserController@store');
