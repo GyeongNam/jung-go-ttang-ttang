@@ -151,7 +151,7 @@ class UserController extends Controller
     }
 
     public function user_repwd($id){
-      return view('login.repassword', ['id'=>$ids]);
+      return view('login.repassword', ['id'=>$id]);
     }
 
     public function user_pwd_update(Request $request, $id){
