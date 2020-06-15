@@ -138,6 +138,7 @@ class UserController extends Controller
 
       $data = User::select('ID', 'email', 'email_domain')->where(['id'=> $id, 'phone'=> $phone])->get();
       $idlink = encrypt($data[0]->ID);
+      session()->put('re_password', $idlink);
       $datas = count($data);
       if($datas>0){
         $mail = $data[0]->email.'@'.$data[0]->email_domain;
@@ -147,13 +148,13 @@ class UserController extends Controller
           'id' => $idlink
         ];
         Mail::to($mail)->send(new PWselect($details));
-        session()->put('re_password', $idlink);
       }
       return response()->json(['data'=>$datas]);
     }
 
     public function user_repwd($id){
-      echo session()->get('re_password');
+
+      echo session()->all();
       // return view('login.repassword', ['id'=>$id]);
     }
 
