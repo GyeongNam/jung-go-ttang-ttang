@@ -227,7 +227,7 @@ function chkpw(){
             <label>
               <strong>생년월일</strong><br>
               <input type="date" id="birthday" name="birthday"
-                     value="dualtime"
+                     value="1985-01-01"
                      min="1930-01-01" max="2050-12-31" required
                      >
             </label>
