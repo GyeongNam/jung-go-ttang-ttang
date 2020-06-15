@@ -1,3 +1,11 @@
+.Qtitle{
+  border-bottom: 1px solid #000000;
+  font-size: 35px;
+  width:auto;
+  text-align: center;
+  padding: 2% 0px;
+  letter-spacing: 1px;
+}
 /* 아코디언 메뉴 */
 /* Style the buttons that are used to open and close the accordion panel */
 .accordionheader{
@@ -32,10 +40,7 @@
 /*h1은 설명을 위한 css이기 때문에 지우셔도 됩니다.
 지우지 않을 경우 다른 h1코드 스타일과 충돌할 가능성이 있습니다*/
 h1 {
-  font-size: 35px;
-  text-align: center;
-  padding: 4% 0px;
-  letter-spacing: 1px;
+
 }
 
 
@@ -54,6 +59,7 @@ h1 {
 }
 .content > div {
 	display: none;
+  height:auto;
 }
 #tab-1:checked ~ .content div:nth-child(1),
 #tab-2:checked ~ .content div:nth-child(2),
@@ -61,7 +67,8 @@ h1 {
 	display: block;
 }
 .servicecenter {
-  margin: 0 auto;
+
+  margin: 3rem auto;
   width:70%;
 }
 .tab {
@@ -92,4 +99,6 @@ h1 {
    padding: 30px;
    line-height: 1.5;
    font-size: 17px;
+   border-bottom: 1px solid #bdbdbd;
+   margin-bottom: 3rem;
 }
