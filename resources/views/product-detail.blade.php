@@ -85,52 +85,7 @@ else if(likhet.src.match("b_gkxm")) {
 
 }
 </script>
-<script type="text/javascript">
-timeBefore();
-  function timeBefore(){
-      //현재시간
-      var now = new Date();
-      console.log(now);
-      //글쓴 시간
-      var writeDay = new Date('#timeplace');
-      var minus;
-      if(now.getFullYear() > writeDay.getFullYear()){
-          minus= now.getFullYear()-writeDay.getFullYear();
-          document.getElementsByClassName("sub")[0].innerHTML = minus+"년 전";
-          console.log(minus+"년 전");
-      }else if(now.getMonth() > writeDay.getMonth()){
-          minus= now.getMonth()-writeDay.getMonth();
-          document.getElementsByClassName("sub")[0].innerHTML = minus+"달 전";
-          console.log(minus+"달 전");
-      }else if(now.getDate() > writeDay.getDate()){
-          minus= now.getDate()-writeDay.getDate();
-          document.getElementsByClassName("sub")[0].innerHTML = minus+"일 전";
-          console.log(minus+"일 전");
-      }else if(now.getDate() == writeDay.getDate()){
-          var nowTime = now.getTime();
-          var writeTime = writeDay.getTime();
-          if(nowTime>writeTime){
-              sec =parseInt(nowTime - writeTime) / 1000;
-              day  = parseInt(sec/60/60/24);
-              sec = (sec - (day * 60 * 60 * 24));
-              hour = parseInt(sec/60/60);
-              sec = (sec - (hour*60*60));
-              min = parseInt(sec/60);
-              sec = parseInt(sec-(min*60));
-              if(hour>0){
-                  document.getElementsByClassName("sub")[0].innerHTML = hour+"시간 전";
-                  console.log(hour+"시간 전");
-              }else if(min>0){
-                  document.getElementsByClassName("sub")[0].innerHTML = min+"분 전";
-                  console.log(min+"분 전");
-              }else if(sec>0){
-                  document.getElementsByClassName("sub")[0].innerHTML = sec+"초 전";
-                  console.log(sec+"초 전");
-              }
-          }
-      }
-  }
-</script>
+
 
 @endsection
 @section('content')
@@ -336,11 +291,6 @@ timeBefore();
         </div>
       </div>
       <div class="detail_info_typing">
-        <div class="info_typing">
-          <button class="typing btdg" type="button" name="button">상품정보</button>
-          <button class="comment btdg" type="button" name="button">댓글달기</button>
-          <button class="starment btdg" type="button" name="button">판매자 평점</button>
-        </div>
         <div class="typinginfo">
           <div class="tkdvnainfo">
             <div class="sc-info_detail">상품 정보</div>
@@ -351,18 +301,6 @@ timeBefore();
             </div>
           </div>
           <div class="deal_cat_location">
-            <div class="location_deal">
-              <div class="locat">
-                거래지역
-              </div>
-              <div class="locate_dnlcl">
-                <div id="maploca" style="width:40rem;height:20rem;"></div>
-              </div>
-              <div id="floating-panel">
-                <input id="address" type="textbox" value="Sydney, NSW">
-                <input id="submit" type="button" value="Geocode">
-              </div>
-            </div>
             <div class="deal_cat">
               <div class="catgo">
                 <img src="" alt="">
@@ -420,63 +358,4 @@ timeBefore();
       }
     });
   </script>
-  <script>
-  // Note: This example requires that you consent to location sharing when
-        // prompted by your browser. If you see the error "The Geolocation service
-        // failed.", it means you probably did not give permission for the browser to
-        // locate you.
-        var map, infoWindow;
-        function initMap() {
-          map = new google.maps.Map(document.getElementById('maploca'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 15
-          });
-          infoWindow = new google.maps.InfoWindow;
-
-          // Try HTML5 geolocation.
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-              var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-              };
-
-              infoWindow.setPosition(pos);
-              infoWindow.setContent('Location found.');
-              infoWindow.open(map);
-              map.setCenter(pos);
-            }, function() {
-              handleLocationError(true, infoWindow, map.getCenter());
-            });
-          } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-          }
-        }
-
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-          infoWindow.setPosition(pos);
-          infoWindow.setContent(browserHasGeolocation ?
-                                'Error: The Geolocation service failed.' :
-                                'Error: Your browser doesn\'t support geolocation.');
-          infoWindow.open(map);
-        }
-
-  function geocodeAddress(geocoder, resultsMap) {
-    var address = document.getElementById('address').value;
-    geocoder.geocode({'address': address}, function(results, status) {
-      if (status === 'OK') {
-        resultsMap.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-          maploca: resultsMap,
-          position: results[0].geometry.location
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-  }
-</script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a82332350bc18d282d500e361ee79da"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&callback=initMap"></script>
 @endsection
