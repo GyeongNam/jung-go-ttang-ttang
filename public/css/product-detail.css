@@ -1,5 +1,7 @@
 * {box-sizing:border-box}
-
+a {
+  text-decoration:none; 
+}
 .content{
   display: block;
   width: 65%;

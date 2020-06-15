@@ -53,7 +53,6 @@
   }
 
 </script>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=6j1slmsxvr&callback=CALLBACK_FUNCTION"></script>
 <script type="text/ajax">
 function toggleImg() {
   var likhet = document.getElementById('likep');
@@ -85,6 +84,52 @@ else if(likhet.src.match("b_gkxm")) {
 }
 
 }
+</script>
+<script type="text/javascript">
+timeBefore();
+  function timeBefore(){
+      //현재시간
+      var now = new Date();
+      console.log(now);
+      //글쓴 시간
+      var writeDay = new Date('#timeplace');
+      var minus;
+      if(now.getFullYear() > writeDay.getFullYear()){
+          minus= now.getFullYear()-writeDay.getFullYear();
+          document.getElementsByClassName("sub")[0].innerHTML = minus+"년 전";
+          console.log(minus+"년 전");
+      }else if(now.getMonth() > writeDay.getMonth()){
+          minus= now.getMonth()-writeDay.getMonth();
+          document.getElementsByClassName("sub")[0].innerHTML = minus+"달 전";
+          console.log(minus+"달 전");
+      }else if(now.getDate() > writeDay.getDate()){
+          minus= now.getDate()-writeDay.getDate();
+          document.getElementsByClassName("sub")[0].innerHTML = minus+"일 전";
+          console.log(minus+"일 전");
+      }else if(now.getDate() == writeDay.getDate()){
+          var nowTime = now.getTime();
+          var writeTime = writeDay.getTime();
+          if(nowTime>writeTime){
+              sec =parseInt(nowTime - writeTime) / 1000;
+              day  = parseInt(sec/60/60/24);
+              sec = (sec - (day * 60 * 60 * 24));
+              hour = parseInt(sec/60/60);
+              sec = (sec - (hour*60*60));
+              min = parseInt(sec/60);
+              sec = parseInt(sec-(min*60));
+              if(hour>0){
+                  document.getElementsByClassName("sub")[0].innerHTML = hour+"시간 전";
+                  console.log(hour+"시간 전");
+              }else if(min>0){
+                  document.getElementsByClassName("sub")[0].innerHTML = min+"분 전";
+                  console.log(min+"분 전");
+              }else if(sec>0){
+                  document.getElementsByClassName("sub")[0].innerHTML = sec+"초 전";
+                  console.log(sec+"초 전");
+              }
+          }
+      }
+  }
 </script>
 
 @endsection
@@ -172,9 +217,10 @@ else if(likhet.src.match("b_gkxm")) {
                   </div>
                   <div class="time isk">
                     <img src="/img/clock.png/" width="16" height="16" alt="업로드된시간">
-                    <div class="time_num intf" name="">
-                      <p>{{date('F d,', strtotime($myproduct[0]->Created_at)) }}
-                        {{date('g:ia', strtotime($myproduct[0]->Created_at)) }}</p>
+                    <div class="time_num intf" name="" id="timeplace">
+                      <p class="sub" >{{date(strtotime($myproduct[0]->Created_at))}}</p>
+                          {{-- <p class="sub">{{date('F d,', strtotime($myproduct[0]->Created_at)) }}
+                             {{date('g:ia', strtotime($myproduct[0]->Created_at)) }}</p> --}}
                       </div>
                     </div>
                   </div>
