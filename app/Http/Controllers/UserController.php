@@ -135,9 +135,9 @@ class UserController extends Controller
     public function selectpw(Request $request){
       $id = $request->input('id');
       $phone = $request->input('phone');
-      $idlink = encrypt($data[0]->ID);
 
       $data = User::select('ID', 'email', 'email_domain')->where(['id'=> $id, 'phone'=> $phone])->get();
+      $idlink = encrypt($data[0]->ID);
       $datas = count($data);
       if($datas>0){
         $mail = $data[0]->email.'@'.$data[0]->email_domain;
@@ -147,7 +147,6 @@ class UserController extends Controller
           'id' => $idlink
         ];
         Mail::to($mail)->send(new PWselect($details));
-
         session()->put('re_password', $idlink);
       }
       return response()->json(['data'=>$datas]);
