@@ -1,6 +1,6 @@
 * {box-sizing:border-box}
 a {
-  text-decoration:none; 
+  text-decoration:none;
 }
 .content{
   display: block;
@@ -286,8 +286,9 @@ a {
   height: 50%;
 }
 .btdg{
-  width: 30rem;
+  width: 24rem;
   height: 2rem;
+  margin-right:
   border-style: none;
   align-items: center;
 }
