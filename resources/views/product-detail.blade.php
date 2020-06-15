@@ -339,6 +339,7 @@ timeBefore();
         <div class="info_typing">
           <button class="typing btdg" type="button" name="button">상품정보</button>
           <button class="comment btdg" type="button" name="button">댓글달기</button>
+          <button class="starment btdg" type="button" name="button">판매자 평점</button>
         </div>
         <div class="typinginfo">
           <div class="tkdvnainfo">
@@ -420,17 +421,46 @@ timeBefore();
     });
   </script>
   <script>
-  function initMap() {
-    var map = new google.maps.Map(document.getElementById('maploca'), {
-      zoom: 15,
-      center: {lat: 37.71159316, lng: 126.88842273}
-    });
-    var geocoder = new google.maps.Geocoder();
+  // Note: This example requires that you consent to location sharing when
+        // prompted by your browser. If you see the error "The Geolocation service
+        // failed.", it means you probably did not give permission for the browser to
+        // locate you.
+        var map, infoWindow;
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('maploca'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 15
+          });
+          infoWindow = new google.maps.InfoWindow;
 
-    document.getElementById('submit').addEventListener('click', function() {
-      geocodeAddress(geocoder, map);
-    });
-  }
+          // Try HTML5 geolocation.
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+
+              infoWindow.setPosition(pos);
+              infoWindow.setContent('Location found.');
+              infoWindow.open(map);
+              map.setCenter(pos);
+            }, function() {
+              handleLocationError(true, infoWindow, map.getCenter());
+            });
+          } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+          }
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(browserHasGeolocation ?
+                                'Error: The Geolocation service failed.' :
+                                'Error: Your browser doesn\'t support geolocation.');
+          infoWindow.open(map);
+        }
 
   function geocodeAddress(geocoder, resultsMap) {
     var address = document.getElementById('address').value;
@@ -438,7 +468,7 @@ timeBefore();
       if (status === 'OK') {
         resultsMap.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
-          map: resultsMap,
+          maploca: resultsMap,
           position: results[0].geometry.location
         });
       } else {
@@ -448,13 +478,5 @@ timeBefore();
   }
 </script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a82332350bc18d282d500e361ee79da"></script>
-<script>
-var container = document.getElementById('daummap'); //지도를 담을 영역의 DOM 레퍼런스
-var options = { //지도를 생성할 때 필요한 기본 옵션
-  center: new kakao.maps.LatLng(33.450701, 126.570667),  //지도의 중심좌표.
-  level: 3 //지도의 레벨(확대, 축소 정도)
-};
-var map = new kakao.maps.Map(container, options);  //지도 생성 및 객체 리턴
-</script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&callback=initMap"></script>
 @endsection
