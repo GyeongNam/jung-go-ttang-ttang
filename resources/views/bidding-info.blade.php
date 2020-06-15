@@ -95,12 +95,12 @@
     </div>
     <div class="bd_price">
       <span>현재가격:</span>
-      <span class="bd_price1" value=""> {{$max}} </span>
+      <span class="bd_price1" value="">{{ number_format($max)}}</span>
       <span> 원</span>
     </div>
     <div class="bd_stprice">
       <span>시작가격:</span>
-      <span class="bd_stprice1" name="money1" >{{$sendd[0]->item_startprice}}</span>
+      <span class="bd_stprice1" name="money1" >{{number_format($sendd[0]->item_startprice)}}</span>
       <span>원</span>
     </div>
     <div class="bd_bid">
