@@ -46,10 +46,11 @@
     </div>
     <hr>
   </div>
+<form class="" action="sign_up" method="get">
   <div class="rull_main">
     <div class="ma1">
     <tr>
-      <td align="left"><font size="4"><strong>
+      <td align="left"><font size="5"><strong>
         이용약관, 개인정보 수집 및 이용, 위치정보 이용약관(선택), 프로모션 안내 메일 수신(선택)에 모두 동의합니다.</td>
 
     <label><td><input type="checkbox" name="all" id="all" ></td>
@@ -1372,10 +1373,9 @@
   </div>
   <div class="button">
     <div class="but">
-      <a href='/sign_up'>
-      동의하고 회원가입<button type="submit" name="button" class="buut1">
-
-      </button></a>
+      <button type="submit" name="button" class="buut1">
+        동의하고 회원가입
+      </button>
       <button type="button" name="button" class="buut2">
         취소하기
       </button>
@@ -1384,4 +1384,6 @@
   </div>
 
 </div>
+
+</form>
 @endsection
