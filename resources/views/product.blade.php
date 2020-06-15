@@ -8,6 +8,9 @@
 @section('js')
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<!-- 에디터CDN -->
+<script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+
 <script>
 
 //거래 시작가 확인검사
@@ -45,7 +48,7 @@ function previewImage(f, divid){
     document.getElementById(divid).innerHTML = '';
   }
   // 확장자 체크
-   else if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){ //파일확장자 제한 정규식
+  else if(!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name)){ //파일확장자 제한 정규식
     alert('gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + file[0].name); //정규식에 없는 파일명이 선택될 경우 경고창 띄워짐
 
     // 선택한 파일 초기화
@@ -61,10 +64,10 @@ function previewImage(f, divid){
     //File 혹은 Blob 객체를 이용해 파일의 내용을(혹은 raw data버퍼로) 읽고 사용자의
     //컴퓨터에 저장하는 것을 가능하게 해줍니다.
     reader.onload = function(rst){
-    //   if() {
-        document.getElementById(divid).innerHTML = '<img src="' + rst.target.result + '">';
-    //   }
-    //
+      //   if() {
+      document.getElementById(divid).innerHTML = '<img src="' + rst.target.result + '">';
+      //   }
+      //
     }
     // 파일을 읽는다
     reader.readAsDataURL(file[0]);
@@ -73,7 +76,7 @@ function previewImage(f, divid){
 
 }
 $(function() {
-$("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
+  $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
 });
 </script>
 @endsection
@@ -272,7 +275,7 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
                 <span></span>상품설명
               </div>
               <div class="p_info">
-                <textarea class="explanation" name="item_info" rows="8" cols="80" placeholder="상품 설명을 입력해주세요."></textarea>
+                <textarea name="dpelxj" id="dpelxj"></textarea>
               </div>
             </div>
           </li>
@@ -290,4 +293,12 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
     </div>
   </form>
 </div>
+<script>
+// 3. CKEditor5를 생성할 textarea 지정
+ClassicEditor
+.create( document.querySelector( '#dpelxj' ) )
+.catch( error => {
+  console.error( error );
+} );
+</script>
 @endsection
