@@ -25,6 +25,7 @@ Route::get('/sign_up', function () {
 Route::get('/mypage', function () {
     return view('user.mypage');
 })->middleware('login');
+
 Route::get('/kategorie', function () {
     return view('kategorie');
 });
