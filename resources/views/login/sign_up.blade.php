@@ -58,7 +58,7 @@ function check(){
           $("#id_result").text("사용 가능한 아이디입니다.");
 
         }
-      },
+    },
       error : function(){
         console.log(datas);
       }
@@ -131,9 +131,10 @@ function chkpw(){
     var phoneJ =/^\d{3}\d{3,4}\d{4}$/;
     var nameJ = /^[가-힣/\s/]{2,6}$/;
     var mailJ =  /[`~!@@#$%^&*|₩₩₩'₩";:₩/?/\s/]/;
-    var na = $("#id_result").text("사용중인 아이디입니다!");
+    var na =  $("#id_result").text();
 
 
+    console.log(na);
 
 
     if (!form.user_id.value) {
@@ -190,11 +191,13 @@ function chkpw(){
        alert("공백없이 입력해주세요");
        return false;
     }
-    if(na = false){
+
+    if(na == "사용중인 아이디입니다!"){
       $('.id_b').focus();
-       alert("사용중인 아이디 입니다.");
+       alert("사용중인 아이디입니다!.");
        return false;
     }
+
     if (form.email_ck.value != RandomNum){
       $('#security').focus();
       alert("인증번호가 틀립니다.");
@@ -220,7 +223,7 @@ function chkpw(){
           </li>
           <li>
             <label><strong>아이디</strong><br>
-              <input type="text" name="user_id" id="new_id" onblur="check()" minlength=5 maxlength=20 required class="id_b">
+              <input type="text" class="id_b" name="user_id" id="new_id" onblur="check()" minlength=5 maxlength=20 required >
               <p><spen id= "id_result" >아이디 중복확인</spen></p>
             </label>
           </li>
@@ -318,7 +321,7 @@ function chkpw(){
 
        <input type="text" name="email_ck" id="security" size="61" placeholder=" 인증번호 입력하세요" required>
        <li>
-         <button  id="sub" onclick="return join_member();" >
+         <button  id="sub" >
            <b>가입하기</b>
          </button>
 

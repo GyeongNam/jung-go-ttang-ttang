@@ -31,7 +31,7 @@
           </li>
           <li>
             <a href="/find_act">ID/Password 찾기</a>
-            <a href="/sign_up">회원가입</a>
+            <a href="/sign_rull">회원가입</a>
           </li>
          </ul>
         </form>
