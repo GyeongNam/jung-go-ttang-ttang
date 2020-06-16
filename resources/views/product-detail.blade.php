@@ -339,18 +339,20 @@ else if(likhet.src.match("b_gkxm")) {
           </div>
         </div>
         <div class="btn_cl">
-          @if(decrypt(session()->get('login_ID')) == $myproduct[0]->seller_id)
-          <div class="auction_revise">
-            <form class="" action="{{url('/product-Modify')}}" method="get">
-              <input type="hidden" name="item_key" value="{{$myproduct[0]->item_number}}">
-              <button type="submit" name="button">경매 수정</button>
-            </form>
-          </div>
-          <div class="auction_del">
-            <a href="/item_remove/{{$myproduct[0]->item_number}}/{{$id}}">
-            <button id="del_detailpage" type="button" name="button" >경매 삭제</button>
-            </a>
-          </div>
+          @if(session()->has('login_ID'))
+            @if(decrypt(session()->get('login_ID')) == $myproduct[0]->seller_id)
+            <div class="auction_revise">
+              <form class="" action="{{url('/product-Modify')}}" method="get">
+                <input type="hidden" name="item_key" value="{{$myproduct[0]->item_number}}">
+                <button type="submit" name="button">경매 수정</button>
+              </form>
+            </div>
+            <div class="auction_del">
+
+              <button id="del_detailpage" type="button" name="button" >경매 삭제</button>
+              </a>
+            </div>
+            @endif
           @endif
         </div>
       </div>
