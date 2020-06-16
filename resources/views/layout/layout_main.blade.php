@@ -102,7 +102,7 @@
           <li><a href="/Login">Login</a></li>
           <li><a href="/sign_rull">sign up</a></li>
         @else
-          <li><a href="/Logout">Log Out</a></li>
+          <li><a class="nolog" href="/Logout">Log Out</a></li>
         @endif
         </div>
       </nav>

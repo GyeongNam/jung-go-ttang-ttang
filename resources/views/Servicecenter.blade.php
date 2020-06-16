@@ -22,13 +22,17 @@
 </script>
 <script type="text/javascript">
 $(function (){
-  if () {
-    $(".qnainput").hide();
-     $(".rmf").click(function (){
-       $(".qnainput").toggle();
-     });
-   });
-  }
+  var n = $('.nolog').text();
+  $(".qnainput").hide();
+  $(".rmf").click(function (){
+    if(n=="Log Out") {
+      $(".qnainput").toggle();
+    }
+    else{
+      return alert('로그인 해주세요!');
+    }
+  });
+});
 
 </script>
 @endsection
@@ -110,9 +114,10 @@ $(function (){
                   <label>휴대폰번호</label>
                   <input type="text" name="" value="">
                   <label>비밀번호</label>
-                  <input type="text" name="" value="">
+                  <input type="password" name="" value="">
                 </div>
                 <textarea name="name" rows="8" cols="80"></textarea>
+                <button type="button" name="button">작성하기</button>
               </div>
             </div>
           </div>
@@ -139,8 +144,8 @@ $(function (){
         }
       });
     }
-    </script>
-  </div>
+  </script>
+</div>
 </div>
 
 @endsection
