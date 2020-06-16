@@ -339,6 +339,7 @@ else if(likhet.src.match("b_gkxm")) {
           </div>
         </div>
         <div class="btn_cl">
+          @if(decrypt(session()->get('login_ID')) == $myproduct[0]->seller_id)
           <div class="auction_revise">
             <form class="" action="{{url('/product-Modify')}}" method="get">
               <input type="hidden" name="item_key" value="{{$myproduct[0]->item_number}}">
@@ -346,20 +347,23 @@ else if(likhet.src.match("b_gkxm")) {
             </form>
           </div>
           <div class="auction_del">
+            <a href="/item_remove/{{$myproduct[0]->item_number}}/{{$id}}">
             <button id="del_detailpage" type="button" name="button" >경매 삭제</button>
+            </a>
           </div>
+          @endif
         </div>
       </div>
     </div>
     <script type="text/javascript">
     //경매 삭제 버튼(제발 제에발 건들지 말아주세요)
-    $('#del_detailpage').click(function(){
-      if(confirm("경매를 삭제 하시겠습니까? 삭제된 경매는 낙찰 받을 수 없습니다!") == true){
-        alert("삭제되었습니다.");
-      }
-      else{
-        return false;
-      }
-    });
+    // $('#del_detailpage').click(function(){
+    //   if(confirm("경매를 삭제 하시겠습니까? 삭제된 경매는 낙찰 받을 수 없습니다!") == true){
+    //     alert("삭제되었습니다.");
+    //   }
+    //   else{
+    //     return false;
+    //   }
+    // });
   </script>
 @endsection

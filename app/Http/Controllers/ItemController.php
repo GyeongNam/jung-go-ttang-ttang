@@ -216,18 +216,18 @@ class ItemController extends Controller
     }
 
   public function itemview($item_number){
-      $id= session()->get('login_ID');
       $myproduct= Item::select('*')->where(['item_number'=>$item_number])->get();
       $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success','item_deadline', 'success')->where(['seller_id'=>$myproduct[0]->seller_id])->get();
       $data = User::select('user_image')->where(['id' =>  $myproduct[0]->seller_id])->get();
       $max = Auction::select('item_price')->where(['auction_itemnum'=>$item_number])->get();
       $maxs =  $max->max('item_price');
       $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
-      $poss = Item::where(['item_number'=>$item_number])->update([
+      Item::where(['item_number'=>$item_number])->update([
         'visit_count'=> $count[0]->visit_count + 1
       ]);
         return view('product-detail', [
         'myproduct' => $myproduct,
+        'id' => encrypt($myproduct[0]->seller_id),
         'data'=>$data,
         'myStat'=>$myStat,
         'max'=>$maxs,
