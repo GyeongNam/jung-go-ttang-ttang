@@ -120,7 +120,12 @@
               <h2>인기상품</h2>
               <!-- foreach ($variable as $key => $value) -->
               <div class="item">
-                <img id="itmg" src="/img/product.png" alt=""><br>
+                <div class="">
+                 <img id="itmg" src="/img/product.png" alt="">
+                 <div class="whghltn">
+                  <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                 </div>
+                </div><br>
                 <a href="#">IPad Pro 64G 3세대</a><br>
                 <a href="#">상품가격 : </a>
               </div>
