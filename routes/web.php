@@ -83,7 +83,7 @@ Route::post('/user_pwd_update/{id}','UserController@user_pwd_update');
 // item Controller
 Route::post('/product', 'ItemController@store');
 Route::get('/product-detail/{item_number}', 'ItemController@itemview');
-Route::get('')->middleware('login');
+//Route::get('')->middleware('login');
 //Route::get('/', 'ItemController@mainview');
 Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
 Route::get('/manclothing', 'ItemController@category');

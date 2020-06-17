@@ -20,8 +20,20 @@ footer{
   color: #848484;
   font-size: 18px;
   background-color: #263343;
-  text-align: center;
   padding: 10px;
+}
+.footbox{
+  display: block;
+  width: 50%;
+  height: auto;
+  margin: auto;
+}
+.pootlist{
+  display: block;
+}
+.pootcopyandgogak{
+  display: flex;
+  margin-top: 3rem;
 }
 
 @media screen and (max-width: 1200px) {
