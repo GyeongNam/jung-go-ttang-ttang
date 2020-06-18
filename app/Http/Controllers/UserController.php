@@ -172,7 +172,11 @@ class UserController extends Controller
 
     public function qna(Request $request){
       $id = session()->get('login_ID');
-      $data = User::select('ID')->where(['id'=>decrypt($id)])->get();
+      if(session()->has('login_ID') != 1)
+        $data = [];
+      else {
+        $data = User::select('ID')->where(['id'=> decrypt($id)])->get();
+      }
       return view('Servicecenter', [
         'data'=> $data
       ]);
