@@ -330,18 +330,9 @@ function checkValue(){
     </form>
   </div>
   <!--test-->
-  <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+  <!-- <video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
       <source src="img/Seoul - 21985.mp4">
-</video>
-  <div class="jb-box">
-    <video muted autoplay loop>
-      <source src="img/Seoul - 21985.mp4" type="video/mp4">
-        <strong>Your browser does not support the video tag.</strong>
-      </video>
-      <div class="jb-text">
-        <p>Lorem Ipsum Dolor</p>
-      </div>
-    </div>
+</video> -->
     <!--test-->
   </div>
   @endsection

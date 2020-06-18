@@ -4,29 +4,19 @@
 }
 
 /*  연구중 */
-.jb-box {
-  width: 100%;
-  height: 500px;
-  overflow: hidden;
-  margin: 0px auto;
-  position: relative;
-}
-
-.video {
-  width: 100%;
-}
-
-#video {
+/* #video {
      position: absolute;
      top: 0px;
      left: 0px;
-     min-width: 100%;
-     min-height: 100%;
+     buttom: 0px;
+
+     width: 100%;
+     height: 100%;
      width: auto;
      height: auto;
      z-index: -1;
      overflow: hidden;
-}
+} */
 
 /* 연구중 */
 .center-block{
@@ -43,7 +33,6 @@
 }
 
 .sign_up{
-  border: 10px solid #263343;
   border-radius: 12px;
   margin-top: 5%;
   margin-bottom: 5%;
