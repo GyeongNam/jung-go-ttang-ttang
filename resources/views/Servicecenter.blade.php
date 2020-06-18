@@ -34,6 +34,7 @@ function openPage(pageName, elmnt, color) {
     }
   });
 
+
 </script>
 @endsection
 @section('content')
@@ -82,7 +83,7 @@ function openPage(pageName, elmnt, color) {
                 </div>
                 <button class="accordion" type="button" name="button">▶낙찰을 포기할시에 어떻게되나요??</button>
                 <div class="panel">
-                  <p>Lorem ipsum dolor는 amet, condictetur adipisicing elit, sed do eiusmod tempor incididunt ut ee 및 dolore magna aliqua에 앉아 있습니다. 가장 좋은 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <p>낙찰가를 악용하여 실제로 상품을 원하는 사람에게 </p>
                 </div>
               </div>
             </div>
@@ -95,7 +96,7 @@ function openPage(pageName, elmnt, color) {
                 <tr>
                   <td>1</td>
                   <td>자꾸 벽돌 보내면 마 그땐 나도 깡패가 되는거야</td>
-                  <td>Iron Dragon</td>
+                  <td></td>
                   <td>2020/06/16</td>
                 </tr>
               </table>
@@ -111,9 +112,11 @@ function openPage(pageName, elmnt, color) {
                       작성자 :
                     </div>
                     <div class="qnaname">
-                      IronDragon
+                      {{$data[0]->ID}}
                     </div>
                   </div>
+                  <label>제목 : </label>
+                  <input type="text" name="" value=""><br>
                   <label>휴대폰번호</label>
                   <input type="text" name="" value="">
                   <label>비밀번호</label>
