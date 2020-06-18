@@ -145,6 +145,28 @@
         </div>
         </div>
       </footer>
+      <div class="foothadan">
+        <div class="fottwo">
+          <div class="">
+            <a href="#">채용정보</a>
+          </div>
+          <div class="">
+            <a href="#">이용약관</a>
+          </div>
+          <div class="">
+            <a href="#">전자금융거래약관</a>
+          </div>
+          <div class="">
+            <a href="#">개인정보 처리방침</a>
+          </div>
+          <div class="">
+            <a href="#">브랜드 광고문의</a>
+          </div>
+          <div class="">
+            <a href="#">판매자 광고센터</a>
+          </div>
+        </div>
+      </div>
     {{-- Layout Footer End --}}
 
   </body>

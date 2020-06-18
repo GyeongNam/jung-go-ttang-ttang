@@ -1,9 +1,9 @@
 footer a{
-  color: #fff;
+  color: #333;
   text-decoration: none;
 }
 footer a:hover {
-  color: #ccc
+  color: #333
 }
 footer li{
   list-style: none;
@@ -17,9 +17,9 @@ footer{
 }
 
 .tang-footer {
-  color: #848484;
+  color: #333;
   font-size: 18px;
-  background-color: #263343;
+  background-color: #f7f7f7;
   padding: 10px;
 }
 .footbox{
@@ -43,6 +43,18 @@ footer{
   margin-right: 3rem;
   padding-left: 1rem;
   border-left: 1px solid #bdbdbd;
+  color: #333;
+}
+.foothadan{
+  display: block;
+  width: 50%;
+  background-color: #ffffff;
+  padding-top: 12px;
+  padding-bottom: 9px;
+
+}
+.fottwo{
+  padding: 0 29px 0 30px;
 }
 @media screen and (max-width: 1200px) {
 
