@@ -35,7 +35,15 @@ footer{
   display: flex;
   margin-top: 3rem;
 }
-
+.sponcl{
+  display: flex;
+  margin: 5px 0px;
+}
+.ftn{
+  margin-right: 3rem;
+  padding-left: 1rem;
+  border-left: 1px solid #bdbdbd;
+}
 @media screen and (max-width: 1200px) {
 
   .tang-footer {

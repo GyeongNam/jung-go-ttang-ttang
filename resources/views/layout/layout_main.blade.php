@@ -116,13 +116,18 @@
     {{-- Layout Footer Start --}}
       <footer class="tang-footer">
         <div class="footbox">
-          <div class="">
-            <ul>
-              <li><a href="https://www.joongbu.ac.kr/home">중부대학교</a></li>
-              <li><a href="https://www.naver.com">네이버</a></li>
-              <li><a href="#">Examples</a></li>
-              <li><a href="#">About</a></li>
-            </ul>
+          <div class="footspon">
+            <div class="sponcl">
+              <div class="footqna ftn">
+                <a href="/service">Q&A</a>
+              </div>
+              <div class="sangdam ftn">
+                <a href="#">1:1 상담</a>
+              </div>
+              <div class="sellpage ftn">
+                <a href="/itemcheck">경매판매하기</a>
+              </div>
+            </div>
           </div>
           <div class="pootlist">
             <div class="pooterneau">
