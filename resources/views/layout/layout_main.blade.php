@@ -119,7 +119,7 @@
           <div class="footspon">
             <div class="sponcl">
               <div class="footqna ftn">
-                <a href="/service">Q&A</a>
+                <a href="/Servicecenter">Q&A</a>
               </div>
               <div class="sangdam ftn">
                 <a href="#">1:1 상담</a>
