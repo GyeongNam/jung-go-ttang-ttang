@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentTable extends Migration
+class CreateAuthorityTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateCommentTable extends Migration
      */
     public function up()
     {
-        Schema::create('comment', function (Blueprint $table) {
-            $table->BigInteger('comment_num')->unique();
-            $table->date('time');
-            $table->string('comments');
-            $table->timestamps();
-            $table->rememberToken();
+        Schema::create('authority', function (Blueprint $table) {
+          $table->BigInteger('authority_num');
+          $table->boolean('ban');
+          $table->integer('warning');
+          $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ class CreateCommentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment');
+        Schema::dropIfExists('authority');
     }
 }
