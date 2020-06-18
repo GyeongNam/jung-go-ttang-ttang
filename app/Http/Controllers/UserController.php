@@ -91,9 +91,9 @@ class UserController extends Controller
       $birthday = $request->input('birthday');
       $gender = $request->input('gender');
 
-      if($request->hasFile('item_picturefront')){
+      if($request->hasFile('user_image')){
         $user_image = $request->file('user_image');
-        $extension= $user_image->getClientOriginalName();
+        $extension = $user_image->getClientOriginalName();
         Image::make($user_image)->save(public_path('/img/user/' .$extension));
       }
       else {
