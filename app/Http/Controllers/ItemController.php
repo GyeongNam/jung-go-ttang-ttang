@@ -262,11 +262,11 @@ class ItemController extends Controller
   }
 
   public function removes($item_number, $id){
+
     $data = Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->get();
     Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->delete();
     $path = public_path('/img/item/'.$data[0]->item_picture);
     File::delete($path);
-
     if($data[0]->item_pictureup != null){
       $path = public_path('/img/item/'.$data[0]->item_pictureup);
       File::delete($path);
@@ -291,7 +291,7 @@ class ItemController extends Controller
       $path = public_path('/img/item/'.$data[0]->item_picturebehind);
       File::delete($path);
     }
-    print_r("<script>alert('물품이 삭제되었습니다.') </script>");
+
     return redirect('/itemcheck');
   }
 }
