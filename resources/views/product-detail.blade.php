@@ -348,7 +348,7 @@ else if(likhet.src.match("b_gkxm")) {
               </form>
             </div>
             <div class="auction_del">
-
+              <a href="/remove/{{$myproduct[0]->item_number}}/{{$id}}">
               <button id="del_detailpage" type="button" name="button" >경매 삭제</button>
               </a>
             </div>

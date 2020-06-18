@@ -35,6 +35,7 @@ class CreateItemsTable extends Migration
      $table->string('item_startprice');
      $table->boolean('item_success');
      $table->boolean('success');
+     $table->integer('visit_count')->nullable();
      $table->rememberToken();
      $table->timestamps();
         });

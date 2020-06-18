@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Item;
 use App\User;
 use App\Auction;
@@ -258,5 +259,10 @@ class ItemController extends Controller
       'wish_itm' => $wish_itm
     ]);
 
+  }
+
+  public function removes($item_number, $id){
+    $data =  Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->get();
+    echo $data;
   }
 }
