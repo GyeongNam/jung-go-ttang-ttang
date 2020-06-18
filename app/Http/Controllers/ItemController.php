@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Storage;
 use App\Item;
 use App\User;
 use App\Auction;
@@ -262,7 +262,36 @@ class ItemController extends Controller
   }
 
   public function removes($item_number, $id){
-    $data =  Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->get();
-    echo $data;
+
+    $data = Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->get();
+    Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->delete();
+    $path = public_path('/img/item/'.$data[0]->item_picture);
+    File::delete($path);
+    if($data[0]->item_pictureup != null){
+      $path = public_path('/img/item/'.$data[0]->item_pictureup);
+      File::delete($path);
+    }
+    if($data[0]->item_picturefront != null){
+      $path = public_path('/img/item/'.$data[0]->item_picturefront);
+      File::delete($path);
+    }
+    if($data[0]->item_pictureback != null){
+      $path = public_path('/img/item/'.$data[0]->item_pictureback);
+      File::delete($path);
+    }
+    if($data[0]->item_pictureleft != null){
+      $path = public_path('/img/item/'.$data[0]->item_pictureleft);
+      File::delete($path);
+    }
+    if($data[0]->item_picturerigth != null){
+      $path = public_path('/img/item/'.$data[0]->item_picturerigth);
+      File::delete($path);
+    }
+    if($data[0]->item_picturebehind != null){
+      $path = public_path('/img/item/'.$data[0]->item_picturebehind);
+      File::delete($path);
+    }
+
+    return redirect('/itemcheck');
   }
 }
