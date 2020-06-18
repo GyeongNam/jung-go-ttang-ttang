@@ -9,7 +9,7 @@
 
 
 
-function openPage(pageName, elmnt, color) {
+  function openPage(pageName, elmnt, color) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -104,7 +104,8 @@ function openPage(pageName, elmnt, color) {
                 <button class="rmf" type="button"  name="button">글 작성</button>
                 <button class="tnwjd" type="submit" name="button">글 수정</button>
               </div>
-              @if(session()->has('login_ID') == 1)
+
+              @if(session()->has('login_ID'))
               <div class="qnainput" >
                 <div class="">
                   <div class="">

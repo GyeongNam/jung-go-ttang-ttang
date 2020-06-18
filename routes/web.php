@@ -50,9 +50,7 @@ Route::get('/bidding-info', function () {
 Route::get('/wish_list', function(){
     return view('wish_list');
 });
-Route::get('/Servicecenter', function(){
-    return view('Servicecenter');
-});
+
 Route::get('/manager_main', function(){
     return view('manager_main');
 });
