@@ -5,9 +5,11 @@
 @endsection
 
 @section('js')
-  <script type="text/javascript">
+<script type="text/javascript">
 
-  function openPage(pageName, elmnt, color) {
+
+
+function openPage(pageName, elmnt, color) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -19,20 +21,18 @@
     document.getElementById(pageName).style.display = "block";
   }
 
-</script>
-<script type="text/javascript">
-$(function (){
-  var n = $('.nolog').text();
-  $(".qnainput").hide();
-  $(".rmf").click(function (){
-    if(n=="Log Out") {
-      $(".qnainput").toggle();
-    }
-    else{
-      return alert('로그인 해주세요!');
+  $(function (){
+    $(".qnainput").hide();
+     $(".rmf").click(function (){
+       $(".qnainput").toggle();
+    });
+    if($(".error").length>0){
+      $(".rmf").click(function (){
+      alert('로그인이 아닙니다.');
+      location.href="/Login";
+      });
     }
   });
-});
 
 </script>
 @endsection
@@ -100,10 +100,11 @@ $(function (){
                 </tr>
               </table>
               <div class="guljaxsung">
-                <button class="rmf" type="button" name="button">글 작성</button>
+                <button class="rmf" type="button"  name="button">글 작성</button>
                 <button class="tnwjd" type="submit" name="button">글 수정</button>
               </div>
-              <div class="qnainput">
+              @if(session()->has('login_ID') == 1)
+              <div class="qnainput" >
                 <div class="">
                   <div class="">
                     <div class="qnawkrtjd">
@@ -121,6 +122,9 @@ $(function (){
                 <textarea name="name" rows="8" cols="80"></textarea>
                 <button type="button" name="button">작성하기</button>
               </div>
+              @else
+              <div class="error"></div>
+              @endif
             </div>
           </div>
           <div>
