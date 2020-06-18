@@ -40,6 +40,13 @@ class CreateForeignTable extends Migration
               $table->integer('chat_num')->index();
               $table->foreign('chat_num')->references('chatroom_num')->on('chatroom');
             });
+            Schema::table('comment',function (Blueprint $table){
+              $table->string('comment_id')->index();
+              $table->foreign('comment_id')->references('id')->on('users');
+              
+              $table->integer('comm_item')->index();
+              $table->foreign('comm_item')->references('item_number')->on('items');
+            });
     }
 
     /**
@@ -55,5 +62,6 @@ class CreateForeignTable extends Migration
         Schema::table('favorite', function (Blueprint $table){});
         Schema::table('chatroom', function (Blueprint $table){});
         Schema::table('messege',  function (Blueprint $table){});
+        Schema::table('comment', function (Blueprint $table){});
     }
 }
