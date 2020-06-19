@@ -106,7 +106,7 @@ function remove_div(obj){
                 <th>작성일</th>
                 <tr>
                   <td>1</td>
-                  <td>자꾸 벽돌 보내면 마 그땐 나도 깡패가 되는거야</td>
+                  <td>제목이 보여지는 부분입니다.</td>
                   <td></td>
                   <td>2020/06/16</td>
                 </tr>

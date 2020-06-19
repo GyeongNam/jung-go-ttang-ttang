@@ -12,6 +12,7 @@ use App\User;
 use DB;
 use Session;
 use Image;
+use App\Item;
 
 class UserController extends Controller
 {
@@ -91,9 +92,9 @@ class UserController extends Controller
       $birthday = $request->input('birthday');
       $gender = $request->input('gender');
 
-      if($request->hasFile('user_image')){
+      if($request->hasFile('item_picturefront')){
         $user_image = $request->file('user_image');
-        $extension = $user_image->getClientOriginalName();
+        $extension= $user_image->getClientOriginalName();
         Image::make($user_image)->save(public_path('/img/user/' .$extension));
       }
       else {
@@ -169,16 +170,19 @@ class UserController extends Controller
       ]);
       return view('main');
     }
+    public function manager(Request $request){
+      $mana = User::select('ID','name','birthday','gender','phone','email','email_domain','created_at')->get();
+      return view('/manager_user',[
+      'mana'=>$mana
+      ]);
+    }
 
-    public function qna(Request $request){
-      $id = session()->get('login_ID');
-      if(session()->has('login_ID') != 1)
-        $data = [];
-      else {
-        $data = User::select('ID')->where(['id'=> decrypt($id)])->get();
-      }
-      return view('Servicecenter', [
-        'data'=> $data
+    public function managerinfo($id){
+        $mana = User::select('ID','name','birthday','gender','phone','email','email_domain','created_at')->where(['id'=>$id])->get();
+       $maif = Item::leftjoin('auction', 'items.item_number','=', 'auction.auction_itemnum')->select('item_number','item_name','item_price','buyer_ID')->where(['buyer_ID'=>$id])->get();
+      return view('/manager_user_info',[
+        'mana'=>$mana,
+        'maif'=>$maif
       ]);
     }
 }
