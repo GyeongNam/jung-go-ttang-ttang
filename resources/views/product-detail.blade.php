@@ -168,9 +168,9 @@ else if(likhet.src.match("b_gkxm")) {
                     <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
                     <div class="see_num intf" name="">
                       @if ($count[0]->visit_count !=0)
-                      <span>{{$count[0]->visit_count}}</span>
+                        <span>{{$count[0]->visit_count}}</span>
                       @else
-                 <span>0</span>
+                        <span>0</span>
                       @endif
                     </div>
                   </div>
@@ -178,169 +178,188 @@ else if(likhet.src.match("b_gkxm")) {
                     <img src="/img/clock.png/" width="16" height="16" alt="업로드된시간">
                     <div class="time_num intf" name="" id="timeplace">
                       <p class="sub" >{{date(strtotime($myproduct[0]->Created_at))}}</p>
-                          {{-- <p class="sub">{{date('F d,', strtotime($myproduct[0]->Created_at)) }}
-                             {{date('g:ia', strtotime($myproduct[0]->Created_at)) }}</p> --}}
-                      </div>
+                      {{-- <p class="sub">{{date('F d,', strtotime($myproduct[0]->Created_at)) }}
+                      {{date('g:ia', strtotime($myproduct[0]->Created_at)) }}</p> --}}
                     </div>
                   </div>
-                  <div class="d_kyeword_info">
-                    <div class="pd_st">
-                      <div class="pd_mak">
-                        제조사 :
-                      </div>
-                      <div class="mak_info tnam" name="">
-                        {{$myproduct[0]->item_maker}}
-                      </div>
+                </div>
+                <div class="d_kyeword_info">
+                  <div class="pd_st">
+                    <div class="pd_mak">
+                      제조사 :
                     </div>
-                    <div class="pd_st">
-                      <div class="pd_by">
-                        구매일 :
-                      </div>
-                      <div class="by_info tnam" name="">
-                        {{$myproduct[0]->item_buy}}
-                      </div>
+                    <div class="mak_info tnam" name="">
+                      {{$myproduct[0]->item_maker}}
                     </div>
-                    <div class="pd_st">
-                      <div class="pd_cat">
-                        상품 카테고리 :
-                      </div>
-                      <div class="cat_info tnam" name="">
-                        {{$myproduct[0]->item_category}}
-                      </div>
+                  </div>
+                  <div class="pd_st">
+                    <div class="pd_by">
+                      구매일 :
                     </div>
-                    <div class="pd_st">
-                      <div class="pd_opcl">
-                        상품 개봉여부 :
-                      </div>
+                    <div class="by_info tnam" name="">
+                      {{$myproduct[0]->item_buy}}
+                    </div>
+                  </div>
+                  <div class="pd_st">
+                    <div class="pd_cat">
+                      상품 카테고리 :
+                    </div>
+                    <div class="cat_info tnam" name="">
+                      {{$myproduct[0]->item_category}}
+                    </div>
+                  </div>
+                  <div class="pd_st">
+                    <div class="pd_opcl">
+                      상품 개봉여부 :
+                    </div>
 
-                      <div class="opcl_info tnam" name="">
-                        @if($myproduct[0]->item_open != 1)
-                          <span>미개봉</span>
-                        @else
-                          <span>개봉</span>
-                        @endif
-                      </div>
+                    <div class="opcl_info tnam" name="">
+                      @if($myproduct[0]->item_open != 1)
+                        <span>미개봉</span>
+                      @else
+                        <span>개봉</span>
+                      @endif
                     </div>
-                    <div class="pd_st">
-                      <div class="pd_spric">
-                        경매 시작가격 :
-                      </div>
-                      <div class="spric_info tnam" name="">
-                        {{ number_format($myproduct[0]->item_startprice)}}
-                        <span>원</span>
-                      </div>
+                  </div>
+                  <div class="pd_st">
+                    <div class="pd_spric">
+                      경매 시작가격 :
+                    </div>
+                    <div class="spric_info tnam" name="">
+                      {{ number_format($myproduct[0]->item_startprice)}}
+                      <span>원</span>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="bt_box">
-                <div class="bt-Wla">
-                  <form class="" action="{{url('/wish_lst')}}" method="get">
-                    <div class="Wla_click">
-                      <button   class="unWla" type="submit" name="likejim" value="{{$myproduct[0]->item_number}}" onclick="toggleImg()">
-                        <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
-                        <span>찜</span>
-                        <span>72</span>
-                      </button>
-                    </form>
-                  </div>
-                </div>
-                <a href="/bidding-info/{{$myproduct[0]->item_number}}"><button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </button></a>
-                <button class="wjsghk"type="button" name="callseller">연락하기</button>
               </div>
             </div>
+            <div class="bt_box">
+              <div class="bt-Wla">
+                <form class="" action="{{url('/wish_lst')}}" method="get">
+                  <div class="Wla_click">
+                    <button   class="unWla" type="submit" name="likejim" value="{{$myproduct[0]->item_number}}" onclick="toggleImg()">
+                      <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
+                      <span>찜</span>
+                      <span>72</span>
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <a href="/bidding-info/{{$myproduct[0]->item_number}}"><button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </button></a>
+              <button class="wjsghk"type="button" name="callseller">연락하기</button>
+            </div>
           </div>
-          <div class="detail_seller_info">
-            <div class="seller_page">
-              <div class="seller">
-                판매자 정보
-              </div>
-              <div class="seller_info">
-                <div class="seller_name">
-                  <div class="">
+        </div>
+        <div class="detail_seller_info">
+          <div class="seller_page">
+            <div class="seller">
+              판매자 정보
+            </div>
+            <div class="seller_info">
+              <div class="seller_name">
+                <div class="">
 
-                  </div>
-                  <a href="#"><img src=""></a>
-                  <div class="seller_profile">
-                    <div class="name_pdt">
-                      <img class="seller_img" name="" src="/img/user/{{$data[0]->user_image}}" alt="">
-                      <a class="seller_name_link" name="" href="#">{{$myproduct[0]->seller_id}}</a>
-                      <a class="productrottn" name="" href="#">상품 2</a>
-                    </div>
+                </div>
+                <a href="#"><img src=""></a>
+                <div class="seller_profile">
+                  <div class="name_pdt">
+                    <img class="seller_img" name="" src="/img/user/{{$data[0]->user_image}}" alt="">
+                    <a class="seller_name_link" name="" href="#">{{$myproduct[0]->seller_id}}</a>
+                    <a class="productrottn" name="" href="#">상품 2</a>
                   </div>
                 </div>
               </div>
-              <div class="seller_other_product">
-                <div class="otr_prod_box">
-                  <div class="otr_prod_item_label">
-                    <span>판매자가 경매중인 물품</span>
-                  </div>
-                  @for($key=0; $key < count($myStat) ; $key++)
-                    @if($key < 3)
-                      <a href="/product-detail/{{$myStat[$key]->item_number}}">
-                        <div class="otr_prod_item"  style=" cursor: pointer;" onclick="">
-                          <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
-                          <div class="otr_prod_item_np">
-                            <span class="otr_name" name="">{{$myStat[$key]->item_name}}</span><br>
-                            <span class="otr_price" name="">현재가격{{ number_format($myStat[$key]->item_startprice)}}</span>
-                          </div>
-                        </div>
-                      </a>
-                    @endif
-                  @endfor
+            </div>
+            <div class="seller_other_product">
+              <div class="otr_prod_box">
+                <div class="otr_prod_item_label">
+                  <span>판매자가 경매중인 물품</span>
                 </div>
+                @for($key=0; $key < count($myStat) ; $key++)
+                  @if($key < 3)
+                    <a href="/product-detail/{{$myStat[$key]->item_number}}">
+                      <div class="otr_prod_item"  style=" cursor: pointer;" onclick="">
+                        <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
+                        <div class="otr_prod_item_np">
+                          <span class="otr_name" name="">{{$myStat[$key]->item_name}}</span><br>
+                          <span class="otr_price" name="">현재가격{{ number_format($myStat[$key]->item_startprice)}}</span>
+                        </div>
+                      </div>
+                    </a>
+                  @endif
+                @endfor
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="detail_info_typing">
-        <div class="typinginfo">
-          <div class="tkdvnainfo">
-            <div class="sc-info_detail">상품 정보</div>
-            <div class="sc-info-typing">
-              <div class="sc-info_sodyd">
-                {{$myproduct[0]->item_info}}
-              </div>
+    </div>
+    <div class="detail_info_typing">
+      <div class="typinginfo">
+        <div class="tkdvnainfo">
+          <div class="sc-info_detail">상품 정보</div>
+          <div class="sc-info-typing">
+            <div class="sc-info_sodyd">
+              {{$myproduct[0]->item_info}}
             </div>
           </div>
-          <div class="deal_cat_location">
-            <div class="deal_cat">
-              <div class="catgo">
-                <img src="" alt="">
-                카테고리
-              </div>
-              <div class="">
-                <a href="#"><span>모바일/태블릿</span></a>
-              </div>
+        </div>
+        <div class="deal_cat_location">
+          <div class="deal_cat">
+            <div class="catgo">
+              <img src="" alt="">
+              카테고리
             </div>
-            <div class="pro_tag">
-              <div class="tag_name">
-                <img src="" alt="">
-                상품태그
-              </div>
-              <div class="taglist">
-                <a href="#">#아이패드</a>
-                <a href="#">#아이패드에어</a>
-                <a href="#">#태블릿</a>
-              </div>
+            <div class="">
+              <a href="#"><span>모바일/태블릿</span></a>
             </div>
           </div>
-          <div class="buyer_comment">
-            <div class="people_comment">
-              <div class="dat_lab">
-                <h2>댓글달기</h2>
+          <div class="pro_tag">
+            <div class="tag_name">
+              <img src="" alt="">
+              상품태그
+            </div>
+            <div class="taglist">
+              <a href="#">#아이패드</a>
+              <a href="#">#아이패드에어</a>
+              <a href="#">#태블릿</a>
+            </div>
+          </div>
+        </div>
+        <div class="buyer_comment">
+          <div class="people_comment">
+            <div class="dat_lab">
+              <h2>댓글달기</h2>
+            </div>
+            <div class="combox">
+              <div class="comment_munie">
+                <textarea class="comment_text" name="name" rows="8" cols="80" placeholder="제품문의 댓글 입력"></textarea>
               </div>
-              <div class="combox">
-                <textarea class="comment_text" name="name" rows="8" cols="80"></textarea>
-                <button type="button" class="comment_dunglok" name="button">댓글달기</button>
+              <div class="comment_fontlength">
+                <div class="sc-fontlength dlqfurrmf">0 / 200</div>
+                <button type="button" class="comment_dunglok" name="button">등록</button>
+              </div>
+              <div class="comment_new">
+                <div class="create_comment">
+                  <div class="user_comnt">
+                    <img class="user_img" src="" alt="">
+                  </div>
+                  <div class="neadcomt">
+                    정말 좋아요dsak;정말 좋ak;정말 좋아요d
+                  </div>
+                  <div class="daedatgel">
+                    대댓글 달기
+                  </div>
+                </div>
+                <div class="create_comment"></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="btn_cl">
-          @if(session()->has('login_ID'))
-            @if(decrypt(session()->get('login_ID')) == $myproduct[0]->seller_id)
+      </div>
+      <div class="btn_cl">
+        @if(session()->has('login_ID'))
+          @if(decrypt(session()->get('login_ID')) == $myproduct[0]->seller_id)
             <div class="auction_revise">
               <form class="" action="{{url('/product-Modify')}}" method="get">
                 <input type="hidden" name="item_key" value="{{$myproduct[0]->item_number}}">
@@ -350,21 +369,35 @@ else if(likhet.src.match("b_gkxm")) {
             <div class="auction_del">
               <button id="del_detailpage" type="button" name="button" >경매 삭제</button>
             </div>
-            @endif
           @endif
-        </div>
+        @endif
       </div>
     </div>
-    <script type="text/javascript">
-    //경매 삭제 버튼(제발 제에발 건들지 말아주세요)
-    $('#del_detailpage').click(function(){
-      if(confirm("경매를 삭제 하시겠습니까? 삭제된 경매는 낙찰 받을 수 없습니다!") == true){
-        location.href="/remove/{{$myproduct[0]->item_number}}/{{$id}}";
-        alert("삭제되었습니다.");
-      }
-      else{
-        return false;
-      }
-    });
-  </script>
+  </div>
+  <script type="text/javascript">
+  //서류사항 textarea 체크
+  $('.comment_text').keyup(function (e){
+    var content = $(this).val();
+    $('.dlqfurrmf').html("("+content.length+" / 최대 200자)");    //글자수 실시간 카운팅
+
+    if (content.length > 200){
+      alert("최대 200자까지 입력 가능합니다.");
+      $(this).val(content.substring(0, 200));
+      $('.dlqfurrmf').html("(200 / 최대 200자)");
+    }
+  });
+
+</script>
+<script type="text/javascript">
+//경매 삭제 버튼(제발 제에발 건들지 말아주세요)
+$('#del_detailpage').click(function(){
+  if(confirm("경매를 삭제 하시겠습니까? 삭제된 경매는 낙찰 받을 수 없습니다!") == true){
+    location.href="/remove/{{$myproduct[0]->item_number}}/{{$id}}";
+    alert("삭제되었습니다.");
+  }
+  else{
+    return false;
+  }
+});
+</script>
 @endsection
