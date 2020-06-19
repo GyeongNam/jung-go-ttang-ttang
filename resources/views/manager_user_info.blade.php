@@ -27,17 +27,7 @@
 
 
 </head>
-<script>
 
-$(function(){
-  $(".trhover").hover(function(){
-    $(this).css("background-color","rgb(176, 207, 209)");
-  }, function(){
-    $(this).css("background-color","rgb(255, 255, 255)");
-  });
-});
-
-</script>
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -180,56 +170,82 @@ $(function(){
         <div class="container-fluid">
 
           <!-- 관리자페이지 -->
-          <
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">회원관리</h1>
+          </div>
+
+
+
+
+          {{-- 인터페이스 시작 --}}
+
+          <div class="tableset">
+            <div class="table1">
+              <h4>회원정보</h4>
+
+              <button type="button" name="button" style="float:right;" class="btn btn-danger">경고</button>
+              <table class="table-bordered table table-hover table-responsive"  style="width:40%;" >
+                <tr>
+                  <th style="width:10%;">아이디</th>
+                  <td style="width:10%;">{{$mana[0]->ID}}</td>
+                </tr>
+                <tr>
+                  <th>이름</th>
+                  <td>{{$mana[0]->name}}</td>
+                </tr>
+                <tr>
+                  <th>이메일</th>
+                  <td>{{$mana[0]->email}}<span>@</span>{{$mana[0]->email_domain}}</td>
+                </tr>
+                <tr>
+                  <th>전화번호</th>
+                  <td>{{$mana[0]->phone}}</td>
+                </tr>
+            </table>
 
           </div>
 
-          <!-- Begin Page Content -->
-          <div class="container-fluid">
+          <div class="table1 " >
+            <h4>경매 참여한 물품</h4>
+            <table class="table-bordered table table-hover" id="table11" >
+              <tr>
+                <th>상품이름</th>
+                <th>입찰금액</th>
+                <th>낙찰유무</th>
+                <th>거래유무</th>
+              </tr>
+              @foreach ($manana as $key => $value)
 
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                      <tr>
-                        <th>아이디</th>
-                        <th>이름</th>
-                        <th>핸드폰</th>
-                        <th>이메일</th>
-                        <th>성별</th>
-                        <th>생년월일</th>
-                        <th>가입일</th>
-                      </tr>
-                    </thead>
+              <tr>
+                <td>{{$value->item_name}}</td>
+                <td>{{$value->item_price}}</td>
+                <td>1순위</td>
+                <td>낙찰포기(시간초과)</td>
+              </tr>
+                @endforeach
 
-                    <tbody>
-                      @foreach ($mana as $key => $value)
-                      <tr onclick="location.href='/manager_user_info/{{$value->ID}}'" style="cursor:pointer;" class="trhover">
-                        <td>{{$value->ID}}</td>
-                        <td>{{$value->name}}</td>
-                        <td>{{$value->phone}}</td>
-                        <td>{{$value->email}}<span>@</span>{{$value->email_domain}}</td>
-                        <td>{{$value->gender}}</td>
-                        <td>{{$value->birthday}}</td>
-                        <td>{{$value->created_at}}</td>
-                      </tr>
-                    @endforeach
-                    </tbody>
 
-                  </table>
-                </div>
-              </div>
-            </div>
+            </table>
 
           </div>
-          <!-- /.container-fluid -->
+          <div class="">
+          <table class="table table-bordered" style="width:50%;">
+          <tr>
+          <th>경고횟수</th>
+          <th>정지</th>
+          <th>정지날짜</th>
+        </tr>
+        <tr>
+          <td>3회</td>
+          <td>1번</td>
+          <td>2020.06.23</td>
+        </tr>
+
+
+        </table>
+      </div>
+          </div>
+
 
         </div>
         <!-- Footer -->
