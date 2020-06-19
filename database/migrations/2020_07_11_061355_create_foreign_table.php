@@ -54,6 +54,10 @@ class CreateForeignTable extends Migration
               $table->unsignedBigInteger('successful_price')->index();
               $table->foreign('successful_price')->references('num')->on('enditem');
 });
+            Schema::table('qna', function (Blueprint $table) {
+              $table->string('qna_id')->index();
+              $table->foreign('qna_id')->references('id')->on('users');
+});
     }
 
     /**
@@ -71,5 +75,6 @@ class CreateForeignTable extends Migration
         Schema::table('messege',  function (Blueprint $table){});
         Schema::table('comment',  function (Blueprint $table){});
         Schema::table('authority',function (Blueprint $table){});
+        Schema::table('qna',      function (Blueprint $table){});
     }
 }

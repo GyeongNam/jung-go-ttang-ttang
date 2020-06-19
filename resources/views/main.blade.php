@@ -82,7 +82,7 @@
       </div>
       <div class="main_form">
 
-        <h1><strong>현재 경매 건수는?&nbsp;&nbsp;&nbsp;<b class="product_count"></b>건 입니다.</strong></h1>
+        <h1><strong>현재 경매 건수는?&nbsp;&nbsp;&nbsp;<b class="product_count">{{$count}}</b> 건 입니다.</strong></h1>
         <strong>현재 시간은? :<span id="clock"></span></strong>
         <!-- 메인 슬라이드 광고배너 -->
         <div class="swiper">
@@ -118,18 +118,19 @@
           <div class="best_item">
             <div class="item_list">
               <h2>인기상품</h2>
-              <!-- foreach ($variable as $key => $value) -->
+              @foreach ($topview as $key => $value)
               <div class="item">
                 <div class="">
-                 <img id="itmg" src="/img/product.png" alt="">
+                 <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
                  <div class="whghltn">
                   <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                조회수:{{$value->visit_count}}
                  </div>
                 </div><br>
-                <a href="#">IPad Pro 64G 3세대</a><br>
-                <a href="#">상품가격 : </a>
+                <a href="#">상품이름:{{$value->item_name}}</a><br>
+                <a href="#">상품가격:{{$value->item_price}}원 </a>
               </div>
-              <!-- endforeach; -->
+              @endforeach
             </div>
             <div class="item_list">
               <div class="list_hd">
