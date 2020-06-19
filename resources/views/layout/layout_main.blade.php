@@ -145,7 +145,7 @@
         </div>
         </div>
       </footer>
-      <div class="foothadan">
+      {{-- <div class="foothadan">
         <div class="fottwo">
           <div class="">
             <a href="#">채용정보</a>
@@ -166,7 +166,7 @@
             <a href="#">판매자 광고센터</a>
           </div>
         </div>
-      </div>
+      </div> --}}
     {{-- Layout Footer End --}}
 
   </body>
