@@ -48,9 +48,7 @@ Route::get('/bidding-info', function () {
 Route::get('/wish_list', function(){
     return view('wish_list');
 });
-Route::get('/service', function(){
-    return view('Servicecenter');
-});
+
 Route::get('/manager_main', function(){
     return view('manager_main');
 });
@@ -77,6 +75,7 @@ Route::post('/idcheck', 'UserController@idcheck');
 Route::get('/mypage/update', 'UserController@user_binding')->middleware('login');
 Route::get('/repassword/{id}', 'UserController@user_repwd');
 Route::post('/user_pwd_update/{id}','UserController@user_pwd_update');
+Route::get('/Servicecenter','UserController@qna');
 
 
 

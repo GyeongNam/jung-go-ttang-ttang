@@ -169,4 +169,16 @@ class UserController extends Controller
       ]);
       return view('main');
     }
+
+    public function qna(Request $request){
+      $id = session()->get('login_ID');
+      if(session()->has('login_ID') != 1)
+        $data = [];
+      else {
+        $data = User::select('ID')->where(['id'=> decrypt($id)])->get();
+      }
+      return view('Servicecenter', [
+        'data'=> $data
+      ]);
+    }
 }

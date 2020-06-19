@@ -1,5 +1,4 @@
 .rull_layout {
-  border: 10px solid #263343;
   border-radius: 12px;
   margin-top: 5%;
   margin-bottom: 5%;
@@ -51,6 +50,8 @@ label{
   margin-top: 1rem;
 }
 button {
+  border-radius: 3px;
+  border-style: none;
   height: 50px;
   width: 40%:
 

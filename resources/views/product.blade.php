@@ -275,7 +275,7 @@ $(function() {
                 <span></span>상품설명
               </div>
               <div class="p_info">
-                <textarea name="dpelxj" id="dpelxj"></textarea>
+                <textarea  id="dpelxj" name="item_info"></textarea>
               </div>
             </div>
           </li>
@@ -293,12 +293,12 @@ $(function() {
     </div>
   </form>
 </div>
-<script>
+{{-- <script>
 // 3. CKEditor5를 생성할 textarea 지정
 ClassicEditor
 .create( document.querySelector( '#dpelxj' ) )
 .catch( error => {
   console.error( error );
 } );
-</script>
+</script> --}}
 @endsection
