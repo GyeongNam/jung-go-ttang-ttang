@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 // use Illuminate\Support\Facades\Storage;
 use App\Item;
 use App\User;
@@ -187,6 +188,7 @@ class ItemController extends Controller
    return redirect('/');
    }
 
+<<<<<<< HEAD
    public function mainview(Request $item_number){
         //$top = 시간당 조회수가 높은 페이지에 item_nurnber를 가져온다
          $collection =Item::select(['item_number'])->get();
@@ -200,6 +202,21 @@ class ItemController extends Controller
            'count'=>$count,
            'topview'=>$topview
          ]);
+=======
+  public function mainview(Request $item_number){
+     //$top = 시간당 조회수가 높은 페이지에 item_nurnber를 가져온다
+      $collection =Item::select(['item_number'])->get();
+      $count=count($collection);
+      $topview = Item::join('auction','auction.auction_itemnum','=', 'items.item_number')
+      ->select('item_name','item_price','item_picture','visit_count')->get();
+      return view('main', [
+      //  'item_name' => $topview[0]->item_name,
+      //  'item_buy' => $topview[0]->item_buy,
+      //  'item_picture' => $topview[0]->item_picture,
+        'count'=>$count,
+        'topview'=>$topview
+      ]);
+>>>>>>> 3aaff4b07bb07420cdf461368a97c3876c7617c6
     }
 
   public function myview(Request $request){
