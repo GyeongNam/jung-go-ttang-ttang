@@ -209,14 +209,16 @@
             <h4>경매 참여한 물품</h4>
             <table class="table-bordered table table-hover" id="table11" >
               <tr>
+                <th>상품번호</th>
                 <th>상품이름</th>
                 <th>입찰금액</th>
                 <th>낙찰유무</th>
                 <th>거래유무</th>
               </tr>
-              @foreach ($manana as $key => $value)
+              @foreach ($maif as $key => $value)
 
               <tr>
+                <td>{{$value->item_number}}</td>
                 <td>{{$value->item_name}}</td>
                 <td>{{$value->item_price}}</td>
                 <td>1순위</td>
