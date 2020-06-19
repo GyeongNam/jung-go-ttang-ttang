@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // 페이지 이동
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', 'ItemController@mainview');
 Route::get('/Login', function () {
     return view('login.login');
 });
@@ -79,6 +77,8 @@ Route::post('/idcheck', 'UserController@idcheck');
 Route::get('/mypage/update', 'UserController@user_binding')->middleware('login');
 Route::get('/repassword/{id}', 'UserController@user_repwd');
 Route::post('/user_pwd_update/{id}','UserController@user_pwd_update');
+
+
 
 // item Controller
 Route::post('/product', 'ItemController@store');
