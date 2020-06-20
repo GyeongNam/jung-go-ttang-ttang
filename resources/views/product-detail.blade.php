@@ -75,13 +75,28 @@ function toggleImg() {
         likhet.src="/img/heart.png";
         alert("관심항목에서 해제되었습니다.");
       }
-
     }
   });
 
 }
 </script>
-
+<script type="text/javascript">
+$(function (){
+  $(".comment_dunglok").click(function(){
+    var data =  1{{Session::has("login_ID")}};
+    console.log(data);
+    if (data == 1) {
+      alert('로그인이 필요합니다!');
+    }
+    else if (data == 11) {
+      if ($(".comment_text").val()=="") {
+        alert("내용을 입력해주세요!");
+        $(".comment_text").focus();
+      }
+    }
+  });
+});
+</script>
 
 @endsection
 @section('content')
@@ -395,17 +410,5 @@ $('#del_detailpage').click(function(){
     return false;
   }
 });
-
-$(function (){
-  $(".comment_dunglok").click(function(){
-    if (document.getElementsByClassName("nolog") !== null) {
-      alert('로그인이 필요합니다!');
-    }
-    else {
-      
-    }
-  });
-});
-
 </script>
 @endsection
