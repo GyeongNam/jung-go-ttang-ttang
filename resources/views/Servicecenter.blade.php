@@ -28,7 +28,7 @@ $(function (){
   });
   if($(".error").length>0){
     $(".rmf").click(function (){
-      alert('로그인이 아닙니다.');
+      alert('로그인이 필요합니다!');
       location.href="/Login";
     });
   }
@@ -161,6 +161,7 @@ function remove_div(obj){
             </table>
           </div>
         </div>
+        <!-- 실험실 -->
         <!-- 실험실 -->
       </div>
     </div>
