@@ -108,6 +108,15 @@ $(function (){
   });
 });
 </script>
+<script type="text/javascript">
+$(function(){
+  $(".reco_texts").hide();
+});
+public function ck(){
+    $(".reco_texts").toggle();
+}
+</script>
+
 
 @endsection
 @section('content')
@@ -364,17 +373,31 @@ $(function (){
                   <button type="submit" class="comment_dunglok" name="button">등록</button>
                 </div>
                 <div class="comment_new">
-                    @foreach ($commentitem as $key => $value)
+                  @foreach ($commentitem as $key => $value)
                   <div class="create_comment">
                     <div class="neadcomt">
                       {{$value->comments}}
+                      @if(session()->has('login_ID'))
+                      @if(decrypt(session()->get('login_ID')) == $value->comment_id)
+                      <div class="">
+                        <a href="/recomment/{{$value->comment_num}}/{{$value->comm_item}}">
+                          <button class="del_comment" type="button" name="button">삭제하기</button>
+                        </a>
+                      </div>
+                      <button class="reco_btn {{$value->comment_num}}" type="button" name="button" onclick="ck()">수정하기</button>
+                      <div class="reco_texts {{$value->comment_num}}">
+                        <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력"></textarea>
+                        <button type="button" name="button">수정완료</button>
+                      </div>
+                      @endif
+                      @endif
+
                     </div>
                     <div class="daedatgel">
                       대댓글 달기
                     </div>
                   </div>
                   @endforeach
-                  //
                 </div>
               </div>
             </form>
@@ -413,7 +436,7 @@ $(function (){
 
 </script>
 <script type="text/javascript">
-//경매 삭제 버튼(제발 제에발 건들지 말아주세요)
+//경매 삭제 버튼
 $('#del_detailpage').click(function(){
   if(confirm("경매를 삭제 하시겠습니까? 삭제된 경매는 낙찰 받을 수 없습니다!") == true){
     location.href="/remove/{{$myproduct[0]->item_number}}/{{$id}}";
@@ -424,4 +447,5 @@ $('#del_detailpage').click(function(){
   }
 });
 </script>
+
 @endsection

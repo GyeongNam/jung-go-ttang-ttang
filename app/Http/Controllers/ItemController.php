@@ -304,21 +304,28 @@ class ItemController extends Controller
 
       return redirect('/itemcheck');
     }
-
-    public function comment(Request $request, $item_number){
+    public function commentremove($comment_num, $comm_item){
       $id = session() -> get('login_ID');
-      $comment = $request->input('comment_texts');
-      $newcomment = new Comment([
-        'comment_id'=>decrypt($id),
-        'comm_item'=>$item_number,
-        'comments'=>$comment,
-        'time'=>date('Y-m-d')
-      ]);
-      $newcomment->save();
-      return redirect('/product-detail/'.$item_number);
-      // echo$newcomment;
-      // ㅇㅇ ,ㄱㄷ그 저 받은 데이터를 이제 뷰화면에 불러오는 홀리퍼킹한 짓을 해야겠지
+      Comment::where([
+        'comment_num' => $comment_num,
+        'comm_item' => $comm_item,
+        'comment_id'=>decrypt($id)
+        ])->delete();
+        return redirect()->back();
+        // echo $comment_num;
+        // echo $comm_item;
+      }
 
-      // return redirect('/product-detail');
+      public function comment(Request $request, $item_number){
+        $id = session() -> get('login_ID');
+        $comment = $request->input('comment_texts');
+        $newcomment = new Comment([
+          'comment_id'=>decrypt($id),
+          'comm_item'=>$item_number,
+          'comments'=>$comment,
+          'time'=>date('Y-m-d')
+        ]);
+        $newcomment->save();
+        return redirect('/product-detail/'.$item_number);
+      }
     }
-  }
