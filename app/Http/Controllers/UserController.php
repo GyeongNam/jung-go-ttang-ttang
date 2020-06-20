@@ -56,7 +56,8 @@ class UserController extends Controller
     if(count($data)>0){
       session()->put('login_ID',encrypt($id));
       print_r("<script>alert('안녕하세요 \\n".$data[0]->NAME." 님 반갑습니다!');</script>");
-      return view('main');
+      $page = session()->get('page');
+      return redirect($page);
     }
     else {
       print_r("<script>alert('없는 아이디거나 틀린 비밀번호입니다.');</script>");
@@ -66,8 +67,7 @@ class UserController extends Controller
 
   public function logout(Request $request){
     session()->forget('login_ID');
-    print_r("<script>alert('정상적으로 로그아웃 되었습니다.');</script>");
-    return view('main');
+    return redirect('/');
   }
 
   public function mypage(Request $request){

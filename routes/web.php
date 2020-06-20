@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // 페이지 이동
-Route::get('/main', function (){
-  return view('main');
-});
 Route::get('/Login', function () {
+    session()->put('page', request()->headers->get('referer'));
     return view('login.login');
 });
 Route::get('/sign_up', function () {
@@ -78,7 +76,7 @@ Route::get('/mypage/update', 'UserController@user_binding')->middleware('login')
 Route::get('/repassword/{id}', 'UserController@user_repwd');
 Route::post('/user_pwd_update/{id}','UserController@user_pwd_update');
 Route::get('/Servicecenter','UserController@qna');
-Route::get('/main','ItemController@mainview');
+Route::get('/','ItemController@mainview');
 
 
 
