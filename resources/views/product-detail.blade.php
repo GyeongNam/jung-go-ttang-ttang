@@ -87,12 +87,23 @@ $(function (){
     console.log(data);
     if (data == 1) {
       alert('로그인이 필요합니다!');
+      // return false;
     }
     else if (data == 11) {
       if ($(".comment_text").val()=="") {
         alert("내용을 입력해주세요!");
         $(".comment_text").focus();
       }
+      // else{
+      //   $.ajax({
+      //     url:"/product-detail",
+      //     dataType:"json",
+      //     data: {  }
+      //     success:function(){
+      //       alert('댓글등록 완료!');
+      //     }
+      //   })
+      // }
     }
   });
 });
@@ -342,29 +353,31 @@ $(function (){
             <div class="dat_lab">
               <h2>댓글달기</h2>
             </div>
-            <div class="combox">
-              <div class="comment_munie">
-                <textarea class="comment_text" name="name" rows="8" cols="80" placeholder="제품문의 댓글 입력"></textarea>
-              </div>
-              <div class="comment_fontlength">
-                <div class="sc-fontlength dlqfurrmf">0 / 200</div>
-                <button type="button" class="comment_dunglok" name="button">등록</button>
-              </div>
-              <div class="comment_new">
-                <div class="create_comment">
-                  <div class="user_comnt">
-                    <img class="user_img" src="" alt="">
-                  </div>
-                  <div class="neadcomt">
-                    정말 좋아요dsak;정말 좋ak;정말 좋아요d
-                  </div>
-                  <div class="daedatgel">
-                    대댓글 달기
-                  </div>
+            <form class="" action="/product-comment/{{$myproduct[0]->item_number}}" method="post" enctype="multipart/form-data">
+              @csrf
+              <div class="combox">
+                <div class="comment_munie">
+                  <textarea class="comment_text" name="comment_texts" id="comment_texts" rows="8" cols="80" placeholder="제품문의 댓글 입력"></textarea>
                 </div>
-                <div class="create_comment"></div>
+                <div class="comment_fontlength">
+                  <div class="sc-fontlength dlqfurrmf">0 / 200</div>
+                  <button type="submit" class="comment_dunglok" name="button">등록</button>
+                </div>
+                <div class="comment_new">
+                    @foreach ($commentitem as $key => $value)
+                  <div class="create_comment">
+                    <div class="neadcomt">
+                      {{$value->comments}}
+                    </div>
+                    <div class="daedatgel">
+                      대댓글 달기
+                    </div>
+                  </div>
+                  @endforeach
+                  //
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
