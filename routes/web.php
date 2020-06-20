@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // 페이지 이동
+// Route::get('/main', function (){
+//   return view('main');
+// });
 Route::get('/Login', function () {
     session()->put('page', request()->headers->get('referer'));
     return view('login.login');
