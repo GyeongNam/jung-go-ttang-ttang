@@ -54,6 +54,7 @@ a {
 .buyer_comment{
   display: flex;
   width:auto;
+  margin-bottom: 30px;
 }
 .comment_dunglok{
   border-style: none;
@@ -75,7 +76,7 @@ a {
 }
 .create_comment{
   width: 100%;
-  height: 80px;
+  height: auto;
   border-bottom: 1px solid #e0e0e0;
 }
 .neadcomt{
@@ -90,6 +91,19 @@ a {
 }
 .combox{
   margin-right: 12rem;
+}
+
+.hiderecomment{
+
+}
+.recomment_text{
+  width: 100%;
+  height: 50%;
+  font-size: 13px;
+  border-bottom: 1px solid #bdbdbd;
+  line-height: 1.5;
+  resize: none;
+
 }
 /* 댓글 창*/
 

@@ -108,14 +108,23 @@ $(function (){
   });
 });
 </script>
+
 <script type="text/javascript">
-$(function(){
+$(function (){
   $(".reco_texts").hide();
+  $(".reco_btn").click(function (){
+    $(".reco_texts").toggle();
+  });
+});
+</script>
+<!-- <script type="text/javascript">
+$(".reco_texts").hide();
+$(function(){
 });
 public function ck(){
     $(".reco_texts").toggle();
 }
-</script>
+</script> -->
 
 
 @endsection
@@ -376,25 +385,25 @@ public function ck(){
                   @foreach ($commentitem as $key => $value)
                   <div class="create_comment">
                     <div class="neadcomt">
-                      {{$value->comments}}
+                      <div class="value_comment">
+                        {{$value->comments}}
+                      </div>
                       @if(session()->has('login_ID'))
                       @if(decrypt(session()->get('login_ID')) == $value->comment_id)
-                      <div class="">
+                      <div class="delete_area">
                         <a href="/recomment/{{$value->comment_num}}/{{$value->comm_item}}">
                           <button class="del_comment" type="button" name="button">삭제하기</button>
                         </a>
+                        <button class="reco_btn {{$value->comment_num}}" type="button" name="button" onclick="ck()">수정하기</button>
                       </div>
-                      <button class="reco_btn {{$value->comment_num}}" type="button" name="button" onclick="ck()">수정하기</button>
-                      <div class="reco_texts {{$value->comment_num}}">
-                        <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력"></textarea>
-                        <button type="button" name="button">수정완료</button>
+                      <div class="hiderecomment">
+                        <div class="reco_texts {{$value->comment_num}}">
+                          <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력"></textarea>
+                          <button type="button" name="button">수정완료</button>
+                        </div>
                       </div>
                       @endif
                       @endif
-
-                    </div>
-                    <div class="daedatgel">
-                      대댓글 달기
                     </div>
                   </div>
                   @endforeach
