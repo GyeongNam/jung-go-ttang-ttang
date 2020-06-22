@@ -290,12 +290,15 @@ class ItemController extends Controller
     }
     public function wish_itempg(Request $request){
       $id= session()->get('login_ID');
+      $collection =Favorite::select(['favorite_itemnum'])->where(['favorite_name'=>decrypt($id)])->get();
+      $count=count($collection);
       $wish_itm = Favorite::join('items','favorite.favorite_itemnum','=', 'items.item_number')
-       ->select('items.item_name','items.item_startprice','items.item_picture')
+       ->select('items.item_name','items.item_startprice','items.item_picture','items.item_number')
        ->where(['favorite_name'=>decrypt($id)])
        ->get();
        return view('wish_list',[
-         'wish_item' =>$wish_itm
+         'wish_item' =>$wish_itm,
+         'count'=>$count
        ]);
 
     }

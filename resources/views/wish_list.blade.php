@@ -43,7 +43,7 @@ $(document).ready(function(){
     <div class="wish_header">
       <div class="mylike">
         내관심
-        <span class="mylikesu">2</span>
+        <span class="mylikesu">{{$count}}</span>
       </div>
       <hr></div>
       <div class="wish_tag">
