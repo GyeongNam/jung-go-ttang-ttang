@@ -79,7 +79,7 @@ Route::get('/mypage/update', 'UserController@user_binding')->middleware('login')
 Route::get('/repassword/{id}', 'UserController@user_repwd');
 Route::post('/user_pwd_update/{id}','UserController@user_pwd_update');
 Route::get('/Servicecenter','UserController@qna');
-Route::get('/main','ItemController@mainview');
+Route::get('/','ItemController@mainview');
 
 
 

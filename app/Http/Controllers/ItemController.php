@@ -17,206 +17,205 @@ use DB;
 
 class ItemController extends Controller
 {
-  public function store(Request $request){
-    $item_pic = $request->file('item_picture');
-    $item_picture= $item_pic->getClientOriginalName();
-    Image::make($item_pic)->save(public_path('/img/item/'.$item_picture));
+    public function store(Request $request){
+      $item_pic = $request->file('item_picture');
+      $item_picture= $item_pic->getClientOriginalName();
+      Image::make($item_pic)->save(public_path('/img/item/'.$item_picture));
 
-    if($request->hasFile('item_picturefront')){
-      $item_pic = $request->file('item_picturefront');
-      $item_picturefront = $item_pic->getClientOriginalName();
-      Image::make($item_pic)->save(public_path('/img/item/'.$item_picturefront));
-    }
-    else {
-      $item_picturefront = null;
-    }
+      if($request->hasFile('item_picturefront')){
+        $item_pic = $request->file('item_picturefront');
+        $item_picturefront = $item_pic->getClientOriginalName();
+        Image::make($item_pic)->save(public_path('/img/item/'.$item_picturefront));
+      }
+      else {
+        $item_picturefront = null;
+      }
 
-    if($request->hasFile('item_pictureup')){
-      $item_pic = $request->file('item_pictureup');
-      $item_pictureup = $item_pic->getClientOriginalName();
-      Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureup));
-    }
-    else {
-      $item_pictureup = null;
-    }
+      if($request->hasFile('item_pictureup')){
+        $item_pic = $request->file('item_pictureup');
+        $item_pictureup = $item_pic->getClientOriginalName();
+        Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureup));
+      }
+      else {
+        $item_pictureup = null;
+      }
 
-    if($request->hasFile('item_pictureback')){
-      $item_pic = $request->file('item_pictureback');
-      $item_pictureback = $item_pic->getClientOriginalName();
-      Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureback));
-    }
-    else {
-      $item_pictureback = null;
-    }
+      if($request->hasFile('item_pictureback')){
+        $item_pic = $request->file('item_pictureback');
+        $item_pictureback = $item_pic->getClientOriginalName();
+        Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureback));
+      }
+      else {
+        $item_pictureback = null;
+      }
 
-    if($request->hasFile('item_pictureleft')){
-      $item_pic = $request->file('item_pictureleft');
-      $item_pictureleft = $item_pic->getClientOriginalName();
-      Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureleft));
-    }
-    else {
-      $item_pictureleft = null;
-    }
+      if($request->hasFile('item_pictureleft')){
+        $item_pic = $request->file('item_pictureleft');
+        $item_pictureleft = $item_pic->getClientOriginalName();
+        Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureleft));
+      }
+      else {
+        $item_pictureleft = null;
+      }
 
-    if($request->hasFile('item_picturerigth')){
-      $item_pic = $request->file('item_picturerigth');
-      $item_picturerigth = $item_pic->getClientOriginalName();
-      Image::make($item_pic)->save(public_path('/img/item/'.$item_picturerigth));
-    }
-    else {
-      $item_picturerigth = null;
-    }
+      if($request->hasFile('item_picturerigth')){
+        $item_pic = $request->file('item_picturerigth');
+        $item_picturerigth = $item_pic->getClientOriginalName();
+        Image::make($item_pic)->save(public_path('/img/item/'.$item_picturerigth));
+      }
+      else {
+        $item_picturerigth = null;
+      }
 
-    if($request->hasFile('item_picturebehind')){
-      $item_pic = $request->file('item_picturebehind');
-      $item_picturebehind = $item_pic->getClientOriginalName();
-      Image::make($item_pic)->save(public_path('/img/item/'.$item_picturebehind));
-    }
-    else {
-      $item_picturebehind = null;
-    }
+      if($request->hasFile('item_picturebehind')){
+        $item_pic = $request->file('item_picturebehind');
+        $item_picturebehind = $item_pic->getClientOriginalName();
+        Image::make($item_pic)->save(public_path('/img/item/'.$item_picturebehind));
+      }
+      else {
+        $item_picturebehind = null;
+      }
 
-    $item = new Item([
-      'item_name' => $request->input('product_name'),
-      'item_maker' => $request->input('product_maker'),
-      'item_buy' => $request->input('product_buy'),
-      'item_category' => $request->input('product_category'),
-      'item_open' => $request->input('select_state'),
-      'item_deadline' => $request->input('Auction_last_time'),
-      'item_startday' => date('Y-m-d'),
-      'item_picture' => $item_picture,
-      'item_pictureup' => $item_pictureup,
-      'item_pictureback' => $item_pictureback,
-      'item_pictureleft' => $item_pictureleft,
-      'item_picturerigth' => $item_picturerigth,
-      'item_picturebehind' => $item_picturebehind,
-      'item_picturefront' => $item_picturefront,
-      'item_info' => $request->input('item_info'),
-      'item_startprice' => $request->input('Auction_start'),
-      'item_success' => true,
-      'success' => false,
-      'seller_id' => decrypt(session()->get('login_ID'))
-    ]);
-    $item->save();
-    return redirect('/itemcheck');
-    //return view(''); 내가 올린 경매 페이지로 이동
-  }
-
-  public function sending_num(Request $request){
-    $sending = $request->input('item_key');
-    return view('/product-Modify',[
-      'sending' => $sending
-    ]);
-  }
-
-  public function product_update(Request $request){
-    $uwiei= $request->input('uwiei');
-    $id=session()->get('login_ID');
-    $item_pic = $request->file('item_picture');
-    $item_picture= $item_pic->getClientOriginalName();
-    Image::make($item_pic)->save(public_path('/img/item/'.$item_picture));
-
-    if($request->hasFile('item_picturefront')){
-      $item_pic = $request->file('item_picturefront');
-      $item_picturefront = $item_pic->getClientOriginalName();
-      Image::make($item_pic)->save(public_path('/img/item/'.$item_picturefront));
-    }
-    else {
-      $item_picturefront = null;
+      $item = new Item([
+        'item_name' => $request->input('product_name'),
+        'item_maker' => $request->input('product_maker'),
+        'item_buy' => $request->input('product_buy'),
+        'item_category' => $request->input('product_category'),
+        'item_open' => $request->input('select_state'),
+        'item_deadline' => $request->input('Auction_last_time'),
+        'item_startday' => date('Y-m-d'),
+        'item_picture' => $item_picture,
+        'item_pictureup' => $item_pictureup,
+        'item_pictureback' => $item_pictureback,
+        'item_pictureleft' => $item_pictureleft,
+        'item_picturerigth' => $item_picturerigth,
+        'item_picturebehind' => $item_picturebehind,
+        'item_picturefront' => $item_picturefront,
+        'item_info' => $request->input('item_info'),
+        'item_startprice' => $request->input('Auction_start'),
+        'item_success' => true,
+        'success' => false,
+        'seller_id' => decrypt(session()->get('login_ID'))
+      ]);
+      $item->save();
+      return redirect('/itemcheck');
+      //return view(''); 내가 올린 경매 페이지로 이동
     }
 
-    if($request->hasFile('item_pictureup')){
-      $item_pic = $request->file('item_pictureup');
-      $item_pictureup = $item_pic->getClientOriginalName();
-      Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureup));
-    }
-    else {
-      $item_pictureup = null;
+    public function sending_num(Request $request){
+      $sending = $request->input('item_key');
+      return view('/product-Modify',[
+        'sending' => $sending
+      ]);
     }
 
-    if($request->hasFile('item_pictureback')){
-      $item_pic = $request->file('item_pictureback');
-      $item_pictureback = $item_pic->getClientOriginalName();
-      Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureback));
-    }
-    else {
-      $item_pictureback = null;
+    public function product_update(Request $request){
+      $uwiei= $request->input('uwiei');
+      $id=session()->get('login_ID');
+      $item_pic = $request->file('item_picture');
+      $item_picture= $item_pic->getClientOriginalName();
+      Image::make($item_pic)->save(public_path('/img/item/'.$item_picture));
+
+      if($request->hasFile('item_picturefront')){
+        $item_pic = $request->file('item_picturefront');
+        $item_picturefront = $item_pic->getClientOriginalName();
+        Image::make($item_pic)->save(public_path('/img/item/'.$item_picturefront));
+      }
+      else {
+        $item_picturefront = null;
+      }
+
+      if($request->hasFile('item_pictureup')){
+        $item_pic = $request->file('item_pictureup');
+        $item_pictureup = $item_pic->getClientOriginalName();
+        Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureup));
+      }
+      else {
+        $item_pictureup = null;
+      }
+
+      if($request->hasFile('item_pictureback')){
+        $item_pic = $request->file('item_pictureback');
+        $item_pictureback = $item_pic->getClientOriginalName();
+        Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureback));
+      }
+      else {
+        $item_pictureback = null;
+      }
+
+      if($request->hasFile('item_pictureleft')){
+        $item_pic = $request->file('item_pictureleft');
+        $item_pictureleft = $item_pic->getClientOriginalName();
+        Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureleft));
+      }
+      else {
+        $item_pictureleft = null;
+      }
+
+      if($request->hasFile('item_picturerigth')){
+        $item_pic = $request->file('item_picturerigth');
+        $item_picturerigth = $item_pic->getClientOriginalName();
+        Image::make($item_pic)->save(public_path('/img/item/'.$item_picturerigth));
+      }
+      else {
+        $item_picturerigth = null;
+      }
+
+      if($request->hasFile('item_picturebehind')){
+        $item_pic = $request->file('item_picturebehind');
+        $item_picturebehind = $item_pic->getClientOriginalName();
+        Image::make($item_pic)->save(public_path('/img/item/'.$item_picturebehind));
+      }
+      else {
+        $item_picturebehind = null;
+      }
+      $update=Item::where(['item_number'=> $uwiei])->update([
+        'item_name'=> $request->input('product_name'),
+        'item_maker'=> $request->input('product_maker'),
+        'item_buy'=>$request->input('product_buy'),
+        'item_category'=>$request->input('product_category'),
+        'item_open'=>$request->input('open'),
+        'item_deadline'=>$request->input('Auction_last_time'),
+        'item_startprice'=>$request->input('Auction_start'),
+        'item_picture'=>$item_picture,
+        'item_picturefront'=>$item_picturefront,
+        'item_pictureup'=>$item_pictureup,
+        'item_pictureback'=>$item_pictureback,
+        'item_pictureleft'=>$item_pictureleft,
+        'item_picturerigth'=>$item_picturerigth,
+        'item_picturebehind'=>$item_picturebehind,
+        'item_info' =>$request->input('item_info')
+      ]);
+      return redirect('/main');
     }
 
-    if($request->hasFile('item_pictureleft')){
-      $item_pic = $request->file('item_pictureleft');
-      $item_pictureleft = $item_pic->getClientOriginalName();
-      Image::make($item_pic)->save(public_path('/img/item/'.$item_pictureleft));
-    }
-    else {
-      $item_pictureleft = null;
-    }
+    public function mainview(Request $item_number){
+      $collection =Item::select(['item_number'])->get();
+      $count=count($collection);
+      $topview = DB::table('items')->orderBy('visit_count', 'desc')->get();
+      $cate=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'남성의류'])->get();
+      $catef=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'여성의류'])->get();
+      $categ=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'패션잡화'])->get();
+      $cateh=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'뷰티미용'])->get();
+      $catej=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'모바일'])->get();
+      $catek=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'가전제품'])->get();
+      $catel=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'노트북/PC'])->get();
+      return view('/main', [
+        //  'item_name' => $topview[0]->item_name,
+        //  'item_buy' => $topview[0]->item_buy,
+        //  'item_picture' => $topview[0]->item_picture,
+        'count'=>$count,
+        'topview'=>$topview,
+        'cate'=>$cate,
+        'catef'=>$catef,
+        'categ'=>$categ,
+        'cateh'=>$cateh,
+        'catej'=>$catej,
+        'catek'=>$catek,
+        'catel'=>$catel
 
-    if($request->hasFile('item_picturerigth')){
-      $item_pic = $request->file('item_picturerigth');
-      $item_picturerigth = $item_pic->getClientOriginalName();
-      Image::make($item_pic)->save(public_path('/img/item/'.$item_picturerigth));
+      ]);
     }
-    else {
-      $item_picturerigth = null;
-    }
-
-    if($request->hasFile('item_picturebehind')){
-      $item_pic = $request->file('item_picturebehind');
-      $item_picturebehind = $item_pic->getClientOriginalName();
-      Image::make($item_pic)->save(public_path('/img/item/'.$item_picturebehind));
-    }
-    else {
-      $item_picturebehind = null;
-    }
-    $update=Item::where(['item_number'=> $uwiei])->update([
-      'item_name'=> $request->input('product_name'),
-      'item_maker'=> $request->input('product_maker'),
-      'item_buy'=>$request->input('product_buy'),
-      'item_category'=>$request->input('product_category'),
-      'item_open'=>$request->input('open'),
-      'item_deadline'=>$request->input('Auction_last_time'),
-      'item_startprice'=>$request->input('Auction_start'),
-      'item_picture'=>$item_picture,
-      'item_picturefront'=>$item_picturefront,
-      'item_pictureup'=>$item_pictureup,
-      'item_pictureback'=>$item_pictureback,
-      'item_pictureleft'=>$item_pictureleft,
-      'item_picturerigth'=>$item_picturerigth,
-      'item_picturebehind'=>$item_picturebehind,
-      'item_info' =>$request->input('item_info')
-    ]);
-    return redirect('/main');
-  }
-
-  public function mainview(Request $item_number){
-    $collection =Item::select(['item_number'])->get();
-    $count=count($collection);
-    $topview = DB::table('items')->orderBy('visit_count', 'desc')->get();
-    $cate=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'남성의류'])->get();
-    $catef=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'여성의류'])->get();
-    $categ=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'패션잡화'])->get();
-    $cateh=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'뷰티미용'])->get();
-    $catej=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'모바일'])->get();
-    $catek=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'가전제품'])->get();
-    $catel=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'노트북/PC'])->get();
-    return view('/main', [
-      //  'item_name' => $topview[0]->item_name,
-      //  'item_buy' => $topview[0]->item_buy,
-      //  'item_picture' => $topview[0]->item_picture,
-      'count'=>$count,
-      'topview'=>$topview,
-      'cate'=>$cate,
-      'catef'=>$catef,
-      'categ'=>$categ,
-      'cateh'=>$cateh,
-      'catej'=>$catej,
-      'catek'=>$catek,
-      'catel'=>$catel
-
-    ]);
-  }
-
 
     public function myview(Request $request){
       $id = session()->get('login_ID');
@@ -288,6 +287,7 @@ class ItemController extends Controller
       }
       return redirect()->back();
     }
+
     public function wish_itempg(Request $request){
       $id= session()->get('login_ID');
       $collection =Favorite::select(['favorite_itemnum'])->where(['favorite_name'=>decrypt($id)])->get();
@@ -336,6 +336,7 @@ class ItemController extends Controller
 
       return redirect('/itemcheck');
     }
+    
     public function commentremove($comment_num, $comm_item){
       $id = session() -> get('login_ID');
       Comment::where([

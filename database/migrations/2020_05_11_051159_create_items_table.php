@@ -36,6 +36,7 @@ class CreateItemsTable extends Migration
      $table->boolean('item_success');
      $table->boolean('success');
      $table->integer('visit_count')->nullable();
+     $table->integer('like')->nullable();
      $table->rememberToken();
      $table->timestamps();
         });
