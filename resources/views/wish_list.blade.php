@@ -65,7 +65,7 @@ $(document).ready(function(){
               @foreach($wish_item as $key => $value)
               <div class="wish_item_info">
                 <a href="/product-detail/{{$value->item_number}}">
-                <div OnClick="location.href ='/' " style="cursor:pointer;" >
+                <div class="hreftem" OnClick="location.href ='/' " style="cursor:pointer;" >
                   <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
                   <div class="whghltn">
                 <!-- <a href="#" class="prdt_link"> -->
