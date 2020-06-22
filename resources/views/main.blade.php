@@ -155,13 +155,13 @@
             </div>
             <div class="item_list">
               <div class="list_hd">
-                <h2 id="man">여성의류 <a href="/manclothing?id=여성의류">전체보기</a></h2>
+                <h2 id="woman">여성의류 <a href="/manclothing?id=여성의류">전체보기</a></h2>
               </div>
             @foreach ($catef as $key => $value)
               <div class="item">
                 <a href="/product-detail/{{$value->item_number}}  ">
               <div OnClick="location.href ='/' " style="cursor:pointer;" >
-                 <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
+                 <img id="fashion" src="/img/item/{{$value->item_picture}}" alt="">
                 <div class="whghltn">
                 <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
                  조회수:{{$value->visit_count}}
@@ -195,7 +195,7 @@
             </div>
             <div class="item_list">
               <div class="list_hd">
-                <h2 id="man">뷰티미용 <a href="/manclothing?id=뷰티미용">전체보기</a></h2>
+                <h2 id="beauty">뷰티미용 <a href="/manclothing?id=뷰티미용">전체보기</a></h2>
               </div>
             @foreach ($cateh as $key => $value)
               <div class="item">
@@ -215,7 +215,7 @@
             </div>
             <div class="item_list">
               <div class="list_hd">
-                <h2 id="man">모바일 <a href="/manclothing?id=모바일">전체보기</a></h2>
+                <h2 id="mobile">모바일 <a href="/manclothing?id=모바일">전체보기</a></h2>
               </div>
             @foreach ($catej as $key => $value)
               <div class="item">
@@ -235,7 +235,7 @@
             </div>
             <div class="item_list">
               <div class="list_hd">
-                <h2 id="man">가전제품 <a href="/manclothing?id=가전제품">전체보기</a></h2>
+                <h2 id="Elec_products">가전제품 <a href="/manclothing?id=가전제품">전체보기</a></h2>
               </div>
             @foreach ($catek as $key => $value)
               <div class="item">
@@ -255,7 +255,7 @@
             </div>
             <div class="item_list">
               <div class="list_hd">
-                <h2 id="man">노트북/PC <a href="/manclothing?id=노트북/PC">전체보기</a></h2>
+                <h2 id="laptop">노트북/PC <a href="/manclothing?id=노트북/PC">전체보기</a></h2>
               </div>
             @foreach ($catel as $key => $value)
               <div class="item">

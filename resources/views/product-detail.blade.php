@@ -280,7 +280,6 @@ $(".reco_texts").toggle();
                     <button   class="unWla" type="submit" name="likejim" value="{{$myproduct[0]->item_number}}" onclick="toggleImg()">
                       <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
                       <span>찜</span>
-                      <span>72</span>
                     </button>
                   </form>
                 </div>
