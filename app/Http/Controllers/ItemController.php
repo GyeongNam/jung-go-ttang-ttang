@@ -236,13 +236,15 @@ class ItemController extends Controller
     ]);}
 
     public function itemview($item_number){
+      $id= session()->get('login_ID');
       $myproduct= Item::select('*')->where(['item_number'=>$item_number])->get();
       $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success','item_deadline', 'success')->where(['seller_id'=>$myproduct[0]->seller_id])->get();
       $data = User::select('user_image')->where(['id' =>  $myproduct[0]->seller_id])->get();
       $max = Auction::select('item_price')->where(['auction_itemnum'=>$item_number])->get();
       $maxs =  $max->max('item_price');
       $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
-      $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();//?
+      $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
+      $likeheart = Favorite::select('*')->where(['favorite_itemnum'=>$item_number, 'favorite_name'=>decrypt($id)])->get()->count();
       Item::where(['item_number'=>$item_number])->update([
         'visit_count'=> $count[0]->visit_count + 1
       ]);
@@ -253,9 +255,10 @@ class ItemController extends Controller
         'myStat'=>$myStat,
         'max'=>$maxs,
         'count'=>$count,
-        'commentitem'=>$commentitem
+        'commentitem'=>$commentitem,
+        'likeheart'=>$likeheart
       ]);
-    }
+}
 
     public function category(Request $request){
       $cat = $_GET['id'];
@@ -336,7 +339,7 @@ class ItemController extends Controller
 
       return redirect('/itemcheck');
     }
-    
+
     public function commentremove($comment_num, $comm_item){
       $id = session() -> get('login_ID');
       Comment::where([

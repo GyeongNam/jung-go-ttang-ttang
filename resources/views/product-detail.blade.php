@@ -66,12 +66,12 @@ function toggleImg() {
     data: {likejim : likhet},
     success:function(data){
 
-      if(likhet.src.match("heart")) {
+      if('likeheart'==1) {
         likhet.src="/img/b_gkxm.png";
         alert("관심항목에 추가되었습니다.");
 
       }
-      else if(likhet.src.match("b_gkxm")) {
+      else if('likeheart'!=1) {
         likhet.src="/img/heart.png";
         alert("관심항목에서 해제되었습니다.");
       }
