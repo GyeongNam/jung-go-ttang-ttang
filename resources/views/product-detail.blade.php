@@ -201,7 +201,7 @@ $(".reco_texts").toggle();
                 <div class="like isk">
                   <img src="/img/heart.png/" width="16" height="16" alt="좋아요 한 항목 아이콘">
                   <div class="like_num intf" name="" >
-                    6492
+                  {{$myproduct[0]->like}}
                   </div>
                 </div>
                 <div class="view isk">
