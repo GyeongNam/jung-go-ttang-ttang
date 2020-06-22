@@ -122,7 +122,7 @@ $(".reco_texts").hide();
 $(function(){
 });
 public function ck(){
-    $(".reco_texts").toggle();
+$(".reco_texts").toggle();
 }
 </script> -->
 

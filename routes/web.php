@@ -95,6 +95,8 @@ Route::get('/manclothing', 'ItemController@category');
 Route::post('/product-Modifystore', 'ItemController@product_update')->middleware('login');
 Route::get('/product-Modify', 'ItemController@sending_num');
 Route::get('/wish_lst', 'ItemController@favorite_item')->middleware('login');
+Route::get('/wish_list', 'ItemController@wish_itempg')->middleware('login');
+
 
 // auction Controller
 // Route::post(/auction_in, 'AuctionController@auction_in');

@@ -268,26 +268,37 @@ class ItemController extends Controller
       ]);
     }
 
-    public function favorite_item(Request $request, $item_number){
+    public function favorite_item(Request $request){
       $id= session()->get('login_ID');
       $item_num = $request->get('likejim');
-      $favorite = new Favorite([
-        'favorite_itemnum'=>$request->get('likejim'),
-        'favorite_name'=>decrypt($id)
-      ]);
-      $favorite->save();
-      return redirect('/product-detail/'.$item_number);
+      $drop_item = Favorite::select('favorite_itemnum', 'favorite_name')
+      ->where(['favorite_itemnum'=>$request->get('likejim'),'favorite_name'=>decrypt($id)])
+      ->get();
+      if(count($drop_item)<1){
+        $favorite = new Favorite([
+          'favorite_itemnum'=>$request->get('likejim'),
+          'favorite_name'=>decrypt($id)
+        ]);
+        $favorite->save();
+      }
+      else{
+        Favorite::select('favorite_itemnum', 'favorite_name')
+        ->where(['favorite_itemnum'=>$request->get('likejim'),'favorite_name'=>decrypt($id)])
+        ->delete();
+      }
+      return redirect()->back();
     }
-    public function favorite_item1(Request $request){
-    $wish_itm  = Favorite::leftjoin('items','favorite.favorite_itemnum','=', 'items.item_number')
-    ->select('item_name','item_startprice','item_picture')
-    ->where(['favorite_itemnum'=>$item_num,'favorite_name'=>decrypt($id)])->get();
+    public function wish_itempg(Request $request){
+      $id= session()->get('login_ID');
+      $wish_itm = Favorite::join('items','favorite.favorite_itemnum','=', 'items.item_number')
+       ->select('items.item_name','items.item_startprice','items.item_picture')
+       ->where(['favorite_name'=>decrypt($id)])
+       ->get();
+       return view('wish_list',[
+         'wish_item' =>$wish_itm
+       ]);
 
-    return view ('wish_list',[
-      'wish_itm' => $wish_itm
-    ]);
     }
-
 
     public function removes($item_number, $id){
 
