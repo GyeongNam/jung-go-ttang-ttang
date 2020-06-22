@@ -61,26 +61,30 @@ $(document).ready(function(){
 
       </div>
       <div class="wish_block">
-        <div class="wish_info">
-          @foreach($wish_item as $key => $value)
-          <div class="wish_item_info">
-            <a href="#" class="prdt_link">
-              <div class="wish_item_img">
-                <input type="checkbox" name="chk" class="chackSelect" value="">
-                <img src="/img/item/{{$value->item_picture}}" alt="" value="">
-              </div>
-              <div class="w_i_info">
-                <div class="w_i_pro_i">
-                  <div class="wiproname">
-                    {{$value->item_name}}
+            <div class="wish_info">
+              @foreach($wish_item as $key => $value)
+              <div class="wish_item_info">
+                <a href="/product-detail/{{$value->item_number}}">
+                <div OnClick="location.href ='/' " style="cursor:pointer;" >
+                  <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
+                  <div class="whghltn">
+                <!-- <a href="#" class="prdt_link"> -->
+                  <!-- <div class="wish_item_img"> -->
+               <input type="checkbox" name="chk" class="chackSelect" value="">
                   </div>
-                  <div class="wiproprice">
-                    {{$value->item_startprice}}
+                  <div class="w_i_info">
+                    <div class="w_i_pro_i">
+                      <div class="wiproname">
+                        이름:{{$value->item_name}}
+                      </div>
+                      <div class="wiproprice">
+                        가격:{{number_format($value->item_startprice)}}원
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
-          </div>
+              </a>
+            </div>
           @endforeach
         </div>
       </div>
