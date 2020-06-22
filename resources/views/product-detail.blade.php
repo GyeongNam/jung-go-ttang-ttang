@@ -1,84 +1,84 @@
 @extends('layout.layout_main')
 
 @section('css')
-<link rel="stylesheet" href="/css/product-detail.css">
+  <link rel="stylesheet" href="/css/product-detail.css">
 @endsection
 
 @section('js')
-<script type="text/javascript">
-function toggleImg() {
-  var likhet = document.getElementById('likep');
-  var data =  1{{Session::has("login_ID")}};
-  var chilheart = {{$likeheart}}
-  //console.log(dsds);
+  <script type="text/javascript">
+  function toggleImg() {
+    var likhet = document.getElementById('likep');
+    var data =  1{{Session::has("login_ID")}};
+    var chilheart = {{$likeheart}}
+    //console.log(dsds);
 
-  if (data == 1) {
-    alert('로그인이 필요합니다!');
-    // return false;
+    if (data == 1) {
+      alert('로그인이 필요합니다!');
+      // return false;
+    }
+    if(chilheart ==1) {
+      alert("관심항목에서 헤제되었습니다.");
+    }
+    else{
+      alert("관심항목에 추가되었습니다.");
+    }
   }
-  if(chilheart ==1) {
-    alert("관심항목에서 헤제되었습니다.");
+
+
+  //변경하는 함수 테스트중 절대 건들지마셈
+
+  var slideIndex = 1; //이미지에 접근하는 인덱스
+  window.onload = function(){ //문서가 로딩 된 이후 호출한다.
+    showSlides(slideIndex); //
   }
-  else{
-    alert("관심항목에 추가되었습니다.");
+
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n); //슬라이드 배열을 하나씩 추가한다.
   }
-}
 
+  function showSlides(n) {
+    var slides = document.getElementsByClassName("mySlidess"); //mySlidess라는 클래스명에 접근한다.
+    //  console.log(slides.length);
+    if (n > slides.length) {
+      slideIndex = 1
 
-//변경하는 함수 테스트중 절대 건들지마셈
-
-var slideIndex = 1; //이미지에 접근하는 인덱스
-window.onload = function(){ //문서가 로딩 된 이후 호출한다.
-  showSlides(slideIndex); //
-}
-
-
-function plusSlides(n) {
-  showSlides(slideIndex += n); //슬라이드 배열을 하나씩 추가한다.
-}
-
-function showSlides(n) {
-  var slides = document.getElementsByClassName("mySlidess"); //mySlidess라는 클래스명에 접근한다.
-//  console.log(slides.length);
-  if (n > slides.length) {
-    slideIndex = 1
-
+    }
+    if (n < 1) {
+      slideIndex = slides.length //배열값 초기화
+    }
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none"; //반복문으로 전체 이미지를 display.none 로 감춘다.
+    }
+    slides[slideIndex-1].style.display = "block"; //block 처리를 해서 화면에 나타낸다.
   }
-  if (n < 1) {
-    slideIndex = slides.length //배열값 초기화
-  }
-  for (var i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none"; //반복문으로 전체 이미지를 display.none 로 감춘다.
-  }
-  slides[slideIndex-1].style.display = "block"; //block 처리를 해서 화면에 나타낸다.
-}
 
 
 
 </script>
 {{-- <script type="text/ajax">
 function toggleImg() {
-  var likhet = document.getElementById('likep');
-  console.log('likhet');
-  $.ajax({
-    url:"/wish_lst",
-    method: "post",
-    dataType:"json",
-    data: {likejim : likhet},
-    success:function(data){
+var likhet = document.getElementById('likep');
+console.log('likhet');
+$.ajax({
+url:"/wish_lst",
+method: "post",
+dataType:"json",
+data: {likejim : likhet},
+success:function(data){
 
-      if(likhet.src.match("heart")) {
-        alert("관심항목에 추가되었습니다.");
-        likhet.src="/img/b_gkxm.png";
+if(likhet.src.match("heart")) {
+alert("관심항목에 추가되었습니다.");
+likhet.src="/img/b_gkxm.png";
 
 
-      }
-      else if(likhet.src.match("b_gkxm")) {
-        alert("관심항목에서 해제되었습니다.");
-        likhet.src="/img/heart.png";
-      }
-    }
-  });
+}
+else if(likhet.src.match("b_gkxm")) {
+alert("관심항목에서 해제되었습니다.");
+likhet.src="/img/heart.png";
+}
+}
+});
 }
 </script> --}}
 
@@ -133,96 +133,100 @@ $(".reco_texts").toggle();
 
 @endsection
 @section('content')
-<div class="content">
-  <div class="detail_page">
-    <div class="detail_head">
-      <div class="pr_deta_pic">
-        <div class="detailimg_list">
-          <div class="slideshow-container">
-            <div class="mySlidess fade">
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picture}}" alt=""  val=""/>
+  <div class="content">
+    <div class="detail_page">
+      <div class="detail_head">
+        <div class="pr_deta_pic">
+          <div class="detailimg_list">
+            <div class="slideshow-container">
+              <div class="mySlidess fade">
+                <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picture}}" alt=""  val=""/>
+              </div>
+              @if($myproduct[0]->item_pictureup != null)
+                <div class="mySlidess fade">
+                  <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureup}}" alt=""  val=""/>
+                </div>
+              @endif
+              @if($myproduct[0]->item_pictureback != null)
+                <div class="mySlidess fade">
+                  <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureback}}" alt=""  val=""/>
+                </div>
+              @endif
+              @if($myproduct[0]->item_picturebehind != null)
+                <div class="mySlidess fade">
+                  <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturebehind}}" alt=""  val=""/>
+                </div>
+              @endif
+              @if($myproduct[0]->item_picturefront != null)
+                <div class="mySlidess fade">
+                  <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturefront}}" alt=""  val=""/>
+                </div>
+              @endif
+              @if($myproduct[0]->item_pictureleft != null)
+                <div class="mySlidess fade">
+                  <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureleft}}" alt=""  val=""/>
+                </div>
+              @endif
+              @if($myproduct[0]->item_picturerigth != null)
+                <div class="mySlidess fade">
+                  <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturerigth}}" alt=""  val=""/>
+                </div>
+              @endif
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
-            @if($myproduct[0]->item_pictureup != null)
-            <div class="mySlidess fade">
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureup}}" alt=""  val=""/>
-            </div>
-            @endif
-            @if($myproduct[0]->item_pictureback != null)
-            <div class="mySlidess fade">
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureback}}" alt=""  val=""/>
-            </div>
-            @endif
-            @if($myproduct[0]->item_picturebehind != null)
-            <div class="mySlidess fade">
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturebehind}}" alt=""  val=""/>
-            </div>
-            @endif
-            @if($myproduct[0]->item_picturefront != null)
-            <div class="mySlidess fade">
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturefront}}" alt=""  val=""/>
-            </div>
-            @endif
-            @if($myproduct[0]->item_pictureleft != null)
-            <div class="mySlidess fade">
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_pictureleft}}" alt=""  val=""/>
-            </div>
-            @endif
-            @if($myproduct[0]->item_picturerigth != null)
-            <div class="mySlidess fade">
-              <img class="mySlides" name="" src="/img/item/{{$myproduct[0]->item_picturerigth}}" alt=""  val=""/>
-            </div>
-            @endif
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
           </div>
-        </div>
 
-      </div>
-      <div class="detail_product_info">
-        <div class="dpbox">
-          <div class="d_info">
-            <div class="tit_pri">
-              <div class="d_title">
-                {{$myproduct[0]->item_name}}
-              </div>
-              <div class="time_price">
-                <div class="d_price">
-                  현재 최고가 :
+        </div>
+        <div class="detail_product_info">
+          <div class="dpbox">
+            <div class="d_info">
+              <div class="tit_pri">
+                <div class="d_title">
+                  {{$myproduct[0]->item_name}}
                 </div>
-                <div class="d_price_info" name="" val="">
-                  {{ number_format($max)}}
-                  <span>원</span>
-                </div>
-              </div>
-              <div class="gm_dday">
-                <div class="deadtime_lab">
-                  경매 마감일 : {{$myproduct[0]->item_deadline}}
-                </div>
-              </div>
-            </div>
-            <div class="d_kyeword">
-              <div class="lvt">
-                <div class="like isk">
-                  <img src="/img/heart.png/" width="16" height="16" alt="좋아요 한 항목 아이콘">
-                  <div class="like_num intf" name="" >
-                  {{$myproduct[0]->like}}
+                <div class="time_price">
+                  <div class="d_price">
+                    현재 최고가 :
+                  </div>
+                  <div class="d_price_info" name="" val="">
+                    {{ number_format($max)}}
+                    <span>원</span>
                   </div>
                 </div>
-                <div class="view isk">
-                  <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
-                  <div class="see_num intf" name="">
-                    @if ($count[0]->visit_count !=0)
-                    <span>{{$count[0]->visit_count}}</span>
-                    @else
-                    <span>0</span>
-                    @endif
+                <div class="gm_dday">
+                  <div class="deadtime_lab">
+                    경매 마감일 : {{$myproduct[0]->item_deadline}}
                   </div>
                 </div>
-                <div class="time isk">
-                  <img src="/img/clock.png/" width="16" height="16" alt="업로드된시간">
-                  <div class="time_num intf" name="" id="timeplace">
-                    <p class="sub" >{{date(strtotime($myproduct[0]->Created_at))}}</p>
-                    {{-- <p class="sub">{{date('F d,', strtotime($myproduct[0]->Created_at)) }}
+              </div>
+              <div class="d_kyeword">
+                <div class="lvt">
+                  <div class="like isk">
+                    <img src="/img/heart.png/" width="16" height="16" alt="좋아요 한 항목 아이콘">
+                    <div class="like_num intf" name="" >
+                      @if ($like !=0)
+                        <span>{{$like}}</span>
+                      @else
+                        <span>0</span>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="view isk">
+                    <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                    <div class="see_num intf" name="">
+                      @if ($count[0]->visit_count !=0)
+                        <span>{{$count[0]->visit_count}}</span>
+                      @else
+                        <span>0</span>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="time isk">
+                    <img src="/img/clock.png/" width="16" height="16" alt="업로드된시간">
+                    <div class="time_num intf" name="" id="timeplace">
+                      <p class="sub" >{{date(strtotime($myproduct[0]->Created_at))}}</p>
+                      {{-- <p class="sub">{{date('F d,', strtotime($myproduct[0]->Created_at)) }}
                       {{date('g:ia', strtotime($myproduct[0]->Created_at)) }}</p> --}}
                     </div>
                   </div>
@@ -259,9 +263,9 @@ $(".reco_texts").toggle();
 
                     <div class="opcl_info tnam" name="">
                       @if($myproduct[0]->item_open != 1)
-                      <span>미개봉</span>
+                        <span>미개봉</span>
                       @else
-                      <span>개봉</span>
+                        <span>개봉</span>
                       @endif
                     </div>
                   </div>
@@ -283,9 +287,9 @@ $(".reco_texts").toggle();
                   <div class="Wla_click">
                     <button   class="unWla" type="submit" name="likejim" value="{{$myproduct[0]->item_number}}" onclick="toggleImg()">
                       @if($likeheart<1)
-                      <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
+                        <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
                       @else
-                      <img id="likep" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
+                        <img id="likep" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
                       @endif
                       <span>찜</span>
                     </button>
@@ -323,17 +327,17 @@ $(".reco_texts").toggle();
                   <span>판매자가 경매중인 물품</span>
                 </div>
                 @for($key=0; $key < count($myStat) ; $key++)
-                @if($key < 3)
-                <a href="/product-detail/{{$myStat[$key]->item_number}}">
-                  <div class="otr_prod_item"  style=" cursor: pointer;" onclick="">
-                    <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
-                    <div class="otr_prod_item_np">
-                      <span class="otr_name" name="">{{$myStat[$key]->item_name}}</span><br>
-                      <span class="otr_price" name="">현재가격{{ number_format($myStat[$key]->item_startprice)}}</span>
-                    </div>
-                  </div>
-                </a>
-                @endif
+                  @if($key < 3)
+                    <a href="/product-detail/{{$myStat[$key]->item_number}}">
+                      <div class="otr_prod_item"  style=" cursor: pointer;" onclick="">
+                        <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
+                        <div class="otr_prod_item_np">
+                          <span class="otr_name" name="">{{$myStat[$key]->item_name}}</span><br>
+                          <span class="otr_price" name="">현재가격{{ number_format($myStat[$key]->item_startprice)}}</span>
+                        </div>
+                      </div>
+                    </a>
+                  @endif
                 @endfor
               </div>
             </div>
@@ -390,29 +394,29 @@ $(".reco_texts").toggle();
                 </div>
                 <div class="comment_new">
                   @foreach ($commentitem as $key => $value)
-                  <div class="create_comment">
-                    <div class="neadcomt">
-                      <div class="value_comment">
-                        {{$value->comments}}
-                      </div>
-                      @if(session()->has('login_ID'))
-                      @if(decrypt(session()->get('login_ID')) == $value->comment_id)
-                      <div class="delete_area">
-                        <a href="/recomment/{{$value->comment_num}}/{{$value->comm_item}}">
-                          <button class="del_comment" type="button" name="button">삭제하기</button>
-                        </a>
-                        <button class="reco_btn {{$value->comment_num}}" type="button" name="button" onclick="ck()">수정하기</button>
-                      </div>
-                      <div class="hiderecomment">
-                        <div class="reco_texts {{$value->comment_num}}">
-                          <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력"></textarea>
-                          <button type="button" name="button">수정완료</button>
+                    <div class="create_comment">
+                      <div class="neadcomt">
+                        <div class="value_comment">
+                          {{$value->comments}}
                         </div>
+                        @if(session()->has('login_ID'))
+                          @if(decrypt(session()->get('login_ID')) == $value->comment_id)
+                            <div class="delete_area">
+                              <a href="/recomment/{{$value->comment_num}}/{{$value->comm_item}}">
+                                <button class="del_comment" type="button" name="button">삭제하기</button>
+                              </a>
+                              <button class="reco_btn {{$value->comment_num}}" type="button" name="button" onclick="ck()">수정하기</button>
+                            </div>
+                            <div class="hiderecomment">
+                              <div class="reco_texts {{$value->comment_num}}">
+                                <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력"></textarea>
+                                <button type="button" name="button">수정완료</button>
+                              </div>
+                            </div>
+                          @endif
+                        @endif
                       </div>
-                      @endif
-                      @endif
                     </div>
-                  </div>
                   @endforeach
                 </div>
               </div>
@@ -422,17 +426,17 @@ $(".reco_texts").toggle();
       </div>
       <div class="btn_cl">
         @if(session()->has('login_ID'))
-        @if(decrypt(session()->get('login_ID')) == $myproduct[0]->seller_id)
-        <div class="auction_revise">
-          <form class="" action="{{url('/product-Modify')}}" method="get">
-            <input type="hidden" name="item_key" value="{{$myproduct[0]->item_number}}">
-            <button type="submit" name="button">경매 수정</button>
-          </form>
-        </div>
-        <div class="auction_del">
-          <button id="del_detailpage" type="button" name="button" >경매 삭제</button>
-        </div>
-        @endif
+          @if(decrypt(session()->get('login_ID')) == $myproduct[0]->seller_id)
+            <div class="auction_revise">
+              <form class="" action="{{url('/product-Modify')}}" method="get">
+                <input type="hidden" name="item_key" value="{{$myproduct[0]->item_number}}">
+                <button type="submit" name="button">경매 수정</button>
+              </form>
+            </div>
+            <div class="auction_del">
+              <button id="del_detailpage" type="button" name="button" >경매 삭제</button>
+            </div>
+          @endif
         @endif
       </div>
     </div>
