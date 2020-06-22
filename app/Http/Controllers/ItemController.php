@@ -186,43 +186,55 @@ class ItemController extends Controller
       'item_picturebehind'=>$item_picturebehind,
       'item_info' =>$request->input('item_info')
     ]);
-    return redirect('/');
+    return redirect('/main');
   }
 
   public function mainview(Request $item_number){
-    //$top = 시간당 조회수가 높은 페이지에 item_nurnber를 가져온다
     $collection =Item::select(['item_number'])->get();
     $count=count($collection);
-    $topview = Item::join('auction','auction.auction_itemnum','=', 'items.item_number')
-    ->select('item_name','item_price','item_picture','visit_count')->get();
-    return view('main', [
+    $topview = DB::table('items')->orderBy('visit_count', 'desc')->get();
+    $cate=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'남성의류'])->get();
+    $catef=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'여성의류'])->get();
+    $categ=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'패션잡화'])->get();
+    $cateh=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'뷰티미용'])->get();
+    $catej=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'모바일'])->get();
+    $catek=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'가전제품'])->get();
+    $catel=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'노트북/PC'])->get();
+    return view('/main', [
       //  'item_name' => $topview[0]->item_name,
       //  'item_buy' => $topview[0]->item_buy,
       //  'item_picture' => $topview[0]->item_picture,
       'count'=>$count,
-      'topview'=>$topview
+      'topview'=>$topview,
+      'cate'=>$cate,
+      'catef'=>$catef,
+      'categ'=>$categ,
+      'cateh'=>$cateh,
+      'catej'=>$catej,
+      'catek'=>$catek,
+      'catel'=>$catel
+
     ]);
   }
 
 
-  public function myview(Request $request){
-    $id = session()->get('login_ID');
-    $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> decrypt($id)])->get();
-    $Auction = Auction::join('items', 'items.item_number','=', 'auction.auction_itemnum')->select(
-      'item_price',
-      'item_number',
-      'item_name',
-      'item_picture',
-      'item_startprice',
-      'item_success',
-      'success',
-      'seller_id'
-      )->where(['buyer_ID'=>decrypt($id)])->get();
-      return view('itemcheck', [
-        'myStat' => $myStat,
-        'myAuction' => $Auction
-      ]);
-    }
+    public function myview(Request $request){
+      $id = session()->get('login_ID');
+      $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> decrypt($id)])->get();
+      $Auction = Auction::join('items', 'items.item_number','=', 'auction.auction_itemnum')->select(
+        'item_price',
+        'item_number',
+        'item_name',
+        'item_picture',
+        'item_startprice',
+        'item_success',
+        'success',
+        'seller_id'
+        )->where(['buyer_ID'=>decrypt($id)])->get();
+        return view('itemcheck', [
+          'myStat' => $myStat,
+          'myAuction' => $Auction
+    ]);}
 
     public function itemview($item_number){
       $myproduct= Item::select('*')->where(['item_number'=>$item_number])->get();
