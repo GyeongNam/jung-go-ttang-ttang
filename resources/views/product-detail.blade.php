@@ -6,22 +6,23 @@
 
 @section('js')
 <script type="text/javascript">
-// function toggleImg() {
-//   var likhet = document.getElementById('likep');
-//   // if(session('login_ID') == false){
-//   //     alert("로그인부터 하세요");
-//   //     url=/Login;
-//   // }
-//   if(likhet.src.match("heart")) {
-//     likhet.src="/img/b_gkxm.png";
-//     alert("관심항목에 추가되었습니다.");
-//
-//   }
-//   else if(likhet.src.match("b_gkxm")) {
-//     likhet.src="/img/heart.png";
-//     alert("관심항목에서 헤제되었습니다.");
-//   }
-// }
+function toggleImg() {
+  var likhet = document.getElementById('likep');
+  var data =  1{{Session::has("login_ID")}};
+  var chilheart = {{$likeheart}}
+  //console.log(dsds);
+
+  if (data == 1) {
+    alert('로그인이 필요합니다!');
+    // return false;
+  }
+  if(chilheart ==1) {
+    alert("관심항목에서 헤제되었습니다.");
+  }
+  else{
+    alert("관심항목에 추가되었습니다.");
+  }
+}
 
 
 //변경하는 함수 테스트중 절대 건들지마셈
@@ -38,7 +39,7 @@ function plusSlides(n) {
 
 function showSlides(n) {
   var slides = document.getElementsByClassName("mySlidess"); //mySlidess라는 클래스명에 접근한다.
-  console.log(slides.length);
+//  console.log(slides.length);
   if (n > slides.length) {
     slideIndex = 1
 
@@ -55,7 +56,7 @@ function showSlides(n) {
 
 
 </script>
-<script type="text/ajax">
+{{-- <script type="text/ajax">
 function toggleImg() {
   var likhet = document.getElementById('likep');
   console.log('likhet');
@@ -66,22 +67,25 @@ function toggleImg() {
     data: {likejim : likhet},
     success:function(data){
 
-      if('likeheart'==1) {
-        likhet.src="/img/b_gkxm.png";
+      if(likhet.src.match("heart")) {
         alert("관심항목에 추가되었습니다.");
+        likhet.src="/img/b_gkxm.png";
+
 
       }
-      else if('likeheart'!=1) {
-        likhet.src="/img/heart.png";
+      else if(likhet.src.match("b_gkxm")) {
         alert("관심항목에서 해제되었습니다.");
+        likhet.src="/img/heart.png";
       }
     }
   });
-
 }
-</script>
+</script> --}}
+
 <script type="text/javascript">
 $(function (){
+
+
   $(".comment_dunglok").click(function(){
     var data =  1{{Session::has("login_ID")}};
     console.log(data);
@@ -278,7 +282,11 @@ $(".reco_texts").toggle();
                 <form class="" action="{{url('/wish_lst')}}" method="get">
                   <div class="Wla_click">
                     <button   class="unWla" type="submit" name="likejim" value="{{$myproduct[0]->item_number}}" onclick="toggleImg()">
+                      @if($likeheart<1)
                       <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
+                      @else
+                      <img id="likep" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
+                      @endif
                       <span>찜</span>
                     </button>
                   </form>
