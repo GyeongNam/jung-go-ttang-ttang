@@ -62,20 +62,21 @@ $(document).ready(function(){
       </div>
       <div class="wish_block">
         <div class="wish_info">
-          {{-- @foreach ($wish_itm as $key => $value) --}}
+         @foreach($wish_itm as $key => $value)
+         <input type"hidden" name="likejim" value="{{$value->item_number}}" >
           <div class="wish_item_info">
             <a href="#" class="prdt_link">
               <div class="wish_item_img">
                 <input type="checkbox" name="chk" class="chackSelect" value="">
-                {{-- <img src="/img/item/{{$wish_itm[0]->item_picture}}" alt="" value=""> --}}
+           <img src="/img/item/{{$value->item_picture}}" alt="" value="">
               </div>
               <div class="w_i_info">
                 <div class="w_i_pro_i">
                   <div class="wiproname">
-                    {{-- {{$value->item_name}} --}}
+            {{$value->item_name}}
                   </div>
                   <div class="wiproprice">
-                    {{-- {{$value->item_startprice}} --}}
+            {{$value->item_startprice}}
                   </div>
                   <div class="wiprodate">
                     5일전
@@ -84,49 +85,7 @@ $(document).ready(function(){
               </div>
             </a>
           </div>
-          {{-- @endforeach --}}
-          <div class="wish_item_info">
-            <a href="#" class="prdt_link">
-              <div class="wish_item_img">
-                <input type="checkbox" name="chk" class="chackSelect" value="">
-                <img src="/img/item/product.png" alt="" value="">
-              </div>
-              <div class="w_i_info">
-                <div class="w_i_pro_i">
-                  <div class="wiproname">
-                    준고타당
-                  </div>
-                  <div class="wiproprice">
-                    198,000
-                  </div>
-                  <div class="wiprodate">
-                    5일전
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="wish_item_info">
-            <a href="#" class="prdt_link">
-              <div class="wish_item_img">
-                <input type="checkbox" name="chk" class="chackSelect" value="">
-                <img src="/img/item/product.png" alt="" value="">
-              </div>
-              <div class="w_i_info">
-                <div class="w_i_pro_i">
-                  <div class="wiproname">
-                    준고타당
-                  </div>
-                  <div class="wiproprice">
-                    198,000
-                  </div>
-                  <div class="wiprodate">
-                    5일전
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
+         @endforeach
         </div>
       </div>
     </div>
