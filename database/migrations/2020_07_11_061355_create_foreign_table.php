@@ -23,7 +23,7 @@ class CreateForeignTable extends Migration
 });
             Schema::table('enditem', function (Blueprint $table) {
              $table->unsignedBigInteger('end_num')->index();
-             $table->foreign('end_num')->references('auction_num')->on('auction');
+             $table->foreign('end_num')->references('item_number')->on('items');
 });
             Schema::table('favorite', function (Blueprint $table) {
               $table->unsignedBigInteger('favorite_itemnum')->index();
