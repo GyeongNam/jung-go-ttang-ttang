@@ -246,11 +246,11 @@ $(function() {
                 <span><strong>*</strong></span>직거래 주소 입력
               </div>
               <div class="p_info">
-                <input class="juso" type="text" id="sample4_postcode" placeholder="우편번호">
-                <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-                <input class="juso" type="text" id="sample4_roadAddress" placeholder="도로명주소"><br>
-                <input class="juso" type="text" id="sample4_jibunAddress" placeholder="지번주소"><br>
-                <input class="juso" type="text" name="" placeholder="상세주소 입력">
+                <input class="juso" type="text" id="sample4_postcode" name="sample4_postcode" placeholder="우편번호">
+                <input type="button" id="sample4_doro" name="sample4_doro" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+                <input class="juso" type="text" id="sample4_roadAddress" name="sample4_roadAddress" placeholder="도로명주소"><br>
+                <input class="juso" type="text" id="sample4_jibunAddress" name="sample4_jibunAddress" placeholder="지번주소"><br>
+                <input class="juso" type="text" id="sample4_Address_detail" name="sample4_doro_detail" placeholder="상세주소 입력">
                 <span id="guide" style="color:#999"></span>
               </div>
             </div>
