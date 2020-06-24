@@ -14,6 +14,7 @@ use App\Comment;
 use Image;
 use Session;
 use DB;
+use Carbon\Carbon;
 
 class ItemController extends Controller
 {
@@ -201,9 +202,6 @@ class ItemController extends Controller
       $catek=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'가전제품'])->get();
       $catel=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'노트북/PC'])->get();
       return view('/main', [
-        //  'item_name' => $topview[0]->item_name,
-        //  'item_buy' => $topview[0]->item_buy,
-        //  'item_picture' => $topview[0]->item_picture,
         'count'=>$count,
         'topview'=>$topview,
         'cate'=>$cate,
@@ -248,7 +246,6 @@ class ItemController extends Controller
       $likeheart = Favorite::select('*')->where(['favorite_itemnum'=>$item_number, 'favorite_name'=>decrypt($id)])->get()->count();
       Item::where(['item_number'=>$item_number])->update([
         'visit_count'=> $count[0]->visit_count + 1,
-
       ]);
       return view('product-detail', [
         'myproduct' => $myproduct,
