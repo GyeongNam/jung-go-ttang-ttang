@@ -61,7 +61,7 @@
           <a href="/itemcheck">경매 판매하기</a>
           <a href="/mypage">내 정보</a>
           <a href="/wish_list">내 관심</a>
-          <a href="#">쪽지</a>
+          <a href="/wish_list">쪽지</a>
         </div>
 
         <div class="nav_logo">
@@ -74,35 +74,35 @@
             <div class="dropdown">
               <a class="dropbtn">전체 카테고리</a>
               <div class="dropdown-content">
-                <a href="manclothing?id=남성의류">남성의류</a>
-                <a href="manclothing?id=여성의류">여성의류</a>
-                <a href="manclothing?id=패션잡화">패션잡화</a>
-                <a href="manclothing?id=뷰티미용">뷰티미용</a>
-                <a href="manclothing?id=유아용/출산">유아용/출산</a>
-                <a href="manclothing?id=모바일/태블릿">모바일/태블릿</a>
-                <a href="manclothing?id=가전제품">가전제품</a>
-                <a href="manclothing?id=노트북/데스크탑">노트북/데스크탑</a>
-                <a href="manclothing?id=카메라/캠코더">카메라/캠코더</a>
-                <a href="manclothing?id=가구/인테리어">가구/인테리어</a>
-                <a href="manclothing?id=리빙/생활">리빙/생활</a>
-                <a href="manclothing?id=도서/음반/문구">도서/음반/문구</a>
-                <a href="manclothing?id=티켓/쿠폰">티켓/쿠폰</a>
-                <a href="manclothing?id=스포츠">스포츠</a>
+                <a href="/manclothing?id=남성의류">남성의류</a>
+                <a href="/manclothing?id=여성의류">여성의류</a>
+                <a href="/manclothing?id=패션잡화">패션잡화</a>
+                <a href="/manclothing?id=뷰티미용">뷰티미용</a>
+                <a href="/manclothing?id=유아용/출산">유아용/출산</a>
+                <a href="/manclothing?id=모바일/태블릿">모바일/태블릿</a>
+                <a href="/manclothing?id=가전제품">가전제품</a>
+                <a href="/manclothing?id=노트북/데스크탑">노트북/데스크탑</a>
+                <a href="/manclothing?id=카메라/캠코더">카메라/캠코더</a>
+                <a href="/manclothing?id=가구/인테리어">가구/인테리어</a>
+                <a href="/manclothing?id=리빙/생활">리빙/생활</a>
+                <a href="/manclothing?id=도서/음반/문구">도서/음반/문구</a>
+                <a href="/manclothing?id=티켓/쿠폰">티켓/쿠폰</a>
+                <a href="/manclothing?id=스포츠">스포츠</a>
               </div>
             </div>
           </li>
           <li><a href="/itemcheck">경매 판매하기</a></li>
           <li><a href="/mypage">내 정보</a></li>
-          <li><a href="#">내 관심</a></li>
+          <li><a href="/wish_list">내 관심</a></li>
           <li><a href="#">쪽지</a></li>
         </ul>
 
         <div class = "nav_login">
         @if(session('login_ID') == false)
           <li><a href="/Login">Login</a></li>
-          <li><a href="/sign_up">sign up</a></li>
+          <li><a href="/sign_rull">sign up</a></li>
         @else
-          <li><a href="/Logout">Log Out</a></li>
+          <li><a class="nolog" href="/Logout">Log Out</a></li>
         @endif
         </div>
       </nav>
@@ -115,22 +115,58 @@
 
     {{-- Layout Footer Start --}}
       <footer class="tang-footer">
-        <ul>
-          <li><a href="https://www.joongbu.ac.kr/home">중부대학교</a></li>
-          <li><a href="https://www.naver.com">네이버</a></li>
-          <li><a href="#">Examples</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
-          <p class="mb-0">
-            Designed by
-            <a href="https://www.instagram.com/jin__uu0.jpeg/?hl=ko">Dorumamu</a>
-            with the help of
-            <a href="https://github.com/JGN97/CCIT_TEST.git">CCIT_A team our Project</a>.
-          </p>
-          <p class="mb-0">
-            중고 땅땅 1.0 ver
-          </p>
+        <div class="footbox">
+          <div class="footspon">
+            <div class="sponcl">
+              <div class="footqna ftn">
+                <a href="/Servicecenter">Q&A</a>
+              </div>
+              <div class="sangdam ftn">
+                <a href="#">1:1 상담</a>
+              </div>
+              <div class="sellpage ftn">
+                <a href="/itemcheck">경매판매하기</a>
+              </div>
+            </div>
+          </div>
+          <div class="pootlist">
+            <div class="pooterneau">
+              대표이사 : 조경남 개인정보 보호 담당자 : 이명기 사업자등록정보 : 112-45-11468 통신판매업신고 : 2020-경기도덕양구-1147 주소 : 경기도 고양시 덕양구 동헌로 305 세종관 5층 542호 TEL/FAX 031-939-2142<br>
+              중고땅땅(주)는 통신판매중개자로서 중고거래마켓 중고땅땅의 거래 당사자가 아니며, 입점판매가 등록한 상품정보 및 거래에 대해 책임을 지지 않습니다.
+            </div>
+            <div class="pootcopyandgogak">
+              <div class="pootcopyright">
+                Copyrightⓒjunggotangtang Inc.All rights reserved.
+              </div>
+              <div class="centernum">
+                고객센터 010-0000-0000  제휴문의 ccittest@naver.com
+              </div>
+            </div>
+        </div>
+        </div>
       </footer>
+      {{-- <div class="foothadan">
+        <div class="fottwo">
+          <div class="">
+            <a href="#">채용정보</a>
+          </div>
+          <div class="">
+            <a href="#">이용약관</a>
+          </div>
+          <div class="">
+            <a href="#">전자금융거래약관</a>
+          </div>
+          <div class="">
+            <a href="#">개인정보 처리방침</a>
+          </div>
+          <div class="">
+            <a href="#">브랜드 광고문의</a>
+          </div>
+          <div class="">
+            <a href="#">판매자 광고센터</a>
+          </div>
+        </div>
+      </div> --}}
     {{-- Layout Footer End --}}
 
   </body>

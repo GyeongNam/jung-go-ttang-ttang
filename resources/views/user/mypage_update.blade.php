@@ -41,7 +41,7 @@ $('#selectEmail').change(function()
         <div class="mp_img">
           <label for="">프로필사진 변경</label><br>
           <img id="img_click" src="/img/mp_img.png">
-          <input class="" type="file" name="user_image" value="" multiple="multiple" accept=".png, .jpg, .jpeg, .gif">
+          <input class="" type="file" name="user_image" multiple="multiple" accept=".png, .jpg, .jpeg, .gif">
         </div>
       </div>
 
@@ -52,8 +52,8 @@ $('#selectEmail').change(function()
               <label>이메일</label><br>
             </div>
             <div class="mp_e">
-              <input type="text" class="mp_data_e" name="str_email01" id="str_email01" >
-              <input type="text" class="mp_data_e" name="str_email02" id="str_email02" placeholder="직접입력">
+              <input type="text" class="mp_data_e" name="str_email01" id="str_email01" value="{{$data[0]->EMAIL}}" >
+              <input type="text" class="mp_data_e" name="str_email02" id="str_email02" value="{{$data[0]->EMAIL_DOMAIN}}">
               <select name="str_email03" class="mp_data_e" id="selectEmail">
                 <option value="1">직접입력</option>
                 <option value="naver.com" selected>naver.com</option>
@@ -77,7 +77,7 @@ $('#selectEmail').change(function()
               전화번호
             </div>
             <div class="mp_data">
-              <input type="text" name="phone" value="">
+              <input type="text" name="phone" value="{{$data[0]->PHONE}}">
             </div>
           </div>
 
@@ -86,7 +86,7 @@ $('#selectEmail').change(function()
               생년월일
             </div>
             <div class="mp_data">
-              <input type="date" name="birthday" value="">
+              <input type="date" name="birthday" value="{{$data[0]->BIRTHDAY}}">
             </div>
           </div>
 
@@ -94,8 +94,15 @@ $('#selectEmail').change(function()
             <div class="mp_head">
               성별
             </div>
-            <div class="mp_data" name="gender">
-              <select name="gender" class="gender">
+            <div class="mp_data" name="gender" selected="">
+              <select name="gender" class="gender" >
+                <option value="{{$data[0]->GENDER}}" selected >
+                  @if($data[0]->GENDER == 'w')
+                    여성
+                  @else
+                    남성
+                  @endif
+                    </option>
                 <option value="m">남성</option>
                 <option value="w">여성</option>
               </select>

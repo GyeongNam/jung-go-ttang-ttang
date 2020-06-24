@@ -22,6 +22,10 @@ class Item extends Model
       'item_picturefront',
       'item_picturerigth',
       'item_picturebehind',
+      'postcode',
+      'roadAddress',
+      'jibunAddress',
+      'Address_detail',
       'item_info',
       'item_startday',
       'item_startprice',
@@ -29,6 +33,7 @@ class Item extends Model
       'success',
       'remember_token',
       'visit_count',
-      'seller_id'
+      'seller_id',
+      'like'
     ];
 }

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title></title>
   </head>
+  <a href="#"></a>
   <body>
     <div class="emailbody" style="">
       <div class="mailsand_header" style="border-top:5px solid #000">
@@ -14,10 +15,10 @@
           <h2>{{$details['body']}}</h2>
         </div>
         <div class="title_tname">
-          <h2>{{$details['title']}} 고객님의 비밀번호는</h2>
+          <h2>{{$details['title']}} 고객님의 비밀번호는 아래 링크에서 재설정 가능합니다.</h2>
         </div>
         <div class="">
-              <p style="font-size: 30px; ">{{$details['pw']}}  입니다!</p>
+          <a href="http://ccit2020.cafe24.com:8080/repassword/{{$details['id']}}">ccit2020.cafe24.com:8080/repassword/{{$details['id']}}</a>
         </div>
       </div>
       <div class="mailsand_footer" style="display:flex; border-top:1px solid  #bdbdbd">

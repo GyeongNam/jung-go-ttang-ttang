@@ -11,6 +11,9 @@
   margin:30px auto;
   background: 5px, 5px;
 }
+.main_form{
+  margin:auto;
+}
 .right_side_form {
 
 }
@@ -19,7 +22,7 @@
 .quickBox{
   position: absolute;
   margin: auto;
-  right:200px;
+  right:60px;
   top: 120px;
   hight: auto;
   border: 1px solid #bdbdbd;
@@ -153,9 +156,6 @@ h2{
   width: 1100px;
   height: auto;
 }
-#favorit{
-
-}
 
 .item_list{
   margin-left: 10px;
@@ -164,6 +164,7 @@ h2{
   width: 1110px;
   height: 700px;
   display: inline-block;
+  align-items: center;
 
 }
 
@@ -182,7 +183,7 @@ h2{
   width: auto; height: auto;
 }
 
-.item img {
+#itmg {
   width: 200px;
   height: 200px;
 }

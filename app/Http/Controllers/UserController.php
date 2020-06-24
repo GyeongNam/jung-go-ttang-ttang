@@ -12,130 +12,184 @@ use App\User;
 use DB;
 use Session;
 use Image;
+use App\Item;
 
 class UserController extends Controller
 {
-    public function mailsend(Request $request){
-      $mail = $request->get('mail');
-      $random = $request->get('random');
-      $details = [
-        'title' => '안녕하세요 고객님',
-        'body' => '인증번호를 확인하세요',
-        'num' => $random
-      ];
-      Mail::to($mail)->send(new SendMail($details));
-    }
+  public function idcheck(Request $request){
+    $id = $request->input('id');
+    $data = User::select('ID')->where(['id'=>$id])->get()->count();
+    return response()->json(['data'=>$data]);
+  }
 
-    public function idcheck(Request $request){
-      $id = $request->get('id');
-      $data = User::select('ID')->where(['id'=>$id])->get()->count();
-      return response()->json(['data'=>$data]);
-    }
+  public function store(Request $request){
+    $p1 = $request->input('str_phone01');
+    $p2 = $request->input('str_phone02');
+    $p3 = $request->input('str_phone03');
+    $p1.$p2.$p3;
+    $user = new user([
+      'id' => $request->input('user_id'),
+      'password'=> $request->input('userPwd'),
+      'name' => $request->input('userName'),
+      'birthday'=> $request->input('birthday'),
+      'gender'=> $request->input('gender'),
+      'email'=> $request->input('str_email01'),
+      'email_domain'=>$request->input('str_email02'),
+      'phone'=>$p1.$p2.$p3
+    ]);
+    $user->save();
+    return view('login.login');
+  }
 
-    public function store(Request $request){
-      $user = new user([
-        'id' => $request->get('user_id'),
-        'password'=> $request->get('userPwd'),
-        'name' => $request->get('userName'),
-        'birthday'=> $request->get('birthday'),
-        'gender'=> $request->get('gender'),
-        'email'=> $request->get('str_email01'),
-        'email_domain'=>$request->get('str_email02'),
-      	'phone'=> $request->get('tel')
-      ]);
-      $user->save();
+  public function loging(Request $request){
+    $id = $request->input('id');
+    $pwd = $request->input('PW');
+    $data = User::select('ID','PASSWORD','NAME')->where(['id'=>$id,'password'=>$pwd])->get();
+
+    if(count($data)>0){
+      session()->put('login_ID',encrypt($id));
+      print_r("<script>alert('안녕하세요 \\n".$data[0]->NAME." 님 반갑습니다!');</script>");
+      $page = session()->get('page');
+      return redirect($page);
+    }
+    else {
+      print_r("<script>alert('없는 아이디거나 틀린 비밀번호입니다.');</script>");
       return view('login.login');
     }
+  }
 
-    public function loging(Request $request){
-      $id = $request->get('id');
-      $pwd = $request->get('PW');
-      $data = User::select('ID','PASSWORD','NAME')->where(['id'=>$id,'password'=>$pwd])->get();
+  public function logout(Request $request){
+    session()->forget('login_ID');
+    return redirect('/');
+  }
 
-      if(count($data)>0){
-        session()->put('login_ID',encrypt($id));
-        print_r("<script>alert('안녕하세요 \\n".$data[0]->NAME." 님 반갑습니다!');</script>");
-        return view('main');
-      }
-      else {
-        print_r("<script>alert('없는 아이디거나 틀린 비밀번호입니다.');</script>");
-        return view('login.login');
-      }
-    }
+  public function mypage(Request $request){
+    $id = session()->get('login_ID');
+    $data = User::select('ID','EMAIL','EMAIL_DOMAIN','PHONE','BIRTHDAY','GENDER','USER_IMAGE')->where(['id'=>decrypt($id)])->get();
+    return view('user.mypage', ['data'=>$data]);
+  }
 
-    public function logout(Request $request){
-      session()->forget('login_ID');
-      print_r("<script>alert('정상적으로 로그아웃 되었습니다.');</script>");
-      return view('main');
-    }
+  public function user_binding(Request $request) {
+    $id = session()->get('login_ID');
+    $data = User::select('EMAIL','EMAIL_DOMAIN','PHONE','BIRTHDAY','GENDER','USER_IMAGE')->where(['id'=>decrypt($id)])->get();
+    $item_picturefront = User::select('USER_IMAGE')->where(['id'=>decrypt($id)])->get();;
 
-    public function mypage(Request $request){
-      $id = session()->get('login_ID');
-      $data = User::select('ID','EMAIL','EMAIL_DOMAIN','PHONE','BIRTHDAY','GENDER','USER_IMAGE')->where(['id'=>decrypt($id)])->get();
-      return view('user.mypage', ['data'=>$data]);
-    }
+    return view('user.mypage_update', ['data'=>$data]);
+  }
 
-    public function mypage_update(Request $request){
-      $id = session()->get('login_ID');
-      $email = $request->get('str_email01');
-      $email_domain = $request->get('str_email02');
-      $phone = $request->get('phone');
-      $birthday = $request->get('birthday');
-      $gender = $request->get('gender');
+  public function mypage_update(Request $request){
+    $id = session()->get('login_ID');
+    $email = $request->input('str_email01');
+    $email_domain = $request->input('str_email02');
+    $phone = $request->input('phone');
+    $birthday = $request->input('birthday');
+    $gender = $request->input('gender');
+
+    if($request->hasFile('item_picturefront')){
       $user_image = $request->file('user_image');
-
-      $extension= $user_image->getClientOriginalName();  //\time() . '.' .
+      $extension= $user_image->getClientOriginalName();
       Image::make($user_image)->save(public_path('/img/user/' .$extension));
-
-     if(empty($email&&$email_domain&&$phone&&$birthday&&$gender))
-       {
-          return redirect()->back();
-        }
-
-      $update = User::where(['id'=>decrypt($id)])->update([
+    }
+    else {
+      $imgselect = User::select('USER_IMAGE')->where(['id'=>decrypt($id)])->get();;
+      $extension = $imgselect[0]->USER_IMAGE;
+    }
+    if(empty($email&&$email_domain&&$phone&&$birthday&&$gender))
+    {
+      return redirect()->back();
+    }
+    $update = User::where(['id'=>decrypt($id)])->update([
       'email'=>$email,
       'email_domain'=>$email_domain,
       'phone'=>$phone,
       'birthday'=>$birthday,
       'gender'=>$gender,
       'user_image'=> $extension
-      ]);
+    ]);
+    return redirect('/mypage');
+  }
 
-      return redirect('/mypage');
+  public function selectid(Request $request){
+    $name = $request->input('names');
+    $phone = $request->input('phone');
+    $data = User::select('ID', 'email', 'email_domain')->where(['name'=> $name, 'phone'=> $phone])->get();
+    $datas = count($data);
+    if($datas>0){
+      $mail = $data[0]->email.'@'.$data[0]->email_domain;
+      $details = [
+        'title' => '안녕하세요 고객님',
+        'body' => '아이디를 확인하세요',
+        'id' => $data[0]->ID
+      ];
+      Mail::to($mail)->send(new IDselect($details));
     }
+    return response()->json(['data'=>$datas]);
+  }
 
-    public function selectid(Request $request){
-      $name = $request->get('names');
-      $phone = $request->get('phone');
-      $data = User::select('ID', 'email', 'email_domain')->where(['name'=> $name, 'phone'=> $phone])->get();
-      $datas = count($data);
-      if($datas>0){
-        $mail = $data[0]->email.'@'.$data[0]->email_domain;
-        $details = [
-          'title' => '안녕하세요 고객님',
-          'body' => '아이디를 확인하세요',
-          'id' => $data[0]->ID
-        ];
-        Mail::to($mail)->send(new IDselect($details));
-      }
-      return response()->json(['data'=>$datas]);
+  public function selectpw(Request $request){
+    $id = $request->input('id');
+    $phone = $request->input('phone');
+
+    $data = User::select('ID', 'email', 'email_domain')->where(['id'=> $id, 'phone'=> $phone])->get();
+    $datas = count($data);
+
+    if($datas>0){
+      $mail = $data[0]->email.'@'.$data[0]->email_domain;
+      $idlink = encrypt($data[0]->ID);
+      $details = [
+        'title' => '안녕하세요 고객님',
+        'body' => '비밀번호를 확인하세요',
+        'id' => $idlink
+      ];
+      User::where(['id'=>$id])->update(['password'=>$idlink]);
+      Mail::to($mail)->send(new PWselect($details));
     }
+    return response()->json(['data'=>$datas]);
+  }
 
-    public function selectpw(Request $request){
-      $id = $request->get('id');
-      $phone = $request->get('phone');
-
-      $data = User::select('PASSWORD', 'email', 'email_domain')->where(['id'=> $id, 'phone'=> $phone])->get();
-      $datas = count($data);
-      if($datas>0){
-        $mail = $data[0]->email.'@'.$data[0]->email_domain;
-        $details = [
-          'title' => '안녕하세요 고객님',
-          'body' => '비밀번호를 확인하세요',
-          'pw' => $data[0]->PASSWORD
-        ];
-        Mail::to($mail)->send(new PWselect($details));
-      }
-      return response()->json(['data'=>$datas]);
+  public function user_repwd($id){
+    $data = User::select('id')->where(['password'=>$id])->get()->count();
+    if($data>0){
+      return view('login.repassword', ['id'=>$id]);
     }
+    echo ("<script>alert('유효하지 않는 링크입니다. 메일을 다시보내세요');</script>");
+    return view('login.find_act');
+  }
+
+  public function user_pwd_update(Request $request, $id){
+    $ids = decrypt($id);
+    $data = User::where(['id'=>$ids])->update([
+      'password' => $request->input('PW')
+    ]);
+    return view('main');
+  }
+
+  public function manager(Request $request){
+    $mana = User::select('ID','name','birthday','gender','phone','email','email_domain','created_at')->get();
+    return view('/manager_user',[
+      'mana'=>$mana
+    ]);
+  }
+
+  public function managerinfo($id){
+    $mana = User::select('ID','name','birthday','gender','phone','email','email_domain','created_at')->where(['id'=>$id])->get();
+    $maif = Item::leftjoin('auction', 'items.item_number','=', 'auction.auction_itemnum')->select('item_number','item_name','item_price','buyer_ID')->where(['buyer_ID'=>$id])->get();
+    return view('/manager_user_info',[
+      'mana'=>$mana,
+      'maif'=>$maif
+    ]);
+  }
+
+  public function qna(Request $request){
+    $id = session()->get('login_ID');
+    if(session()->has('login_ID') != 1){
+      $data = [];
+    }
+    else {
+      $data = User::select('ID')->where(['id'=> decrypt($id)])->get();
+    }
+    return view('Servicecenter', [
+      'data'=> $data
+    ]);
+  }
 }

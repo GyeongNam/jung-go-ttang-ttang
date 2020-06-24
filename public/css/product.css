@@ -1,3 +1,9 @@
+/* 주소 API CSS */
+.juso{
+  width: 20rem;
+}
+/* 주소 API CSS */
+
 
 /*--ㄹㅔㅇㅣㅇㅏ웃--*/
 .contents{
@@ -74,6 +80,10 @@ li {
 
 .s_right {
   height:auto;
+}
+#dpelxj{
+  height:10rem;
+  width:55rem;
 }
 /*-- input type --*/
 

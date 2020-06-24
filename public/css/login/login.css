@@ -10,7 +10,7 @@
 }
 
 .login_layout{
-    border: 10px solid #263343;
+
     border-radius: 12px;
     margin-top: 5%;
     margin-bottom: 5%;
@@ -27,7 +27,7 @@
   text-align: center;
 }
 
-#id, #pw, #login_bt{
+#id, #pw, #repw, #login_bt{
     margin: 2%;
     width: 90%;
     height: 50px;

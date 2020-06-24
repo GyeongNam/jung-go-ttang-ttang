@@ -1,0 +1,129 @@
+.Qtitle{
+  border-bottom: 1px solid #000000;
+  font-size: 35px;
+  width:auto;
+  text-align: center;
+  padding: 2% 0px;
+  letter-spacing: 1px;
+}
+/* 아코디언 메뉴 */
+/* Style the buttons that are used to open and close the accordion panel */
+.accordionheader{
+
+}
+.accordion {
+  font-size: 20px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: #ffffff;
+  display: none;
+  overflow: hidden;
+}
+/* 아코디언 메뉴 끝 */
+
+/*h1은 설명을 위한 css이기 때문에 지우셔도 됩니다.
+지우지 않을 경우 다른 h1코드 스타일과 충돌할 가능성이 있습니다*/
+h1 {
+
+}
+
+
+/*div변경과 관련된 코드입니다.
+색 등의 디자인은 보이기 위해서 표시해놨으니
+스타일 추가 및 변경이 가능합니다.*/
+.servicecenter input[type=radio] {
+  display: none;
+}
+#tab-1:checked ~ .tab label:nth-child(1),
+#tab-2:checked ~ .tab label:nth-child(2),
+#tab-3:checked ~ .tab label:nth-child(3) {
+  background-color: rgb(255, 255, 255);
+  border-bottom: 2px solid rgb(0, 0, 0);
+  box-shadow: none;
+}
+.content > div {
+  display: none;
+  height:auto;
+}
+#tab-1:checked ~ .content div:nth-child(1),
+#tab-2:checked ~ .content div:nth-child(2),
+#tab-3:checked ~ .content div:nth-child(3){
+  display: block;
+}
+.servicecenter {
+
+  margin: 3rem auto;
+  width:70%;
+}
+.tab {
+  display: flex;
+  width: auto;
+  height: 70%;
+  overflow: hidden;
+}
+.tab label {
+  font-size: 18px;
+  cursor: pointer;
+  float: left;
+  width: 45%;
+  text-align: center;
+  padding: 15px 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.content {
+  background-color: #ffffff;
+  min-height: 250px;
+}
+.content > div{
+  width:auto;
+  padding: 30px;
+  line-height: 1.5;
+  font-size: 20px;
+  border-bottom: 1px solid #bdbdbd;
+  margin-bottom: 3rem;
+}
+
+/* table class */
+.qnat{
+  width: 100%;
+  border-top: 1px solid #444444;
+  border-collapse: collapse;
+}
+.qnat th{
+  border-bottom: 2px solid #444444;
+  border-top: 2px solid #444444;
+  padding-top: 10px;
+}
+.qnat td{
+  border-bottom: 1px solid #bdbdbd;
+  padding-top: 10px;
+  text-align: center;
+}
+.rmf{
+  margin-top: 1rem;
+  border: none;
+}
+.qnainput{
+  display: none;
+}

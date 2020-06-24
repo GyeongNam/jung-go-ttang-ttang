@@ -3,6 +3,22 @@
   padding:0;
 }
 
+/*  연구중 */
+/* #video {
+     position: absolute;
+     top: 0px;
+     left: 0px;
+     buttom: 0px;
+
+     width: 100%;
+     height: 100%;
+     width: auto;
+     height: auto;
+     z-index: -1;
+     overflow: hidden;
+} */
+
+/* 연구중 */
 .center-block{
   margin:auto;
   padding: 10%;
@@ -17,7 +33,6 @@
 }
 
 .sign_up{
-  border: 10px solid #263343;
   border-radius: 12px;
   margin-top: 5%;
   margin-bottom: 5%;
@@ -86,6 +101,11 @@
     width:26%;
     height:50px;
   }
+  #str_phone02, #str_phone03, #selectphone{
+    margin: 1%;
+    width:26%;
+    height:50px;
+  }
   /*
   #str_email02{
     margin: auto;
@@ -98,13 +118,13 @@
     height:50px;
   }
   */
-  #gender, #sel_tel, #security, #sub{
+  #gender, #sel_tel, #sub{
     margin: 2%;
     width:90%;
     height: 50px;
   }
 
-  #tel{
+  #tel, #security{
     margin: 2%;
     width:45%;
     height: 50px;

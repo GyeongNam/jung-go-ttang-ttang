@@ -14,9 +14,8 @@ class CreateFavoriteTable extends Migration
     public function up()
     {
         Schema::create('favorite', function (Blueprint $table) {
-          $table->integer('ranking')->unique();
-          $table->primary('ranking');
-          /*$table->integer('favorite_itemnum');*/
+          $table->bigIncrements('favorite_num')->unique();
+          $table->string('favorite_name');
           $table->rememberToken();
           $table->timestamps();
         });

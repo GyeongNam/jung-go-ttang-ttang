@@ -1,12 +1,11 @@
 .it_layout{
-border: 12px solid #BDBDBD;
-border-radius: 12px;
-margin-left: auto;
-margin-right: auto;
-width: 60%;
-margin: 2% auto;
-color: #263343;
-word-break:break-all;
+  border-bottom:1px;
+  border-top: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin: 2% auto;
+  word-break:break-all;
 
 }
 /*--- 삭제시 모달창 부분 ---*/
@@ -87,25 +86,28 @@ word-break:break-all;
 }
 
 .it_main{
-display: flex;
-text-align: center;
-margin:2% auto;
-justify-content: space-between;
+
+  text-align: center;
+  margin:2% auto;
+
 
 }
 .namesize {
-margin-left: 35%;
+  font-size: 30px;
+  margin-left: 10px;
 
 }
 .plus i {
-  margin-right: 10px;
+float: right;
+font-size: 30px;
 }
 .it_main_lime{
-border: 10%;
+
 }
 .it_button{
   display: flex;
-  margin: 3%
+  margin: 3%;
+
 
 }
 .it_subbutton1 {
@@ -118,19 +120,19 @@ b{
 
 
 #but1{
+  border-style: none;
   flex:none;
   width: 40%;
   margin: 3%;
   padding: 18px 40px;
-  border-radius: 4%;
 }
 #but2{
-flex:none;
-width: 40%;
-margin: 3%;
-margin-left: auto;
-padding: 18px 40px;
-border-radius: 4%;
+  border-style: none;
+  flex:none;
+  width: 40%;
+  margin: 3%;
+  margin-left: auto;
+  padding: 18px 40px;
 
 
 }
@@ -158,69 +160,84 @@ border-radius: 4%;
   border-radius: 4%;
 
 }
+table{
+  border-collapse: collapse;
+}
+
+th {
+  border-bottom: 1px solid #ddd;
+
+
+}
+
+
 .it_if1 , .it_if2{
-  display: flex;
-  border: 1px;
-  border-style: solid;
-  border-color: black;
-  height: 180px;
+  text-align: center;
+  height: auto;
   position: relative;
+  margin-bottom: 1rem;
 
 }
-.it_img{
-  width: 20%;
+.tab{
 
-  margin-left: 2%;
-  margin-right:2%;
-  overflow: hidden;
+  height: 3rem;
+  font-size: 22px;
+
+  margin-bottom: 1rem;
+
+
 
 }
+
+
 .it_img1{
 
   text-decoration: none;
 }
 .ite_img{
-width: 100%;
-height: 150px;
-
-
-word-break:break-all;
-}
-
-.ite_na{
-  width: 130px;
-  height: 25px;
-  font-size: 12px;
-  text-overflow: ellipsis;
-  white-space : nowrap;
-  overflow: hidden;
-  text-align: center;
-}
-.price1{
-  width: 20%;
-  margin-left:3%;
-  margin-right: :3%;
-  margin-top: 5%;
-  text-align: center;
-
+  width:100%;
+  height:180px;
 
 }
+.but2{
+  width: 100%;
 
-.state1{
-  width: 20%;
-  margin-left:4%;
-  margin-right: :3%;
-  margin-top: 5%;
-  text-align: center;
 }
-.yesorno{
-  width: 20%;
-  margin-left:4%;
-  margin-right: :3%;
-  margin-top: 5%;
-  text-align: center;
-}
+@media screen and (max-width: 300px){
+  .matab{
+    width: auto;
+    height: auto;
+  }
 
-.hide_but{
-  margin-top:50px;
-}
+  .ite_na{
+    width: 219px;
+    font-size: 20px;
+    text-overflow: ellipsis;
+    white-space : nowrap;
+    overflow: hidden;
+
+  }
+  .price1{
+    width: 20%;
+    margin-left:3%;
+    margin-right: :3%;
+    margin-top: 5%;
+    text-align: center;
+
+
+  }
+
+
+  .state1{
+    width: 20%;
+    margin-left:4%;
+    margin-right: :3%;
+    margin-top: 5%;
+
+  }
+
+  .hide_but{
+
+  }
+
+  /* 테이블 */

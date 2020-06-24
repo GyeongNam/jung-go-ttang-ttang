@@ -30,11 +30,19 @@ class CreateItemsTable extends Migration
      $table->binary('item_pictureleft')->nullable();
      $table->binary('item_picturerigth')->nullable();
      $table->binary('item_picturebehind')->nullable();
+
+     $table->string('postcode')->nullable();
+     $table->string('roadAddress')->nullable();
+     $table->string('jibunAddress')->nullable();
+     $table->string('Address_detail')->nullable();
+
      $table->longText('item_info')->nullable();
      $table->date('item_startday');
      $table->string('item_startprice');
      $table->boolean('item_success');
      $table->boolean('success');
+     $table->integer('visit_count')->nullable();
+     $table->integer('like')->nullable();
      $table->rememberToken();
      $table->timestamps();
         });
