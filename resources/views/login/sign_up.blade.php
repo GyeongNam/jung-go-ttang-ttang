@@ -230,14 +230,14 @@ function checkValue(){
 
         <li>
           <label><strong>비밀번호</strong><br>
-            <input type="password" name="userPwd" id="pwd1" onKeyup="chkpw()" class="form-control" required>
+            <input type="password" name="userPwd" id="pwd1" onKeyup="chkpw()" class="-control" required>
 
           </label>
           <p><spen id=s_relult1>영문, 숫자, 특수문자를 포함한 8자리 이상 입력하세요.</spen></p>
         </li>
         <li>
           <label><strong>비밀번호 확인</strong><br>
-            <input type="password" name="reuserPwd" id="pwd2"  onKeyup="passwordcheck()" class="form-control" required>
+            <input type="password" name="reuserPwd" id="pwd2"  onKeyup="passwordcheck()" class="-control" required>
           </label>
           <p><spen id= "s_relult2"></spen></p>
 

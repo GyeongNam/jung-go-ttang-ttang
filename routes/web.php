@@ -107,7 +107,8 @@ Route::post('/bidding-price', 'AuctionController@biddingprice')->middleware('log
 Route::get('/mail', 'UserController@mailsend');
 Route::post('/selectid', 'UserController@selectid');
 Route::post('/selectpw', 'UserController@selectpw');
+Route::get('/sms_send', 'SMSController@SendMessage');
 
 Route::get('/manager_user', 'UserController@manager');
-Route::get('/manager_user_info/{id}',  'UserController@managerINFO');
+Route::get('/manager_user_info/{id}', 'UserController@managerINFO');
 Route::get('/manager_item','ItemController@manageritem');
