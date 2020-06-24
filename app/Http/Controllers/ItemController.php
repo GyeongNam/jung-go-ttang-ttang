@@ -260,15 +260,24 @@ class ItemController extends Controller
       ]);
 }
 
-    public function category(Request $request){
-      $cat = $_GET['id'];
-      $cate=Item::select('item_number','item_name','item_picture','item_startprice')->where(['item_category'=>$cat])->get();
-      $cateF = count($cate);
-      return view('manclothing',[
-        'cate'=>$cate,
-        'cateF' => $cateF
-      ]);
-    }
+public function category(Request $request){
+    $cat = $_GET['id'];
+    $cate=Item::select('item_number','item_name','item_picture','item_startprice')->where(['item_category'=>$cat])->get();
+    $search = $request->get('search') != null ? $request->get('search') : '';
+    $cate=Item::select('item_number','item_name','item_picture','item_startprice')
+              ->where([
+                ['item_category', $cat],
+                ['item_name', 'like', '%'.$search.'%']])
+              ->get();
+    $cateF = count($cate);
+
+    return view('manclothing',[
+      'search'=> $request->get('search'),
+      'cat' => $cat,
+      'cate' => $cate,
+      'cateF' => $cateF
+    ]);
+  }
 
     public function favorite_item(Request $request){
       $id= session()->get('login_ID');
@@ -363,5 +372,18 @@ class ItemController extends Controller
         ]);
         $newcomment->save();
         return redirect('/product-detail/'.$item_number);
+      }
+      public function manageritem(Request $request){
+        $item_price = DB::table('auction')->select('auction_itemnum',
+        DB::raw('MAX(item_price) AS item_price'))
+        ->groupBy('auction_itemnum');
+
+        $item_join = DB::table('items')->select('*')
+        ->JoinSub($item_price,'item_price',function($join){
+          $join->on('items.item_number','=','item_price.auction_itemnum');
+        })->get();
+        return view('manager_item',[
+          'item_join'=>$item_join
+        ]);
       }
     }

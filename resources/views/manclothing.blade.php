@@ -11,30 +11,45 @@
 @section('js')
 
 
+
+
 @endsection
 
 @section('content')
 
   <div class="mc_layout">
     <div class="mc_header">
+      <form class="form1"  action=""  method="get" >
       <div class="mc_main">
-        <input type="text" name="" class="it_sea" placeholder="상품명검색">
-        <button type="button" class="sea_ck"><i class="fas fa-search"></i></button>
-
+        <input type="hidden" name="id" value="{{$_GET['id']}}">
+        <input type="text" name="search" class="it_sea" placeholder="상품명검색">
+        <button type="submit" class="sea_ck"><i class="fas fa-search"></i></button>
       </div>
+      </form>
     </div>
     <hr class="mc_main_line">
     <div class="it_cago">
       <div class="ite_menu">
-
       </div>
     </div>
+
+    {{-- 검색어가 있는 경우에만 > 돌아가기 < 보임 --}}
+    @if (isset($_GET['search']))
+      <div class="">
+        <a href="?id={{$_GET['id']}}">돌아가기</a>
+      </div>
+    @endif
 
      <div class="ma_main">
        <div class="m_1">
          <h1>
-           <?php echo $_GET['id'];?>
-           전체보기
+           @if($search)
+           '{{$search}}' 의 검색 결과
+          @else
+            <?php echo $_GET['id'];?>
+            전체보기
+          @endif
+
          </h1>
 
        </div>
@@ -53,7 +68,10 @@
           {{$value->item_name}}
           </div>
           <div class="m_money">
-            {{ number_format($value->item_startprice)}}원
+            시작가: {{ number_format($value->item_startprice)}}원
+          </div>
+          <div class="m_money">
+            현재가: {{ number_format($value->item_startprice)}}원
           </div>
         </a>
        </div>

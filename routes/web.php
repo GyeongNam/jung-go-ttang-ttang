@@ -110,3 +110,4 @@ Route::post('/selectpw', 'UserController@selectpw');
 
 Route::get('/manager_user', 'UserController@manager');
 Route::get('/manager_user_info/{id}',  'UserController@managerINFO');
+Route::get('/manager_item','ItemController@manageritem');

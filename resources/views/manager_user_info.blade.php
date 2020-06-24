@@ -24,7 +24,18 @@
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script>
 
+  <script>
+    $(function(){
+      $('#warn_but').click(function() {
+        var points = parseInt($('.warning').text());
+        $('.warning').text(points+1);
+      });
 
+
+
+    })
+
+  </script>
 
 </head>
 
@@ -182,8 +193,9 @@
           <div class="tableset">
             <div class="table1">
               <h4>회원정보</h4>
-
-              <button type="button" name="button" style="float:right;" class="btn btn-danger">경고</button>
+              <form class="" method="get">
+              <button type="submit" name="button1" style="float:right;" class="btn btn-danger" id="warn_but">경고</button>
+            </form>
               <table class="table-bordered table table-hover table-responsive"  style="width:40%;" >
                 <tr>
                   <th style="width:10%;">아이디</th>
@@ -238,8 +250,8 @@
           <th>정지날짜</th>
         </tr>
         <tr>
-          <td>3회</td>
-          <td>1번</td>
+          <td class="warning" value="0">0</td>
+          {{-- <td>{{$ben[0]}}</td> --}}
           <td>2020.06.23</td>
         </tr>
 
