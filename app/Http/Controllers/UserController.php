@@ -16,17 +16,6 @@ use App\Item;
 
 class UserController extends Controller
 {
-  public function mailsend(Request $request){
-    $mail = $request->input('mail');
-    $random = $request->input('random');
-    $details = [
-      'title' => '안녕하세요 고객님',
-      'body' => '인증번호를 확인하세요',
-      'num' => $random
-    ];
-    Mail::to($mail)->send(new SendMail($details));
-  }
-
   public function idcheck(Request $request){
     $id = $request->input('id');
     $data = User::select('ID')->where(['id'=>$id])->get()->count();
@@ -34,6 +23,10 @@ class UserController extends Controller
   }
 
   public function store(Request $request){
+    $p1 = $request->input('str_phone01');
+    $p2 = $request->input('str_phone02');
+    $p3 = $request->input('str_phone03');
+    $p1.$p2.$p3;
     $user = new user([
       'id' => $request->input('user_id'),
       'password'=> $request->input('userPwd'),
@@ -42,7 +35,7 @@ class UserController extends Controller
       'gender'=> $request->input('gender'),
       'email'=> $request->input('str_email01'),
       'email_domain'=>$request->input('str_email02'),
-      'phone'=> $request->input('tel')
+      'phone'=>$p1.$p2.$p3
     ]);
     $user->save();
     return view('login.login');
@@ -170,6 +163,7 @@ class UserController extends Controller
     ]);
     return view('main');
   }
+
   public function manager(Request $request){
     $mana = User::select('ID','name','birthday','gender','phone','email','email_domain','created_at')->get();
     return view('/manager_user',[

@@ -8,8 +8,9 @@ use App\User;
 
 class SMSController extends Controller
 {
-    function SendMessage(){
-        $sendNumber = '010-3014-1437';
+    function SendMessage(Request $request){
+        $sendNumber = $request->input('phone');
+        $random = $request->input('random');
         // $smsdata['sendNumber'];  // 받는 전화번호
         // $sPhone = $smsdata['sPhone'];
         // $subject = $smsdata['subject'];
@@ -23,7 +24,7 @@ class SMSController extends Controller
 
         $sms['user_id'] = base64_encode("ccitsms"); //SMS 아이디.
         $sms['secure'] = base64_encode("1cc4bc9ea5d24c9811d2cf30d430276f") ;//인증키
-        $sms['msg'] = base64_encode(stripslashes('여기')); //인증번호가 들오가야하는 곳
+        $sms['msg'] = base64_encode(stripslashes('[중고땅땅] 인증번호는"'.$random.'"입니다.')); //인증번호가 들오가야하는 곳
         $sms['rphone'] = base64_encode($sendNumber); // 받는 전화번호
         $sms['sphone1'] = base64_encode($sPhone1);
         $sms['sphone2'] = base64_encode($sPhone2);
@@ -77,7 +78,8 @@ class SMSController extends Controller
         } else {
             $this->ResultMsg = "Connection Failed";
         }
-        return $rMsg;
+        // return $rMsg;
+        return response()->json(['data'=>$rMsg]);
     }
 
 }

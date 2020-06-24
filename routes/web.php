@@ -104,11 +104,10 @@ Route::get('/wish_list', 'ItemController@wish_itempg')->middleware('login');
 // Route::post(/auction_in, 'AuctionController@auction_in');
 Route::get('/bidding-info/{item_number}', 'AuctionController@sendd')->middleware('login');
 Route::post('/bidding-price', 'AuctionController@biddingprice')->middleware('login');
-// mail
-Route::get('/mail', 'UserController@mailsend');
+// mail & getimagesizefromstring
 Route::post('/selectid', 'UserController@selectid');
 Route::post('/selectpw', 'UserController@selectpw');
-Route::get('/sms_send', 'SMSController@SendMessage');
+Route::post('/sms_send', 'SMSController@SendMessage');
 
 Route::get('/manager_user', 'UserController@manager');
 Route::get('/manager_user_info/{id}', 'UserController@managerINFO');

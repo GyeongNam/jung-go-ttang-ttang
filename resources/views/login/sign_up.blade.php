@@ -16,19 +16,20 @@
 
   function mainsends(){
     var random = Math.floor(Math.random() * 10000) + 1;
-    var email = $('#str_email01').val();
-    var email_domain = $('#str_email02').val();
+    var p1 = $('#selectphone').val();
+    var p2 = $('#str_phone02').val();
+    var p3 = $('#str_phone03').val();
     RandomNum = random;
-    var mails = email+'@'+email_domain;
+    var phone = p1+'-'+p2+'-'+p3;
     $.ajax({
       headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-      url: " /mail",
-      data: {mail:mails, random:random},
-      type: "get",
+      url: "/sms_send",
+      data: {phone:phone, random:random},
+      type: "post",
       success:function(data){
-        var datas = data.mail
+        var datas = data.data;
         console.log(datas);
-        alert(mails+"으로 인증번호를 발송했습니다.");
+        alert(phone+"으로 인증번호를 발송했습니다.");
       },
       error : function(){
         console.log("실패");
