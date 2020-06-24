@@ -323,7 +323,7 @@
           <li>
             <label><strong>전화번호 입력</strong></label><br>
             <select name="str_phone01" id="selectphone" required="required">
-              <option value="1">010</option>
+              <option value="010">010</option>
               <option value="011" >011</option>
               <option value="017">017</option>
             </select>
