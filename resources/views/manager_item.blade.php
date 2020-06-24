@@ -204,58 +204,29 @@ $(function(){
                         <th>상품이름</th>
                         <th>경매시작가</th>
                         <th>경매최고가</th>
-                        <th>이름</th>
-                        <th>핸드폰</th>
+                        <th>판매자 이름</th>
                         <th>경매등록일</th>
                         <th>경매마감일</th>
                         <th>낙찰여부</th>
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($item_join as $key => $value)
                       <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                        <td>2019/04/19</td>
-                        <td>2019/04/19</td>
-                        <td>O</td>
+                        <td>{{$value->item_number}}</td>
+                        <td>{{$value->item_name}}</td>
+                        <td>{{$value->item_startprice}}</td>
+                        <td>{{$value->item_price}}</td>
+                        <td>{{$value->seller_id}}</td>
+                        <td>{{$value->created_at}}</td>
+                        <td>{{$value->item_deadline}}</td>
+                        @if ($value->success !=0)
+                        <td>낙찰완료</td>
+                        @endif
+                        <td>진행중</td>
                       </tr>
-                      <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
-                        <td>2019/04/19</td>
-                        <td>2019/04/19</td>
-                        <td>O</td>
-                      </tr>
-                      <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td>2009/01/12</td>
-                        <td>$86,000</td>
-                        <td>2019/04/19</td>
-                        <td>2019/04/19</td>
-                        <td>O</td>
-                      </tr>
-                      <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td>2012/03/29</td>
-                        <td>$433,060</td>
-                        <td>2019/04/19</td>
-                        <td>2019/04/19</td>
-                        <td>O</td>
-                      </tr>
+                      @endforeach
+
 
                     </tbody>
                   </table>

@@ -14,7 +14,7 @@ class CreateAuthorityTable extends Migration
     public function up()
     {
         Schema::create('authority', function (Blueprint $table) {
-          $table->BigInteger('authority_num');
+          $table->integer('authority_num');
           $table->boolean('ban');
           $table->integer('warning');
           $table->timestamps();

@@ -265,9 +265,7 @@ $(".reco_texts").toggle();
                   <div class="time isk">
                     <img src="/img/clock.png/" width="16" height="16" alt="업로드된시간">
                     <div class="time_num intf" name="" id="timeplace">
-                      <p class="sub" >{{date(strtotime($myproduct[0]->Created_at))}}</p>
-                      {{-- <p class="sub">{{date('F d,', strtotime($myproduct[0]->Created_at)) }}
-                      {{date('g:ia', strtotime($myproduct[0]->Created_at)) }}</p> --}}
+                      {{$myproduct[0]->created_at->diffForHumans()}}
                     </div>
                   </div>
                 </div>
