@@ -117,6 +117,19 @@ $(function (){
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U" ></script>
 <script type="text/javascript">
 $(document).ready(function() {
+  var address = $('#address').val();
+  var xmlHttp = new XMLHttpRequest();
+  var url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&sensor=false&language=ko&address='+address;
+
+  console.log();
+
+  console.log(fetch(url).then(function(response){
+    console.log(response);
+  }));
+
+
+  // console.log(response);
+
   var myLatlng = new google.maps.LatLng(35.837143,128.558612); // 위치값 위도 경도
   var Y_point			= 35.837143;		// Y 좌표
   var X_point			= 128.558612;		// X 좌표
@@ -388,7 +401,8 @@ $(".reco_texts").toggle();
         <div class="tkdvnainfo">
           <div class="sc-info_detail">상품 정보</div>
           <div class="sc-info-typing">
-            <div id="map"></div>
+            <div id="map"></div>        // 구글 지도
+            <input type="hidden" name="" id="address" value="{{$myproduct[0]->roadAddress}}">
             <div class="sc-info_sodyd">
               {{$myproduct[0]->item_info}}
             </div>
