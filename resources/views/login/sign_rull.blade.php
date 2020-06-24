@@ -22,11 +22,13 @@
      $(".buut1").click(function(){
        if($(".check").prop("checked") == false) {
          alert("필수항목은 동의하셔야합니다.");
+         $("#ch2").focus();
          return false;
 
        }
        else if($("#ch1").prop("checked") == false) {
          alert("필수항목은 동의하셔야합니다.");
+         $("#ch1").focus();
          return false;
        }
      })
@@ -1223,7 +1225,7 @@
       </textarea>
       </div>
       <div class="checkbox">
-      <label><input type="checkbox" name="" value="" class="check"><strong>동의(필수)</strong></label>
+      <label><input type="checkbox"  id="ch2" name="" value="" class="check"><strong>동의(필수)</strong></label>
     </div>
     <div class="ru_am">
       <div class="">
