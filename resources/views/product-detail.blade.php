@@ -425,14 +425,18 @@ $(".reco_texts").toggle();
               @csrf
               <div class="combox">
                 <div class="comment_munie">
-                  <textarea class="comment_text" name="comment_texts" id="comment_texts" rows="8" cols="80" placeholder="제품문의 댓글 입력"></textarea>
+                  <textarea class="comment_text" name="comment_texts" id="comment_texts" rows="8" cols="80" placeholder="제품문의 댓글 입력" required></textarea>
                 </div>
                 <div class="comment_fontlength">
                   <div class="sc-fontlength dlqfurrmf">0 / 200</div>
                   <button type="submit" class="comment_dunglok" name="button">등록</button>
                 </div>
+              </form>
+
                 <div class="comment_new">
                   @foreach ($commentitem as $key => $value)
+                  <form class="" action="/product-recomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="create_comment">
                       <div class="neadcomt">
                         <div class="value_comment">
@@ -448,18 +452,20 @@ $(".reco_texts").toggle();
                             </div>
                             <div class="hiderecomment">
                               <div class="reco_texts {{$value->comment_num}}">
-                                <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력"></textarea>
-                                <button type="button" name="button">수정완료</button>
+                                <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력">{{$value->comments}}</textarea>
+                                <button type="submit" name="button">수정완료</button>
                               </div>
                             </div>
                           @endif
                         @endif
                       </div>
+
                     </div>
+                    </form>
                   @endforeach
                 </div>
               </div>
-            </form>
+
           </div>
         </div>
       </div>

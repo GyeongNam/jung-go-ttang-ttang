@@ -231,171 +231,182 @@ class ItemController extends Controller
       return view('itemcheck', [
         'myStat' => $myStat,
         'myAuction' => $Auction
-      ]);}
+      ]);
+  }
 
-      public function itemview($item_number){
-        $id= session()->get('login_ID');
-        $myproduct= Item::select('*')->where(['item_number'=>$item_number])->get();
-        $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success','item_deadline', 'success')->where(['seller_id'=>$myproduct[0]->seller_id])->get();
-        $data = User::select('user_image')->where(['id' =>  $myproduct[0]->seller_id])->get();
-        $max = Auction::select('item_price')->where(['auction_itemnum'=>$item_number])->get();
-        $maxs =  $max->max('item_price');
-        $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
-        $like=Favorite::select('favorite_itemnum')->where(['favorite_itemnum'=>$item_number])->get()->count();
-        $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
-        $likeheart = Favorite::select('*')->where(['favorite_itemnum'=>$item_number, 'favorite_name'=>decrypt($id)])->get()->count();
-        Item::where(['item_number'=>$item_number])->update([
-          'visit_count'=> $count[0]->visit_count + 1,
+  public function itemview($item_number){
+    $id= session()->get('login_ID');
+    $myproduct= Item::select('*')->where(['item_number'=>$item_number])->get();
+    $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success','item_deadline', 'success')->where(['seller_id'=>$myproduct[0]->seller_id])->get();
+    $data = User::select('user_image')->where(['id' =>  $myproduct[0]->seller_id])->get();
+    $max = Auction::select('item_price')->where(['auction_itemnum'=>$item_number])->get();
+    $maxs =  $max->max('item_price');
+    $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
+    $like=Favorite::select('favorite_itemnum')->where(['favorite_itemnum'=>$item_number])->get()->count();
+    $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
+    $likeheart = Favorite::select('*')->where(['favorite_itemnum'=>$item_number, 'favorite_name'=>decrypt($id)])->get()->count();
+    Item::where(['item_number'=>$item_number])->update([
+      'visit_count'=> $count[0]->visit_count + 1,
+    ]);
+      return view('product-detail', [
+        'myproduct' => $myproduct,
+        'id' => encrypt($myproduct[0]->seller_id),
+        'data'=>$data,
+        'myStat'=>$myStat,
+        'max'=>$maxs,
+        'count'=>$count,
+        'commentitem'=>$commentitem,
+        'likeheart'=>$likeheart,
+        'like'=>$like
+      ]);
+  }
+
+  public function category(Request $request){
+      $cat = $_GET['id'];
+      $cate=Item::select('item_number','item_name','item_picture','item_startprice')->where(['item_category'=>$cat])->get();
+      $search = $request->get('search') != null ? $request->get('search') : '';
+      $cate=Item::select('item_number','item_name','item_picture','item_startprice')
+      ->where([
+        ['item_category', $cat],
+        ['item_name', 'like', '%'.$search.'%']])
+        ->get();
+        $cateF = count($cate);
+
+        return view('manclothing',[
+          'search'=> $request->get('search'),
+          'cat' => $cat,
+          'cate' => $cate,
+          'cateF' => $cateF
         ]);
-        return view('product-detail', [
-          'myproduct' => $myproduct,
-          'id' => encrypt($myproduct[0]->seller_id),
-          'data'=>$data,
-          'myStat'=>$myStat,
-          'max'=>$maxs,
-          'count'=>$count,
-          'commentitem'=>$commentitem,
-          'likeheart'=>$likeheart,
-          'like'=>$like
-        ]);
-      }
+  }
 
-      public function category(Request $request){
-        $cat = $_GET['id'];
-        $cate=Item::select('item_number','item_name','item_picture','item_startprice')->where(['item_category'=>$cat])->get();
-        $search = $request->get('search') != null ? $request->get('search') : '';
-        $cate=Item::select('item_number','item_name','item_picture','item_startprice')
-        ->where([
-          ['item_category', $cat],
-          ['item_name', 'like', '%'.$search.'%']])
-          ->get();
-          $cateF = count($cate);
+  public function favorite_item(Request $request){
+    $id= session()->get('login_ID');
+    $item_num = $request->get('likejim');
+    $drop_item = Favorite::select('favorite_itemnum', 'favorite_name')
+    ->where(['favorite_itemnum'=>$request->get('likejim'),'favorite_name'=>decrypt($id)])
+    ->get();
+    if(count($drop_item)<1){
+      $favorite = new Favorite([
+        'favorite_itemnum'=>$request->get('likejim'),
+        'favorite_name'=>decrypt($id)
+      ]);
+      $favorite->save();
+    }
+    else{
+      Favorite::select('favorite_itemnum', 'favorite_name')
+      ->where(['favorite_itemnum'=>$request->get('likejim'),'favorite_name'=>decrypt($id)])
+      ->delete();
+    }
+    return redirect()->back();
+  }
 
-          return view('manclothing',[
-            'search'=> $request->get('search'),
-            'cat' => $cat,
-            'cate' => $cate,
-            'cateF' => $cateF
-          ]);
-        }
+  public function wish_itempg(Request $request){
+    $id= session()->get('login_ID');
+    $collection =Favorite::select(['favorite_itemnum'])->where(['favorite_name'=>decrypt($id)])->get();
+    $count=count($collection);
+    $wish_itm = Favorite::join('items','favorite.favorite_itemnum','=', 'items.item_number')
+    ->select('*')
+    // items.item_name','items.item_startprice','items.item_picture','items.item_number')
+    ->where(['favorite_name'=>decrypt($id)])
+    ->get();
+    // echo $wish_itm;
+    return view('wish_list',[
+      'wish_item' =>$wish_itm,
+      'count'=>$count
+    ]);
 
-        public function favorite_item(Request $request){
-          $id= session()->get('login_ID');
-          $item_num = $request->get('likejim');
-          $drop_item = Favorite::select('favorite_itemnum', 'favorite_name')
-          ->where(['favorite_itemnum'=>$request->get('likejim'),'favorite_name'=>decrypt($id)])
-          ->get();
-          if(count($drop_item)<1){
-            $favorite = new Favorite([
-              'favorite_itemnum'=>$request->get('likejim'),
-              'favorite_name'=>decrypt($id)
-            ]);
-            $favorite->save();
-          }
-          else{
-            Favorite::select('favorite_itemnum', 'favorite_name')
-            ->where(['favorite_itemnum'=>$request->get('likejim'),'favorite_name'=>decrypt($id)])
-            ->delete();
-          }
-          return redirect()->back();
-        }
+    }
 
-        public function wish_itempg(Request $request){
-          $id= session()->get('login_ID');
-          $collection =Favorite::select(['favorite_itemnum'])->where(['favorite_name'=>decrypt($id)])->get();
-          $count=count($collection);
-          $wish_itm = Favorite::join('items','favorite.favorite_itemnum','=', 'items.item_number')
-          ->select('*')
-          // items.item_name','items.item_startprice','items.item_picture','items.item_number')
-          ->where(['favorite_name'=>decrypt($id)])
-          ->get();
-          // echo $wish_itm;
-          return view('wish_list',[
-            'wish_item' =>$wish_itm,
-            'count'=>$count
-          ]);
+  public function wishitem_remove($favorite_itemnum, $favorite_name){
+    $id = session() -> get('login_ID');
+    Favorite::where([
+      'favorite_itemnum' => $favorite_itemnum,
+      'favorite_name' =>$favorite_name
+      ]) -> delete();
+      return redirect()->back();
+    }
 
-        }
+  public function removes($item_number, $id){
 
+    $data = Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->get();
+    Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->delete();
+    $path = public_path('/img/item/'.$data[0]->item_picture);
+    File::delete($path);
+    if($data[0]->item_pictureup != null){
+      $path = public_path('/img/item/'.$data[0]->item_pictureup);
+      File::delete($path);
+    }
+    if($data[0]->item_picturefront != null){
+      $path = public_path('/img/item/'.$data[0]->item_picturefront);
+      File::delete($path);
+    }
+    if($data[0]->item_pictureback != null){
+      $path = public_path('/img/item/'.$data[0]->item_pictureback);
+      File::delete($path);
+    }
+    if($data[0]->item_pictureleft != null){
+      $path = public_path('/img/item/'.$data[0]->item_pictureleft);
+      File::delete($path);
+    }
+    if($data[0]->item_picturerigth != null){
+      $path = public_path('/img/item/'.$data[0]->item_picturerigth);
+      File::delete($path);
+    }
+    if($data[0]->item_picturebehind != null){
+      $path = public_path('/img/item/'.$data[0]->item_picturebehind);
+      File::delete($path);
+    }
 
-        public function wishitem_remove($favorite_itemnum, $favorite_name){
-          $id = session() -> get('login_ID');
-          Favorite::where([
-            'favorite_itemnum' => $favorite_itemnum,
-            'favorite_name' =>$favorite_name
-            ]) -> delete();
-            return redirect()->back();
-          }
+    return redirect('/itemcheck');
+  }
 
-          public function removes($item_number, $id){
+  public function commentremove($comment_num, $comm_item){
+    $id = session() -> get('login_ID');
+    Comment::where([
+      'comment_num' => $comment_num,
+      'comm_item' => $comm_item,
+      'comment_id'=>decrypt($id)
+      ])->delete();
+      return redirect()->back();
+      // echo $comment_num;
+      // echo $comm_item;
+  }
 
-            $data = Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->get();
-            Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->delete();
-            $path = public_path('/img/item/'.$data[0]->item_picture);
-            File::delete($path);
-            if($data[0]->item_pictureup != null){
-              $path = public_path('/img/item/'.$data[0]->item_pictureup);
-              File::delete($path);
-            }
-            if($data[0]->item_picturefront != null){
-              $path = public_path('/img/item/'.$data[0]->item_picturefront);
-              File::delete($path);
-            }
-            if($data[0]->item_pictureback != null){
-              $path = public_path('/img/item/'.$data[0]->item_pictureback);
-              File::delete($path);
-            }
-            if($data[0]->item_pictureleft != null){
-              $path = public_path('/img/item/'.$data[0]->item_pictureleft);
-              File::delete($path);
-            }
-            if($data[0]->item_picturerigth != null){
-              $path = public_path('/img/item/'.$data[0]->item_picturerigth);
-              File::delete($path);
-            }
-            if($data[0]->item_picturebehind != null){
-              $path = public_path('/img/item/'.$data[0]->item_picturebehind);
-              File::delete($path);
-            }
+  public function comment(Request $request, $item_number){
+    $id = session() -> get('login_ID');
+    $comment = $request->input('comment_texts');
+    $newcomment = new Comment([
+      'comment_id'=>decrypt($id),
+      'comm_item'=>$item_number,
+      'comments'=>$comment,
+      'time'=>date('Y-m-d')
+    ]);
+    $newcomment->save();
+    return redirect('/product-detail/'.$item_number);
+  }
 
-            return redirect('/itemcheck');
-          }
+  public function recomment(Request $request, $item_number, $commentnum){
+    $id = session() -> get('login_ID');
+    $comment = $request->input('recomment_texts');
+    Comment::where(['comment_id'=>decrypt($id),'comment_num'=>$commentnum, 'comm_item'=>$item_number])->update([
+      'comments'=>$comment,
+      'time'=>date('Y-m-d')
+    ]);
+    return redirect('/product-detail/'.$item_number);
+  }
 
-          public function commentremove($comment_num, $comm_item){
-            $id = session() -> get('login_ID');
-            Comment::where([
-              'comment_num' => $comment_num,
-              'comm_item' => $comm_item,
-              'comment_id'=>decrypt($id)
-              ])->delete();
-              return redirect()->back();
-              // echo $comment_num;
-              // echo $comm_item;
-            }
+  public function manageritem(Request $request){
+    $item_price = DB::table('auction')->select('auction_itemnum',
+    DB::raw('MAX(item_price) AS item_price'))
+    ->groupBy('auction_itemnum');
 
-            public function comment(Request $request, $item_number){
-              $id = session() -> get('login_ID');
-              $comment = $request->input('comment_texts');
-              $newcomment = new Comment([
-                'comment_id'=>decrypt($id),
-                'comm_item'=>$item_number,
-                'comments'=>$comment,
-                'time'=>date('Y-m-d')
-              ]);
-              $newcomment->save();
-              return redirect('/product-detail/'.$item_number);
-            }
-            public function manageritem(Request $request){
-              $item_price = DB::table('auction')->select('auction_itemnum',
-              DB::raw('MAX(item_price) AS item_price'))
-              ->groupBy('auction_itemnum');
-
-              $item_join = DB::table('items')->select('*')
-              ->JoinSub($item_price,'item_price',function($join){
-                $join->on('items.item_number','=','item_price.auction_itemnum');
-              })->get();
-              return view('manager_item',[
-                'item_join'=>$item_join
-              ]);
-            }
-          }
+    $item_join = DB::table('items')->select('*')
+    ->JoinSub($item_price,'item_price',function($join){
+      $join->on('items.item_number','=','item_price.auction_itemnum');
+    })->get();
+    return view('manager_item',[
+      'item_join'=>$item_join
+    ]);
+  }
+}

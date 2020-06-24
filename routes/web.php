@@ -87,6 +87,7 @@ Route::get('/','ItemController@mainview');
 Route::post('/product', 'ItemController@store');
 Route::get('/product-detail/{item_number}', 'ItemController@itemview');
 Route::post('/product-comment/{item_number}', 'ItemController@comment')->middleware('login');
+Route::post('/product-recomment/{item_number}/{commentnum}','ItemController@recomment')->middleware('login');
 Route::get('/recomment/{comment_num}/{comm_item}', 'ItemController@commentremove')->middleware('login');
 Route::get('/wishitem_remove/{favorite_itemnum}/{favorite_name}', 'ItemController@wishitem_remove')->middleware('login');
 Route::get('/remove/{item_number}/{id}', 'ItemController@removes')->middleware('login');
