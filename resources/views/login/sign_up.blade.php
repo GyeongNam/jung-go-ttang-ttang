@@ -307,19 +307,21 @@ function checkValue(){
         });
         </script>
         <li>
-          <label><strong>휴대전화</strong></label><br>
-          <select id = "sel_tel">
-            <option value ="korea"> 대한민국 +82</option>
+          <label><strong>전화번호 입력</strong></label><br>
+          <select name="str_phone03" id="selectphone" required="required">
+            <option value="1">010</option>
+            <option value="011" >011</option>
+            <option value="017">017</option>
           </select>
-          <br>
+          <input type="text" name="str_phone01" id="str_phone01" required="required">
+          <input type="text" name="str_phone02" id="str_phone02" required="required">
         </li>
-
         <li>
-          <input type="tel" name="tel" id="tel" placeholder=" 전화번호 입력" required maxlength=11 >
+          <input type="text" name="email_ck" id="security" size="61" placeholder=" 인증번호 입력하세요" required>
           <button onclick="mainsends()" type ="button" id ="bt_secu"><b>인증번호 전송</b></button>
         </li>
 
-        <input type="text" name="email_ck" id="security" size="61" placeholder=" 인증번호 입력하세요" required>
+
         <li>
           <button  id="sub" >
             <b>가입하기</b>

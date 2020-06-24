@@ -101,6 +101,11 @@
     width:26%;
     height:50px;
   }
+  #str_phone01, #str_phone02, #selectphone{
+    margin: 1%;
+    width:26%;
+    height:50px;
+  }
   /*
   #str_email02{
     margin: auto;
@@ -113,13 +118,13 @@
     height:50px;
   }
   */
-  #gender, #sel_tel, #security, #sub{
+  #gender, #sel_tel, #sub{
     margin: 2%;
     width:90%;
     height: 50px;
   }
 
-  #tel{
+  #tel, #security{
     margin: 2%;
     width:45%;
     height: 50px;
