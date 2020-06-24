@@ -244,7 +244,13 @@ class ItemController extends Controller
     $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
     $like=Favorite::select('favorite_itemnum')->where(['favorite_itemnum'=>$item_number])->get()->count();
     $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
-    $likeheart = Favorite::select('*')->where(['favorite_itemnum'=>$item_number, 'favorite_name'=>decrypt($id)])->get()->count();
+    if(session()->has('login_ID')){
+      $likeheart = Favorite::select('*')->where(['favorite_itemnum'=>$item_number, 'favorite_name'=>decrypt($id)])->get()->count();
+    }
+    else {
+      $likeheart = 0;
+    }
+
     Item::where(['item_number'=>$item_number])->update([
       'visit_count'=> $count[0]->visit_count + 1,
     ]);
