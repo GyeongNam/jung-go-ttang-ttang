@@ -69,7 +69,7 @@ $(function(){
      <div class="table1">
      <table width="100%"   align = "center" class="tab" >
        <th width="30%"><b>목록</b></th>
-       <th width="30%"><b>내입찰가격</b></th>
+       <th width="30%"><b>입찰가격</b></th>
        <th width="20%"><b>진행상태</b> </th>
        <th width="20%"><b>낙찰여부</b></th>
      </table>
