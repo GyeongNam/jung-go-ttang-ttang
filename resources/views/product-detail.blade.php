@@ -166,22 +166,41 @@ $(document).ready(function() {
   });
 });
 </script>
+
 <script type="text/javascript">
-$(function (){
-  $(".reco_texts").hide();
-  $(".reco_btn").click(function (){
-    $(".reco_texts").toggle();
-  });
-});
-</script>
-<!-- <script type="text/javascript">
-$(".reco_texts").hide();
-$(function(){
-});
-public function ck(){
-$(".reco_texts").toggle();
+// function modal_mya(data){
+//   $("#bidmyModal"+data).fadeIn();
+// }
+//
+// function modal_out_mya(data){
+//   $("#bidmyModal"+data).fadeOut();
+// }
+//
+// function modal_mys(data){
+//   $("#bidmyModa2"+data).fadeIn();
+// }
+//
+// function modal_out_mys(data){
+//   $("#bidmyModa2"+data).fadeOut();
+// }
+
+// $(function recomment(data){
+//   $("#reco_texts"+data).hide();
+//   $("#reco_btn"+data).click(function (){
+//     $("#reco_texts"+data).toggle();
+//   });
+// });
+function recomment(data) {
+  if($("#hidcoment"+data).css('display') == 'none'){
+    $("#hidcoment"+data).show();
+  }
+  console.log("#hidcoment"+data);
+  else {
+    $("hidcoment"+data).hide();
+  }
 }
-</script> -->
+
+</script>
 
 
 @endsection
@@ -452,12 +471,12 @@ $(".reco_texts").toggle();
                 @csrf
                 <div class="create_comment">
                   <div class="neadcomt">
-                    <div class="">
+                    <div class="comment_naeyoung">
                       <div class="comment_people">
                         {{$value->comment_id}}
                       </div>
                       <div class="value_comment">
-                        {{$value->comments}}
+                        <p>{{$value->comments}}</p>
                       </div>
                     </div>
                     @if(session()->has('login_ID'))
@@ -466,12 +485,16 @@ $(".reco_texts").toggle();
                       <a href="/recomment/{{$value->comment_num}}/{{$value->comm_item}}">
                         <button class="del_comment" type="button" name="button">삭제하기</button>
                       </a>
-                      <button class="reco_btn {{$value->comment_num}}" type="button" name="button" onclick="ck()">수정하기</button>
+                        <button id="reco_btn" class="reco_btn" type="button" name="button" onclick="recomment({{$value->comment_num}})">수정하기</button>
                     </div>
-                    <div class="hiderecomment">
-                      <div class="reco_texts {{$value->comment_num}}">
+                    <div id="hidcoment"class="hiderecomment">
+                      <div id="reco_texts" class="reco_texts {{$value->comment_num}}">
                         <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력">{{$value->comments}}</textarea>
-                        <button type="submit" name="button">수정완료</button>
+                        <!-- <button type="submit" name="button">수정완료</button> -->
+                        <div class="comment_fontlength">
+                          <div class="sc-fontlength dlqfurrmff">0 / 200</div>
+                          <button type="submit" name="button">수정완료</button>
+                        </div>
                       </div>
                     </div>
                     @endif
@@ -505,7 +528,15 @@ $(".reco_texts").toggle();
   </div>
 </div>
 <script type="text/javascript">
-//서류사항 textarea 체크
+// $(function (e){
+//   $("#reco_texts").hide();
+//   $("#reco_btn").click(function (){
+//     $("#reco_texts").toggle();
+//   });
+// });
+</script>
+<script type="text/javascript">
+//comment textarea 체크
 $('.comment_text').keyup(function (e){
   var content = $(this).val();
   $('.dlqfurrmf').html("("+content.length+" / 최대 200자)");    //글자수 실시간 카운팅
@@ -516,6 +547,19 @@ $('.comment_text').keyup(function (e){
     $('.dlqfurrmf').html("(200 / 최대 200자)");
   }
 });
+
+//comment textarea 체크
+$('.recomment_text').keyup(function (e){
+  var content = $(this).val();
+  $('.dlqfurrmff').html("("+content.length+" / 최대 200자)");    //글자수 실시간 카운팅
+
+  if (content.length > 200){
+    alert("최대 200자까지 입력 가능합니다.");
+    $(this).val(content.substring(0, 200));
+    $('.dlqfurrmff').html("(200 / 최대 200자)");
+  }
+});
+
 
 </script>
 <script type="text/javascript">
