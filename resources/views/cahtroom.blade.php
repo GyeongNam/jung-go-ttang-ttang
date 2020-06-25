@@ -1,28 +1,63 @@
 @extends('layout.layout_main')
 
 @section('css')
-<link rel="stylesheet" href="/css/cahtroom.css">
+  <link rel="stylesheet" href="/css/cahrtroom.css">
 @endsection
 
 @section('js')
-  <script type="text/javascript" src="http://chat.socket.io/socket.io/socket.io.js"></script>
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
 @endsection
 @section('content')
-  <div class='j-message'>
-  </div>
-  <div class='j-footer'>
-      <table>
-          <tr>
-              <td width='100%'>
-                  <input id='message-input' type='text'>
-              </td>
-              <td width='20%'>
-                  <button id='message-button' type='submit'> 전송 </button>
-              </td>
-          </tr>
-      </table>
+
+  <div class="row">
+    <div class="column" style="background-color:#a6c497;">
+      <div class="talk_user_content">
+        <div class="talk_user">
+          <div class="userbox">
+            <div class="userimg">
+              <a href="#"></a>
+            </div>
+            <div class="user_name">
+              12qwqq
+            </div>
+            <div class="talksumnali">
+              어이 젊은친구 신사답게행동해.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="massageview" style="background-color:#bbb;">
+      <div class="textcontent">
+        <div class="otherusertalk" id="talktalk">
+          <div class="textnayong">
+            <p id="ottalk">알로핳</p>
+          </div>
+          <div class="texttime">
+            <p id="ottalk">12:12 pm</p>
+          </div>
+        </div>
+        <div class="usertalk" id="talktalk">
+          <div class="talknayoung"  id="talknayoung">
+            <div class="textnayong">
+              <p>500천원 깎ㄷ아줘</p>
+            </div>
+            <div class="texttime">
+              <p>12:20pm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chatinsert">
+        <div class="">
+          <textarea id="inputmessage"name="name" rows="8" cols="80"></textarea>
+        </div>
+        <div class="chatbtn">
+          <button type="button" name="button">전송</button>
+        </div>
+      </div>
+    </div>
   </div>
 
 
@@ -30,55 +65,3 @@
 
 
 @endsection
-<script>
-    var serverURL = 'localhost:50000';
-
-    var name = 'jin';
-    var room = '100';
-
-    $(document).ready(function() {
-        var socket = io.connect(serverURL);
-
-        socket.on('connection', function(data) {
-            if(data.type == 'connected') {
-                socket.emit('connection', {
-                    type : 'join',
-                    name : name,
-                    room : 100
-                });
-            }
-        });
-
-        socket.on('system', function(data) {
-            writeMessage('system', 'system', data.message);
-        });
-
-        socket.on('message', function(data) {
-            writeMessage('other', data.name, data.message);
-        });
-
-        $('#message-button').click(function() {
-            var msg = $('#message-input').val();
-
-            socket.emit('user', {
-                name : name,
-                message : msg
-            });
-
-            writeMessage('me', name, msg);
-        });
-
-        function writeMessage(type, name, message) {
-            var html = '<div>{MESSAGE}</div>';
-
-            var printName = '';
-            if(type == 'me') {
-                printName = name + ' : ';
-            }
-
-            html = html.replace('{MESSAGE}', printName + message);
-
-            $(html).appendTo('.j-message');
-        }
-    });
-</script>
