@@ -31,19 +31,35 @@ $(function(){
     $(".on").css("background-color","rgb(214, 214, 214)");
     $(".on1").css("background-color","rgb(219, 252, 255)");
   });
-  $(".bid_info_btn").click(function(){
-    $("#bidmyModal").fadeIn();
-    $("#del_per").click(function(){
-   $("#bidmyModal").fadeOut();
-    });
-  });
-  $(".bid_info_btn2").click(function(){
-    $("#bidmyModa2").fadeIn();
-    $("#del_per2").click(function(){
-   $("#bidmyModa2").fadeOut();
+//   $(".bid_info_btn").click(function(){
+//     $("#bidmyModal").fadeIn();
+//     $("#del_per").click(function(){
+//    $("#bidmyModal").fadeOut();
+//     });
+//   });
+//   $(".bid_info_btn2").click(function(){
+//     $("#bidmyModa2").fadeIn();
+//     $("#del_per2").click(function(){
+//    $("#bidmyModa2").fadeOut();
+// });
+// });
 });
-});
-});
+    function modal_mya(data){
+      $("#bidmyModal"+data).fadeIn();
+    }
+
+    function modal_out_mya(data){
+      $("#bidmyModal"+data).fadeOut();
+    }
+
+    function modal_mys(data){
+      $("#bidmyModa2"+data).fadeIn();
+    }
+
+    function modal_out_mys(data){
+      $("#bidmyModa2"+data).fadeOut();
+    }
+
 
 
 
@@ -105,7 +121,7 @@ $(function(){
          <td width="20%">
              낙찰
              <div>
-               <button type="button" id="bid_info_btn" class="bid_info_btn" name="button">낙찰정보 확인</button>
+               <button type="button" id="bid_info_btn" class="bid_info_btn" onclick="modal_mya({{$value->item_number}})" name="button">낙찰정보 확인</button>
              </div>
          </td>
 
@@ -151,7 +167,7 @@ $(function(){
          <td width="20%">
            판매종료
            <div>
-           <button type="button" id="bid_info_btn2" class="bid_info_btn2" name="button">낙찰현황확인</button>
+           <button type="button" id="bid_info_btn2" class="bid_info_btn2" onclick="modal_mys({{$value->item_number}})" name="button">낙찰현황확인</button>
            </div>
          </td>
 
@@ -173,7 +189,7 @@ $(function(){
 </div>
  </div>
  @foreach ($myAuction as $key => $value)
- <div id="bidmyModal" class="bidmodal">
+ <div id="bidmyModal{{$value->item_number}}" class="bidmodal">
    <div class="modal-bid">
      <div class="modal_bidheader">
        낙찰정보확인
@@ -185,7 +201,7 @@ $(function(){
        <div class="nak_info">
 
          <div class="nak_p_lab">
-           낙찰금액 :
+           낙찰금액 : {{$value->item_number}}
          </div>
          <div class="nak_p">
            @if(count($myAuction)>0)
@@ -222,7 +238,7 @@ $(function(){
        </div>
      </div>
      <div class="">
-       <button class="close" id="del_per" type="button" name="button">돌아가기</button>
+       <button class="close" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button">돌아가기</button>
        <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
      </div>
    </div>
@@ -230,7 +246,7 @@ $(function(){
 @endforeach
 
  @foreach ($myStat as $key => $value)
- <div id="bidmyModa2" class="bidmoda2">
+ <div id="bidmyModa2{{$value->item_number}}" class="bidmoda2">
    <div class="modal-bid">
      <div class="modal_bidheader">
        낙찰정보현황
@@ -271,7 +287,7 @@ $(function(){
      </div>
 
      <div class="">
-       <button class="close2" id="del_per2" type="button" name="button" >돌아가기</button>
+       <button class="close2" id="del_per2" onclick="modal_out_mys({{$value->item_number}})" type="button" name="button" >돌아가기</button>
        <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
      </div>
    </div>
