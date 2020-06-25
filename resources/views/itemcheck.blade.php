@@ -12,6 +12,9 @@
  <script>
 // 버튼 클릭시 발생되는 이벤트
 $(function(){
+  var something = {{$myAuction[0]->item_number}};
+  console.log(something);
+
   $(".it_if2").hide();
   $(".on1").css("background-color","rgb(219, 252, 255)");
   $(".on").css("background-color","rgb(214, 214, 214)");
@@ -169,7 +172,7 @@ $(function(){
            </div>
 </div>
  </div>
-
+ @foreach ($myAuction as $key => $value)
  <div id="bidmyModal" class="bidmodal">
    <div class="modal-bid">
      <div class="modal_bidheader">
@@ -224,7 +227,9 @@ $(function(){
      </div>
    </div>
  </div>
+@endforeach
 
+ @foreach ($myStat as $key => $value)
  <div id="bidmyModa2" class="bidmoda2">
    <div class="modal-bid">
      <div class="modal_bidheader">
@@ -236,13 +241,13 @@ $(function(){
        </div>
        <div class="nak_info">
          <div class="nak_p_lab">
-      
+
          </span>
          <div class="nak_p_lab">
 
          </div>
          <div class="nak_p_lab">
-           3위:
+           3위: {{$value->item_number}}
          </div>
          <sdiv class="nak_p_lab">
            4위:
@@ -271,6 +276,7 @@ $(function(){
      </div>
    </div>
  </div>
+ @endforeach
 </div>
  {{-- <script type="text/javascript">
  var modal = document.getElementById("bidmyModal");
