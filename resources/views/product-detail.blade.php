@@ -118,7 +118,7 @@ $(function (){
 <script type="text/javascript">
 $(document).ready(function() {
   var address = $('#address').val();
-  var xmlHttp = new XMLHttpRequest();
+
   var url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&sensor=false&language=ko&address='+address;
   console.log(url);
   var geocoder = new google.maps.Geocoder();
@@ -127,7 +127,7 @@ $(document).ready(function() {
   // var X_point			= 128.558612;		// X 좌표
   // var zoomLevel		= 18;				// 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
   // var myLatlng = new google.maps.LatLng();
-  var markerTitle		= "대구광역시";		// 현재 위치 마커에 마우스를 오버을때 나타나는 정보
+  // var markerTitle		= "대구광역시";		// 현재 위치 마커에 마우스를 오버을때 나타나는 정보
   var markerMaxWidth	= 300;				// 마커를 클릭했을때 나타나는 말풍선의 최대 크기
   var id = $('#addressid').val();
   // 말풍선 내용
