@@ -233,14 +233,15 @@ class ItemController extends Controller
       'success',
       'seller_id'
       )->where(['buyer_ID'=>decrypt($id)])->get();
-      $spp= Enditem::join('items', 'items.item_number','=', 'enditem.end_num')
-      ->select('success_price1','success_price2','success_price3','success_price4','success_price5')
-      ->where(['end_num'=>$myStat[0]->item_number])->get();
+
+      // $spp= Enditem::join('items', 'items.item_number','=', 'enditem.end_num')
+      // ->select('success_price1','success_price2','success_price3','success_price4','success_price5')
+      // ->where(['end_num'=>$myStat[0]->item_number])->get();
 
       return view('itemcheck', [
         'myStat' => $myStat,
-        'myAuction' => $Auction,
-        'spp'=>$spp
+        'myAuction' => $Auction
+        // 'spp'=>$spp
       ]);
   }
 

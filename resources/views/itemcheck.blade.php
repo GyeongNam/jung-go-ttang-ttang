@@ -236,10 +236,10 @@ $(function(){
        </div>
        <div class="nak_info">
          <div class="nak_p_lab">
-           1위:{{number_format($spp[0]->success_price1)}}원
+      
          </span>
          <div class="nak_p_lab">
-           2위:{{number_format($spp[0]->success_price2)}}원
+
          </div>
          <div class="nak_p_lab">
            3위:
