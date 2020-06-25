@@ -403,14 +403,14 @@ class ItemController extends Controller
   }
 
   public function recomment(Request $request, $item_number, $commentnum){
-    $id = session() -> get('login_ID');
-    $comment = $request->input('recomment_texts');
-    Comment::where(['comment_id'=>decrypt($id),'comment_num'=>$commentnum, 'comm_item'=>$item_number])->update([
-      'comments'=>$comment,
-      'time'=>date('Y-m-d')
-    ]);
-    return redirect('/product-detail/'.$item_number);
-  }
+   $id = session() -> get('login_ID');
+   $comment = $request->input('recomment_texts');
+   Comment::where(['comment_id'=>decrypt($id),'comment_num'=>$commentnum, 'comm_item'=>$item_number])->update([
+     'comments'=>$comment,
+     'time'=>date('Y-m-d')
+   ]);
+   return redirect('/product-detail/'.$item_number);
+ }
 
   public function manageritem(Request $request){
     $item_price = DB::table('auction')->select('auction_itemnum',
