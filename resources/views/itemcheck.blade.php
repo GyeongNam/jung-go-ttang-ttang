@@ -58,11 +58,6 @@ $(function(){
       $("#bidmyModa2"+data).fadeOut();
     }
 
-
-
-
-
-
 </script>
 
 @endsection
@@ -110,7 +105,7 @@ $(function(){
          <td width="30%">
              {{ number_format($value->item_price)}}
          </td>
-         @if ($value->item_success != 1 )
+         @if ($value->item_success == 1 )
 
          <td width = "20%">
            <span>진행중</span>
@@ -156,7 +151,7 @@ $(function(){
          <td width="30%">
              {{ number_format($value->item_price)}} 원
          </td>
-         @if ($value->item_success != 1 )
+         @if ($value->item_success == 1 )
          <td width = "20%">
            <span>진행중</span>
            <p><button class="hide_but">판매종료</button></p>
@@ -199,16 +194,16 @@ $(function(){
        <div class="nak_info">
 
          <div class="nak_p_lab">
-           낙찰금액 : {{$value->item_number}}
+           입찰금액 :
          </div>
          <div class="nak_p">
            @if(count($myAuction)>0)
-           {{ number_format($myAuction[0]->item_price)}}원
+           {{ number_format($value->item_price)}}원
            @endif
          </div>
        <!--</div>-->
          <div class="nak_naeyong">
-           낙찰당첨!!
+           낙찰!!
            <div class="nak_sunwe">
              1순위
            </div>
@@ -219,7 +214,7 @@ $(function(){
              </div>
              <div class="nak_people">
                @if(count($myAuction)>0)
-               {{$myAuction[0]->seller_id}}
+               {{$value->seller_id}}
                @endif
              </div>
            </div>
@@ -227,7 +222,7 @@ $(function(){
              구매 가능시간 :
            </div>
            <div class="buy_time">
-             36시간:12분:28초
+             시간
            </div>
            <div class="nak_date">
              1일 이내에 거래 완료를 하지 않으면 다음 낙찰 대기자에게 상품이 넘어갑니다.
@@ -244,6 +239,7 @@ $(function(){
 @endforeach
 
  @foreach ($myStat as $key => $value)
+
  <div id="bidmyModa2{{$value->item_number}}" class="bidmoda2">
    <div class="modal-bid">
      <div class="modal_bidheader">
@@ -255,28 +251,32 @@ $(function(){
        </div>
        <div class="nak_info">
          <div class="nak_p_lab">
-           1위:{{$users[$key]->success_price1}}
-                   </span>
-                   <div class="nak_p_lab">
-                     2위:{{$users[$key]->success_price2}}
-                   </div>
-                   <div class="nak_p_lab">
-                     3위:{{$users[$key]->success_price3}}
-                   </div>
-                   <sdiv class="nak_p_lab">
-                     4위:{{$users[$key]->success_price4}}
-                   </div>
-                   <div class="nak_p_lab">
-                     5위:{{$users[$key]->success_price5}}
-                   </div>
-                   <div class="nak_p">
-                     당첨자:{{$users[$key]->buyer_ID}}
+           1위:{{$users[$key][0]->success_price1}} @if(!Empty($rank1[$key][0]))원 {{$rank1[$key][0]->buyer_ID}}
+           @endif
+         <div class="nak_p_lab">
+           2위:{{$users[$key][0]->success_price2}} @if(!Empty($rank2[$key][0]))원 {{$rank2[$key][0]->buyer_ID}}
+           @endif
+         </div>
+         <div class="nak_p_lab">
+           3위:{{$users[$key][0]->success_price3}} @if(!Empty($rank3[$key][0]))원 {{$rank3[$key][0]->buyer_ID}}
+           @endif
+         </div>
+         <sdiv class="nak_p_lab">
+           4위:{{$users[$key][0]->success_price4}} @if(!Empty($rank4[$key][0]))원 {{$rank4[$key][0]->buyer_ID}}
+           @endif
+         </div>
+         <div class="nak_p_lab">
+           5위:{{$users[$key][0]->success_price5}} @if(!Empty($rank5[$key][0]))원 {{$rank5[$key][0]->buyer_ID}}
+           @endif
+         </div>
+         <div class="nak_p">
+           당첨자:@if(!Empty($rank1[$key][0])) {{$rank1[$key][0]->buyer_ID}} @endif
          </div>
          <span class="nak_p_lab">
            낙찰가:
          </span>
          <span class="nak_p_lab">
-            100000
+            {{$users[$key][0]->success_price1}}
          </span>
          <span class="nak_p_lab">
             원
