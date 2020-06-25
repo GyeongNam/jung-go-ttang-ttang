@@ -117,52 +117,52 @@ $(function (){
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U" ></script>
 <script type="text/javascript">
 $(document).ready(function() {
-  var address = '{{$myproduct[0]->roadAddress}}';
-  // console.log(address);
-  // var url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&sensor=false&language=ko&address='+address;
-  // console.log(url);
-  var geocoder = new google.maps.Geocoder();
-  // var myLatlng = new google.maps.LatLng(35.837143,128.558612); // 위치값 위도 경도
-  // var Y_point			= 35.837143;		// Y 좌표
-  // var X_point			= 128.558612;		// X 좌표
-  // var zoomLevel		= 18;				// 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
-  // var myLatlng = new google.maps.LatLng();
-  // var markerTitle		= "대구광역시";		// 현재 위치 마커에 마우스를 오버을때 나타나는 정보
+  var address = $('#address').val();
+  var xmlHttp = new XMLHttpRequest();
+  var url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&sensor=false&language=ko&address='+address;
+
+  console.log();
+
+  console.log(fetch(url).then(function(response){
+    console.log(response);
+  }));
+
+
+  // console.log(response);
+
+  var myLatlng = new google.maps.LatLng(35.837143,128.558612); // 위치값 위도 경도
+  var Y_point			= 35.837143;		// Y 좌표
+  var X_point			= 128.558612;		// X 좌표
+  var zoomLevel		= 18;				// 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
+  var markerTitle		= "대구광역시";		// 현재 위치 마커에 마우스를 오버을때 나타나는 정보
   var markerMaxWidth	= 300;				// 마커를 클릭했을때 나타나는 말풍선의 최대 크기
-  var id = '{{$myproduct[0]->seller_id}}';
+
   // 말풍선 내용
   var contentString	=
   '<div>' +
-  '<h2>직거래 위치:</h2>'+
-  '<h3>'+address+'</h3>'+
-  '<p>'+id+'님의. 직거래 위치입니다!</p>' +
+  '<h2>직거래 위치</h2>'+
+  '<p>OOO 님의. 직거래 위치입니다!</p>' +
   '</div>';
-
+  var myLatlng = new google.maps.LatLng(Y_point, X_point);
   var mapOptions = {
-    zoom: 18,
+    zoom: zoomLevel,
+    center: myLatlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-  geocoder.geocode( { 'address': address}, function(results, status) {
-    console.log(results);
-      if (status == 'OK') {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
-        var infowindow = new google.maps.InfoWindow(
-          {
-            content: contentString,
-            maxWizzzdth: markerMaxWidth
-          }
-        );
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.open(map, marker);
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
+  var marker = new google.maps.Marker({
+    position: myLatlng,
+    map: map,
+    title: markerTitle
+  });
+  var infowindow = new google.maps.InfoWindow(
+    {
+      content: contentString,
+      maxWizzzdth: markerMaxWidth
+    }
+  );
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map, marker);
   });
 });
 </script>
@@ -402,6 +402,7 @@ $(".reco_texts").toggle();
           <div class="sc-info_detail">상품 정보</div>
           <div class="sc-info-typing">
             <div id="map"></div>        // 구글 지도
+            <input type="hidden" name="" id="address" value="{{$myproduct[0]->roadAddress}}">
             <div class="sc-info_sodyd">
               {{$myproduct[0]->item_info}}
             </div>
