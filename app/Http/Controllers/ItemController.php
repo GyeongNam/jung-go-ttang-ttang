@@ -235,24 +235,30 @@ class ItemController extends Controller
       )->where(['buyer_ID'=>decrypt($id)])->get();
       // $spp= Enditem::select('success_price1','success_price2','success_price3','success_price4','success_price5')
       // ->where(['end_num'=>$myStat[0]->item_number])->get();
+  if(count($myStat)>0)
+  {
 
-      // $users = DB::table('items')
-      // ->join('auction','auction.auction_itemnum', '=', 'items.item_number')
-      // ->join('enditem','enditem.end_num','=','auction.auction_itemnum')
-      // ->select('*')
-      // ->where(['end_num'=>$myStat[0]->item_number])
-      // ->get();
-      // $users =
+      $users = DB::table('items')
+      ->join('auction','auction.auction_itemnum', '=', 'items.item_number')
+      ->join('enditem','enditem.end_num','=','auction.auction_itemnum')
+      ->select('*')
+      ->where(['end_num'=>$myStat[0]->item_number])
+      ->get();
 
-      // $maxs =  $users->max('item_price');
+    }
+    else {
+      $users = [];
+    }
+
+      // // $maxs =  $users->max('item_price');
       return view('itemcheck', [
         'myStat' => $myStat,
-        'myAuction' => $Auction
-        // 'users'=>$users,
+        'myAuction' => $Auction,
+        'users'=>$users
         // 'maxs'=>$maxs
       ]);
-  }
-  
+    }
+
   public function itemview($item_number){
     $id= session()->get('login_ID');
     $myproduct= Item::select('*')->where(['item_number'=>$item_number])->get();

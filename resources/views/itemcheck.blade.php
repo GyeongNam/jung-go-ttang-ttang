@@ -255,22 +255,22 @@ $(function(){
        </div>
        <div class="nak_info">
          <div class="nak_p_lab">
-
-         </span>
-         <div class="nak_p_lab">
-
-         </div>
-         <div class="nak_p_lab">
-           3위: {{$value->item_number}}
-         </div>
-         <sdiv class="nak_p_lab">
-           4위:
-         </div>
-         <div class="nak_p_lab">
-           5위:
-         </div>
-         <div class="nak_p">
-           당첨자:minpro
+           1위:{{$users[$key]->success_price1}}
+                   </span>
+                   <div class="nak_p_lab">
+                     2위:{{$users[$key]->success_price2}}
+                   </div>
+                   <div class="nak_p_lab">
+                     3위:{{$users[$key]->success_price3}}
+                   </div>
+                   <sdiv class="nak_p_lab">
+                     4위:{{$users[$key]->success_price4}}
+                   </div>
+                   <div class="nak_p_lab">
+                     5위:{{$users[$key]->success_price5}}
+                   </div>
+                   <div class="nak_p">
+                     당첨자:{{$users[$key]->buyer_ID}}
          </div>
          <span class="nak_p_lab">
            낙찰가:

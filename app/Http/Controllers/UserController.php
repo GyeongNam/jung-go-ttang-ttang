@@ -165,13 +165,6 @@ class UserController extends Controller
   }
 
   public function manager(Request $request){
-    $mana = User::select('ID','name','birthday','gender','phone','email','email_domain','created_at')->get();
-    return view('/manager_user',[
-      'mana'=>$mana
-    ]);
-  }
-
-  public function manager(Request $request){
   $mana = User::select('ID','name','birthday','gender','phone','email','email_domain','created_at')->get();
   return view('/manager_user',[
     'mana'=>$mana
