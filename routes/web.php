@@ -108,6 +108,8 @@ Route::post('/selectid', 'UserController@selectid');
 Route::post('/selectpw', 'UserController@selectpw');
 Route::post('/sms_send', 'SMSController@SendMessage');
 
+// manager
 Route::get('/manager_user', 'UserController@manager');
-Route::get('/manager_user_info/{id}', 'UserController@managerINFO');
+Route::get('/manager_user_info/{id}',  'UserController@managerINFO');
 Route::get('/manager_item','ItemController@manageritem');
+Route::post('/warning/{id}','UserController@warning');
