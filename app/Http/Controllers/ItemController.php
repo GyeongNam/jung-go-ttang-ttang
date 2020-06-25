@@ -233,18 +233,26 @@ class ItemController extends Controller
       'success',
       'seller_id'
       )->where(['buyer_ID'=>decrypt($id)])->get();
-
-      // $spp= Enditem::join('items', 'items.item_number','=', 'enditem.end_num')
-      // ->select('success_price1','success_price2','success_price3','success_price4','success_price5')
+      // $spp= Enditem::select('success_price1','success_price2','success_price3','success_price4','success_price5')
       // ->where(['end_num'=>$myStat[0]->item_number])->get();
 
+      // $users = DB::table('items')
+      // ->join('auction','auction.auction_itemnum', '=', 'items.item_number')
+      // ->join('enditem','enditem.end_num','=','auction.auction_itemnum')
+      // ->select('*')
+      // ->where(['end_num'=>$myStat[0]->item_number])
+      // ->get();
+      // $users =
+
+      // $maxs =  $users->max('item_price');
       return view('itemcheck', [
         'myStat' => $myStat,
         'myAuction' => $Auction
-        // 'spp'=>$spp
+        // 'users'=>$users,
+        // 'maxs'=>$maxs
       ]);
   }
-
+  
   public function itemview($item_number){
     $id= session()->get('login_ID');
     $myproduct= Item::select('*')->where(['item_number'=>$item_number])->get();
