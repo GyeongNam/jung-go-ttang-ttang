@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAuthorityTable extends Migration
+class CreateBan_logTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAuthorityTable extends Migration
      */
     public function up()
     {
-        Schema::create('authority', function (Blueprint $table) {
-          $table->integer('authority_num');
-          $table->boolean('ban');
-          $table->integer('warning');
-          $table->timestamps();
+        Schema::create('ban_log', function (Blueprint $table) {
+          $table->bigIncrements('id');
+          $table->string('user_id');
+          $table->foreign('users')->references('id')->on('items');
+          $table->timestamp('created_at')->useCurrent();
         });
     }
 
@@ -28,6 +28,6 @@ class CreateAuthorityTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('authority');
+        Schema::dropIfExists('ban_log');
     }
 }

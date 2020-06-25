@@ -171,14 +171,34 @@ class UserController extends Controller
     ]);
   }
 
-  public function managerinfo($id){
+  public function manager(Request $request){
+  $mana = User::select('ID','name','birthday','gender','phone','email','email_domain','created_at')->get();
+  return view('/manager_user',[
+    'mana'=>$mana
+  ]);
+}
+
+  // @url '/manager_user_info/$id'
+  public function managerINFO(Request $request,$id){
+    $count = DB::table('ban_log')->where(['user_id'=>$id])->count();
+
     $mana = User::select('ID','name','birthday','gender','phone','email','email_domain','created_at')->where(['id'=>$id])->get();
     $maif = Item::leftjoin('auction', 'items.item_number','=', 'auction.auction_itemnum')->select('item_number','item_name','item_price','buyer_ID')->where(['buyer_ID'=>$id])->get();
+
     return view('/manager_user_info',[
       'mana'=>$mana,
-      'maif'=>$maif
+      'maif'=>$maif,
+      'count'=>$count
     ]);
   }
+
+public function warning(Request $request,$id){
+  $ban = DB::table('ban_log')->insert([
+      'user_id' => $id
+    ]);
+
+  return back();
+}
 
   public function qna(Request $request){
     $id = session()->get('login_ID');

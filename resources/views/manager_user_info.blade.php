@@ -25,15 +25,11 @@
   <script src="https://code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script>
 
   <script>
-    $(function(){
-      $('#warn_but').click(function() {
-        var points = parseInt($('.warning').text());
-        $('.warning').text(points+1);
-      });
 
 
 
-    })
+
+
 
   </script>
 
@@ -193,9 +189,10 @@
           <div class="tableset">
             <div class="table1">
               <h4>회원정보</h4>
-              <form class="" method="get">
-              <button type="submit" name="button1" style="float:right;" class="btn btn-danger" id="warn_but">경고</button>
-            </form>
+              <form action="/warning/{{$mana[0]->ID}}" method="post">
+                @csrf
+                <button type="submit" name="button1" style="float:right;" class="btn btn-danger" id="warn_but" onclick="wpqkf">경고</button>
+              </form>
               <table class="table-bordered table table-hover table-responsive"  style="width:40%;" >
                 <tr>
                   <th style="width:10%;">아이디</th>
@@ -212,6 +209,10 @@
                 <tr>
                   <th>전화번호</th>
                   <td>{{$mana[0]->phone}}</td>
+                </tr>
+                <tr>
+                  <th>경고횟수</th>
+                  <td>{{$count}} 회</td>
                 </tr>
             </table>
 
@@ -242,22 +243,6 @@
             </table>
 
           </div>
-          <div class="">
-          <table class="table table-bordered" style="width:50%;">
-          <tr>
-          <th>경고횟수</th>
-          <th>정지</th>
-          <th>정지날짜</th>
-        </tr>
-        <tr>
-          <td class="warning" value="0">0</td>
-          {{-- <td>{{$ben[0]}}</td> --}}
-          <td>2020.06.23</td>
-        </tr>
-
-
-        </table>
-      </div>
           </div>
 
 

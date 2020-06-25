@@ -52,7 +52,7 @@ $(function(){
 
         </div>
         <div>중고땅땅 관리자 <sup></sup></div>
-      </a>
+      
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
