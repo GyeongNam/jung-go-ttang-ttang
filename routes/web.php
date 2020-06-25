@@ -67,7 +67,9 @@ Route::get('/manager_tok', function(){
 Route::get('/sign_rull', function () {
     return view('login.sign_rull');
 });
-
+Route::get('/cahtroom', function(){
+  return view('cahtroom');
+});
 // user Controller
 Route::post('/singup', 'UserController@store');
 Route::post('/loging', 'UserController@loging');

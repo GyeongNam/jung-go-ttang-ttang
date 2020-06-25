@@ -10,7 +10,7 @@ a {
   clear:both;
   border:solid 1px red;
 }
-  
+
 /* map API */
 .content{
   display: block;
@@ -90,7 +90,14 @@ a {
   border-bottom: 1px solid #e0e0e0;
 }
 .neadcomt{
+  width: 100%;
+  height: 7rem;
+  position: relative;
   vertical-align: middle;
+}
+.delete_area{
+  position: absolute;
+  bottom:0;
 }
 .comment_text{
   width:100%;
