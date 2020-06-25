@@ -12,8 +12,6 @@
  <script>
 // 버튼 클릭시 발생되는 이벤트
 $(function(){
-  var something = {{$myAuction[0]->item_number}};
-  console.log(something);
 
   $(".it_if2").hide();
   $(".on1").css("background-color","rgb(219, 252, 255)");
