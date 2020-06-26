@@ -190,13 +190,14 @@ $(document).ready(function() {
 //     $("#reco_texts"+data).toggle();
 //   });
 // });
-function recomment(data) {
+function recomments(data) {
+
   if($("#hidcoment"+data).css('display') == 'none'){
-    $("#hidcoment"+data).show();
+    $("#hidcoment"+data).css('display', 'block');
   }
-  console.log("#hidcoment"+data);
+  // console.log("#hidcoment"+data);
   else {
-    $("hidcoment"+data).hide();
+    $("#hidcoment"+data).css('display', 'none');
   }
 }
 
@@ -485,9 +486,9 @@ function recomment(data) {
                       <a href="/recomment/{{$value->comment_num}}/{{$value->comm_item}}">
                         <button class="del_comment" type="button" name="button">삭제하기</button>
                       </a>
-                        <button id="reco_btn" class="reco_btn" type="button" name="button" onclick="recomment({{$value->comment_num}})">수정하기</button>
+                        <button id="reco_btn" class="reco_btn" type="button" name="button" onclick="recomments({{$value->comment_num}})">수정하기</button>
                     </div>
-                    <div id="hidcoment"class="hiderecomment">
+                    <div id="hidcoment{{$value->comment_num}}"class="hiderecomment">
                       <div id="reco_texts" class="reco_texts {{$value->comment_num}}">
                         <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력">{{$value->comments}}</textarea>
                         <!-- <button type="submit" name="button">수정완료</button> -->
