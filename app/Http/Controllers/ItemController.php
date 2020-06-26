@@ -233,17 +233,42 @@ class ItemController extends Controller
       'success',
       'seller_id'
       )->where(['buyer_ID'=>decrypt($id)])->get();
+      $users = collect([]);
+      $sp1 =collect([]);
+      $sp2 =collect([]);
+      $sp3 =collect([]);
+      $sp4 =collect([]);
+      $sp5 =collect([]);
 
-      // $spp= Enditem::join('items', 'items.item_number','=', 'enditem.end_num')
-      // ->select('success_price1','success_price2','success_price3','success_price4','success_price5')
-      // ->where(['end_num'=>$myStat[0]->item_number])->get();
+      for($i=0; $i<count($myStat); $i++){
+        $users->push(Enditem::select('*')
+        ->join('items', 'items.item_number', '=', 'enditem.end_num')
+        ->where(['end_num'=>$myStat[$i]->item_number])->get());
+        $sp1->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price1')->where(['end_num'=>$myStat[$i]->item_number])->get());
+        $sp2->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price2')->where(['end_num'=>$myStat[$i]->item_number])->get());
+        $sp3->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price3')->where(['end_num'=>$myStat[$i]->item_number])->get());
+        $sp4->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price4')->where(['end_num'=>$myStat[$i]->item_number])->get());
+        $sp5->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price5')->where(['end_num'=>$myStat[$i]->item_number])->get());
+      }
+      // echo $sp1.'<br>';
+      // echo $sp2.'<br>';
+      // echo $sp3.'<br>';
+      // echo $sp4.'<br>';
+      // echo $sp5.'<br>';
+
 
       return view('itemcheck', [
         'myStat' => $myStat,
-        'myAuction' => $Auction
-        // 'spp'=>$spp
+        'myAuction' => $Auction,
+        'users' => $users,
+        'rank1' => $sp1,
+        'rank2' => $sp2,
+        'rank3' => $sp3,
+        'rank4' => $sp4,
+        'rank5' => $sp5
+        // 'maxs'=>$maxs
       ]);
-  }
+    }
 
   public function itemview($item_number){
     $id= session()->get('login_ID');
@@ -411,7 +436,7 @@ class ItemController extends Controller
      'time'=>date('Y-m-d')
    ]);
    return redirect('/product-detail/'.$item_number);
- }
+  }
 
   public function manageritem(Request $request){
     $item_price = DB::table('auction')->select('auction_itemnum',

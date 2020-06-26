@@ -12,6 +12,7 @@
  <script>
 // 버튼 클릭시 발생되는 이벤트
 $(function(){
+
   $(".it_if2").hide();
   $(".on1").css("background-color","rgb(219, 252, 255)");
   $(".on").css("background-color","rgb(214, 214, 214)");
@@ -28,23 +29,34 @@ $(function(){
     $(".on").css("background-color","rgb(214, 214, 214)");
     $(".on1").css("background-color","rgb(219, 252, 255)");
   });
-  $(".bid_info_btn").click(function(){
-    $("#bidmyModal").fadeIn();
-    $("#del_per").click(function(){
-   $("#bidmyModal").fadeOut();
-    });
-  });
-  $(".bid_info_btn2").click(function(){
-    $("#bidmyModa2").fadeIn();
-    $("#del_per2").click(function(){
-   $("#bidmyModa2").fadeOut();
+//   $(".bid_info_btn").click(function(){
+//     $("#bidmyModal").fadeIn();
+//     $("#del_per").click(function(){
+//    $("#bidmyModal").fadeOut();
+//     });
+//   });
+//   $(".bid_info_btn2").click(function(){
+//     $("#bidmyModa2").fadeIn();
+//     $("#del_per2").click(function(){
+//    $("#bidmyModa2").fadeOut();
+// });
+// });
 });
-});
-});
+    function modal_mya(data){
+      $("#bidmyModal"+data).fadeIn();
+    }
 
+    function modal_out_mya(data){
+      $("#bidmyModal"+data).fadeOut();
+    }
 
+    function modal_mys(data){
+      $("#bidmyModa2"+data).fadeIn();
+    }
 
-
+    function modal_out_mys(data){
+      $("#bidmyModa2"+data).fadeOut();
+    }
 
 </script>
 
@@ -93,7 +105,7 @@ $(function(){
          <td width="30%">
              {{ number_format($value->item_price)}}
          </td>
-         @if ($value->item_success != 1 )
+         @if ($value->item_success == 1 )
 
          <td width = "20%">
            <span>진행중</span>
@@ -102,7 +114,7 @@ $(function(){
          <td width="20%">
              낙찰
              <div>
-               <button type="button" id="bid_info_btn" class="bid_info_btn" name="button">낙찰정보 확인</button>
+               <button type="button" id="bid_info_btn" class="bid_info_btn" onclick="modal_mya({{$value->item_number}})" name="button">낙찰정보 확인</button>
              </div>
          </td>
 
@@ -139,7 +151,7 @@ $(function(){
          <td width="30%">
              {{ number_format($value->item_price)}} 원
          </td>
-         @if ($value->item_success != 1 )
+         @if ($value->item_success == 1 )
          <td width = "20%">
            <span>진행중</span>
            <p><button class="hide_but">판매종료</button></p>
@@ -148,7 +160,7 @@ $(function(){
          <td width="20%">
            판매종료
            <div>
-           <button type="button" id="bid_info_btn2" class="bid_info_btn2" name="button">낙찰현황확인</button>
+           <button type="button" id="bid_info_btn2" class="bid_info_btn2" onclick="modal_mys({{$value->item_number}})" name="button">낙찰현황확인</button>
            </div>
          </td>
 
@@ -169,8 +181,8 @@ $(function(){
            </div>
 </div>
  </div>
-
- <div id="bidmyModal" class="bidmodal">
+ @foreach ($myAuction as $key => $value)
+ <div id="bidmyModal{{$value->item_number}}" class="bidmodal">
    <div class="modal-bid">
      <div class="modal_bidheader">
        낙찰정보확인
@@ -182,16 +194,16 @@ $(function(){
        <div class="nak_info">
 
          <div class="nak_p_lab">
-           낙찰금액 :
+           입찰금액 :
          </div>
          <div class="nak_p">
            @if(count($myAuction)>0)
-           {{ number_format($myAuction[0]->item_price)}}원
+           {{ number_format($value->item_price)}}원
            @endif
          </div>
        <!--</div>-->
          <div class="nak_naeyong">
-           낙찰당첨!!
+           낙찰!!
            <div class="nak_sunwe">
              1순위
            </div>
@@ -202,7 +214,7 @@ $(function(){
              </div>
              <div class="nak_people">
                @if(count($myAuction)>0)
-               {{$myAuction[0]->seller_id}}
+               {{$value->seller_id}}
                @endif
              </div>
            </div>
@@ -210,7 +222,7 @@ $(function(){
              구매 가능시간 :
            </div>
            <div class="buy_time">
-             36시간:12분:28초
+             시간
            </div>
            <div class="nak_date">
              1일 이내에 거래 완료를 하지 않으면 다음 낙찰 대기자에게 상품이 넘어갑니다.
@@ -219,13 +231,16 @@ $(function(){
        </div>
      </div>
      <div class="">
-       <button class="close" id="del_per" type="button" name="button">돌아가기</button>
+       <button class="close" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button">돌아가기</button>
        <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
      </div>
    </div>
  </div>
+@endforeach
 
- <div id="bidmyModa2" class="bidmoda2">
+ @foreach ($myStat as $key => $value)
+
+ <div id="bidmyModa2{{$value->item_number}}" class="bidmoda2">
    <div class="modal-bid">
      <div class="modal_bidheader">
        낙찰정보현황
@@ -236,28 +251,44 @@ $(function(){
        </div>
        <div class="nak_info">
          <div class="nak_p_lab">
-      
-         </span>
+           @if(!Empty($users[$key][0]->success_price1))
+           1위:{{$users[$key][0]->success_price1}} @if(!Empty($rank1[$key][0]))원 {{$rank1[$key][0]->buyer_ID}}
+           @endif
+         @endif
          <div class="nak_p_lab">
-
+            @if(!Empty($users[$key][0]->success_price2))
+           2위:{{$users[$key][0]->success_price2}} @if(!Empty($rank2[$key][0]))원 {{$rank2[$key][0]->buyer_ID}}
+           @endif
+         @endif
          </div>
          <div class="nak_p_lab">
-           3위:
+            @if(!Empty($users[$key][0]->success_price3))
+           3위:{{$users[$key][0]->success_price3}} @if(!Empty($rank3[$key][0]))원 {{$rank3[$key][0]->buyer_ID}}
+           @endif
+         @endif
          </div>
          <sdiv class="nak_p_lab">
-           4위:
+            @if(!Empty($users[$key][0]->success_price1))
+           4위:{{$users[$key][0]->success_price4}} @if(!Empty($rank4[$key][0]))원 {{$rank4[$key][0]->buyer_ID}}
+           @endif
+         @endif
          </div>
          <div class="nak_p_lab">
-           5위:
+            @if(!Empty($users[$key][0]->success_price1))
+           5위:{{$users[$key][0]->success_price5}} @if(!Empty($rank5[$key][0]))원 {{$rank5[$key][0]->buyer_ID}}
+           @endif
+         @endif
          </div>
          <div class="nak_p">
-           당첨자:minpro
+           당첨자:@if(!Empty($rank1[$key][0])) {{$rank1[$key][0]->buyer_ID}} @endif
          </div>
          <span class="nak_p_lab">
            낙찰가:
          </span>
          <span class="nak_p_lab">
-            100000
+            @if(!Empty($users[$key][0]->success_price1))
+            {{$users[$key][0]->success_price1}}
+          @endif
          </span>
          <span class="nak_p_lab">
             원
@@ -266,11 +297,12 @@ $(function(){
      </div>
 
      <div class="">
-       <button class="close2" id="del_per2" type="button" name="button" >돌아가기</button>
+       <button class="close2" id="del_per2" onclick="modal_out_mys({{$value->item_number}})" type="button" name="button" >돌아가기</button>
        <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
      </div>
    </div>
  </div>
+ @endforeach
 </div>
  {{-- <script type="text/javascript">
  var modal = document.getElementById("bidmyModal");

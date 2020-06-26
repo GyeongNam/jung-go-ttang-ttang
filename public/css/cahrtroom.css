@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+.talk_user{
+  height: 5rem;
+
+}
+.userbox{
+    display: flex;
+      vertical-align: middle;
+}
+#inputmessage{
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  width:800px;
+  height:30px;
+  resize:none;
+}
+.chatbtn{
+  bottom: 0;
+  position: absolute;
+  vertical-align: middle;
+}
+.chatinsert{
+  display: flex;
+}
+.row{
+  display:flex;
+  width: auto;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+.massageview{
+  width:67%;
+  height: auto;
+  position: relative;
+}
+.otherusertalk{
+  float: left;
+  display: flex;
+  width: 60%;
+}
+.usertalk{
+  float: right;
+  display: flex;
+  position: relative;
+  width: 60%;
+}
+.talknayoung{
+  position: absolute;
+  right: 0;
+}
+.textnayong{
+  float:right;
+  margin-right: 2rem;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}

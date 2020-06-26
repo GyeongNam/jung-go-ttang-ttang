@@ -10,7 +10,7 @@ a {
   clear:both;
   border:solid 1px red;
 }
-  
+
 /* map API */
 .content{
   display: block;
@@ -104,16 +104,26 @@ a {
 }
 
 .hiderecomment{
-
+  display: none;
 }
 .recomment_text{
   width: 100%;
-  height: 50%;
+  height: 40px;
   font-size: 13px;
   border-bottom: 1px solid #bdbdbd;
   line-height: 1.5;
   resize: none;
 
+}
+.comment_people{
+  margin-bottom: 2px;
+}
+.value_comment{
+  margin-left: 10px;
+  height:5rem;
+}
+.comment_naeyoung{
+  padding: 12px 12px 12px 64px;
 }
 /* 댓글 창*/
 
