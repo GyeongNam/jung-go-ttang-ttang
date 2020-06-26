@@ -87,6 +87,7 @@ Route::get('/','ItemController@mainview');
 // item Controller
 Route::post('/product', 'ItemController@store');
 Route::get('/product-detail/{item_number}', 'ItemController@itemview');
+Route::post('/product-detail/{item_number}', 'ItemController@police');
 Route::post('/product-comment/{item_number}', 'ItemController@comment')->middleware('login');
 Route::post('/product-recomment/{item_number}/{commentnum}','ItemController@recomment')->middleware('login');
 Route::get('/recomment/{comment_num}/{comm_item}', 'ItemController@commentremove')->middleware('login');

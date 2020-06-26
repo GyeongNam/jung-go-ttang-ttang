@@ -439,6 +439,7 @@ class ItemController extends Controller
   }
 
   public function manageritem(Request $request){
+    $count = DB::table('police')->select('item_number2')->groupBy('item_number2')->count();
     $item_price = DB::table('auction')->select('auction_itemnum',
     DB::raw('MAX(item_price) AS item_price'))
     ->groupBy('auction_itemnum');
@@ -448,7 +449,14 @@ class ItemController extends Controller
       $join->on('items.item_number','=','item_price.auction_itemnum');
     })->get();
     return view('manager_item',[
-      'item_join'=>$item_join
+      'item_join'=>$item_join,
+      'count'=>$count
     ]);
+  }
+  public function police(Request $request,$item_number){
+    $wan =DB::table('police')-> insert([
+      'item_number2'=>$item_number
+    ]);
+    return back();
   }
 }

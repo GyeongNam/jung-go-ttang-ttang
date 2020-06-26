@@ -208,11 +208,12 @@ $(function(){
                         <th>경매등록일</th>
                         <th>경매마감일</th>
                         <th>낙찰여부</th>
+                        <th>신고</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($item_join as $key => $value)
-                      <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
+                      <tr onclick="location.href='/product-detail/{{$value->item_number}}'" style="cursor:pointer;" class="trhover">
                         <td>{{$value->item_number}}</td>
                         <td>{{$value->item_name}}</td>
                         <td>{{$value->item_startprice}}</td>
@@ -224,6 +225,7 @@ $(function(){
                         <td>낙찰완료</td>
                         @endif
                         <td>진행중</td>
+                        <td>{{$count}}</td>
                       </tr>
                       @endforeach
 

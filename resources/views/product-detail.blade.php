@@ -257,6 +257,17 @@ function recomments(data) {
             <div class="tit_pri">
               <div class="d_title">
                 {{$myproduct[0]->item_name}}
+                {{-- // 버튼 추가 --}}
+                 <div class="bt-Wla" style="float:right;">
+                   <form class="" action="/police/{{$myproduct[0]->item_number}}" method="post">
+                     <div class="Wla_click">
+                       <button   class="unWla" type="submit" name="police" value="{{$myproduct[0]->item_number}}">
+                         <i class="fas fa-exclamation-circle"></i>
+                         <span>신고</span>
+                       </button>
+                     </div>
+                     </form>
+                   </div>
               </div>
               <div class="time_price">
                 <div class="d_price">
