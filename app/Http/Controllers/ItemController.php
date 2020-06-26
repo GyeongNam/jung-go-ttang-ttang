@@ -444,12 +444,16 @@ class ItemController extends Controller
     DB::raw('MAX(item_price) AS item_price'))
     ->groupBy('auction_itemnum');
 
-    $item_join = DB::table('items')->select('*')
+    $item_joins = DB::table('items')->select('*')
     ->JoinSub($item_price,'item_price',function($join){
       $join->on('items.item_number','=','item_price.auction_itemnum');
     })->get();
+    $item_join = DB::table('items')->select('*')->get();
+
+    // echo $item_join.'<br><br>';
     return view('manager_item',[
       'item_join'=>$item_join,
+      'item_joins'=>$item_joins,
       'count'=>$count
     ]);
   }

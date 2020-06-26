@@ -217,7 +217,11 @@ $(function(){
                         <td>{{$value->item_number}}</td>
                         <td>{{$value->item_name}}</td>
                         <td>{{$value->item_startprice}}</td>
-                        <td>{{$value->item_price}}</td>
+                        @if(!empty($item_joins[$key]))
+                        <td>{{$item_joins[$key]->item_price}}</td>
+                        @else
+                        <td>0</td>
+                        @endif
                         <td>{{$value->seller_id}}</td>
                         <td>{{$value->created_at}}</td>
                         <td>{{$value->item_deadline}}</td>
