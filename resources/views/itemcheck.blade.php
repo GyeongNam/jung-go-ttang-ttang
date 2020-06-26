@@ -251,23 +251,33 @@ $(function(){
        </div>
        <div class="nak_info">
          <div class="nak_p_lab">
+           @if(!Empty($users[$key][0]->success_price1))
            1위:{{$users[$key][0]->success_price1}} @if(!Empty($rank1[$key][0]))원 {{$rank1[$key][0]->buyer_ID}}
            @endif
+         @endif
          <div class="nak_p_lab">
+            @if(!Empty($users[$key][0]->success_price2))
            2위:{{$users[$key][0]->success_price2}} @if(!Empty($rank2[$key][0]))원 {{$rank2[$key][0]->buyer_ID}}
            @endif
+         @endif
          </div>
          <div class="nak_p_lab">
+            @if(!Empty($users[$key][0]->success_price3))
            3위:{{$users[$key][0]->success_price3}} @if(!Empty($rank3[$key][0]))원 {{$rank3[$key][0]->buyer_ID}}
            @endif
+         @endif
          </div>
          <sdiv class="nak_p_lab">
+            @if(!Empty($users[$key][0]->success_price1))
            4위:{{$users[$key][0]->success_price4}} @if(!Empty($rank4[$key][0]))원 {{$rank4[$key][0]->buyer_ID}}
            @endif
+         @endif
          </div>
          <div class="nak_p_lab">
+            @if(!Empty($users[$key][0]->success_price1))
            5위:{{$users[$key][0]->success_price5}} @if(!Empty($rank5[$key][0]))원 {{$rank5[$key][0]->buyer_ID}}
            @endif
+         @endif
          </div>
          <div class="nak_p">
            당첨자:@if(!Empty($rank1[$key][0])) {{$rank1[$key][0]->buyer_ID}} @endif
@@ -276,7 +286,9 @@ $(function(){
            낙찰가:
          </span>
          <span class="nak_p_lab">
+            @if(!Empty($users[$key][0]->success_price1))
             {{$users[$key][0]->success_price1}}
+          @endif
          </span>
          <span class="nak_p_lab">
             원
