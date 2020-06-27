@@ -5,12 +5,24 @@ a {
 
 /* map API */
 #map {
-  width:100%;
+  width:50%;
   height:400px;
   clear:both;
   border:solid 1px red;
 }
-
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
 /* map API */
 .content{
   display: block;
@@ -106,6 +118,11 @@ a {
 .hiderecomment{
   display: none;
 }
+
+.largcoment{
+  display: none;
+}
+
 .recomment_text{
   width: 100%;
   height: 40px;
@@ -114,6 +131,15 @@ a {
   line-height: 1.5;
   resize: none;
 
+}
+.largcomment_text{
+  right:0;
+  width: 80%;
+  height: 40px;
+  font-size: 13px;
+  border-bottom: 1px solid #bdbdbd;
+  line-height: 1.5;
+  resize: none;
 }
 .comment_people{
   margin-bottom: 2px;
@@ -125,6 +151,10 @@ a {
 .comment_naeyoung{
   padding: 12px 12px 12px 64px;
 }
+.del_comment{
+  border:none;
+}
+
 /* 댓글 창*/
 
 .deal_cat_location{

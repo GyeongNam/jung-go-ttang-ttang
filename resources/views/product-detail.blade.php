@@ -14,7 +14,7 @@ function toggleImg() {
 
   if (data == 1) {
     alert('로그인이 필요합니다!');
-    // return false;
+    return false;
   }
   if(chilheart ==1) {
     alert("관심항목에서 헤제되었습니다.");
@@ -56,31 +56,31 @@ function showSlides(n) {
 
 
 </script>
-{{-- <script type="text/ajax">
+<!-- <script type="text/ajax">
 function toggleImg() {
-  var likhet = document.getElementById('likep');
-  console.log('likhet');
-  $.ajax({
-    url:"/wish_lst",
-    method: "post",
-    dataType:"json",
-    data: {likejim : likhet},
-    success:function(data){
+var likhet = document.getElementById('likep');
+console.log('likhet');
+$.ajax({
+url:"/wish_lst",
+method: "post",
+dataType:"json",
+data: {likejim : likhet},
+success:function(data){
 
-      if(likhet.src.match("heart")) {
-        alert("관심항목에 추가되었습니다.");
-        likhet.src="/img/b_gkxm.png";
+if(likhet.src.match("heart")) {
+alert("관심항목에 추가되었습니다.");
+likhet.src="/img/b_gkxm.png";
 
 
-      }
-      else if(likhet.src.match("b_gkxm")) {
-        alert("관심항목에서 해제되었습니다.");
-        likhet.src="/img/heart.png";
-      }
-    }
-  });
 }
-</script> --}}
+else if(likhet.src.match("b_gkxm")) {
+alert("관심항목에서 해제되었습니다.");
+likhet.src="/img/heart.png";
+}
+}
+});
+}
+</script> -->
 
 <script type="text/javascript">
 $(function (){
@@ -113,8 +113,9 @@ $(function (){
 });
 </script>
 
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U" ></script>
+<script type="text/javascript"  async defer src="http://maps.google.com/maps/api/js?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&callback=initMap" ></script>
 <script type="text/javascript">
 $(document).ready(function() {
   var address = '{{$myproduct[0]->roadAddress}}';
@@ -142,54 +143,36 @@ $(document).ready(function() {
     zoom: 18,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
+  //마커 클러스터?
+
+
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
   geocoder.geocode( { 'address': address}, function(results, status) {
-      console.log(results);
-        if (status == 'OK') {
-          map.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location
-          });
-          var infowindow = new google.maps.InfoWindow(
-            {
-              content: contentString,
-              maxWizzzdth: markerMaxWidth
-            }
-          );
-          google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map, marker);
-          });
-        } else {
-          alert('Geocode was not successful for the following reason: ' + status);
-        }
+    console.log(results);
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+        var infowindow = new google.maps.InfoWindow(
+          {
+            content: contentString,
+            maxWizzzdth: markerMaxWidth
+          }
+        );
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map, marker);
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+    }
   });
 });
 </script>
 
 <script type="text/javascript">
-// function modal_mya(data){
-//   $("#bidmyModal"+data).fadeIn();
-// }
-//
-// function modal_out_mya(data){
-//   $("#bidmyModal"+data).fadeOut();
-// }
-//
-// function modal_mys(data){
-//   $("#bidmyModa2"+data).fadeIn();
-// }
-//
-// function modal_out_mys(data){
-//   $("#bidmyModa2"+data).fadeOut();
-// }
 
-// $(function recomment(data){
-//   $("#reco_texts"+data).hide();
-//   $("#reco_btn"+data).click(function (){
-//     $("#reco_texts"+data).toggle();
-//   });
-// });
 function recomments(data) {
 
   if($("#hidcoment"+data).css('display') == 'none'){
@@ -200,7 +183,6 @@ function recomments(data) {
     $("#hidcoment"+data).css('display', 'none');
   }
 }
-
 </script>
 
 
@@ -258,16 +240,16 @@ function recomments(data) {
               <div class="d_title">
                 {{$myproduct[0]->item_name}}
                 {{-- // 버튼 추가 --}}
-                 <div class="bt-Wla" style="float:right;">
-                   <form class="" action="/police/{{$myproduct[0]->item_number}}" method="post">
-                     <div class="Wla_click">
-                       <button   class="unWla" type="submit" name="police" value="{{$myproduct[0]->item_number}}">
-                         <i class="fas fa-exclamation-circle"></i>
-                         <span>신고</span>
-                       </button>
-                     </div>
-                     </form>
-                   </div>
+                <div class="bt-Wla" style="float:right;">
+                  <form class="" action="/police/{{$myproduct[0]->item_number}}" method="post">
+                    <div class="Wla_click">
+                      <button   class="unWla" type="submit" name="police" value="{{$myproduct[0]->item_number}}">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>신고</span>
+                      </button>
+                    </div>
+                  </form>
+                </div>
               </div>
               <div class="time_price">
                 <div class="d_price">
@@ -432,7 +414,17 @@ function recomments(data) {
       <div class="tkdvnainfo">
         <div class="sc-info_detail">상품 정보</div>
         <div class="sc-info-typing">
-          <div id="map"></div>        // 구글 지도
+          <!-- <div id="floating-panel">
+            <b>Mode of Travel: </b>
+            <select id="mode">
+              <option value="DRIVING">Driving</option>
+              <option value="WALKING">Walking</option>
+              <option value="BICYCLING">Bicycling</option>
+              <option value="TRANSIT">Transit</option>
+            </select>
+          </div> -->
+          <div id="map"></div>        // 직거래 위치(구글 지도)
+          <!-- <div id="map2"></div>        // 현재 내 위치에서 직거래 위치까지의 거리(구글 지도) -->
           <div class="sc-info_sodyd">
             {{$myproduct[0]->item_info}}
           </div>
@@ -490,19 +482,37 @@ function recomments(data) {
                       <div class="value_comment">
                         <p>{{$value->comments}}</p>
                       </div>
+                      <div class="val_re">
+                        <button type="button" name="button" onclick="largcomments({{$value->comment_num}})">답글 쓰기</button>
+                      </div>
                     </div>
                     @if(session()->has('login_ID'))
+                    <div id="largcoment{{$value->comment_num}}"class="largecomment">
+                      <div id="laco_texts" class="reco_texts {{$value->comment_num}}">
+                        <textarea class="largcomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="답글 입력"></textarea>
+                        <button type="submit" name="button">답글달기</button>
+                      </div>
+                    </div>
+                    @foreach ($commentitem as $key => $value)
+                    <div class="newlargecomment">
+                      <div class="comment_people">
+                        {{$value->comment_id}}
+                      </div>
+                      <div class="value_comment">
+                        <p>{{$value->comments}}</p>
+                      </div>
+                    </div>
+                    @endforeach
                     @if(decrypt(session()->get('login_ID')) == $value->comment_id)
                     <div class="delete_area">
                       <a href="/recomment/{{$value->comment_num}}/{{$value->comm_item}}">
                         <button class="del_comment" type="button" name="button">삭제하기</button>
                       </a>
-                        <button id="reco_btn" class="reco_btn" type="button" name="button" onclick="recomments({{$value->comment_num}})">수정하기</button>
+                      <button id="reco_btn" class="reco_btn" type="button" name="button" onclick="recomments({{$value->comment_num}})">수정하기</button>
                     </div>
                     <div id="hidcoment{{$value->comment_num}}"class="hiderecomment">
                       <div id="reco_texts" class="reco_texts {{$value->comment_num}}">
                         <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력">{{$value->comments}}</textarea>
-                        <!-- <button type="submit" name="button">수정완료</button> -->
                         <div class="comment_fontlength">
                           <div class="sc-fontlength dlqfurrmff">0 / 200</div>
                           <button type="submit" name="button">수정완료</button>
@@ -512,13 +522,11 @@ function recomments(data) {
                     @endif
                     @endif
                   </div>
-
                 </div>
               </form>
               @endforeach
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -540,12 +548,16 @@ function recomments(data) {
   </div>
 </div>
 <script type="text/javascript">
-// $(function (e){
-//   $("#reco_texts").hide();
-//   $("#reco_btn").click(function (){
-//     $("#reco_texts").toggle();
-//   });
-// });
+function largcomments(data) {
+
+  if($("#largcoment"+data).css('display') == 'none'){
+    $("#largcoment"+data).css('display', 'block');
+  }
+  // console.log("#hidcoment"+data);
+  else {
+    $("#largcoment"+data).css('display', 'none');
+  }
+}
 </script>
 <script type="text/javascript">
 //comment textarea 체크

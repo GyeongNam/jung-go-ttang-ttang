@@ -186,7 +186,7 @@
               </div>
               <div class="item_list">
                 <div class="list_hd">
-                  <h2 id="man">패션잡화 <a href="/manclothing?id=패션잡화">전체보기</a></h2>
+                  <h2 id="fashion">패션잡화 <a href="/manclothing?id=패션잡화">전체보기</a></h2>
                 </div>
                 @foreach ($categ as $key => $value)
                   @if($key < 10)
@@ -301,16 +301,6 @@
     </div>
   </div>
   <script type="text/javascript">
-  function sucess() {
-    if(!session('login_ID')) {
-      return  alert('즐겨찾기에 추가되었습니다!');
-    }
-    else{
-      return alert('로그인을 해 주세요!');
-    }
-  }
-
-
   var slideIndex = 0; //이미지에 접근하는 인덱스
 
   showSlides();
