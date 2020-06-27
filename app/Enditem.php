@@ -13,6 +13,11 @@ class Enditem extends Model
     'success_price3',
     'success_price4',
     'success_price5',
+    'success_user1',
+    'success_user2',
+    'success_user3',
+    'success_user4',
+    'success_user5',
     'end_num'
   ];
 }
