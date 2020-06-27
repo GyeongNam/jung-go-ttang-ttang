@@ -20,6 +20,13 @@ class CreateCommentTable extends Migration
             $table->timestamps();
             $table->rememberToken();
         });
+        Schema::table('comment', function (Blueprint $table){
+          $table->string('comment_id')->index();
+          $table->foreign('comment_id')->references('id')->on('users');
+
+          $table->unsignedBigInteger('comm_item')->index();
+          $table->foreign('comm_item')->references('item_number')->on('items');
+        });
     }
 
     /**

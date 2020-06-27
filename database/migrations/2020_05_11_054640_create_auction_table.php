@@ -22,6 +22,10 @@ class CreateAuctionTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        Schema::table('auction', function (Blueprint $table) {
+          $table->unsignedBigInteger('auction_itemnum')->index();
+          $table->foreign('auction_itemnum')->references('item_number')->on('items');
+        });
     }
 
     /**

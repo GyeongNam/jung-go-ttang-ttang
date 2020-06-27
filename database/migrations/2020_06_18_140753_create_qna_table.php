@@ -20,6 +20,10 @@ class CreateQnaTable extends Migration
             $table->timestamps();
             $table->rememberToken();
         });
+        Schema::table('qna', function (Blueprint $table) {
+          $table->string('qna_id')->index();
+          $table->foreign('qna_id')->references('id')->on('users');
+        });
     }
 
     /**

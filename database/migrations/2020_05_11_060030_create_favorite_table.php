@@ -19,6 +19,10 @@ class CreateFavoriteTable extends Migration
           $table->rememberToken();
           $table->timestamps();
         });
+        Schema::table('favorite', function (Blueprint $table) {
+          $table->unsignedBigInteger('favorite_itemnum')->index();
+          $table->foreign('favorite_itemnum')->references('item_number')->on('items');
+        });
     }
 
     /**

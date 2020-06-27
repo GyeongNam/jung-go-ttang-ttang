@@ -22,6 +22,10 @@ class CreateMessageTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        Schema::table('message', function (Blueprint $table) {
+          $table->integer('chat_num')->index();
+          $table->foreign('chat_num')->references('chatroom_num')->on('chatroom');
+        });
     }
 
     /**

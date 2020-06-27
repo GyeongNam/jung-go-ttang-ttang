@@ -21,6 +21,13 @@ class CreateChatroomTable extends Migration
         $table->rememberToken();
         $table->timestamps();
         });
+        Schema::table('chatroom', function (Blueprint $table) {
+          $table->string('user1_ID')->index();
+          $table->foreign('user1_ID')->references('id')->on('users');
+
+          $table->string('user2_ID')->index();
+          $table->foreign('user2_ID')->references('id')->on('users');
+        });
     }
 
     /**

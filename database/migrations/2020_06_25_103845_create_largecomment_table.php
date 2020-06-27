@@ -19,6 +19,13 @@ class CreateLargecommentTable extends Migration
       $table->string('largecomments');
       $table->timestamps();
     });
+    Schema::table('largecomment', function (Blueprint $table){
+      $table->string('largecomment_id')->index();
+      $table->foreign('largecomment_id')->references('id')->on('users');
+
+      $table->unsignedBigInteger('largecomm_item')->index();
+      $table->foreign('largecomm_item')->references('comment_num')->on('comment');
+    });
   }
 
   /**

@@ -23,6 +23,21 @@ class CreateEnditemTable extends Migration
           $table->rememberToken();
           $table->timestamps();
         });
+        Schema::table('enditem', function (Blueprint $table) {
+          $table->unsignedBigInteger('end_num')->index();
+          $table->foreign('end_num')->references('item_number')->on('items');
+
+          $table->string('success_user1')->nullable();
+          $table->foreign('success_user1')->references('id')->on('users');
+          $table->string('success_user2')->nullable();
+          $table->foreign('success_user2')->references('id')->on('users');
+          $table->string('success_user3')->nullable();
+          $table->foreign('success_user3')->references('id')->on('users');
+          $table->string('success_user4')->nullable();
+          $table->foreign('success_user4')->references('id')->on('users');
+          $table->string('success_user5')->nullable();
+          $table->foreign('success_user5')->references('id')->on('users');
+        });
     }
 
     /**
