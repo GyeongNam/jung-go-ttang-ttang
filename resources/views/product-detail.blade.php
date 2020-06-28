@@ -149,23 +149,23 @@ $(document).ready(function() {
   var map = new google.maps.Map(document.getElementById('map'), mapOptions);
   geocoder.geocode( { 'address': address}, function(results, status) {
     console.log(results);
-      if (status == 'OK') {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
-        var infowindow = new google.maps.InfoWindow(
-          {
-            content: contentString,
-            maxWizzzdth: markerMaxWidth
-          }
-        );
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.open(map, marker);
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location
+      });
+      var infowindow = new google.maps.InfoWindow(
+        {
+          content: contentString,
+          maxWizzzdth: markerMaxWidth
+        }
+      );
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map, marker);
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
     }
   });
 });
@@ -174,7 +174,6 @@ $(document).ready(function() {
 <script type="text/javascript">
 
 function recomments(data) {
-
   if($("#hidcoment"+data).css('display') == 'none'){
     $("#hidcoment"+data).css('display', 'block');
   }
@@ -415,141 +414,146 @@ function recomments(data) {
         <div class="sc-info_detail">상품 정보</div>
         <div class="sc-info-typing">
           <!-- <div id="floating-panel">
-            <b>Mode of Travel: </b>
-            <select id="mode">
-              <option value="DRIVING">Driving</option>
-              <option value="WALKING">Walking</option>
-              <option value="BICYCLING">Bicycling</option>
-              <option value="TRANSIT">Transit</option>
-            </select>
-          </div> -->
-          <div id="map"></div>        // 직거래 위치(구글 지도)
-          <!-- <div id="map2"></div>        // 현재 내 위치에서 직거래 위치까지의 거리(구글 지도) -->
-          <div class="sc-info_sodyd">
-            {{$myproduct[0]->item_info}}
-          </div>
-        </div>
-      </div>
-      <div class="deal_cat_location">
-        <div class="deal_cat">
-          <div class="catgo">
-            <img src="" alt="">
-            카테고리
-          </div>
-          <div class="">
-            <a href="#"><span>모바일/태블릿</span></a>
-          </div>
-        </div>
-        <div class="pro_tag">
-          <div class="tag_name">
-            <img src="" alt="">
-            상품태그
-          </div>
-          <div class="taglist">
-            <a href="#">#아이패드</a>
-            <a href="#">#아이패드에어</a>
-            <a href="#">#태블릿</a>
-          </div>
-        </div>
-      </div>
-      <div class="buyer_comment">
-        <div class="people_comment">
-          <div class="dat_lab">
-            <h2>댓글달기</h2>
-          </div>
-          <form class="" action="/product-comment/{{$myproduct[0]->item_number}}" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="combox">
-              <div class="comment_munie">
-                <textarea class="comment_text" name="comment_texts" id="comment_texts" rows="8" cols="80" placeholder="제품문의 댓글 입력" required></textarea>
-              </div>
-              <div class="comment_fontlength">
-                <div class="sc-fontlength dlqfurrmf">0 / 200</div>
-                <button type="submit" class="comment_dunglok" name="button">등록</button>
-              </div>
-            </form>
-
-            <div class="comment_new">
-              @foreach ($commentitem as $key => $value)
-              <form class="" action="/product-recomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="create_comment">
-                  <div class="neadcomt">
-                    <div class="comment_naeyoung">
-                      <div class="comment_people">
-                        {{$value->comment_id}}
-                      </div>
-                      <div class="value_comment">
-                        <p>{{$value->comments}}</p>
-                      </div>
-                      <div class="val_re">
-                        <button type="button" name="button" onclick="largcomments({{$value->comment_num}})">답글 쓰기</button>
-                      </div>
-                    </div>
-                    @if(session()->has('login_ID'))
-                    <div id="largcoment{{$value->comment_num}}"class="largecomment">
-                      <div id="laco_texts" class="reco_texts {{$value->comment_num}}">
-                        <textarea class="largcomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="답글 입력"></textarea>
-                        <button type="submit" name="button">답글달기</button>
-                      </div>
-                    </div>
-                    @foreach ($commentitem as $key => $value)
-                    <div class="newlargecomment">
-                      <div class="comment_people">
-                        {{$value->comment_id}}
-                      </div>
-                      <div class="value_comment">
-                        <p>{{$value->comments}}</p>
-                      </div>
-                    </div>
-                    @endforeach
-                    @if(decrypt(session()->get('login_ID')) == $value->comment_id)
-                    <div class="delete_area">
-                      <a href="/recomment/{{$value->comment_num}}/{{$value->comm_item}}">
-                        <button class="del_comment" type="button" name="button">삭제하기</button>
-                      </a>
-                      <button id="reco_btn" class="reco_btn" type="button" name="button" onclick="recomments({{$value->comment_num}})">수정하기</button>
-                    </div>
-                    <div id="hidcoment{{$value->comment_num}}"class="hiderecomment">
-                      <div id="reco_texts" class="reco_texts {{$value->comment_num}}">
-                        <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력">{{$value->comments}}</textarea>
-                        <div class="comment_fontlength">
-                          <div class="sc-fontlength dlqfurrmff">0 / 200</div>
-                          <button type="submit" name="button">수정완료</button>
-                        </div>
-                      </div>
-                    </div>
-                    @endif
-                    @endif
-                  </div>
-                </div>
-              </form>
-              @endforeach
-            </div>
-          </div>
-        </div>
+          <b>Mode of Travel: </b>
+          <select id="mode">
+          <option value="DRIVING">Driving</option>
+          <option value="WALKING">Walking</option>
+          <option value="BICYCLING">Bicycling</option>
+          <option value="TRANSIT">Transit</option>
+        </select>
+      </div> -->
+      <div id="map"></div>        // 직거래 위치(구글 지도)
+      <!-- <div id="map2"></div>        // 현재 내 위치에서 직거래 위치까지의 거리(구글 지도) -->
+      <div class="sc-info_sodyd">
+        {{$myproduct[0]->item_info}}
       </div>
     </div>
-    <div class="btn_cl">
-      @if(session()->has('login_ID'))
-      @if(decrypt(session()->get('login_ID')) == $myproduct[0]->seller_id)
-      <div class="auction_revise">
-        <form class="" action="{{url('/product-Modify')}}" method="get">
-          <input type="hidden" name="item_key" value="{{$myproduct[0]->item_number}}">
-          <button type="submit" name="button">경매 수정</button>
+  </div>
+  <div class="deal_cat_location">
+    <div class="deal_cat">
+      <div class="catgo">
+        <img src="" alt="">
+        카테고리
+      </div>
+      <div class="">
+        <a href="#"><span>모바일/태블릿</span></a>
+      </div>
+    </div>
+    <div class="pro_tag">
+      <div class="tag_name">
+        <img src="" alt="">
+        상품태그
+      </div>
+      <div class="taglist">
+        <a href="#">#아이패드</a>
+        <a href="#">#아이패드에어</a>
+        <a href="#">#태블릿</a>
+      </div>
+    </div>
+  </div>
+  <div class="buyer_comment">
+    <div class="people_comment">
+      <div class="dat_lab">
+        <h2>댓글달기</h2>
+      </div>
+      <form class="" action="/product-comment/{{$myproduct[0]->item_number}}" method="post" enctype="multipart/form-data">
+        @csrf
+        <div class="combox">
+          <div class="comment_munie">
+            <textarea class="comment_text" name="comment_texts" id="comment_texts" rows="8" cols="80" placeholder="제품문의 댓글 입력" required></textarea>
+          </div>
+          <div class="comment_fontlength">
+            <div class="sc-fontlength dlqfurrmf">0 / 200</div>
+            <button type="submit" class="comment_dunglok" name="button">등록</button>
+          </div>
         </form>
+
+        <div class="comment_new">
+          @foreach ($commentitem as $key => $value)
+          <form class="" action="/product-recomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="create_comment">
+              <div class="neadcomt">
+                <div class="comment_naeyoung">
+                  <div class="comment_people">
+                    {{$value->comment_id}}
+                  </div>
+                  <div class="value_comment">
+                    <p>{{$value->comments}}</p>
+                  </div>
+                  <div class="val_re">
+                    <button type="button" name="button" onclick="largcomments({{$value->comment_num}})">답글 쓰기</button>
+                  </div>
+                </div>
+
+                <div id="largcoment{{$value->comment_num}}"class="largecomment">
+                  <div id="laco_texts" class="reco_texts {{$value->comment_num}}">
+                    <textarea class="largcomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="답글 입력"></textarea>
+                    <button type="submit" name="button">답글달기</button>
+                  </div>
+                </div>
+                @foreach ($commentitem as $key => $value)
+                <div class="newlargecomment">
+                  <div class="comment_people">
+                    {{$value->comment_id}}
+                  </div>
+                  <div class="value_comment">
+                    <p>{{$value->comments}}</p>
+                  </div>
+                </div>
+                @endforeach
+                @if(session()->has('login_ID'))
+                @if(decrypt(session()->get('login_ID')) == $value->comment_id)
+                <div class="delete_area">
+                  <a href="/recomment/{{$value->comment_num}}/{{$value->comm_item}}">
+                    <button class="del_comment" type="button" name="button">삭제하기</button>
+                  </a>
+                  <button id="reco_btn" class="reco_btn" type="button" name="button" onclick="recomments({{$value->comment_num}})">수정하기</button>
+                </div>
+                <div id="hidcoment{{$value->comment_num}}"class="hiderecomment">
+                  <div id="reco_texts" class="reco_texts {{$value->comment_num}}">
+                    <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력">{{$value->comments}}</textarea>
+                    <div class="comment_fontlength">
+                      <div class="sc-fontlength dlqfurrmff">0 / 200</div>
+                      <button type="submit" name="button">수정완료</button>
+                    </div>
+                  </div>
+                </div>
+                @endif
+                @endif
+              </div>
+            </div>
+          </form>
+          @endforeach
+        </div>
       </div>
-      <div class="auction_del">
-        <button id="del_detailpage" type="button" name="button" >경매 삭제</button>
-      </div>
-      @endif
-      @endif
     </div>
   </div>
 </div>
+<div class="btn_cl">
+  @if(session()->has('login_ID'))
+  @if(decrypt(session()->get('login_ID')) == $myproduct[0]->seller_id)
+  <div class="auction_revise">
+    <form class="" action="{{url('/product-Modify')}}" method="get">
+      <input type="hidden" name="item_key" value="{{$myproduct[0]->item_number}}">
+      <button type="submit" name="button">경매 수정</button>
+    </form>
+  </div>
+  <div class="auction_del">
+    <button id="del_detailpage" type="button" name="button" >경매 삭제</button>
+  </div>
+  @endif
+  @endif
+</div>
+</div>
+</div>
 <script type="text/javascript">
 function largcomments(data) {
-
+  var data =  1{{Session::has("login_ID")}};
+  if (data == 1) {
+    alert('로그인이 필요합니다!');
+    return false;
+  }
   if($("#largcoment"+data).css('display') == 'none'){
     $("#largcoment"+data).css('display', 'block');
   }
