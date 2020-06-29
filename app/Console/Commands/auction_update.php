@@ -65,6 +65,7 @@ class auction_update extends Command
                 'success_user3'=>$auciton[2]->buyer_ID,
                 'success_user4'=>$auciton[3]->buyer_ID,
                 'success_user5'=>$auciton[4]->buyer_ID,
+                'success_date'=> date('Y-m-d'),
                 'buyer' => $auciton[0]->buyer_ID,
                 'end_num'=> $item_number[$i]->item_number
               ]);
@@ -83,6 +84,7 @@ class auction_update extends Command
                 'success_user2'=>$auciton[1]->buyer_ID,
                 'success_user3'=>$auciton[2]->buyer_ID,
                 'success_user4'=>$auciton[3]->buyer_ID,
+                'success_date'=> date('Y-m-d'),
                 'buyer' => $auciton[0]->buyer_ID,
                 'end_num'=> $item_number[$i]->item_number
               ]);
@@ -99,6 +101,7 @@ class auction_update extends Command
                 'success_user1'=>$auciton[0]->buyer_ID,
                 'success_user2'=>$auciton[1]->buyer_ID,
                 'success_user3'=>$auciton[2]->buyer_ID,
+                'success_date'=> date('Y-m-d'),
                 'buyer' => $auciton[0]->buyer_ID,
                 'end_num'=> $item_number[$i]->item_number
               ]);
@@ -113,6 +116,7 @@ class auction_update extends Command
                 'success_price2'=>$auciton[1]->item_price,
                 'success_user1'=>$auciton[0]->buyer_ID,
                 'success_user2'=>$auciton[1]->buyer_ID,
+                'success_date'=> date('Y-m-d'),
                 'buyer' => $auciton[0]->buyer_ID,
                 'end_num'=> $item_number[$i]->item_number
               ]);
@@ -125,6 +129,7 @@ class auction_update extends Command
               $data = new Enditem([
                 'success_price1'=>$auciton[0]->item_price,
                 'success_user1'=>$auciton[0]->buyer_ID,
+                'success_date'=> date('Y-m-d'),
                 'buyer' => $auciton[0]->buyer_ID,
                 'end_num'=> $item_number[$i]->item_number
               ]);
@@ -140,9 +145,8 @@ class auction_update extends Command
               $data->save();
             }
           }
+
+
         }
-
-        // 유찰일 경우
-
     }
 }

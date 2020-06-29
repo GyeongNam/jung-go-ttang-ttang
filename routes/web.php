@@ -84,6 +84,8 @@ Route::get('/Servicecenter','UserController@qna');
 Route::get('/','ItemController@mainview');
 
 
+Route::get('/sasa','ItemController@sasa');
+
 // item Controller
 Route::post('/product', 'ItemController@store');
 Route::get('/product-detail/{item_number}', 'ItemController@itemview');
