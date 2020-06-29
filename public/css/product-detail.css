@@ -119,7 +119,7 @@ a {
   display: none;
 }
 
-.largcoment{
+.larg{
   display: none;
 }
 
@@ -141,12 +141,32 @@ a {
   line-height: 1.5;
   resize: none;
 }
+
+#laco_texts{
+  padding-left: 90px;
+}
+.reaq{
+  margin-left: 70px;
+  width: 12px;
+  height: 12px;
+  border-left: 1px solid #c5cbd0;
+  border-bottom: 1px solid #c5cbd0;
+}
+.newlargecomment{
+  margin-left: 6rem;
+}
+.largvalue_comment{
+  margin-left: 10px;
+  height:2rem;
+  word-break:break-all;
+}
 .comment_people{
   margin-bottom: 2px;
 }
 .value_comment{
   margin-left: 10px;
   height:5rem;
+  word-break:break-all;
 }
 .comment_naeyoung{
   padding: 12px 12px 12px 64px;
