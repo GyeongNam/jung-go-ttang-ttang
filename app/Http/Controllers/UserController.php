@@ -173,10 +173,10 @@ class UserController extends Controller
 
   // @url '/manager_user_info/$id'
   public function managerINFO(Request $request,$id){
-    $count = DB::table('ban_log')->where(['user_id'=>$id])->count();
-
+    $count = DB::table('banlog')->where(['user_id'=>$id])->count();
     $mana = User::select('ID','name','birthday','gender','phone','email','email_domain','created_at')->where(['id'=>$id])->get();
     $maif = Item::leftjoin('auction', 'items.item_number','=', 'auction.auction_itemnum')->select('item_number','item_name','item_price','buyer_ID')->where(['buyer_ID'=>$id])->get();
+    
 
     return view('/manager_user_info',[
       'mana'=>$mana,
@@ -186,7 +186,7 @@ class UserController extends Controller
   }
 
 public function warning(Request $request,$id){
-  $ban = DB::table('ban_log')->insert([
+  $ban = DB::table('banlog')->insert([
       'user_id' => $id
     ]);
 
@@ -205,4 +205,7 @@ public function warning(Request $request,$id){
       'data'=> $data
     ]);
   }
+  // public function ban(Request $request){
+  //
+  // }
 }

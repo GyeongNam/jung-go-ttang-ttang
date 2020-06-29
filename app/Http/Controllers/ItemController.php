@@ -493,29 +493,33 @@ class ItemController extends Controller
    ]);
  }
 
-  public function manageritem(Request $request){
-    $count = DB::table('police')->select('item_number2')->groupBy('item_number2')->count();
-    $item_price = DB::table('auction')->select('auction_itemnum',
-    DB::raw('MAX(item_price) AS item_price'))
-    ->groupBy('auction_itemnum');
+   public function manageritem(Request $request){
 
-    $item_joins = DB::table('items')->select('*')
-    ->JoinSub($item_price,'item_price',function($join){
-      $join->on('items.item_number','=','item_price.auction_itemnum');
-    })->get();
-    $item_join = DB::table('items')->select('*')->get();
+     $item_price = DB::table('auction')->select('auction_itemnum',
+     DB::raw('MAX(item_price) AS item_price'))
+     ->groupBy('auction_itemnum');
 
-    // echo $item_join.'<br><br>';
-    return view('manager_item',[
-      'item_join'=>$item_join,
-      'item_joins'=>$item_joins,
-      'count'=>$count
-    ]);
-  }
-  public function police(Request $request,$item_number){
-    $wan =DB::table('police')-> insert([
-      'item_number2'=>$item_number
-    ]);
-    return back();
-  }
+     $item_joins = DB::table('items')->select('*')
+     ->JoinSub($item_price,'item_price',function($join){
+       $join->on('items.item_number','=','item_price.auction_itemnum');
+     })->get();
+     $item_join = DB::table('items')->select('*')->get();
+     $count = collect([]);
+     for ($i=0; $i < count($item_join) ; $i++) {
+       $count->push(DB::table('police')->select('*')->where(['item_number2'=>$item_join[$i]->item_number])->get()->count());
+     }
+     // echo $count;
+     return view('/manager_item',[
+       'item_join'=>$item_join,
+       'item_joins'=>$item_joins,
+       'count'=>$count
+     ]);
+   }
+   public function police(Request $request, $item_number){
+     $wan = DB::table('police')->insert([
+       'item_number2'=> $item_number
+     ]);
+     return back();
+   }
+
 }
