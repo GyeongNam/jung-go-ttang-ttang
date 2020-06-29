@@ -224,16 +224,9 @@ class ItemController extends Controller
   public function myview(Request $request){
     $id = session()->get('login_ID');
     $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> decrypt($id)])->get();
-    $Auction = Auction::join('items', 'items.item_number','=', 'auction.auction_itemnum')->select(
-      'item_price',
-      'item_number',
-      'item_name',
-      'item_picture',
-      'item_startprice',
-      'item_success',
-      'success',
-      'seller_id'
-      )->where(['buyer_ID'=>decrypt($id)])->get();
+    $Auction = Auction::join('items', 'items.item_number','=', 'auction.auction_itemnum')->select('*')->where(['buyer_ID'=>decrypt($id)])->get();
+
+      $end = collect([]);
       $users = collect([]);
       $sp1 =collect([]);
       $sp2 =collect([]);
@@ -251,6 +244,13 @@ class ItemController extends Controller
         $sp4->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price4')->where(['end_num'=>$myStat[$i]->item_number])->get());
         $sp5->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price5')->where(['end_num'=>$myStat[$i]->item_number])->get());
       }
+
+      for($j=0; $j<count($Auction); $j++){
+        $end->push(Enditem::select('*')
+        ->join('items', 'items.item_number', '=', 'enditem.end_num')
+        ->where(['end_num'=>$Auction[$j]->item_number])->get());
+      }
+      // echo $end;
       // echo $sp1.'<br>';
       // echo $sp2.'<br>';
       // echo $sp3.'<br>';
@@ -261,6 +261,7 @@ class ItemController extends Controller
       return view('itemcheck', [
         'myStat' => $myStat,
         'myAuction' => $Auction,
+        'end' => $end,
         'users' => $users,
         'rank1' => $sp1,
         'rank2' => $sp2,

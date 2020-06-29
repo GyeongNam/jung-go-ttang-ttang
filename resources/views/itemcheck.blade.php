@@ -110,17 +110,19 @@ $(function(){
                <button type="button" id="bid_info_btn" class="bid_info_btn" onclick="modal_mya({{$value->item_number}})" name="button">낙찰정보 확인</button>
              </div>
          </td>
+
            @endif
-           @if ($value->success != 1)
+           @if (!Empty($end[$key][0]->buyer))
+           @if (decrypt(session('login_ID')) == $end[$key][0]->buyer)
              <td class="yesorno">
                <span>O</span>
-               <p><button class="hide_but">구매하기</button></p>
              </td>
            @else
            <td class="yesorno">
              X
            </td>
            @endif
+         @endif
          </tr>
        </tbody>
        </table>
@@ -178,9 +180,12 @@ $(function(){
        낙찰정보확인
      </div>
      <div class="bid_info">
+       @if(!Empty($end[$key][0]->buyer))
+       @if(decrypt(session('login_ID')) == $end[$key][0]->buyer)
        <div class="nakchalgood">
-         낙찰이 정상적으로 완료되었습니다!
+         낙찰했습니다.
        </div>
+
        <div class="nak_info">
 
          <div class="nak_p_lab">
@@ -195,7 +200,7 @@ $(function(){
          <div class="nak_naeyong">
            낙찰!!
            <div class="nak_sunwe">
-             1순위
+             순위
            </div>
 
            <div class="nak_name">
@@ -219,10 +224,43 @@ $(function(){
            </div>
          </div>
        </div>
+     @else
+     <div class="nakchalgood">
+       낙찰에 실패했습니다.
      </div>
+
+     @if(!Empty($end[$key][0]->success_user2))
+     @if(decrypt(session('login_ID')) == $end[$key][0]->success_user2)
+       <div class="nak_sunwe">
+       순위 2위
+       </div>
+     @endif
+     @endif
+
+     @if(!Empty($end[$key][0]->success_user3))
+     @if(decrypt(session('login_ID')) == $end[$key][0]->success_user3)
+       <div class="nak_sunwe">
+       순위 2위
+       </div>
+     @endif
+     @endif
+
+     @if(!Empty($end[$key][0]->success_user4))
+     @if(decrypt(session('login_ID')) == $end[$key][0]->success_user4)
+       <div class="nak_sunwe">
+       순위 2위
+       </div>
+     @endif
+     @endif
+
+
+      @endif
+     </div>
+    @endif
      <div class="">
        <button class="close" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button">돌아가기</button>
        <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
+       <button class="" id="del_per" type="button" name="button" >포기하기</button>
      </div>
    </div>
  </div>
