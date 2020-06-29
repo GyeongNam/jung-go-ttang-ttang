@@ -531,6 +531,7 @@ class ItemController extends Controller
     if($endsize->isNotEmpty()){
 
       for($j=0; $j<$endcount; $j++){
+
       $end3 = $endsize[$j][0]->success_date;
       $Endday = Enditem::select('*')->where('success_date', '<=', $end3)->get();
       $end2 = $endsize[$j][0]->end_num;
