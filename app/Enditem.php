@@ -18,6 +18,7 @@ class Enditem extends Model
     'success_user3',
     'success_user4',
     'success_user5',
+    'buyer',
     'end_num'
   ];
 }

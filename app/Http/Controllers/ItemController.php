@@ -370,7 +370,7 @@ class ItemController extends Controller
     }
 
   public function removes($item_number, $id){
-
+    Enditem::where(['end_num'=>$item_number])->delete();
     $data = Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->get();
     Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->delete();
     $path = public_path('/img/item/'.$data[0]->item_picture);
@@ -457,6 +457,7 @@ class ItemController extends Controller
       'count'=>$count
     ]);
   }
+
   public function police(Request $request,$item_number){
     $wan =DB::table('police')-> insert([
       'item_number2'=>$item_number

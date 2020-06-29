@@ -57,7 +57,6 @@ $(function(){
     function modal_out_mys(data){
       $("#bidmyModa2"+data).fadeOut();
     }
-
 </script>
 
 @endsection
@@ -75,8 +74,8 @@ $(function(){
  <div class="it_button" id="it_but">
    <button id="but1" class="on1">
      <b>내가참여한경매</b></button>
- <button id="but2"class="on">
-       <b>내가올린경매</b></button>
+     <button id="but2"class="on">
+     <b>내가올린경매</b></button>
      </div>
      <div class="table1">
      <table width="100%"   align = "center" class="tab" >
@@ -88,57 +87,48 @@ $(function(){
 
      {{-- 내가참여한경매 --}}
      <div class="">
-
-
      @foreach ($myAuction as $key => $value)
      <table class ="it_if1" width="100%" border="1"  align = "center" class="matab">
        <tbody width="100%">
-
-
          <tr width="100%">
-
            <td width="30%"><button type="button" name="button" class="but2">
              <a href="/product-detail/{{$value->item_number}}"><img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img"></a>
            </button>
            <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
            </td>
-         <td width="30%">
-             {{ number_format($value->item_price)}}
-         </td>
-         @if ($value->item_success == 1 )
-
-         <td width = "20%">
-           <span>진행중</span>
-         </td>
-       @else
+           <td width="30%">
+               {{ number_format($value->item_price)}}
+           </td>
+           @if ($value->item_success == 1 )
+           <td width = "20%">
+             <span>진행중</span>
+           </td>
+           @else
          <td width="20%">
              낙찰
              <div>
                <button type="button" id="bid_info_btn" class="bid_info_btn" onclick="modal_mya({{$value->item_number}})" name="button">낙찰정보 확인</button>
              </div>
          </td>
-
            @endif
-         @if ($value->success != 1)
+           @if ($value->success != 1)
+             <td class="yesorno">
+               <span>O</span>
+               <p><button class="hide_but">구매하기</button></p>
+             </td>
+           @else
            <td class="yesorno">
-             <span>O</span>
-             <p><button class="hide_but">구매하기</button></p>
+             X
            </td>
-        @else
-         <td class="yesorno">
-           X
-         </td>
-          @endif
-       </tr>
-     </tbody>
-     </table>
-           @endforeach
-           </div>
+           @endif
+         </tr>
+       </tbody>
+       </table>
+      @endforeach
+     </div>
+
      {{-- 내가올린경매 --}}
-
      <div class="">
-
-
      @foreach ($myStat as $key => $value)
      <table class ="it_if2" width="100%" border="1"  align = "center" class="matab">
        <tbody width="100%">
@@ -148,39 +138,39 @@ $(function(){
            </button>
            <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
            </td>
-         <td width="30%">
-             {{ number_format($value->item_price)}} 원
-         </td>
-         @if ($value->item_success == 1 )
-         <td width = "20%">
-           <span>진행중</span>
-           <p><button class="hide_but">판매종료</button></p>
-         </td>
-       @else
-         <td width="20%">
-           판매종료
-           <div>
-           <button type="button" id="bid_info_btn2" class="bid_info_btn2" onclick="modal_mys({{$value->item_number}})" name="button">낙찰현황확인</button>
-           </div>
-         </td>
-
-           @endif
-         @if ($value->success != 1)
-           <td class="yesorno">
-             <span>O</span>
+           <td width="30%">
+               {{ number_format($value->item_price)}} 원
            </td>
-        @else
-         <td class="yesorno">
-           X
-         </td>
-          @endif
-       </tr>
-     </tbody>
-     </table>
+           @if ($value->item_success == 1 )
+           <td width = "20%">
+             <span>진행중</span>
+           </td>
+           @else
+           <td width="20%">
+             판매종료
+             <div>
+             <button type="button" id="bid_info_btn2" class="bid_info_btn2" onclick="modal_mys({{$value->item_number}})" name="button">낙찰현황확인</button>
+             </div>
+           </td>
+           @endif
+           @if ($value->success == 1)
+             <td class="yesorno">
+               <span>O</span>
+             </td>
+           @else
+           <td class="yesorno">
+             X
+           </td>
+           @endif
+         </tr>
+       </tbody>
+       </table>
            @endforeach
-           </div>
-</div>
+        </div>
+    </div>
  </div>
+
+ {{-- 내가 참여한 경매의 모달  --}}
  @foreach ($myAuction as $key => $value)
  <div id="bidmyModal{{$value->item_number}}" class="bidmodal">
    <div class="modal-bid">
@@ -238,13 +228,15 @@ $(function(){
  </div>
 @endforeach
 
- @foreach ($myStat as $key => $value)
 
+ {{-- 내가 올린 경매의 모달  --}}
+ @foreach ($myStat as $key => $value)
  <div id="bidmyModa2{{$value->item_number}}" class="bidmoda2">
    <div class="modal-bid">
      <div class="modal_bidheader">
        낙찰정보현황
      </div>
+       @if ($value->success == 1)
      <div class="bid_info">
        <div class="nakchalgood">
          1순위부터 5순위까지 확인해 주세요!
@@ -267,7 +259,7 @@ $(function(){
            @endif
          @endif
          </div>
-         <sdiv class="nak_p_lab">
+         <div class="nak_p_lab">
             @if(!Empty($users[$key][0]->success_price1))
            4위:{{$users[$key][0]->success_price4}} @if(!Empty($rank4[$key][0]))원 {{$rank4[$key][0]->buyer_ID}}
            @endif
@@ -288,7 +280,7 @@ $(function(){
          <span class="nak_p_lab">
             @if(!Empty($users[$key][0]->success_price1))
             {{$users[$key][0]->success_price1}}
-          @endif
+            @endif
          </span>
          <span class="nak_p_lab">
             원
@@ -300,6 +292,13 @@ $(function(){
        <button class="close2" id="del_per2" onclick="modal_out_mys({{$value->item_number}})" type="button" name="button" >돌아가기</button>
        <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
      </div>
+   @else
+     안타깝게도 경매 참여자가 없어 유찰되었습니다.
+     <div class="">
+       <button class="close2" id="del_per2" onclick="modal_out_mys({{$value->item_number}})" type="button" name="button" >돌아가기</button>
+       <button class="" id="del_per" type="button" name="button" onclick="location.href='/remove/{{$value->item_number}}/{{session()->get('login_ID')}}'" >경매삭제</button>
+     </div>
+   @endif
    </div>
  </div>
  @endforeach

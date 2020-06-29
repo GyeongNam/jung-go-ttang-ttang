@@ -25,6 +25,7 @@ class CreateEnditemTable extends Migration
           $table->string('success_user3')->nullable();
           $table->string('success_user4')->nullable();
           $table->string('success_user5')->nullable();
+          $table->string('buyer')->nullable();
           $table->rememberToken();
           $table->timestamps();
         });
