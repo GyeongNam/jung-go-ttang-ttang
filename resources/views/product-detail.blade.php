@@ -488,26 +488,43 @@ function largcomments(data) {
                         <div class="value_comment">
                           <p>{{$value->comments}}</p>
                         </div>
-                        <div class="val_re">
-                          <button type="button" name="button" onclick="largcomments({{$value->comment_num}})">답글 쓰기</button>
+                        <form class="" action="/product-lecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post">
+                          @csrf
+                          <div class="val_re">
+                            <button type="button" name="button" onclick="largcomments({{$value->comment_num}})">답글 쓰기</button>
+                          </div>
                         </div>
-                      </div>
-                      <div id="largcoment{{$value->comment_num}}"class="larg">
+                        <div id="largcoment{{$value->comment_num}}"class="larg">
+                          <div class="reaq"></div>
+                          <div id="laco_texts" class="reco_texts {{$value->comment_num}}">
+                            <textarea class="largcomment_text {{$value->comment_num}}" name="lecomment_texts" id="lecomment_texts" rows="8" cols="80" placeholder="답글 입력"></textarea>
+                            <button type="submit" name="button">답글달기</button>
+                          </div>
+                        </div>
+                        </form>
+                        @for($i = 0; $i<$lacount; $i++)
+                          @if(!empty($largcommentitem[$key][$i]))
                         <div class="reaq"></div>
-                        <div id="laco_texts" class="reco_texts {{$value->comment_num}}">
-                          <textarea class="largcomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="답글 입력"></textarea>
-                          <button type="submit" name="button">답글달기</button>
+                        <div class="newlargecomment">
+                          <div class="comment_people">
+                            {{$largcommentitem[$key][$i]->largecomment_id}}
+                          </div>
+                          <div class="largvalue_comment">
+                            <p>{{$largcommentitem[$key][$i]->largecomments}}</p>
+                          </div>
                         </div>
-                      </div>
-                      <div class="reaq"></div>
-                      <div class="newlargecomment">
-                        <div class="comment_people">
-                          {{$value->comment_id}}
-                        </div>
-                        <div class="largvalue_comment">
-                          <p>{{$value->comments}}</p>
-                        </div>
-                      </div>
+                        @endif
+                      @endfor
+                      <form class="" action="/product-largecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post">
+                        @csrf
+                        @if (session()->has('login_ID'))
+                          @if (decrypt(session()->get('login_ID')) == $value->comment_id)
+                            <a href="/largcomment/{{$value->largecomment_num}}/{{$value->largcomm_item}}">
+                              <button class="del_comment" type="button" name="button">x</button>
+                            </a>
+                          @endif
+                        @endif
+                      </form>
                       <form class="" action="/product-recomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if(session()->has('login_ID'))
@@ -530,8 +547,8 @@ function largcomments(data) {
                           @endif
                         @endif
                       </form>
-                      </div>
                     </div>
+                  </div>
 
                 @endforeach
               </div>

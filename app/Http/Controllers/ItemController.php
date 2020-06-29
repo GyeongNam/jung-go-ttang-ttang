@@ -12,6 +12,7 @@ use App\Auction;
 use App\Favorite;
 use App\Comment;
 use App\Enditem;
+use App\Largecomment;
 use Image;
 use Session;
 use DB;
@@ -280,17 +281,28 @@ class ItemController extends Controller
     $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
     $like=Favorite::select('favorite_itemnum')->where(['favorite_itemnum'=>$item_number])->get()->count();
     $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
+
+    $largcommentitem =collect([]);
+    for ($i=0; $i <count($commentitem) ; $i++) {
+      $largcommentitem->push(Largecomment::select('*')->where(['largecomm_item'=>$commentitem[$i]->comment_num])->orderby('largecomment_num', 'desc')->get());
+    }
+
     if(session()->has('login_ID')){
       $likeheart = Favorite::select('*')->where(['favorite_itemnum'=>$item_number, 'favorite_name'=>decrypt($id)])->get()->count();
     }
     else {
       $likeheart = 0;
     }
+    $lacount = Largecomment::select('*')->join('comment', 'largecomment.largecomm_item','=', 'comment.comment_num')->get()->count();
 
     Item::where(['item_number'=>$item_number])->update([
       'visit_count'=> $count[0]->visit_count + 1,
     ]);
+    // echo $lacount;
+    // [코멘트 번호][같은 코멘트 번호의 댓글]
+    // echo $largcommentitem.'<br>';
       return view('product-detail', [
+        'lacount'=>$lacount,
         'myproduct' => $myproduct,
         'id' => encrypt($myproduct[0]->seller_id),
         'data'=>$data,
@@ -298,6 +310,7 @@ class ItemController extends Controller
         'max'=>$maxs,
         'count'=>$count,
         'commentitem'=>$commentitem,
+        'largcommentitem'=>$largcommentitem,
         'likeheart'=>$likeheart,
         'like'=>$like
       ]);
@@ -370,7 +383,7 @@ class ItemController extends Controller
     }
 
   public function removes($item_number, $id){
-    Enditem::where(['end_num'=>$item_number])->delete();
+
     $data = Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->get();
     Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->delete();
     $path = public_path('/img/item/'.$data[0]->item_picture);
@@ -404,6 +417,7 @@ class ItemController extends Controller
   }
 
   public function commentremove($comment_num, $comm_item){
+    Largecomment::where(['largecomm_item'=> $comment_num])->delete();
     $id = session() -> get('login_ID');
     Comment::where([
       'comment_num' => $comment_num,
@@ -413,6 +427,16 @@ class ItemController extends Controller
       return redirect()->back();
       // echo $comment_num;
       // echo $comm_item;
+  }
+
+  public function lecommentremove($largecomment_num){
+    $id = session() -> get('login_ID');
+      Largecomment::where([
+        'largecomm_item' => $largcomm_item,
+        'largecomment_num' => $largecomment_num,
+        'largecomment_id' =>decrypt($id)
+      ])->delete();
+      return redirect()->back();
   }
 
   public function comment(Request $request, $item_number){
@@ -431,12 +455,42 @@ class ItemController extends Controller
   public function recomment(Request $request, $item_number, $commentnum){
    $id = session() -> get('login_ID');
    $comment = $request->input('recomment_texts');
-   Comment::where(['comment_id'=>decrypt($id),'comment_num'=>$commentnum, 'comm_item'=>$item_number])->update([
+   Comment::where([
+     'comment_id'=>decrypt($id),
+     'comment_num'=>$commentnum,
+    'comm_item'=>$item_number])->update([
      'comments'=>$comment,
      'time'=>date('Y-m-d')
    ]);
    return redirect('/product-detail/'.$item_number);
   }
+
+  public function largcomment(Request $request, $item_number, $commentnum){
+    // echo 'hellop';
+    $id = session() -> get('login_ID');
+    $largecomment = $request->input('lecomment_texts');
+    // echo $largecomment;
+    $largcomment = new Largecomment([
+      'largecomments'=>$largecomment,
+      'largecomment_item'=>$commentnum,
+      'largecomment_id'=>decrypt($id),
+      'largetime'=>date('Y-m-d')
+    ]);
+    $largcomment->save();
+   return redirect('/product-detail/'.$item_number);
+  }
+
+  public function lecomment(Request $request, $largecomment_num, $commentnum, $largecomment){
+   $id = session() -> get('login_ID');
+   $comment = $request->input('lecomment_texts');
+   Largecomment::where([
+     'largecomment_id'=>decrypt($id),
+     'largecomment_num'=>$largecomment_num,
+     'largecomm_item'=>$largecomm_item])->update([
+     'largecomments'=>$largecomment,
+     'largetime'=>date('Y-m-d')
+   ]);
+ }
 
   public function manageritem(Request $request){
     $count = DB::table('police')->select('item_number2')->groupBy('item_number2')->count();
@@ -457,7 +511,6 @@ class ItemController extends Controller
       'count'=>$count
     ]);
   }
-
   public function police(Request $request,$item_number){
     $wan =DB::table('police')-> insert([
       'item_number2'=>$item_number
