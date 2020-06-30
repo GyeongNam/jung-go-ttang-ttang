@@ -305,6 +305,7 @@ function commentliketoggle() {
                   {{-- // 버튼 추가 --}}
                   <div class="bt-Wla" style="float:right;">
                     <form class="" action="/police/{{$myproduct[0]->item_number}}" method="post">
+                      @csrf
                       <div class="Wla_click">
                         <button   class="unWla" type="submit" name="police" value="{{$myproduct[0]->item_number}}">
                           <i class="fas fa-exclamation-circle"></i>
