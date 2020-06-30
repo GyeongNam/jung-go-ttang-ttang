@@ -13,6 +13,10 @@
 @endsection
 
 @section('content')
+  <script type="text/javascript">
+  @if (Session::has('message'))
+     alert("{{Session::get('message')}}");
+   </script>
     <a href="/sasa">여기입니다.</a>
   <div class="speace">
     <div class="article">

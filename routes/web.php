@@ -87,7 +87,7 @@ Route::get('/','ItemController@mainview');
 Route::get('/sasa','ItemController@sasa');
 
 // item Controller
-Route::post('/product', 'ItemController@store');
+Route::post('/product', 'ItemController@store')->middleware('police');
 Route::get('/product-detail/{item_number}', 'ItemController@itemview');
 Route::post('/police/{item_number}', 'ItemController@police')->middleware('login');
 Route::post('/product-comment/{item_number}', 'ItemController@comment')->middleware('login');
@@ -102,7 +102,7 @@ Route::get('/remove/{item_number}/{id}', 'ItemController@removes')->middleware('
 //Route::get('/', 'ItemController@mainview');
 Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
 Route::get('/manclothing', 'ItemController@category');
-Route::post('/product-Modifystore', 'ItemController@product_update')->middleware('login');
+Route::post('/product-Modifystore', 'ItemController@product_update')->middleware('login','police');
 Route::get('/product-Modify', 'ItemController@sending_num');
 Route::get('/wish_lst', 'ItemController@favorite_item')->middleware('login');
 Route::get('/wish_list', 'ItemController@wish_itempg')->middleware('login');
@@ -110,8 +110,8 @@ Route::get('/wish_list', 'ItemController@wish_itempg')->middleware('login');
 
 // auction Controller
 // Route::post(/auction_in, 'AuctionController@auction_in');
-Route::get('/bidding-info/{item_number}', 'AuctionController@sendd')->middleware('login');
-Route::post('/bidding-price', 'AuctionController@biddingprice')->middleware('login');
+Route::get('/bidding-info/{item_number}', 'AuctionController@sendd')->middleware('login','police');
+Route::post('/bidding-price', 'AuctionController@biddingprice')->middleware('login','police');
 // mail & getimagesizefromstring
 Route::post('/selectid', 'UserController@selectid');
 Route::post('/selectpw', 'UserController@selectpw');
