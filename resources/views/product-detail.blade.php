@@ -230,7 +230,25 @@ likhet.src="/img/heart.png";
 });
 }
 </script> --}}
+<script type="text/javascript">
+function commentliketoggle() {
+  var likhet = document.getElementById('likecoment');
+  var data =  1{{Session::has("login_ID")}};
+  var carheart = {{$commentlike}}
+  //console.log(dsds);
 
+  if (data == 1) {
+    alert('로그인이 필요합니다!');
+    return false;
+  }
+  if(carheart ==1) {
+    alert("댓글을 좋아합니다.");
+  }
+  else{
+    alert("좋아요 삭제!");
+  }
+}
+</script>
 @endsection
 @section('content')
   <div class="content">
@@ -515,7 +533,12 @@ likhet.src="/img/heart.png";
                           <p>{{$value->comments}}</p>
                         </div>
                         <div class="largecommentgood">
-                          <button id="likecoment" type="button" name="button"><img  id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
+                          <button id="comentlike" type="button" name="button" onclick="commentliketoggle()">
+                          @if($value->$commentlike <1)
+                            <img id="likecoment" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
+                          @else
+                            <img id="likecoment" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
+                          @endif
                           </button>
                           @if($value->commentlike != 0)
                             <span>{{$value->commentlike}}</span>
@@ -619,6 +642,7 @@ likhet.src="/img/heart.png";
       </div>
     </div>
   </div>
+
   <script type="text/javascript">
   //comment textarea 체크
   $('.comment_text').keyup(function (e){

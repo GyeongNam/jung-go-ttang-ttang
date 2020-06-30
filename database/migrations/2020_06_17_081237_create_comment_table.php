@@ -17,7 +17,6 @@ class CreateCommentTable extends Migration
             $table->bigIncrements('comment_num')->unique();
             $table->date('time');
             $table->string('comments');
-            $table->bigInteger('commentlike')->nullable();
             $table->timestamps();
             $table->rememberToken();
         });
