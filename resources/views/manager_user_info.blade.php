@@ -191,10 +191,11 @@
               <h4>회원정보</h4>
               <form action="/warning/{{$mana[0]->ID}}" method="post">
                 @csrf
-                <button type="submit" name="button1" style="float:right;" class="btn btn-warning" id="warn_but">경고</button>
+                <button type="submit" name="button1" style="float:right;" class="btn btn-danger" id="warn_but">경고</button>
               </form>
               <form class="" action="/ban/{{$mana[0]->ID}}" method="post">
-                <button type="" name="button2" style="float:right;" class="btn btn-danger" id="warn_but1">정지</button>
+                @csrf
+                <button type="" name="button2" style="float:right;" class="btn btn-info" id="warn_but1">정지풀기</button>
               </form>
               <table class="table-bordered table table-hover table-responsive"  style="width:40%;" >
                 <tr>

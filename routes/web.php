@@ -87,22 +87,22 @@ Route::get('/','ItemController@mainview');
 Route::get('/sasa','ItemController@sasa');
 
 // item Controller
-Route::post('/product', 'ItemController@store');
+Route::post('/product', 'ItemController@store')->middleware('police');
 Route::get('/product-detail/{item_number}', 'ItemController@itemview');
 Route::post('/police/{item_number}', 'ItemController@police')->middleware('login');
 Route::post('/product-comment/{item_number}', 'ItemController@comment')->middleware('login');
 Route::post('/product-largecomment/{largecomment}/{commentnum}', 'ItemController@largcomment')->middleware('login');
 
 Route::post('/product-recomment/{item_number}/{commentnum}','ItemController@recomment')->middleware('login');
-Route::post('/product-lecomment/{item_number}/{largecomment}','ItemController@lecomment')->middleware('login');
+Route::post('/product-lecomment/{item_number}/{commentnum}/{largecomment_num}','ItemController@lecomment')->middleware('login');
 Route::get('/recomment/{comment_num}/{comm_item}', 'ItemController@commentremove')->middleware('login');
-Route::get('/largcomment/{largecomment_num}/{largecomm_item}', 'ItemController@lecommentremove')->middleware('login');
+Route::get('/largcomment/{largecomm_item}/{largecomment_num}', 'ItemController@lecommentremove')->middleware('login');
 Route::get('/wishitem_remove/{favorite_itemnum}/{favorite_name}', 'ItemController@wishitem_remove')->middleware('login');
 Route::get('/remove/{item_number}/{id}', 'ItemController@removes')->middleware('login');
 //Route::get('/', 'ItemController@mainview');
 Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
 Route::get('/manclothing', 'ItemController@category');
-Route::post('/product-Modifystore', 'ItemController@product_update')->middleware('login');
+Route::post('/product-Modifystore', 'ItemController@product_update')->middleware('login','police');
 Route::get('/product-Modify', 'ItemController@sending_num');
 Route::get('/wish_lst', 'ItemController@favorite_item')->middleware('login');
 Route::get('/wish_list', 'ItemController@wish_itempg')->middleware('login');
@@ -110,8 +110,8 @@ Route::get('/wish_list', 'ItemController@wish_itempg')->middleware('login');
 
 // auction Controller
 // Route::post(/auction_in, 'AuctionController@auction_in');
-Route::get('/bidding-info/{item_number}', 'AuctionController@sendd')->middleware('login');
-Route::post('/bidding-price', 'AuctionController@biddingprice')->middleware('login');
+Route::get('/bidding-info/{item_number}', 'AuctionController@sendd')->middleware('login','police');
+Route::post('/bidding-price', 'AuctionController@biddingprice')->middleware('login','police');
 // mail & getimagesizefromstring
 Route::post('/selectid', 'UserController@selectid');
 Route::post('/selectpw', 'UserController@selectpw');
@@ -122,3 +122,4 @@ Route::get('/manager_user', 'UserController@manager');
 Route::get('/manager_user_info/{id}',  'UserController@managerINFO');
 Route::get('/manager_item','ItemController@manageritem');
 Route::post('/warning/{id}','UserController@warning');
+Route::post('/ban/{id}','UserController@ban');

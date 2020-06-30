@@ -11,6 +11,7 @@ class Largecomment extends Model
       'largecomment_num',
       'largetime',
       'largecomments',
+      'commentlike',
       'largecomment_id',
       'largecomm_item'
     ];
