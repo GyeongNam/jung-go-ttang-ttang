@@ -523,76 +523,90 @@ class ItemController extends Controller
   }
 
   public function sasa(){
-    $endsize = collect([]);
     $item_number = Item::select('item_number')->where(['item_success'=> 0])->get();
     for($i = 0; $i < count($item_number); $i++){
       $Enditem = Enditem::select('*')->where(['end_num'=>$item_number[$i]->item_number])->get();
-      $endsize->push($Enditem);
     }
-    $endcount=count($endsize);
-    if($endsize->isNotEmpty()){
-
-      for($j=0; $j<$endcount; $j++){
-
-      $end3 = $endsize[$j][0]->success_date;
-      $Endday = Enditem::select('*')->where('success_date', '<=', $end3)->get();
-      $end2 = $endsize[$j][0]->end_num;
-      // echo $Endday;
-      // echo $endsize[$j][0]->success_date;
-      // echo date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ));
-      // echo date($endsize[$j][0]->success_date);
-        if(date("Y-m-d") > date($endsize[$j][0]->success_date)){
-          if($endsize[$j][0]->success_user1 != null){
-            if( date('Y-m-d') >= date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ))) {
-              $endsize = Enditem::select('*')->
-              where('success_date', '<=', $endsize[$j][0]->success_date)->update([
-                'success_user1' => null,
-                'buyer'=> $endsize[$j][0]->success_user2,
-                'success_date' => date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ))
+    $Endday = Enditem::select('*')->where('success_date', '<=', date('Y-m-d'))->get();
+    for($j=0; $j<count($Endday); $j++){
+    if($Endday->isNotEmpty()){
+      if(!Empty($Endday[$j])){
+        if($Endday[$j]->success_user1 != null){
+          if( date('Y-m-d') >= date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))) {
+            // echo $j,
+            // $Endday[$j]->success_date.'<br>';
+            Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
+              'success_user1' => null,
+              'buyer'=> $Endday[$j]->success_user2,
+              'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
+            ]);
+            // echo "->1".'<br>';
+            if($Endday[$j]->success_user2 == null
+            && $Endday[$j]->success_user3 == null
+            && $Endday[$j]->success_user4 == null
+            && $Endday[$j]->success_user5 == null) {
+              Item::where(['item_number' =>$Endday[$j]->end_num])->update([
+                'success' => 0
               ]);
             }
           }
-          elseif($endsize[$j][0]->success_user1 == null && $endsize[$j][0]->success_user2 != null){
-            $endsize = Enditem::select('*')->
-            where('success_date', '<=', $endsize[$j][0]->success_date)->update([
-              'success_user2' => null,
-              'buyer'=> $endsize[$j][0]->success_user3,
-              'success_date' => date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ))
-            ]);
-          }
-          elseif($endsize[$j][0]->success_user2 == null && $endsize[$j][0]->success_user3 != null){
-            $endsize = Enditem::select('*')->
-            where('success_date', '<=', $endsize[$j][0]->success_date)->update([
-              'success_user3' => null,
-              'buyer'=> $endsize[$j][0]->success_user4,
-              'success_date' => date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ))
-            ]);
-          }
-          elseif($endsize[$j][0]->success_user3 == null && $endsize[$j][0]->success_user4 != null){
-            $endsize = Enditem::select('*')->
-            where('success_date', '<=', $endsize[$j][0]->success_date)->update([
-              'success_user4' => null,
-              'buyer'=> $endsize[$j][0]->success_user5,
-              'success_date' => date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ))
-            ]);
-          }
-          elseif($endsize[$j][0]->success_user4 == null && $endsize[$j][0]->success_user5 != null){
-            $endsize = Enditem::select('*')->
-            where('success_date', '<=', $endsize[$j][0]->success_date)->update([
-              'success_user5' => null,
-              'success_date' => date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ))
-            ]);
-            // if($endsize[$j][0]->end_num )
-            Item::where(['item_number' =>  $end2])->update([
+        }
+        elseif($Endday[$j]->success_user1 == null && $Endday[$j]->success_user2 != null){
+          Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
+            'success_user2' => null,
+            'buyer'=> $Endday[$j]->success_user3,
+            'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
+          ]);
+          if($Endday[$j]->success_user3 == null
+          && $Endday[$j]->success_user4 == null
+          && $Endday[$j]->success_user5 == null) {
+            Item::where(['item_number' =>$Endday[$j]->end_num])->update([
               'success' => 0
             ]);
           }
-          elseif($endsize[$j][0]->success_user1 == null
-          && $endsize[$j][0]->success_user2 == null
-          && $endsize[$j][0]->success_user3 == null
-          && $endsize[$j][0]->success_user4 == null
-          && $endsize[$j][0]->success_user5 == null) {
-            Item::where(['item_number' =>  $end2])->update([
+        }
+        elseif($Endday[$j]->success_user2 == null && $Endday[$j]->success_user3 != null){
+          Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
+            'success_user3' => null,
+            'buyer'=> $Endday[$j]->success_user4,
+            'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
+          ]);
+          if($Endday[$j]->success_user4 == null
+          && $Endday[$j]->success_user5 == null) {
+            Item::where(['item_number' =>$Endday[$j]->end_num])->update([
+              'success' => 0
+            ]);
+          }
+        }
+        elseif($Endday[$j]->success_user3 == null && $Endday[$j]->success_user4 != null){
+          Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
+            'success_user4' => null,
+            'buyer'=> $Endday[$j]->success_user5,
+            'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
+          ]);
+          if($Endday[$j]->success_user5 == null) {
+            Item::where(['item_number' =>$Endday[$j]->end_num])->update([
+              'success' => 0
+            ]);
+          }
+        }
+        elseif($Endday[$j]->success_user4 == null && $Endday[$j]->success_user5 != null){
+          Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
+            'success_user5' => null,
+            'buyer'=> null,
+            'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
+          ]);
+          // if($Endday[$j]->end_num )
+          Item::where(['item_number' =>  $Endday[$j]->end_num])->update([
+            'success' => 0
+          ]);
+          }
+          elseif ($Endday[$j]->success_user1 == null
+          && $Endday[$j]->success_user2 == null
+          && $Endday[$j]->success_user3 == null
+          && $Endday[$j]->success_user4 == null
+          && $Endday[$j]->success_user5 == null) {
+            Item::where(['item_number' =>$Endday[$j]->end_num])->update([
               'success' => 0
             ]);
           }

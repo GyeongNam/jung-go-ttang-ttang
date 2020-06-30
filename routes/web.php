@@ -84,7 +84,7 @@ Route::get('/Servicecenter','UserController@qna');
 Route::get('/','ItemController@mainview');
 
 
-Route::get('/sasa','ItemController@sasa');
+
 
 // item Controller
 Route::post('/product', 'ItemController@store')->middleware('police');
@@ -123,3 +123,7 @@ Route::get('/manager_user_info/{id}',  'UserController@managerINFO');
 Route::get('/manager_item','ItemController@manageritem');
 Route::post('/warning/{id}','UserController@warning');
 Route::post('/ban/{id}','UserController@ban');
+
+
+//fann_test
+// Route::get('/sasa','ItemController@sasa');
