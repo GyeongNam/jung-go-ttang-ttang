@@ -475,7 +475,6 @@ class ItemController extends Controller
     $largcomment = new Largecomment([
       'largecomments'=>$largecomment,
       'largecomm_item'=>$commentnum,
-      'commentlike'=>$commentlike,
       'largecomment_id'=>decrypt($id),
       'largetime'=>date('Y-m-d')
     ]);
@@ -489,10 +488,6 @@ class ItemController extends Controller
    Largecomment::where([
      'largecomment_id'=>decrypt($id),
      'largecomment_num'=>$largecomment_num,
-<<<<<<< HEAD
-     'commentlike'=>$commentlike,
-=======
->>>>>>> 3338ca57bba12f90d6fa34bb9453de17ba99a326
      'largecomm_item'=>$commentnum])->update([
      'largecomments'=>$largecomment,
      'largetime'=>date('Y-m-d')

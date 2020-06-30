@@ -17,7 +17,7 @@ class CreateLargecommentTable extends Migration
       $table->bigIncrements('largecomment_num');
       $table->date('largetime');
       $table->string('largecomments');
-      $table->bigInteger('commentlike');
+      $table->bigInteger('commentlike')->nullable();
       $table->timestamps();
     });
     Schema::table('largecomment', function (Blueprint $table){
