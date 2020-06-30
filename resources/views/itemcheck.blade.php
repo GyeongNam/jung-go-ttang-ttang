@@ -202,10 +202,6 @@ $(function(){
        <!--</div>-->
          <div class="nak_naeyong">
            낙찰!!
-           <div class="nak_sunwe">
-             순위
-           </div>
-
            <div class="nak_name">
              <div class="nak_seller">
                경매 판매자 :
@@ -223,7 +219,7 @@ $(function(){
              시간
            </div>
            <div class="nak_date">
-             1일 이내에 거래 완료를 하지 않으면 다음 낙찰 대기자에게 상품이 넘어갑니다.
+             2일 이내에 거래 완료를 하지 않으면 다음 낙찰 대기자에게 상품이 넘어갑니다.
            </div>
          </div>
        </div>
