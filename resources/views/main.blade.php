@@ -13,6 +13,7 @@
 @endsection
 
 @section('content')
+    <a href="/sasa">여기입니다.</a>
   <div class="speace">
     <div class="article">
       <div class="right_side_form">
@@ -102,7 +103,6 @@
 
             </div>
           </div>
-
           <!--제품 정보 표시-->
           <div class="product">
             <div class="categorybar">

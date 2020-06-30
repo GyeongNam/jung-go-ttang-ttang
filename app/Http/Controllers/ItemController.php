@@ -492,7 +492,7 @@ class ItemController extends Controller
      'largecomments'=>$largecomment,
      'largetime'=>date('Y-m-d')
    ]);
- }
+  }
 
   public function manageritem(Request $request){
     $count = DB::table('police')->select('item_number2')->groupBy('item_number2')->count();
@@ -513,10 +513,90 @@ class ItemController extends Controller
       'count'=>$count
     ]);
   }
+
   public function police(Request $request,$item_number){
     $wan =DB::table('police')-> insert([
       'item_number2'=>$item_number
     ]);
     return back();
+  }
+
+  public function sasa(){
+    $endsize = collect([]);
+    $item_number = Item::select('item_number')->where(['item_success'=> 0])->get();
+    for($i = 0; $i < count($item_number); $i++){
+      $Enditem = Enditem::select('*')->where(['end_num'=>$item_number[$i]->item_number])->get();
+      $endsize->push($Enditem);
+    }
+    $endcount=count($endsize);
+    if($endsize->isNotEmpty()){
+
+      for($j=0; $j<$endcount; $j++){
+
+      $end3 = $endsize[$j][0]->success_date;
+      $Endday = Enditem::select('*')->where('success_date', '<=', $end3)->get();
+      $end2 = $endsize[$j][0]->end_num;
+      // echo $Endday;
+      // echo $endsize[$j][0]->success_date;
+      // echo date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ));
+      // echo date($endsize[$j][0]->success_date);
+        if(date("Y-m-d") > date($endsize[$j][0]->success_date)){
+          if($endsize[$j][0]->success_user1 != null){
+            if( date('Y-m-d') >= date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ))) {
+              $endsize = Enditem::select('*')->
+              where('success_date', '<=', $endsize[$j][0]->success_date)->update([
+                'success_user1' => null,
+                'buyer'=> $endsize[$j][0]->success_user2,
+                'success_date' => date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ))
+              ]);
+            }
+          }
+          elseif($endsize[$j][0]->success_user1 == null && $endsize[$j][0]->success_user2 != null){
+            $endsize = Enditem::select('*')->
+            where('success_date', '<=', $endsize[$j][0]->success_date)->update([
+              'success_user2' => null,
+              'buyer'=> $endsize[$j][0]->success_user3,
+              'success_date' => date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ))
+            ]);
+          }
+          elseif($endsize[$j][0]->success_user2 == null && $endsize[$j][0]->success_user3 != null){
+            $endsize = Enditem::select('*')->
+            where('success_date', '<=', $endsize[$j][0]->success_date)->update([
+              'success_user3' => null,
+              'buyer'=> $endsize[$j][0]->success_user4,
+              'success_date' => date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ))
+            ]);
+          }
+          elseif($endsize[$j][0]->success_user3 == null && $endsize[$j][0]->success_user4 != null){
+            $endsize = Enditem::select('*')->
+            where('success_date', '<=', $endsize[$j][0]->success_date)->update([
+              'success_user4' => null,
+              'buyer'=> $endsize[$j][0]->success_user5,
+              'success_date' => date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ))
+            ]);
+          }
+          elseif($endsize[$j][0]->success_user4 == null && $endsize[$j][0]->success_user5 != null){
+            $endsize = Enditem::select('*')->
+            where('success_date', '<=', $endsize[$j][0]->success_date)->update([
+              'success_user5' => null,
+              'success_date' => date("Y-m-d",strtotime($endsize[$j][0]->success_date."+2 day" ))
+            ]);
+            // if($endsize[$j][0]->end_num )
+            Item::where(['item_number' =>  $end2])->update([
+              'success' => 0
+            ]);
+          }
+          elseif($endsize[$j][0]->success_user1 == null
+          && $endsize[$j][0]->success_user2 == null
+          && $endsize[$j][0]->success_user3 == null
+          && $endsize[$j][0]->success_user4 == null
+          && $endsize[$j][0]->success_user5 == null) {
+            Item::where(['item_number' =>  $end2])->update([
+              'success' => 0
+            ]);
+          }
+        }
+      }
+    }
   }
 }

@@ -227,9 +227,10 @@ $(function(){
                         <td>{{$value->item_deadline}}</td>
                         @if ($value->success !=0)
                         <td>낙찰완료</td>
-                        @endif
+                        @else
                         <td>진행중</td>
-                        <td>{{$count}}</td>
+                        @endif
+                        <td>{{$count[$key]}}</td>
                       </tr>
                       @endforeach
 

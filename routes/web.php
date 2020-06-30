@@ -84,10 +84,12 @@ Route::get('/Servicecenter','UserController@qna');
 Route::get('/','ItemController@mainview');
 
 
+Route::get('/sasa','ItemController@sasa');
+
 // item Controller
 Route::post('/product', 'ItemController@store');
 Route::get('/product-detail/{item_number}', 'ItemController@itemview');
-Route::post('/product-detail/{item_number}', 'ItemController@police');
+Route::post('/police/{item_number}', 'ItemController@police')->middleware('login');
 Route::post('/product-comment/{item_number}', 'ItemController@comment')->middleware('login');
 Route::post('/product-largecomment/{largecomment}/{commentnum}', 'ItemController@largcomment')->middleware('login');
 
