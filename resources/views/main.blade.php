@@ -19,7 +19,6 @@
      alert("{{Session::get('message')}}");
    </script>
   @endif
-    <a href="/sasa">여기입니다.</a>
   <div class="speace">
     <div class="article">
       <div class="right_side_form">
