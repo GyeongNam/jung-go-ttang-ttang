@@ -265,7 +265,7 @@ $(function(){
      @endif
 
       @endif
-    @else
+      @else
       <div class="nakchalgood">
         낙찰에 실패했습니다.
       </div>
@@ -299,7 +299,6 @@ $(function(){
          <div class="nak_p_lab">
            @if(!Empty($users[$key][0]->success_price1))
            1위:{{$users[$key][0]->success_price1}} @if(!Empty($rank1[$key][0]))원 {{$rank1[$key][0]->buyer_ID}}
-            <a href="#"><button type="button" name="button">낙찰취소</button></a>
            @endif
          @endif
          <div class="nak_p_lab">
