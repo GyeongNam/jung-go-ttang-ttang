@@ -64,6 +64,9 @@ Route::get('/manager_user', function(){
 Route::get('/manager_tok', function(){
     return view('manager_tok');
 });
+Route::get('/manager_policy', function(){
+    return view('manager_policy');
+});
 Route::get('/sign_rull', function () {
     return view('login.sign_rull');
 });
