@@ -512,11 +512,9 @@ function largcomments(data) {
                           <div class="largvalue_comment">
                             <p>{{$largcommentitem[$key][$i]->largecomments}}</p>
                           </div>
-
                           <div class="largecommentgood">
-                            
-                          </div>
 
+                          </div>
                           <form class="" action="/product-lecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}/{{$largcommentitem[$key][$i]->largecomment_num}}" method="post">
                             @csrf
                             @if (session()->has('login_ID'))
