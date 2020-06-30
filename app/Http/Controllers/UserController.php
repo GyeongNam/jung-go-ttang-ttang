@@ -176,7 +176,7 @@ class UserController extends Controller
     $count = DB::table('banlog')->where(['user_id'=>$id])->count();
     $mana = User::select('ID','name','birthday','gender','phone','email','email_domain','created_at')->where(['id'=>$id])->get();
     $maif = Item::leftjoin('auction', 'items.item_number','=', 'auction.auction_itemnum')->select('item_number','item_name','item_price','buyer_ID')->where(['buyer_ID'=>$id])->get();
-    
+
 
     return view('/manager_user_info',[
       'mana'=>$mana,
@@ -205,7 +205,9 @@ public function warning(Request $request,$id){
       'data'=> $data
     ]);
   }
-  // public function ban(Request $request){
-  //
-  // }
+  public function ban(Request $request,$id){
+    $delete = DB::table('banlog')->where([
+      'user_id' => $id ])-> delete();
+     return back();
+  }
 }
