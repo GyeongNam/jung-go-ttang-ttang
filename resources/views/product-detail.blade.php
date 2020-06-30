@@ -2,6 +2,7 @@
 
 @section('css')
   <link rel="stylesheet" href="/css/product-detail.css">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section('js')
@@ -203,6 +204,32 @@ function largcomments(data) {
   }
 }
 </script>
+
+{{-- <script>
+function toggleImg() {
+var likhet = document.getElementById('likecoment');
+console.log('likhet');
+$.ajax({
+url:"/",
+method: "post",
+dataType:"json",
+data: { : },
+success:function(data){
+
+if(likhet.src.match("heart")) {
+alert("관심항목에 추가되었습니다.");
+likhet.src="/img/b_gkxm.png";
+
+
+}
+else if(likhet.src.match("b_gkxm")) {
+alert("관심항목에서 해제되었습니다.");
+likhet.src="/img/heart.png";
+}
+}
+});
+}
+</script> --}}
 
 @endsection
 @section('content')
@@ -476,7 +503,6 @@ function largcomments(data) {
                   <button type="submit" class="comment_dunglok" name="button">등록</button>
                 </div>
               </form>
-
               <div class="comment_new">
                 @foreach ($commentitem as $key => $value)
                   <div class="create_comment">
@@ -487,6 +513,15 @@ function largcomments(data) {
                         </div>
                         <div class="value_comment">
                           <p>{{$value->comments}}</p>
+                        </div>
+                        <div class="largecommentgood">
+                          <button id="likecoment" type="button" name="button"><img  id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
+                          </button>
+                          @if($value->commentlike != 0)
+                            <span>{{$value->commentlike}}</span>
+                          @else
+                            <span>0</span>
+                          @endif
                         </div>
                         <form class="" action="/product-largecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post">
                           @csrf
@@ -501,46 +536,42 @@ function largcomments(data) {
                             <button type="submit" name="button">답글달기</button>
                           </div>
                         </div>
-                        </form>
-                        @for($i = 0; $i<$lacount; $i++)
-                          @if(!empty($largcommentitem[$key][$i]))
-                        <div class="reaq"></div>
-                        <div class="newlargecomment">
-                          <div class="comment_people">
-                            {{$largcommentitem[$key][$i]->largecomment_id}}
-                          </div>
-                          <div class="largvalue_comment">
-                            <p>{{$largcommentitem[$key][$i]->largecomments}}</p>
-                          </div>
-                          <div class="largecommentgood">
-
-                          </div>
-                          <form class="" action="/product-lecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}/{{$largcommentitem[$key][$i]->largecomment_num}}" method="post">
-                            @csrf
-                            @if (session()->has('login_ID'))
-                              @if (decrypt(session()->get('login_ID')) == $largcommentitem[$key][$i]->largecomment_id)
-                                <div class="delete_area">
-                                  <a href="/largcomment/{{$largcommentitem[$key][$i]->largecomment_num}}/{{$largcommentitem[$key][$i]->largecomm_item}}">
-                                    <button class="" type="button" name="button">X</button>
-                                  </a>
-                                  <button id="reco_btn" class="reco_btn" type="button" name="button" onclick="recomments({{$largcommentitem[$key][$i]->largecomment_num}})">수정하기</button>
-                                </div>
-                                <div id="hidcoment{{$largcommentitem[$key][$i]->largecomment_num}}"class="hiderecomment">
-                                  <div id="reco_texts" class="reco_texts {{$largcommentitem[$key][$i]->largecomment_num}}">
-                                    <textarea class="recomment_text {{$largcommentitem[$key][$i]->largecomment_num}}" name="lecomment_texts" id="lecomment_texts" rows="8" cols="80" placeholder="수정할 답글 입력">{{$largcommentitem[$key][$i]->largecomments}}</textarea>
-                                    <div class="comment_fontlength">
-                                      <div class="sc-fontlength dlqfurrmff">0 / 200</div>
-                                      <button type="submit" name="button">수정완료</button>
+                      </form>
+                      @for($i = 0; $i<$lacount; $i++)
+                        @if(!empty($largcommentitem[$key][$i]))
+                          <div class="reaq"></div>
+                          <div class="newlargecomment">
+                            <div class="comment_people">
+                              {{$largcommentitem[$key][$i]->largecomment_id}}
+                            </div>
+                            <div class="largvalue_comment">
+                              <p>{{$largcommentitem[$key][$i]->largecomments}}</p>
+                            </div>
+                            <form class="" action="/product-lecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}/{{$largcommentitem[$key][$i]->largecomment_num}}" method="post">
+                              @csrf
+                              @if (session()->has('login_ID'))
+                                @if (decrypt(session()->get('login_ID')) == $largcommentitem[$key][$i]->largecomment_id)
+                                  <div class="delete_area">
+                                    <a href="/largcomment/{{$largcommentitem[$key][$i]->largecomment_num}}/{{$largcommentitem[$key][$i]->largecomm_item}}">
+                                      <button class="" type="button" name="button">X</button>
+                                    </a>
+                                    <button id="reco_btn" class="reco_btn" type="button" name="button" onclick="recomments({{$largcommentitem[$key][$i]->largecomment_num}})">수정하기</button>
+                                  </div>
+                                  <div id="hidcoment{{$largcommentitem[$key][$i]->largecomment_num}}"class="hiderecomment">
+                                    <div id="reco_texts" class="reco_texts {{$largcommentitem[$key][$i]->largecomment_num}}">
+                                      <textarea class="recomment_text {{$largcommentitem[$key][$i]->largecomment_num}}" name="lecomment_texts" id="lecomment_texts" rows="8" cols="80" placeholder="수정할 답글 입력">{{$largcommentitem[$key][$i]->largecomments}}</textarea>
+                                      <div class="comment_fontlength">
+                                        <div class="sc-fontlength dlqfurrmff">0 / 200</div>
+                                        <button type="submit" name="button">수정완료</button>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
+                                @endif
                               @endif
-                            @endif
-                          </form>
-                        </div>
+                            </form>
+                          </div>
                         @endif
                       @endfor
-
                       <form class="" action="/product-recomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if(session()->has('login_ID'))

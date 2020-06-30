@@ -282,10 +282,15 @@ class ItemController extends Controller
     $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
     $like=Favorite::select('favorite_itemnum')->where(['favorite_itemnum'=>$item_number])->get()->count();
     $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
-
     $largcommentitem =collect([]);
     for ($i=0; $i <count($commentitem) ; $i++) {
       $largcommentitem->push(Largecomment::select('*')->where(['largecomm_item'=>$commentitem[$i]->comment_num])->orderby('largecomment_num', 'desc')->get());
+    }
+    if(session()->has('login_ID')){
+      $commentlike = Comment::select('commentlike')->where(['comm_item'=>$item_number])->get();
+    }
+    else{
+      $commentlike = 0;
     }
 
     if(session()->has('login_ID')){
@@ -299,6 +304,7 @@ class ItemController extends Controller
     Item::where(['item_number'=>$item_number])->update([
       'visit_count'=> $count[0]->visit_count + 1,
     ]);
+    // echo $commentlike;
     // echo $lacount;
     // [코멘트 번호][같은 코멘트 번호의 댓글]
     // echo $largcommentitem.'<br>';
@@ -312,8 +318,10 @@ class ItemController extends Controller
         'count'=>$count,
         'commentitem'=>$commentitem,
         'largcommentitem'=>$largcommentitem,
+        'commentlike'=>$commentlike,
         'likeheart'=>$likeheart,
         'like'=>$like
+
       ]);
   }
 
@@ -446,6 +454,7 @@ class ItemController extends Controller
     $newcomment = new Comment([
       'comment_id'=>decrypt($id),
       'comm_item'=>$item_number,
+      'commentlike'=>0,
       'comments'=>$comment,
       'time'=>date('Y-m-d')
     ]);

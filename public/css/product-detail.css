@@ -174,7 +174,10 @@ a {
 .del_comment{
   border:none;
 }
-
+.largecommentgood{
+  display: flex;
+  width: 200px;
+}
 /* 댓글 창*/
 
 .deal_cat_location{
