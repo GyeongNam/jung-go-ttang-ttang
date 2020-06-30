@@ -78,7 +78,7 @@ $(function(){
      <b>내가올린경매</b></button>
      </div>
      <div class="table1">
-     <table width="100%"   align = "center" class="tab" >
+     <table width="100%" align = "center" class="tab" >
        <th width="30%"><b>목록</b></th>
        <th width="30%"><b>입찰가격</b></th>
        <th width="20%"><b>진행상태</b> </th>
@@ -105,25 +105,28 @@ $(function(){
            </td>
            @else
          <td width="20%">
-             낙찰
+             경매종료
              <div>
                <button type="button" id="bid_info_btn" class="bid_info_btn" onclick="modal_mya({{$value->item_number}})" name="button">낙찰정보 확인</button>
              </div>
          </td>
-
            @endif
+
            @if (!Empty($end[$key][0]->buyer))
-           @if (decrypt(session('login_ID')) == $end[$key][0]->buyer)
+             @if (decrypt(session('login_ID')) == $end[$key][0]->buyer)
+               <td class="yesorno">
+                 <span>O</span>
+               </td>
+             @else
              <td class="yesorno">
-               <span>O</span>
+               X
              </td>
-           @else
+           @endif
+         @elseif($end[$key][0]->buyer == null)
            <td class="yesorno">
              X
            </td>
-           @endif
-         @endif
-         </tr>
+          @endif
        </tbody>
        </table>
       @endforeach
@@ -224,11 +227,11 @@ $(function(){
            </div>
          </div>
        </div>
-     @else
-     <div class="nakchalgood">
-       낙찰에 실패했습니다.
-     </div>
 
+    @else
+      <div class="nakchalgood">
+        낙찰에 실패했습니다.
+      </div>
      @if(!Empty($end[$key][0]->success_user2))
      @if(decrypt(session('login_ID')) == $end[$key][0]->success_user2)
        <div class="nak_sunwe">
@@ -240,7 +243,7 @@ $(function(){
      @if(!Empty($end[$key][0]->success_user3))
      @if(decrypt(session('login_ID')) == $end[$key][0]->success_user3)
        <div class="nak_sunwe">
-       순위 2위
+       순위 3위
        </div>
      @endif
      @endif
@@ -248,15 +251,28 @@ $(function(){
      @if(!Empty($end[$key][0]->success_user4))
      @if(decrypt(session('login_ID')) == $end[$key][0]->success_user4)
        <div class="nak_sunwe">
-       순위 2위
+       순위 4위
        </div>
      @endif
      @endif
 
+     @if(!Empty($end[$key][0]->success_user5))
+     @if(decrypt(session('login_ID')) == $end[$key][0]->success_user5)
+       <div class="nak_sunwe">
+       순위 5위
+       </div>
+     @endif
+     @endif
+
+      @endif
+    @else
+      <div class="nakchalgood">
+        낙찰에 실패했습니다.
+      </div>
 
       @endif
      </div>
-    @endif
+
      <div class="">
        <button class="close" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button">돌아가기</button>
        <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
@@ -283,6 +299,7 @@ $(function(){
          <div class="nak_p_lab">
            @if(!Empty($users[$key][0]->success_price1))
            1위:{{$users[$key][0]->success_price1}} @if(!Empty($rank1[$key][0]))원 {{$rank1[$key][0]->buyer_ID}}
+            <a href="#"><button type="button" name="button">낙찰취소</button></a>
            @endif
          @endif
          <div class="nak_p_lab">
