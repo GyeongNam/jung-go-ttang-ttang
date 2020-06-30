@@ -512,31 +512,32 @@ function largcomments(data) {
                           <div class="largvalue_comment">
                             <p>{{$largcommentitem[$key][$i]->largecomments}}</p>
                           </div>
+                          <form class="" action="/product-lecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}/{{$largcommentitem[$key][$i]->largecomment_num}}" method="post">
+                            @csrf
+                            @if (session()->has('login_ID'))
+                              @if (decrypt(session()->get('login_ID')) == $largcommentitem[$key][$i]->largecomment_id)
+                                <div class="delete_area">
+                                  <a href="/largcomment/{{$largcommentitem[$key][$i]->largecomment_num}}/{{$largcommentitem[$key][$i]->largecomm_item}}">
+                                    <button class="" type="button" name="button">X</button>
+                                  </a>
+                                  <button id="reco_btn" class="reco_btn" type="button" name="button" onclick="recomments({{$largcommentitem[$key][$i]->largecomment_num}})">수정하기</button>
+                                </div>
+                                <div id="hidcoment{{$largcommentitem[$key][$i]->largecomment_num}}"class="hiderecomment">
+                                  <div id="reco_texts" class="reco_texts {{$largcommentitem[$key][$i]->largecomment_num}}">
+                                    <textarea class="recomment_text {{$largcommentitem[$key][$i]->largecomment_num}}" name="lecomment_texts" id="lecomment_texts" rows="8" cols="80" placeholder="수정할 답글 입력">{{$largcommentitem[$key][$i]->largecomments}}</textarea>
+                                    <div class="comment_fontlength">
+                                      <div class="sc-fontlength dlqfurrmff">0 / 200</div>
+                                      <button type="submit" name="button">수정완료</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              @endif
+                            @endif
+                          </form>
                         </div>
                         @endif
                       @endfor
-                      <form class="" action="/product-lecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post">
-                        @csrf
-                        @if (session()->has('login_ID'))
-                          @if (decrypt(session()->get('login_ID')) == $value->comment_id)
-                            <div class="delete_area">
-                              <a href="/recomment/{{$value->comment_num}}/{{$value->comm_item}}">
-                                <button class="del_comment" type="button" name="button">삭제하기</button>
-                              </a>
-                              <button id="reco_btn" class="reco_btn" type="button" name="button" onclick="recomments({{$value->comment_num}})">수정하기</button>
-                            </div>
-                            <div id="hidcoment{{$value->comment_num}}"class="hiderecomment">
-                              <div id="reco_texts" class="reco_texts {{$value->comment_num}}">
-                                <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력">{{$value->comments}}</textarea>
-                                <div class="comment_fontlength">
-                                  <div class="sc-fontlength dlqfurrmff">0 / 200</div>
-                                  <button type="submit" name="button">수정완료</button>
-                                </div>
-                              </div>
-                            </div>
-                          @endif
-                        @endif
-                      </form>
+
                       <form class="" action="/product-recomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if(session()->has('login_ID'))
@@ -561,7 +562,6 @@ function largcomments(data) {
                       </form>
                     </div>
                   </div>
-
                 @endforeach
               </div>
             </div>

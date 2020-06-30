@@ -430,11 +430,11 @@ class ItemController extends Controller
       // echo $comm_item;
   }
 
-  public function lecommentremove($largecomment_num){
+  public function lecommentremove($largecomment_num, $largecomm_item){
     $id = session() -> get('login_ID');
       Largecomment::where([
-        'largecomm_item' => $largcomm_item,
         'largecomment_num' => $largecomment_num,
+        'largecomm_item' => $largecomm_item,
         'largecomment_id' =>decrypt($id)
       ])->delete();
       return redirect()->back();
@@ -482,16 +482,17 @@ class ItemController extends Controller
    return redirect('/product-detail/'.$item_number);
   }
 
-  public function lecomment(Request $request, $largecomment_num, $commentnum, $largecomment){
+  public function lecomment(Request $request, $item_number, $commentnum, $largecomment_num){
    $id = session() -> get('login_ID');
-   $comment = $request->input('lecomment_texts');
+   $largecomment = $request->input('lecomment_texts');
    Largecomment::where([
      'largecomment_id'=>decrypt($id),
      'largecomment_num'=>$largecomment_num,
-     'largecomm_item'=>$largecomm_item])->update([
+     'largecomm_item'=>$commentnum])->update([
      'largecomments'=>$largecomment,
      'largetime'=>date('Y-m-d')
    ]);
+      return redirect('/product-detail/'.$item_number);
   }
 
   public function manageritem(Request $request){
