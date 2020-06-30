@@ -94,7 +94,7 @@ Route::post('/product-comment/{item_number}', 'ItemController@comment')->middlew
 Route::post('/product-largecomment/{largecomment}/{commentnum}', 'ItemController@largcomment')->middleware('login');
 
 Route::post('/product-recomment/{item_number}/{commentnum}','ItemController@recomment')->middleware('login');
-Route::post('/product-lecomment/{item_number}/{commentnum}/{largecomment}','ItemController@lecomment')->middleware('login');
+Route::post('/product-lecomment/{item_number}/{largecomment}','ItemController@lecomment')->middleware('login');
 Route::get('/recomment/{comment_num}/{comm_item}', 'ItemController@commentremove')->middleware('login');
 Route::get('/largcomment/{largecomment_num}/{largecomm_item}', 'ItemController@lecommentremove')->middleware('login');
 Route::get('/wishitem_remove/{favorite_itemnum}/{favorite_name}', 'ItemController@wishitem_remove')->middleware('login');

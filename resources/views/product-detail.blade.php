@@ -515,13 +515,25 @@ function largcomments(data) {
                         </div>
                         @endif
                       @endfor
-                      <form class="" action="/product-largecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}/{{$value->largecomment_num}}" method="post">
+                      <form class="" action="/product-lecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post">
                         @csrf
                         @if (session()->has('login_ID'))
                           @if (decrypt(session()->get('login_ID')) == $value->comment_id)
-                            <a href="/largcomment/{{$value->largecomment_num}}/{{$value->largcomm_item}}">
-                              <button class="del_comment" type="button" name="button">x</button>
-                            </a>
+                            <div class="delete_area">
+                              <a href="/recomment/{{$value->comment_num}}/{{$value->comm_item}}">
+                                <button class="del_comment" type="button" name="button">삭제하기</button>
+                              </a>
+                              <button id="reco_btn" class="reco_btn" type="button" name="button" onclick="recomments({{$value->comment_num}})">수정하기</button>
+                            </div>
+                            <div id="hidcoment{{$value->comment_num}}"class="hiderecomment">
+                              <div id="reco_texts" class="reco_texts {{$value->comment_num}}">
+                                <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력">{{$value->comments}}</textarea>
+                                <div class="comment_fontlength">
+                                  <div class="sc-fontlength dlqfurrmff">0 / 200</div>
+                                  <button type="submit" name="button">수정완료</button>
+                                </div>
+                              </div>
+                            </div>
                           @endif
                         @endif
                       </form>
