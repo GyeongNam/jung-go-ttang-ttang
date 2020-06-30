@@ -468,12 +468,13 @@ class ItemController extends Controller
 
   public function largcomment(Request $request, $item_number, $commentnum){
     // echo 'hellop';
+    // return $commentnum;
     $id = session() -> get('login_ID');
     $largecomment = $request->input('lecomment_texts');
     // echo $largecomment;
     $largcomment = new Largecomment([
       'largecomments'=>$largecomment,
-      'largecomment_item'=>$commentnum,
+      'largecomm_item'=>$commentnum,
       'largecomment_id'=>decrypt($id),
       'largetime'=>date('Y-m-d')
     ]);

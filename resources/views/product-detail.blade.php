@@ -488,7 +488,7 @@ function largcomments(data) {
                         <div class="value_comment">
                           <p>{{$value->comments}}</p>
                         </div>
-                        <form class="" action="/product-lecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post">
+                        <form class="" action="/product-largecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post">
                           @csrf
                           <div class="val_re">
                             <button type="button" name="button" onclick="largcomments({{$value->comment_num}})">답글 쓰기</button>
@@ -515,7 +515,7 @@ function largcomments(data) {
                         </div>
                         @endif
                       @endfor
-                      <form class="" action="/product-largecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post">
+                      <form class="" action="/product-largecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}/{{$value->largecomment_num}}" method="post">
                         @csrf
                         @if (session()->has('login_ID'))
                           @if (decrypt(session()->get('login_ID')) == $value->comment_id)
