@@ -103,7 +103,7 @@ $(function(){
           <span>상담관리</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/manager_tok">
+        <a class="nav-link" href="/manager_policy">
           <i class="fas fa-fw fa-table"></i>
           <span>정책관리</span></a>
       </li>
@@ -206,10 +206,10 @@ $(function(){
                       <tr>
                         <th>아이디</th>
                         <th>이름</th>
-                        <th>핸드폰</th>
-                        <th>상담제목</th>
-                        <th>상담상태</th>
-                        <th>등록일</th>
+                        <th>경고</th>
+                        <th>정지</th>
+                        <th>정지시작일</th>
+                        <th>정지종료일</th>
                       </tr>
                     </thead>
                     <tbody>
