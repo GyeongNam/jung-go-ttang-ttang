@@ -6,7 +6,7 @@
 @endsection
 
 @section('js')
-<script type="text/javascript">
+  <script type="text/javascript">
   function toggleImg() {
     var likhet = document.getElementById('likep');
     var data =  1{{Session::has("login_ID")}};
@@ -208,46 +208,48 @@ function largcomments(data) {
 <script>
 console.log(2);
 function atoggleImg() {
-  var a= 1;
-  var likhet = document.getElementById('likecoment');
-  console.log('likhet');
-  $.ajax({
-    url:"/wish_lst",
-    method: "get",
-    dataType:"json",
-    // data: {  : },
-    success:function(data){
-      console.log(data);
-      if(likhet.src.match("heart")) {
-        alert("관심항목에 추가되었습니다.");
-        likhet.src="/img/b_gkxm.png";
+var a= 1;
+var likhet = document.getElementById('likecoment');
+console.log('likhet');
+$.ajax({
+url:"/wish_lst",
+method: "get",
+dataType:"json",
+// data: {  : },
+success:function(data){
+console.log(data);
+if(likhet.src.match("heart")) {
+alert("관심항목에 추가되었습니다.");
+likhet.src="/img/b_gkxm.png";
 
 
-      }
-      else if(likhet.src.match("b_gkxm")) {
-        alert("관심항목에서 해제되었습니다.");
-        likhet.src="/img/heart.png";
-      }
-    }
-  });
+}
+else if(likhet.src.match("b_gkxm")) {
+alert("관심항목에서 해제되었습니다.");
+likhet.src="/img/heart.png";
+}
+}
+});
 }
 </script> --}}
 <script type="text/javascript">
-function commentliketoggle() {
-  var likhet = document.getElementById('likecoment');
-  var data =  1{{Session::has("login_ID")}};
+function commentliketoggle(data) {
+  var commlike = document.getElementById('likecoment');
+  var login =  1{{Session::has("login_ID")}};
   var carheart = {{$commentlike}}
   //console.log(dsds);
 
-  if (data == 1) {
+  if (login == 1) {
     alert('로그인이 필요합니다!');
     return false;
   }
-  if(carheart ==1) {
-    alert("좋아요 삭제!");
-  }
-  else{
-    alert("댓글을 좋아합니다.");
+  if(login ==11){
+    if(carheart ==1){
+      alert("좋아요 삭제!");
+    }
+    else{
+      alert("댓글을 좋아합니다.");
+    }
   }
 }
 </script>
@@ -535,10 +537,10 @@ function commentliketoggle() {
                         <div class="value_comment">
                           <p>{{$value->comments}}</p>
                         </div>
-                        <form class="" action="/commentlike/{{$value->comment_num}}" method="get">
+                        <form class="" action="/commentlike/{{$value->comment_num}}"method="get">
                           <div class="largecommentgood">
-                            <button id="comentlike" type="submit" name="comlike" onclick="commentliketoggle()">
-                              @if($value->$commentlike <1)
+                            <button id="comentlike" type="submit" name="comlike" value="{{$value->comment_num}}" onclick="commentliketoggle({{$value->comment_num}})">
+                              @if($commentlike<1)
                                 <img id="likecoment" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
                               @else
                                 <img id="likecoment" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">

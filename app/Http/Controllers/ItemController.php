@@ -282,14 +282,14 @@ class ItemController extends Controller
     $maxs =  $max->max('item_price');
     $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
     $like=Favorite::select('favorite_itemnum')->where(['favorite_itemnum'=>$item_number])->get()->count();
-    $likecomment=Commentlike::select('commentlike_number')->where(['commentlike_number'=>$item_number])->get()->count();
     $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
+    $likecomment=Commentlike::select('commentlike_number')->join('comment', 'commentlike.commentlike_number', '=','comment.comment_num')->get()->count();
     $largcommentitem =collect([]);
     for ($i=0; $i <count($commentitem) ; $i++) {
       $largcommentitem->push(Largecomment::select('*')->where(['largecomm_item'=>$commentitem[$i]->comment_num])->orderby('largecomment_num', 'desc')->get());
     }
     if(session()->has('login_ID')){
-      $commentlike = Commentlike::select('*')->where(['commentlike_number'=>$item_number, 'commentlike_name'=>decrypt($id)])->get()->count();
+      $commentlike = Commentlike::select('*')->join('comment', 'commentlike.commentlike_number', '=','comment.comment_num')->get()->count();
     }
     else{
       $commentlike = 0;
@@ -450,7 +450,14 @@ class ItemController extends Controller
       }
 
       public function commentremove($comment_num, $comm_item){
-        Largecomment::where(['largecomm_item'=> $comment_num])->delete();
+        Largecomment::where([
+          'largecomm_item'=> $comment_num
+          ])->delete();
+
+        Commentlike::where([
+          'commentlike_number'=> $comment_num
+          ])->delete();
+
         $id = session() -> get('login_ID');
         Comment::where([
           'comment_num' => $comment_num,
@@ -512,6 +519,8 @@ class ItemController extends Controller
                 'largecomment_id'=>decrypt($id),
                 'largetime'=>date('Y-m-d')
               ]);
+              $largcomment->save();
+              return redirect('/product-detail/'.$item_number);
             }
 
             public function lecomment(Request $request, $item_number, $commentnum, $largecomment_num){
