@@ -206,7 +206,6 @@ $(function(){
                       <tr>
                         <th>아이디</th>
                         <th>이름</th>
-                        <th>경고</th>
                         <th>정지</th>
                         <th>정지시작일</th>
                         <th>정지종료일</th>
@@ -217,7 +216,6 @@ $(function(){
                       <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
                         <td>{{$value->id}}</td>
                         <td>{{$value->name}}</td>
-                        <td>{{$count[$key]}}</td>
                         <td>{{$value->ban}}</td>
                         <td>{{$value->ban_startdate}}</td>
                         <td>{{$value->ban_enddate}}</td>

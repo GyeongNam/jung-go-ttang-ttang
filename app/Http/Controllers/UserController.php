@@ -191,13 +191,24 @@ class UserController extends Controller
   }
 
 public function warning(Request $request,$id){
-  $ban = DB::table('banlog')->insert([
-      'user_id' => $id
-    ]);
 
+    $ids = DB::table('banlog')->select('*')->where(['user_id'=>$id])->get();
+      if (count($ids) == 2) {
+      DB::table('bantime')->insert([
+          'user_id'=>$id,
+          'ban'=> 1,
+          'ban_startdate'=>date("Y-m-d"),
+          'ban_enddate' =>date("Y-m-d",strtotime(" +1day" ))
+        ]);
+      }
+      else {
+        $ban = DB::table('banlog')->insert([
+            'user_id' => $id
+          ]);
+      }
+      // echo $id;
   return back();
 }
-
   public function qna(Request $request){
     $id = session()->get('login_ID');
     if(session()->has('login_ID') != 1){
@@ -211,10 +222,18 @@ public function warning(Request $request,$id){
     ]);
   }
   public function ban(Request $request,$id){
-    $delete = DB::table('banlog')->where([
-      'user_id' => $id ])-> delete();
+
+    $date_de = DB::table('bantime')->select('ban_enddate')->where(['user_id'=>$id])->get();
+    $rede = date("Y-m-d");
+
+      if ($date_de < $rede) {
+         DB::table('bantime')->where(['user_id'=> $id])->delete();
+         $delete = DB::table('banlog')->where([
+           'user_id' => $id ])-> delete();
+       }
      return back();
-  }
+   }
+
     public function graph(Request $request){
       $test = 0;
       $data = Analytics::fetchTotalVisitorsAndPageViews(Period::days(29));
@@ -235,20 +254,14 @@ public function warning(Request $request,$id){
       ]);
     }
     public function policy(Request $request){
-
       $policy = DB::table('bantime')
               ->join('users','users.id','=','bantime.user_id')
               ->select('users.id','users.name','bantime.*')
               ->get();
-      $id=DB::table('banlog')->select('*')->get();
-      $count = collect([]);
-      for ($i=0; $i < count($id) ; $i++) {
-      $count->push(DB::table('banlog')->select('*')->where(['user_id'=>$id[$i]->user_id])->get()->count());
-    }
-
       return view('/manager_policy',[
-        'policy'=> $policy,
-        'count' => $count
+        'policy'=> $policy
       ]);
     }
+
+
 }
