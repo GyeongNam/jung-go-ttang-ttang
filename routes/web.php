@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Events\WebsocketEvent;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,7 @@ Route::get('/sign_rull', function () {
     return view('login.sign_rull');
 });
 Route::get('/cahtroom', function(){
+  broadcast(new WebsocketEvent('some data'));
   return view('cahtroom');
 });
 // user Controller
@@ -134,3 +136,7 @@ Route::get('/manager_main','UserController@graph');
 
 //fann_test
 // Route::get('/sasa','ItemController@sasa');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
