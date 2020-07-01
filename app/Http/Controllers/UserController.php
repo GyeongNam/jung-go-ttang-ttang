@@ -15,6 +15,9 @@ use Image;
 use App\Item;
 use Analytics;
 use Spatie\Analytics\Period;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+
 
 class UserController extends Controller
 {
@@ -213,9 +216,22 @@ public function warning(Request $request,$id){
      return back();
   }
     public function graph(Request $request){
-      $data=[];
-      $data["totalVisitorAndPageViews"]=Analytics::fetchTotalVisitorsAndPageViews(Period::days(29));
-      dd($data);
-      return view('manager_main',$data);
+      $test = 0;
+      $data = Analytics::fetchTotalVisitorsAndPageViews(Period::days(29));
+        // $dat = Arr::get($data[0], 'visitors');
+        $dat=0;
+      for($i=0; $i<count($data); $i++){
+        // $test += $data[0]->visitors;
+        $dat += Arr::get($data[$i], 'visitors');
+      }
+    $data1 = Analytics::fetchTotalVisitorsAndPageViews(Period::days(0));
+    $dat1 =Arr::get($data1[0], 'visitors');
+
+      return view('manager_main',[
+        'data'=>$data,
+        'data1'=>$data1,
+        'dat'=>$dat,
+        'dat1'=>$dat1
+      ]);
     }
 }
