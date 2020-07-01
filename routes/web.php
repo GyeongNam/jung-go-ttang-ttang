@@ -129,7 +129,7 @@ Route::get('/manager_user_info/{id}',  'UserController@managerINFO');
 Route::get('/manager_item','ItemController@manageritem');
 Route::post('/warning/{id}','UserController@warning');
 Route::post('/ban/{id}','UserController@ban');
-
+Route::get('/manager_main','UserController@graph');
 
 //fann_test
 // Route::get('/sasa','ItemController@sasa');
