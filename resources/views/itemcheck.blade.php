@@ -272,7 +272,7 @@ $(function(){
      <div class="">
        <button class="close" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button">돌아가기</button>
        <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
-       <button class="" id="del_per" type="button" name="button" >포기하기</button>
+       <a href="/remove_enditem/{{$value->item_number}}/{{session('login_ID')}}">  <button class="" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button" >포기하기</button></a>
      </div>
    </div>
  </div>
