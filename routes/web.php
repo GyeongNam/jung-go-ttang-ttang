@@ -127,6 +127,7 @@ Route::post('/sms_send', 'SMSController@SendMessage');
 Route::get('/manager_user', 'UserController@manager');
 Route::get('/manager_user_info/{id}',  'UserController@managerINFO');
 Route::get('/manager_item','ItemController@manageritem');
+Route::get('/manager_policy', 'UserController@policy');
 Route::post('/warning/{id}','UserController@warning');
 Route::post('/ban/{id}','UserController@ban');
 Route::get('/manager_main','UserController@graph');
