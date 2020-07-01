@@ -233,23 +233,33 @@ likhet.src="/img/heart.png";
 }
 </script> --}}
 <script type="text/javascript">
-function commentliketoggle(data) {
+function commentliketoggle(data, datas) {
   var commlike = document.getElementById('likecoment');
   var login =  1{{Session::has("login_ID")}};
-  var carheart = {{$commentlike}}
-  //console.log(dsds);
+  var carheart = datas;
 
+  // alert(data);
   if (login == 1) {
     alert('로그인이 필요합니다!');
     return false;
   }
   if(login ==11){
-    if(carheart ==1){
+    if(carheart == 1){
       alert("좋아요 삭제!");
     }
     else{
       alert("댓글을 좋아합니다.");
     }
+  }
+}
+
+function commentliketoggles(data) {
+  var login =  1{{Session::has("login_ID")}};
+
+  // alert(data);
+  if (login == 1) {
+    alert('로그인이 필요합니다!');
+    return false;
   }
 }
 </script>
@@ -539,15 +549,20 @@ function commentliketoggle(data) {
                         </div>
                         <form class="" action="/commentlike/{{$value->comment_num}}"method="get">
                           <div class="largecommentgood">
-                            <button id="comentlike" type="submit" name="comlike" value="{{$value->comment_num}}" onclick="commentliketoggle({{$value->comment_num}})">
-                              @if($commentlike<1)
+                            @if(!empty($likecomment[$key]))
+                            <button id="comentlike" type="submit" name="comlike" value="{{$value->comment_num}}" onclick="commentliketoggle({{$value->comment_num}},{{count($likecomment[$key])}})">
+
+                              @if(count($likecomment[$key]) <1)
                                 <img id="likecoment" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
                               @else
                                 <img id="likecoment" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
                               @endif
+                            @else
+                              <button type="button" name="button" onclick="commentliketoggles({{$value->comment_num}})"><img id="likecoment" src="/img/heart.png" alt="찜 아이콘" width="16" height="16"></button>
+                            @endif
                             </button>
-                            @if($likecomment != 0)
-                              <span>{{$likecomment}}</span>
+                            @if(count($commentlike[$key]) != 0)
+                              <span>{{count($commentlike[$key])}}</span>
                             @else
                               <span>0</span>
                             @endif
