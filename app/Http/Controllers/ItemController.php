@@ -526,13 +526,13 @@ class ItemController extends Controller
       'count'=>$count
     ]);
   }
+
   public function police(Request $request, $item_number){
     $wan = DB::table('police')->insert([
       'item_number2'=> $item_number
     ]);
     return back();
   }
-
 
   public function sasa(){
     $item_number = Item::select('item_number')->where(['item_success'=> 0])->get();
