@@ -2,10 +2,10 @@
 
 @section('css')
   <link rel="stylesheet" href="/css/cahrtroom.css">
+  <meta name="csrf_token" content="{{csrf_token()}}">
 @endsection
 
 @section('js')
-
 
 
 @endsection
@@ -63,5 +63,6 @@
   </div>
 
 <script src="js/app.js"></script>
+
 
 @endsection
