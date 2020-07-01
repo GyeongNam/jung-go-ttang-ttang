@@ -262,6 +262,19 @@ public function warning(Request $request,$id){
         'policy'=> $policy
       ]);
     }
+    public function managerlogin(Request $request){
+      $id = $request->input('ID1');
+      $pw = $request->input('PW1');
+      $data = DB::table('manager')->select('id','password')->where(['id'=>$id ,'password'=>$pw])->get();
+      if(count($data)>0){
+        session()->put('login_ID',encrypt($id));
 
+        return redirect('/manager_main');
+      }
+      else {
+        print_r("<script>alert('없는 아이디거나 틀린 비밀번호입니다.');</script>");
+        return view('/manager_login');
+      }
+    }
 
 }
