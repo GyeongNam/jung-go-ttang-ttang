@@ -6,7 +6,7 @@
 @endsection
 
 @section('js')
-  <script type="text/javascript">
+<script type="text/javascript">
   function toggleImg() {
     var likhet = document.getElementById('likep');
     var data =  1{{Session::has("login_ID")}};
@@ -204,30 +204,32 @@ function largcomments(data) {
   }
 }
 </script>
+{{-- <button type="button" onclick="atoggleImg()" name="button">확인용</button>
+<script>
+console.log(2);
+function atoggleImg() {
+  var a= 1;
+  var likhet = document.getElementById('likecoment');
+  console.log('likhet');
+  $.ajax({
+    url:"/wish_lst",
+    method: "get",
+    dataType:"json",
+    // data: {  : },
+    success:function(data){
+      console.log(data);
+      if(likhet.src.match("heart")) {
+        alert("관심항목에 추가되었습니다.");
+        likhet.src="/img/b_gkxm.png";
 
-{{-- <script>
-function toggleImg() {
-var likhet = document.getElementById('likecoment');
-console.log('likhet');
-$.ajax({
-url:"/",
-method: "post",
-dataType:"json",
-data: { : },
-success:function(data){
 
-if(likhet.src.match("heart")) {
-alert("관심항목에 추가되었습니다.");
-likhet.src="/img/b_gkxm.png";
-
-
-}
-else if(likhet.src.match("b_gkxm")) {
-alert("관심항목에서 해제되었습니다.");
-likhet.src="/img/heart.png";
-}
-}
-});
+      }
+      else if(likhet.src.match("b_gkxm")) {
+        alert("관심항목에서 해제되었습니다.");
+        likhet.src="/img/heart.png";
+      }
+    }
+  });
 }
 </script> --}}
 <script type="text/javascript">
@@ -533,9 +535,9 @@ function commentliketoggle() {
                         <div class="value_comment">
                           <p>{{$value->comments}}</p>
                         </div>
-                        <form class="" action="{{url('/commentlike')}}" method="get">
+                        <form class="" action="/commentlike/{{$value->comment_num}}" method="get">
                           <div class="largecommentgood">
-                            <button id="comentlike" type="button" name="comlike" onclick="commentliketoggle()">
+                            <button id="comentlike" type="submit" name="comlike" onclick="commentliketoggle()">
                               @if($value->$commentlike <1)
                                 <img id="likecoment" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
                               @else

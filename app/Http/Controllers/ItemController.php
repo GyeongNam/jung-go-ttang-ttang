@@ -368,22 +368,22 @@ class ItemController extends Controller
       return redirect()->back();
     }
 
-    public function commentlike(Request $request){
+    public function commentlike(Request $request, $comment_num){
+      // echo "sdsdsds";
       $id= session()->get('login_ID');
-      $comment_num = $request->get('comlike');
       $drop_item = Commentlike::select('commentlike_number', 'commentlike_name')
-      ->where(['commentlike_number'=>$request->get('comlike'), 'commentlike_name'=>decrypt($id)])
+      ->where(['commentlike_number'=>$comment_num, 'commentlike_name'=>decrypt($id)])
       ->get();
       if(count($drop_item)<1){
         $commentlike = new Commentlike([
-          'commentlike_number'=>$request->get('comlike'),
+          'commentlike_number'=>$comment_num,
           'commentlike_name'=>decrypt($id)
         ]);
         $commentlike->save();
       }
       else{
         Commentlike::select('commentlike_number','commentlike_name')
-        ->where(['commentlike_number'=>$request->get('comlike'), 'commentlike_name'=>decrypt($id)])
+        ->where(['commentlike_number'=>$comment_num, 'commentlike_name'=>decrypt($id)])
         ->delete();
       }
       return redirect()->back();
@@ -526,7 +526,7 @@ class ItemController extends Controller
                 ]);
                 return redirect('/product-detail/'.$item_number);
               }
-              
+
               public function manageritem(Request $request){
 
                 $item_price = DB::table('auction')->select('auction_itemnum',
