@@ -227,51 +227,51 @@ class ItemController extends Controller
     $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> decrypt($id)])->get();
     $Auction = Auction::join('items', 'items.item_number','=', 'auction.auction_itemnum')->select('*')->where(['buyer_ID'=>decrypt($id)])->get();
 
-      $end = collect([]);
-      $users = collect([]);
-      $sp1 =collect([]);
-      $sp2 =collect([]);
-      $sp3 =collect([]);
-      $sp4 =collect([]);
-      $sp5 =collect([]);
+    $end = collect([]);
+    $users = collect([]);
+    $sp1 =collect([]);
+    $sp2 =collect([]);
+    $sp3 =collect([]);
+    $sp4 =collect([]);
+    $sp5 =collect([]);
 
-      for($i=0; $i<count($myStat); $i++){
-        $users->push(Enditem::select('*')
-        ->join('items', 'items.item_number', '=', 'enditem.end_num')
-        ->where(['end_num'=>$myStat[$i]->item_number])->get());
-        $sp1->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price1')->where(['end_num'=>$myStat[$i]->item_number])->get());
-        $sp2->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price2')->where(['end_num'=>$myStat[$i]->item_number])->get());
-        $sp3->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price3')->where(['end_num'=>$myStat[$i]->item_number])->get());
-        $sp4->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price4')->where(['end_num'=>$myStat[$i]->item_number])->get());
-        $sp5->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price5')->where(['end_num'=>$myStat[$i]->item_number])->get());
-      }
-
-      for($j=0; $j<count($Auction); $j++){
-        $end->push(Enditem::select('*')
-        ->join('items', 'items.item_number', '=', 'enditem.end_num')
-        ->where(['end_num'=>$Auction[$j]->item_number])->get());
-      }
-      // echo $end;
-      // echo $sp1.'<br>';
-      // echo $sp2.'<br>';
-      // echo $sp3.'<br>';
-      // echo $sp4.'<br>';
-      // echo $sp5.'<br>';
-
-
-      return view('itemcheck', [
-        'myStat' => $myStat,
-        'myAuction' => $Auction,
-        'end' => $end,
-        'users' => $users,
-        'rank1' => $sp1,
-        'rank2' => $sp2,
-        'rank3' => $sp3,
-        'rank4' => $sp4,
-        'rank5' => $sp5
-        // 'maxs'=>$maxs
-      ]);
+    for($i=0; $i<count($myStat); $i++){
+      $users->push(Enditem::select('*')
+      ->join('items', 'items.item_number', '=', 'enditem.end_num')
+      ->where(['end_num'=>$myStat[$i]->item_number])->get());
+      $sp1->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price1')->where(['end_num'=>$myStat[$i]->item_number])->get());
+      $sp2->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price2')->where(['end_num'=>$myStat[$i]->item_number])->get());
+      $sp3->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price3')->where(['end_num'=>$myStat[$i]->item_number])->get());
+      $sp4->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price4')->where(['end_num'=>$myStat[$i]->item_number])->get());
+      $sp5->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price5')->where(['end_num'=>$myStat[$i]->item_number])->get());
     }
+
+    for($j=0; $j<count($Auction); $j++){
+      $end->push(Enditem::select('*')
+      ->join('items', 'items.item_number', '=', 'enditem.end_num')
+      ->where(['end_num'=>$Auction[$j]->item_number])->get());
+    }
+    // echo $end;
+    // echo $sp1.'<br>';
+    // echo $sp2.'<br>';
+    // echo $sp3.'<br>';
+    // echo $sp4.'<br>';
+    // echo $sp5.'<br>';
+
+
+    return view('itemcheck', [
+      'myStat' => $myStat,
+      'myAuction' => $Auction,
+      'end' => $end,
+      'users' => $users,
+      'rank1' => $sp1,
+      'rank2' => $sp2,
+      'rank3' => $sp3,
+      'rank4' => $sp4,
+      'rank5' => $sp5
+      // 'maxs'=>$maxs
+    ]);
+  }
 
   public function itemview($item_number){
     $id= session()->get('login_ID');
@@ -282,6 +282,7 @@ class ItemController extends Controller
     $maxs =  $max->max('item_price');
     $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
     $like=Favorite::select('favorite_itemnum')->where(['favorite_itemnum'=>$item_number])->get()->count();
+    $likecomment=Commentlike::select('commentlike_number')->where(['commentlike_number'=>$item_number])->get()->count();
     $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
     $largcommentitem =collect([]);
     for ($i=0; $i <count($commentitem) ; $i++) {
@@ -309,322 +310,344 @@ class ItemController extends Controller
     // echo $lacount;
     // [코멘트 번호][같은 코멘트 번호의 댓글]
     // echo $largcommentitem.'<br>';
-      return view('product-detail', [
-        'lacount'=>$lacount,
-        'myproduct' => $myproduct,
-        'id' => encrypt($myproduct[0]->seller_id),
-        'data'=>$data,
-        'myStat'=>$myStat,
-        'max'=>$maxs,
-        'count'=>$count,
-        'commentitem'=>$commentitem,
-        'largcommentitem'=>$largcommentitem,
-        'commentlike'=>$commentlike,
-        'likeheart'=>$likeheart,
-        'like'=>$like
+    return view('product-detail', [
+      'lacount'=>$lacount,
+      'myproduct' => $myproduct,
+      'id' => encrypt($myproduct[0]->seller_id),
+      'data'=>$data,
+      'myStat'=>$myStat,
+      'max'=>$maxs,
+      'count'=>$count,
+      'commentitem'=>$commentitem,
+      'largcommentitem'=>$largcommentitem,
+      'commentlike'=>$commentlike,
+      'likecomment'=>$likecomment,
+      'likeheart'=>$likeheart,
+      'like'=>$like
 
-      ]);
+    ]);
   }
 
   public function category(Request $request){
-      $cat = $_GET['id'];
-      $cate=Item::select('item_number','item_name','item_picture','item_startprice')->where(['item_category'=>$cat])->get();
-      $search = $request->get('search') != null ? $request->get('search') : '';
-      $cate=Item::select('item_number','item_name','item_picture','item_startprice')
-      ->where([
-        ['item_category', $cat],
-        ['item_name', 'like', '%'.$search.'%']])
-        ->get();
-        $cateF = count($cate);
+    $cat = $_GET['id'];
+    $cate=Item::select('item_number','item_name','item_picture','item_startprice')->where(['item_category'=>$cat])->get();
+    $search = $request->get('search') != null ? $request->get('search') : '';
+    $cate=Item::select('item_number','item_name','item_picture','item_startprice')
+    ->where([
+      ['item_category', $cat],
+      ['item_name', 'like', '%'.$search.'%']])
+      ->get();
+      $cateF = count($cate);
 
-        return view('manclothing',[
-          'search'=> $request->get('search'),
-          'cat' => $cat,
-          'cate' => $cate,
-          'cateF' => $cateF
-        ]);
-  }
-
-  public function favorite_item(Request $request){
-    $id= session()->get('login_ID');
-    $item_num = $request->get('likejim');
-    $drop_item = Favorite::select('favorite_itemnum', 'favorite_name')
-    ->where(['favorite_itemnum'=>$request->get('likejim'),'favorite_name'=>decrypt($id)])
-    ->get();
-    if(count($drop_item)<1){
-      $favorite = new Favorite([
-        'favorite_itemnum'=>$request->get('likejim'),
-        'favorite_name'=>decrypt($id)
+      return view('manclothing',[
+        'search'=> $request->get('search'),
+        'cat' => $cat,
+        'cate' => $cate,
+        'cateF' => $cateF
       ]);
-      $favorite->save();
     }
-    else{
-      Favorite::select('favorite_itemnum', 'favorite_name')
+
+    public function favorite_item(Request $request){
+      $id= session()->get('login_ID');
+      $item_num = $request->get('likejim');
+      $drop_item = Favorite::select('favorite_itemnum', 'favorite_name')
       ->where(['favorite_itemnum'=>$request->get('likejim'),'favorite_name'=>decrypt($id)])
-      ->delete();
-    }
-    return redirect()->back();
-  }
-
-  public function wish_itempg(Request $request){
-    $id= session()->get('login_ID');
-    $collection =Favorite::select(['favorite_itemnum'])->where(['favorite_name'=>decrypt($id)])->get();
-    $count=count($collection);
-    $wish_itm = Favorite::join('items','favorite.favorite_itemnum','=', 'items.item_number')
-    ->select('*')
-    // items.item_name','items.item_startprice','items.item_picture','items.item_number')
-    ->where(['favorite_name'=>decrypt($id)])
-    ->get();
-    // echo $wish_itm;
-    return view('wish_list',[
-      'wish_item' =>$wish_itm,
-      'count'=>$count
-    ]);
-
-    }
-
-  public function wishitem_remove($favorite_itemnum, $favorite_name){
-    $id = session() -> get('login_ID');
-    Favorite::where([
-      'favorite_itemnum' => $favorite_itemnum,
-      'favorite_name' =>$favorite_name
-      ]) -> delete();
-      return redirect()->back();
-    }
-
-  public function removes($item_number, $id){
-
-    $data = Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->get();
-    Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->delete();
-    $path = public_path('/img/item/'.$data[0]->item_picture);
-    File::delete($path);
-    if($data[0]->item_pictureup != null){
-      $path = public_path('/img/item/'.$data[0]->item_pictureup);
-      File::delete($path);
-    }
-    if($data[0]->item_picturefront != null){
-      $path = public_path('/img/item/'.$data[0]->item_picturefront);
-      File::delete($path);
-    }
-    if($data[0]->item_pictureback != null){
-      $path = public_path('/img/item/'.$data[0]->item_pictureback);
-      File::delete($path);
-    }
-    if($data[0]->item_pictureleft != null){
-      $path = public_path('/img/item/'.$data[0]->item_pictureleft);
-      File::delete($path);
-    }
-    if($data[0]->item_picturerigth != null){
-      $path = public_path('/img/item/'.$data[0]->item_picturerigth);
-      File::delete($path);
-    }
-    if($data[0]->item_picturebehind != null){
-      $path = public_path('/img/item/'.$data[0]->item_picturebehind);
-      File::delete($path);
-    }
-
-    return redirect('/itemcheck');
-  }
-
-  public function commentremove($comment_num, $comm_item){
-    Largecomment::where(['largecomm_item'=> $comment_num])->delete();
-    $id = session() -> get('login_ID');
-    Comment::where([
-      'comment_num' => $comment_num,
-      'comm_item' => $comm_item,
-      'comment_id'=>decrypt($id)
-      ])->delete();
-      return redirect()->back();
-      // echo $comment_num;
-      // echo $comm_item;
-  }
-
-  public function lecommentremove($largecomment_num, $largecomm_item){
-    $id = session() -> get('login_ID');
-      Largecomment::where([
-        'largecomment_num' => $largecomment_num,
-        'largecomm_item' => $largecomm_item,
-        'largecomment_id' =>decrypt($id)
-      ])->delete();
-      return redirect()->back();
-  }
-
-  public function comment(Request $request, $item_number){
-    $id = session() -> get('login_ID');
-    $comment = $request->input('comment_texts');
-    $newcomment = new Comment([
-      'comment_id'=>decrypt($id),
-      'comm_item'=>$item_number,
-      'commentlike'=>0,
-      'comments'=>$comment,
-      'time'=>date('Y-m-d')
-    ]);
-    $newcomment->save();
-    return redirect('/product-detail/'.$item_number);
-  }
-
-  public function recomment(Request $request, $item_number, $commentnum){
-   $id = session() -> get('login_ID');
-   $comment = $request->input('recomment_texts');
-   Comment::where([
-     'comment_id'=>decrypt($id),
-     'comment_num'=>$commentnum,
-    'comm_item'=>$item_number])->update([
-     'comments'=>$comment,
-     'time'=>date('Y-m-d')
-   ]);
-   return redirect('/product-detail/'.$item_number);
-  }
-
-  public function largcomment(Request $request, $item_number, $commentnum){
-    // echo 'hellop';
-    // return $commentnum;
-    $id = session() -> get('login_ID');
-    $largecomment = $request->input('lecomment_texts');
-    // echo $largecomment;
-    $largcomment = new Largecomment([
-      'largecomments'=>$largecomment,
-      'largecomm_item'=>$commentnum,
-      'largecomment_id'=>decrypt($id),
-      'largetime'=>date('Y-m-d')
-    ]);
-    $largcomment->save();
-   return redirect('/product-detail/'.$item_number);
-  }
-
-  public function lecomment(Request $request, $item_number, $commentnum, $largecomment_num){
-   $id = session() -> get('login_ID');
-   $largecomment = $request->input('lecomment_texts');
-   Largecomment::where([
-     'largecomment_id'=>decrypt($id),
-     'largecomment_num'=>$largecomment_num,
-     'largecomm_item'=>$commentnum])->update([
-     'largecomments'=>$largecomment,
-     'largetime'=>date('Y-m-d')
-   ]);
-      return redirect('/product-detail/'.$item_number);
-  }
-
-  public function manageritem(Request $request){
-
-    $item_price = DB::table('auction')->select('auction_itemnum',
-    DB::raw('MAX(item_price) AS item_price'))
-    ->groupBy('auction_itemnum');
-
-    $item_joins = DB::table('items')->select('*')
-    ->JoinSub($item_price,'item_price',function($join){
-      $join->on('items.item_number','=','item_price.auction_itemnum');
-    })->get();
-    $item_join = DB::table('items')->select('*')->get();
-    $count = collect([]);
-    for ($i=0; $i < count($item_join) ; $i++) {
-      $count->push(DB::table('police')->select('*')->where(['item_number2'=>$item_join[$i]->item_number])->get()->count());
-    }
-    // echo $count;
-    return view('/manager_item',[
-      'item_join'=>$item_join,
-      'item_joins'=>$item_joins,
-      'count'=>$count
-    ]);
-  }
-  public function police(Request $request, $item_number){
-    $wan = DB::table('police')->insert([
-      'item_number2'=> $item_number
-    ]);
-    return back();
-  }
-
-
-  public function sasa(){
-    $item_number = Item::select('item_number')->where(['item_success'=> 0])->get();
-    for($i = 0; $i < count($item_number); $i++){
-      $Enditem = Enditem::select('*')->where(['end_num'=>$item_number[$i]->item_number])->get();
-    }
-    $Endday = Enditem::select('*')->where('success_date', '<=', date('Y-m-d'))->get();
-    for($j=0; $j<count($Endday); $j++){
-    if($Endday->isNotEmpty()){
-      if(!Empty($Endday[$j])){
-        if($Endday[$j]->success_user1 != null){
-          if( date('Y-m-d') >= date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))) {
-            // echo $j,
-            // $Endday[$j]->success_date.'<br>';
-            Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
-              'success_user1' => null,
-              'buyer'=> $Endday[$j]->success_user2,
-              'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
-            ]);
-            // echo "->1".'<br>';
-            if($Endday[$j]->success_user2 == null
-            && $Endday[$j]->success_user3 == null
-            && $Endday[$j]->success_user4 == null
-            && $Endday[$j]->success_user5 == null) {
-              Item::where(['item_number' =>$Endday[$j]->end_num])->update([
-                'success' => 0
-              ]);
-            }
-          }
-        }
-        elseif($Endday[$j]->success_user1 == null && $Endday[$j]->success_user2 != null){
-          Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
-            'success_user2' => null,
-            'buyer'=> $Endday[$j]->success_user3,
-            'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
-          ]);
-          if($Endday[$j]->success_user3 == null
-          && $Endday[$j]->success_user4 == null
-          && $Endday[$j]->success_user5 == null) {
-            Item::where(['item_number' =>$Endday[$j]->end_num])->update([
-              'success' => 0
-            ]);
-          }
-        }
-        elseif($Endday[$j]->success_user2 == null && $Endday[$j]->success_user3 != null){
-          Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
-            'success_user3' => null,
-            'buyer'=> $Endday[$j]->success_user4,
-            'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
-          ]);
-          if($Endday[$j]->success_user4 == null
-          && $Endday[$j]->success_user5 == null) {
-            Item::where(['item_number' =>$Endday[$j]->end_num])->update([
-              'success' => 0
-            ]);
-          }
-        }
-        elseif($Endday[$j]->success_user3 == null && $Endday[$j]->success_user4 != null){
-          Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
-            'success_user4' => null,
-            'buyer'=> $Endday[$j]->success_user5,
-            'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
-          ]);
-          if($Endday[$j]->success_user5 == null) {
-            Item::where(['item_number' =>$Endday[$j]->end_num])->update([
-              'success' => 0
-            ]);
-          }
-        }
-        elseif($Endday[$j]->success_user4 == null && $Endday[$j]->success_user5 != null){
-          Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
-            'success_user5' => null,
-            'buyer'=> null,
-            'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
-          ]);
-          // if($Endday[$j]->end_num )
-          Item::where(['item_number' =>  $Endday[$j]->end_num])->update([
-            'success' => 0
-          ]);
-          }
-          elseif ($Endday[$j]->success_user1 == null
-          && $Endday[$j]->success_user2 == null
-          && $Endday[$j]->success_user3 == null
-          && $Endday[$j]->success_user4 == null
-          && $Endday[$j]->success_user5 == null) {
-            Item::where(['item_number' =>$Endday[$j]->end_num])->update([
-              'success' => 0
-            ]);
-          }
-        }
+      ->get();
+      if(count($drop_item)<1){
+        $favorite = new Favorite([
+          'favorite_itemnum'=>$request->get('likejim'),
+          'favorite_name'=>decrypt($id)
+        ]);
+        $favorite->save();
       }
+      else{
+        Favorite::select('favorite_itemnum', 'favorite_name')
+        ->where(['favorite_itemnum'=>$request->get('likejim'),'favorite_name'=>decrypt($id)])
+        ->delete();
+      }
+      return redirect()->back();
     }
-  }
-}
+
+    public function commentlike(Request $request){
+      $id= session()->get('login_ID');
+      $comment_num = $request->get('comlike');
+      $drop_item = Commentlike::select('commentlike_number', 'commentlike_name')
+      ->where(['commentlike_number'=>$request->get('comlike'), 'commentlike_name'=>decrypt($id)])
+      ->get();
+      if(count($drop_item)<1){
+        $commentlike = new Commentlike([
+          'commentlike_number'=>$request->get('comlike'),
+          'commentlike_name'=>decrypt($id)
+        ]);
+        $commentlike->save();
+      }
+      else{
+        Commentlike::select('commentlike_number','commentlike_name')
+        ->where(['commentlike_number'=>$request->get('comlike'), 'commentlike_name'=>decrypt($id)])
+        ->delete();
+      }
+      return redirect()->back();
+    }
+
+    public function wish_itempg(Request $request){
+      $id= session()->get('login_ID');
+      $collection =Favorite::select(['favorite_itemnum'])->where(['favorite_name'=>decrypt($id)])->get();
+      $count=count($collection);
+      $wish_itm = Favorite::join('items','favorite.favorite_itemnum','=', 'items.item_number')
+      ->select('*')
+      // items.item_name','items.item_startprice','items.item_picture','items.item_number')
+      ->where(['favorite_name'=>decrypt($id)])
+      ->get();
+      // echo $wish_itm;
+      return view('wish_list',[
+        'wish_item' =>$wish_itm,
+        'count'=>$count
+      ]);
+
+    }
+
+    public function wishitem_remove($favorite_itemnum, $favorite_name){
+      $id = session() -> get('login_ID');
+      Favorite::where([
+        'favorite_itemnum' => $favorite_itemnum,
+        'favorite_name' =>$favorite_name
+        ]) -> delete();
+        return redirect()->back();
+      }
+
+      public function removes($item_number, $id){
+
+        $data = Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->get();
+        Item::where(['item_number' => $item_number, 'seller_id'=>decrypt($id)])->delete();
+        $path = public_path('/img/item/'.$data[0]->item_picture);
+        File::delete($path);
+        if($data[0]->item_pictureup != null){
+          $path = public_path('/img/item/'.$data[0]->item_pictureup);
+          File::delete($path);
+        }
+        if($data[0]->item_picturefront != null){
+          $path = public_path('/img/item/'.$data[0]->item_picturefront);
+          File::delete($path);
+        }
+        if($data[0]->item_pictureback != null){
+          $path = public_path('/img/item/'.$data[0]->item_pictureback);
+          File::delete($path);
+        }
+        if($data[0]->item_pictureleft != null){
+          $path = public_path('/img/item/'.$data[0]->item_pictureleft);
+          File::delete($path);
+        }
+        if($data[0]->item_picturerigth != null){
+          $path = public_path('/img/item/'.$data[0]->item_picturerigth);
+          File::delete($path);
+        }
+        if($data[0]->item_picturebehind != null){
+          $path = public_path('/img/item/'.$data[0]->item_picturebehind);
+          File::delete($path);
+        }
+
+        return redirect('/itemcheck');
+      }
+
+      public function commentremove($comment_num, $comm_item){
+        Largecomment::where(['largecomm_item'=> $comment_num])->delete();
+        $id = session() -> get('login_ID');
+        Comment::where([
+          'comment_num' => $comment_num,
+          'comm_item' => $comm_item,
+          'comment_id'=>decrypt($id)
+          ])->delete();
+          return redirect()->back();
+          // echo $comment_num;
+          // echo $comm_item;
+        }
+
+        public function lecommentremove($largecomment_num, $largecomm_item){
+          $id = session() -> get('login_ID');
+          Largecomment::where([
+            'largecomment_num' => $largecomment_num,
+            'largecomm_item' => $largecomm_item,
+            'largecomment_id' =>decrypt($id)
+            ])->delete();
+            return redirect()->back();
+          }
+
+          public function comment(Request $request, $item_number){
+            $id = session() -> get('login_ID');
+            $comment = $request->input('comment_texts');
+            $newcomment = new Comment([
+              'comment_id'=>decrypt($id),
+              'comm_item'=>$item_number,
+              'commentlike'=>0,
+              'comments'=>$comment,
+              'time'=>date('Y-m-d')
+            ]);
+            $newcomment->save();
+            return redirect('/product-detail/'.$item_number);
+          }
+
+          public function recomment(Request $request, $item_number, $commentnum){
+            $id = session() -> get('login_ID');
+            $comment = $request->input('recomment_texts');
+            Comment::where([
+              'comment_id'=>decrypt($id),
+              'comment_num'=>$commentnum,
+              'comm_item'=>$item_number])->update([
+                'comments'=>$comment,
+                'time'=>date('Y-m-d')
+              ]);
+              return redirect('/product-detail/'.$item_number);
+            }
+
+            public function largcomment(Request $request, $item_number, $commentnum){
+              // echo 'hellop';
+              // return $commentnum;
+              $id = session() -> get('login_ID');
+              $largecomment = $request->input('lecomment_texts');
+              // echo $largecomment;
+              $largcomment = new Largecomment([
+                'largecomments'=>$largecomment,
+                'largecomm_item'=>$commentnum,
+                'largecomment_id'=>decrypt($id),
+                'largetime'=>date('Y-m-d')
+              ]);
+              $largcomment->save();
+              return redirect('/product-detail/'.$item_number);
+            }
+
+            public function lecomment(Request $request, $item_number, $commentnum, $largecomment_num){
+              $id = session() -> get('login_ID');
+              $largecomment = $request->input('lecomment_texts');
+              Largecomment::where([
+                'largecomment_id'=>decrypt($id),
+                'largecomment_num'=>$largecomment_num,
+                'largecomm_item'=>$commentnum])->update([
+                  'largecomments'=>$largecomment,
+                  'largetime'=>date('Y-m-d')
+                ]);
+                return redirect('/product-detail/'.$item_number);
+              }
+
+              public function manageritem(Request $request){
+
+                $item_price = DB::table('auction')->select('auction_itemnum',
+                DB::raw('MAX(item_price) AS item_price'))
+                ->groupBy('auction_itemnum');
+
+                $item_joins = DB::table('items')->select('*')
+                ->JoinSub($item_price,'item_price',function($join){
+                  $join->on('items.item_number','=','item_price.auction_itemnum');
+                })->get();
+                $item_join = DB::table('items')->select('*')->get();
+                $count = collect([]);
+                for ($i=0; $i < count($item_join) ; $i++) {
+                  $count->push(DB::table('police')->select('*')->where(['item_number2'=>$item_join[$i]->item_number])->get()->count());
+                }
+                // echo $count;
+                return view('/manager_item',[
+                  'item_join'=>$item_join,
+                  'item_joins'=>$item_joins,
+                  'count'=>$count
+                ]);
+              }
+              public function police(Request $request, $item_number){
+                $wan = DB::table('police')->insert([
+                  'item_number2'=> $item_number
+                ]);
+                return back();
+              }
+
+
+              public function sasa(){
+                $item_number = Item::select('item_number')->where(['item_success'=> 0])->get();
+                for($i = 0; $i < count($item_number); $i++){
+                  $Enditem = Enditem::select('*')->where(['end_num'=>$item_number[$i]->item_number])->get();
+                }
+                $Endday = Enditem::select('*')->where('success_date', '<=', date('Y-m-d'))->get();
+                for($j=0; $j<count($Endday); $j++){
+                  if($Endday->isNotEmpty()){
+                    if(!Empty($Endday[$j])){
+                      if($Endday[$j]->success_user1 != null){
+                        if( date('Y-m-d') >= date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))) {
+                          // echo $j,
+                          // $Endday[$j]->success_date.'<br>';
+                          Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
+                            'success_user1' => null,
+                            'buyer'=> $Endday[$j]->success_user2,
+                            'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
+                          ]);
+                          // echo "->1".'<br>';
+                          if($Endday[$j]->success_user2 == null
+                          && $Endday[$j]->success_user3 == null
+                          && $Endday[$j]->success_user4 == null
+                          && $Endday[$j]->success_user5 == null) {
+                            Item::where(['item_number' =>$Endday[$j]->end_num])->update([
+                              'success' => 0
+                            ]);
+                          }
+                        }
+                      }
+                      elseif($Endday[$j]->success_user1 == null && $Endday[$j]->success_user2 != null){
+                        Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
+                          'success_user2' => null,
+                          'buyer'=> $Endday[$j]->success_user3,
+                          'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
+                        ]);
+                        if($Endday[$j]->success_user3 == null
+                        && $Endday[$j]->success_user4 == null
+                        && $Endday[$j]->success_user5 == null) {
+                          Item::where(['item_number' =>$Endday[$j]->end_num])->update([
+                            'success' => 0
+                          ]);
+                        }
+                      }
+                      elseif($Endday[$j]->success_user2 == null && $Endday[$j]->success_user3 != null){
+                        Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
+                          'success_user3' => null,
+                          'buyer'=> $Endday[$j]->success_user4,
+                          'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
+                        ]);
+                        if($Endday[$j]->success_user4 == null
+                        && $Endday[$j]->success_user5 == null) {
+                          Item::where(['item_number' =>$Endday[$j]->end_num])->update([
+                            'success' => 0
+                          ]);
+                        }
+                      }
+                      elseif($Endday[$j]->success_user3 == null && $Endday[$j]->success_user4 != null){
+                        Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
+                          'success_user4' => null,
+                          'buyer'=> $Endday[$j]->success_user5,
+                          'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
+                        ]);
+                        if($Endday[$j]->success_user5 == null) {
+                          Item::where(['item_number' =>$Endday[$j]->end_num])->update([
+                            'success' => 0
+                          ]);
+                        }
+                      }
+                      elseif($Endday[$j]->success_user4 == null && $Endday[$j]->success_user5 != null){
+                        Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
+                          'success_user5' => null,
+                          'buyer'=> null,
+                          'success_date' => date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))
+                        ]);
+                        // if($Endday[$j]->end_num )
+                        Item::where(['item_number' =>  $Endday[$j]->end_num])->update([
+                          'success' => 0
+                        ]);
+                      }
+                      elseif ($Endday[$j]->success_user1 == null
+                      && $Endday[$j]->success_user2 == null
+                      && $Endday[$j]->success_user3 == null
+                      && $Endday[$j]->success_user4 == null
+                      && $Endday[$j]->success_user5 == null) {
+                        Item::where(['item_number' =>$Endday[$j]->end_num])->update([
+                          'success' => 0
+                        ]);
+                      }
+                    }
+                  }
+                }
+              }
+            }

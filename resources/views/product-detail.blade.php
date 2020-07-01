@@ -18,7 +18,7 @@
       return false;
     }
     if(chilheart ==1) {
-      alert("관심항목에서 헤제되었습니다.");
+      alert("관심항목에서 해제되었습니다.");
     }
     else{
       alert("관심항목에 추가되었습니다.");
@@ -242,10 +242,10 @@ function commentliketoggle() {
     return false;
   }
   if(carheart ==1) {
-    alert("댓글을 좋아합니다.");
+    alert("좋아요 삭제!");
   }
   else{
-    alert("좋아요 삭제!");
+    alert("댓글을 좋아합니다.");
   }
 }
 </script>
@@ -533,20 +533,22 @@ function commentliketoggle() {
                         <div class="value_comment">
                           <p>{{$value->comments}}</p>
                         </div>
-                        <div class="largecommentgood">
-                          <button id="comentlike" type="button" name="button" onclick="commentliketoggle()">
-                          @if($value->$commentlike <1)
-                            <img id="likecoment" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
-                          @else
-                            <img id="likecoment" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
-                          @endif
-                          </button>
-                          @if($value->commentlike != 0)
-                            <span>{{$value->commentlike}}</span>
-                          @else
-                            <span>0</span>
-                          @endif
-                        </div>
+                        <form class="" action="{{url('/commentlike')}}" method="get">
+                          <div class="largecommentgood">
+                            <button id="comentlike" type="button" name="comlike" onclick="commentliketoggle()">
+                              @if($value->$commentlike <1)
+                                <img id="likecoment" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
+                              @else
+                                <img id="likecoment" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
+                              @endif
+                            </button>
+                            @if($likecomment != 0)
+                              <span>{{$likecomment}}</span>
+                            @else
+                              <span>0</span>
+                            @endif
+                          </div>
+                        </form>
                         <form class="" action="/product-largecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post">
                           @csrf
                           <div class="val_re">

@@ -107,6 +107,7 @@ Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
 Route::get('/manclothing', 'ItemController@category');
 Route::post('/product-Modifystore', 'ItemController@product_update')->middleware('login','police');
 Route::get('/product-Modify', 'ItemController@sending_num');
+Route::get('/commentlike', 'ItemController@commentlike')->middleware('login');
 Route::get('/wish_lst', 'ItemController@favorite_item')->middleware('login');
 Route::get('/wish_list', 'ItemController@wish_itempg')->middleware('login');
 
