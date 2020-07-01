@@ -10,7 +10,6 @@ class Comment extends Model
   protected $fillable =[
     'comment_id',
     'comment_num',
-    'commentlike',
     'comm_item',
     'comments',
     'time'
