@@ -234,4 +234,21 @@ public function warning(Request $request,$id){
         'dat1'=>$dat1
       ]);
     }
+    public function policy(Request $request){
+
+      $policy = DB::table('bantime')
+              ->join('users','users.id','=','bantime.user_id')
+              ->select('users.id','users.name','bantime.*')
+              ->get();
+      $id=DB::table('banlog')->select('*')->get();
+      $count = collect([]);
+      for ($i=0; $i < count($id) ; $i++) {
+      $count->push(DB::table('banlog')->select('*')->where(['user_id'=>$id[$i]->user_id])->get()->count());
+    }
+
+      return view('/manager_policy',[
+        'policy'=> $policy,
+        'count' => $count
+      ]);
+    }
 }
