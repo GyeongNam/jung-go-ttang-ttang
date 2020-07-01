@@ -11,6 +11,7 @@ use App\User;
 use App\Auction;
 use App\Favorite;
 use App\Comment;
+use App\Commentlike;
 use App\Enditem;
 use App\Largecomment;
 use Image;
