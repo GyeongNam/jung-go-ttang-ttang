@@ -13,6 +13,8 @@ use DB;
 use Session;
 use Image;
 use App\Item;
+use Analytics;
+use Spatie\Analytics\Period;
 
 class UserController extends Controller
 {
@@ -210,4 +212,10 @@ public function warning(Request $request,$id){
       'user_id' => $id ])-> delete();
      return back();
   }
+    public function graph(Request $request){
+      $data=[];
+      $data["totalVisitorAndPageViews"]=Analytics::fetchTotalVisitorsAndPageViews(Period::days(29));
+      dd($data);
+      return view('manager_main',$data);
+    }
 }
