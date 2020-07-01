@@ -116,6 +116,8 @@ Route::get('/wish_list', 'ItemController@wish_itempg')->middleware('login');
 // Route::post(/auction_in, 'AuctionController@auction_in');
 Route::get('/bidding-info/{item_number}', 'AuctionController@sendd')->middleware('login','police');
 Route::post('/bidding-price', 'AuctionController@biddingprice')->middleware('login','police');
+Route::get('/remove_enditem/{item_number}/{id}', 'AuctionController@remove_enditem')->middleware('login');
+
 // mail & getimagesizefromstring
 Route::post('/selectid', 'UserController@selectid');
 Route::post('/selectpw', 'UserController@selectpw');

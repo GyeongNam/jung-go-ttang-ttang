@@ -187,7 +187,7 @@ $(function(){
 
           <!-- 관리자페이지 -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">상담관리</h1>
+            <h1 class="h3 mb-0 text-gray-800">정책관리</h1>
 
           </div>
 
@@ -214,7 +214,7 @@ $(function(){
                     </thead>
                     <tbody>
                       <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
-                        <td>Tiger Nixon</td>
+                        <td>asd</td>
                         <td>System Architect</td>
                         <td>Edinburgh</td>
                         <td>61</td>

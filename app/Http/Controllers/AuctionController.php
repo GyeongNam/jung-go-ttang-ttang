@@ -42,5 +42,53 @@ class AuctionController extends Controller
         return redirect('/itemcheck');
       }
     }
+
+    public function remove_enditem($item_number, $id){
+      $out1 = Enditem::select('*')->where(['end_num'=>$item_number, 'buyer'=>decrypt($id), 'success_user1'=>decrypt($id)])->get();
+      $out2 = Enditem::select('*')->where(['end_num'=>$item_number, 'buyer'=>decrypt($id), 'success_user2'=>decrypt($id)])->get();
+      $out3 = Enditem::select('*')->where(['end_num'=>$item_number, 'buyer'=>decrypt($id), 'success_user3'=>decrypt($id)])->get();
+      $out4 = Enditem::select('*')->where(['end_num'=>$item_number, 'buyer'=>decrypt($id), 'success_user4'=>decrypt($id)])->get();
+      $out5 = Enditem::select('*')->where(['end_num'=>$item_number, 'buyer'=>decrypt($id), 'success_user5'=>decrypt($id)])->get();
+
+      // echo $out1[0]->end_num;
+      if($out1->isNotEmpty()){
+        Enditem::where(['end_num'=>$item_number,'buyer'=>decrypt($id)])->update([
+          'success_user1'=> null,
+          'buyer'=> $out1[0]->success_user2,
+          'success_date' => date("Y-m-d",strtotime("+2 day" ))
+        ]);
+      }
+      elseif ($out2->isNotEmpty()) {
+        Enditem::where(['end_num'=>$item_number,'buyer'=>decrypt($id)])->update([
+          'success_user2'=> null,
+          'buyer'=> $out2[0]->success_user3,
+          'success_date' => date("Y-m-d",strtotime("+2 day" ))
+        ]);
+      }
+      elseif ($out3->isNotEmpty()) {
+        Enditem::where(['end_num'=>$item_number,'buyer'=>decrypt($id)])->update([
+          'success_user3'=> null,
+          'buyer'=> $out3[0]->success_user4,
+          'success_date' => date("Y-m-d",strtotime("+2 day" ))
+        ]);
+      }
+      elseif ($out4->isNotEmpty()) {
+        Enditem::where(['end_num'=>$item_number,'buyer'=>decrypt($id)])->update([
+          'success_user4'=> null,
+          'buyer'=> $out4[0]->success_user5,
+          'success_date' => date("Y-m-d",strtotime("+2 day" ))
+        ]);
+      }
+      elseif ($out5->isNotEmpty()) {
+        Enditem::where(['end_num'=>$item_number,'buyer'=>decrypt($id)])->update([
+          'success_user5'=> null,
+          'buyer'=> null,
+        ]);
+        Item::where(['item_number'=>$item_number])->update([
+          'success' => 0
+        ]);
+      }
+      return redirect('/itemcheck');
+    }
 }
 //
