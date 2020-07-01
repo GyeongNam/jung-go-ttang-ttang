@@ -287,7 +287,7 @@ class ItemController extends Controller
       $largcommentitem->push(Largecomment::select('*')->where(['largecomm_item'=>$commentitem[$i]->comment_num])->orderby('largecomment_num', 'desc')->get());
     }
     if(session()->has('login_ID')){
-      $commentlike = Comment::select('commentlike')->where(['comm_item'=>$item_number])->get();
+      $commentlike = Commentlike::select('*')->where(['commentlike_number'=>$item_number, 'commentlike_name'=>decrypt($id)])->get()->count();
     }
     else{
       $commentlike = 0;
