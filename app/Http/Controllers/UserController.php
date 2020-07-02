@@ -224,9 +224,9 @@ public function warning(Request $request,$id){
   public function ban(Request $request,$id){
 
     $date_de = DB::table('bantime')->select('ban_enddate')->where(['user_id'=>$id])->get();
-    $rede = date("Y-m-d");
+    $rede =  strtotime(date("Y-m-d"));
 
-      if ($date_de < $rede) {
+      if ( strtotime($date_de) < $rede) {
          DB::table('bantime')->where(['user_id'=> $id])->delete();
          $delete = DB::table('banlog')->where([
            'user_id' => $id ])-> delete();
