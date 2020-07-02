@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
        $table->string('gender');
        $table->date('birthday');
        $table->string('password');
+       $table->date('login_record')
        $table->binary('user_image')->nullable();
        $table->rememberToken();
        $table->timestamps();

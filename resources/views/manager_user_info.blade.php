@@ -155,13 +155,21 @@
             </li>
 
 
+            @if(session('login_ID') == false)
+              <li><a href="/Login">Login</a></li>
+              <li><a href="/sign_rull">sign up</a></li>
+            @else
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">엄준식</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                  관리자
+              </span>
+                <img class="img-profile rounded-circle" src="/img/r_heart.png">
               </a>
+              <div class = "nav_login">
+              </div>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
@@ -172,10 +180,10 @@
                 </a>
               </div>
             </li>
-
+            @endif
           </ul>
 
-        </nav>
+          </nav>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -272,6 +280,24 @@
     </div>
     <!-- End of Page Wrapper -->
         <!-- End of Main Content -->
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">로그인화면으로 돌아갑니다.</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+                <a class="btn btn-primary" href="/manager_logout">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

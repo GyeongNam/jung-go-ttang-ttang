@@ -143,21 +143,21 @@
               </div>
             </li>
 
-
+            @if(session('login_ID') == false)
+              <li><a href="/Login">Login</a></li>
+              <li><a href="/sign_rull">sign up</a></li>
+            @else
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                    @if(session('login_ID') == false)
-                      <li><a href="/Login">Login</a></li>
-                    @else
-                      <div class="dropdown-divider"></div>
-                      <a class="nolog" href="/Logout">Logout</a></li>
-                    @endif
+                  관리자
               </span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <img class="img-profile rounded-circle" src="/img/r_heart.png">
               </a>
+              <div class = "nav_login">
+              </div>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
@@ -168,7 +168,7 @@
                 </a>
               </div>
             </li>
-
+            @endif
           </ul>
 
         </nav>
@@ -180,7 +180,7 @@
           <!-- 관리자페이지 -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">관리자페이지</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+
           </div>
 
           <!-- Content Row -->
@@ -220,7 +220,36 @@
               </div>
             </div>
 
+            <div class="container-fluid">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">사용자 로그인 기록</h6>
+              </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>아이디</th>
+                      <th>이름</th>
+                      <th>로그인 기록</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
+                    <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
+                      @foreach ($calander as $key => $value)
+                      <td>{{$value->id}}</td>
+                      <td>{{$value->name}}</td>
+                      <td>{{$value->updated_at}}</td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
 
             <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
@@ -286,7 +315,7 @@
         <div class="modal-body">로그인화면으로 돌아갑니다.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-          <a class="btn btn-primary" href="/manager_login">Logout</a>
+          <a class="btn btn-primary" href="/manager_logout">Logout</a>
         </div>
       </div>
     </div>

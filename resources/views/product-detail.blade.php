@@ -103,14 +103,15 @@ $(function (){
   });
 });
 </script>
-<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript"  async defer src="http://maps.google.com/maps/api/js?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&callback=initMap" ></script>
 <script type="text/javascript">
 $(document).ready(function initMap() {
   var address = '{{$myproduct[0]->roadAddress}}';
   // console.log(address);
-  //var url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&sensor=false&language=ko&address='+address;
+  // var url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&sensor=false&language=ko&address='+address;
   // console.log(url);
   var geocoder = new google.maps.Geocoder();
   // var myLatlng = new google.maps.LatLng(35.837143,128.558612); // 위치값 위도 경도
@@ -134,34 +135,34 @@ $(document).ready(function initMap() {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   //마커 클러스터?
-  var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-  geocoder.geocode( { 'address': address}, function(results, status) {
-    console.log(results);
-    if (status == 'OK') {
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-        map: map,
-        position: results[0].geometry.location
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      console.log(results);
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
       });
       var markers = locations.map(function(location, i) {
         return new google.maps.Marker({
           position: location,
           label: labels[i % labels.length]
         });
+        var infowindow = new google.maps.InfoWindow(
+          {
+            content: contentString,
+            maxWizzzdth: markerMaxWidth
+          }
+        );
       });
-      var infowindow = new google.maps.InfoWindow(
-        {
-          content: contentString,
-          maxWizzzdth: markerMaxWidth
-        }
-      );
-      google.maps.event.addListener(marker, 'click', function() {
-        infowindow.open(map, marker);
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map, marker);
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
 });
 </script>
 

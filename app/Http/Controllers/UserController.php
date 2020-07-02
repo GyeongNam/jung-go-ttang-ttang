@@ -55,6 +55,8 @@ class UserController extends Controller
       session()->put('login_ID',encrypt($id));
       print_r("<script>alert('안녕하세요 \\n".$data[0]->NAME." 님 반갑습니다!');</script>");
       $page = session()->get('page');
+      User::where(['id'=> $id])->update([
+        'login_record'=> $request->input(date("Y-m-d"))]);
       return redirect($page);
     }
     else {
@@ -224,9 +226,9 @@ public function warning(Request $request,$id){
   public function ban(Request $request,$id){
 
     $date_de = DB::table('bantime')->select('ban_enddate')->where(['user_id'=>$id])->get();
-    $rede = date("Y-m-d");
+    $rede =  strtotime(date("Y-m-d"));
 
-      if ($date_de < $rede) {
+      if ( strtotime($date_de) < $rede) {
          DB::table('bantime')->where(['user_id'=> $id])->delete();
          $delete = DB::table('banlog')->where([
            'user_id' => $id ])-> delete();
@@ -235,12 +237,14 @@ public function warning(Request $request,$id){
    }
 
     public function graph(Request $request){
-      $test = 0;
+      $calander=DB::table('users')->select('*')->get();
+
+      // $calander= User::select('updated_at')->where(['id'=>$id])->get();
+
+
       $data = Analytics::fetchTotalVisitorsAndPageViews(Period::days(29));
-        // $dat = Arr::get($data[0], 'visitors');
         $dat=0;
       for($i=0; $i<count($data); $i++){
-        // $test += $data[0]->visitors;
         $dat += Arr::get($data[$i], 'visitors');
       }
     $data1 = Analytics::fetchTotalVisitorsAndPageViews(Period::days(0));
@@ -250,7 +254,8 @@ public function warning(Request $request,$id){
         'data'=>$data,
         'data1'=>$data1,
         'dat'=>$dat,
-        'dat1'=>$dat1
+        'dat1'=>$dat1,
+        'calander'=>$calander
       ]);
     }
     public function policy(Request $request){
@@ -265,7 +270,7 @@ public function warning(Request $request,$id){
     public function managerlogin(Request $request){
       $id = $request->input('ID1');
       $pw = $request->input('PW1');
-      $data = DB::table('manager')->select('id','password')->where(['id'=>$id ,'password'=>$pw])->get();
+      $data = DB::table('managerid')->select('id','password')->where(['id'=>$id ,'password'=>$pw])->get();
       if(count($data)>0){
         session()->put('login_ID',encrypt($id));
 
@@ -276,5 +281,8 @@ public function warning(Request $request,$id){
         return view('/manager_login');
       }
     }
-
+    public function managerlogout(Request $request){
+      session()->forget('login_ID');
+      return redirect('/manager_login');
+    }
 }
