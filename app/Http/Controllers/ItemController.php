@@ -667,4 +667,21 @@ class ItemController extends Controller
                   }
                 }
               }
+              public function managerdelete(Request $request){
+                $it =$request->input();
+                Item::where(['item_number'=>$it])->delete();
+                // Auction::where(['item_number'=>$it])->delete();
+                // Largecomment::where([
+                //   'largecomm_item'=> $it
+                //   ])->delete();
+                //
+                // Commentlike::where([
+                //   'commentlike_number'=> $it
+                //   ])->delete();
+                // Comment::where([
+                //   'comment_num' => $it
+                //   ])->delete();
+                return back();
+
+              }
             }

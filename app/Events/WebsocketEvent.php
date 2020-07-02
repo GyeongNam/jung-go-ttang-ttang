@@ -13,16 +13,16 @@ use Illuminate\Queue\SerializesModels;
 class WebsocketEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    public $somedata;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-     public $somedata;
-    public function __construct($somedata)
+
+    public function __construct($somedatas)
     {
-        $this->somedata;
+        $this->somedata = $somedatas;
     }
 
     /**
@@ -32,6 +32,6 @@ class WebsocketEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('testChannal');
+        return new Channel('ccit');
     }
 }

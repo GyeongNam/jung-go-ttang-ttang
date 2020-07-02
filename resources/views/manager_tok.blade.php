@@ -161,8 +161,7 @@ $(function(){
 
 
             @if(session('login_ID') == false)
-              <li><a href="/Login">Login</a></li>
-              <li><a href="/sign_rull">sign up</a></li>
+
             @else
 
             <!-- Nav Item - User Information -->

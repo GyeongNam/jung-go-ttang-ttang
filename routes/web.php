@@ -75,7 +75,7 @@ Route::get('/sign_rull', function () {
     return view('login.sign_rull');
 });
 Route::get('/cahtroom', function(){
-  broadcast(new WebsocketEvent('somedata'));
+  broadcast(new WebsocketEvent('ccit'));
   return view('cahtroom');
 });
 // user Controller
@@ -138,6 +138,7 @@ Route::post('/ban/{id}','UserController@ban')->middleware('manager');
 Route::post('/managerlogin','UserController@managerlogin');
 Route::get('/manager_main','UserController@graph')->middleware('manager');
 Route::get('/manager_logout','UserController@managerlogout')->middleware('manager');
+Route::get('/manager_delete','ItemController@managerdelete')->middleware('manager');
 
 //fann_test
 // Route::get('/sasa','ItemController@sasa');

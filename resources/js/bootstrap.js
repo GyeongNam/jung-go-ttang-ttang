@@ -43,6 +43,17 @@ window.Echo = new Echo({
     disableStats: true
 });
 
-window.Echo.channel('testChannal').listen('WebsocketEvent', (e) => {
-  console.log(e);
-});
+Echo.channel('ccit')
+    .listen('WebsocketEvent', (e) => {
+        console.log(e);
+    });
+
+
+// import Echo from "laravel-echo"
+//
+// window.io = require('socket.io-client');
+//
+// window.Echo = new Echo({
+//     broadcaster: 'socket.io',
+//     host: window.location.hostname + ':6001'
+// });

@@ -177,7 +177,7 @@ return [
 
         Intervention\Image\ImageServiceProvider::class,
     ],
-    // \Nuwave\Lighthouse\Subscriptions\SubscriptionServiceProvider::class,
+    \Nuwave\Lighthouse\Subscriptions\SubscriptionServiceProvider::class,
     /*
     |--------------------------------------------------------------------------
     | Class Aliases

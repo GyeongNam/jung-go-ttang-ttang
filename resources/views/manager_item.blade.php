@@ -159,8 +159,7 @@ $(function(){
             </li>
 
             @if(session('login_ID') == false)
-              <li><a href="/Login">Login</a></li>
-              <li><a href="/sign_rull">sign up</a></li>
+
             @else
 
             <!-- Nav Item - User Information -->
@@ -208,7 +207,7 @@ $(function(){
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <button type="button" class="btn btn-danger" style= "float:right" >삭제하기</button>
+
 
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                     <thead>
@@ -222,28 +221,45 @@ $(function(){
                         <th>경매마감일</th>
                         <th>낙찰여부</th>
                         <th>신고</th>
+                        <th>삭제</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($item_join as $key => $value)
-                      <tr onclick="location.href='/product-detail/{{$value->item_number}}'" style="cursor:pointer;" class="trhover">
-                        <td>{{$value->item_number}}</td>
-                        <td>{{$value->item_name}}</td>
-                        <td>{{$value->item_startprice}}</td>
+                      <tr style="cursor:pointer;" class="trhover">
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$value->item_number}}
+                        </td>
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$value->item_name}}</td>
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$value->item_startprice}}</td>
                         @if(!empty($item_joins[$key]))
-                        <td>{{$item_joins[$key]->item_price}}</td>
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$item_joins[$key]->item_price}}</td>
                         @else
-                        <td>0</td>
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          0</td>
                         @endif
-                        <td>{{$value->seller_id}}</td>
-                        <td>{{$value->created_at}}</td>
-                        <td>{{$value->item_deadline}}</td>
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$value->seller_id}}</td>
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$value->created_at}}</td>
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$value->item_deadline}}</td>
                         @if ($value->success !=0)
                         <td>낙찰완료</td>
                         @else
                         <td>진행중</td>
                         @endif
-                        <td>{{$count[$key]}}</td>
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                        {{$count[$key]}}</td>
+                        <th>
+                          <form action="/manager_delete"  method="get">
+                          <input type="hidden" name='item_number' value="{{$value->item_number}}">
+                          <button type="submit" class="btn btn-danger">삭제하기</button>
+                        </form>
+                        </th>
                       </tr>
                       @endforeach
 
