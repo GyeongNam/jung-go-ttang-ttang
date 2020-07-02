@@ -143,7 +143,10 @@
               </div>
             </li>
 
-
+            @if(session('login_ID') == false)
+              <li><a href="/Login">Login</a></li>
+              <li><a href="/sign_rull">sign up</a></li>
+            @else
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
@@ -153,6 +156,8 @@
               </span>
                 <img class="img-profile rounded-circle" src="/img/r_heart.png">
               </a>
+              <div class = "nav_login">
+              </div>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
 
@@ -163,7 +168,7 @@
                 </a>
               </div>
             </li>
-
+            @endif
           </ul>
 
         </nav>
@@ -281,7 +286,7 @@
         <div class="modal-body">로그인화면으로 돌아갑니다.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-          <a class="btn btn-primary" href="/manager_login">Logout</a>
+          <a class="btn btn-primary" href="/manager_logout">Logout</a>
         </div>
       </div>
     </div>

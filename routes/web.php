@@ -129,14 +129,15 @@ Route::post('/selectpw', 'UserController@selectpw');
 Route::post('/sms_send', 'SMSController@SendMessage');
 
 // manager
-Route::get('/manager_user', 'UserController@manager');
-Route::get('/manager_user_info/{id}',  'UserController@managerINFO');
-Route::get('/manager_item','ItemController@manageritem');
-Route::get('/manager_policy', 'UserController@policy');
-Route::post('/warning/{id}','UserController@warning');
-Route::post('/ban/{id}','UserController@ban');
+Route::get('/manager_user', 'UserController@manager')->middleware('manager');
+Route::get('/manager_user_info/{id}',  'UserController@managerINFO')->middleware('manager');
+Route::get('/manager_item','ItemController@manageritem')->middleware('manager');
+Route::get('/manager_policy', 'UserController@policy')->middleware('manager');
+Route::post('/warning/{id}','UserController@warning')->middleware('manager');
+Route::post('/ban/{id}','UserController@ban')->middleware('manager');
 Route::post('/managerlogin','UserController@managerlogin');
-Route::get('/manager_main','UserController@graph');
+Route::get('/manager_main','UserController@graph')->middleware('manager');
+Route::get('/manager_logout','UserController@managerlogout')->middleware('manager');
 
 //fann_test
 // Route::get('/sasa','ItemController@sasa');

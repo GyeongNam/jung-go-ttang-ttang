@@ -276,5 +276,9 @@ public function warning(Request $request,$id){
         return view('/manager_login');
       }
     }
+    public function managerlogout(Request $request){
+      session()->forget('login_ID');
+      return redirect('/manager_login');
+    }
 
 }
