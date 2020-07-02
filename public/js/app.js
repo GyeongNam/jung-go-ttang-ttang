@@ -55775,9 +55775,16 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   wsPort: 6001,
   disableStats: true
 });
-window.Echo.channel('testChannal').listen('WebsocketEvent', function (e) {
+laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"].channel('ccit').listen('WebsocketEvent', function (e) {
   console.log(e);
-});
+}); // import Echo from "laravel-echo"
+//
+// window.io = require('socket.io-client');
+//
+// window.Echo = new Echo({
+//     broadcaster: 'socket.io',
+//     host: window.location.hostname + ':6001'
+// });
 
 /***/ }),
 

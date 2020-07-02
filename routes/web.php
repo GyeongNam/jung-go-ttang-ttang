@@ -75,7 +75,7 @@ Route::get('/sign_rull', function () {
     return view('login.sign_rull');
 });
 Route::get('/cahtroom', function(){
-  broadcast(new WebsocketEvent('somedata'));
+  broadcast(new WebsocketEvent('ccit'));
   return view('cahtroom');
 });
 // user Controller
