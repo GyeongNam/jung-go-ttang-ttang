@@ -100,7 +100,7 @@ $(function(){
       <li class="nav-item">
         <a class="nav-link" href="/manager_tok">
           <i class="fas fa-fw fa-table"></i>
-          <span>상담관리</span></a>
+          <span>채팅관리</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/manager_policy">
@@ -195,7 +195,7 @@ $(function(){
 
           <!-- 관리자페이지 -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">상담관리</h1>
+            <h1 class="h3 mb-0 text-gray-800">채팅관리</h1>
 
           </div>
 
@@ -212,12 +212,11 @@ $(function(){
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
-                        <th>아이디</th>
-                        <th>이름</th>
-                        <th>핸드폰</th>
-                        <th>상담제목</th>
-                        <th>상담상태</th>
-                        <th>등록일</th>
+                        <th>상품번호</th>
+                        <th>상품이름</th>
+                        <th>판매자</th>
+                        <th>낙찰자</th>
+
                       </tr>
                     </thead>
                     <tbody>
@@ -226,42 +225,7 @@ $(function(){
                         <td>System Architect</td>
                         <td>Edinburgh</td>
                         <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-
-
-                      </tr>
-                      <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
-
-
-                      </tr>
-                      <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td>2009/01/12</td>
-                        <td>$86,000</td>
-
-
-                      </tr>
-                      <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td>2012/03/29</td>
-                        <td>$433,060</td>
-
-
-                      </tr>
-
+                      </tr>                  
                     </tbody>
                   </table>
                 </div>
