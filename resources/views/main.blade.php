@@ -33,88 +33,50 @@
     var zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
     // //판매자가 등록한 주소
-    // var address = '{{$myproduct[0]->roadAddress}}';
+     var address = '{{$myproduct[0]->roadAddress}}';
     // //판매자의 아이디
-    // var id = '{{$myproduct[0]->seller_id}}';
-    // // 말풍선 내용
-    // var contentString	=
-    // '<div>' +
-    // '<h2>직거래 위치:</h2>'+
-    // '<h3>'+address+'</h3>'+
-    // '<p>'+id+'님의. 직거래 위치입니다!</p>' +
-    // '</div>';
-    //
-    // // 주소-좌표 변환 객체를 생성합니다
-    // var geocoder = new kakao.maps.services.Geocoder();
-    //
+     var id = '{{$myproduct[0]->seller_id}}';
+     // 말풍선 내용
+     var contentString	=
+     '<div>' +
+     '<h2>직거래 위치:</h2>'+
+     '<h3>'+address+'</h3>'+
+     '<p>'+id+'님의. 직거래 위치입니다!</p>' +
+     '</div>';
+
+     // 주소-좌표 변환 객체를 생성합니다
+     var geocoder = new kakao.maps.services.Geocoder();
+
     // // 주소로 좌표를 검색합니다
-    // geocoder.addressSearch(address, function(result, status) {
-    //   // 정상적으로 검색이 완료됐으면
-    //   if (status === kakao.maps.services.Status.OK) {
-    //
-    //     var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-    //
-    //     // 결과값으로 받은 위치를 마커로 표시합니다
-    //     var marker = new kakao.maps.Marker({
-    //       map: map,
-    //       position: coords
-    //     });
-    //
-    //     // 인포윈도우로 장소에 대한 설명을 표시합니다
-    //     var infowindow = new kakao.maps.InfoWindow({
-    //       content: contentString
-    //     });
-    //     infowindow.open(map, marker);
-    //
-    //     // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-    //     map.setCenter(coords);
-    //   }
-    //   // console.log('tlf');
-    // });
-    // 마커를 표시할 위치와 title 객체 배열입니다
-    // var positions = $('#maparry').val();
-    // console.log(positions);
-    // for (var i = 0; i < $myproduct.length; i++) {
-    //   var arraddress = new Array();
-    //
-    // }
+    geocoder.addressSearch(address, function(result, status) {
+       // 정상적으로 검색이 완료됐으면
+     if (status === kakao.maps.services.Status.OK) {
 
-    // 마커 이미지의 이미지 주소입니다
-    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+       var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-    for (var i = 0; i < positions.length; i ++) {
+         // 결과값으로 받은 위치를 마커로 표시합니다
+         var marker = new kakao.maps.Marker({
+         map: map,
+           position: coords
+        });
 
-      // 마커 이미지의 이미지 크기 입니다
-      var imageSize = new kakao.maps.Size(24, 35);
+      // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+           content: contentString
+         });
+         infowindow.open(map, marker);
 
-      // 마커 이미지를 생성합니다
-      var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-      // 주소로 좌표를 검색합니다
-      geocoder.addressSearch(addresss, function(result, status) {
-        // 정상적으로 검색이 완료됐으면
-        if (status === kakao.maps.services.Status.OK) {
-
-          var coordss = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-          // 결과값으로 받은 위치를 마커로 표시합니다
-          var marker = new kakao.maps.Marker({
-            map: map,
-            position: coordss
-          });
-
-          // 인포윈도우로 장소에 대한 설명을 표시합니다
-          var infowindow = new kakao.maps.InfoWindow({
-            content: contentString
-          });
-          infowindow.open(map, marker);
-
-          // // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-          map.setCenter(coordss);
-        }
-        // console.log('tlf');
-      });
-    };
+         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+         map.setCenter(coords);
+       }
+       // console.log('tlf');
+     });
+   //   마커를 표시할 위치와 title 객체 배열입니다
+   //   var positions = $('#maparry').val();
+   //   console.log(positions);
+   //   for (var i = 0; i < $myproduct.length; i++) {
+   //     var arraddress = new Array();
+   // }
   });
   </script>
 @endsection

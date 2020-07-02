@@ -143,6 +143,6 @@ Route::get('/manager_delete','ItemController@managerdelete')->middleware('manage
 //fann_test
 // Route::get('/sasa','ItemController@sasa');
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
