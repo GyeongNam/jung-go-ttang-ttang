@@ -99,16 +99,6 @@ $(function (){
         alert("내용을 입력해주세요!");
         $(".comment_text").focus();
       }
-      // else{
-      //   $.ajax({
-      //     url:"/product-detail",
-      //     dataType:"json",
-      //     data: {  }
-      //     success:function(){
-      //       alert('댓글등록 완료!');
-      //     }
-      //   })
-      // }
     }
   });
 });
@@ -145,6 +135,7 @@ $(document).ready(function initMap() {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
   //마커 클러스터?
+<<<<<<< HEAD
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
     geocoder.geocode( { 'address': address}, function(results, status) {
       console.log(results);
@@ -153,6 +144,21 @@ $(document).ready(function initMap() {
         var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location
+=======
+  var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    console.log(results);
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location
+      });
+      var markers = locations.map(function(location, i) {
+        return new google.maps.Marker({
+          position: location,
+          label: labels[i % labels.length]
+>>>>>>> 8efb49158f436b7036dc66fa4d567b8554f3ac4c
         });
         var infowindow = new google.maps.InfoWindow(
           {

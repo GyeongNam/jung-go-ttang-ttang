@@ -59,17 +59,14 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        엄
+        CCIT-A
       </div>
 
 
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Addons
-      </div>
+
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
@@ -151,7 +148,14 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">엄준식</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                    @if(session('login_ID') == false)
+                      <li><a href="/Login">Login</a></li>
+                    @else
+                      <div class="dropdown-divider"></div>
+                      <a class="nolog" href="/Logout">Logout</a></li>
+                    @endif
+              </span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -228,7 +232,7 @@
 
           <div class="row">
 
-          
+
 
           <!-- Content Row -->
           <div class="row">
@@ -274,15 +278,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">로그인화면으로 돌아갑니다.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+          <a class="btn btn-primary" href="/manager_login">Logout</a>
         </div>
       </div>
     </div>

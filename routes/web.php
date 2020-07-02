@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Events\WebsocketEvent;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,10 +68,14 @@ Route::get('/manager_tok', function(){
 Route::get('/manager_policy', function(){
     return view('manager_policy');
 });
+Route::get('/manager_login', function(){
+    return view('manager_login');
+});
 Route::get('/sign_rull', function () {
     return view('login.sign_rull');
 });
 Route::get('/cahtroom', function(){
+  broadcast(new WebsocketEvent('somedata'));
   return view('cahtroom');
 });
 // user Controller
@@ -130,7 +135,12 @@ Route::get('/manager_item','ItemController@manageritem');
 Route::get('/manager_policy', 'UserController@policy');
 Route::post('/warning/{id}','UserController@warning');
 Route::post('/ban/{id}','UserController@ban');
+Route::post('/managerlogin','UserController@managerlogin');
 Route::get('/manager_main','UserController@graph');
 
 //fann_test
 // Route::get('/sasa','ItemController@sasa');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
