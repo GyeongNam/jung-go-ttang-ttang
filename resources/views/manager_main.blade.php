@@ -220,7 +220,36 @@
               </div>
             </div>
 
+            <div class="container-fluid">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">사용자 로그인 기록</h6>
+              </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>아이디</th>
+                      <th>이름</th>
+                      <th>로그인 기록</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
+                    <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
+                      @foreach ($calander as $key => $value)
+                      <td>{{$value->id}}</td>
+                      <td>{{$value->name}}</td>
+                      <td>{{$value->updated_at}}</td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
 
             <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">

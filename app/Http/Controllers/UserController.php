@@ -55,6 +55,8 @@ class UserController extends Controller
       session()->put('login_ID',encrypt($id));
       print_r("<script>alert('안녕하세요 \\n".$data[0]->NAME." 님 반갑습니다!');</script>");
       $page = session()->get('page');
+      User::where(['id'=> $id])->update([
+        'login_record'=> $request->input(date("Y-m-d"))]);
       return redirect($page);
     }
     else {
@@ -235,12 +237,14 @@ public function warning(Request $request,$id){
    }
 
     public function graph(Request $request){
-      $test = 0;
+      $calander=DB::table('users')->select('*')->get();
+
+      // $calander= User::select('updated_at')->where(['id'=>$id])->get();
+
+
       $data = Analytics::fetchTotalVisitorsAndPageViews(Period::days(29));
-        // $dat = Arr::get($data[0], 'visitors');
         $dat=0;
       for($i=0; $i<count($data); $i++){
-        // $test += $data[0]->visitors;
         $dat += Arr::get($data[$i], 'visitors');
       }
     $data1 = Analytics::fetchTotalVisitorsAndPageViews(Period::days(0));
@@ -250,7 +254,8 @@ public function warning(Request $request,$id){
         'data'=>$data,
         'data1'=>$data1,
         'dat'=>$dat,
-        'dat1'=>$dat1
+        'dat1'=>$dat1,
+        'calander'=>$calander
       ]);
     }
     public function policy(Request $request){
@@ -280,5 +285,4 @@ public function warning(Request $request,$id){
       session()->forget('login_ID');
       return redirect('/manager_login');
     }
-
 }
