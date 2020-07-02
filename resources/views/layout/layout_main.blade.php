@@ -13,6 +13,7 @@
     </script>
 
 
+
     {{-- Title --}}
     <title>@yield('title')</title>
 

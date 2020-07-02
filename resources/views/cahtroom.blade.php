@@ -2,14 +2,16 @@
 
 @section('css')
   <link rel="stylesheet" href="/css/cahrtroom.css">
+  <meta name="csrf_token" content="{{csrf_token()}}">
 @endsection
 
 @section('js')
 
+
 @endsection
 @section('content')
-
-  <div class="row">
+@csrf
+  <div id="app" class="row">
     <div class="column" style="background-color:#a6c497;">
       <div class="talk_user_content">
         <div class="talk_user">
@@ -60,8 +62,7 @@
     </div>
   </div>
 
-
-
+<script src="js/app.js"></script>
 
 
 @endsection
