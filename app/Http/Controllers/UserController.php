@@ -265,7 +265,7 @@ public function warning(Request $request,$id){
     public function managerlogin(Request $request){
       $id = $request->input('ID1');
       $pw = $request->input('PW1');
-      $data = DB::table('manager')->select('id','password')->where(['id'=>$id ,'password'=>$pw])->get();
+      $data = DB::table('managerid')->select('id','password')->where(['id'=>$id ,'password'=>$pw])->get();
       if(count($data)>0){
         session()->put('login_ID',encrypt($id));
 
