@@ -198,6 +198,9 @@ class ItemController extends Controller
   }
 
   public function mainview(Request $item_number){
+    $myproduct= Item::select('*')->get();
+    $roAd = Item::select('roadAddress', 'item_number')->get();
+    $user = User::select('*')->get();
     $collection =Item::select(['item_number'])->get();
     $count=count($collection);
     $topview = DB::table('items')->orderBy('visit_count', 'desc')->get();
@@ -209,6 +212,9 @@ class ItemController extends Controller
     $catek=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'가전제품'])->get();
     $catel=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'노트북/PC'])->get();
     return view('/main', [
+      'myproduct'=>$myproduct,
+      'road'=> $roAd,
+      'user'=> $user,
       'count'=>$count,
       'topview'=>$topview,
       'cate'=>$cate,
@@ -283,7 +289,7 @@ class ItemController extends Controller
     $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
     $like=Favorite::select('favorite_itemnum')->where(['favorite_itemnum'=>$item_number])->get()->count();
     $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
-
+    $roAd = Item::select('roadAddress', 'item_number')->get();
     $likecomment = collect([]);
     $largcommentitem = collect([]);
     $commentlike = collect([]);
@@ -307,6 +313,7 @@ class ItemController extends Controller
     Item::where(['item_number'=>$item_number])->update([
       'visit_count'=> $count[0]->visit_count + 1,
     ]);
+    // echo $roAd;
     // echo count($likecomment[2]);
     // echo $lacount;
     // [코멘트 번호][같은 코멘트 번호의 댓글]
@@ -324,7 +331,8 @@ class ItemController extends Controller
       'commentlike'=>$commentlike,
       'likecomment'=>$likecomment,
       'likeheart'=>$likeheart,
-      'like'=>$like
+      'like'=>$like,
+      'road'=>$roAd
 
     ]);
   }

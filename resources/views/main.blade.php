@@ -10,6 +10,113 @@
 @endsection
 @section('js')
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a82332350bc18d282d500e361ee79da&libraries=services"></script>
+  <script>
+  $(document).ready(function(){
+
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = {
+      center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+      level: 3 // 지도의 확대 레벨
+    };
+
+    // 지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+    // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
+    var mapTypeControl = new kakao.maps.MapTypeControl();
+
+    // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+    // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+    // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+    var zoomControl = new kakao.maps.ZoomControl();
+    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+    // //판매자가 등록한 주소
+    // var address = '{{$myproduct[0]->roadAddress}}';
+    // //판매자의 아이디
+    // var id = '{{$myproduct[0]->seller_id}}';
+    // // 말풍선 내용
+    // var contentString	=
+    // '<div>' +
+    // '<h2>직거래 위치:</h2>'+
+    // '<h3>'+address+'</h3>'+
+    // '<p>'+id+'님의. 직거래 위치입니다!</p>' +
+    // '</div>';
+    //
+    // // 주소-좌표 변환 객체를 생성합니다
+    // var geocoder = new kakao.maps.services.Geocoder();
+    //
+    // // 주소로 좌표를 검색합니다
+    // geocoder.addressSearch(address, function(result, status) {
+    //   // 정상적으로 검색이 완료됐으면
+    //   if (status === kakao.maps.services.Status.OK) {
+    //
+    //     var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+    //
+    //     // 결과값으로 받은 위치를 마커로 표시합니다
+    //     var marker = new kakao.maps.Marker({
+    //       map: map,
+    //       position: coords
+    //     });
+    //
+    //     // 인포윈도우로 장소에 대한 설명을 표시합니다
+    //     var infowindow = new kakao.maps.InfoWindow({
+    //       content: contentString
+    //     });
+    //     infowindow.open(map, marker);
+    //
+    //     // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+    //     map.setCenter(coords);
+    //   }
+    //   // console.log('tlf');
+    // });
+    // 마커를 표시할 위치와 title 객체 배열입니다
+    // var positions = $('#maparry').val();
+    // console.log(positions);
+    // for (var i = 0; i < $myproduct.length; i++) {
+    //   var arraddress = new Array();
+    //
+    // }
+
+    // 마커 이미지의 이미지 주소입니다
+    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+    for (var i = 0; i < positions.length; i ++) {
+
+      // 마커 이미지의 이미지 크기 입니다
+      var imageSize = new kakao.maps.Size(24, 35);
+
+      // 마커 이미지를 생성합니다
+      var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+      // 주소로 좌표를 검색합니다
+      geocoder.addressSearch(addresss, function(result, status) {
+        // 정상적으로 검색이 완료됐으면
+        if (status === kakao.maps.services.Status.OK) {
+
+          var coordss = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+          // 결과값으로 받은 위치를 마커로 표시합니다
+          var marker = new kakao.maps.Marker({
+            map: map,
+            position: coordss
+          });
+
+          // 인포윈도우로 장소에 대한 설명을 표시합니다
+          var infowindow = new kakao.maps.InfoWindow({
+            content: contentString
+          });
+          infowindow.open(map, marker);
+
+          // // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+          map.setCenter(coordss);
+        }
+        // console.log('tlf');
+      });
+    };
+  });
+  </script>
 @endsection
 
 @section('content')
@@ -108,6 +215,7 @@
 
             </div>
           </div>
+          <div id="map" style="width:auto; height:300px;"></div>
           <!--제품 정보 표시-->
           <div class="product">
             <div class="categorybar">

@@ -89,12 +89,12 @@ Route::get('/mypage/update', 'UserController@user_binding')->middleware('login')
 Route::get('/repassword/{id}', 'UserController@user_repwd');
 Route::post('/user_pwd_update/{id}','UserController@user_pwd_update');
 Route::get('/Servicecenter','UserController@qna');
-Route::get('/','ItemController@mainview');
 
 
 
 
 // item Controller
+Route::get('/','ItemController@mainview');
 Route::post('/product', 'ItemController@store')->middleware('police');
 Route::get('/product-detail/{item_number}', 'ItemController@itemview');
 Route::post('/police/{item_number}', 'ItemController@police')->middleware('login');
