@@ -6,12 +6,12 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-try {
-    window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('jquery');
-
-    require('bootstrap');
-} catch (e) {}
+// try {
+//     window.Popper = require('popper.js').default;
+//     window.$ = window.jQuery = require('jquery');
+//
+//     require('bootstrap');
+// } catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -37,17 +37,18 @@ window.Echo = new Echo({
     broadcaster: 'pusher',
     key: process.env.MIX_PUSHER_APP_KEY,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-    forceTLS: true,
+    forceTLS: false,
     wsHost: window.location.hostname,
     wsPort: 6001,
-    disableStats: true
+    // enabledTransports: ['ws', 'wss'],
+    encrypted: false,
+    disableStats: false
 });
 
-Echo.channel('ccit')
+window.Echo.channel('ccit')
     .listen('WebsocketEvent', (e) => {
         console.log(e);
     });
-
 
 // import Echo from "laravel-echo"
 //

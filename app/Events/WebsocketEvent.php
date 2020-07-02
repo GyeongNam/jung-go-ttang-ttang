@@ -13,16 +13,18 @@ use Illuminate\Queue\SerializesModels;
 class WebsocketEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $somedata;
+
+    public $message;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
 
-    public function __construct($somedatas)
+    public function __construct($message)
     {
-        $this->somedata = $somedatas;
+        $this->message = $message;
     }
 
     /**

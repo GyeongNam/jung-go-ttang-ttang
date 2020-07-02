@@ -60,16 +60,11 @@
       </div>
     </div>
   </div>
-  <script src="https://js.pusher.com/6.0/pusher.min.js"></script>
- <script>
- // Pusher.logToConsole = true;
- var pusher = new Pusher('39a69c815e349b8462e7', {
-      cluster: 'ap3'
-    });
-
-    var channel = pusher.subscribe('ccit');
-    channel.bind('WebsocketEvent', function(data) {
-      alert(JSON.stringify(data));
-    });
-</script>
+  <script src ="{{ asset('js/app.js')}}"></script>
+  <!-- <script>
+  Echo.channel('ccit')
+      .listen('WebsocketEvent', (e) => {
+          console.log(e);
+      })
+  </script> -->
 @endsection
