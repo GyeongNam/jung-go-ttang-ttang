@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateManagerTable extends Migration
+class CreateManageridTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateManagerTable extends Migration
      */
     public function up()
     {
-        Schema::create('manager', function (Blueprint $table) {
+        Schema::create('managerid', function (Blueprint $table) {
             $table->string('id')->unique();
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
+
         });
     }
 
@@ -27,6 +29,6 @@ class CreateManagerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manager');
+        Schema::dropIfExists('managerid');
     }
 }
