@@ -12,6 +12,7 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a82332350bc18d282d500e361ee79da&libraries=services"></script>
   <script>
+  // console.log(a);
   $(document).ready(function(){
 
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -20,37 +21,48 @@
       level: 3 // 지도의 확대 레벨
     };
 
-    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    // 지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
 
+    // 주소-좌표 변환 객체를 생성합니다
+    var geocoder = new kakao.maps.services.Geocoder();
 
-      var positions = $('#maparry').val();
-      console.log(positions);
-      for (var i = 0; i < positions.length; i++) {
-        var positions = $('#maparry').val();
-        var arraddress = new Array();
-        console.log(positions);
+    var positions = $('.maparry');
+    var add = [];
+    // console.log(add);
+    // console.log(positions[1]);
+    for(i=0; i<positions.length;i++){
+      add.push(positions[i].value);
     }
-    // 마커 이미지의 이미지 주소입니다
-    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+    console.log(add);
+    // 주소로 좌표를 검색합니다
+    for(i=0; i <add.length; i++){
+      geocoder.addressSearch(add[i], function(result, status) {
 
-    for (var i = 0; i < positions.length; i ++) {
+        // 정상적으로 검색이 완료됐으면
+        if (status === kakao.maps.services.Status.OK) {
 
-      // 마커 이미지의 이미지 크기 입니다
-      var imageSize = new kakao.maps.Size(24, 35);
+          var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-      // 마커 이미지를 생성합니다
-      var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+          // 결과값으로 받은 위치를 마커로 표시합니다
+          var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+          });
 
-      // 마커를 생성합니다
-      var marker = new kakao.maps.Marker({
-        map: map, // 마커를 표시할 지도
-        position: positions[i].latlng, // 마커를 표시할 위치
-        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-        image : markerImage // 마커 이미지
+          // 인포윈도우로 장소에 대한 설명을 표시합니다
+          var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+          });
+          infowindow.open(map, marker);
+
+          // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+          map.setCenter(coords);
+        }
       });
     }
   });
-  </script>
+</script>
 @endsection
 
 @section('content')
@@ -150,7 +162,7 @@
             </div>
           </div>
           @foreach($road as $key => $value)
-            <input  id="maparry" type="hidden"  value="{{$value->roadAddress}}">
+            <input  id="maparry{{$value->item_number}}" class ="maparry" type="hidden"  value="{{$value->roadAddress}}">
           @endforeach
           <div id="map" style="width:auto; height:300px;"></div>
           <!--제품 정보 표시-->
