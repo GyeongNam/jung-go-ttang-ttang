@@ -239,28 +239,37 @@ public function warning(Request $request,$id){
      return back();
    }
 
-    public function graph(Request $request){
-      $calander=DB::table('users')->select('*')->get();
+   public function graph(Request $request){
+     $calander=DB::table('users')->select('*')->get();
 
-      // $calander= User::select('updated_at')->where(['id'=>$id])->get();
+     // $calander= User::select('updated_at')->where(['id'=>$id])->get();
 
+     $calander=DB::table('users')->select('*')->orderBy('updated_at', 'desc')->get();
 
-      $data = Analytics::fetchTotalVisitorsAndPageViews(Period::days(29));
-        $dat=0;
-      for($i=0; $i<count($data); $i++){
-        $dat += Arr::get($data[$i], 'visitors');
-      }
-    $data1 = Analytics::fetchTotalVisitorsAndPageViews(Period::days(0));
-    $dat1 =Arr::get($data1[0], 'visitors');
+     $data = Analytics::fetchTotalVisitorsAndPageViews(Period::days(29));
+       $dat=0;
+     for($i=0; $i<count($data); $i++){
+       $dat += Arr::get($data[$i], 'visitors');
+     }
 
-      return view('manager_main',[
-        'data'=>$data,
-        'data1'=>$data1,
-        'dat'=>$dat,
-        'dat1'=>$dat1,
-        'calander'=>$calander
-      ]);
-    }
+     $data2 = Analytics::fetchTotalVisitorsAndPageViews(Period::days(6));
+       $dat2=0;
+     for($i=0; $i<count($data2); $i++){
+       $dat2 += Arr::get($data2[$i], 'visitors');
+     }
+
+   $data1 = Analytics::fetchTotalVisitorsAndPageViews(Period::days(0));
+   $dat1 =Arr::get($data1[0], 'visitors');
+
+     return view('manager_main',[
+       'data'=>$data,
+       'data1'=>$data1,
+       'dat'=>$dat,
+       'dat1'=>$dat1,
+       'dat2'=>$dat2,
+       'calander'=>$calander
+     ]);
+   }
     public function policy(Request $request){
       $policy = DB::table('bantime')
               ->join('users','users.id','=','bantime.user_id')
