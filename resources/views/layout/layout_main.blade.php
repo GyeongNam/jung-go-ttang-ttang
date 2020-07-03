@@ -109,7 +109,7 @@
           <li><a href="/wish_list">내 관심</a></li>
           <li><a href="/cahtroom">쪽지</a></li>
         </ul>
-        
+
 
         <div class = "nav_login">
         @if(session('login_ID') == false)
@@ -140,6 +140,9 @@
               </div>
               <div class="sellpage ftn">
                 <a href="/itemcheck">경매판매하기</a>
+              </div>
+              <div class="sellpage ftn">
+                <a href="/manager_login">관리자</a>
               </div>
             </div>
           </div>
