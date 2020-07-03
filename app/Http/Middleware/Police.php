@@ -18,8 +18,8 @@ class Police
     public function handle($request, Closure $next)
     {
       $id = session()->get('login_ID');
-      $ban= DB::table('banlog')->select('*')->where(['user_id' => decrypt($id)])->count();
-      if ($ban >= 3 ) {
+      $ban= DB::table('bantime')->select('*')->where(['user_id' => decrypt($id)])->count();
+      if ($ban >= 1 ) {
         Session::flash('message', "정지 유저라 거래가 안됩니다.");
         return redirect('/');
       }
