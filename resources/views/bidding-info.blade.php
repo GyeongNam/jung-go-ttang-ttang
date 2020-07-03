@@ -59,7 +59,7 @@
       <hr>
       <p><b>
         <span>이름:</span>
-        <span>엄준식</span>
+        <span>{{$ids}}</span>
       </b></p>
         <p><b>00:00:00</b></p>
       <div class="exit">

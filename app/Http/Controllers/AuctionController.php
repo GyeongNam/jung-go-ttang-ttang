@@ -12,12 +12,14 @@ use App\Item;
 class AuctionController extends Controller
 {
     public function sendd($item_number){
+      $id = session()->get('login_ID');
       $sendds = Item::select('item_number', 'item_picture', 'item_name', 'item_startprice')->where(['item_number'=>$item_number])->get();
       $max = Auction::select('item_price')->where(['auction_itemnum'=>$item_number])->get();
       $maxs =  $max->max('item_price');
       return view('bidding-info', [
         'sendd' => $sendds,
-        'max' => $maxs
+        'max' => $maxs,
+        'ids'=>decrypt($id)
       ]);
     }
 
