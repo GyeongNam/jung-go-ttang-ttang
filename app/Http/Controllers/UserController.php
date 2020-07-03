@@ -202,6 +202,9 @@ public function warning(Request $request,$id){
           'ban_startdate'=>date("Y-m-d"),
           'ban_enddate' =>date("Y-m-d",strtotime(" +1day" ))
         ]);
+        DB::table('banlog')->insert([
+            'user_id' => $id
+          ]);
       }
       else {
         $ban = DB::table('banlog')->insert([

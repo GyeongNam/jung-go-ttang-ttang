@@ -415,11 +415,11 @@ class ItemController extends Controller
 
     }
 
-    public function wishitem_remove($favorite_itemnum, $favorite_name){
+    public function wishitem_remove(Request $request, $favorite_itemnum, $favorite_name){
       $id = session() -> get('login_ID');
+      $chack = $request->input('chk');
       Favorite::where([
-        'favorite_itemnum' => $favorite_itemnum,
-        'favorite_name' =>$favorite_name
+        'favorite_itemnum' => $chack
         ]) -> delete();
         return redirect()->back();
       }
@@ -670,17 +670,6 @@ class ItemController extends Controller
               public function managerdelete(Request $request){
                 $it =$request->input();
                 Item::where(['item_number'=>$it])->delete();
-                // Auction::where(['item_number'=>$it])->delete();
-                // Largecomment::where([
-                //   'largecomm_item'=> $it
-                //   ])->delete();
-                //
-                // Commentlike::where([
-                //   'commentlike_number'=> $it
-                //   ])->delete();
-                // Comment::where([
-                //   'comment_num' => $it
-                //   ])->delete();
                 return back();
 
               }
