@@ -109,6 +109,7 @@
           <li><a href="/wish_list">내 관심</a></li>
           <li><a href="/cahtroom">쪽지</a></li>
         </ul>
+        
 
         <div class = "nav_login">
         @if(session('login_ID') == false)
