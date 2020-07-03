@@ -20,63 +20,35 @@
       level: 3 // 지도의 확대 레벨
     };
 
-    // 지도를 생성합니다
-    var map = new kakao.maps.Map(mapContainer, mapOption);
-    // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
-    var mapTypeControl = new kakao.maps.MapTypeControl();
+    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-    // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
-    // kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
-    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
 
-    // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
-    var zoomControl = new kakao.maps.ZoomControl();
-    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-    // //판매자가 등록한 주소
-     var address = '{{$myproduct[0]->roadAddress}}';
-    // //판매자의 아이디
-     var id = '{{$myproduct[0]->seller_id}}';
-     // 말풍선 내용
-     var contentString	=
-     '<div>' +
-     '<h2>직거래 위치:</h2>'+
-     '<h3>'+address+'</h3>'+
-     '<p>'+id+'님의. 직거래 위치입니다!</p>' +
-     '</div>';
+      var positions = $('#maparry').val();
+      console.log(positions);
+      for (var i = 0; i < positions.length; i++) {
+        var positions = $('#maparry').val();
+        var arraddress = new Array();
+        console.log(positions);
+    }
+    // 마커 이미지의 이미지 주소입니다
+    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
-     // 주소-좌표 변환 객체를 생성합니다
-     var geocoder = new kakao.maps.services.Geocoder();
+    for (var i = 0; i < positions.length; i ++) {
 
-    // // 주소로 좌표를 검색합니다
-    geocoder.addressSearch(address, function(result, status) {
-       // 정상적으로 검색이 완료됐으면
-     if (status === kakao.maps.services.Status.OK) {
+      // 마커 이미지의 이미지 크기 입니다
+      var imageSize = new kakao.maps.Size(24, 35);
 
-       var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+      // 마커 이미지를 생성합니다
+      var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
-         // 결과값으로 받은 위치를 마커로 표시합니다
-         var marker = new kakao.maps.Marker({
-         map: map,
-           position: coords
-        });
-
-      // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-           content: contentString
-         });
-         infowindow.open(map, marker);
-
-         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-         map.setCenter(coords);
-       }
-       // console.log('tlf');
-     });
-   //   마커를 표시할 위치와 title 객체 배열입니다
-   //   var positions = $('#maparry').val();
-   //   console.log(positions);
-   //   for (var i = 0; i < $myproduct.length; i++) {
-   //     var arraddress = new Array();
-   // }
+      // 마커를 생성합니다
+      var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng, // 마커를 표시할 위치
+        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        image : markerImage // 마커 이미지
+      });
+    }
   });
   </script>
 @endsection
@@ -85,8 +57,8 @@
 
   @if (Session::has('message'))
     <script type="text/javascript">
-     alert("{{Session::get('message')}}");
-   </script>
+    alert("{{Session::get('message')}}");
+    </script>
   @endif
   <div class="speace">
     <div class="article">
@@ -177,6 +149,9 @@
 
             </div>
           </div>
+          @foreach($road as $key => $value)
+            <input  id="maparry" type="hidden"  value="{{$value->roadAddress}}">
+          @endforeach
           <div id="map" style="width:auto; height:300px;"></div>
           <!--제품 정보 표시-->
           <div class="product">
@@ -195,23 +170,23 @@
               <div class="item_list">
                 <h2>인기상품</h2>
 
-                  @foreach($topview as $key => $value)
-                    @if($key < 10)
-                      <div class="item">
-                        <a href="/product-detail/{{$value->item_number}}">
-                          <div OnClick="location.href ='/' " style="cursor:pointer;" >
-                            <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
-                            <div class="whghltn">
-                              <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
-                              조회수:{{$value->visit_count}}
-                            </div>
-                          </div><br>
-                          <a href="#">상품이름:{{$value->item_name}}</a><br>
-                          <a href="#">상품가격: {{number_format($value->item_startprice)}}원 </a>
-                        </a>
-                      </div>
-                    @endif
-                  @endforeach
+                @foreach($topview as $key => $value)
+                  @if($key < 10)
+                    <div class="item">
+                      <a href="/product-detail/{{$value->item_number}}">
+                        <div OnClick="location.href ='/' " style="cursor:pointer;" >
+                          <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
+                          <div class="whghltn">
+                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            조회수:{{$value->visit_count}}
+                          </div>
+                        </div><br>
+                        <a href="#">상품이름:{{$value->item_name}}</a><br>
+                        <a href="#">상품가격: {{number_format($value->item_startprice)}}원 </a>
+                      </a>
+                    </div>
+                  @endif
+                @endforeach
               </div>
 
 
@@ -221,19 +196,19 @@
                 </div>
                 @foreach ($cate as $key => $value)
                   @if($key < 10)
-                  <div class="item">
-                    <a href="/product-detail/{{$value->item_number}}">
-                      <div OnClick="location.href ='/' " style="cursor:pointer;" >
-                        <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
-                        <div class="whghltn">
-                          <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
-                          조회수:{{$value->visit_count}}
-                        </div>
-                      </div><br>
-                      <a href="#">상품이름:{{$value->item_name}}</a><br>
-                      <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
-                    </a>
-                  </div>
+                    <div class="item">
+                      <a href="/product-detail/{{$value->item_number}}">
+                        <div OnClick="location.href ='/' " style="cursor:pointer;" >
+                          <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
+                          <div class="whghltn">
+                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            조회수:{{$value->visit_count}}
+                          </div>
+                        </div><br>
+                        <a href="#">상품이름:{{$value->item_name}}</a><br>
+                        <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
+                      </a>
+                    </div>
                   @endif
                 @endforeach
               </div>
@@ -243,19 +218,19 @@
                 </div>
                 @foreach ($catef as $key => $value)
                   @if($key < 10)
-                  <div class="item">
-                    <a href="/product-detail/{{$value->item_number}}  ">
-                      <div OnClick="location.href ='/' " style="cursor:pointer;" >
-                        <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
-                        <div class="whghltn">
-                          <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
-                          조회수:{{$value->visit_count}}
-                        </div>
-                      </div><br>
-                      <a href="#">상품이름:{{$value->item_name}}</a><br>
-                      <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
-                    </a>
-                  </div>
+                    <div class="item">
+                      <a href="/product-detail/{{$value->item_number}}  ">
+                        <div OnClick="location.href ='/' " style="cursor:pointer;" >
+                          <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
+                          <div class="whghltn">
+                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            조회수:{{$value->visit_count}}
+                          </div>
+                        </div><br>
+                        <a href="#">상품이름:{{$value->item_name}}</a><br>
+                        <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
+                      </a>
+                    </div>
                   @endif
                 @endforeach
               </div>
@@ -265,19 +240,19 @@
                 </div>
                 @foreach ($categ as $key => $value)
                   @if($key < 10)
-                  <div class="item">
-                    <a href="/product-detail/{{$value->item_number}}  ">
-                      <div OnClick="location.href ='/' " style="cursor:pointer;" >
-                        <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
-                        <div class="whghltn">
-                          <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
-                          조회수:{{$value->visit_count}}
-                        </div>
-                      </div><br>
-                      <a href="#">상품이름:{{$value->item_name}}</a><br>
-                      <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
-                    </a>
-                  </div>
+                    <div class="item">
+                      <a href="/product-detail/{{$value->item_number}}  ">
+                        <div OnClick="location.href ='/' " style="cursor:pointer;" >
+                          <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
+                          <div class="whghltn">
+                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            조회수:{{$value->visit_count}}
+                          </div>
+                        </div><br>
+                        <a href="#">상품이름:{{$value->item_name}}</a><br>
+                        <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
+                      </a>
+                    </div>
                   @endif
                 @endforeach
               </div>
@@ -287,19 +262,19 @@
                 </div>
                 @foreach ($cateh as $key => $value)
                   @if($key < 10)
-                  <div class="item">
-                    <a href="/product-detail/{{$value->item_number}}  ">
-                      <div OnClick="location.href ='/' " style="cursor:pointer;" >
-                        <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
-                        <div class="whghltn">
-                          <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
-                          조회수:{{$value->visit_count}}
-                        </div>
-                      </div><br>
-                      <a href="#">상품이름:{{$value->item_name}}</a><br>
-                      <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
-                    </a>
-                  </div>
+                    <div class="item">
+                      <a href="/product-detail/{{$value->item_number}}  ">
+                        <div OnClick="location.href ='/' " style="cursor:pointer;" >
+                          <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
+                          <div class="whghltn">
+                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            조회수:{{$value->visit_count}}
+                          </div>
+                        </div><br>
+                        <a href="#">상품이름:{{$value->item_name}}</a><br>
+                        <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
+                      </a>
+                    </div>
                   @endif
                 @endforeach
               </div>
@@ -309,19 +284,19 @@
                 </div>
                 @foreach ($catej as $key => $value)
                   @if($key < 10)
-                  <div class="item">
-                    <a href="/product-detail/{{$value->item_number}}  ">
-                      <div OnClick="location.href ='/' " style="cursor:pointer;" >
-                        <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
-                        <div class="whghltn">
-                          <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
-                          조회수:{{$value->visit_count}}
-                        </div>
-                      </div><br>
-                      <a href="#">상품이름:{{$value->item_name}}</a><br>
-                      <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
-                    </a>
-                  </div>
+                    <div class="item">
+                      <a href="/product-detail/{{$value->item_number}}  ">
+                        <div OnClick="location.href ='/' " style="cursor:pointer;" >
+                          <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
+                          <div class="whghltn">
+                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            조회수:{{$value->visit_count}}
+                          </div>
+                        </div><br>
+                        <a href="#">상품이름:{{$value->item_name}}</a><br>
+                        <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
+                      </a>
+                    </div>
                   @endif
                 @endforeach
               </div>
@@ -331,19 +306,19 @@
                 </div>
                 @foreach ($catek as $key => $value)
                   @if($key < 10)
-                  <div class="item">
-                    <a href="/product-detail/{{$value->item_number}}  ">
-                      <div OnClick="location.href ='/' " style="cursor:pointer;" >
-                        <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
-                        <div class="whghltn">
-                          <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
-                          조회수:{{$value->visit_count}}
-                        </div>
-                      </div><br>
-                      <a href="#">상품이름:{{$value->item_name}}</a><br>
-                      <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
-                    </a>
-                  </div>
+                    <div class="item">
+                      <a href="/product-detail/{{$value->item_number}}  ">
+                        <div OnClick="location.href ='/' " style="cursor:pointer;" >
+                          <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
+                          <div class="whghltn">
+                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            조회수:{{$value->visit_count}}
+                          </div>
+                        </div><br>
+                        <a href="#">상품이름:{{$value->item_name}}</a><br>
+                        <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
+                      </a>
+                    </div>
                   @endif
                 @endforeach
               </div>
@@ -353,19 +328,19 @@
                 </div>
                 @foreach ($catel as $key => $value)
                   @if($key < 10)
-                  <div class="item">
-                    <a href="/product-detail/{{$value->item_number}}  ">
-                      <div OnClick="location.href ='/' " style="cursor:pointer;" >
-                        <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
-                        <div class="whghltn">
-                          <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
-                          조회수:{{$value->visit_count}}
-                        </div>
-                      </div><br>
-                      <a href="#">상품이름:{{$value->item_name}}</a><br>
-                      <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
-                    </a>
-                  </div>
+                    <div class="item">
+                      <a href="/product-detail/{{$value->item_number}}  ">
+                        <div OnClick="location.href ='/' " style="cursor:pointer;" >
+                          <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
+                          <div class="whghltn">
+                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            조회수:{{$value->visit_count}}
+                          </div>
+                        </div><br>
+                        <a href="#">상품이름:{{$value->item_name}}</a><br>
+                        <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
+                      </a>
+                    </div>
                   @endif
                 @endforeach
               </div>

@@ -216,65 +216,6 @@ $(document).ready(function(){
   };
 });
 </script>
-{{-- 구글지도API --}}
-{{-- <script type="text/javascript"  async defer src="http://maps.google.com/maps/api/js?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&callback=initMap" ></script> --}}
-{{-- <script type="text/javascript">
-// $(document).ready(function initMap() {
-//   var address = '{{$myproduct[0]->roadAddress}}';
-//   // console.log(address);
-//   // var url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyAEk_8ahIgPS73zIwRlvRUO8bYYDvae35U&sensor=false&language=ko&address='+address;
-//   // console.log(url);
-//   // var myLatlng = new google.maps.LatLng(35.837143,128.558612); // 위치값 위도 경도
-//   // var Y_point			= 35.837143;		// Y 좌표
-//   // var X_point			= 128.558612;		// X 좌표
-//   // var zoomLevel		= 18;				// 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
-//   // var myLatlng = new google.maps.LatLng();
-//   // var markerTitle		= "대구광역시";		// 현재 위치 마커에 마우스를 오버을때 나타나는 정보
-//   var markerMaxWidth	= 300;				// 마커를 클릭했을때 나타나는 말풍선의 최대 크기
-//   var id = '{{$myproduct[0]->seller_id}}';
-//   // 말풍선 내용
-//   var contentString	=
-//   '<div>' +
-//   '<h2>직거래 위치:</h2>'+
-//   '<h3>'+address+'</h3>'+
-//   '<p>'+id+'님의. 직거래 위치입니다!</p>' +
-//   '</div>';
-//
-//   var geocoder = new google.maps.Geocoder();
-//   var mapOptions = {
-//     zoom: 18,
-//     mapTypeId: google.maps.MapTypeId.ROADMAP
-//   }
-//   //마커 클러스터?
-//   var map = new google.maps.Map(document.getElementById('gmap'), mapOptions);
-//   geocoder.geocode( { 'address': address}, function(results, status) {
-//     console.log(results);
-//     if (status == 'OK') {
-//       map.setCenter(results[0].geometry.location);
-//       var marker = new google.maps.Marker({
-//         map: map,
-//         position: results[0].geometry.location
-//       });
-//       var markers = locations.map(function(location, i) {
-//         return new google.maps.Marker({
-//           position: location,
-//           label: labels[i % labels.length]
-//         });
-//         var infowindow = new google.maps.InfoWindow(
-//           {
-//             content: contentString,
-//             maxWizzzdth: markerMaxWidth
-//           });
-//         });
-//         google.maps.event.addListener('click', function() {
-//           infowindow.open(map, marker);
-//         });
-//       } else {
-//         alert('Geocode was not successful for the following reason: ' + status);
-//       }
-//     });
-//   });
-</script> --}}
 <script type="text/javascript">
 
 function recomments(data) {
@@ -307,34 +248,6 @@ function largcomments(data) {
   }
 }
 </script>
-{{-- <button type="button" onclick="atoggleImg()" name="button">확인용</button>
-<script>
-console.log(2);
-function atoggleImg() {
-var a= 1;
-var likhet = document.getElementById('likecoment');
-console.log('likhet');
-$.ajax({
-url:"/wish_lst",
-method: "get",
-dataType:"json",
-// data: {  : },
-success:function(data){
-console.log(data);
-if(likhet.src.match("heart")) {
-alert("관심항목에 추가되었습니다.");
-likhet.src="/img/b_gkxm.png";
-
-
-}
-else if(likhet.src.match("b_gkxm")) {
-alert("관심항목에서 해제되었습니다.");
-likhet.src="/img/heart.png";
-}
-}
-});
-}
-</script> --}}
 <script type="text/javascript">
 function commentliketoggle(data, datas) {
   var commlike = document.getElementById('likecoment');
@@ -596,9 +509,6 @@ function commentliketoggles(data) {
           <div class="sc-info_detail">상품 정보</div>
           <div class="sc-info-typing">
             {{-- 카카오map API --}}
-            @foreach($road as $key => $value)
-              <input class="maparry" id="maparry{{$value->item_number}}" type="hidden" name="" value="{{$value->roadAddress}}">
-            @endforeach
             <div id="map" style="width:500px;height:400px;"></div>
             {{-- <div id="gmap"></div>        // 직거래 위치(구글 지도) --}}
             <div class="sc-info_sodyd">
