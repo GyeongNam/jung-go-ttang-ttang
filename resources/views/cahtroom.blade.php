@@ -6,65 +6,81 @@
 @endsection
 
 @section('js')
-
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
 @endsection
 @section('content')
-@csrf
-  <div id="app"class="row">
-    <div class="column" style="background-color:#a6c497;">
-      <div class="talk_user_content">
-        <div class="talk_user">
-          <div class="userbox">
-            <div class="userimg">
-              <a href="#"></a>
-            </div>
-            <div class="user_name">
-              12qwqq
-            </div>
-            <div class="talksumnali">
-              어이 젊은친구 신사답게행동해.
-            </div>
-          </div>
-        </div>
 
-      </div>
-    </div>
-    <div class="massageview" style="background-color:#bbb;">
-      <div class="textcontent">
-        <div class="otherusertalk" id="talktalk">
-          <div class="textnayong">
-            <p id="ottalk">알로핳</p>
-          </div>
-          <div class="texttime">
-            <p id="ottalk">12:12 pm</p>
-          </div>
-        </div>
-        <div class="usertalk" id="talktalk">
-          <div class="talknayoung"  id="talknayoung">
-            <div class="textnayong">
-              <p>500천원 깎ㄷ아줘</p>
+@csrf
+<div id="app" class="container">
+<h3 class=" text-center">Messaging</h3>
+<div class="messaging">
+      <div class="inbox_msg">
+        <div class="inbox_people">
+          <div class="headind_srch">
+            <div class="recent_heading">
+              <h4>Recent</h4>
             </div>
-            <div class="texttime">
-              <p>12:20pm</p>
+            <div class="srch_bar">
+              <div class="stylish-input-group">
+                <input type="text" class="search-bar"  placeholder="Search" >
+                <span class="input-group-addon">
+                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                </span> </div>
             </div>
           </div>
+          <div class="inbox_chat">
+            <div class="chat_list active_chat">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                  <p>Test, which is a new approach to have all solutions
+                    astrology under one roof.</p>
+                </div>
+              </div>
+            </div>
+            <div class="chat_list">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                  <p>Test, which is a new approach to have all solutions
+                    astrology under one roof.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mesgs">
+          <div class="msg_history">
+            <div class="incoming_msg">
+              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>Test which is a new approach to have all
+                    solutions</p>
+                  <span class="time_date"> 11:01 AM    |    June 9</span></div>
+              </div>
+            </div>
+            <div class="outgoing_msg">
+              <div class="sent_msg">
+                <p>Test which is a new approach to have all
+                  solutions</p>
+                <span class="time_date"> 11:01 AM    |    June 9</span> </div>
+            </div>
+          </div>
+          <div class="type_msg">
+            <div class="input_msg_write">
+              <input type="text" class="write_msg" placeholder="Type a message" />
+              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="chatinsert">
-        <div class="">
-          <textarea id="inputmessage"name="name" rows="8" cols="80"></textarea>
-        </div>
-        <div class="chatbtn">
-          <button type="button" name="button">전송</button>
-        </div>
-      </div>
-    </div>
-  </div>
+    </div></div>
   <script src ="{{ asset('js/app.js')}}"></script>
-  <!-- <script>
-  Echo.channel('ccit')
-      .listen('WebsocketEvent', (e) => {
-          console.log(e);
-      })
-  </script> -->
+
 @endsection

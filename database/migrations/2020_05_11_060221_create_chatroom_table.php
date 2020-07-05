@@ -14,8 +14,7 @@ class CreateChatroomTable extends Migration
     public function up()
     {
         Schema::create('chatroom', function (Blueprint $table) {
-        $table->integer('chatroom_num')->unique();
-        $table->primary('chatroom_num');
+        $table->bigIncrements('chatroom_num');
         /*$table->integer('user1_ID');*/
         /*$table->integer('user2_ID');*/
         $table->rememberToken();

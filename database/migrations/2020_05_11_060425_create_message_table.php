@@ -14,16 +14,15 @@ class CreateMessageTable extends Migration
     public function up()
     {
         Schema::create('message', function (Blueprint $table) {
-            $table->integer('message_number')->unique();
-            $table->primary('message_number');
+            $table->bigIncrements('message_number');
             /*$table->integer('chat_num');*/
-            $table->integer('time');
+            $table->string('time');
             $table->string('messege');
             $table->rememberToken();
             $table->timestamps();
         });
         Schema::table('message', function (Blueprint $table) {
-          $table->integer('chat_num')->index();
+          $table->unsignedBigInteger('chat_num')->index();
           $table->foreign('chat_num')->references('chatroom_num')->on('chatroom');
         });
     }
