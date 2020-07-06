@@ -51,6 +51,10 @@ img{ max-width:100%;}
 }
 
 .chat_people{ overflow:hidden; clear:both;}
+.chat_people div:hover {
+  color: #ccc;
+}
+
 .chat_list {
   border-bottom: 1px solid #c4c4c4;
   margin: 0;

@@ -3,14 +3,33 @@
 @section('css')
   <link rel="stylesheet" href="/css/cahrtroom.css">
   <meta name="csrf_token" content="{{csrf_token()}}">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+
 @endsection
 
 @section('js')
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{{-- <script type="text/javascript">
+$user;
+$id;
+$.ajax({
+  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+  url: " /api/muser",
+  dataType: 'json',
+  type: "get",
+  success:function(data){
+    $user = data.user;
+    $id = data.ID;
+  },
+  error : function(){
+    console.log($datas);
+  }
+});
+</script> --}}
 @endsection
+
 @section('content')
 
 @csrf
@@ -31,7 +50,26 @@
                 </span> </div>
             </div>
           </div>
-          <example-component></example-component>
+
+          <div class="inbox_chat">
+            @foreach ($userID as $key => $value)
+            @if(session()->has('login_ID'))
+            @if(decrypt(session('login_ID')) != $value->ID )
+            <div class="chat_list">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5> {{$value->ID}}  <span class="chat_date"> @if(!Empty($messageout[$key][0])) {{$messageout[$key][0]->created_at}}  @endif</span></h5>
+                  @if(!Empty($messageout[$key][0]))
+                  <p> {{$messageout[$key][0]->messege}} </p>
+                  @endif
+                </div>
+              </div>
+            </div>
+          @endif
+          @endif
+          @endforeach
+          </div>
 
         </div>
         <div class="mesgs">
@@ -62,5 +100,6 @@
       </div>
     </div></div>
   <script src ="{{ asset('js/app.js')}}"></script>
+
 
 @endsection
