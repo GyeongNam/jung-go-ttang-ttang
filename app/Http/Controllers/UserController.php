@@ -211,8 +211,15 @@ public function warning(Request $request,$id){
             'user_id' => $id
           ]);
       }
-      // echo $id;
-  return back();
+      if(count($ids)>1)
+      {
+        return redirect('/manager_policy');
+      }
+      else
+      {
+        return back();
+      }
+
 }
   public function qna(Request $request){
     $id = session()->get('login_ID');

@@ -94,6 +94,7 @@ Route::get('/Servicecenter','UserController@qna');
 
 
 // item Controller
+Route::get('/mylocation','ItemController@infoview');
 Route::get('/','ItemController@mainview');
 Route::post('/product', 'ItemController@store')->middleware('police');
 Route::get('/product-detail/{item_number}', 'ItemController@itemview');
