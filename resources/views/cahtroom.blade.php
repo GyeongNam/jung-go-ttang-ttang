@@ -27,6 +27,25 @@ $.ajax({
 });
 </script> -->
 <script type="text/javascript">
+  function messegesend(id){
+    var messege = $('.write_msg'+id).val();
+    $.ajax({
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      url: "/messegesend",
+      data: {messege:messege, id:id},
+      type: "post",
+      success:function(data){
+        console.log(data.id);
+        console.log(data.messege);
+      },
+      error : function(){
+        console.log("실패");
+      }
+    });
+  }
+</script>
+
+<script type="text/javascript">
 $(function(){
   $('.mesgs').hide();
 });
@@ -45,7 +64,9 @@ $(function(){
 @section('content')
 
 @csrf
-<div id="app" class="container">
+<div
+id="app"
+class="container">
 <h3 class=" text-center">Messaging</h3>
 <div class="messaging">
       <div class="inbox_msg">
@@ -71,9 +92,18 @@ $(function(){
               <div class="chat_people">
                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
-                  <h5> {{$value->ID}}  <span class="chat_date"> @if(!Empty($messageout[$key][0])) {{$messageout[$key][0]->created_at}}  @endif</span></h5>
-                  @if(!Empty($messageout[$key][0]))
-                  <p> {{$messageout[$key][0]->messege}} </p>
+                  <h5> {{$value->ID}}  <span class="chat_date">
+
+                     @if(!Empty($messageoutpull[$key]))
+                       @if($messageoutpull[$key]->user1_ID == $value->ID or $messageoutpull[$key]->user2_ID == $value->ID)
+                         {{$messageoutpull[$key]->created_at}}
+                      @endif
+                     @endif</span></h5>
+
+                  @if(!Empty($messageoutpull[$key]))
+                    @if($messageoutpull[$key]->user1_ID == $value->ID or $messageoutpull[$key]->user2_ID == $value->ID)
+                      <p> {{$messageoutpull[$key]->messege}} </p>
+                    @endif
                   @endif
                 </div>
               </div>
@@ -87,31 +117,36 @@ $(function(){
         @foreach ($userID as $key => $value)
         <div class="mesgs" id = "mesgs{{$value->ID}}">
           <div class="msg_history">
-            <div class="incoming_msg">
-              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-              <div class="received_msg">
-                <div class="received_withd_msg">
-                  {{$value->ID}}
-                  <p>Test which is a new approach to have all
-                    solutions</p>
-                  <span class="time_date"> 11:01 AM    |    June 9</span></div>
-              </div>
-            </div>
-            <div class="outgoing_msg">
-              <div class="sent_msg">
-                <p>Test which is a new approach to have all
-                  solutions</p>
-                <span class="time_date"> 11:01 AM    |    June 9</span> </div>
-            </div>
+
+            @foreach($message as $keys => $values)
+              @if($values->user2_ID == $value->ID)
+                <div class="incoming_msg">
+                  <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                  <div class="received_msg">
+                    <div class="received_withd_msg">
+                      {{$value->ID}}
+                      <p>{{$values->messege}}</p>
+                      <span class="time_date"> {{$values->created_at}} </span></div>
+                  </div>
+                </div>
+              @elseif($values->user1_ID == $value->ID)
+                  <div class="outgoing_msg">
+                    <div class="sent_msg">
+                      <p>{{$values->messege}}</p>
+                      <span class="time_date"> {{$values->created_at}} </span> </div>
+                  </div>
+                @endif
+            @endforeach
           </div>
           <div class="type_msg">
             <div class="input_msg_write">
-              <input type="text" class="write_msg" placeholder="Type a message" />
-              <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+
+              <input type="text" class="write_msg{{$value->ID}}" placeholder="Type a message" />
+              <button class="msg_send_btn" type="button" onclick="messegesend('{{$value->ID}}')"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
             </div>
           </div>
         </div>
-          @endforeach
+        @endforeach
       </div>
     </div></div>
   <script src ="{{ asset('js/app.js')}}"></script>

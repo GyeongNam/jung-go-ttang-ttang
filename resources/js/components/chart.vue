@@ -5,7 +5,7 @@
       <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
       <div class="chat_ib">
         <h5> {{user.name}}  {{datas.id}}  <span class="chat_date"> Dec 25</span></h5>
-        <p> {{datas[].name}} </p>
+        <p>  </p>
       </div>
     </div>
   </div>

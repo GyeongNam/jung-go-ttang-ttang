@@ -146,6 +146,8 @@ Route::get('/manager_delete','ItemController@managerdelete')->middleware('manage
 
 // MessageController
 Route::get('/cahtroom', 'MessageController@muser');
+Route::post('/messegesend', 'MessageController@messegesend');
+
 
 //Auth::routes();
 

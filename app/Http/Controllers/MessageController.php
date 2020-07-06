@@ -20,33 +20,31 @@ class MessageController extends Controller
 
     public function muser(){
       $id =decrypt(session()->get('login_ID'));
-      broadcast(new WebsocketEvent('ccit_a hello~'));
+      // broadcast(new WebsocketEvent('ccit_a hello~'));
       $user = User::select('*')->where('ID', "<>" , $id)->get();
       $userID = User::select('ID')->where('ID', "<>" , $id)->get();
 
-      // $message_input = DB::table('chatroom as a1')->
-      // join('chatroom as a2', 'a1.user2_ID', '=', 'a2.user1_ID')->
-      // join('chatroom as a3', 'a3.user2_ID', '=', 'a1.user1_ID')->
-      // get();
-      $message_out = collect([]);
-      for($i = 0; $i<count($userID); $i++){
-        $message_out->push( Message::select('messege','user1_ID','created_at')->where([
-        ['user2_ID', '=', $id],
-        ['user1_ID', '=', $userID[$i]->ID]
-        ])->orderBy('created_at', 'desc')->get());
-      }
-      // echo $message_out ;
 
-      // echo $message_out;
+      $message_outpull = Message::select('messege','user1_ID','user1_ID','created_at')->orderBy('created_at')->get();
 
-      // echo $message_input.'<br>';
-      // echo $userID;
+      $message = Message::select('*')->orderBy('created_at')->get();
 
       return view('cahtroom', [
-        'messageout' => $message_out,
+        'messageoutpull' => $message_outpull,
         'user' => $user,
         'userID' => $userID,
-        'userIDct' => count($userID)
+        'userIDct' => count($userID),
+        'message' => $message
       ]);
+    }
+
+    public function messegesend(Request $request){
+        $id = $request->input('id');
+        $messege = $request->input('messege');
+
+        return response()->json([
+          'id' => $id,
+          'messege' => $messege
+        ]);
     }
 }
