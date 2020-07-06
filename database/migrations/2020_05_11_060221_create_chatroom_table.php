@@ -15,6 +15,7 @@ class CreateChatroomTable extends Migration
     {
         Schema::create('chatroom', function (Blueprint $table) {
         $table->bigIncrements('chatroom_num');
+        $table->string('messege');
         /*$table->integer('user1_ID');*/
         /*$table->integer('user2_ID');*/
         $table->rememberToken();

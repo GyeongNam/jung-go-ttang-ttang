@@ -74,10 +74,10 @@ Route::get('/manager_login', function(){
 Route::get('/sign_rull', function () {
     return view('login.sign_rull');
 });
-Route::get('/cahtroom', function(){
-  broadcast(new WebsocketEvent('ccit_a hello~'));
-  return view('cahtroom');
-});
+// Route::get('/cahtroom', function(){
+//
+//   return view('cahtroom');
+// });
 // user Controller
 Route::post('/singup', 'UserController@store');
 Route::post('/loging', 'UserController@loging');
@@ -94,6 +94,7 @@ Route::get('/Servicecenter','UserController@qna');
 
 
 // item Controller
+Route::get('/mylocation','ItemController@infoview');
 Route::get('/','ItemController@mainview');
 Route::post('/product', 'ItemController@store')->middleware('police');
 Route::get('/product-detail/{item_number}', 'ItemController@itemview');
@@ -142,6 +143,9 @@ Route::get('/manager_delete','ItemController@managerdelete')->middleware('manage
 
 //fann_test
 // Route::get('/sasa','ItemController@sasa');
+
+// MessageController
+Route::get('/cahtroom', 'MessageController@muser');
 
 //Auth::routes();
 
