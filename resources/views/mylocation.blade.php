@@ -44,6 +44,9 @@
     // '<h3>'+address+'</h3>'+
     // '<p>'+id+'님의. 직거래 위치입니다!</p>' +
     // '</div>';
+    //판매자의 아이디
+    var id = '{{$myproduct[0]->seller_id}}';
+
     var positions = $('.maparry');
     var rodcount = {{count($road)}};
     console.log(rodcount);
@@ -68,8 +71,15 @@
             position: coords
           });
           // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-          var iwContent = '<div style="padding:5px;">'+add[i]+'</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-
+          var iwContent =
+          '<div style="padding:10px;">'+
+          '<h3>직거래 위치: </h3>'+
+          '<h3>'+add[i]+'</h3>'+
+          '<p>'+id+'님의. 직거래 위치입니다!</p>' +
+          '</div>'
+          ;
+           // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+          console.log(add[i]);
           // 인포윈도우로 장소에 대한 설명을 표시합니다
           var infowindow = new kakao.maps.InfoWindow({
             content: iwContent
@@ -99,7 +109,7 @@
   @foreach($road as $key => $value)
     <input  id="maparry{{$value->item_number}}" class ="maparry" type="hidden"  value="{{$value->roadAddress}}">
   @endforeach
-  <div id="map">
+  <div id="map" style="width:auto; height:500px;">
     <div class="wa d">
       <a href="#" class="hi"></a>
     </div>
