@@ -1,7 +1,7 @@
 @extends('layout.layout_main')
 
 @section('css')
-<link rel="stylesheet" href="/css/wish_list.css">
+<link rel="stylesheet" href="/css/mylocatino.css">
 @endsection
 
 @section('js')
@@ -99,7 +99,7 @@
   @foreach($road as $key => $value)
     <input  id="maparry{{$value->item_number}}" class ="maparry" type="hidden"  value="{{$value->roadAddress}}">
   @endforeach
-  <div id="map" style="width:auto; height:500px;">
+  <div id="map">
     <div class="wa d">
       <a href="#" class="hi"></a>
     </div>
