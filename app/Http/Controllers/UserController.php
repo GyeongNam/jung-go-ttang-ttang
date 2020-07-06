@@ -268,6 +268,16 @@ public function warning(Request $request,$id){
    $data1 = Analytics::fetchTotalVisitorsAndPageViews(Period::days(0));
    $dat1 =Arr::get($data1[0], 'visitors');
 
+ //   $analyticsData = Analytics::performQuery(Period::days(6),'ga:sessions',
+ //   [
+ //     'metrics'=>'ga:pageviews',
+ //     'dimensions'=>'ga:pagePath'
+ //   ]
+ // );
+ //  $analyticsData1=Arr::get($analyticsData,'%'.'rows.manclothing');
+ //
+ //  dd($analyticsData1);
+
      return view('manager_main',[
        'data'=>$data,
        'data1'=>$data1,
