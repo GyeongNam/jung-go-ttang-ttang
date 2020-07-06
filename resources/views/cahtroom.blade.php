@@ -11,9 +11,7 @@
 @section('js')
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-{{-- <script type="text/javascript">
-$user;
-$id;
+<!-- <script type="text/javascript">
 $.ajax({
   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
   url: " /api/muser",
@@ -27,7 +25,21 @@ $.ajax({
     console.log($datas);
   }
 });
-</script> --}}
+</script> -->
+<script type="text/javascript">
+$(function(){
+  $('.mesgs').hide();
+});
+
+</script>
+
+<script type="text/javascript">
+  function user_select(id){
+    $('.mesgs').hide();
+    $('#mesgs'+id).show();
+    // alert(id);
+  }
+</script>
 @endsection
 
 @section('content')
@@ -43,11 +55,11 @@ $.ajax({
               <h4>Recent</h4>
             </div>
             <div class="srch_bar">
-              <div class="stylish-input-group">
+              {{-- <div class="stylish-input-group">
                 <input type="text" class="search-bar"  placeholder="Search" >
                 <span class="input-group-addon">
                 <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
-                </span> </div>
+                </span> </div> --}}
             </div>
           </div>
 
@@ -55,7 +67,7 @@ $.ajax({
             @foreach ($userID as $key => $value)
             @if(session()->has('login_ID'))
             @if(decrypt(session('login_ID')) != $value->ID )
-            <div class="chat_list">
+            <div class="chat_list" onclick="user_select('{{$value->ID}}')">
               <div class="chat_people">
                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
@@ -72,12 +84,14 @@ $.ajax({
           </div>
 
         </div>
-        <div class="mesgs">
+        @foreach ($userID as $key => $value)
+        <div class="mesgs" id = "mesgs{{$value->ID}}">
           <div class="msg_history">
             <div class="incoming_msg">
               <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
               <div class="received_msg">
                 <div class="received_withd_msg">
+                  {{$value->ID}}
                   <p>Test which is a new approach to have all
                     solutions</p>
                   <span class="time_date"> 11:01 AM    |    June 9</span></div>
@@ -97,6 +111,7 @@ $.ajax({
             </div>
           </div>
         </div>
+          @endforeach
       </div>
     </div></div>
   <script src ="{{ asset('js/app.js')}}"></script>

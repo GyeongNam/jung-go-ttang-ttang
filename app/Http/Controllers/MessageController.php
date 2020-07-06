@@ -45,7 +45,8 @@ class MessageController extends Controller
       return view('cahtroom', [
         'messageout' => $message_out,
         'user' => $user,
-        'userID' => $userID
+        'userID' => $userID,
+        'userIDct' => count($userID)
       ]);
     }
 }
