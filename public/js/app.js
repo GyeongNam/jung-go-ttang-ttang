@@ -1922,21 +1922,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  }
+  data: function data() {
+    return {
+      users: [],
+      datas: []
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/muser').then(function (res) {
+      _this.datas = res.data.users;
+      _this.users = res.data.users;
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  } // ,
+  //   mounted() {
+  //       console.log('Component mounted.')
+  //   }
+
 });
 
 /***/ }),
@@ -25564,65 +25570,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "inbox_chat" },
+    _vm._l(_vm.users, function(user) {
+      return _c("div", { staticClass: "chat_list" }, [
+        _c("div", { staticClass: "chat_people" }, [
+          _vm._m(0, true),
+          _vm._v(" "),
+          _c("div", { staticClass: "chat_ib" }, [
+            _c("h5", [
+              _vm._v(
+                " " + _vm._s(user.name) + "  " + _vm._s(_vm.datas.id) + "  "
+              ),
+              _c("span", { staticClass: "chat_date" }, [_vm._v(" Dec 25")])
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v(" " + _vm._s(_vm.datas[_vm.users].name) + " ")])
+          ])
+        ])
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "inbox_chat" }, [
-      _c("div", { staticClass: "chat_list active_chat" }, [
-        _c("div", { staticClass: "chat_people" }, [
-          _c("div", { staticClass: "chat_img" }, [
-            _c("img", {
-              attrs: {
-                src: "https://ptetutorials.com/images/user-profile.png",
-                alt: "sunil"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "chat_ib" }, [
-            _c("h5", [
-              _vm._v("Sunil Rajput "),
-              _c("span", { staticClass: "chat_date" }, [_vm._v("Dec 25")])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Test, which is a new approach to have all solutions\r\n          astrology under one roof."
-              )
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "chat_list" }, [
-        _c("div", { staticClass: "chat_people" }, [
-          _c("div", { staticClass: "chat_img" }, [
-            _c("img", {
-              attrs: {
-                src: "https://ptetutorials.com/images/user-profile.png",
-                alt: "sunil"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "chat_ib" }, [
-            _c("h5", [
-              _vm._v("Sunil Rajput "),
-              _c("span", { staticClass: "chat_date" }, [_vm._v("Dec 25")])
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "Test, which is a new approach to have all solutions\r\n          astrology under one roof."
-              )
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "chat_img" }, [
+      _c("img", {
+        attrs: {
+          src: "https://ptetutorials.com/images/user-profile.png",
+          alt: "sunil"
+        }
+      })
     ])
   }
 ]
