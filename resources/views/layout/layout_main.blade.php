@@ -73,6 +73,7 @@
           <a href="/kategorie">전체 카테고리</a>
           <a href="/itemcheck">경매 판매하기</a>
           <a href="/mypage">내 정보</a>
+          <a href="/mylocation">내주변 상품</a>
           <a href="/wish_list">내 관심</a>
           <a href="/cahtroom">쪽지</a>
         </div>
@@ -106,6 +107,7 @@
           </li>
           <li><a href="/itemcheck">경매 판매하기</a></li>
           <li><a href="/mypage">내 정보</a></li>
+          <li><a href="/mylocation">내주변 상품</a></li>
           <li><a href="/wish_list">내 관심</a></li>
           <li><a href="/cahtroom">쪽지</a></li>
         </ul>

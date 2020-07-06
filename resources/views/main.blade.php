@@ -10,7 +10,7 @@
 @endsection
 @section('js')
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a82332350bc18d282d500e361ee79da&libraries=services"></script>
+  {{-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a82332350bc18d282d500e361ee79da&libraries=services"></script>
   <script>
   // console.log(a);
   $(document).ready(function(){
@@ -98,7 +98,7 @@
       });
     }
   });
-</script>
+</script> --}}
 @endsection
 
 @section('content')
@@ -197,14 +197,14 @@
 
             </div>
           </div>
-          @foreach($road as $key => $value)
+          {{-- @foreach($road as $key => $value)
             <input  id="maparry{{$value->item_number}}" class ="maparry" type="hidden"  value="{{$value->roadAddress}}">
           @endforeach
           <div id="map" style="width:auto; height:300px;">
             <div class="wa d">
               <a href="#" class="hi"></a>
             </div>
-          </div>
+          </div> --}}
           <!--제품 정보 표시-->
           <div class="product">
             <div class="categorybar">

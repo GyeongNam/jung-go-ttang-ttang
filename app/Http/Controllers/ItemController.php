@@ -227,6 +227,17 @@ class ItemController extends Controller
 
     ]);
   }
+  public function infoview(Request $item_number){
+    $myproduct= Item::select('*')->get();
+    $roAd = Item::select('roadAddress', 'item_number')->get();
+    $user = User::select('*')->get();
+
+    return view('/mylocation', [
+      'myproduct'=>$myproduct,
+      'road'=> $roAd,
+      'user'=> $user
+    ]);
+  }
 
   public function myview(Request $request){
     $id = session()->get('login_ID');
