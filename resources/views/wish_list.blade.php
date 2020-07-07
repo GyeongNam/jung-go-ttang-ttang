@@ -70,8 +70,9 @@ $(function(){
 
       </div>
       <div class="wish_block">
-            <div class="wish_info">
-              @foreach($wish_item as $key => $value)
+          <div class="wish_info">
+            @foreach($wish_item as $key => $value)
+                @if ($value->item_success != 0)
               <div class="wish_item_info" value="{{$value->item_number}}">
                 <a href="/product-detail/{{$value->item_number}}" >
                 <div class="hreftem" style="cursor:pointer;" >
@@ -95,6 +96,7 @@ $(function(){
                 </div>
               </a>
             </div>
+            @endif
           @endforeach
         </div>
       </div>

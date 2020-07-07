@@ -10,9 +10,6 @@
 
 @section('js')
 
-
-
-
 @endsection
 
 @section('content')
@@ -58,25 +55,25 @@
 <div class="m_layout">
     @foreach ($cate as $key => $value)
     @if ($cateF > 0)
-
-     <div class="m_info">
-       <div class="m_img">
-           <button type="type="class="de_but" submit"" name="button">
-              <a href="/product-detail/{{$value->item_number}}"><img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img"></a>
-           </button>
-          <div class="m_name">
-          {{$value->item_name}}
-          </div>
-          <div class="m_money">
-            시작가: {{ number_format($value->item_startprice)}}원
-          </div>
-          <div class="m_money">
-            현재가: {{ number_format($value->item_startprice)}}원
-          </div>
-        </a>
-       </div>
-       </div>
-
+      @if($value->item_success == 1 )
+       <div class="m_info">
+         <div class="m_img">
+             <button type="type="class="de_but" submit"" name="button">
+                <a href="/product-detail/{{$value->item_number}}"><img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img"></a>
+             </button>
+            <div class="m_name">
+            {{$value->item_name}}
+            </div>
+            <div class="m_money">
+              시작가: {{ number_format($value->item_startprice)}}원
+            </div>
+            <div class="m_money">
+              현재가: {{ number_format($value->item_startprice)}}원
+            </div>
+          </a>
+         </div>
+         </div>
+        @endif
        @endif
        @endforeach
 </div>

@@ -108,6 +108,11 @@
     alert("{{Session::get('message')}}");
     </script>
   @endif
+  @if (Session::has('message1'))
+    <script type="text/javascript">
+    alert("{{Session::get('message')}}");
+    </script>
+  @endif
   <div class="speace">
     <div class="article">
       <div class="right_side_form">
@@ -224,6 +229,7 @@
 
                 @foreach($topview as $key => $value)
                   @if($key < 10)
+                    @if ($value->item_success==1)
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
@@ -237,6 +243,7 @@
                         <a href="#">상품가격: {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
+                    @endif
                   @endif
                 @endforeach
               </div>

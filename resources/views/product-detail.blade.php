@@ -282,6 +282,9 @@ function commentliketoggles(data) {
 @endsection
 @section('content')
   <div class="content">
+    @if ($myproduct[0]->item_success ==0)
+      <h1 style="text-align:center; margin:5%;">이미 판매종료된 상품입니다.</h1>
+    @else
     <div class="detail_page">
       <div class="detail_head">
         <div class="pr_deta_pic">
@@ -454,8 +457,22 @@ function commentliketoggles(data) {
                   </form>
                 </div>
               </div>
+              @if(session()->has('login_ID'))
+                @if(decrypt(session()->get('login_ID')) == $myproduct[0]->seller_id)
+                  <script>
+                    $(function(){
+                      $('.ckadu').attr('disabled',true);
+                      $('.wjsghk').attr('disabled',true);
+                      $('.unWla').attr('disabled',true);
+                    })
+                  </script>
               <a href="/bidding-info/{{$myproduct[0]->item_number}}"><button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </button></a>
               <button class="wjsghk"type="button" name="callseller">연락하기</button>
+              @else
+              <a href="/bidding-info/{{$myproduct[0]->item_number}}"><button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </button></a>
+              <button class="wjsghk"type="button" name="callseller">연락하기</button>
+              @endif
+            @endif
             </div>
           </div>
         </div>
@@ -503,6 +520,7 @@ function commentliketoggles(data) {
         </div>
       </div>
     </div>
+
     <div class="detail_info_typing">
       <div class="typinginfo">
         <div class="tkdvnainfo">
@@ -681,6 +699,7 @@ function commentliketoggles(data) {
         @endif
       </div>
     </div>
+  @endif
   </div>
 
   <script type="text/javascript">
