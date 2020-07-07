@@ -35,8 +35,8 @@ $.ajax({
       data: {messege:messege, id:id},
       type: "post",
       success:function(data){
-        console.log(data.id);
-        console.log(data.messege);
+        var success = data.data;
+        console.log(success);
       },
       error : function(){
         console.log("실패");
@@ -92,19 +92,26 @@ class="container">
               <div class="chat_people">
                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
-                  <h5> {{$value->ID}}  <span class="chat_date">
-
-                     @if(!Empty($messageoutpull[$key]))
-                       @if($messageoutpull[$key]->user1_ID == $value->ID or $messageoutpull[$key]->user2_ID == $value->ID)
-                         {{$messageoutpull[$key]->created_at}}
-                      @endif
-                     @endif</span></h5>
-
-                  @if(!Empty($messageoutpull[$key]))
-                    @if($messageoutpull[$key]->user1_ID == $value->ID or $messageoutpull[$key]->user2_ID == $value->ID)
-                      <p> {{$messageoutpull[$key]->messege}} </p>
+                  {{$value->ID}}
+                  @foreach ($messages as $keys => $values)
+                    @if($values->user2_ID == decrypt(session('login_ID')) and $values->user1_ID == $value->ID)
+                      <h5>
+                        <span class="chat_date">
+                          {{$values->created_at}}
+                        </span>
+                      </h5>
+                      <p>{{$values->messege}} </p>
+                      @break
+                    @elseif($values->user1_ID == decrypt(session('login_ID')) and $values->user2_ID == $value->ID)
+                      <h5>
+                        <span class="chat_date">
+                          {{$values->created_at}}
+                        </span>
+                      </h5>
+                      <p>{{$values->messege}} </p>
+                      @break
                     @endif
-                  @endif
+                   @endforeach
                 </div>
               </div>
             </div>
@@ -117,9 +124,8 @@ class="container">
         @foreach ($userID as $key => $value)
         <div class="mesgs" id = "mesgs{{$value->ID}}">
           <div class="msg_history">
-
             @foreach($message as $keys => $values)
-              @if($values->user2_ID == $value->ID)
+              @if($values->user2_ID == decrypt(session('login_ID')) and $values->user1_ID == $value->ID)
                 <div class="incoming_msg">
                   <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                   <div class="received_msg">
@@ -129,7 +135,7 @@ class="container">
                       <span class="time_date"> {{$values->created_at}} </span></div>
                   </div>
                 </div>
-              @elseif($values->user1_ID == $value->ID)
+              @elseif($values->user1_ID == decrypt(session('login_ID')) and $values->user2_ID == $value->ID)
                   <div class="outgoing_msg">
                     <div class="sent_msg">
                       <p>{{$values->messege}}</p>
@@ -137,6 +143,7 @@ class="container">
                   </div>
                 @endif
             @endforeach
+
           </div>
           <div class="type_msg">
             <div class="input_msg_write">
