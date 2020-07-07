@@ -2,10 +2,11 @@
   width:auto;
   height:500px;
 }
-.wrap {
+/* .wrap {
   position: absolute;
-  left: 0;
-  bottom: 40px;
+  left: 100px;
+
+  bottom: -33px;
   width: 288px;
   height: 132px;
   margin-left: -144px;
@@ -13,7 +14,7 @@
   overflow: hidden;font-size: 12px;
   font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
   line-height: 1.5;
-}
+} */
 .wrap * {
   padding: 0;
   margin: 0;
@@ -38,17 +39,17 @@
   font-size: 18px;
   font-weight: bold;
 }
-.info .close {
+/* .info .close {
   position: absolute;
   top: 10px;
   right: 10px;
   color: #888;
   width: 17px;
   height: 17px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');
-}
-.info .close:hover {
+} */
+/* .info .close:hover {
   cursor: pointer;
-}
+} */
 .info .body {
   position: relative;
   overflow: hidden;
@@ -64,7 +65,7 @@
   white-space: nowrap;
 }
 .desc .jibun {
-  font-size: 11px;
+  font-size: 17px;
   color: #888;
   margin-top: -2px;
 }
@@ -78,7 +79,7 @@
   color: #888;
   overflow: hidden;
 }
-.info:after {
+/* .info:after {
   content: '';
   position: absolute;
   margin-left: -12px;
@@ -86,7 +87,7 @@
   width: 22px;
   height: 12px;
   background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')
-}
+} */
 .info .link {
   color: #5085BB;
 }
