@@ -228,11 +228,13 @@ class ItemController extends Controller
     ]);
   }
   public function infoview(Request $item_number){
+    $myStat = Item::select('*')->get();
     $myproduct= Item::select('*')->get();
-    $roAd = Item::select('roadAddress', 'item_number')->get();
+    $roAd = Item::select('roadAddress', 'item_number', 'item_picture')->get();
     $user = User::select('*')->get();
 
     return view('/mylocation', [
+      'myStat' =>$myStat,
       'myproduct'=>$myproduct,
       'road'=> $roAd,
       'user'=> $user

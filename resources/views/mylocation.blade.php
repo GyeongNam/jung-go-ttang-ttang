@@ -49,16 +49,22 @@
     var mapid = $('.mapip');
     var positions = $('.maparry');
     var mappicture = $('.mappicture');
+    var mapstartprice = $('.mapstartprice')
     var rodcount = {{count($road)}};
-    console.log(id);
+    // console.log(id);
     var add = [];
     var id = [];
     var name = [];
     var picture = [];
+    var startprice = [];
 
+    for (i = 0; i < mapstartprice.length; i++) {
+      startprice.push(mapstartprice[i].value);
+    }
     for (i = 0; i < mappicture.length; i++) {
       picture.push(mappicture[i].value);
     }
+    console.log(picture);
     for (i = 0; i < mapname.length; i++) {
       name.push(mapname[i].value);
     }
@@ -68,10 +74,10 @@
     for(i=0; i<positions.length;i++){
       add.push(positions[i].value);
     }
-    console.log(add);
+    // console.log(add);
     // 주소로 좌표를 검색합니다
     for(let i=0; i <add.length; i++){
-      console.log(add[i]);
+      // console.log(add[i]);
       geocoder.addressSearch(add[i], function(result, status) {
 
         // 정상적으로 검색이 완료됐으면
@@ -84,46 +90,45 @@
             map: map,
             position: coords
           });
+          var fuck = picture[i];
+          console.log(fuck);
           // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-          var iwContent =
-          // '<div style="padding:10px;">'+
-          // '<h3>직거래 위치: </h3>'+
-          // '<h3>'+add[i]+'</h3>'+
-          // '<p>'+id+'님의. 직거래 위치입니다!</p>' +
-          // '</div>'
-          // ;
+          var content =
           '<div class="wrap">' +
-            '    <div class="info">' +
-            '        <div class="title">' + name[i] +'</div>'+
-            '        <div class="body">' +
-            '            <div class="img">' + picture[i] + '</div>' +
-            '            <div class="desc">' +
-            '                <div class="ellipsis">'+ add[i]+'</div>' +
-            '                <div class="jibun ellipsis">판매자 :'+ id[i] +'</div>' +
-            '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">상품 바로가기</a></div>' +
-            '            </div>' +
-            '        </div>' +
-            '    </div>' +
-            '</div>';
-          // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-          console.log(add[i]);
-          // 인포윈도우로 장소에 대한 설명을 표시합니다
-          var infowindow = new kakao.maps.InfoWindow({
-            content: iwContent
+          '    <div class="info">' +
+          '        <div class="title">' + name[i] +
+          '          <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+          '        </div>'+
+          '        <div class="body">' +
+          '            <div class="img">' +
+          '                  <img src="/img/item/'+fuck+'" width="73" height="70">' +
+          '            </div>' +
+          '            <div class="desc">' +
+          '                <div class="ellipsis">'+ add[i]+'</div>' +
+          '                <div class="jibun ellipsis">판매자 :'+ id[i] +'</div>' +
+          '                <div class="stapri">경매 시작가격 : ' + startprice[i] + '</div>'+
+          '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">상품 바로가기</a></div>' +
+          '            </div>' +
+          '        </div>' +
+          '    </div>' +
+          '</div>';
+          // 마커 위에 커스텀오버레이를 표시합니다
+          // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+          var overlay = new kakao.maps.CustomOverlay({
+            content: content,
+            map: map,
+            position: marker.getPosition()
           });
 
-          // 마커에 마우스오버 이벤트를 등록합니다
+          // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
           kakao.maps.event.addListener(marker, 'mouseover', function() {
-            // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-            infowindow.open(map, marker);
+            overlay.setMap(map);
           });
 
-          // 마커에 마우스아웃 이벤트를 등록합니다
-          kakao.maps.event.addListener(marker, 'mouseout', function() {
-            // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-            infowindow.close();
-          });
-          // infowindow.open(map, marker);
+          // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다
+          function closeOverlay() {
+            overlay.setMap(null);
+          }
           // // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
           map.setCenter(coords);
         }
@@ -133,6 +138,9 @@
 </script>
 @endsection
 @section('content')
+  @foreach($myproduct as $key => $value)
+    <input  id="mapstartprice{{$value->item_number}}" class ="mapstartprice" type="hidden"  value="{{$value->item_startprice}}">
+  @endforeach
   @foreach($myproduct as $key => $value)
     <input  id="mappicture{{$value->item_number}}" class ="mappicture" type="hidden"  value="{{$value->item_picture}}">
   @endforeach
