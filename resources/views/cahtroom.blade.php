@@ -28,20 +28,33 @@ $.ajax({
 </script> -->
 <script type="text/javascript">
   function messegesend(id){
+
+
     var messege = $('.write_msg'+id).val();
     $.ajax({
       headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
       url: "/messegesend",
       data: {messege:messege, id:id},
       type: "post",
-      success:function(data){
-        var success = data.data;
-        console.log(success);
+      success:function(data)
+      {
+        var add =  "<div class='outgoing_msg'>"
+        +  "<div class='sent_msg'>"
+        +    "<p>" + data.data.messege + "</p>"
+        +  "<span class='time_date'>" + data.data.created_at + "</span>"
+        + "</div>"
+        +"</div>";
+
+        $('.write_msg'+id).val('');
+          $('#msg_history'+id).append(add);
+
+        console.log(data.data.messege);
       },
       error : function(){
         console.log("실패");
       }
     });
+    $('.write_msg'+id).val('');
   }
 </script>
 
@@ -100,7 +113,7 @@ class="container">
                           {{$values->created_at}}
                         </span>
                       </h5>
-                      <p>{{$values->messege}} </p>
+                      <p> {{$values->messege}} </p>
                       @break
                     @elseif($values->user1_ID == decrypt(session('login_ID')) and $values->user2_ID == $value->ID)
                       <h5>
@@ -123,7 +136,7 @@ class="container">
         </div>
         @foreach ($userID as $key => $value)
         <div class="mesgs" id = "mesgs{{$value->ID}}">
-          <div class="msg_history">
+          <div class="msg_history" id = "msg_history{{$value->ID}}" >
             @foreach($message as $keys => $values)
               @if($values->user2_ID == decrypt(session('login_ID')) and $values->user1_ID == $value->ID)
                 <div class="incoming_msg">

@@ -48,7 +48,7 @@ class MessageController extends Controller
         $Message_save->save();
 
         return response()->json([
-          'data' => 1
+          'data' => $Message_save
         ]);
     }
 }
