@@ -27,7 +27,17 @@
 
 
 </head>
+<script>
 
+$(function(){
+  $(".trhover").hover(function(){
+    $(this).css("background-color","rgb(176, 207, 209)");
+  }, function(){
+    $(this).css("background-color","rgb(255, 255, 255)");
+  });
+});
+
+</script>
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -59,14 +69,17 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        CCIT-A
+        엄
       </div>
 
 
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Addons
+      </div>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
@@ -87,12 +100,17 @@
       <li class="nav-item">
         <a class="nav-link" href="/manager_tok">
           <i class="fas fa-fw fa-table"></i>
-          <span>상담관리</span></a>
+          <span>채팅관리</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/manager_policy">
           <i class="fas fa-fw fa-table"></i>
           <span>정책관리</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/manager_visit">
+          <i class="fas fa-fw fa-table"></i>
+          <span>방문자관리</span></a>
       </li>
 
       <!-- Divider -->
@@ -143,6 +161,8 @@
               </div>
             </li>
 
+
+
             @if(session('login_ID') == false)
               <li><a href="/Login">Login</a></li>
               <li><a href="/sign_rull">sign up</a></li>
@@ -179,14 +199,13 @@
 
           <!-- 관리자페이지 -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">관리자페이지</h1>
+            <h1 class="h3 mb-0 text-gray-800">방문기록페이지</h1>
 
           </div>
 
-          <!-- Content Row -->
-          <div class="row">
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
 
-            <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
@@ -236,124 +255,182 @@
               </div>
             </div>
 
-            <div class="container-fluid">
+            <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">사용자 로그인 기록</h6>
               </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>아이디</th>
-                      <th>이름</th>
-                      <th>로그인 기록</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>아이디</th>
+                        <th>이름</th>
+                        <th>로그인기록</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
+                        @foreach ($calander as $key => $value)
+                        <td>{{$value->id}}</td>
+                        <td>{{$value->name}}</td>
+                        <td>{{$value->updated_at}}</td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
 
-                    <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
-                      @foreach ($calander as $key => $value)
-                      <td>{{$value->id}}</td>
-                      <td>{{$value->name}}</td>
-                      <td>{{$value->updated_at}}</td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">사용자 로그인 기록</h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>카테고리/방문자수</th>
+                        <th>방문자수</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          @foreach ($ta2 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta3 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta4 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta5 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta6 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta7 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta8 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta9 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta10 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta11 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta12 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta13 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta14 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                        <tr>
+                          @foreach ($ta15 as $key => $value)
+                          <td>{{$value}}</td>
+                          @endforeach
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+          <!-- /.container-fluid -->
+
+        </div>
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; Your Website 2019</span>
+            </div>
+          </div>
+        </footer>
+        <!-- End of Footer -->
+
+      </div>
+      <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+        <!-- End of Main Content -->
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">로그인화면으로 돌아갑니다.</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+                <a class="btn btn-primary" href="/manager_logout">Logout</a>
               </div>
             </div>
           </div>
         </div>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-            </div>
-          </div>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
 
-          <!-- Content Row -->
+        <!-- Page level plugins -->
+        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-          <div class="row">
-
-
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Content Column -->
-            <div class="col-lg-6 mb-4">
-
-
-
-
-
-          </div>
-
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
-    </div>
-    <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">로그인화면으로 돌아갑니다.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-          <a class="btn btn-primary" href="/manager_logout">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+        <!-- Page level custom scripts -->
+        <script src="js/demo/datatables-demo.js"></script>
 
 </body>
-
 </html>

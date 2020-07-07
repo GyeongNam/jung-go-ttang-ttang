@@ -268,15 +268,27 @@ public function warning(Request $request,$id){
    $data1 = Analytics::fetchTotalVisitorsAndPageViews(Period::days(0));
    $dat1 =Arr::get($data1[0], 'visitors');
 
- //   $analyticsData = Analytics::performQuery(Period::days(6),'ga:sessions',
- //   [
- //     'metrics'=>'ga:pageviews',
- //     'dimensions'=>'ga:pagePath'
- //   ]
- // );
- //  $analyticsData1=Arr::get($analyticsData,'%'.'rows.manclothing');
- //
- //  dd($analyticsData1);
+   $analyticsData1 = Analytics::performQuery(Period::days(7),'ga:sessions',
+   [
+     'metrics'=>'ga:pageviews',
+     'dimensions'=>'ga:contentGroup1'
+   ]
+ );
+
+  $ta2 =Arr::get($analyticsData1,'rows.1');
+  $ta3 =Arr::get($analyticsData1,'rows.2');
+  $ta4 =Arr::get($analyticsData1,'rows.3');
+  $ta5 =Arr::get($analyticsData1,'rows.4');
+  $ta6 =Arr::get($analyticsData1,'rows.5');
+  $ta7 =Arr::get($analyticsData1,'rows.6');
+  $ta8 =Arr::get($analyticsData1,'rows.7');
+  $ta9 =Arr::get($analyticsData1,'rows.8');
+  $ta10 =Arr::get($analyticsData1,'rows.9');
+  $ta11 =Arr::get($analyticsData1,'rows.10');
+  $ta12 =Arr::get($analyticsData1,'rows.11');
+  $ta13 =Arr::get($analyticsData1,'rows.12');
+  $ta14 =Arr::get($analyticsData1,'rows.13');
+  $ta15 =Arr::get($analyticsData1,'rows.14');
 
      return view('manager_main',[
        'data'=>$data,
@@ -284,7 +296,14 @@ public function warning(Request $request,$id){
        'dat'=>$dat,
        'dat1'=>$dat1,
        'dat2'=>$dat2,
-       'calander'=>$calander
+       'calander'=>$calander,
+       'ta2'=>$ta2,'ta3'=>$ta3,
+       'ta4'=>$ta4,'ta5'=>$ta5,
+       'ta6'=>$ta6,'ta7'=>$ta7,
+       'ta8'=>$ta8,'ta9'=>$ta9,
+       'ta11'=>$ta11,'ta10'=>$ta10,
+       'ta12'=>$ta12,'ta13'=>$ta13,
+       'ta14'=>$ta14,'ta15'=>$ta15,
      ]);
    }
     public function policy(Request $request){
