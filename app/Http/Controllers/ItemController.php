@@ -350,9 +350,9 @@ class ItemController extends Controller
 
   public function category(Request $request){
     $cat = $_GET['id'];
-    $cate=Item::select('item_number','item_name','item_picture','item_startprice')->where(['item_category'=>$cat])->get();
+    // $cate=Item::select('item_number','item_name','item_picture','item_startprice','item_success')->where(['item_category'=>$cat])->get();
     $search = $request->get('search') != null ? $request->get('search') : '';
-    $cate=Item::select('item_number','item_name','item_picture','item_startprice')
+    $cate=Item::select('item_number','item_name','item_picture','item_startprice','item_success')
     ->where([
       ['item_category', $cat],
       ['item_name', 'like', '%'.$search.'%']])
