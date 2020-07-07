@@ -93,12 +93,25 @@ class="container">
                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
                   {{$value->ID}}
+                  @foreach ($messages as $keys => $values)
+                    @if($values->user2_ID == decrypt(session('login_ID')) and $values->user1_ID == $value->ID)
                       <h5>
-                          <span class="chat_date">
-                          시간
+                        <span class="chat_date">
+                          {{$values->created_at}}
                         </span>
                       </h5>
-                          <p>메시지 </p>
+                      <p>{{$values->messege}} </p>
+                      @break
+                    @elseif($values->user1_ID == decrypt(session('login_ID')) and $values->user2_ID == $value->ID)
+                      <h5>
+                        <span class="chat_date">
+                          {{$values->created_at}}
+                        </span>
+                      </h5>
+                      <p>{{$values->messege}} </p>
+                      @break
+                    @endif
+                   @endforeach
                 </div>
               </div>
             </div>
