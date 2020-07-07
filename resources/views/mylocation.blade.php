@@ -50,6 +50,8 @@
     var positions = $('.maparry');
     var mappicture = $('.mappicture');
     var mapstartprice = $('.mapstartprice')
+    var mapproduct = $('.mapproduct');
+    console.log(mapproduct);
     var rodcount = {{count($road)}};
     // console.log(id);
     var add = [];
@@ -57,7 +59,11 @@
     var name = [];
     var picture = [];
     var startprice = [];
+    var product = [];
 
+    for (i = 0; i < mapproduct.length; i++) {
+      product.push(mapproduct[i].value);
+    }
     for (i = 0; i < mapstartprice.length; i++) {
       startprice.push(mapstartprice[i].value);
     }
@@ -76,6 +82,7 @@
     }
     // console.log(add);
     // 주소로 좌표를 검색합니다
+
     for(let i=0; i <add.length; i++){
       // console.log(add[i]);
       geocoder.addressSearch(add[i], function(result, status) {
@@ -90,6 +97,7 @@
             map: map,
             position: coords
           });
+          var link = mapproduct[i];
           var fuck = picture[i];
           console.log(fuck);
           // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
@@ -107,7 +115,7 @@
           '                <div class="ellipsis">'+ add[i]+'</div>' +
           '                <div class="jibun ellipsis">판매자 :'+ id[i] +'</div>' +
           '                <div class="stapri">경매 시작가격 : ' + startprice[i] + '</div>'+
-          '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">상품 바로가기</a></div>' +
+          '                <div><a href="/product-detail/'+product[i]+'" target="_blank" class="link">상품 바로가기</a></div>' +
           '            </div>' +
           '        </div>' +
           '    </div>' +
@@ -138,6 +146,10 @@
 </script>
 @endsection
 @section('content')
+
+  @foreach($myproduct as $key => $value)
+    <input  id="mapproduct{{$value->item_number}}" class ="mapproduct" type="hidden"  value="{{$value->item_number}}">
+  @endforeach
   @foreach($myproduct as $key => $value)
     <input  id="mapstartprice{{$value->item_number}}" class ="mapstartprice" type="hidden"  value="{{$value->item_startprice}}">
   @endforeach
