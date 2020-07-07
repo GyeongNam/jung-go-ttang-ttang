@@ -35,8 +35,8 @@ $.ajax({
       data: {messege:messege, id:id},
       type: "post",
       success:function(data){
-        console.log(data.id);
-        console.log(data.messege);
+        var success = data.data;
+        console.log(success);
       },
       error : function(){
         console.log("실패");

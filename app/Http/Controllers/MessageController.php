@@ -19,7 +19,7 @@ class MessageController extends Controller
     }
 
     public function muser(){
-      $id =decrypt(session()->get('login_ID'));
+      $id = decrypt(session()->get('login_ID'));
       // broadcast(new WebsocketEvent('ccit_a hello~'));
       $user = User::select('*')->where('ID', "<>" , $id)->get();
       $userID = User::select('ID')->where('ID', "<>" , $id)->get();
@@ -36,16 +36,19 @@ class MessageController extends Controller
     }
 
     public function messegesend(Request $request){
+        $myid = decrypt(session()->get('login_ID'));
         $id = $request->input('id');
         $messege = $request->input('messege');
 
         $Message_save = new Message([
-
+          'messege' => $messege,
+          'user1_ID'=> $myid,
+          'user2_ID'=> $id
         ]);
+        $Message_save->save();
 
         return response()->json([
-          'id' => $id,
-          'messege' => $messege
+          'data' => 1
         ]);
     }
 }
