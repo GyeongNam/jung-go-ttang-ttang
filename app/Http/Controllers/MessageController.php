@@ -23,24 +23,25 @@ class MessageController extends Controller
       // broadcast(new WebsocketEvent('ccit_a hello~'));
       $user = User::select('*')->where('ID', "<>" , $id)->get();
       $userID = User::select('ID')->where('ID', "<>" , $id)->get();
-
-
-      $message_outpull = Message::select('messege','user1_ID','user1_ID','created_at')->orderBy('created_at')->get();
-
       $message = Message::select('*')->orderBy('created_at')->get();
+      $messages = Message::select('*')->orderBy('created_at', 'desc')->get();
 
       return view('cahtroom', [
-        'messageoutpull' => $message_outpull,
         'user' => $user,
         'userID' => $userID,
         'userIDct' => count($userID),
-        'message' => $message
+        'message' => $message,
+        'messages' => $messages
       ]);
     }
 
     public function messegesend(Request $request){
         $id = $request->input('id');
         $messege = $request->input('messege');
+
+        $Message_save = new Message([
+
+        ]);
 
         return response()->json([
           'id' => $id,
