@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Message;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -10,11 +11,12 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
+
 class WebsocketEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $message;
+    public $message = collect([]);
 
     /**
      * Create a new event instance.
@@ -22,9 +24,9 @@ class WebsocketEvent implements ShouldBroadcast
      * @return void
      */
 
-    public function __construct($message)
+    public function __construct(Message $message)
     {
-        $this->message = $message;
+        $this->message->push($message);
     }
 
     /**

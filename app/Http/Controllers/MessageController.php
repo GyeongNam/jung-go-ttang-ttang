@@ -19,12 +19,17 @@ class MessageController extends Controller
     }
 
     public function muser(){
+
       $id = decrypt(session()->get('login_ID'));
-      // broadcast(new WebsocketEvent('ccit_a hello~'));
       $user = User::select('*')->where('ID', "<>" , $id)->get();
       $userID = User::select('ID')->where('ID', "<>" , $id)->get();
       $message = Message::select('*')->orderBy('created_at')->get();
       $messages = Message::select('*')->orderBy('created_at', 'desc')->get();
+      // echo '\''.$message.'\'';
+      // WebsocketEvent::dispatch(
+      //   $message
+      //   // '\''.$message.'\''
+      // );
 
       return view('cahtroom', [
         'user' => $user,
@@ -40,15 +45,18 @@ class MessageController extends Controller
         $id = $request->input('id');
         $messege = $request->input('messege');
 
-        $Message_save = new Message([
+        $Message_save = Message::create([
           'messege' => $messege,
           'user1_ID'=> $myid,
           'user2_ID'=> $id
         ]);
-        $Message_save->save();
+        // $Message_saves = $Message_save->toArray();
+
+        WebsocketEvent::dispatch($Message_save);
 
         return response()->json([
-          'data' => $Message_save
+          'data' => $Message_save,
+          'datas' => $Message_save->messege
         ]);
     }
 }

@@ -37818,7 +37818,7 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
-// try {
+// try { 
 //     window.Popper = require('popper.js').default;
 //     window.$ = window.jQuery = require('jquery');
 //
@@ -37851,10 +37851,11 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   // enabledTransports: ['ws', 'wss'],
   encrypted: false,
   disableStats: false
-});
-window.Echo.channel('ccit').listen('WebsocketEvent', function (e) {
-  console.log(e);
-}); // import Echo from "laravel-echo"
+}); // window.Echo.channel('ccit')
+//     .listen('WebsocketEvent', (e) => {
+//         console.log(e);
+//     });
+// import Echo from "laravel-echo"
 //
 // window.io = require('socket.io-client');
 //

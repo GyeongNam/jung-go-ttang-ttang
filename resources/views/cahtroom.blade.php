@@ -26,37 +26,7 @@ $.ajax({
   }
 });
 </script> -->
-<script type="text/javascript">
-  function messegesend(id){
 
-
-    var messege = $('.write_msg'+id).val();
-    $.ajax({
-      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-      url: "/messegesend",
-      data: {messege:messege, id:id},
-      type: "post",
-      success:function(data)
-      {
-        var add =  "<div class='outgoing_msg'>"
-        +  "<div class='sent_msg'>"
-        +    "<p>" + data.data.messege + "</p>"
-        +  "<span class='time_date'>" + data.data.created_at + "</span>"
-        + "</div>"
-        +"</div>";
-
-        $('.write_msg'+id).val('');
-          $('#msg_history'+id).append(add);
-
-        console.log(data.data.messege);
-      },
-      error : function(){
-        console.log("실패");
-      }
-    });
-    $('.write_msg'+id).val('');
-  }
-</script>
 
 <script type="text/javascript">
 $(function(){
@@ -72,6 +42,8 @@ $(function(){
     // alert(id);
   }
 </script>
+
+
 @endsection
 
 @section('content')
@@ -170,6 +142,43 @@ class="container">
       </div>
     </div></div>
   <script src ="{{ asset('js/app.js')}}"></script>
+  <script type="text/javascript">
+  window.Echo.channel('ccit')
+      .listen('WebsocketEvent', (e) => {
+          console.log(e);
+      });
 
+  </script>
+
+  <script type="text/javascript">
+    function messegesend(id){
+      var messege = $('.write_msg'+id).val();
+      // console.log(messege);
+      $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        url: "/messegesend",
+        data: {messege:messege, id:id},
+        type: "post",
+        success:function(data)
+        {
+          // var add =  "<div class='outgoing_msg'>"
+          // +  "<div class='sent_msg'>"
+          // +    "<p>" + data.data.messege + "</p>"
+          // +  "<span class='time_date'>" + data.data.created_at + "</span>"
+          // + "</div>"
+          // +"</div>";
+          //
+          // $('.write_msg'+id).val('');
+          //   $('#msg_history'+id).append(add);
+
+            // console.log(data);
+        },
+        error : function(){
+          console.log("실패");
+        }
+      });
+      $('.write_msg'+id).val('');
+    }
+  </script>
 
 @endsection

@@ -6,7 +6,7 @@ window._ = require('lodash');
  * code may be modified to fit the specific needs of your application.
  */
 
-// try {
+// try { 
 //     window.Popper = require('popper.js').default;
 //     window.$ = window.jQuery = require('jquery');
 //
@@ -45,10 +45,10 @@ window.Echo = new Echo({
     disableStats: false
 });
 
-window.Echo.channel('ccit')
-    .listen('WebsocketEvent', (e) => {
-        console.log(e);
-    });
+// window.Echo.channel('ccit')
+//     .listen('WebsocketEvent', (e) => {
+//         console.log(e);
+//     });
 
 // import Echo from "laravel-echo"
 //
