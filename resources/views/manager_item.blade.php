@@ -226,6 +226,7 @@ $(function(){
                     </thead>
                     <tbody>
                       @foreach ($item_join as $key => $value)
+                        @if ($value->item_success == 1)
                       <tr style="cursor:pointer;" class="trhover">
                         <td onclick="location.href='/product-detail/{{$value->item_number}}'">
                           {{$value->item_number}}
@@ -255,12 +256,75 @@ $(function(){
                         <td onclick="location.href='/product-detail/{{$value->item_number}}'">
                         {{$count[$key]}}</td>
                         <th>
-                          <form action="/manager_delete"  method="get">
-                          <input type="hidden" name='item_number' value="{{$value->item_number}}">
-                          <button type="submit" class="btn btn-danger">삭제하기</button>
-                        </form>
+                          @if($count[$key] >= 3)
+
+                              <input type="hidden" name='item_number' value="{{$value->item_number}}">
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">삭제하기</button>
+
+                              <!-- Modal -->
+                              <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      정말 삭제하시겠습니까?
+                                    </div>
+                                    <div class="modal-footer">
+                                      <form action="/manager_delete" method="get">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                                      <input type="hidden" name='item_number' class="form-control" value="{{$value->item_number}}">
+                                      <button type="submit" class="btn btn-primary">삭제하기</button>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          @else
+                              <input type="hidden" name='item_number' value="{{$value->item_number}}">
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop" disabled="disabled">삭제하기</button>
+                          @endif
                         </th>
                       </tr>
+                    @else
+                      <tr style="cursor:pointer;" class="trhover">
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$value->item_number}}
+                        </td>
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$value->item_name}}</td>
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$value->item_startprice}}</td>
+                        @if(!empty($item_joins[$key]))
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$item_joins[$key]->item_price}}</td>
+                        @else
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          0</td>
+                        @endif
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$value->seller_id}}</td>
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$value->created_at}}</td>
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                          {{$value->item_deadline}}</td>
+                        @if ($value->item_success != 0)
+                        <td>낙찰완료</td>
+                        @else
+                        <td>판매종료</td>
+                        @endif
+                        <td onclick="location.href='/product-detail/{{$value->item_number}}'">
+                        {{$count[$key]}}</td>
+                        <th>
+                              <input type="hidden" name='item_number' value="{{$value->item_number}}">
+                              <button type="button" class="btn btn-danger" disabled="disabled" >삭제하기</button>
+                        </th>
+                      </tr>
+                      @endif
                       @endforeach
 
 
