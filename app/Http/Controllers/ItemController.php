@@ -302,6 +302,7 @@ class ItemController extends Controller
     $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
     $like=Favorite::select('favorite_itemnum')->where(['favorite_itemnum'=>$item_number])->get()->count();
     $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
+    // $comm=Commentlike::select('commentlike_number')->where(['commentlike_number'=>$comment_num])->get();
     $roAd = Item::select('roadAddress', 'item_number')->get();
     $likecomment = collect([]);
     $largcommentitem = collect([]);
