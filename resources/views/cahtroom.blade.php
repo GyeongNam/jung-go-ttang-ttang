@@ -11,21 +11,6 @@
 @section('js')
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- <script type="text/javascript">
-$.ajax({
-  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-  url: " /api/muser",
-  dataType: 'json',
-  type: "get",
-  success:function(data){
-    $user = data.user;
-    $id = data.ID;
-  },
-  error : function(){
-    console.log($datas);
-  }
-});
-</script> -->
 
 
 <script type="text/javascript">
@@ -145,7 +130,9 @@ class="container">
   <script type="text/javascript">
   window.Echo.channel('ccit')
       .listen('WebsocketEvent', (e) => {
-          console.log(e);
+          console.log(e.message);
+          console.log(e.id1);
+          console.log(e.id2);
       });
 
   </script>
@@ -161,16 +148,15 @@ class="container">
         type: "post",
         success:function(data)
         {
-          // var add =  "<div class='outgoing_msg'>"
-          // +  "<div class='sent_msg'>"
-          // +    "<p>" + data.data.messege + "</p>"
-          // +  "<span class='time_date'>" + data.data.created_at + "</span>"
-          // + "</div>"
-          // +"</div>";
-          //
-          // $('.write_msg'+id).val('');
-          //   $('#msg_history'+id).append(add);
+          var add =  "<div class='outgoing_msg'>"
+          +  "<div class='sent_msg'>"
+          +    "<p>" + data.data.messege + "</p>"
+          +  "<span class='time_date'>" + data.data.created_at + "</span>"
+          + "</div>"
+          +"</div>";
 
+          $('.write_msg'+id).val('');
+            $('#msg_history'+id).append(add);
             // console.log(data);
         },
         error : function(){

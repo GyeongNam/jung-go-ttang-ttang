@@ -16,7 +16,9 @@ class WebsocketEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $message = collect([]);
+    public $message;
+    public $id1;
+    public $id2;
 
     /**
      * Create a new event instance.
@@ -24,9 +26,11 @@ class WebsocketEvent implements ShouldBroadcast
      * @return void
      */
 
-    public function __construct(Message $message)
+    public function __construct($message, $id1, $id2)
     {
-        $this->message->push($message);
+        $this->message = $message;
+        $this->id1 = $id1;
+        $this->id2 = $id2;
     }
 
     /**
