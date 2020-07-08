@@ -123,18 +123,10 @@ function remove_div(obj){
                 <div class="">
                   <div class="">
                     <div class="qnawkrtjd">
-                      작성자 :
-                    </div>
-                    <div class="qnaname">
-                      {{$data[0]->ID}}
+                      작성자 : {{$data[0]->ID}}
                     </div>
                   </div>
-                  <label>제목 : </label>
-                  <input type="text" name="" value="" required><br>
-                  <label>휴대폰번호</label>
-                  <input type="text" name="" value="" required>
-                  <label>비밀번호</label>
-                  <input type="password" name="" value="" required>
+                  <label>문의내용</label>
                 </div>
                 <textarea name="name" rows="8" cols="80"></textarea>
                 <button type="submit" name="button" onclick="add_div();">작성하기</button>
