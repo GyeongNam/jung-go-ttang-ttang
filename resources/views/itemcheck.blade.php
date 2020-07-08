@@ -122,11 +122,13 @@ $(function(){
                X
              </td>
            @endif
+
          @elseif($end[$key][0]->buyer == null)
            <td class="yesorno">
              X
            </td>
           @endif
+          
        </tbody>
        </table>
       @endforeach

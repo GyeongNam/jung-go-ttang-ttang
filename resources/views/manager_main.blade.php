@@ -287,7 +287,7 @@ $(function(){
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">사용자 로그인 기록</h6>
+                <h6 class="m-0 font-weight-bold text-primary">카테고리별 방문자수</h6>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -375,6 +375,52 @@ $(function(){
               </div>
             </div>
 
+
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">가장 오래 접속해 있는 페이지</h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>페이지 이름</th>
+                        <th>시간</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        @foreach ($ana1 as $key => $value)
+                        <td>{{$value}}</td>
+                        @endforeach
+                      </tr>
+                      <tr>
+                        @foreach ($ana2 as $key => $value)
+                        <td>{{$value}}</td>
+                        @endforeach
+                      </tr>
+                      <tr>
+                        @foreach ($ana3 as $key => $value)
+                        <td>{{$value}}</td>
+                        @endforeach
+                      </tr>
+                      <tr>
+                        @foreach ($ana4 as $key => $value)
+                        <td>{{$value}}</td>
+                        @endforeach
+                      </tr>
+                      <tr>
+                        @foreach ($ana5 as $key => $value)
+                        <td>{{$value}}</td>
+                        @endforeach
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
 
 
           </div>

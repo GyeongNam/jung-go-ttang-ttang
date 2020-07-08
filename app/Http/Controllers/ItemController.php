@@ -683,7 +683,9 @@ class ItemController extends Controller
               }
               public function managerdelete(Request $request){
                 $it =$request->input();
-                Item::where(['item_number'=>$it])->delete();
+                Item::where(['item_number'=>$it])->update([
+                  'item_success' => 0
+                ]);
                 return back();
 
               }

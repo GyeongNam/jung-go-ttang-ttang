@@ -290,6 +290,22 @@ public function warning(Request $request,$id){
   $ta14 =Arr::get($analyticsData1,'rows.13');
   $ta15 =Arr::get($analyticsData1,'rows.14');
 
+$ana=Analytics::performQuery(Period::days(29),'ga:sessions',
+[
+  'metrics'=>'ga:timeOnPage',
+  'dimensions'=>'ga:pagePath',
+  'sort'=>'-ga:timeOnPage',
+  'max-results'=>'5'
+]);
+
+$ana1=Arr::get($ana,'rows.0');
+$ana2=Arr::get($ana,'rows.1');
+$ana3=Arr::get($ana,'rows.2');
+$ana4=Arr::get($ana,'rows.3');
+$ana5=Arr::get($ana,'rows.4');
+
+
+
      return view('manager_main',[
        'data'=>$data,
        'data1'=>$data1,
@@ -304,6 +320,9 @@ public function warning(Request $request,$id){
        'ta11'=>$ta11,'ta10'=>$ta10,
        'ta12'=>$ta12,'ta13'=>$ta13,
        'ta14'=>$ta14,'ta15'=>$ta15,
+       'ana1'=>$ana1,'ana2'=>$ana2,
+       'ana3'=>$ana3, 'ana4'=>$ana4,
+       'ana5'=>$ana5
      ]);
    }
     public function policy(Request $request){
