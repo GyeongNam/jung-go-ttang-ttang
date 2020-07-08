@@ -17,6 +17,7 @@ use Analytics;
 use Spatie\Analytics\Period;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use App\Qna;
 
 
 class UserController extends Controller
@@ -229,6 +230,11 @@ public function warning(Request $request,$id){
     else {
       $data = User::select('ID')->where(['id'=> decrypt($id)])->get();
     }
+
+    $item = new Qna([
+      'qnatext' => $request->input('qna_text'),
+      'qnapass' => $request->input('qna_pass')]);
+      $item->save();
     return view('Servicecenter', [
       'data'=> $data
     ]);
