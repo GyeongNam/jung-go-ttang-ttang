@@ -53,14 +53,16 @@ class MessageController extends Controller
         // $Message_saves = $Message_save->toArray();
 
         WebsocketEvent::dispatch(
-          '\''.$Message_save->messege.'\'',
-          '\''.$Message_save->user1_ID.'\'',
-          '\''.$Message_save->user2_ID.'\''
+            $Message_save->messege ,
+            $Message_save->user1_ID,
+            $Message_save->user2_ID,
+            $Message_save->created_at->format('Y-m-d H:i:s')
         );
 
         return response()->json([
           'data' => $Message_save,
-          'datas' => $Message_save->messege
+          'datas' => $Message_save->messege,
+          'date' => $Message_save->created_at->format('Y-m-d H:i:s')
         ]);
     }
 }

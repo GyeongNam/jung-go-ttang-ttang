@@ -19,6 +19,7 @@ class WebsocketEvent implements ShouldBroadcast
     public $message;
     public $id1;
     public $id2;
+    public $time;
 
     /**
      * Create a new event instance.
@@ -26,11 +27,12 @@ class WebsocketEvent implements ShouldBroadcast
      * @return void
      */
 
-    public function __construct($message, $id1, $id2)
+    public function __construct($message, $id1, $id2, $time)
     {
         $this->message = $message;
         $this->id1 = $id1;
         $this->id2 = $id2;
+        $this->time = $time;
     }
 
     /**

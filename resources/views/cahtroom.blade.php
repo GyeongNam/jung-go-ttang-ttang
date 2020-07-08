@@ -130,9 +130,26 @@ class="container">
   <script type="text/javascript">
   window.Echo.channel('ccit')
       .listen('WebsocketEvent', (e) => {
-          console.log(e.message);
-          console.log(e.id1);
-          console.log(e.id2);
+        if(e.id2 == '{{decrypt(session('login_ID'))}}'){
+          var adds =  "<div class='incoming_msg'>"
+          +  "<div class='incoming_msg_img'> "
+          + "<img src='https://ptetutorials.com/images/user-profile.png' alt='sunil'>"
+          + "</div>"
+          + "<div class='received_msg'>"
+          + "<div class='received_withd_msg'>"
+          +  e.id1
+          + "<p>" + e.message + "</p>"
+          + "<span class='time_date'>"+ e.time + "</span></div>"
+          + "</div></div>";
+          // console.log(adds);
+          $('#msg_history'+e.id1).append(adds);
+        }
+
+        // console.log(e);
+        // console.log(e.message);
+        // console.log(e.id1);
+        // console.log(e.id2);
+        // console.log(e.time);
       });
 
   </script>
@@ -151,12 +168,12 @@ class="container">
           var add =  "<div class='outgoing_msg'>"
           +  "<div class='sent_msg'>"
           +    "<p>" + data.data.messege + "</p>"
-          +  "<span class='time_date'>" + data.data.created_at + "</span>"
+          +  "<span class='time_date'>" + data.date + "</span>"
           + "</div>"
           +"</div>";
 
           $('.write_msg'+id).val('');
-            $('#msg_history'+id).append(add);
+          $('#msg_history'+id).append(add);
             // console.log(data);
         },
         error : function(){
