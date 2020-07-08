@@ -1,6 +1,7 @@
 #map{
   width:auto;
   height:500px;
+  z-index: -1;
 }
 /* .wrap {
   position: absolute;

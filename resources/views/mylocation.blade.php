@@ -15,7 +15,7 @@ $(document).ready(function(){
     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
     level: 5 // 지도의 확대 레벨
   };
-  
+
   // 지도를 생성합니다
   var map = new kakao.maps.Map(mapContainer, mapOption);
 
@@ -246,7 +246,7 @@ $(document).ready(function(){
 @foreach($road as $key => $value)
 <input  id="maparry{{$value->item_number}}" class ="maparry" type="hidden"  value="{{$value->roadAddress}}">
 @endforeach
-<div id="map" style="width:auto; height:500px;">
+<div id="map">
   <div class="wa d">
     <a href="#" class="hi"></a>
   </div>
