@@ -69,7 +69,6 @@
               <span>이름:</span>
               <span>{{$ids}}</span>
             </b></p>
-              <p><b>00:00:00</b></p>
             <div class="exit">
               <button type="submit" name="button">확인</button>
               <button type="button" name="button">닫기</button>
@@ -94,7 +93,11 @@
           </div>
           <div class="bd_price">
             <span>현재가격:</span>
+            @if ($max==0)
+            <span class="bd_stprice1" name="money1" >{{number_format($sendd[0]->item_startprice)}}</span>
+            @else
             <span class="bd_price1" value="{{$max}}">{{ number_format($max)}}</span>
+            @endif
             <span> 원</span>
           </div>
           <div class="bd_stprice">
