@@ -93,6 +93,8 @@ Route::get('/repassword/{id}', 'UserController@user_repwd');
 Route::post('/user_pwd_update/{id}','UserController@user_pwd_update');
 Route::get('/Servicecenter','UserController@qna');
 Route::get('/qna11','UserController@qna1');
+Route::post('/qna_contents','UserController@qnacont');
+
 
 
 

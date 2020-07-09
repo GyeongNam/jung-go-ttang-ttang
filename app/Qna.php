@@ -11,6 +11,7 @@ class Qna extends Model
     'qna_number',
     'qna_text',
     'qna_pass',
-    'qna_id'
+    'qna_id',
+    'qna_title'
   ];
 }

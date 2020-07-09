@@ -99,63 +99,57 @@ function remove_div(obj){
               </div>
               <div class="content-dis">
                 <table id="qnat">
-                  {{-- <thead>
-                  <tr>
-                  <th>번호</th>
-                  <th>문의내용</th>
-                  <th>작성자(ID)</th>
-                  <th>작성일</th>
+                  <thead>
+                    <tr>
+                      <th width="4%"></th>
+                      <th>번호</th>
+                      <th>제목</th>
+                      <th>작성자(ID)</th>
+                      <th>작성일</th>
+                    </tr>
+                  </thead>
 
-                </tr>
-              </thead>
-              @foreach($qna as $key => $value)
-              <tbody>
-              <tr id="ddts" type="button" name="button">
-              <td>{{$value->qna_number}}</td>
-              <td>{{$value->qna_text}}</td>
-              <td>{{$value->qna_id}}</td>
-              <td>{{$value->created_at}}</td>
-            </tr>
-            <div class="passwordpanel">
-            비밀번호 : <input type="text" name="qnapassinput" value="">
-          </div>
-        </tbody>
-      @endforeach --}}
-      <thead>
-        <tr>
-          <th width="4%"></th>
-          <th>번호</th>
-          <th>문의내용</th>
-          <th>작성자(ID)</th>
-          <th>작성일</th>
-        </tr>
-      </thead>
+                  <tbody>
 
-      <tbody>
-        @foreach($qna as $key => $value)
-        <tr>
-          <td><div class="arrow"></div></td>
-          <td>{{$value->qna_number}}</td>
-          <td id="qnatext">{{$value->qna_text}}</td>
-          <td>{{$value->qna_id}}</td>
-          <td>{{$value->created_at}}</td>
-        </tr>
-        <tr>
-          <td colspan="5">
-            <label for="">비밀번호를 입력하세요!</label><br>
-            비밀번호 : <input type="text" name="qnapassinput" value="">
-            <button type="button" name="button">확인</button>
-          </td>
-        </tr>
-        @endforeach
-      </tbody>
 
-    </table>
-    <div id="field"></div>
-    <div class="guljaxsung">
-      <button class="rmf" type="button"  name="button">글 작성</button>
+                    @foreach($qna as $key => $value)
+                      <tr>
+                        <td><div class="arrow"></div></td>
+                        <td>{{$value->qna_number}}</td>
+                        <td id="qnatext">{{$value->qna_title}}</td>
+                        <td>{{$value->qna_id}}</td>
+                        <td>{{$value->created_at}}</td>
+                      </tr>
 
-    </div>
+                      <tr>
+                        <td colspan="5">
+                          <label for="">비밀번호를 입력하세요!</label><br>
+                          비밀번호 : <input type="text" class="pass" name="qnapassinput" value="">
+                          <button type="button" class="123" name="button">확인</button>
+                          @if("qnapassinput" == ($value->qna_pass))
+                            <form class="" action="/qna_contents/{{$value->qna_number}} "method="post">
+                              </form>
+                          @else
+                            <script>
+                            $(function(){
+                              $(".123").click(function(){
+                                alert("비밀번호가 틀립니다");
+                              });
+                            });
+                              </script>
+                          @endif
+                        </td>
+                      </tr>
+                    @endforeach
+
+                  </tbody>
+
+                </table>
+                <div id="field"></div>
+                <div class="guljaxsung">
+                  <button class="rmf" type="button"  name="button">글 작성</button>
+
+                </div>
 
                 @if(session()->has('login_ID'))
                   <form class="" action="{{url('/qna11')}}" method="get">
@@ -170,6 +164,10 @@ function remove_div(obj){
                             비밀번호 : <input type="text" class="dadada" name="qnapass" value="">
                           </div>
                         </div>
+                        <div >
+                        <label>제목</label>
+                        <input type="text" name="nanana" value="">
+                      </div>
                         <label>문의내용</label>
                       </div>
                       <textarea name="qnatext" class="but1" rows="8" cols="80"></textarea>
@@ -185,60 +183,65 @@ function remove_div(obj){
         </div>
       </div>
 
-<script>
-$(function(){
-  $(".but").click(function(){
-    var da =$(".but1").val();
-    var dada=$(".dadada").val();
-  if(da==0){
-    alert("글을 적어주세요");
-    return false;
-  }
-  else if(dada==0){
-    alert("비밀번호를 지정해주세요");
-    return false;
-  }
-  })
-})
-</script>
-      <script type="text/javascript">
-      var acc = document.getElementsByClassName("accordion");
-      var i;
-
-      for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-
-          this.classList.toggle("active");
-
-          var panel = this.nextElementSibling;
-          if (panel.style.display === "block") {
-            panel.style.display = "none";
-          } else {
-            panel.style.display = "block";
+      <script>
+      $(function(){
+        $(".but").click(function(){
+          var da =$(".but1").val();
+          var dada=$(".dadada").val();
+          var na=$(".nanana").val();
+          if(da==0){
+            alert("글을 적어주세요");
+            return false;
           }
-        });
-      }
-      </script>
-      <script type="text/javascript">
-      var akk = document.getElementsByClassName("ddts");
-      var i;
-
-      for (i = 0; i < akk.length; i++) {
-        akk[i].addEventListener("click", function() {
-
-          this.classList.toggle("active");
-
-          var passwordpanel = this.nextElementSibling;
-          if (passwordpanel.style.display === "block") {
-            passwordpanel.style.display = "none";
-          } else {
-            passwordpanel.style.display = "block";
+          else if(dada==0){
+            alert("비밀번호를 지정해주세요");
+            return false;
           }
-        });
-      }
-      </script>
-    </div>
+          else if (na==0) {
+            alert("제목을 입력하세요");
+            return false;
+          }
+        })
+      })
+    </script>
+    <script type="text/javascript">
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+
+        this.classList.toggle("active");
+
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+    </script>
+    <script type="text/javascript">
+    var akk = document.getElementsByClassName("ddts");
+    var i;
+
+    for (i = 0; i < akk.length; i++) {
+      akk[i].addEventListener("click", function() {
+
+        this.classList.toggle("active");
+
+        var passwordpanel = this.nextElementSibling;
+        if (passwordpanel.style.display === "block") {
+          passwordpanel.style.display = "none";
+        } else {
+          passwordpanel.style.display = "block";
+        }
+      });
+    }
+    </script>
   </div>
+</div>
 </div>
 <div>
 </div>
