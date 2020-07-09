@@ -281,6 +281,54 @@ function commentliketoggles(data) {
 </script>
 @endsection
 @section('content')
+  <!-- The Modal -->
+     <div id="myModal" class="modal2">
+
+       <!-- Modal content -->
+       <div class="modal-content">
+         <span class="close">&times;</span>
+         <h1 style="text-align:center; margin-bottom:2%;">신고하기</h1>
+         <hr>
+         <form class="" action="/police/{{$myproduct[0]->item_number}}" method="post">
+           @csrf
+         <select class="po1" name="po-ca"  id="sel" style="height:30px; margin:3%;">
+           <option value="0">선택하세요</option>
+           <option value="광고(상점홍보,낚시글,도배글)">광고(상점홍보,낚시글,도배글)</option>
+           <option value="물품정보 부정확(카테고리,가격,사진)">물품정보 부정확(카테고리,가격,사진)</option>
+           <option value="거래 금지 품목(담배,주류,장물)">거래 금지 품목(담배,주류,장물)</option>
+           <option value="언어폭력(비방,욕설,성희롱)">언어폭력(비방,욕설,성희롱)</option>
+           <option value="기타사유">기타사유</option>
+         </select>
+         <div class="">
+           <textarea cols="50" rows="10" name="te" class="tex1" style="margin-left:3%;" placeholder="입력해주세요"></textarea>
+         </div>
+         <div class="" style="text-align:center;">
+           <button type="submit" class="butt" name="police" style="width:20%; height:30px; margin-top:3%;" value="{{$myproduct[0]->item_number}}">신고하기</button>
+         </form>
+         </div>
+        </form>
+      </div>
+      <script>
+        $(function(){
+          $(".butt").click(function(){
+            var se =$("#sel").val();
+            var da = $(".tex1").val();
+            if (da == 0 ) {
+              alert("사유를 작성해주세요");
+              return false;
+            }
+            else if (se==0) {
+              alert("선택해주세요");
+              return false;
+            }
+          })
+        })
+
+      </script>
+
+     </div>
+
+
   <div class="content">
     @if ($myproduct[0]->item_success ==0)
       <h1 style="text-align:center; margin:5%;">이미 판매종료된 상품입니다.</h1>
@@ -337,15 +385,12 @@ function commentliketoggles(data) {
                   {{$myproduct[0]->item_name}}
                   {{-- // 버튼 추가 --}}
                   <div class="bt-Wla" style="float:right;">
-                    <form class="" action="/police/{{$myproduct[0]->item_number}}" method="post">
-                      @csrf
                       <div class="Wla_click">
-                        <button   class="unWla" type="submit" name="police" value="{{$myproduct[0]->item_number}}">
+                        <button  id="myBtn" class="unWla" type="button" >
                           <i class="fas fa-exclamation-circle"></i>
                           <span>신고</span>
                         </button>
                       </div>
-                    </form>
                   </div>
                 </div>
                 <div class="time_price">
@@ -527,7 +572,7 @@ function commentliketoggles(data) {
           <div class="sc-info_detail">상품 정보</div>
           <div class="sc-info-typing">
             {{-- 카카오map API --}}
-            <div id="map" style="width:500px;height:400px;"></div>
+            <div id="map"></div>
             {{-- <div id="gmap"></div>        // 직거래 위치(구글 지도) --}}
             <div class="sc-info_sodyd">
               {{$myproduct[0]->item_info}}
@@ -740,5 +785,33 @@ $('#del_detailpage').click(function(){
     return false;
   }
 });
+</script>
+<script>
+// Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
 </script>
 @endsection

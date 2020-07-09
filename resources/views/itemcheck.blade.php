@@ -112,6 +112,10 @@ $(function(){
          </td>
            @endif
 
+           @if ($value->item_success == 1)
+             <td class="yesorno">
+               낙찰진행중
+             </td>
            @if (!Empty($end[$key][0]->buyer))
              @if (decrypt(session('login_ID')) == $end[$key][0]->buyer)
                <td class="yesorno">
@@ -123,12 +127,15 @@ $(function(){
              </td>
            @endif
 
-         @elseif($end[$key][0]->buyer == null)
+         @if($end[$key][0]->buyer == null)
            <td class="yesorno">
              X
            </td>
+         @endif
+
           @endif
-          
+          @endif
+
        </tbody>
        </table>
       @endforeach
