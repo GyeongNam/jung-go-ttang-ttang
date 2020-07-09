@@ -119,7 +119,7 @@ function remove_div(obj){
                 </div>
 
                 @if(session()->has('login_ID'))
-                  <form class="" action="{{url('/Servicecenter')}}" method="get">
+                  <form class="" action="{{url('/qna11')}}" method="get">
                     @csrf
                     <div class="qnainput" >
                       <div class="">

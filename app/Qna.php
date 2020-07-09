@@ -10,7 +10,7 @@ class Qna extends Model
   protected $fillable =[
     'qna_number',
     'qna_text',
-    'qna_path',
+    'qna_pass',
     'qna_id'
   ];
 }

@@ -14,9 +14,9 @@ class CreateQnaTable extends Migration
     public function up()
     {
         Schema::create('qna', function (Blueprint $table) {
-            $table->bigIncrements('qna_number');
-            $table->string('qna_text');
-            $table->string('qna_pass');
+            $table->bigIncrements('qna_number')->nullable();
+            $table->string('qna_text')->nullable();
+            $table->string('qna_pass')->nullable();
             $table->timestamps();
             $table->rememberToken();
         });

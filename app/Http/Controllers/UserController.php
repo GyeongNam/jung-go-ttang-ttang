@@ -231,14 +231,21 @@ public function warning(Request $request,$id){
       $data = User::select('ID')->where(['id'=> decrypt($id)])->get();
     }
 
-    $item = new Qna([
-      'qnatext' => $request->input('qna_text'),
-      'qnapass' => $request->input('qna_pass')]);
-      $item->save();
     return view('Servicecenter', [
       'data'=> $data
     ]);
   }
+
+  public function qna1(Request $request){
+    $item = new qna([
+      'qna_text' => $request->input('qnatext'),
+      'qna_pass' => $request->input('qnapass'),
+      'qna_id'=> decrypt(session()->get('login_ID'))
+    ]);
+      $item->save();
+      return redirect('/Servicecenter');
+  }
+
   public function ban(Request $request,$id){
 
     $date_de = DB::table('bantime')->select('ban_enddate')->where(['user_id'=>$id])->get();
