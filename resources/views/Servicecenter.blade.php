@@ -104,14 +104,16 @@ function remove_div(obj){
                   <th>문의내용</th>
                   <th>작성자(ID)</th>
                   <th>작성일</th>
-                  <tr>
-                    <td>1</td>
-                    <td>제목이 보여지는 부분입니다.</td>
-                    <td></td>
-                    <td>2020/06/16</td>
+                  <tr class="ddts" type="button" name="button">
+                      <td>1</td>
+                      <td>제목이 보여지는 부분입니다.</td>
+                      <td></td>
+                      <td>2020/06/16</td>
                   </tr>
-
                 </table>
+                <div class="passwordpanel">
+                    비밀번호 : <input type="text" name="qnapassinput" value="">
+                </div>
                 <div id="field"></div>
                 <div class="guljaxsung">
                   <button class="rmf" type="button"  name="button">글 작성</button>
@@ -145,22 +147,6 @@ function remove_div(obj){
             <div>
             </div>
           </div>
-          <!-- 실험실 -->
-          <input type="button" value="추가" onclick="add_div()"><br/>
-          <div id="room_type">
-            <div class="form-group">
-              <table class="qnat">
-                <tr>
-                  <td>1</td>
-                  <td>댓글내용 추가부분입니다.</td>
-                  <td></td>
-                  <td>2020/06/16</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <!-- 실험실 -->
-          <!-- 실험실 -->
         </div>
       </div>
 
@@ -178,6 +164,24 @@ function remove_div(obj){
             panel.style.display = "none";
           } else {
             panel.style.display = "block";
+          }
+        });
+      }
+      </script>
+      <script type="text/javascript">
+      var akk = document.getElementsByClassName("ddts");
+      var i;
+
+      for (i = 0; i < akk.length; i++) {
+        akk[i].addEventListener("click", function() {
+
+          this.classList.toggle("active");
+
+          var passwordpanel = this.nextElementSibling;
+          if (passwordpanel.style.display === "block") {
+            passwordpanel.style.display = "none";
+          } else {
+            passwordpanel.style.display = "block";
           }
         });
       }
