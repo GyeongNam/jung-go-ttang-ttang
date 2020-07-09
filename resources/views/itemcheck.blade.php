@@ -116,6 +116,7 @@ $(function(){
              <td class="yesorno">
                낙찰진행중
              </td>
+           @else
            @if (!Empty($end[$key][0]->buyer))
              @if (decrypt(session('login_ID')) == $end[$key][0]->buyer)
                <td class="yesorno">
