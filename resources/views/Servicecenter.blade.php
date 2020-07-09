@@ -157,19 +157,6 @@ function remove_div(obj){
 
     </div>
 
-<<<<<<< HEAD
-    @if(session()->has('login_ID'))
-      <form class="" action="{{url('/qna11')}}" method="get">
-        @csrf
-        <div class="qnainput" >
-          <div class="">
-            <div class="">
-              <div class="qnawkrtjd">
-                작성자 : {{$data[0]->ID}}
-              </div>
-              <div class="">
-                비밀번호 : <input type="text" name="qnapass" value="">
-=======
                 @if(session()->has('login_ID'))
                   <form class="" action="{{url('/qna11')}}" method="get">
                     @csrf
@@ -192,20 +179,10 @@ function remove_div(obj){
                 @else
                   <div class="error"></div>
                 @endif
->>>>>>> e2e9d2e8a4e5cad4e6f0f1ca34a45615cb68d047
               </div>
             </div>
-            <label>문의내용</label>
           </div>
-          <textarea name="qnatext" rows="8" cols="80"></textarea>
-          <button type="submit" name="button" onclick="add_div();">작성하기</button>
         </div>
-<<<<<<< HEAD
-      </form>
-    @else
-      <div class="error"></div>
-    @endif
-=======
       </div>
 
 <script>
@@ -261,7 +238,6 @@ $(function(){
       }
       </script>
     </div>
->>>>>>> e2e9d2e8a4e5cad4e6f0f1ca34a45615cb68d047
   </div>
 </div>
 <div>

@@ -18,24 +18,20 @@
               <table id="qnat">
                 <thead>
                   <tr>
-                    <th width="4%"></th>
-                    <th>번호</th>
-                    <th>문의내용</th>
-                    <th>작성자(ID)</th>
-                    <th>작성일</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><div class="arrow"></div></td>
-                    <td></td>
-                    <td id="qnatext"></td>
-                    <td></td>
-                    <td></td>
+                    <th scope="row">제목</th>
+                    <td>네이버 신규 알림서비스 오픈</td>
                   </tr>
                   <tr>
-
+                    <th scope="row">작성자</th>
+                    <td> MANINSTORE </td>
                   </tr>
+                  <tr class="date-wrap">
+                    <th scope="row">작성일</th>
+                    <td>2020-06-03</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
                   <td colspan="2">
                     <div class="detail_text">
                       카카오TV에서 인터넷 방송 활동을 했던 아무무의 본명이다.
@@ -44,10 +40,11 @@
                       위 사진에서도 볼 수 있듯 턱살이 심하게 처져 있으며, 본인도 이를 컴플렉스로 여기는지 방송 시에는 검은색 마스크로 턱을 가린다. 시청자들은 이것을 '턱브라'라고 일컫기도.
                     </div>
                   </td>
-                </tbody>
-              </table>
-            </div>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    @endsection
+    </div>
+  @endsection
