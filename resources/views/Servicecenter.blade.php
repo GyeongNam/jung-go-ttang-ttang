@@ -104,13 +104,14 @@ function remove_div(obj){
                   <th>문의내용</th>
                   <th>작성자(ID)</th>
                   <th>작성일</th>
+                    @foreach($qna as $key => $value)
                   <tr>
-                    <td>1</td>
-                    <td>제목이 보여지는 부분입니다.</td>
-                    <td></td>
-                    <td>2020/06/16</td>
+                    <td>{{$value->qna_number}}</td>
+                    <td>{{$value->qna_text}}</td>
+                    <td>{{$value->qna_id}}</td>
+                    <td>{{$value->created_at}}</td>
                   </tr>
-
+                    @endforeach
                 </table>
                 <div id="field"></div>
                 <div class="guljaxsung">
@@ -145,22 +146,6 @@ function remove_div(obj){
             <div>
             </div>
           </div>
-          <!-- 실험실 -->
-          <input type="button" value="추가" onclick="add_div()"><br/>
-          <div id="room_type">
-            <div class="form-group">
-              <table class="qnat">
-                <tr>
-                  <td>1</td>
-                  <td>댓글내용 추가부분입니다.</td>
-                  <td></td>
-                  <td>2020/06/16</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <!-- 실험실 -->
-          <!-- 실험실 -->
         </div>
       </div>
 
