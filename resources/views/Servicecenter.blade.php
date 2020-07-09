@@ -157,6 +157,7 @@ function remove_div(obj){
 
     </div>
 
+<<<<<<< HEAD
     @if(session()->has('login_ID'))
       <form class="" action="{{url('/qna11')}}" method="get">
         @csrf
@@ -168,6 +169,30 @@ function remove_div(obj){
               </div>
               <div class="">
                 비밀번호 : <input type="text" name="qnapass" value="">
+=======
+                @if(session()->has('login_ID'))
+                  <form class="" action="{{url('/qna11')}}" method="get">
+                    @csrf
+                    <div class="qnainput" >
+                      <div class="">
+                        <div class="">
+                          <div class="qnawkrtjd">
+                            작성자 : {{$data[0]->ID}}
+                          </div>
+                          <div class="">
+                            비밀번호 : <input type="text" class="dadada" name="qnapass" value="">
+                          </div>
+                        </div>
+                        <label>문의내용</label>
+                      </div>
+                      <textarea name="qnatext" class="but1" rows="8" cols="80"></textarea>
+                      <button type="submit" class="but" name="button" onclick="add_div();">작성하기</button>
+                    </div>
+                  </form>
+                @else
+                  <div class="error"></div>
+                @endif
+>>>>>>> e2e9d2e8a4e5cad4e6f0f1ca34a45615cb68d047
               </div>
             </div>
             <label>문의내용</label>
@@ -175,10 +200,68 @@ function remove_div(obj){
           <textarea name="qnatext" rows="8" cols="80"></textarea>
           <button type="submit" name="button" onclick="add_div();">작성하기</button>
         </div>
+<<<<<<< HEAD
       </form>
     @else
       <div class="error"></div>
     @endif
+=======
+      </div>
+
+<script>
+$(function(){
+  $(".but").click(function(){
+    var da =$(".but1").val();
+    var dada=$(".dadada").val();
+  if(da==0){
+    alert("글을 적어주세요");
+    return false;
+  }
+  else if(dada==0){
+    alert("비밀번호를 지정해주세요");
+    return false;
+  }
+  })
+})
+</script>
+      <script type="text/javascript">
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+
+          this.classList.toggle("active");
+
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+      </script>
+      <script type="text/javascript">
+      var akk = document.getElementsByClassName("ddts");
+      var i;
+
+      for (i = 0; i < akk.length; i++) {
+        akk[i].addEventListener("click", function() {
+
+          this.classList.toggle("active");
+
+          var passwordpanel = this.nextElementSibling;
+          if (passwordpanel.style.display === "block") {
+            passwordpanel.style.display = "none";
+          } else {
+            passwordpanel.style.display = "block";
+          }
+        });
+      }
+      </script>
+    </div>
+>>>>>>> e2e9d2e8a4e5cad4e6f0f1ca34a45615cb68d047
   </div>
 </div>
 <div>
