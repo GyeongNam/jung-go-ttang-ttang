@@ -104,6 +104,14 @@ function remove_div(obj){
                   <th>문의내용</th>
                   <th>작성자(ID)</th>
                   <th>작성일</th>
+<<<<<<< HEAD
+                  <tr class="ddts" type="button" name="button">
+                      <td>1</td>
+                      <td>제목이 보여지는 부분입니다.</td>
+                      <td></td>
+                      <td>2020/06/16</td>
+                  </tr>
+=======
                     @foreach($qna as $key => $value)
                   <tr>
                     <td>{{$value->qna_number}}</td>
@@ -112,7 +120,11 @@ function remove_div(obj){
                     <td>{{$value->created_at}}</td>
                   </tr>
                     @endforeach
+>>>>>>> 3810fe0ff332daefb2c19f5f54d002301782a457
                 </table>
+                <div class="passwordpanel">
+                    비밀번호 : <input type="text" name="qnapassinput" value="">
+                </div>
                 <div id="field"></div>
                 <div class="guljaxsung">
                   <button class="rmf" type="button"  name="button">글 작성</button>
@@ -179,6 +191,24 @@ $(function(){
             panel.style.display = "none";
           } else {
             panel.style.display = "block";
+          }
+        });
+      }
+      </script>
+      <script type="text/javascript">
+      var akk = document.getElementsByClassName("ddts");
+      var i;
+
+      for (i = 0; i < akk.length; i++) {
+        akk[i].addEventListener("click", function() {
+
+          this.classList.toggle("active");
+
+          var passwordpanel = this.nextElementSibling;
+          if (passwordpanel.style.display === "block") {
+            passwordpanel.style.display = "none";
+          } else {
+            passwordpanel.style.display = "block";
           }
         });
       }
