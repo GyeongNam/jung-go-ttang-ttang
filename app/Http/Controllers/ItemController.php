@@ -302,7 +302,9 @@ class ItemController extends Controller
     $count = Item::select('visit_count')->where(['item_number'=>$item_number])->get();
     $like=Favorite::select('favorite_itemnum')->where(['favorite_itemnum'=>$item_number])->get()->count();
     $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
-    // $comm=Commentlike::select('commentlike_number')->where(['commentlike_number'=>$comment_num])->get();
+    // $commentitem = Comment::select(DB::raw('count(commentlike_number)'), '*')->join('commentlike', 'comment.comment_num', '=', 'commentlike.commentlike_number')->orderby('commentlike_number', 'desc')->get();
+    // $comm=Commentlike::select('commentlike_number')->->count();
+    // return $comm;
     $roAd = Item::select('roadAddress', 'item_number')->get();
     $likecomment = collect([]);
     $largcommentitem = collect([]);
@@ -314,8 +316,6 @@ class ItemController extends Controller
       }
       $commentlike->push (Commentlike::select('commentlike_number')->where(['commentlike_number'=>$commentitem[$i]->comment_num])->get());
     }
-
-
     if(session()->has('login_ID')){
       $likeheart = Favorite::select('*')->where(['favorite_itemnum'=>$item_number, 'favorite_name'=>decrypt($id)])->get()->count();
     }
