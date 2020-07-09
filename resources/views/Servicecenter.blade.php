@@ -104,12 +104,23 @@ function remove_div(obj){
                   <th>문의내용</th>
                   <th>작성자(ID)</th>
                   <th>작성일</th>
+<<<<<<< HEAD
                   <tr class="ddts" type="button" name="button">
                       <td>1</td>
                       <td>제목이 보여지는 부분입니다.</td>
                       <td></td>
                       <td>2020/06/16</td>
                   </tr>
+=======
+                    @foreach($qna as $key => $value)
+                  <tr>
+                    <td>{{$value->qna_number}}</td>
+                    <td>{{$value->qna_text}}</td>
+                    <td>{{$value->qna_id}}</td>
+                    <td>{{$value->created_at}}</td>
+                  </tr>
+                    @endforeach
+>>>>>>> 3810fe0ff332daefb2c19f5f54d002301782a457
                 </table>
                 <div class="passwordpanel">
                     비밀번호 : <input type="text" name="qnapassinput" value="">

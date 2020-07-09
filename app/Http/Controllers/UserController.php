@@ -230,9 +230,11 @@ public function warning(Request $request,$id){
     else {
       $data = User::select('ID')->where(['id'=> decrypt($id)])->get();
     }
+    $qna=Qna::select('*')->get();
 
     return view('Servicecenter', [
-      'data'=> $data
+      'data'=> $data,
+      'qna'=>$qna
     ]);
   }
 
