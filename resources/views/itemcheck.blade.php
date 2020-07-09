@@ -110,9 +110,9 @@ $(function(){
                <button type="button" id="bid_info_btn" class="bid_info_btn" onclick="modal_mya({{$value->item_number}})" name="button">낙찰정보 확인</button>
              </div>
          </td>
-           @endif
+       @endif
 
-           @if ($value->item_success == 1)
+        @if ($value->item_success == 1)
              <td class="yesorno">
                낙찰진행중
              </td>
@@ -127,15 +127,14 @@ $(function(){
              </td>
            @endif
 
-         @if($end[$key][0]->buyer == null)
+           @if($end[$key][0]->buyer == null)
            <td class="yesorno">
              X
            </td>
          @endif
 
-          @endif
-          @endif
-
+        @endif
+      @endif
        </tbody>
        </table>
       @endforeach

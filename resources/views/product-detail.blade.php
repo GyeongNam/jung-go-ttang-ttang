@@ -397,10 +397,17 @@ function commentliketoggles(data) {
                   <div class="d_price">
                     현재 최고가 :
                   </div>
+                  @if ($max == 0)
                   <div class="d_price_info" name="" val="">
-                    {{ number_format($max)}}
+                    {{ number_format($myproduct[0]->item_startprice)}}
                     <span>원</span>
                   </div>
+                @else
+                  <div class="d_price_info" name="" val="">
+                      {{ number_format($max)}}
+                    <span>원</span>
+                  </div>
+                @endif
                 </div>
                 <div class="gm_dday">
                   <div class="deadtime_lab">
