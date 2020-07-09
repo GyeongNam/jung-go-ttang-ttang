@@ -129,13 +129,13 @@ function remove_div(obj){
                             작성자 : {{$data[0]->ID}}
                           </div>
                           <div class="">
-                            비밀번호 : <input type="text" name="qnapass" value="">
+                            비밀번호 : <input type="text" class="dadada" name="qnapass" value="">
                           </div>
                         </div>
                         <label>문의내용</label>
                       </div>
-                      <textarea name="qnatext" rows="8" cols="80"></textarea>
-                      <button type="submit" name="button" onclick="add_div();">작성하기</button>
+                      <textarea name="qnatext" class="but1" rows="8" cols="80"></textarea>
+                      <button type="submit" class="but" name="button" onclick="add_div();">작성하기</button>
                     </div>
                   </form>
                 @else
@@ -149,6 +149,22 @@ function remove_div(obj){
         </div>
       </div>
 
+<script>
+$(function(){
+  $(".but").click(function(){
+    var da =$(".but1").val();
+    var dada=$(".dadada").val();
+  if(da==0){
+    alert("글을 적어주세요");
+    return false;
+  }
+  else if(dada==0){
+    alert("비밀번호를 지정해주세요");
+    return false;
+  }
+  })
+})
+</script>
       <script type="text/javascript">
       var acc = document.getElementsByClassName("accordion");
       var i;
