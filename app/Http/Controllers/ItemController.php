@@ -303,8 +303,8 @@ class ItemController extends Controller
     $like=Favorite::select('favorite_itemnum')->where(['favorite_itemnum'=>$item_number])->get()->count();
     $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
     // $commentitem = Comment::select(DB::raw('count(commentlike_number)'), '*')->join('commentlike', 'comment.comment_num', '=', 'commentlike.commentlike_number')->orderby('commentlike_number', 'desc')->get();
-    // $comm=Commentlike::select('commentlike_number')->->count();
-    // return $comm;
+    $comm=Commentlike::select('commentlike_number')->groupBy('commentlike_number')->count();
+    return $comm;
     $roAd = Item::select('roadAddress', 'item_number')->get();
     $likecomment = collect([]);
     $largcommentitem = collect([]);
@@ -583,7 +583,7 @@ class ItemController extends Controller
               }
               public function police(Request $request, $item_number){
                 $wan = DB::table('police')->insert([
-                  'item_number2'=> $item_number
+                  'item_number2'=> $item_number,
                   'report' =>$request->input('po-ca'),
                   'reportde' =>$request->input('te')
                 ]);
