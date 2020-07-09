@@ -69,7 +69,6 @@
               <span>이름:</span>
               <span>{{$ids}}</span>
             </b></p>
-              <p><b>00:00:00</b></p>
             <div class="exit">
               <button type="submit" name="button">확인</button>
               <button type="button" name="button">닫기</button>
