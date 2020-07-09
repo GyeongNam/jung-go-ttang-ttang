@@ -584,6 +584,8 @@ class ItemController extends Controller
               public function police(Request $request, $item_number){
                 $wan = DB::table('police')->insert([
                   'item_number2'=> $item_number
+                  'report' =>$request->input('po-ca'),
+                  'reportde' =>$request->input('te')
                 ]);
                 return back();
               }

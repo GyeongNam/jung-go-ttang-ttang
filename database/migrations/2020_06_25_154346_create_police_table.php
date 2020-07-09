@@ -16,6 +16,8 @@ class CreatePoliceTable extends Migration
         Schema::create('police', function (Blueprint $table) {
           $table->bigIncrements('id');
           $table->unsignedBigInteger('item_number2');
+          $table->string('report');
+          $table->string('reportde');
           $table->foreign('item_number2')->references('item_number')->on('items');
           $table->timestamp('created_at')->useCurrent();
         });

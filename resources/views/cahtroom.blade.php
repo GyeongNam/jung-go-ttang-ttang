@@ -130,6 +130,7 @@ class="container">
   <script type="text/javascript">
   window.Echo.channel('ccit')
       .listen('WebsocketEvent', (e) => {
+        console.log(e);
         if(e.id2 == '{{decrypt(session('login_ID'))}}'){
           var adds =  "<div class='incoming_msg'>"
           +  "<div class='incoming_msg_img'> "
