@@ -625,6 +625,30 @@ function commentliketoggles(data) {
                 </div>
               </form>
               <div class="comment_new">
+                <div class="best_comment">
+                  <div class="">
+                    <h3>Best 댓글</h3>
+                  </div>
+                  <div class="">
+                    <div class="comment_naeyoung">
+                      <div class="comment_people">
+                        {{$comm2->comment_id}}
+                      </div>
+                      <div class="value_comment">
+                        <p>{{$comm2->comments}}</p>
+                      </div>
+                        <div class="largecommentgood">
+                            <button id="comentlike" type="button" name="comlike" value="">
+                                <img id="likecoment" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
+                          </button>
+                            <span>{{$comm->becount}}</span>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="">
+                  <h3>전체 댓글</h3>
+                </div>
                 @foreach ($commentitem as $key => $value)
                   <div class="create_comment">
                     <div class="neadcomt">

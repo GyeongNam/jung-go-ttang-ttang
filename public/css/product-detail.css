@@ -121,6 +121,9 @@ a {
   align-items: center;
 
 }
+/* .comment_new{
+  display: flex;
+} */
 .user_comnt{
   display: block;
   margin-right: 15px;

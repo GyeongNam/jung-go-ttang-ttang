@@ -124,9 +124,9 @@ function remove_div(obj){
                       <tr>
                         <td colspan="5">
                           <label for="">비밀번호를 입력하세요!</label><br>
-                          비밀번호 : <input type="text" class="pass" name="qnapassinput" value="">
+                          비밀번호 : <input type="text" class="pass" name="" value="">
                           <button type="button" class="123" name="button">확인</button>
-                          @if("qnapassinput" == ($value->qna_pass))
+                          @if(qnapassinput() == $value->qna_pass)
                             <form class="" action="/qna_contents/{{$value->qna_number}} "method="post">
                               </form>
                           @else

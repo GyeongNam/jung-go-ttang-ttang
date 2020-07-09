@@ -242,6 +242,7 @@ public function warning(Request $request,$id){
     $item = new qna([
       'qna_text' => $request->input('qnatext'),
       'qna_pass' => $request->input('qnapass'),
+      'qna_title' => $request->input('nanana'),
       'qna_id'=> decrypt(session()->get('login_ID'))
     ]);
       $item->save();

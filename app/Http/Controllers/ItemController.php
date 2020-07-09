@@ -303,8 +303,11 @@ class ItemController extends Controller
     $like=Favorite::select('favorite_itemnum')->where(['favorite_itemnum'=>$item_number])->get()->count();
     $commentitem = Comment::select('*')->where(['comm_item'=>$item_number])->orderby('comment_num', 'desc')->get();
     // $commentitem = Comment::select(DB::raw('count(commentlike_number)'), '*')->join('commentlike', 'comment.comment_num', '=', 'commentlike.commentlike_number')->orderby('commentlike_number', 'desc')->get();
-    $comm=Commentlike::select('commentlike_number')->groupBy('commentlike_number')->count();
-    return $comm;
+    $comm=Commentlike::join('comment', 'comment.comment_num', '=', 'commentlike.commentlike_number')->select('commentlike.commentlike_number',DB::raw('count(commentlike.commentlike_number) as becount'))->where(['comment.comm_item'=>$item_number])->groupBy('commentlike_number')->orderBy('becount', 'desc')->first();
+    $comm2=Comment::select('*')->where(['comment_num'=> $comm->commentlike_number])->first();
+    echo $comm2;
+    // return $comm;
+    echo $comm;
     $roAd = Item::select('roadAddress', 'item_number')->get();
     $likecomment = collect([]);
     $largcommentitem = collect([]);
@@ -346,7 +349,9 @@ class ItemController extends Controller
       'likecomment'=>$likecomment,
       'likeheart'=>$likeheart,
       'like'=>$like,
-      'road'=>$roAd
+      'road'=>$roAd,
+      'comm'=>$comm,
+      'comm2'=>$comm2
 
     ]);
   }
