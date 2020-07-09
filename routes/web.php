@@ -74,6 +74,9 @@ Route::get('/manager_login', function(){
 Route::get('/sign_rull', function () {
     return view('login.sign_rull');
 });
+Route::get('/qnapage', function () {
+    return view('qna');
+});
 // Route::get('/cahtroom', function(){
 //
 //   return view('cahtroom');

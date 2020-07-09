@@ -1,0 +1,43 @@
+.servicecenter {
+
+  margin: 3rem auto;
+  width:70%;
+}
+.Qtitle{
+  border-bottom: 1px solid #000000;
+  font-size: 35px;
+  width:70%;;
+  text-align: center;
+  margin: 0.5rem auto;
+  padding: 2% 0px;
+  letter-spacing: 1px;
+}
+/* table class */
+#qnat{
+  width: 100%;
+  border-top: 1px solid #444444;
+  border-collapse: collapse;
+}
+#qnat th{
+  border-bottom: 2px solid #444444;
+  border-top: 2px solid #444444;
+  padding-top: 10px;
+}
+#qnat td{
+  /* border-bottom: 1px solid #bdbdbd;
+  padding-top: 10px;
+  text-overflow: ellipsis;
+  text-align: center; */
+}
+#qnatext{
+}
+.detail_text{
+  width: auto;
+}
+.rmf{
+  margin-top: 1rem;
+  border: none;
+}
+.qnainput{
+  display: none;
+}

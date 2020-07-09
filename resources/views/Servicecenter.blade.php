@@ -46,7 +46,6 @@ function remove_div(obj){
   document.getElementById('field').removeChild(obj.parentNode);
 }
 </script>
-
 @endsection
 @section('content')
   <div class="anrdma">
@@ -99,105 +98,127 @@ function remove_div(obj){
                 </div>
               </div>
               <div class="content-dis">
-                <table class="qnat">
+                <table id="qnat">
+                  {{-- <thead>
+                  <tr>
                   <th>번호</th>
                   <th>문의내용</th>
                   <th>작성자(ID)</th>
                   <th>작성일</th>
-<<<<<<< HEAD
-                  <tr class="ddts" type="button" name="button">
-                      <td>1</td>
-                      <td>제목이 보여지는 부분입니다.</td>
-                      <td></td>
-                      <td>2020/06/16</td>
-                  </tr>
-=======
-                    @foreach($qna as $key => $value)
-                  <tr>
-                    <td>{{$value->qna_number}}</td>
-                    <td>{{$value->qna_text}}</td>
-                    <td>{{$value->qna_id}}</td>
-                    <td>{{$value->created_at}}</td>
-                  </tr>
-                    @endforeach
->>>>>>> 3810fe0ff332daefb2c19f5f54d002301782a457
-                </table>
-                <div class="passwordpanel">
-                    비밀번호 : <input type="text" name="qnapassinput" value="">
-                </div>
-                <div id="field"></div>
-                <div class="guljaxsung">
-                  <button class="rmf" type="button"  name="button">글 작성</button>
 
-                </div>
+                </tr>
+              </thead>
+              @foreach($qna as $key => $value)
+              <tbody>
+              <tr id="ddts" type="button" name="button">
+              <td>{{$value->qna_number}}</td>
+              <td>{{$value->qna_text}}</td>
+              <td>{{$value->qna_id}}</td>
+              <td>{{$value->created_at}}</td>
+            </tr>
+            <div class="passwordpanel">
+            비밀번호 : <input type="text" name="qnapassinput" value="">
+          </div>
+        </tbody>
+      @endforeach --}}
+      <thead>
+        <tr>
+          <th width="4%"></th>
+          <th>번호</th>
+          <th>문의내용</th>
+          <th>작성자(ID)</th>
+          <th>작성일</th>
+        </tr>
+      </thead>
 
-                @if(session()->has('login_ID'))
-                  <form class="" action="{{url('/qna11')}}" method="get">
-                    @csrf
-                    <div class="qnainput" >
-                      <div class="">
-                        <div class="">
-                          <div class="qnawkrtjd">
-                            작성자 : {{$data[0]->ID}}
-                          </div>
-                          <div class="">
-                            비밀번호 : <input type="text" name="qnapass" value="">
-                          </div>
-                        </div>
-                        <label>문의내용</label>
-                      </div>
-                      <textarea name="qnatext" rows="8" cols="80"></textarea>
-                      <button type="submit" name="button" onclick="add_div();">작성하기</button>
-                    </div>
-                  </form>
-                @else
-                  <div class="error"></div>
-                @endif
+      <tbody>
+        @foreach($qna as $key => $value)
+        <tr>
+          <td><div class="arrow"></div></td>
+          <td>{{$value->qna_number}}</td>
+          <td id="qnatext">{{$value->qna_text}}</td>
+          <td>{{$value->qna_id}}</td>
+          <td>{{$value->created_at}}</td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <label for="">비밀번호를 입력하세요!</label><br>
+            비밀번호 : <input type="text" name="qnapassinput" value="">
+            <button type="button" name="button">확인</button>
+          </td>
+        </tr>
+        @endforeach
+      </tbody>
+
+    </table>
+    <div id="field"></div>
+    <div class="guljaxsung">
+      <button class="rmf" type="button"  name="button">글 작성</button>
+
+    </div>
+
+    @if(session()->has('login_ID'))
+      <form class="" action="{{url('/qna11')}}" method="get">
+        @csrf
+        <div class="qnainput" >
+          <div class="">
+            <div class="">
+              <div class="qnawkrtjd">
+                작성자 : {{$data[0]->ID}}
+              </div>
+              <div class="">
+                비밀번호 : <input type="text" name="qnapass" value="">
               </div>
             </div>
-            <div>
-            </div>
+            <label>문의내용</label>
           </div>
+          <textarea name="qnatext" rows="8" cols="80"></textarea>
+          <button type="submit" name="button" onclick="add_div();">작성하기</button>
         </div>
-      </div>
-
-      <script type="text/javascript">
-      var acc = document.getElementsByClassName("accordion");
-      var i;
-
-      for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-
-          this.classList.toggle("active");
-
-          var panel = this.nextElementSibling;
-          if (panel.style.display === "block") {
-            panel.style.display = "none";
-          } else {
-            panel.style.display = "block";
-          }
-        });
-      }
-      </script>
-      <script type="text/javascript">
-      var akk = document.getElementsByClassName("ddts");
-      var i;
-
-      for (i = 0; i < akk.length; i++) {
-        akk[i].addEventListener("click", function() {
-
-          this.classList.toggle("active");
-
-          var passwordpanel = this.nextElementSibling;
-          if (passwordpanel.style.display === "block") {
-            passwordpanel.style.display = "none";
-          } else {
-            passwordpanel.style.display = "block";
-          }
-        });
-      }
-      </script>
-    </div>
+      </form>
+    @else
+      <div class="error"></div>
+    @endif
   </div>
+</div>
+<div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $("#qnat tr:odd").addClass("odd");
+  $("#qnat tr:not(.odd)").hide();
+  $("#qnat tr:first-child").show(); //열머리글 보여주기
+
+  $("#qnat tr.odd").click(function(){
+    $(this).next("tr").toggle();
+    $(this).find(".arrow").toggleClass("up");
+  });
+});
+</script>
+<script type="text/javascript">
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+
+    this.classList.toggle("active");
+
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+</div>
+</div>
 
 @endsection
