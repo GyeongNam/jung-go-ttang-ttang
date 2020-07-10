@@ -631,19 +631,26 @@ function commentliketoggles(data) {
                   </div>
                   <div class="">
                     <div class="comment_naeyoung">
+                      @if(!empty($comm2))
                       <div class="comment_people">
-                        {{$comm2->comment_id}}
+                      {{$comm2->comment_id}}
                       </div>
                       <div class="value_comment">
-                        <p>{{$comm2->comments}}</p>
+                        <p> {{$comm2->comments}} </p>
                       </div>
                         <div class="largecommentgood">
                             <button id="comentlike" type="button" name="comlike" value="">
                                 <img id="likecoment" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
                           </button>
-                            <span>{{$comm->becount}}</span>
+                            <span>){{$comm->becount}}</span>
                         </div>
+                      @else
+                        <div class="comment_people">
+                         Best 댓글이 없습니다.
+                        </div>
+                      @endif
                       </div>
+
                   </div>
                 </div>
                 <div class="">

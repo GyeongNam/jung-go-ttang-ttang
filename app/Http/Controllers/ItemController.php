@@ -305,13 +305,13 @@ class ItemController extends Controller
     // $commentitem = Comment::select(DB::raw('count(commentlike_number)'), '*')->join('commentlike', 'comment.comment_num', '=', 'commentlike.commentlike_number')->orderby('commentlike_number', 'desc')->get();
     $comm=Commentlike::join('comment', 'comment.comment_num', '=', 'commentlike.commentlike_number')->select('commentlike.commentlike_number',DB::raw('count(commentlike.commentlike_number) as becount'))->where(['comment.comm_item'=>$item_number])->groupBy('commentlike_number')->orderBy('becount', 'desc')->first();
 
-    if(!empty($commentitem)){
+    if(!empty($comm)){
       $comm2=Comment::select('*')->where(['comment_num'=> $comm->commentlike_number])->first();
     }
     else{
-      $comm2 = 0;
+      $comm2 = [];
     }
-    echo $comm2;
+    // echo $comm2;
     // return $comm;
 
     $roAd = Item::select('roadAddress', 'item_number')->get();
