@@ -256,7 +256,6 @@ $(function(){
                         <tr >
                           <th>상품번호</th>
                           <th>상품이름</th>
-                          <th>판매자 이름</th>
                           <th>경매등록일</th>
                           <th>경매마감일</th>
                           <th>낙찰여부</th>
@@ -273,9 +272,6 @@ $(function(){
                           </td>
                           <td onclick="location.href='/product-detail/{{$value->item_number}}'">
                             {{$value->item_name}}
-                          </td>
-                          <td onclick="location.href='/product-detail/{{$value->item_number}}'">
-                            {{$value->seller_id}}
                           </td>
                           <td onclick="location.href='/product-detail/{{$value->item_number}}'">
                             {{$value->created_at}}
@@ -347,17 +343,6 @@ $(function(){
                           </td>
                           <td onclick="location.href='/product-detail/{{$value->item_number}}'">
                             {{$value->item_name}}</td>
-                          <td onclick="location.href='/product-detail/{{$value->item_number}}'">
-                            {{$value->item_startprice}}</td>
-                          @if(!empty($item_joins[$key]))
-                          <td onclick="location.href='/product-detail/{{$value->item_number}}'">
-                            {{$item_joins[$key]->item_price}}</td>
-                          @else
-                          <td onclick="location.href='/product-detail/{{$value->item_number}}'">
-                            0</td>
-                          @endif
-                          <td onclick="location.href='/product-detail/{{$value->item_number}}'">
-                            {{$value->seller_id}}</td>
                           <td onclick="location.href='/product-detail/{{$value->item_number}}'">
                             {{$value->created_at}}</td>
                           <td onclick="location.href='/product-detail/{{$value->item_number}}'">
