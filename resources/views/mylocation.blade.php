@@ -13,7 +13,7 @@ $(document).ready(function(){
   var mapContainer = document.getElementById('map'), // 지도를 표시할 div
   mapOption = {
     center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-    level: 5 // 지도의 확대 레벨
+    level: 7 // 지도의 확대 레벨
   };
 
   // 지도를 생성합니다
@@ -53,7 +53,7 @@ $(document).ready(function(){
       // 지도에 표시할 원을 생성합니다
       var circle = new kakao.maps.Circle({
         center :locPosition,  // 원의 중심좌표 입니다
-        radius: 1000, // 미터 단위의 원의 반지름입니다
+        radius: 3000, // 미터 단위의 원의 반지름입니다
         strokeWeight: 5, // 선의 두께입니다
         strokeColor: '#75B8FA', // 선의 색깔입니다
         strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
@@ -209,12 +209,13 @@ $(document).ready(function(){
           infowindow.open(map, marker);
         });
 
-        var radius = 1000;
-
+        var radius = 3000;
+        // 상품을 표시할 원의 반경 미터
         var c1 = map.getCenter(locPosition);
         var c2 = marker.getPosition();
+        console.log(c1);
         console.log(c2);
-        var poly = new daum.maps.Polyline({
+        var poly = new kakao.maps.Polyline({
           // map: map, 을 하지 않아도 거리는 구할 수 있다.
           path: [c1, c2]
         });
