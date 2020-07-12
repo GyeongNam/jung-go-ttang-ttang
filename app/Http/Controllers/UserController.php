@@ -183,7 +183,12 @@ class UserController extends Controller
   public function managerINFO(Request $request,$id){
     $count = DB::table('banlog')->where(['user_id'=>$id])->count();
     $mana = User::select('ID','name','birthday','gender','phone','email','email_domain','created_at')->where(['id'=>$id])->get();
-    $maif = Item::leftjoin('auction', 'items.item_number','=', 'auction.auction_itemnum')->select('item_number','item_name','item_price','buyer_ID')->where(['buyer_ID'=>$id])->get();
+    $maif = Item::join('auction', 'items.item_number','=', 'auction.auction_itemnum')
+    ->join('enditem','items.item_number','=','enditem.end_num')
+    ->select('*')
+    ->where(['buyer_ID'=>$id])
+    ->get();
+
 
 
     return view('/manager_user_info',[

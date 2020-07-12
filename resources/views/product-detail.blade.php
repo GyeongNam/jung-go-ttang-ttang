@@ -289,9 +289,9 @@ function commentliketoggles(data) {
          <span class="close">&times;</span>
          <h1 style="text-align:center; margin-bottom:2%;">신고하기</h1>
          <hr>
-         <form class="" action="/police/{{$myproduct[0]->item_number}}" method="post">
+         <form class="" action="/police/{{$myproduct[0]->item_number}}" method="post" style="text-align:center;">
            @csrf
-         <select class="po1" name="po-ca"  id="sel" style="height:30px; margin:3%;">
+         <select class="po1" name="po-ca"  id="sel" style="height:30px; margin:3%; width:60%;" >
            <option value="0">선택하세요</option>
            <option value="광고(상점홍보,낚시글,도배글)">광고(상점홍보,낚시글,도배글)</option>
            <option value="물품정보 부정확(카테고리,가격,사진)">물품정보 부정확(카테고리,가격,사진)</option>
@@ -300,10 +300,10 @@ function commentliketoggles(data) {
            <option value="기타사유">기타사유</option>
          </select>
          <div class="">
-           <textarea cols="50" rows="10" name="te" class="tex1" style="margin-left:3%;" placeholder="입력해주세요"></textarea>
+           <textarea cols="50" rows="10" name="te" class="tex1" style="width:60%; margin-left:3%;" placeholder="입력해주세요"></textarea>
          </div>
          <div class="" style="text-align:center;">
-           <button type="submit" class="butt" name="police" style="width:20%; height:30px; margin-top:3%;" value="{{$myproduct[0]->item_number}}">신고하기</button>
+           <button type="submit" class="butt" name="police" style="width:20%; height:20px; margin-top:3%;" value="{{$myproduct[0]->item_number}}">신고하기</button>
          </form>
          </div>
         </form>
@@ -825,26 +825,21 @@ $('#del_detailpage').click(function(){
 });
 </script>
 <script>
-// Get the modal
+//모델창
     var modal = document.getElementById('myModal');
 
-    // Get the button that opens the modal
     var btn = document.getElementById("myBtn");
 
-    // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks on the button, open the modal
     btn.onclick = function() {
         modal.style.display = "block";
     }
 
-    // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
     }
 
-    // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";

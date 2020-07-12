@@ -202,14 +202,60 @@
           <div class="tableset">
             <div class="table1">
               <h4>회원정보</h4>
-              <form action="/warning/{{$mana[0]->ID}}" method="post">
-                @csrf
-                <button type="submit" name="button1" style="float:right;" class="btn btn-danger" id="warn_but">경고</button>
-              </form>
-              <form class="" action="/ban/{{$mana[0]->ID}}" method="post">
-                @csrf
-                <button type="" name="button2" style="float:right;" class="btn btn-info" id="warn_but1">정지풀기</button>
-              </form>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop" id="warn_but" name="button1" style="float:right;" >
+                경고
+              </button>
+              {{-- 모델 --}}
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal"  name="button1" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        경고 주시겠습니까?
+                      </div>
+                      <div class="modal-footer">
+                        <form action="/warning/{{$mana[0]->ID}}" method="post">
+                          @csrf
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                        <input type="hidden" name='item_number' class="form-control">
+                        <button type="submit" class="btn btn-primary">경고주기</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {{-- 모델끝 --}}
+                <button type="button" name="button2" style="float:right;" data-toggle="modal" data-target="#staticBackdrop2" class="btn btn-info" id="warn_but1">정지풀기</button>
+              {{-- 모델 --}}
+                <div class="modal fade" id="staticBackdrop2" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal"  name="button1" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        정지를 풀겠습니까?
+                      </div>
+                      <div class="modal-footer">
+                        <form class="" action="/ban/{{$mana[0]->ID}}" method="post">
+                          @csrf
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                        <input type="hidden" name='item_number' class="form-control">
+                        <button type="submit" class="btn btn-primary"  name="button2" >정지풀기</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {{-- 모델끝 --}}
               <table class="table-bordered table table-hover table-responsive"  style="width:40%;" >
                 <tr>
                   <th style="width:10%;">아이디</th>
@@ -251,7 +297,20 @@
                 <td>{{$value->item_number}}</td>
                 <td>{{$value->item_name}}</td>
                 <td>{{$value->item_price}}</td>
-                <td>1순위</td>
+                @if ($value->success_user1 == $mana[0]->ID)
+                  <td>1순위</td>
+                @elseif ($value->success_user2 == $mana[0]->ID)
+                  <td>2순위</td>
+                @elseif ($value->success_user3 == $mana[0]->ID)
+                  <td>3순위</td>
+                @elseif ($value->success_user4 == $mana[0]->ID)
+                  <td>4순위</td>
+                @elseif ($value->success_user5 == $mana[0]->ID)
+                  <td>5순위</td>
+                @else
+                  <td>x</td>
+                @endif
+
                 <td>낙찰포기(시간초과)</td>
               </tr>
                 @endforeach

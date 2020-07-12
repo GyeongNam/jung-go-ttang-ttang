@@ -222,7 +222,7 @@ $(function(){
                     </thead>
                     <tbody>
                       @foreach ($policy as $key => $value)
-                      <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
+                      <tr onclick="location.href='/manager_user_info/{{$value->id}}'" style="cursor:pointer;" class="trhover">
                         <td>{{$value->id}}</td>
                         <td>{{$value->name}}</td>
                         <td>{{$value->ban}}</td>
@@ -265,6 +265,7 @@ $(function(){
                       </thead>
                       <tbody>
                         @foreach ($item_join as $key => $value)
+                          @if($count[$key] >= 1)
                           @if ($value->item_success == 1)
                         <tr style="cursor:pointer;" class="trhover">
                           <td onclick="location.href='/product-detail/{{$value->item_number}}'">
@@ -356,9 +357,10 @@ $(function(){
                           {{$count[$key]}}</td>
                           <th>
                                 <input type="hidden" name='item_number' value="{{$value->item_number}}">
-                                <button type="button" class="btn btn-danger" disabled="disabled" >삭제하기</button>
+                                <button type="button" class="btn btn-danger" disabled="disabled" >확인하기</button>
                           </th>
                         </tr>
+                        @endif
                         @endif
                         @endforeach
 
