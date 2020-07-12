@@ -78,7 +78,7 @@ $(document).ready(function(){
   function displayMarker(locPosition, message) {
 
     // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({
+    var markers = new kakao.maps.Marker({
       map: map,
       position: locPosition
     });
@@ -93,20 +93,14 @@ $(document).ready(function(){
     });
 
     // 인포윈도우를 마커위에 표시합니다
-    infowindow.open(map, marker);
+    infowindow.open(map, markers);
 
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);
   }
   // 주소-좌표 변환 객체를 생성합니다
   var geocoder = new kakao.maps.services.Geocoder();
-  // var contentString	=
-  // '<div>' +
-  // '<h2>직거래 위치:</h2>'+
-  // '<h3>'+address+'</h3>'+
-  // '<p>'+id+'님의. 직거래 위치입니다!</p>' +
-  // '</div>';
-  //판매자의 아이디
+
   var mapname = $('.mapname');
   var mapid = $('.mapip');
   var positions = $('.maparry');
@@ -126,9 +120,6 @@ $(document).ready(function(){
   for (i = 0; i < mapproduct.length; i++) {
     product.push(mapproduct[i].value);
   }
-  // for (i = 0; i < maker.length; i++) {
-  //   makers.push(maker[i].value);
-  // }
   for (i = 0; i < mapstartprice.length; i++) {
     startprice.push(mapstartprice[i].value);
   }
@@ -180,7 +171,6 @@ $(document).ready(function(){
           position: coords
         });
         // markers.push(marker);
-
         var link = mapproduct[i];
         var fuck = picture[i];
         console.log(fuck);
@@ -218,6 +208,23 @@ $(document).ready(function(){
           // 마커 위에 인포윈도우를 표시합니다
           infowindow.open(map, marker);
         });
+
+        var radius = 1000;
+
+        var c1 = map.getCenter(locPosition);
+        var c2 = marker.getPosition();
+        console.log(c2);
+        var poly = new daum.maps.Polyline({
+          // map: map, 을 하지 않아도 거리는 구할 수 있다.
+          path: [c1, c2]
+        });
+        var dist = poly.getLength(); // m 단위로 리턴
+        if (dist < radius) {
+          marker.setMap(map);
+          console.log(dist);
+        } else {
+          marker.setMap(null);
+        }
         // // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         // map.setCenter(coords);
       }
