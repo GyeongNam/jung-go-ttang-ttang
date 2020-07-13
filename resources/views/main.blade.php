@@ -10,8 +10,7 @@
 @endsection
 @section('js')
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-  {{-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a82332350bc18d282d500e361ee79da&libraries=services"></script>
-  <script>
+  {{-- <script>
   // console.log(a);
   $(document).ready(function(){
 
@@ -224,7 +223,7 @@
                 <h2>인기상품</h2>
 
                 @foreach($topview as $key => $value)
-                  @if($key < 10)
+                  @if($key < 13)
                     @if ($value->item_success==1)
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}">
