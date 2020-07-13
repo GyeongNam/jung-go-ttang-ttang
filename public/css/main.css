@@ -171,16 +171,23 @@ h2{
 .item{
   margin-top: 8px;
   margin-left: 10px;
+  width: 12.5rem;
   background-size: auto;
   background-color: #ffffff;
   border: solid 1px #efefef;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   float: left;
   display: inline-block;
 }
 .item a,p{
   padding-left: 8px;
   padding-right: 8px;
-  width: auto; height: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: auto;
+  height: auto;
 }
 
 #itmg {

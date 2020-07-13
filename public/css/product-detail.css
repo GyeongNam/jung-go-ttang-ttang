@@ -10,6 +10,9 @@ a {
   clear:both;
   z-index: 0;
 }
+.mapst{
+  padding: 1rem;
+}
 #floating-panel {
   position: absolute;
   top: 10px;

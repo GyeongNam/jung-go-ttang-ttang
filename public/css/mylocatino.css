@@ -3,6 +3,9 @@
   height:500px;
   z-index: 0;
 }
+.locationmy{
+  padding:1rem;
+}
 /* .wrap {
   position: absolute;
   left: 100px;

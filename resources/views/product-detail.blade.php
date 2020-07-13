@@ -137,7 +137,7 @@ $(document).ready(function(){
   var id = '{{$myproduct[0]->seller_id}}';
   // 말풍선 내용
   var contentString	=
-  '<div>' +
+  '<div class="mapst">' +
   '<h2>직거래 위치:</h2>'+
   '<h3>'+address+'</h3>'+
   '<p>'+id+'님의. 직거래 위치입니다!</p>' +

@@ -46,7 +46,7 @@ $(document).ready(function(){
       lon = position.coords.longitude; // 경도
 
       var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-      message = '<div style="padding:5px;">현재 사용자의 위치입니다?!</div>'; // 인포윈도우에 표시될 내용입니다
+      message = '<div class="locationmy">현재 사용자의 위치입니다?!</div>'; // 인포윈도우에 표시될 내용입니다
 
       // 마커와 인포윈도우를 표시합니다
       displayMarker(locPosition, message);
@@ -58,8 +58,8 @@ $(document).ready(function(){
         strokeColor: '#75B8FA', // 선의 색깔입니다
         strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
         strokeStyle: 'dashed', // 선의 스타일 입니다
-        fillColor: '#CFE7FF', // 채우기 색깔입니다
-        fillOpacity: 0.7  // 채우기 불투명도 입니다
+        // fillColor: '#CFE7FF', // 채우기 색깔입니다
+        // fillOpacity: 0.7  // 채우기 불투명도 입니다
       });
 
       // 지도에 원을 표시합니다
