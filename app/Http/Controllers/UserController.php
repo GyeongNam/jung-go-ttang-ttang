@@ -18,6 +18,7 @@ use Spatie\Analytics\Period;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use App\Qna;
+use Illuminate\Support\Facades\redirect;
 
 
 class UserController extends Controller
@@ -228,6 +229,7 @@ public function warning(Request $request,$id){
 
 }
   public function qna(Request $request){
+    $alert = $request->session()->get('alert');
     $id = session()->get('login_ID');
     if(session()->has('login_ID') != 1){
       $data = [];
@@ -240,7 +242,7 @@ public function warning(Request $request,$id){
     return view('Servicecenter', [
       'data'=> $data,
       'qna'=>$qna
-    ]);
+    ])->with('alert',$alert);
   }
 
   public function qna1(Request $request){
@@ -254,6 +256,22 @@ public function warning(Request $request,$id){
       return redirect('/Servicecenter');
   }
 
+public function qnacont(Request $qna_number,$id){
+
+
+  $qqq = Qna::where('qna_pass',$qna_number->input('password'))->where('qna_number',$id)->get();
+  if(!count($qqq)<1){
+  $qqq = Qna::where('qna_pass',$qna_number->input('password'))->where('qna_number',$id)->get();
+  return view('qna',[
+    'qnat'=>$qqq
+  ]);
+  }
+  else {
+    $alert = "틀린 비밀번호입니다";
+
+  return redirect()->route('Servicecenter1')->with(['alert'=>$alert]);
+}
+}
   public function ban(Request $request,$id){
 
     $date_de = DB::table('bantime')->select('ban_enddate')->where(['user_id'=>$id])->get();

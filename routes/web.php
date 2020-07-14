@@ -74,7 +74,7 @@ Route::get('/manager_login', function(){
 Route::get('/sign_rull', function () {
     return view('login.sign_rull');
 });
-Route::get('/qnapage', function () {
+Route::get('/qna', function () {
     return view('qna');
 });
 // Route::get('/cahtroom', function(){
@@ -91,9 +91,9 @@ Route::post('/idcheck', 'UserController@idcheck');
 Route::get('/mypage/update', 'UserController@user_binding')->middleware('login');
 Route::get('/repassword/{id}', 'UserController@user_repwd');
 Route::post('/user_pwd_update/{id}','UserController@user_pwd_update');
-Route::get('/Servicecenter','UserController@qna');
+Route::get('/Servicecenter','UserController@qna')->name('Servicecenter1');
 Route::get('/qna11','UserController@qna1');
-Route::post('/qna_contents','UserController@qnacont');
+Route::post('/qna_contents/{qna_number}','UserController@qnacont');
 
 
 

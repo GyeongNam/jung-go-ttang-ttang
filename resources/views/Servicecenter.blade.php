@@ -120,30 +120,19 @@ function remove_div(obj){
                         <td>{{$value->qna_id}}</td>
                         <td>{{$value->created_at}}</td>
                       </tr>
-
                       <tr>
                         <td colspan="5">
+
+                          <form class="123"  action="/qna_contents/{{$value->qna_number}}" method="post">
+                            @csrf
                           <label for="">비밀번호를 입력하세요!</label><br>
-                          비밀번호 : <input type="text" class="pass" name="" value="">
-                          <button type="button" class="123" name="button">확인</button>
-                          @if(qnapassinput() == $value->qna_pass)
-                            <form class="" action="/qna_contents/{{$value->qna_number}} "method="post">
-                              </form>
-                          @else
-                            <script>
-                            $(function(){
-                              $(".123").click(function(){
-                                alert("비밀번호가 틀립니다");
-                              });
-                            });
-                              </script>
-                          @endif
+                          비밀번호 : <input type="text" class="pass" name="password" value="">
+                          <button type="submit" class="123" name="button">확인</button>
+                            </form>
                         </td>
                       </tr>
                     @endforeach
-
                   </tbody>
-
                 </table>
                 <div id="field"></div>
                 <div class="guljaxsung">
@@ -239,6 +228,11 @@ function remove_div(obj){
         }
       });
     }
+
+    if('틀린 비밀번호입니다'=='{{Session::get('alert')}}'){
+      alert('{{Session::get('alert')}}');
+    }
+
     </script>
   </div>
 </div>
