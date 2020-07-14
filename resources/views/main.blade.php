@@ -123,15 +123,15 @@ deleteCookie('pop');
           <div class="slideshow-container">
 
             <div class="mySlides fade">
-              <img href="#" src="/img/pg1.jpg">
+              <img class="hod" href="#" src="/img/pg1.jpg">
             </div>
 
             <div class="mySlides fade">
-              <img href="#" src="/img/pg2.jpg">
+              <img class="hod" href="#" src="/img/pg2.jpg">
             </div>
 
             <div class="mySlides fade">
-              <img href="#" src="/img/pg3.png">
+              <img class="hod" href="#" src="/img/pg3.png">
             </div>
 
           </div>

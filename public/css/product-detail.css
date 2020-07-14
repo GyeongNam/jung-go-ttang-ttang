@@ -114,7 +114,7 @@ a {
 .buyer_comment{
   display: flex;
   width:auto;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .comment_dunglok{
   border-style: none;
@@ -259,6 +259,9 @@ a {
 .mySlides{
   width: 26em;
   height: 26em;
+
+  /* width: auto;
+  height: auto; */
 }
 /* 이미지 크기 채워 맞추는 부분 */
 /*이미지슬라이드  끝 */
@@ -272,7 +275,10 @@ a {
   width: 26rem;
   height: 26rem;
 }
-
+.mySlides img{
+  width: auto;
+  height: auto;
+}
 .slideshow-container {
   max-width: 1000px;
   position: relative;
@@ -338,7 +344,7 @@ a {
   margin-top: 1rem;
   width: auto;
   height: auto;
-  float: right;
+  /* float: right; */
 }
 .seller_page{
   width:12rem;
@@ -484,9 +490,29 @@ a {
 .btn_cl{
   display: flex;
 }
+.modifypro{
+  width: 8rem;
+  height: 3rem;
+  font-size: 18px;
+  border-style: none;
+  align-items: center;
+}
+.delproduct{
+  width: 8rem;
+  height: 3rem;
+  font-size: 18px;
+  border-style: none;
+  align-items: center;
+}
 /* 상품정보, 댓글 페이지 끝*/
 
 @media screen and (max-width:800px) {
+  #map {
+    width:100%;
+    height:400px;
+    clear:both;
+    z-index: 0;
+  }
   .d_title{
     font-size: auto;
   }
@@ -511,14 +537,17 @@ a {
     position: relative;
     margin-left: 10px;
     margin-right: 10px;
-    height:auto;
-    width: auto;
+    height: 100%;
+    width: 100%;
   }
   .mySlidess{
     margin-left: 10px;
     margin-right: 10px;
     height:auto;
     width: auto;
+  }
+  .combox{
+    margin-right: 0rem;
   }
   /* .fade {
   -webkit-animation-name: fade;
@@ -538,6 +567,7 @@ a {
   .detail_seller_info {
     width: auto;
     height: auto;
+    /* float: right; */
   }
 
   .d_info{
@@ -561,6 +591,17 @@ a {
     margin: auto;
     border-style: none;
   }
+  .dat_lab{
+    width:auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .datgul{
+    width:100%;
+  }
+  h2{
+    width:100%;
+  }
   .ckadu{
     width: 10rem;
     height: 2rem;
@@ -580,3 +621,4 @@ a {
     border-style: none;
     align-items: center;
   }
+}

@@ -615,7 +615,7 @@ function commentliketoggles(data) {
             <div class="dat_lab">
               <h2>댓글달기</h2>
             </div>
-            <form class="" action="/product-comment/{{$myproduct[0]->item_number}}" method="post" enctype="multipart/form-data">
+            <form class="datgul" action="/product-comment/{{$myproduct[0]->item_number}}" method="post" enctype="multipart/form-data">
               @csrf
               <div class="combox">
                 <div class="comment_munie">
@@ -774,11 +774,11 @@ function commentliketoggles(data) {
             <div class="auction_revise">
               <form class="" action="{{url('/product-Modify')}}" method="get">
                 <input type="hidden" name="item_key" value="{{$myproduct[0]->item_number}}">
-                <button type="submit" name="button">경매 수정</button>
+                <button class="modifypro" type="submit" name="button">경매 수정</button>
               </form>
             </div>
             <div class="auction_del">
-              <button id="del_detailpage" type="button" name="button" >경매 삭제</button>
+              <button class="delproduct" id="del_detailpage" type="button" name="button" >경매 삭제</button>
             </div>
           @endif
         @endif

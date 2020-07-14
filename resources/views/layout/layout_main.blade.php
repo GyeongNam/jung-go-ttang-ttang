@@ -154,12 +154,9 @@
               <div class="sangdam ftn">
                 <a href="#">1:1 상담</a>
               </div>
-              <div class="sellpage ftn">
-                <a href="/itemcheck">경매판매하기</a>
-              </div>
-              <div class="sellpage ftn">
+              {{-- <div class="sellpage ftn">
                 <a href="/manager_login">관리자</a>
-              </div>
+              </div> --}}
               <div class="sellpage ftn">
                 <a href="">이용약관</a>
               </div>
