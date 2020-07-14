@@ -385,15 +385,15 @@ function commentliketoggles(data) {
               <div class="tit_pri">
                 <div class="d_title">
                   {{$myproduct[0]->item_name}}
-                </div>
-                {{-- // 버튼 추가 --}}
-                <div class="bt-Wla" style="float:right;">
-                    <div class="Wla_click">
-                      <button  id="myBtn" class="unWla" type="button" >
-                        <i class="fas fa-exclamation-circle"></i>
-                        <span>신고</span>
-                      </button>
-                    </div>
+                  {{-- // 버튼 추가 --}}
+                  <div class="bt-Wla" style="float:right;">
+                      <div class="Wla_click">
+                        <button  id="myBtn" class="unWla" type="button" >
+                          <i class="fas fa-exclamation-circle"></i>
+                          <span>신고</span>
+                        </button>
+                      </div>
+                  </div>
                 </div>
                 <div class="time_price">
                   <div class="d_price">
