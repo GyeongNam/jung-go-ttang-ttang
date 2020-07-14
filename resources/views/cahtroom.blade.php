@@ -18,6 +18,7 @@
 <script type="text/javascript">
 $(function(){
   $('.mesgs').hide();
+  $('.bell').hide();
 });
 
 </script>
@@ -68,6 +69,7 @@ class="container">
                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
                   {{$value->ID}}
+                  <span class="bell" id="bell{{$value->ID}}"><i class="fas fa-bell"></i></span>
                   @foreach ($messages as $keys => $values)
                     @if($values->user2_ID == decrypt(session('login_ID')) and $values->user1_ID == $value->ID)
                       <h5>
@@ -106,6 +108,7 @@ class="container">
                   <div class="received_msg">
                     <div class="received_withd_msg">
                       {{$value->ID}}
+
                       <p>{{$values->messege}}</p>
                       <span class="time_date"> {{$values->created_at}} </span></div>
                   </div>
@@ -123,7 +126,7 @@ class="container">
           <div class="type_msg">
             <div class="input_msg_write">
 
-              <input type="text" class="write_msg{{$value->ID}}" placeholder="Type a message" />
+              <input type="text" class="write_msg{{$value->ID}}"onKeypress="javascript:if(event.keyCode==13) {messegesend('{{$value->ID}}')}" placeholder="Type a message" />
               <button class="msg_send_btn" type="button" onclick="messegesend('{{$value->ID}}')"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
             </div>
           </div>

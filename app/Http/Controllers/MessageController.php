@@ -25,18 +25,20 @@ class MessageController extends Controller
       $userID = User::select('ID')->where('ID', "<>" , $id)->get();
       $message = Message::select('*')->orderBy('created_at')->get();
       $messages = Message::select('*')->orderBy('created_at', 'desc')->get();
+      // $messageuser = Message::select('*')->where('user2_ID', '=', $id)->get();
       // echo '\''.$message.'\'';
       // WebsocketEvent::dispatch(
       //   $message
       //   // '\''.$message.'\''
       // );
-
+      // echo $messageuser;
       return view('cahtroom', [
         'user' => $user,
         'userID' => $userID,
         'userIDct' => count($userID),
         'message' => $message,
-        'messages' => $messages
+        'messages' => $messages,
+        // 'messageuser' => $messageuser
       ]);
     }
 
