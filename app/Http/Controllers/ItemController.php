@@ -705,9 +705,11 @@ class ItemController extends Controller
                   public function iteminfo($item_number){
                     $item = Item::select('*')->where(['item_number'=>$item_number])->get();
                     $auction = Auction::select('*')->where(['auction_itemnum'=>$item_number])->get();
+                    $enditem = DB::table('enditem')->select('*')->where(['end_num'=>$item_number])->get();
                     return view('/manager_item_info',[
                       'item'=>$item,
-                      'auction'=>$auction
+                      'auction'=>$auction,
+                      'enditem'=>$enditem
                     ]);
                   }
                 }
