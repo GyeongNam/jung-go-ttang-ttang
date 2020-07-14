@@ -160,6 +160,15 @@
               <div class="sellpage ftn">
                 <a href="/manager_login">관리자</a>
               </div>
+              <div class="sellpage ftn">
+                <a href="">이용약관</a>
+              </div>
+              <div class="sellpage ftn">
+                <a href="">개인정보처리방침</a>
+              </div>
+              <div class="sellpage ftn">
+                <a href="">위치기반서비스 이용약관</a>
+              </div>
             </div>
           </div>
           <div class="pootlist">

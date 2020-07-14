@@ -1,5 +1,7 @@
 @extends('layout.layout_main')
-
+@section('title')
+  중고땅땅-상품 상세정보
+@endsection
 @section('css')
   <link rel="stylesheet" href="/css/product-detail.css">
   <meta name="csrf-token" content="{{ csrf_token() }}">

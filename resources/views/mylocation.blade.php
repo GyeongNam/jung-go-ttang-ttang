@@ -1,5 +1,7 @@
 @extends('layout.layout_main')
-
+@section('title')
+  중고땅땅-내위치 상품정보
+@endsection
 @section('css')
 <link rel="stylesheet" href="/css/mylocatino.css">
 @endsection
