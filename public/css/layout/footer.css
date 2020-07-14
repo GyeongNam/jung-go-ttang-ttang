@@ -24,20 +24,26 @@ footer{
 }
 .footbox{
   display: block;
-  width: 50%;
+  width: 70%;
   height: auto;
   margin: auto;
 }
 .pootlist{
   display: block;
+  margin-top: 1rem;
 }
 .pootcopyandgogak{
   display: flex;
   margin-top: 3rem;
 }
+
 .sponcl{
   display: flex;
+  height: 3rem;
+  width:70%
   margin: 5px 0px;
+  text-align: center;
+  align-items: center;
 }
 .ftn{
   margin-right: 3rem;
@@ -66,5 +72,25 @@ footer{
 @media screen and (max-width: 800px) {
   .tang-footer {
     font-size: 10px;
+  }
+  .ftn{
+    margin-right: 1rem;
+    padding-left: 1rem;
+    border-left: 1px solid #bdbdbd;
+    color: #333;
+  }
+  .pootcopyandgogak{
+    display: block;
+    margin-top: 3rem;
+  }
+  .pootlist{
+    display: block;
+    width: 14rem;
+  }
+  .footbox{
+    display: block;
+    width: 70%;
+    height: auto;
+    margin: auto;
   }
 }
