@@ -1,5 +1,7 @@
 @extends('layout.layout_main')
-
+@section('title')
+  채팅하기
+@endsection
 @section('css')
   <link rel="stylesheet" href="/css/cahrtroom.css">
   <meta name="csrf_token" content="{{csrf_token()}}">

@@ -1,8 +1,8 @@
 @extends('layout.layout_main')
-<!--
+
 @section('title')
   중고땅땅-카테고리
-@endsection-->
+@endsection
 
 @section('css')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

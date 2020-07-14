@@ -1,5 +1,7 @@
 @extends('layout.layout_main')
-
+@section('title')
+  중고땅땅-내 관심
+@endsection
 @section('css')
 <link rel="stylesheet" href="/css/wish_list.css">
 @endsection
