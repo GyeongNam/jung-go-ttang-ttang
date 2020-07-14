@@ -21,10 +21,11 @@ class MessageController extends Controller
     public function muser(){
 
       $id = decrypt(session()->get('login_ID'));
-      $user = User::select('*')->where('ID', "<>" , $id)->get();
-      $userID = User::select('ID')->where('ID', "<>" , $id)->get();
+      // $user = User::select('*')->where('ID', "<>" , $id)->get();
+      $userID = Message::select('user1_ID')->where('user2_ID', '=', $id)->get();
       $message = Message::select('*')->orderBy('created_at')->get();
       $messages = Message::select('*')->orderBy('created_at', 'desc')->get();
+
       // echo '\''.$message.'\'';
       // WebsocketEvent::dispatch(
       //   $message
@@ -32,11 +33,12 @@ class MessageController extends Controller
       // );
 
       return view('cahtroom', [
-        'user' => $user,
+        // 'user' => $user,
         'userID' => $userID,
         'userIDct' => count($userID),
         'message' => $message,
-        'messages' => $messages
+        'messages' => $messages,
+        // 'messageuser' => $messageuser
       ]);
     }
 
