@@ -702,4 +702,12 @@ class ItemController extends Controller
                     return back();
 
                   }
+                  public function iteminfo($item_number){
+                    $item = Item::select('*')->where(['item_number'=>$item_number])->get();
+                    $auction = Auction::select('*')->where(['auction_itemnum'=>$item_number])->get();
+                    return view('/manager_item_info',[
+                      'item'=>$item,
+                      'auction'=>$auction
+                    ]);
+                  }
                 }

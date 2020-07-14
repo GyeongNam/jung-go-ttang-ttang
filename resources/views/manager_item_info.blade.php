@@ -24,20 +24,17 @@
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script>
 
+  <script>
 
+
+
+
+
+
+  </script>
 
 </head>
-<script>
 
-$(function(){
-  $(".trhover").hover(function(){
-    $(this).css("background-color","rgb(176, 207, 209)");
-  }, function(){
-    $(this).css("background-color","rgb(255, 255, 255)");
-  });
-});
-
-</script>
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -52,7 +49,7 @@ $(function(){
 
         </div>
         <div>중고땅땅 관리자 <sup></sup></div>
-
+      </a>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
@@ -193,56 +190,80 @@ $(function(){
         <div class="container-fluid">
 
           <!-- 관리자페이지 -->
-          <
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">회원관리</h1>
+          </div>
+
+
+
+
+          {{-- 인터페이스 시작 --}}
+
+          <div class="tableset">
+            <div class="table1">
+              <h4>상품정보</h4>
+              <span></span>
+
+
+              <table class="table-bordered table table-hover table-responsive"  style="width:40%;" >
+                <tr>
+                  <th style="width:10%;">상품이름</th>
+                  <td style="width:10%;">{{$item[0]->item_name}}</td>
+                </tr>
+                <tr>
+                  <th>판매자아이디</th>
+                  <td>{{$item[0]->seller_id}}</td>
+                </tr>
+                <tr>
+                  <th>경매시작가</th>
+                  <td>{{$item[0]->item_startprice}}</td>
+                </tr>
+                <tr>
+                  <th>경매등록일</th>
+                  <td>{{$item[0]->created_at}}</td>
+                </tr>
+                <tr>
+                  <th>경매마감일</th>
+                  <td>{{$item[0]->item_deadline}}</td>
+                </tr>
+                <tr>
+                  <th>낙찰여부</th>
+                  @if ($item[0]->item_success ==1)
+                  <td>낙찰종료</td>
+                @else
+                  <td>진행중</td>
+                  @endif
+                </tr>
+            </table>
 
           </div>
 
-          <!-- Begin Page Content -->
-          <div class="container-fluid">
+          <div class="table1" style="margin-top:2%;" >
+            <h4>경매 참여 현황</h4>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
+              <thead>
+              <tr>
+                <th>구매자아이디</th>
+                <th>입찰금액</th>
+                <th>입찰한시간</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($auction as $key => $value)
+              <tr>
+                <td>{{$value->buyer_ID}}</td>
+                <td>{{$value->item_price}}</td>
+                <td>{{$value->created_at}}</td>
+              </tr>
+                @endforeach
+            </tbody>
 
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                      <tr>
-                        <th>아이디</th>
-                        <th>이름</th>
-                        <th>핸드폰</th>
-                        <th>이메일</th>
-                        <th>성별</th>
-                        <th>생년월일</th>
-                        <th>가입일</th>
-                      </tr>
-                    </thead>
 
-                    <tbody>
-                      @foreach ($mana as $key => $value)
-                      <tr onclick="location.href='/manager_user_info/{{$value->ID}}'" style="cursor:pointer;" class="trhover">
-                        <td>{{$value->ID}}</td>
-                        <td>{{$value->name}}</td>
-                        <td>{{$value->phone}}</td>
-                        <td>{{$value->email}}<span>@</span>{{$value->email_domain}}</td>
-                        <td>{{$value->gender}}</td>
-                        <td>{{$value->birthday}}</td>
-                        <td>{{$value->created_at}}</td>
-                      </tr>
-                    @endforeach
-                    </tbody>
-
-                  </table>
-                </div>
-              </div>
-            </div>
+            </table>
 
           </div>
-          <!-- /.container-fluid -->
+          </div>
+
 
         </div>
         <!-- Footer -->

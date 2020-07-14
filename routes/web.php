@@ -146,6 +146,7 @@ Route::post('/managerlogin','UserController@managerlogin');
 Route::get('/manager_main','UserController@graph')->middleware('manager');
 Route::get('/manager_logout','UserController@managerlogout')->middleware('manager');
 Route::get('/manager_delete','ItemController@managerdelete')->middleware('manager');
+Route::get('/manager_item_info/{item_number}',  'ItemController@iteminfo')->middleware('manager');
 
 //fann_test
 // Route::get('/sasa','ItemController@sasa');

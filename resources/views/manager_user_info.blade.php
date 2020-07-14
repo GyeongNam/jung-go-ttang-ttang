@@ -44,7 +44,7 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/manager_main">
         <div>
 
         </div>
@@ -310,8 +310,12 @@
                 @else
                   <td>x</td>
                 @endif
+                @if ($value->buyer == $mana[0]->ID)
+                  <td>낙찰완료</td>
+                @else
+                  <td>낙찰실패</td>
+                @endif
 
-                <td>낙찰포기(시간초과)</td>
               </tr>
                 @endforeach
 
