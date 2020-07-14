@@ -344,7 +344,7 @@ a {
   margin-top: 1rem;
   width: auto;
   height: auto;
-  /* float: right; */
+  float: right;
 }
 .seller_page{
   width:12rem;
@@ -380,7 +380,7 @@ a {
   width:auto;
   padding-right: 1rem;
   width: auto;
-  height:26rem;
+  height:30rem;
 }
 .tit_pri{
   border-bottom: 1px solid #bdbdbd;
@@ -391,6 +391,7 @@ a {
 }
 .time_price{
   display: flex;
+
 }
 .gm_dday{
   display: flex;
@@ -430,7 +431,7 @@ a {
 }
 .bt_box{
   display: flex;
-  width:auto;
+  width:30rem;
 }
 .unWla{
   width: 10.7rem;
@@ -495,6 +496,7 @@ a {
   height: 3rem;
   font-size: 18px;
   border-style: none;
+  background-color: #292a77;
   align-items: center;
 }
 .delproduct{
