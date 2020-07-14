@@ -63,30 +63,29 @@ class="container">
           <div class="inbox_chat">
             @foreach ($userID as $key => $value)
             @if(session()->has('login_ID'))
-            @if(decrypt(session('login_ID')) != $value->user1_ID )
-
-            <div class="chat_list" onclick="user_select('{{$value->user1_ID}}')">
+            @if(decrypt(session('login_ID')) != $value->ID )
+            <div class="chat_list" onclick="user_select('{{$value->ID}}')">
               <div class="chat_people">
                 <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                 <div class="chat_ib">
-                  {{$value->user1_ID}}
-                  <span class="bell" id="bell{{$value->user1_ID}}"><i class="fas fa-bell"></i></span>
+                  {{$value->ID}}
+                  <span class="bell" id="bell{{$value->ID}}"><i class="fas fa-bell"></i></span>
                   @foreach ($messages as $keys => $values)
-                    @if($values->user2_ID == decrypt(session('login_ID')) and $values->user1_ID == $value->user1_ID)
+                    @if($values->user2_ID == decrypt(session('login_ID')) and $values->user1_ID == $value->ID)
                       <h5>
-                        <span class="chat_date{{$value->user1_ID}}">
+                        <span class="chat_date{{$value->ID}}">
                           {{$values->created_at}}
                         </span>
                       </h5>
-                      <p class="me_data{{$value->user1_ID}}"> {{$values->messege}} </p>
+                      <p class="me_data{{$value->ID}}"> {{$values->messege}} </p>
                       @break
                     @elseif($values->user1_ID == decrypt(session('login_ID')) and $values->user2_ID == $value->ID)
                       <h5>
-                        <span class="chat_date{{$value->user1_ID}}">
+                        <span class="chat_date{{$value->ID}}">
                           {{$values->created_at}}
                         </span>
                       </h5>
-                      <p class="me_data{{$value->user1_ID}}"> {{$values->messege}} </p>
+                      <p class="me_data{{$value->ID}}"> {{$values->messege}} </p>
                       @break
                     @endif
                    @endforeach
@@ -100,27 +99,22 @@ class="container">
 
         </div>
         @foreach ($userID as $key => $value)
-        <div class="mesgs" id = "mesgs{{$value->user1_ID}}">
-          <div class="msg_history" id = "msg_history{{$value->user1_ID}}" >
-
-            <div class="">
-              거래 확정 버튼과 거래 완료 버튼이 있어야할 공간
-            </div>
-
+        <div class="mesgs" id = "mesgs{{$value->ID}}">
+          <div class="msg_history" id = "msg_history{{$value->ID}}" >
             @foreach($message as $keys => $values)
-              @if($values->user2_ID == decrypt(session('login_ID')) and $values->user1_ID == $value->user1_ID)
-                <div class="incoming_msg" id="incoming_msg{{$value->user1_ID}}">
+              @if($values->user2_ID == decrypt(session('login_ID')) and $values->user1_ID == $value->ID)
+                <div class="incoming_msg" id="incoming_msg{{$value->ID}}">
                   <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                   <div class="received_msg">
                     <div class="received_withd_msg">
-                      {{$value->user1_ID}}
+                      {{$value->ID}}
 
                       <p>{{$values->messege}}</p>
                       <span class="time_date"> {{$values->created_at}} </span></div>
                   </div>
                 </div>
-              @elseif($values->user1_ID == decrypt(session('login_ID')) and $values->user2_ID == $value->user1_ID)
-                  <div class="outgoing_msg" id="outgoing_msg{{$value->user1_ID}}">
+              @elseif($values->user1_ID == decrypt(session('login_ID')) and $values->user2_ID == $value->ID)
+                  <div class="outgoing_msg" id="outgoing_msg{{$value->ID}}">
                     <div class="sent_msg">
                       <p>{{$values->messege}}</p>
                       <span class="time_date"> {{$values->created_at}} </span> </div>
@@ -132,8 +126,8 @@ class="container">
           <div class="type_msg">
             <div class="input_msg_write">
 
-              <input type="text" class="write_msg{{$value->user1_ID}}"onKeypress="javascript:if(event.keyCode==13) {messegesend('{{$value->user1_ID}}')}" placeholder="Type a message" />
-              <button class="msg_send_btn" type="button" onclick="messegesend('{{$value->user1_ID}}')"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+              <input type="text" class="write_msg{{$value->ID}}"onKeypress="javascript:if(event.keyCode==13) {messegesend('{{$value->ID}}')}" placeholder="Type a message" />
+              <button class="msg_send_btn" type="button" onclick="messegesend('{{$value->ID}}')"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
             </div>
           </div>
         </div>
