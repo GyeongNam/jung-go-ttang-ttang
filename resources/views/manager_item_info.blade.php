@@ -228,7 +228,7 @@
                 </tr>
                 <tr>
                   <th>낙찰여부</th>
-                  @if ($item[0]->item_success ==1)
+                  @if ($item[0]->item_success ==0)
                   <td>낙찰종료</td>
                 @else
                   <td>진행중</td>
@@ -257,12 +257,89 @@
               </tr>
                 @endforeach
             </tbody>
-
-
             </table>
 
           </div>
           </div>
+          @if ($item[0]->item_success ==0)
+            <div class="table1" style="margin-top:2%;" >
+              <h4>최종 낙찰 순위</h4>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
+                  <thead>
+                    <tr>
+                      <th>순위</th>
+                      <th>구매자아이디</th>
+                      <th>입찰금액</th>
+                      <th>구매여부</th>
+                    </tr>
+                  </thead>
+                <tbody>
+                  <tr>
+                    <td>1순위</td>
+                    <td>{{$enditem[0]->success_user1}}</td>
+                    <td>{{$enditem[0]->success_price1}}</td>
+                    @if($enditem[0]->success_user1 ==NULL)
+                        <td></td>
+                    @elseif ($enditem[0]->buyer != $enditem[0]->success_user1)
+                      <td>구매포기</td>
+                    @elseif ($enditem[0]->buyer == $enditem[0]->success_user1)
+                    <td>구매성공</td>
+                  @endif
+                  </tr>
+                  <tr>
+                    <td>2순위</td>
+                    <td>{{$enditem[0]->success_user2}}</td>
+                    <td>{{$enditem[0]->success_price2}}</td>
+                    @if($enditem[0]->success_user2 == NULL)
+                        <td></td>
+                    @elseif ($enditem[0]->buyer != $enditem[0]->success_user2)
+                      <td>구매포기</td>
+                    @elseif ($enditem[0]->buyer == $enditem[0]->success_user2)
+                    <td>구매성공</td>
+                  @endif
+                  </tr>
+                  <tr>
+                    <td>3순위</td>
+                    <td>{{$enditem[0]->success_user3}}</td>
+                    <td>{{$enditem[0]->success_price3}}</td>
+                    @if($enditem[0]->success_user3 ==NULL)
+                        <td></td>
+                    @elseif ($enditem[0]->buyer != $enditem[0]->success_user3)
+                      <td>구매포기</td>
+                    @elseif ($enditem[0]->buyer == $enditem[0]->success_user3)
+                    <td>구매성공</td>
+                  @endif
+                  </tr>
+                  <tr>
+                    <td>4순위</td>
+                    <td>{{$enditem[0]->success_user4}}</td>
+                    <td>{{$enditem[0]->success_price4}}</td>
+                    @if($enditem[0]->success_user4 ==NULL)
+                        <td></td>
+                    @elseif ($enditem[0]->buyer != $enditem[0]->success_user4)
+                      <td>구매포기</td>
+                    @elseif ($enditem[0]->buyer == $enditem[0]->success_user4)
+                    <td>구매성공</td>
+                  @endif
+                  </tr>
+                  <tr>
+                    <td>5순위</td>
+                    <td>{{$enditem[0]->success_user5}}</td>
+                    <td>{{$enditem[0]->success_price5}}</td>
+                    @if($enditem[0]->success_user5 ==NULL)
+                        <td></td>
+                    @elseif ($enditem[0]->buyer != $enditem[0]->success_user5)
+                      <td>구매포기</td>
+                    @elseif ($enditem[0]->buyer == $enditem[0]->success_user5)
+                    <td>구매성공</td>
+                  @endif
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            </div>
+          @endif
+
 
 
         </div>
