@@ -27,6 +27,9 @@ $(function(){
     $('.mesgs').hide();
     $('#mesgs'+id).show();
     // alert(id);
+
+    // console.log($('#msg_history'+id).last());
+    $("#msg_history"+id).scrollTop($("#msg_history"+id)[0].scrollHeight);
   }
 </script>
 
@@ -68,19 +71,19 @@ class="container">
                   @foreach ($messages as $keys => $values)
                     @if($values->user2_ID == decrypt(session('login_ID')) and $values->user1_ID == $value->ID)
                       <h5>
-                        <span class="chat_date">
+                        <span class="chat_date{{$value->ID}}">
                           {{$values->created_at}}
                         </span>
                       </h5>
-                      <p> {{$values->messege}} </p>
+                      <p class="me_data{{$value->ID}}"> {{$values->messege}} </p>
                       @break
                     @elseif($values->user1_ID == decrypt(session('login_ID')) and $values->user2_ID == $value->ID)
                       <h5>
-                        <span class="chat_date">
+                        <span class="chat_date{{$value->ID}}">
                           {{$values->created_at}}
                         </span>
                       </h5>
-                      <p>{{$values->messege}} </p>
+                      <p class="me_data{{$value->ID}}"> {{$values->messege}} </p>
                       @break
                     @endif
                    @endforeach
@@ -98,7 +101,7 @@ class="container">
           <div class="msg_history" id = "msg_history{{$value->ID}}" >
             @foreach($message as $keys => $values)
               @if($values->user2_ID == decrypt(session('login_ID')) and $values->user1_ID == $value->ID)
-                <div class="incoming_msg">
+                <div class="incoming_msg" id="incoming_msg{{$value->ID}}">
                   <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
                   <div class="received_msg">
                     <div class="received_withd_msg">
@@ -108,14 +111,14 @@ class="container">
                   </div>
                 </div>
               @elseif($values->user1_ID == decrypt(session('login_ID')) and $values->user2_ID == $value->ID)
-                  <div class="outgoing_msg">
+                  <div class="outgoing_msg" id="outgoing_msg{{$value->ID}}">
                     <div class="sent_msg">
                       <p>{{$values->messege}}</p>
                       <span class="time_date"> {{$values->created_at}} </span> </div>
                   </div>
                 @endif
             @endforeach
-
+            <div class="bottom"></div>
           </div>
           <div class="type_msg">
             <div class="input_msg_write">
@@ -146,6 +149,10 @@ class="container">
           + "</div></div>";
           // console.log(adds);
           $('#msg_history'+e.id1).append(adds);
+          $('.chat_date'+e.id1).text(e.time);
+          $('.me_data'+e.id1).text(e.message);
+          $("#msg_history"+e.id1).scrollTop($("#msg_history"+e.id1)[0].scrollHeight);
+
         }
 
         // console.log(e);
@@ -178,6 +185,10 @@ class="container">
           $('.write_msg'+id).val('');
           $('#msg_history'+id).append(add);
             // console.log(data);
+          $('.chat_date'+id).text(data.date);
+          $('.me_data'+id).text(data.data.messege);
+          $("#msg_history"+id).scrollTop($("#msg_history"+id)[0].scrollHeight);
+
         },
         error : function(){
           console.log("실패");
