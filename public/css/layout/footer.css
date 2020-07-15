@@ -70,13 +70,21 @@ footer{
 }
 
 @media screen and (max-width: 800px) {
+  .sponcl{
+    display: block;
+    height: 3rem;
+    width:70%
+    margin: 5px 0px;
+    text-align: center;
+    align-items: center;
+  }
   .tang-footer {
     font-size: 10px;
   }
   .ftn{
     margin-right: 1rem;
     padding-left: 1rem;
-    border-left: 1px solid #bdbdbd;
+    border-left: 0;
     color: #333;
   }
   .pootcopyandgogak{
