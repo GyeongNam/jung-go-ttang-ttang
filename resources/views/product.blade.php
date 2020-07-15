@@ -345,7 +345,7 @@ $(function() {
                   <span></span>상품설명
                 </div>
                 <div class="p_info">
-                  <textarea  id="dpelxj" name="item_info"></textarea>
+                  <textarea class="deplarea"  id="dpelxj" name="item_info"></textarea>
                 </div>
               </div>
             </li>

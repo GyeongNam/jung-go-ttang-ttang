@@ -39,7 +39,8 @@ line-height: 1.5;
   border-radius: 5px;
   border-bottom: 2px solid #ccc;
   border-right: 1px solid #ccc;
-  overflow: hidden;background: #fff;
+  overflow: hidden;
+  background: #fff;
 }
 .wrap .info:nth-child(1) {
   border: 0;
@@ -317,6 +318,7 @@ display: flex;
 /* 댓글 창*/
 
 .deal_cat_location{
+  bottom: 0;
   padding-bottom: 1rem;
   margin-bottom: 3rem;
   border-bottom: 1px solid #bdbdbd;
@@ -462,6 +464,9 @@ display: flex;
   border-radius: 1rem;
   margin: 0 0.5rem;
 }
+.otr_prod{
+
+}
 .otr_prod_item{
   display: flex;
 }
@@ -473,6 +478,9 @@ display: flex;
 .otr_prod_item_np{
   margin-left: 0.5rem;
   margin-top: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
 }
 
 /* 판매자의 다른 상품 끝 */
@@ -609,8 +617,17 @@ display: flex;
   border-style: none;
   align-items: center;
 }
+.info-typing{
+  display:block;
+}
+.sc-info-typing{
+  display: flex;
+}
 /* 상품정보, 댓글 페이지 끝*/
 
+@media screen and (max-width:1024px){
+
+}
 @media screen and (max-width:800px) {
   #map {
     width:100%;

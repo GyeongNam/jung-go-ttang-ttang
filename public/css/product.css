@@ -65,7 +65,7 @@ li {
   width: 5rem;
   height: 2rem;
   margin: 20px;
-  font-size: 15px;
+  font-size: 1rem;
   padding: 1px;
   cursor: pointer;
   color:white;
@@ -81,9 +81,9 @@ li {
 .s_right {
   height:auto;
 }
-#dpelxj{
+.deplarea{
   height:10rem;
-  width:55rem;
+  width:100%;
 }
 /*-- input type --*/
 
@@ -109,9 +109,13 @@ img{
 }
 /*-- 사진파일등록 css --*/
 
-@media screen and (max-width:800) {
+@media screen and (max-width:800px) {
   *{
     font-size: 10px;
+  }
+  .deplarea{
+    height:10rem;
+    width:100%;
   }
   .contents{
     width:auto;

@@ -520,6 +520,7 @@ function commentliketoggles(data) {
                 @for($key=0; $key < count($myStat) ; $key++)
                   @if($key < 4)
                     <a href="/product-detail/{{$myStat[$key]->item_number}}">
+                      <div class="otr_prod">
                       <div class="otr_prod_item"  style=" cursor: pointer;" onclick="">
                         <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
                         <div class="otr_prod_item_np">
@@ -527,6 +528,7 @@ function commentliketoggles(data) {
                           <span class="otr_price" name="">현재가격{{ number_format($myStat[$key]->item_startprice)}}</span>
                         </div>
                       </div>
+                    </div>
                     </a>
                   @endif
                 @endfor
@@ -545,33 +547,36 @@ function commentliketoggles(data) {
             {{-- 카카오map API --}}
             <div id="map"></div>
             {{-- <div id="gmap"></div>        // 직거래 위치(구글 지도) --}}
-            <div class="sc-info_sodyd">
-              {{$myproduct[0]->item_info}}
+            <div class="info-typing">
+              <div class="sc-info_sodyd">
+                {{$myproduct[0]->item_info}}
+              </div>
+              <div class="deal_cat_location">
+                <div class="deal_cat">
+                  <div class="catgo">
+                    <img src="" alt="">
+                    카테고리
+                  </div>
+                  <div class="">
+                    <a href="#"><span>모바일/태블릿</span></a>
+                  </div>
+                </div>
+                <div class="pro_tag">
+                  <div class="tag_name">
+                    <img src="" alt="">
+                    상품태그
+                  </div>
+                  <div class="taglist">
+                    <a href="#">#아이패드</a>
+                    <a href="#">#아이패드에어</a>
+                    <a href="#">#태블릿</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="deal_cat_location">
-          <div class="deal_cat">
-            <div class="catgo">
-              <img src="" alt="">
-              카테고리
-            </div>
-            <div class="">
-              <a href="#"><span>모바일/태블릿</span></a>
-            </div>
-          </div>
-          <div class="pro_tag">
-            <div class="tag_name">
-              <img src="" alt="">
-              상품태그
-            </div>
-            <div class="taglist">
-              <a href="#">#아이패드</a>
-              <a href="#">#아이패드에어</a>
-              <a href="#">#태블릿</a>
-            </div>
-          </div>
-        </div>
+
         <div class="buyer_comment">
           <div class="best_comment">
             <div class="">
