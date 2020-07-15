@@ -176,7 +176,6 @@ $(document).ready(function(){
         var link = mapproduct[i];
         var fuck = picture[i];
         console.log(fuck);
-        // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
         // iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
         var iwContent =
         '<div class="wrap">' +

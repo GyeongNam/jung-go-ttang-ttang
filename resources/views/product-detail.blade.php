@@ -144,6 +144,7 @@ $(document).ready(function(){
   '<h3>'+address+'</h3>'+
   '<p>'+id+'님의. 직거래 위치입니다!</p>' +
   '</div>';
+  iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
   // 주소-좌표 변환 객체를 생성합니다
   var geocoder = new kakao.maps.services.Geocoder();
@@ -163,59 +164,20 @@ $(document).ready(function(){
 
       // 인포윈도우로 장소에 대한 설명을 표시합니다
       var infowindow = new kakao.maps.InfoWindow({
-        content: contentString
+        content: contentString,
+        removable : iwRemoveable
       });
-      infowindow.open(map, marker);
+      // 마커에 클릭이벤트를 등록합니다
+      kakao.maps.event.addListener(marker, 'click', function() {
+        // 마커 위에 인포윈도우를 표시합니다
+        infowindow.open(map, marker);
+      });
+      // infowindow.open(map, marker);
 
       // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
       map.setCenter(coords);
     }
-    // console.log('tlf');
   });
-  // 마커를 표시할 위치와 title 객체 배열입니다
-  var positions = $('#maparry').val();
-  console.log(positions);
-  // for (var i = 0; i < $myproduct.length; i++) {
-  //   var arraddress = new Array();
-  //
-  // }
-
-  // 마커 이미지의 이미지 주소입니다
-  var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-
-  for (var i = 0; i < positions.length; i ++) {
-
-    // 마커 이미지의 이미지 크기 입니다
-    var imageSize = new kakao.maps.Size(24, 35);
-
-    // 마커 이미지를 생성합니다
-    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-    // 주소로 좌표를 검색합니다
-    geocoder.addressSearch(addresss, function(result, status) {
-      // 정상적으로 검색이 완료됐으면
-      if (status === kakao.maps.services.Status.OK) {
-
-        var coordss = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new kakao.maps.Marker({
-          map: map,
-          position: coordss
-        });
-
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-          content: contentString
-        });
-        infowindow.open(map, marker);
-
-        // // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coordss);
-      }
-      // console.log('tlf');
-    });
-  };
 });
 </script>
 <script type="text/javascript">
@@ -284,57 +246,57 @@ function commentliketoggles(data) {
 @endsection
 @section('content')
   <!-- The Modal -->
-     <div id="myModal" class="modal2">
+  <div id="myModal" class="modal2">
 
-       <!-- Modal content -->
-       <div class="modal-content">
-         <span class="close">&times;</span>
-         <h1 style="text-align:center; margin-bottom:2%;">신고하기</h1>
-         <hr>
-         <form class="" action="/police/{{$myproduct[0]->item_number}}" method="post" style="text-align:center;">
-           @csrf
-         <select class="po1" name="po-ca"  id="sel" style="height:30px; margin:3%; width:60%;" >
-           <option value="0">선택하세요</option>
-           <option value="광고(상점홍보,낚시글,도배글)">광고(상점홍보,낚시글,도배글)</option>
-           <option value="물품정보 부정확(카테고리,가격,사진)">물품정보 부정확(카테고리,가격,사진)</option>
-           <option value="거래 금지 품목(담배,주류,장물)">거래 금지 품목(담배,주류,장물)</option>
-           <option value="언어폭력(비방,욕설,성희롱)">언어폭력(비방,욕설,성희롱)</option>
-           <option value="기타사유">기타사유</option>
-         </select>
-         <div class="">
-           <textarea cols="50" rows="10" name="te" class="tex1" style="width:60%; margin-left:3%;" placeholder="입력해주세요"></textarea>
-         </div>
-         <div class="" style="text-align:center;">
-           <button type="submit" class="butt" name="police" style="width:20%; height:20px; margin-top:3%;" value="{{$myproduct[0]->item_number}}">신고하기</button>
-         </form>
-         </div>
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h1 style="text-align:center; margin-bottom:2%;">신고하기</h1>
+      <hr>
+      <form class="" action="/police/{{$myproduct[0]->item_number}}" method="post" style="text-align:center;">
+        @csrf
+        <select class="po1" name="po-ca"  id="sel" style="height:30px; margin:3%; width:60%;" >
+          <option value="0">선택하세요</option>
+          <option value="광고(상점홍보,낚시글,도배글)">광고(상점홍보,낚시글,도배글)</option>
+          <option value="물품정보 부정확(카테고리,가격,사진)">물품정보 부정확(카테고리,가격,사진)</option>
+          <option value="거래 금지 품목(담배,주류,장물)">거래 금지 품목(담배,주류,장물)</option>
+          <option value="언어폭력(비방,욕설,성희롱)">언어폭력(비방,욕설,성희롱)</option>
+          <option value="기타사유">기타사유</option>
+        </select>
+        <div class="">
+          <textarea cols="50" rows="10" name="te" class="tex1" style="width:60%; margin-left:3%;" placeholder="입력해주세요"></textarea>
+        </div>
+        <div class="" style="text-align:center;">
+          <button type="submit" class="butt" name="police" style="width:20%; height:20px; margin-top:3%;" value="{{$myproduct[0]->item_number}}">신고하기</button>
         </form>
       </div>
-      <script>
-        $(function(){
-          $(".butt").click(function(){
-            var se =$("#sel").val();
-            var da = $(".tex1").val();
-            if (da == 0 ) {
-              alert("사유를 작성해주세요");
-              return false;
-            }
-            else if (se==0) {
-              alert("선택해주세요");
-              return false;
-            }
-          })
-        })
+    </form>
+  </div>
+  <script>
+  $(function(){
+    $(".butt").click(function(){
+      var se =$("#sel").val();
+      var da = $(".tex1").val();
+      if (da == 0 ) {
+        alert("사유를 작성해주세요");
+        return false;
+      }
+      else if (se==0) {
+        alert("선택해주세요");
+        return false;
+      }
+    })
+  })
 
-      </script>
+  </script>
 
-     </div>
+</div>
 
 
-  <div class="content">
-    @if ($myproduct[0]->item_success ==0)
-      <h1 style="text-align:center; margin:5%;">이미 판매종료된 상품입니다.</h1>
-    @else
+<div class="content">
+  @if ($myproduct[0]->item_success ==0)
+    <h1 style="text-align:center; margin:5%;">이미 판매종료된 상품입니다.</h1>
+  @else
     <div class="detail_page">
       <div class="detail_head">
         <div class="pr_deta_pic">
@@ -387,12 +349,12 @@ function commentliketoggles(data) {
                   {{$myproduct[0]->item_name}}
                   {{-- // 버튼 추가 --}}
                   <div class="bt-Wla" style="float:right;">
-                      <div class="Wla_click">
-                        <button  id="myBtn" class="unWla" type="button" >
-                          <i class="fas fa-exclamation-circle"></i>
-                          <span>신고</span>
-                        </button>
-                      </div>
+                    <div class="Wla_click">
+                      <button  id="myBtn" class="unWla" type="button" >
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>신고</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
                 <div class="time_price">
@@ -400,16 +362,16 @@ function commentliketoggles(data) {
                     현재 최고가 :
                   </div>
                   @if ($max == 0)
-                  <div class="d_price_info" name="" val="">
-                    {{ number_format($myproduct[0]->item_startprice)}}
-                    <span>원</span>
-                  </div>
-                @else
-                  <div class="d_price_info" name="" val="">
+                    <div class="d_price_info" name="" val="">
+                      {{ number_format($myproduct[0]->item_startprice)}}
+                      <span>원</span>
+                    </div>
+                  @else
+                    <div class="d_price_info" name="" val="">
                       {{ number_format($max)}}
-                    <span>원</span>
-                  </div>
-                @endif
+                      <span>원</span>
+                    </div>
+                  @endif
                 </div>
                 <div class="gm_dday">
                   <div class="deadtime_lab">
@@ -514,19 +476,19 @@ function commentliketoggles(data) {
               @if(session()->has('login_ID'))
                 @if(decrypt(session()->get('login_ID')) == $myproduct[0]->seller_id)
                   <script>
-                    $(function(){
-                      $('.ckadu').attr('disabled',true);
-                      $('.wjsghk').attr('disabled',true);
-                      $('.unWla').attr('disabled',true);
-                    })
+                  $(function(){
+                    $('.ckadu').attr('disabled',true);
+                    $('.wjsghk').attr('disabled',true);
+                    $('.unWla').attr('disabled',true);
+                  })
                   </script>
-              <a href="/bidding-info/{{$myproduct[0]->item_number}}"><button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </button></a>
-              <button class="wjsghk"type="button" name="callseller">연락하기</button>
-              @else
-              <a href="/bidding-info/{{$myproduct[0]->item_number}}"><button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </button></a>
-              <button class="wjsghk"type="button" name="callseller">연락하기</button>
+                  <a href="/bidding-info/{{$myproduct[0]->item_number}}"><button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </button></a>
+                  <button class="wjsghk"type="button" name="callseller">연락하기</button>
+                @else
+                  <a href="/bidding-info/{{$myproduct[0]->item_number}}"><button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </button></a>
+                  <button class="wjsghk"type="button" name="callseller">연락하기</button>
+                @endif
               @endif
-            @endif
             </div>
           </div>
         </div>
@@ -556,7 +518,7 @@ function commentliketoggles(data) {
                   <span>판매자가 경매중인 물품</span>
                 </div>
                 @for($key=0; $key < count($myStat) ; $key++)
-                  @if($key < 3)
+                  @if($key < 4)
                     <a href="/product-detail/{{$myStat[$key]->item_number}}">
                       <div class="otr_prod_item"  style=" cursor: pointer;" onclick="">
                         <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
@@ -611,50 +573,52 @@ function commentliketoggles(data) {
           </div>
         </div>
         <div class="buyer_comment">
+          <div class="best_comment">
+            <div class="">
+              <h3>Best 댓글</h3>
+            </div>
+            <div class="">
+              <div class="comment_naeyoung">
+                @if(!empty($comm2))
+                  <div class="comment_people">
+                    {{$comm2->comment_id}}
+                  </div>
+                  <div class="value_comment">
+                    <p> {{$comm2->comments}} </p>
+                  </div>
+                  <div class="largecommentgood">
+                    <button id="comentlike" type="button" name="comlike" value="">
+                      <img id="likecoment" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
+                    </button>
+                    <span>){{$comm->becount}}</span>
+                  </div>
+                @else
+                  <div class="comment_people">
+                    Best 댓글이 없습니다.
+                  </div>
+                @endif
+              </div>
+
+            </div>
+          </div>
           <div class="people_comment">
             <div class="dat_lab">
-              <h2>댓글달기</h2>
+              <h2>댓글</h2>
             </div>
             <form class="datgul" action="/product-comment/{{$myproduct[0]->item_number}}" method="post" enctype="multipart/form-data">
               @csrf
               <div class="combox">
-                <div class="comment_munie">
-                  <textarea class="comment_text" name="comment_texts" id="comment_texts" rows="8" cols="80" placeholder="제품문의 댓글 입력" required></textarea>
-                </div>
-                <div class="comment_fontlength">
-                  <div class="sc-fontlength dlqfurrmf">0 / 200</div>
-                  <button type="submit" class="comment_dunglok" name="button">등록</button>
+                <div class="comcontent">
+                  <div class="comment_munie">
+                    <textarea class="comment_text" name="comment_texts" id="comment_texts" rows="8" cols="80" placeholder="제품문의 댓글 입력" required></textarea>
+                  </div>
+                  <div class="comment_fontlength">
+                    <div class="sc-fontlength dlqfurrmf">0 / 200</div>
+                    <button type="submit" class="comment_dunglok" name="button">등록</button>
+                  </div>
                 </div>
               </form>
               <div class="comment_new">
-                <div class="best_comment">
-                  <div class="">
-                    <h3>Best 댓글</h3>
-                  </div>
-                  <div class="">
-                    <div class="comment_naeyoung">
-                      @if(!empty($comm2))
-                      <div class="comment_people">
-                      {{$comm2->comment_id}}
-                      </div>
-                      <div class="value_comment">
-                        <p> {{$comm2->comments}} </p>
-                      </div>
-                        <div class="largecommentgood">
-                            <button id="comentlike" type="button" name="comlike" value="">
-                                <img id="likecoment" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
-                          </button>
-                            <span>){{$comm->becount}}</span>
-                        </div>
-                      @else
-                        <div class="comment_people">
-                         Best 댓글이 없습니다.
-                        </div>
-                      @endif
-                      </div>
-
-                  </div>
-                </div>
                 <div class="">
                   <h3>전체 댓글</h3>
                 </div>
@@ -785,32 +749,32 @@ function commentliketoggles(data) {
       </div>
     </div>
   @endif
-  </div>
+</div>
 
-  <script type="text/javascript">
-  //comment textarea 체크
-  $('.comment_text').keyup(function (e){
-    var content = $(this).val();
-    $('.dlqfurrmf').html("("+content.length+" / 최대 200자)");    //글자수 실시간 카운팅
+<script type="text/javascript">
+//comment textarea 체크
+$('.comment_text').keyup(function (e){
+  var content = $(this).val();
+  $('.dlqfurrmf').html("("+content.length+" / 최대 200자)");    //글자수 실시간 카운팅
 
-    if (content.length > 200){
-      alert("최대 200자까지 입력 가능합니다.");
-      $(this).val(content.substring(0, 200));
-      $('.dlqfurrmf').html("(200 / 최대 200자)");
-    }
-  });
+  if (content.length > 200){
+    alert("최대 200자까지 입력 가능합니다.");
+    $(this).val(content.substring(0, 200));
+    $('.dlqfurrmf').html("(200 / 최대 200자)");
+  }
+});
 
-  //comment textarea 체크
-  $('.recomment_text').keyup(function (e){
-    var content = $(this).val();
-    $('.dlqfurrmff').html("("+content.length+" / 최대 200자)");    //글자수 실시간 카운팅
+//comment textarea 체크
+$('.recomment_text').keyup(function (e){
+  var content = $(this).val();
+  $('.dlqfurrmff').html("("+content.length+" / 최대 200자)");    //글자수 실시간 카운팅
 
-    if (content.length > 200){
-      alert("최대 200자까지 입력 가능합니다.");
-      $(this).val(content.substring(0, 200));
-      $('.dlqfurrmff').html("(200 / 최대 200자)");
-    }
-  });
+  if (content.length > 200){
+    alert("최대 200자까지 입력 가능합니다.");
+    $(this).val(content.substring(0, 200));
+    $('.dlqfurrmff').html("(200 / 최대 200자)");
+  }
+});
 
 
 </script>
@@ -828,25 +792,25 @@ $('#del_detailpage').click(function(){
 </script>
 <script>
 //모델창
-    var modal = document.getElementById('myModal');
+var modal = document.getElementById('myModal');
 
-    var btn = document.getElementById("myBtn");
+var btn = document.getElementById("myBtn");
 
-    var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close")[0];
 
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
+btn.onclick = function() {
+  modal.style.display = "block";
+}
 
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
+span.onclick = function() {
+  modal.style.display = "none";
+}
 
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
 </script>
 @endsection
