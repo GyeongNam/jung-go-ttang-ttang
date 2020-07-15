@@ -140,8 +140,8 @@ $(document).ready(function(){
   // 말풍선 내용
   var contentString	=
   '<div class="mapst">' +
-  '<h2>직거래 위치:</h2>'+
-  '<h3>'+address+'</h3>'+
+  '<h3>직거래 위치:</h3>'+
+  '<h4>'+address+'</h4>'+
   '<p>'+id+'님의. 직거래 위치입니다!</p>' +
   '</div>';
   iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
@@ -554,24 +554,31 @@ function commentliketoggles(data) {
               <div class="deal_cat_location">
                 <div class="deal_cat">
                   <div class="catgo">
-                    <img src="" alt="">
                     카테고리
                   </div>
                   <div class="">
-                    <a href="#"><span>모바일/태블릿</span></a>
+                    <a href="/manclothing?id={{$myproduct[0]->item_category}}"><span>{{$myproduct[0]->item_category}}</span></a>
                   </div>
                 </div>
-                <div class="pro_tag">
+                {{-- <div class="pro_tag">
                   <div class="tag_name">
                     <img src="" alt="">
                     상품태그
                   </div>
                   <div class="taglist">
+                    <ul>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
                     <a href="#">#아이패드</a>
                     <a href="#">#아이패드에어</a>
                     <a href="#">#태블릿</a>
                   </div>
-                </div>
+                </div> --}}
               </div>
             </div>
           </div>
@@ -595,7 +602,7 @@ function commentliketoggles(data) {
                     <button id="comentlike" type="button" name="comlike" value="">
                       <img id="likecoment" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
                     </button>
-                    <span>){{$comm->becount}}</span>
+                    <span>{{$comm->becount}}</span>
                   </div>
                 @else
                   <div class="comment_people">

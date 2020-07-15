@@ -71,6 +71,6 @@ img{
   .wish_info{
     display: flex;
     flex-wrap: wrap;
-    margin-left: 2rem;
+    margin-left: 1rem;
   }
 }

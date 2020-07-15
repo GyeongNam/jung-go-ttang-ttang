@@ -23,6 +23,7 @@
   display: block;
   overflow-x: hidden;
   transition: 0.3s;
+  white-space: nowrap;
 
 }
 .sidemenu a:hover{
