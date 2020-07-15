@@ -192,7 +192,11 @@ class ItemController extends Controller
       'item_pictureleft'=>$item_pictureleft,
       'item_picturerigth'=>$item_picturerigth,
       'item_picturebehind'=>$item_picturebehind,
-      'item_info' =>$request->input('item_info')
+      'item_info' =>$request->input('item_info'),
+      'postcode' => $request->input('sample4_postcode'),
+      'roadAddress' => $request->input('sample4_roadAddress'),
+      'jibunAddress' => $request->input('sample4_jibunAddress'),
+      'Address_detail' => $request->input('sample4_doro_detail')
     ]);
     return redirect('/main');
   }
