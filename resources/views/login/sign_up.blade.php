@@ -1,14 +1,29 @@
-@extends('layout.layout_main')
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  {{-- Title --}}
+  <title>중고땅땅: 회원가입</title>
 
-@section('title')
-  중고땅땅-회원가입
-@endsection
+  {{-- Meta --}}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
-@section('css')
+  {{-- css --}}
+  {{-- <link rel="stylesheet" href ="/css/layout/footer.css" />
+  <link rel="stylesheet" href ="/css/layout/header.css" />
+  <link rel="stylesheet" href ="/css/layout/side.css" /> --}}
   <link rel="stylesheet" href ="/css/login/sign_up.css"/>
-@endsection
 
-@section('js')
+  {{-- Input custom css --}}
+  {{-- @yield('css') --}}
+
+  {{-- js --}}
+  <!-- J QUERY -->
+  <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/7cfb0a1075.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet">
+
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script type="text/javascript">
 
@@ -222,10 +237,9 @@
 
 
 </script>
+</head>
 
-@endsection
-
-@section('content')
+<body>
   <div class="sign_up">
     <div class="sign_form">
       <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -286,24 +300,26 @@
           </li>
           <li>
             <label><strong>이메일</strong></label><br>
-            <input type="text" name="str_email01" id="str_email01" required="required">
-            <input type="text" name="str_email02" id="str_email02" placeholder="직접입력">
-            <select name="str_email03" id="selectEmail" required="required">
-              <option value="1">직접입력</option>
-              <option value="naver.com" >naver.com</option>
-              <option value="hanmail.net">hanmail.net</option>
-              <option value="hotmail.com">hotmail.com</option>
-              <option value="nate.com">nate.com</option>
-              <option value="yahoo.co.kr">yahoo.co.kr</option>
-              <option value="empas.com">empas.com</option>
-              <option value="dreamwiz.com">dreamwiz.com</option>
-              <option value="freechal.com">freechal.com</option>
-              <option value="lycos.co.kr">lycos.co.kr</option>
-              <option value="korea.com">korea.com</option>
-              <option value="gmail.com">gmail.com</option>
-              <option value="hanmir.com">hanmir.com</option>
-              <option value="paran.com">paran.com</option>
-            </select>
+            <div class="emailcontent">
+              <input type="text" name="str_email01" id="str_email01" required="required">
+              <input type="text" name="str_email02" id="str_email02" placeholder="직접입력">
+              <select name="str_email03" id="selectEmail" required="required">
+                <option value="1">직접입력</option>
+                <option value="naver.com" >naver.com</option>
+                <option value="hanmail.net">hanmail.net</option>
+                <option value="hotmail.com">hotmail.com</option>
+                <option value="nate.com">nate.com</option>
+                <option value="yahoo.co.kr">yahoo.co.kr</option>
+                <option value="empas.com">empas.com</option>
+                <option value="dreamwiz.com">dreamwiz.com</option>
+                <option value="freechal.com">freechal.com</option>
+                <option value="lycos.co.kr">lycos.co.kr</option>
+                <option value="korea.com">korea.com</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="hanmir.com">hanmir.com</option>
+                <option value="paran.com">paran.com</option>
+              </select>
+            </div>
           </li>
           <script type="text/javascript">
           //이메일 입력방식 선택
@@ -323,13 +339,15 @@
           </script>
           <li>
             <label><strong>전화번호 입력</strong></label><br>
-            <select name="str_phone01" id="selectphone" required="required">
-              <option value="010">010</option>
-              <option value="011" >011</option>
-              <option value="017">017</option>
-            </select>
-            <input type="number" name="str_phone02" id="str_phone02" required="required">
-            <input type="number" name="str_phone03" id="str_phone03" required="required">
+            <div class="str_phonecan">
+              <select name="str_phone01" id="selectphone" required="required">
+                <option value="010">010</option>
+                <option value="011" >011</option>
+                <option value="017">017</option>
+              </select>
+              <input type="number" name="str_phone02" id="str_phone02" required="required">
+              <input type="number" name="str_phone03" id="str_phone03" required="required">
+            </div>
           </li>
           <li>
             <input type="text" name="email_ck" id="security" size="61" placeholder=" 인증번호 입력하세요" required>
@@ -352,4 +370,7 @@
   </video> -->
   <!--test-->
 </div>
-@endsection
+</html>
+
+
+@section('content')

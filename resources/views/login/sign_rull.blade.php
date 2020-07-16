@@ -48,6 +48,10 @@
     })
   })
 
+  function goBack() {
+    window.history.back();
+}
+
   </script>
 </head>
 
@@ -1385,7 +1389,7 @@
         </div>
         <div class="button">
           <div class="but">
-            <button type="button" name="button" class="buut2 btbt">
+            <button type="button" name="button" class="buut2 btbt" onclick="goBack()">
               취소
             </button>
             <button type="submit" name="button" class="buut1 btbt">
