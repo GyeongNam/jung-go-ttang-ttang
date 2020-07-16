@@ -6,9 +6,6 @@
 
 @section('js')
   <script type="text/javascript">
-
-
-
   function openPage(pageName, elmnt, color) {
     // Hide all elements with class="tabcontent" by default */
     var i, tabcontent, tablinks;
@@ -33,8 +30,6 @@
       });
     }
   });
-
-
 </script>
 <script type="text/javascript">
 function add_div(){
@@ -44,6 +39,24 @@ function add_div(){
 }
 function remove_div(obj){
   document.getElementById('field').removeChild(obj.parentNode);
+}
+</script>
+<script type="text/javascript">
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+
+    this.classList.toggle("active");
+
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
 }
 </script>
 @endsection
@@ -255,24 +268,7 @@ $(document).ready(function(){
   });
 });
 </script>
-<script type="text/javascript">
-var acc = document.getElementsByClassName("accordion");
-var i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-
-    this.classList.toggle("active");
-
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
-</script>
 
 </div>
 </div>

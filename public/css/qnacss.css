@@ -29,10 +29,12 @@
   text-overflow: ellipsis;
   text-align: center; */
 }
-#qnatext{
+.qnatext{
 }
 .detail_text{
   width: auto;
+  height: 50rem;
+  border-bottom: 2px solid #bdbdbd;
 }
 .rmf{
   margin-top: 1rem;

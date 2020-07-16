@@ -36,6 +36,9 @@
                     <div class="detail_text">
                       {{$qnat[0]->qna_text}}
                     </div>
+                    <button class="qnadel" type="button" name="button">삭제하기</button>
+                    <button class="qnamody" type="button" name="button">수정하기</button>
+                    <button class="qnalist" type="button" name="button" onClick="location.href='/Servicecenter'">목록으로</button>
                   </td>
                 </tr>
               </tbody>
