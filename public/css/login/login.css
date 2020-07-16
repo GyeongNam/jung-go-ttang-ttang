@@ -3,6 +3,14 @@
   padding:0;
 
 }
+body{
+  background-color: #f5f6f7;
+}
+
+a{
+  text-decoration:none;
+}
+
 .login_form li{
   list-style: none;
   display: block;
@@ -18,25 +26,32 @@
     margin-right: auto;
     width:460px;
     display: block;
-    background-image: url("/img/dadang.jpg");
+    /* background-image: url("/img/dadang.jpg"); */
 }
 
 
 .login_form{
-  padding: 70px 0;
+  /* padding: 70px 0; */
   text-align: center;
 }
-
+.logbt{
+  border: 0;
+  outline: 0;
+  border: 0;
+  color: #fff;
+  background-color: #3858a6;
+}
 #id, #pw, #repw, #login_bt{
     margin: 2%;
     width: 90%;
     height: 50px;
+    border: 1px solid #dadada;
 
 }
 
 .center-block{
     margin:auto;
-    padding: 10%;
+    /* padding: 10%; */
     width: 60%;
     height: auto;
 }

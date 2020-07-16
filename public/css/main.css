@@ -138,13 +138,14 @@ h2{
 }
 .categorybar a {
   margin-left: 25px;
-  /* margin-top: 7px; */
+  margin-top: 7px;
   padding: 10px;
   float: left;
   color: white;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 15px;
   width: 10%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+  align-items: center;
   text-align: center; /* If you want the text to be centered */
 }
 /* --제품 --*/
@@ -160,7 +161,9 @@ h2{
   width: 1100px;
   height: auto;
 }
-
+.whghltn{
+  margin-left: 10px;
+}
 .item_list{
   margin-left: 10px;
   margin-right: 10px;
