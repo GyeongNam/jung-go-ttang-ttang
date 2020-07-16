@@ -37,6 +37,11 @@
       console.log(ip)
       $("#moneyid").text(ip);
     });
+    $('.bid_name').keydown(function() {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+  };
+});
   });
 </script>
 
@@ -51,7 +56,7 @@
     </script>
   @else
     @if ($sendd[0]->item_success==1)
-      <form class="" name="bd_form" method="post" action="{{url('/bidding-price')}}" >
+      <form class="" name="bd_form" method="post" action="{{url('/bidding-price')}}"  onsubmit="">
       @csrf
         <div id ="popup">
           <div id="popmenu">
@@ -107,6 +112,7 @@
           </div>
           <div class="bd_bid">
             <span clsss="bid_pr"><b>입찰할금액:</b></span>
+            <input type="hidden" name="" value="">
             <input type="number" class="bid_name"  name="bdinput" placeholder="현재가격이상으로 설정해주세요">
           </div>
         </div>
