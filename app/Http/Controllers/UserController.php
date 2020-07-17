@@ -51,7 +51,12 @@ class UserController extends Controller
   public function loging(Request $request){
     $id = $request->input('id');
     $pwd = $request->input('PW');
-    $data = User::select('ID','PASSWORD','NAME')->where(['id'=>$id,'password'=>$pwd])->get();
+
+    /**
+     * MYSQL에서는 Where 검색 시 대소문자 구별을 하지 않으므로 검색할 칼럼 앞에 binary를 붙이게 되면 대소문자 구별을 하게 된다.
+     */
+    // $data = User::select('ID','PASSWORD','NAME')->where(['id'=>$id,'password'=>$pwd])->get();
+    $data = User::select('ID','PASSWORD','NAME')->whereRaw('binary(id) = "'.$id.'" and password = "'.$pwd.'"')->get();
 
     if(count($data)>0){
       session()->put('login_ID',encrypt($id));

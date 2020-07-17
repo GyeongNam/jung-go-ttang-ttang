@@ -313,12 +313,16 @@ $(function(){
                                             </tr>
                                           </thead>
                                           <tbody>
+
                                             @foreach ($che as $keyw => $valuew)
+                                              @if ($value->item_number ==$valuew->item_number2)
                                             <tr>
                                               <td>{{$valuew->report}}</td>
                                               <td>{{$valuew->reportde}}</td>
                                             </tr>
+                                              @endif
                                             @endforeach
+
                                           </tbody>
                                         </table>
                                       <div class="modal-footer">
