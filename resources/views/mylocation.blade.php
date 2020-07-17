@@ -217,9 +217,9 @@ $(document).ready(function(){
         console.log(c1);
         console.log(c2);
         var poly = new kakao.maps.Polyline({
-          // map: map, 을 하지 않아도 거리는 구할 수 있다.
           path: [c1, c2]
         });
+        // console.log(path);
         var dist = poly.getLength(); // m 단위로 리턴
         if (dist < radius) {
           marker.setMap(map);

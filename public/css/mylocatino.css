@@ -25,11 +25,11 @@
 }
 .wrap .info {
   width: 286px;
-  height: 120px;
+  height: 150px;
   border-radius: 5px;
   border-bottom: 2px solid #ccc;
   border-right: 1px solid #ccc;
-  overflow: hidden;background: #fff;
+  /* overflow: hidden;background: #fff; */
 }
 .wrap .info:nth-child(1) {
   border: 0;
@@ -61,7 +61,7 @@
 .info .desc {
   position: relative;
   margin: 13px 0 0 90px;
-  height: 75px;
+  height: 100px;
 }
 .desc .ellipsis {
   overflow: hidden;
