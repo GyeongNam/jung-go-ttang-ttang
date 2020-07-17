@@ -211,6 +211,10 @@
                   <td style="width:10%;">{{$item[0]->item_name}}</td>
                 </tr>
                 <tr>
+                  <th>상품번호</th>
+                  <td>{{$item[0]->item_number}}</td>
+                </tr>
+                <tr>
                   <th>판매자아이디</th>
                   <td>{{$item[0]->seller_id}}</td>
                 </tr>
@@ -237,8 +241,8 @@
             </table>
 
           </div>
-
-          <div class="table1" style="margin-top:2%;" >
+          <hr>
+          <div class="table1" style="margin-top:3%;" >
             <h4>경매 참여 현황</h4>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
               <thead>
@@ -261,10 +265,11 @@
 
           </div>
           </div>
+          <hr>
           @if ($item[0]->item_success ==0)
-            <div class="table1" style="margin-top:2%;" >
+            <div class="table1" style="margin-top:3%;" >
               <h4>최종 낙찰 순위</h4>
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
+                <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0" >
                   <thead>
                     <tr>
                       <th>순위</th>
@@ -276,10 +281,16 @@
                 <tbody>
                   <tr>
                     <td>1순위</td>
-                    <td>{{$enditem[0]->success_user1}}</td>
+                    @if (empty($auction[0]->buyer_ID))
+                      <td></td>
+                      @else
+                        <td>{{$auction[0]->buyer_ID}}</td>
+                    @endif
                     <td>{{$enditem[0]->success_price1}}</td>
-                    @if($enditem[0]->success_user1 ==NULL)
-                        <td></td>
+                    @if (empty($auction[0]->buyer_ID))
+                      <td></td>
+                    @elseif($enditem[0]->success_user1 ==NULL)
+                        <td>구매포기</td>
                     @elseif ($enditem[0]->buyer != $enditem[0]->success_user1)
                       <td>구매포기</td>
                     @elseif ($enditem[0]->buyer == $enditem[0]->success_user1)
@@ -288,11 +299,17 @@
                   </tr>
                   <tr>
                     <td>2순위</td>
-                    <td>{{$enditem[0]->success_user2}}</td>
+                    @if (empty($auction[1]->buyer_ID))
+                      <td></td>
+                      @else
+                        <td>{{$auction[1]->buyer_ID}}</td>
+                    @endif
                     <td>{{$enditem[0]->success_price2}}</td>
-                    @if($enditem[0]->success_user2 == NULL)
-                        <td></td>
-                    @elseif ($enditem[0]->buyer != $enditem[0]->success_user2)
+                    @if (empty($auction[1]->buyer_ID))
+                      <td></td>
+                    @elseif($enditem[0]->success_user2 == NULL)
+                        <td>구매포기</td>
+                    @elseif ($enditem[0]->buyer != NULL)
                       <td>구매포기</td>
                     @elseif ($enditem[0]->buyer == $enditem[0]->success_user2)
                     <td>구매성공</td>
@@ -300,11 +317,18 @@
                   </tr>
                   <tr>
                     <td>3순위</td>
-                    <td>{{$enditem[0]->success_user3}}</td>
+                    @if (empty($auction[2]->buyer_ID))
+                      <td></td>
+                      @else
+                        <td>{{$auction[2]->buyer_ID}}</td>
+                    @endif
+
                     <td>{{$enditem[0]->success_price3}}</td>
-                    @if($enditem[0]->success_user3 ==NULL)
-                        <td></td>
-                    @elseif ($enditem[0]->buyer != $enditem[0]->success_user3)
+                    @if (empty($auction[2]->buyer_ID))
+                      <td></td>
+                    @elseif($enditem[0]->success_user3 == NULL)
+                        <td>구매포기</td>
+                    @elseif ($enditem[0]->buyer != NULL)
                       <td>구매포기</td>
                     @elseif ($enditem[0]->buyer == $enditem[0]->success_user3)
                     <td>구매성공</td>
@@ -312,10 +336,16 @@
                   </tr>
                   <tr>
                     <td>4순위</td>
-                    <td>{{$enditem[0]->success_user4}}</td>
+                    @if (empty($auction[3]->buyer_ID))
+                      <td></td>
+                      @else
+                        <td>{{$auction[3]->buyer_ID}}</td>
+                    @endif
                     <td>{{$enditem[0]->success_price4}}</td>
-                    @if($enditem[0]->success_user4 ==NULL)
-                        <td></td>
+                    @if (empty($auction[3]->buyer_ID))
+                      <td></td>
+                    @elseif($enditem[0]->success_user4 ==NULL)
+                        <td>구매포기</td>
                     @elseif ($enditem[0]->buyer != $enditem[0]->success_user4)
                       <td>구매포기</td>
                     @elseif ($enditem[0]->buyer == $enditem[0]->success_user4)
@@ -324,10 +354,16 @@
                   </tr>
                   <tr>
                     <td>5순위</td>
-                    <td>{{$enditem[0]->success_user5}}</td>
-                    <td>{{$enditem[0]->success_price5}}</td>
-                    @if($enditem[0]->success_user5 ==NULL)
-                        <td></td>
+                    @if (empty($auction[4]->buyer_ID))
+                      <td></td>
+                      @else
+                        <td>{{$auction[4]->buyer_ID}}</td>
+                    @endif
+                    <td>{{$enditem[0]->success_price5 }}</td>
+                    @if (empty($auction[4]->buyer_ID))
+                      <td></td>
+                    @elseif($enditem[0]->success_user5 ==NULL)
+                        <td>구매포기</td>
                     @elseif ($enditem[0]->buyer != $enditem[0]->success_user5)
                       <td>구매포기</td>
                     @elseif ($enditem[0]->buyer == $enditem[0]->success_user5)

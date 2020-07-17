@@ -309,11 +309,11 @@
                   <td>5순위</td>
                 @else
                   <td>x</td>
+                  <td>순위안들어감</td>
                 @endif
                 @if ($value->buyer == $mana[0]->ID)
                   <td>낙찰완료</td>
-                @else
-                  <td>낙찰실패</td>
+                @elseif ($value->buyer != $mana[0]->ID)
                 @endif
 
               </tr>
