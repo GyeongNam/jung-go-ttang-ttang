@@ -138,26 +138,6 @@ $(document).ready(function(){
   for(i=0; i<positions.length;i++){
     add.push(positions[i].value);
   }
-  // console.log(add);
-  // 주소로 좌표를 검색합니다
-  // // 원(Circle)의 옵션으로 넣어준 반지름
-  // var radius = 500;
-  // markers.forEach(function(positions) {
-  //   var c1 = map.getCenter(locPosition);
-  //   var c2 = positions.getPosition();
-  //   console.log(c1);
-  //   var poly = new Polyline({
-  //     // map: map, 을 하지 않아도 거리는 구할 수 있다.
-  //     path: [c1, c2]
-  //   });
-  //   var dist = poly.getLength(); // m 단위로 리턴
-  //
-  //   if (dist < radius) {
-  //     positions.setMap(map);
-  //   } else {
-  //     positions.setMap(null);
-  //   }
-  // });
   for(let i=0; i <add.length; i++){
     // console.log(add[i]);
     geocoder.addressSearch(add[i], function(result, status) {
@@ -209,24 +189,36 @@ $(document).ready(function(){
           // 마커 위에 인포윈도우를 표시합니다
           infowindow.open(map, marker);
         });
-
         var radius = 3000;
-        // 상품을 표시할 원의 반경 미터
-        var c1 = map.getCenter(locPosition);
-        var c2 = marker.getPosition();
-        console.log(c1);
-        console.log(c2);
-        var poly = new kakao.maps.Polyline({
-          path: [c1, c2]
+        
+        $("input:radio[name=chk_km]").click(function(){
+          if ($("input:radio[name=chk_km]").val() == "1km") {
+            var radius = 1000;
+          }
+          else if($("input:radio[name=chk_km]").val() == "3km") {
+            var radius = 3000;
+          }
+          else if($("input:radio[name=chk_km]").val() == "5km") {
+            var radius = 5000;
+          }
+          console.log(radius);
+          // 상품을 표시할 원의 반경 미터
+          var c1 = map.getCenter(locPosition);
+          var c2 = marker.getPosition();
+          console.log(radius);
+          console.log(c2);
+          var poly = new kakao.maps.Polyline({
+            path: [c1, c2]
+          });
+          // console.log(path);
+          var dist = poly.getLength(); // m 단위로 리턴
+          if (dist < radius) {
+            marker.setMap(map);
+          } else {
+            marker.setMap(null);
+          }
         });
-        // console.log(path);
-        var dist = poly.getLength(); // m 단위로 리턴
-        if (dist < radius) {
-          marker.setMap(map);
-          console.log(dist);
-        } else {
-          marker.setMap(null);
-        }
+
         // // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         // map.setCenter(coords);
       }
@@ -236,7 +228,6 @@ $(document).ready(function(){
 </script>
 @endsection
 @section('content')
-
 @foreach($myproduct as $key => $value)
 <input  id="mapproduct{{$value->item_number}}" class ="mapproduct" type="hidden"  value="{{$value->item_number}}">
 @endforeach
@@ -255,6 +246,10 @@ $(document).ready(function(){
 @foreach($road as $key => $value)
 <input  id="maparry{{$value->item_number}}" class ="maparry" type="hidden"  value="{{$value->roadAddress}}">
 @endforeach
+<input class="illkm" type="radio" name="chk_km" value="1km">1km
+<input class="samkm" type="radio" name="chk_km" value="3km" checked="checked">3km
+<input class="okm" type="radio" name="chk_km" value="5km">5km
+<input class="allkm" type="radio" name="chk_km" value="all_maker">모두보기
 <div id="map">
   <div class="wa d">
     <a href="#" class="hi"></a>
