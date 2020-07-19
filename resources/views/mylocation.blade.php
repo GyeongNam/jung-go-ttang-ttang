@@ -190,13 +190,13 @@ $(document).ready(function(){
           infowindow.open(map, marker);
         });
         var radius = 3000;
-        
+
         $("input:radio[name=chk_km]").click(function(){
           if ($("input:radio[name=chk_km]").val() == "1km") {
-            var radius = 1000;
+            var radius = 3000;
           }
           else if($("input:radio[name=chk_km]").val() == "3km") {
-            var radius = 3000;
+            var radius = 4000;
           }
           else if($("input:radio[name=chk_km]").val() == "5km") {
             var radius = 5000;
