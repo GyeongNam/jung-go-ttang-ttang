@@ -113,7 +113,7 @@ Route::post('/product-lecomment/{item_number}/{commentnum}/{largecomment_num}','
 Route::get('/recomment/{comment_num}/{comm_item}', 'ItemController@commentremove')->middleware('login');
 Route::get('/largcomment/{largecomm_item}/{largecomment_num}', 'ItemController@lecommentremove')->middleware('login');
 Route::get('/wishitem_remove/{favorite_itemnum}/{favorite_name}', 'ItemController@wishitem_remove')->middleware('login');
-Route::get('/remove/{item_number}/{id}', 'ItemController@removes')->middleware('login');
+Route::get('/remove/{item_number}/{id}/{comm2}', 'ItemController@removes')->middleware('login');
 //Route::get('/', 'ItemController@mainview');
 Route::get('/itemcheck', 'ItemController@myview')->middleware('login');
 Route::get('/manclothing', 'ItemController@category');
