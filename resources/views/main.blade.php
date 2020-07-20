@@ -36,7 +36,7 @@ deleteCookie('pop');
 @endsection
 
 @section('content')
-  <a href="#" onclick="setCookie('pop', 'event0405', 1); " class="accept">1일동안 열지 않음.</a>
+  <a href="/sasa">1일동안 열지 않음.</a>
   <script>
   if(getCookie("pop") !="event0405"){
     //팝업창 작업은 이곳에

@@ -147,7 +147,7 @@ Route::get('/manager_delete','ItemController@managerdelete')->middleware('manage
 Route::get('/manager_item_info/{item_number}',  'ItemController@iteminfo')->middleware('manager');
 
 //fann_test
-// Route::get('/sasa','ItemController@sasa');
+Route::get('/sasa','ItemController@sasa');
 
 // MessageController
 Route::get('/cahtroom', 'MessageController@muser')->middleware('login');
