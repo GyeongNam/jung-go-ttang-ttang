@@ -159,7 +159,7 @@ class auction_update extends Command
         for($j=0; $j<count($Endday); $j++){
           if($Endday->isNotEmpty()){
             if(!Empty($Endday[$j])){
-              if($Endday[$j]->success_user1 != null){
+              if($Endday[$j]->enditem_st == 1 && $Endday[$j]->success_user1 != null){
                 if( date('Y-m-d') >= date("Y-m-d",strtotime($Endday[$j]->success_date."+2 day" ))) {
                   // echo $j,
                   // $Endday[$j]->success_date.'<br>';
@@ -179,7 +179,7 @@ class auction_update extends Command
                   }
                 }
               }
-              elseif($Endday[$j]->success_user1 == null && $Endday[$j]->success_user2 != null){
+              elseif($Endday[$j]->enditem_st == 1 && $Endday[$j]->success_user1 == null && $Endday[$j]->success_user2 != null){
                 Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
                   'success_user2' => null,
                   'buyer'=> $Endday[$j]->success_user3,
@@ -193,7 +193,7 @@ class auction_update extends Command
                   ]);
                 }
               }
-              elseif($Endday[$j]->success_user2 == null && $Endday[$j]->success_user3 != null){
+              elseif($Endday[$j]->enditem_st == 1 && $Endday[$j]->success_user2 == null && $Endday[$j]->success_user3 != null){
                 Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
                   'success_user3' => null,
                   'buyer'=> $Endday[$j]->success_user4,
@@ -206,7 +206,7 @@ class auction_update extends Command
                   ]);
                 }
               }
-              elseif($Endday[$j]->success_user3 == null && $Endday[$j]->success_user4 != null){
+              elseif($Endday[$j]->enditem_st == 1 && $Endday[$j]->success_user3 == null && $Endday[$j]->success_user4 != null){
                 Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
                   'success_user4' => null,
                   'buyer'=> $Endday[$j]->success_user5,
@@ -218,7 +218,7 @@ class auction_update extends Command
                   ]);
                 }
               }
-              elseif($Endday[$j]->success_user4 == null && $Endday[$j]->success_user5 != null){
+              elseif($Endday[$j]->enditem_st == 1 && $Endday[$j]->success_user4 == null && $Endday[$j]->success_user5 != null){
                 Enditem::where([['success_date', '<=', $Endday[$j]->success_date],['end_num','=',$Endday[$j]->end_num]])->update([
                   'success_user5' => null,
                   'buyer'=> null,

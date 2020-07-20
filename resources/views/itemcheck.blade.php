@@ -264,18 +264,25 @@ $(function(){
        @endif
 
     @endif
+    </div>
+
+    <div class="">
+      <button class="close" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button">돌아가기</button>
+      {{-- <a href="/remove_enditem/{{$value->item_number}}/{{session('login_ID')}}">  <button class="" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button" >포기하기</button></a> --}}
+    </div>
   @else
       <div class="nakchalgood">
         낙찰에 실패했습니다.
       </div>
 
-  @endif
+
      </div>
 
      <div class="">
        <button class="close" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button">돌아가기</button>
        <a href="/remove_enditem/{{$value->item_number}}/{{session('login_ID')}}">  <button class="" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button" >포기하기</button></a>
      </div>
+       @endif
    </div>
  </div>
 @endforeach
@@ -337,6 +344,9 @@ $(function(){
          <span class="nak_p_lab">
             원
          </span>
+         <div>
+         현재 낙찰자에게 쪽지하세요!
+       </div>
        </div>
      </div>
 
@@ -348,7 +358,6 @@ $(function(){
      안타깝게도 경매 참여자가 없어 유찰되었습니다.
      <div class="">
        <button class="close2" id="del_per2" onclick="modal_out_mys({{$value->item_number}})" type="button" name="button" >돌아가기</button>
-       <button class="" id="del_per" type="button" name="button" onclick="location.href='/remove/{{$value->item_number}}/{{session()->get('login_ID')}}'" >경매삭제</button>
      </div>
    @endif
    </div>
