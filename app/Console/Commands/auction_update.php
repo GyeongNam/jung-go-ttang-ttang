@@ -69,6 +69,7 @@ class auction_update extends Command
                 'success_user5'=>$auciton[4]->buyer_ID,
                 'success_date'=> date('Y-m-d'),
                 'buyer' => $auciton[0]->buyer_ID,
+                'enditem_st' => 1,
                 'end_num'=> $item_number[$i]->item_number
               ]);
               $data->save();
@@ -88,6 +89,7 @@ class auction_update extends Command
                 'success_user4'=>$auciton[3]->buyer_ID,
                 'success_date'=> date('Y-m-d'),
                 'buyer' => $auciton[0]->buyer_ID,
+                'enditem_st' => 1,
                 'end_num'=> $item_number[$i]->item_number
               ]);
               $data->save();
@@ -105,6 +107,7 @@ class auction_update extends Command
                 'success_user3'=>$auciton[2]->buyer_ID,
                 'success_date'=> date('Y-m-d'),
                 'buyer' => $auciton[0]->buyer_ID,
+                'enditem_st' => 1,
                 'end_num'=> $item_number[$i]->item_number
               ]);
               $data->save();
@@ -120,6 +123,7 @@ class auction_update extends Command
                 'success_user2'=>$auciton[1]->buyer_ID,
                 'success_date'=> date('Y-m-d'),
                 'buyer' => $auciton[0]->buyer_ID,
+                'enditem_st' => 1,
                 'end_num'=> $item_number[$i]->item_number
               ]);
               $data->save();
@@ -133,6 +137,7 @@ class auction_update extends Command
                 'success_user1'=>$auciton[0]->buyer_ID,
                 'success_date'=> date('Y-m-d'),
                 'buyer' => $auciton[0]->buyer_ID,
+                'enditem_st' => 1,
                 'end_num'=> $item_number[$i]->item_number
               ]);
               $data->save();
@@ -142,7 +147,8 @@ class auction_update extends Command
             }
             else{
               $data = new Enditem([
-                'end_num'=> $item_number[$i]->item_number
+                'end_num'=> $item_number[$i]->item_number,
+                'enditem_st' => 1
               ]);
               $data->save();
             }

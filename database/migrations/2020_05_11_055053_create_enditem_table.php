@@ -27,6 +27,7 @@ class CreateEnditemTable extends Migration
           $table->string('success_user5')->nullable();
           $table->Date('success_date')->nullable();
           $table->string('buyer')->nullable();
+          $table->integer('enditem_st');
           $table->rememberToken();
           $table->timestamps();
         });

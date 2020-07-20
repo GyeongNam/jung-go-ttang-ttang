@@ -103,6 +103,7 @@ class ItemController extends Controller
       'item_startprice' => $request->input('Auction_start'),
       'item_success' => true,
       'success' => false,
+      'item_st' => true,
       'seller_id' => decrypt(session()->get('login_ID'))
     ]);
     $item->save();
@@ -374,6 +375,16 @@ class ItemController extends Controller
       'comm2'=>$comm2
 
     ]);
+  }
+
+  public function end_action($item_number){
+    Item::where(['item_number'=> $item_number])->update([
+      'item_st' => 0
+    ]);
+    Enditem::where(['end_num' => $item_number])->update([
+      'enditem_st' => 0
+    ]);
+    return redirect('/itemcheck');
   }
 
   public function category(Request $request){

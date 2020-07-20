@@ -222,6 +222,7 @@ $(function(){
            </div>
            <div class="nak_date">
              2일 이내에 거래 완료를 하지 않으면 다음 낙찰 대기자에게 상품이 넘어갑니다.
+             빨리 판매자에게 쪽지하세요!
            </div>
          </div>
        </div>
@@ -230,50 +231,49 @@ $(function(){
       <div class="nakchalgood">
         낙찰에 실패했습니다.
       </div>
-     @if(!Empty($end[$key][0]->success_user2))
-     @if(decrypt(session('login_ID')) == $end[$key][0]->success_user2)
-       <div class="nak_sunwe">
-       순위 2위
-       </div>
-     @endif
-     @endif
+       @if(!Empty($end[$key][0]->success_user2))
+       @if(decrypt(session('login_ID')) == $end[$key][0]->success_user2)
+         <div class="nak_sunwe">
+         순위 2위
+         </div>
+       @endif
+       @endif
 
-     @if(!Empty($end[$key][0]->success_user3))
-     @if(decrypt(session('login_ID')) == $end[$key][0]->success_user3)
-       <div class="nak_sunwe">
-       순위 3위
-       </div>
-     @endif
-     @endif
+       @if(!Empty($end[$key][0]->success_user3))
+       @if(decrypt(session('login_ID')) == $end[$key][0]->success_user3)
+         <div class="nak_sunwe">
+         순위 3위
+         </div>
+       @endif
+       @endif
 
-     @if(!Empty($end[$key][0]->success_user4))
-     @if(decrypt(session('login_ID')) == $end[$key][0]->success_user4)
-       <div class="nak_sunwe">
-       순위 4위
-       </div>
-     @endif
-     @endif
+       @if(!Empty($end[$key][0]->success_user4))
+       @if(decrypt(session('login_ID')) == $end[$key][0]->success_user4)
+         <div class="nak_sunwe">
+         순위 4위
+         </div>
+       @endif
+       @endif
 
-     @if(!Empty($end[$key][0]->success_user5))
-     @if(decrypt(session('login_ID')) == $end[$key][0]->success_user5)
-       <div class="nak_sunwe">
-       순위 5위
-       </div>
-     @endif
-     @endif
+       @if(!Empty($end[$key][0]->success_user5))
+       @if(decrypt(session('login_ID')) == $end[$key][0]->success_user5)
+         <div class="nak_sunwe">
+         순위 5위
+         </div>
+       @endif
+       @endif
 
-      @endif
-      @else
+    @endif
+  @else
       <div class="nakchalgood">
         낙찰에 실패했습니다.
       </div>
 
-      @endif
+  @endif
      </div>
 
      <div class="">
        <button class="close" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button">돌아가기</button>
-       <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
        <a href="/remove_enditem/{{$value->item_number}}/{{session('login_ID')}}">  <button class="" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button" >포기하기</button></a>
      </div>
    </div>
@@ -342,7 +342,7 @@ $(function(){
 
      <div class="">
        <button class="close2" id="del_per2" onclick="modal_out_mys({{$value->item_number}})" type="button" name="button" >돌아가기</button>
-       <button class="" id="del_per" type="button" name="button" >쪽지하기</button>
+       <button class="" id="del_per" type="button" name="button"onclick="location.href='/end/{{$value->item_number}}'" >거래완료하기</button>
      </div>
    @else
      안타깝게도 경매 참여자가 없어 유찰되었습니다.

@@ -34,6 +34,7 @@ class Item extends Model
       'remember_token',
       'visit_count',
       'seller_id',
-      'like'
+      'like',
+      'item_st'
     ];
 }

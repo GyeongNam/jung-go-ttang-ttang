@@ -119,6 +119,7 @@ Route::get('/product-Modify', 'ItemController@sending_num');
 Route::get('/commentlike/{comment_num}', 'ItemController@commentlike')->middleware('login');
 Route::get('/wish_lst', 'ItemController@favorite_item')->middleware('login');
 Route::get('/wish_list', 'ItemController@wish_itempg')->middleware('login');
+Route::get('/end/{item_number}', 'ItemController@end_action')->middleware('login');
 
 
 // auction Controller

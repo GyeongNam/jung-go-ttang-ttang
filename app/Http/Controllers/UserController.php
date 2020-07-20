@@ -74,7 +74,7 @@ class UserController extends Controller
 
   public function logout(Request $request){
     session()->forget('login_ID');
-
+    return redirect('/');
   }
 
   public function mypage(Request $request){

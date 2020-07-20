@@ -21,6 +21,7 @@ class Enditem extends Model
     'buyer',
     'success_date',
     'end_num',
+    'enditem_st',
     'created_at'
   ];
 }
