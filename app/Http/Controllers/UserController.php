@@ -74,7 +74,7 @@ class UserController extends Controller
 
   public function logout(Request $request){
     session()->forget('login_ID');
-    return redirect('/');
+
   }
 
   public function mypage(Request $request){
@@ -177,7 +177,7 @@ class UserController extends Controller
     $data = User::where(['id'=>$ids])->update([
       'password' => $request->input('PW')
     ]);
-    return view('main');
+    return redirect('/');
   }
 
   public function manager(Request $request){
