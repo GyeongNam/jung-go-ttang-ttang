@@ -121,9 +121,7 @@ $(function(){
            @else
            @if (!Empty($end[$key][0]->buyer))
              @if (decrypt(session('login_ID')) == $end[$key][0]->buyer)
-               <td class="yesorno">
-                 <span>O</span>
-               </td>
+
              @elseif($end[$key][0]->buyer == null)
              <td class="yesorno">
                X

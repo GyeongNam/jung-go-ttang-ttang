@@ -483,10 +483,10 @@ function commentliketoggles(data) {
                   })
                   </script>
                   <a href="/bidding-info/{{$myproduct[0]->item_number}}"><button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </button></a>
-                  <button class="wjsghk"type="button" name="callseller">연락하기</button>
+                  {{-- <button class="wjsghk"type="button" name="callseller">연락하기</button> --}}
                 @else
                   <a href="/bidding-info/{{$myproduct[0]->item_number}}"><button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </button></a>
-                  <button class="wjsghk"type="button" name="callseller">연락하기</button>
+                  {{-- <button class="wjsghk"type="button" name="callseller">연락하기</button> --}}
                 @endif
               @endif
             </div>
@@ -505,9 +505,14 @@ function commentliketoggles(data) {
                 <a href="#"><img src=""></a>
                 <div class="seller_profile">
                   <div class="name_pdt">
+                    @if(!empty($data[0]->user_image))
                     <img class="seller_img" name="" src="/img/user/{{$data[0]->user_image}}" alt="">
-                    <a class="seller_name_link" name="" href="#">{{$myproduct[0]->seller_id}}</a>
-                    <a class="productrottn" name="" href="#">상품 2</a>
+                    @else
+                    <img class="seller_img" name="" src="/img/mp_img.png" alt="">
+                    @endif
+                    <span class="seller_name_link" name="">
+                      {{$myproduct[0]->seller_id}}
+                    </span>
                   </div>
                 </div>
               </div>
