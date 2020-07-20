@@ -143,7 +143,7 @@ deleteCookie('pop');
       <a href="#woman">여성의류</a>
       <a href="#fashion">패션잡화</a>
       <a href="#beauty">뷰티미용</a>
-      <a href="#mobile">모바일</a>
+      <a href="#mobile">모바일/태블릿</a>
       <a href="#Elec_products">가전제품</a>
       <a href="#laptop">노트북/PC</a>
     </div>
@@ -273,7 +273,7 @@ deleteCookie('pop');
       </div>
       <div class="item_list">
         <div class="list_hd">
-          <h2 id="mobile">모바일 <a href="/manclothing?id=모바일">전체보기</a></h2>
+          <h2 id="mobile">모바일/태블릿 <a href="/manclothing?id=모바일/태블릿">전체보기</a></h2>
         </div>
         @foreach ($catej as $key => $value)
           @if($key < 10)

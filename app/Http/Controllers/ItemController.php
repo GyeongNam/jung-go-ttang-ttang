@@ -222,7 +222,7 @@ class ItemController extends Controller
     $catef=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'여성의류'])->get();
     $categ=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'패션잡화'])->get();
     $cateh=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'뷰티미용'])->get();
-    $catej=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'모바일'])->get();
+    $catej=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'모바일/태블릿'])->get();
     $catek=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'가전제품'])->get();
     $catel=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'노트북/PC'])->get();
     return view('/main', [
