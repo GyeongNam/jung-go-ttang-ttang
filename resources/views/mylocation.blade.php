@@ -55,7 +55,7 @@ $(document).ready(function(){
       // 지도에 표시할 원을 생성합니다
       var circle = new kakao.maps.Circle({
         center :locPosition,  // 원의 중심좌표 입니다
-        radius: 3000, // 미터 단위의 원의 반지름입니다
+        radius: 1000, // 미터 단위의 원의 반지름입니다
         strokeWeight: 5, // 선의 두께입니다
         strokeColor: '#75B8FA', // 선의 색깔입니다
         strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
@@ -189,17 +189,56 @@ $(document).ready(function(){
           // 마커 위에 인포윈도우를 표시합니다
           infowindow.open(map, marker);
         });
-        var radius = 3000;
+        // var radius = 1000;
 
-        $("input:radio[name=chk_km]").click(function(){
-          if ($("input:radio[name=chk_km]").val() == "1km") {
+        $("input:radio[name=chk_km]").change(function(){
+          if ($('input:radio[name=chk_km]:checked').val() == "liikm") {
+            var radius = 1000;
+            var circle = new kakao.maps.Circle({
+              center :locPosition,  // 원의 중심좌표 입니다
+              radius: 1000, // 미터 단위의 원의 반지름입니다
+              strokeWeight: 5, // 선의 두께입니다
+              strokeColor: '#75B8FA', // 선의 색깔입니다
+              strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+              strokeStyle: 'dashed', // 선의 스타일 입니다
+              // fillColor: '#CFE7FF', // 채우기 색깔입니다
+              // fillOpacity: 0.7  // 채우기 불투명도 입니다
+            });
+            // 지도에 원을 표시합니다
+            circle.setMap(map);
+          }
+          if($('input:radio[name=chk_km]:checked').val() == "samkm") {
             var radius = 3000;
+            var circle = new kakao.maps.Circle({
+              center :locPosition,  // 원의 중심좌표 입니다
+              radius: 3000, // 미터 단위의 원의 반지름입니다
+              strokeWeight: 5, // 선의 두께입니다
+              strokeColor: '#75B8FA', // 선의 색깔입니다
+              strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+              strokeStyle: 'dashed', // 선의 스타일 입니다
+              // fillColor: '#CFE7FF', // 채우기 색깔입니다
+              // fillOpacity: 0.7  // 채우기 불투명도 입니다
+            });
+            // 지도에 원을 표시합니다
+            circle.setMap(map);
           }
-          else if($("input:radio[name=chk_km]").val() == "3km") {
-            var radius = 4000;
-          }
-          else if($("input:radio[name=chk_km]").val() == "5km") {
+          if($('input:radio[name=chk_km]:checked').val() == "okm") {
             var radius = 5000;
+            var circle = new kakao.maps.Circle({
+              center :locPosition,  // 원의 중심좌표 입니다
+              radius: 5000, // 미터 단위의 원의 반지름입니다
+              strokeWeight: 5, // 선의 두께입니다
+              strokeColor: '#75B8FA', // 선의 색깔입니다
+              strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+              strokeStyle: 'dashed', // 선의 스타일 입니다
+              // fillColor: '#CFE7FF', // 채우기 색깔입니다
+              // fillOpacity: 0.7  // 채우기 불투명도 입니다
+            });
+            // 지도에 원을 표시합니다
+            circle.setMap(map);
+          }
+          if($('input:radio[name=chk_km]:checked').val() == "all_maker") {
+            var radius = 100000;
           }
           console.log(radius);
           // 상품을 표시할 원의 반경 미터
@@ -246,9 +285,9 @@ $(document).ready(function(){
 @foreach($road as $key => $value)
 <input  id="maparry{{$value->item_number}}" class ="maparry" type="hidden"  value="{{$value->roadAddress}}">
 @endforeach
-<input class="illkm" type="radio" name="chk_km" value="1km">1km
-<input class="samkm" type="radio" name="chk_km" value="3km" checked="checked">3km
-<input class="okm" type="radio" name="chk_km" value="5km">5km
+<input class="illkm" type="radio" name="chk_km" value="liikm" checked="checked">1km
+<input class="samkm" type="radio" name="chk_km" value="samkm">3km
+<input class="okm" type="radio" name="chk_km" value="okm">5km
 <input class="allkm" type="radio" name="chk_km" value="all_maker">모두보기
 <div id="map">
   <div class="wa d">

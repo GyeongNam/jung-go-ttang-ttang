@@ -5,12 +5,13 @@ a {
 
 /* map API */
 #map {
-  width:50%;
+  width:60%;
   height:400px;
   clear:both;
   z-index: 0;
 }
 .mapst{
+  width:15rem;
   padding: 1.5rem 1rem;
 }
 .locationmy{
