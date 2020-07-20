@@ -104,15 +104,17 @@ $(function(){
              <span>진행중</span>
            </td>
            @else
-         <td width="20%">
-             경매종료
-             <div>
-               <button type="button" id="bid_info_btn" class="bid_info_btn" onclick="modal_mya({{$value->item_number}})" name="button">낙찰정보 확인</button>
-             </div>
-         </td>
-       @endif
+             <td width = "20%">
+               <span>경매종료</span>
+             </td>
+             <td width="20%">
+                 <div>
+                   <button type="button" id="bid_info_btn" class="bid_info_btn" onclick="modal_mya({{$value->item_number}})" name="button">낙찰정보 확인</button>
+                 </div>
+             </td>
+          @endif
 
-        @if ($value->item_success == 1)
+          @if($value->item_success == 1)
              <td class="yesorno">
                낙찰진행중
              </td>

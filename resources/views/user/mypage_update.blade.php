@@ -27,7 +27,8 @@
           <div class="mp_img">
             <label for="">프로필사진 변경</label><br>
             <img id="img_click" src="/img/mp_img.png">
-            <input class="" type="file" name="user_image" multiple="multiple" accept=".png, .jpg, .jpeg, .gif">
+            <input class="" type="file" name="user_image" accept=".png, .jpg, .jpeg, .gif">
+
           </div>
         </div>
 
@@ -38,8 +39,8 @@
                 <label>이메일</label><br>
               </div>
               <div class="mp_e">
-                <input type="text" class="mp_data_e" name="str_email01" id="str_email01" value="{{$data[0]->EMAIL}}" >
-                <input type="text" class="mp_data_e" name="str_email02" id="str_email02" value="{{$data[0]->EMAIL_DOMAIN}}">
+                <input type="text" class="mp_data_e" name="str_email01" id="str_email01" value={{$data[0]->EMAIL}}>
+                <input type="text" class="mp_data_e" name="str_email02" id="str_email02" value={{$data[0]->EMAIL_DOMAIN}}>
                 <select name="str_email03" class="mp_data_e" id="selectEmail">
                   <option value="1">직접입력</option>
                   <option value="naver.com" selected>naver.com</option>
@@ -99,7 +100,6 @@
             </div>
           </div>
         </div>
-
       </form>
     </div>
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
