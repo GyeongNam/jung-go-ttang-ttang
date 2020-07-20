@@ -318,21 +318,21 @@ public function qnacont(Request $qna_number,$id){
      'dimensions'=>'ga:contentGroup1'
    ]
  );
-
-  $ta2 =Arr::get($analyticsData1,'rows.1');
-  $ta3 =Arr::get($analyticsData1,'rows.2');
-  $ta4 =Arr::get($analyticsData1,'rows.3');
-  $ta5 =Arr::get($analyticsData1,'rows.4');
-  $ta6 =Arr::get($analyticsData1,'rows.5');
-  $ta7 =Arr::get($analyticsData1,'rows.6');
-  $ta8 =Arr::get($analyticsData1,'rows.7');
-  $ta9 =Arr::get($analyticsData1,'rows.8');
-  $ta10 =Arr::get($analyticsData1,'rows.9');
-  $ta11 =Arr::get($analyticsData1,'rows.10');
-  $ta12 =Arr::get($analyticsData1,'rows.11');
-  $ta13 =Arr::get($analyticsData1,'rows.12');
-  $ta14 =Arr::get($analyticsData1,'rows.13');
-  $ta15 =Arr::get($analyticsData1,'rows.14');
+  //
+  // $ta2 =Arr::get($analyticsData1,'rows.1');
+  // $ta3 =Arr::get($analyticsData1,'rows.2');
+  // $ta4 =Arr::get($analyticsData1,'rows.3');
+  // $ta5 =Arr::get($analyticsData1,'rows.4');
+  // $ta6 =Arr::get($analyticsData1,'rows.5');
+  // $ta7 =Arr::get($analyticsData1,'rows.6');
+  // $ta8 =Arr::get($analyticsData1,'rows.7');
+  // $ta9 =Arr::get($analyticsData1,'rows.8');
+  // $ta10 =Arr::get($analyticsData1,'rows.9');
+  // $ta11 =Arr::get($analyticsData1,'rows.10');
+  // $ta12 =Arr::get($analyticsData1,'rows.11');
+  // $ta13 =Arr::get($analyticsData1,'rows.12');
+  // $ta14 =Arr::get($analyticsData1,'rows.13');
+  // $ta15 =Arr::get($analyticsData1,'rows.14');
 
 $ana=Analytics::performQuery(Period::days(29),'ga:sessions',
 [
@@ -342,11 +342,11 @@ $ana=Analytics::performQuery(Period::days(29),'ga:sessions',
   'max-results'=>'5'
 ]);
 
-$ana1=Arr::get($ana,'rows.0');
-$ana2=Arr::get($ana,'rows.1');
-$ana3=Arr::get($ana,'rows.2');
-$ana4=Arr::get($ana,'rows.3');
-$ana5=Arr::get($ana,'rows.4');
+// $ana1=Arr::get($ana,'rows.0');
+// $ana2=Arr::get($ana,'rows.1');
+// $ana3=Arr::get($ana,'rows.2');
+// $ana4=Arr::get($ana,'rows.3');
+// $ana5=Arr::get($ana,'rows.4');
 
 
 
