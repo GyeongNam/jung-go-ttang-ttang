@@ -262,6 +262,7 @@ class ItemController extends Controller
     $Auction = Auction::join('items', 'items.item_number','=', 'auction.auction_itemnum')->select('*')->where(['buyer_ID'=>decrypt($id)])->get();
 
     $end = collect([]);
+    $buyer = collect([]);
     $users = collect([]);
     $sp1 =collect([]);
     $sp2 =collect([]);
@@ -278,6 +279,7 @@ class ItemController extends Controller
       $sp3->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price3')->where(['end_num'=>$myStat[$i]->item_number])->get());
       $sp4->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price4')->where(['end_num'=>$myStat[$i]->item_number])->get());
       $sp5->push(Enditem::select('item_price','buyer_ID')->join('auction', 'auction.item_price', '=', 'enditem.success_price5')->where(['end_num'=>$myStat[$i]->item_number])->get());
+      $buyer ->push(Enditem::select('*')->where(['end_num'=>$myStat[$i]->item_number])->get());
     }
 
     for($j=0; $j<count($Auction); $j++){
@@ -302,7 +304,8 @@ class ItemController extends Controller
       'rank2' => $sp2,
       'rank3' => $sp3,
       'rank4' => $sp4,
-      'rank5' => $sp5
+      'rank5' => $sp5,
+      'buyer' => $buyer
       // 'maxs'=>$maxs
     ]);
   }

@@ -331,9 +331,9 @@ $(function(){
          @endif
          </div>
          <div class="nak_p">
-           당첨자:@if(!Empty($rank1[$key][0])) {{$rank1[$key][0]->buyer_ID}} @endif
+           현재 낙찰자:@if(!Empty($buyer[$key][0])) {{$buyer[$key][0]->buyer}} @endif
          </div>
-         <span class="nak_p_lab">
+         {{-- <span class="nak_p_lab">
            낙찰가:
          </span>
          <span class="nak_p_lab">
@@ -343,7 +343,7 @@ $(function(){
          </span>
          <span class="nak_p_lab">
             원
-         </span>
+         </span> --}}
          <div>
          현재 낙찰자에게 쪽지하세요!
        </div>
