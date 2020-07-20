@@ -122,18 +122,11 @@ $(function(){
                <td class="yesorno">
                  <span>O</span>
                </td>
-             @else
+             @elseif($end[$key][0]->buyer == null)
              <td class="yesorno">
                X
              </td>
-           @endif
-
-           @if($end[$key][0]->buyer == null)
-           <td class="yesorno">
-             X
-           </td>
-         @endif
-
+          @endif
         @endif
       @endif
        </tbody>
@@ -153,7 +146,7 @@ $(function(){
            <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
            </td>
            <td width="30%">
-               {{ number_format($value->item_price)}} 원
+               {{ number_format($value->item_startprice)}} 원
            </td>
            @if ($value->item_success == 1 )
            <td width = "20%">

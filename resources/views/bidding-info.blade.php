@@ -16,7 +16,7 @@
        var price=$(".bd_price1").attr("value");
        var bidprice=$(".bid_name").val();
        var num = Number(price);
-       if( bidprice < num){
+       if( bidprice <= num){
          alert("낙찰가를 제대로 입력해 주세요");
          return false;
        }
@@ -99,7 +99,7 @@
           <div class="bd_price">
             <span>현재가격:</span>
             @if ($max==0)
-            <span class="bd_stprice1" name="money1" >{{number_format($sendd[0]->item_startprice)}}</span>
+            <span class="bd_price1" value="{{$sendd[0]->item_startprice}}">{{number_format($sendd[0]->item_startprice)}}</span>
             @else
             <span class="bd_price1" value="{{$max}}">{{ number_format($max)}}</span>
             @endif

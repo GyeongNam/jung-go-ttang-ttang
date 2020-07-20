@@ -26,17 +26,7 @@
 
 
 </head>
-<script>
 
-$(function() {
-  $(".trhover").hover(function(){
-    $(this).css("background-color","rgb(176, 207, 209)");
-  }, function(){
-    $(this).css("background-color","rgb(255, 255, 255)");
-  });
-});
-
-</script>
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -208,7 +198,7 @@ $(function() {
                 <div class="table-responsive">
 
 
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
+                  <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0" >
                     <thead>
                       <tr >
                         <th>상품번호</th>
@@ -222,7 +212,7 @@ $(function() {
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($item_join as $key => $value)
+                      @foreach ($item_joins as $key => $value)
 
                       <tr style="cursor:pointer;" class="trhover">
                         <td onclick="location.href='/manager_item_info/{{$value->item_number}}'">
@@ -245,7 +235,7 @@ $(function() {
                           {{$value->created_at}}</td>
                         <td onclick="location.href='/manager_item_info/{{$value->item_number}}'">
                           {{$value->item_deadline}}</td>
-                        @if ($value->item_success !=0)
+                        @if ($value->item_success ==0)
                         <td onclick="location.href='/manager_item_info/{{$value->item_number}}'">낙찰완료</td>
                         @else
                         <td onclick="location.href='/manager_item_info/{{$value->item_number}}'">진행중</td>
