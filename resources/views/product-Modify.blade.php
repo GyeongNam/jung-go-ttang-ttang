@@ -145,9 +145,8 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
               <span><strong>*</strong></span>상품이름
             </div>
             <div class="p_info">
-              <input class="p_name input" type="text" name="product_name"  placeholder="상품명은 필수입력입니다!" required>
+              <input class="p_name input" type="text" name="product_name" value={{$item[0]->item_name}}  placeholder="상품명은 필수입력입니다!" required>
             </div>
-
           </div>
         </li>
 
@@ -157,7 +156,7 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
               제조사
             </div>
             <div class="p_info">
-              <input class="p_maker input" type="text" name="product_maker"  placeholder="(선택 입력)">
+              <input class="p_maker input" type="text" name="product_maker" value={{$item[0]->item_maker}}  placeholder="(선택 입력)">
             </div>
           </div>
         </li>
@@ -167,7 +166,7 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
               구매일
             </div>
             <div class="p_info">
-              <input class="p_buyday" type="date" name="product_buy">
+              <input class="p_buyday" type="date" name="product_buy" value={{$item[0]->item_buy}}>
             </div>
           </div>
         </li>
@@ -178,7 +177,7 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
             </div>
             <div class="p_info">
               <select class="p_category" name="product_category" required>
-                <option value="">선택하세요</option>
+                <option value="{{$item[0]->item_category}}">{{$item[0]->item_category}}</option>
                 <option value="남성의류">남성의류</option>
                 <option value="여성의류">여성의류</option>
                 <option value="패션잡화">패션잡화</option>
@@ -204,6 +203,11 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
             </div>
             <div class="p_info" name="open">
               <select class="ss" name="select_state">
+                @if($item[0]->item_open == 1)
+                <option value={{$item[0]->item_open}}>개봉</option>
+                @else
+                <option value={{$item[0]->item_open}}>미개봉</option>
+                @endif
                 <option value=1>개봉</option>
                 <option value="0">미개봉</option>
               </select>
@@ -218,7 +222,7 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
               <span><strong>*</strong></span>경매 마감일자
             </div>
             <div class="p_info">
-                            <input id="datepicker" class="p_last_day" type="datepicker" name="Auction_last_time" value=""  required>
+              <input id="datepicker" class="p_last_day" type="datepicker" name="Auction_last_time" value={{$item[0]->item_deadline}} required>
             </div>
           </div>
         </li>
@@ -228,7 +232,7 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
               <span><strong>*</strong></span>경매 시작가
             </div>
             <div class="p_info">
-              <input class="p_startprice input" type="number" name="Auction_start" id="price" onKeyup="chackprice()" placeholder="경매 시작가 최소 가격은 500원 부터 입니다!" required>
+              <input class="p_startprice input" type="number" name="Auction_start" id="price" onKeyup="chackprice()" value={{$item[0]->item_startprice}} readonly>
               <p id="s_reprice1"></p>
             </div>
           </div>
@@ -237,11 +241,11 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
               <span><strong>*</strong></span>직거래 주소 입력
             </div>
             <div class="p_info">
-              <input class="juso" type="text" id="sample4_postcode" name="sample4_postcode" placeholder="우편번호">
+              <input class="juso" type="text" id="sample4_postcode" name="sample4_postcode" value={{$item[0]->postcode}}  placeholder="우편번호">
               <input type="button" id="sample4_doro" name="sample4_doro" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-              <input class="juso" type="text" id="sample4_roadAddress" name="sample4_roadAddress" placeholder="도로명주소"><br>
-              <input class="juso" type="text" id="sample4_jibunAddress" name="sample4_jibunAddress" placeholder="지번주소"><br>
-              <input class="juso" type="text" id="sample4_Address_detail" name="sample4_doro_detail" placeholder="상세주소 입력">
+              <input class="juso" type="text" id="sample4_roadAddress" name="sample4_roadAddress" value='{{$item[0]->roadAddress}}' placeholder="도로명주소"><br>
+              <input class="juso" type="text" id="sample4_jibunAddress" name="sample4_jibunAddress" value='{{$item[0]->jibunAddress}}' placeholder="지번주소"><br>
+              <input class="juso" type="text" id="sample4_Address_detail" name="sample4_doro_detail" value='{{$item[0]->Address_detail}}' placeholder="상세주소 입력">
               <span id="guide" style="color:#999"></span>
             </div>
           </div>
@@ -260,7 +264,7 @@ $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
                         <p>썸네일 이미지</p>
                       </div>
                       <div class="thumbnail_img">
-                        <input type="file" name="item_picture" id="imageup" accept="image/*" onchange="previewImage(this preview);" required/>
+                        <input type="file" name="item_picture" id="imageup" accept="image/*" onchange="previewImage(this preview);" />
                         <!-- accept 속성 : 특정 확장자를 지정하거나 미디어 타입을 지정하는 방법-->
                       </div>
                       <div class="" id="preview"></div>
