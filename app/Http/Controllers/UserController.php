@@ -356,17 +356,17 @@ $ana=Analytics::performQuery(Period::days(29),'ga:sessions',
        'dat'=>$dat,
        'dat1'=>$dat1,
        'dat2'=>$dat2,
-       'calander'=>$calander,
-       'ta2'=>$ta2,'ta3'=>$ta3,
-       'ta4'=>$ta4,'ta5'=>$ta5,
-       'ta6'=>$ta6,'ta7'=>$ta7,
-       'ta8'=>$ta8,'ta9'=>$ta9,
-       'ta11'=>$ta11,'ta10'=>$ta10,
-       'ta12'=>$ta12,'ta13'=>$ta13,
-       'ta14'=>$ta14,'ta15'=>$ta15,
-       'ana1'=>$ana1,'ana2'=>$ana2,
-       'ana3'=>$ana3, 'ana4'=>$ana4,
-       'ana5'=>$ana5
+       'calander'=>$calander
+       // 'ta2'=>$ta2,'ta3'=>$ta3,
+       // 'ta4'=>$ta4,'ta5'=>$ta5,
+       // 'ta6'=>$ta6,'ta7'=>$ta7,
+       // 'ta8'=>$ta8,'ta9'=>$ta9,
+       // 'ta11'=>$ta11,'ta10'=>$ta10,
+       // 'ta12'=>$ta12,'ta13'=>$ta13,
+       // 'ta14'=>$ta14,'ta15'=>$ta15,
+       // 'ana1'=>$ana1,'ana2'=>$ana2,
+       // 'ana3'=>$ana3, 'ana4'=>$ana4,
+       // 'ana5'=>$ana5
      ]);
    }
     public function policy(Request $request){
