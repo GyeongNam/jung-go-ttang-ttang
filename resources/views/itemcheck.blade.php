@@ -353,8 +353,9 @@ $(function(){
    @endif
    </div>
  </div>
- @endforeach
+
 </div>
+ @endforeach
  {{-- <script type="text/javascript">
  var modal = document.getElementById("bidmyModal");
  var btn = document.getElementById("bid_info_btn");
