@@ -18,6 +18,10 @@
               <table id="qnat">
                 <thead>
                   <tr>
+                    <th scope="row">글번호</th>
+                    <td>{{$qnat[0]->qna_number}}</td>
+                  </tr>
+                  <tr>
                     <th scope="row">제목</th>
                     <td>{{$qnat[0]->qna_title}}</td>
                   </tr>
@@ -36,7 +40,10 @@
                     <div class="detail_text">
                       {{$qnat[0]->qna_text}}
                     </div>
-                    <button class="qnadel" type="button" name="button">삭제하기</button>
+                    <form class="" action="/qnadelete/{{$qnat[0]->qna_number}}" method="post" enctype="multipart/form-data">
+                      @csrf
+                      <button class="del_comment" type="submit" name="button">삭제하기</button>
+                    </form>
                     <button class="qnamody" type="button" name="button">수정하기</button>
                     <button class="qnalist" type="button" name="button" onClick="location.href='/Servicecenter'">목록으로</button>
                   </td>

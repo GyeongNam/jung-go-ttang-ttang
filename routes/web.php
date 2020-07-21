@@ -91,6 +91,7 @@ Route::post('/user_pwd_update/{id}','UserController@user_pwd_update');
 Route::get('/Servicecenter','UserController@qna')->name('Servicecenter1');
 Route::get('/qna11','UserController@qna1');
 Route::post('/qna_contents/{qna_number}','UserController@qnacont');
+Route::post('/qnadelete/{qna_number}','UserController@qna_delete');
 
 
 

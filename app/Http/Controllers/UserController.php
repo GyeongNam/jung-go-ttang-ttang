@@ -278,7 +278,10 @@ class UserController extends Controller
     }
 
   }
-
+  public function qna_delete(Request $request,$qna_number){
+    DB::table('qna')->where(['qna_number'=>$qna_number])->delete();
+    return redirect('/Servicecenter');
+  }
   public function ban(Request $request,$id){
     $date_de = DB::table('bantime')->select('ban_enddate')->where(['user_id'=>$id])->get();
     $rede =  strtotime(date("Y-m-d"));
