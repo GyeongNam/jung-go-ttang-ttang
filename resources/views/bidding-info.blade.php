@@ -20,14 +20,12 @@
          alert("낙찰가를 제대로 입력해 주세요");
          return false;
        }
-       else {
-        var bid_test = confirm("낙찰을 하시겠습니까?");
-         if (bid_test == true) {
-              $("#popup").fadeIn();
-              $(".exit").click(function(){
-                $("#popup").fadeOut();
-              });
-         }
+       else
+       {
+          $("#popup").fadeIn();
+          $(".exit").click(function(){
+            $("#popup").fadeOut();
+          });
        };
      });
    });
@@ -60,9 +58,9 @@
       @csrf
         <div id ="popup">
           <div id="popmenu">
-            <h1>입찰완료</h1>
+            <h1>입찰확인</h1>
             <hr>
-            <p class="po1"><h2>입찰이 정상적으로 완료되었습니다.</h2></p>
+            <p class="po1"><h2>입찰 하시겠습니까?.</h2></p>
             <hr>
             <p><h2>
               <span>입찰금액:</span>
@@ -75,7 +73,7 @@
               <span>{{$ids}}</span>
             </b></p>
             <div class="exit">
-              <button type="submit" name="button">확인</button>
+              <button type="submit" name="button">입찰</button>
               <button type="button" name="button">닫기</button>
             </div>
           </div>
@@ -122,7 +120,7 @@
             <button type="button" class="bd_but1" onclick="history.back(-1);">취소하기</button>
           </div>
           <div class="bd_button">
-            <button type="button" class="bd_but1" id="sus_but"  >입찰하기</button>
+            <button type="button" class="bd_but1" id="sus_but">입찰하기</button>
           </div>
         </div>
         </div>
