@@ -37,9 +37,17 @@
               <tbody>
                 <tr>
                   <td colspan="2">
-                    <div class="detail_text">
+                    <div style="margin:3%;">
                       {{$qnat[0]->qna_text}}
                     </div>
+                    @if ($qnat[0]->a_text == NULL)
+                    @else
+                    <hr>
+                    <div style="margin:3%;">
+                      답변:
+                        {{$qnat[0]->a_text}}
+                    </div>
+                    @endif
                     <form class="" action="/qnadelete/{{$qnat[0]->qna_number}}" method="post" enctype="multipart/form-data">
                       @csrf
                       <button class="del_comment" type="submit" name="button">삭제하기</button>

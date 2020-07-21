@@ -107,6 +107,11 @@ $(function(){
           <i class="fas fa-fw fa-table"></i>
           <span>정책관리</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/manager_qna">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Q&A관리</span></a>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

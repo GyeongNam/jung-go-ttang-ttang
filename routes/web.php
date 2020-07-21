@@ -74,6 +74,9 @@ Route::get('/sign_rull', function () {
 Route::get('/qna', function () {
     return view('qna');
 });
+Route::get('/manager_qna', function(){
+    return view('manager_qna');
+});
 // Route::get('/cahtroom', function(){
 //
 //   return view('cahtroom');
@@ -146,6 +149,9 @@ Route::get('/manager_main','UserController@graph')->middleware('manager');
 Route::get('/manager_logout','UserController@managerlogout')->middleware('manager');
 Route::get('/manager_delete','ItemController@managerdelete')->middleware('manager');
 Route::get('/manager_item_info/{item_number}',  'ItemController@iteminfo')->middleware('manager');
+Route::get('/manager_qna','UserController@managerqna')->middleware('manager');
+Route::get('/manager_qna_info/{qna_number}','UserController@managerqnainfo')->middleware('manager');
+Route::post('/qna_answer/{qna_number}','UserController@qna_answer')->middleware('manager');
 
 //fann_test
 Route::get('/sasa','ItemController@sasa');

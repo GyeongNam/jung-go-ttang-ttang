@@ -18,6 +18,8 @@ class CreateQnaTable extends Migration
             $table->string('qna_text');
             $table->string('qna_pass');
             $table->string('qna_title');
+            $table->string('a_text')->nullable();
+            $table->integer('qna_answer')->nullable();
             $table->timestamps();
             $table->rememberToken();
         });

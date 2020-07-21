@@ -416,8 +416,29 @@ class UserController extends Controller
     }
   }
 
-  public function managerlogout(Request $request){
-    session()->forget('login_ID');
-    return redirect('/manager_login');
+    public function managerlogout(Request $request){
+      session()->forget('login_ID');
+      return redirect('/manager_login');
+    }
+    public function managerqna(Request $request){
+    $qna = DB::table('qna')->select('*')->get();
+    return view('/manager_qna',[
+      'qna' => $qna
+    ]);
   }
+  public function managerqnainfo($qna_number){
+    $qna= DB::table('qna')->select('*')->where(['qna_number'=>$qna_number])->get();
+    return view('/manager_qna_info',[
+      'qna' => $qna
+    ]);
+  }
+  public function qna_answer(Request $request,$qna_number){
+    $answer= $request->input('answer1');
+    DB::table('qna')->where(['qna_number'=>$qna_number])->update([
+        'a_text'=>$answer,
+        'qna_answer'=>1
+      ]);
+      return redirect('/manager_qna_info/{qna_number}');
+  }
+
 }

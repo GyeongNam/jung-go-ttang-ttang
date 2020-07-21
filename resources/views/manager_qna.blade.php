@@ -52,7 +52,7 @@ $(function(){
 
         </div>
         <div>중고땅땅 관리자 <sup></sup></div>
-      </a>
+
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
@@ -100,7 +100,7 @@ $(function(){
       <li class="nav-item">
         <a class="nav-link" href="/manager_tok">
           <i class="fas fa-fw fa-table"></i>
-          <span>채팅관리</span></a>
+          <span>상담관리</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/manager_policy">
@@ -113,7 +113,6 @@ $(function(){
           <span>Q&A관리</span></a>
       </li>
 
-
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -124,6 +123,7 @@ $(function(){
 
     </ul>
     <!-- End of Sidebar -->
+
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -163,7 +163,6 @@ $(function(){
             </li>
 
 
-
             @if(session('login_ID') == false)
               <li><a href="/Login">Login</a></li>
               <li><a href="/sign_rull">sign up</a></li>
@@ -192,99 +191,59 @@ $(function(){
             @endif
           </ul>
 
-        </nav>
+          </nav>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- 관리자페이지 -->
+
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">방문기록페이지</h1>
+            <h1 class="h3 mb-0 text-gray-800">Q&A</h1>
 
           </div>
 
           <!-- Begin Page Content -->
           <div class="container-fluid">
 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">한달간 방문자 수</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$dat}}명</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">주간 방문자 수</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$dat2}}명</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">오늘방문자수</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$dat1}}명</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
               <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">사용자 로그인 기록</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Q&A</h6>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
+                        <th>번호</th>
                         <th>아이디</th>
-                        <th>이름</th>
-                        <th>로그인기록</th>
+                        <th>등록일</th>
+                        <th>제목</th>
+                        <th>확인</th>
                       </tr>
                     </thead>
+
                     <tbody>
-                      <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
-                        @foreach ($calander as $key => $value)
-                        <td>{{$value->id}}</td>
-                        <td>{{$value->name}}</td>
-                        <td>{{$value->updated_at}}</td>
+                      @foreach ($qna as $key => $value)
+                      <tr onclick="location.href='/manager_qna_info/{{$value->qna_number}}'" style="cursor:pointer;" class="trhover">
+                        <td>{{$value->qna_number}}</td>
+                        <td>{{$value->qna_id}}</td>
+                        <td>{{$value->created_at}}</td>
+                        <td>{{$value->qna_title}}</td>
+                        @if ($value->qna_answer == 0)
+                          <td>답변대기</td>
+                        @else
+                          <td>답변완료</td>
+                        @endif
                       </tr>
-                      @endforeach
+                    @endforeach
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
-
 
           </div>
           <!-- /.container-fluid -->

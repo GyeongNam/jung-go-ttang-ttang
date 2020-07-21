@@ -107,6 +107,11 @@ $(function(){
           <i class="fas fa-fw fa-table"></i>
           <span>정책관리</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/manager_qna">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Q&A관리</span></a>
+      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
@@ -193,7 +198,7 @@ $(function(){
         <div class="container-fluid">
 
           <!-- 관리자페이지 -->
-          
+
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">회원관리</h1>
 

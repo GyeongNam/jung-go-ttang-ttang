@@ -24,20 +24,17 @@
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script>
 
+  <script>
 
+
+
+
+
+
+  </script>
 
 </head>
-<script>
 
-$(function(){
-  $(".trhover").hover(function(){
-    $(this).css("background-color","rgb(176, 207, 209)");
-  }, function(){
-    $(this).css("background-color","rgb(255, 255, 255)");
-  });
-});
-
-</script>
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -100,7 +97,7 @@ $(function(){
       <li class="nav-item">
         <a class="nav-link" href="/manager_tok">
           <i class="fas fa-fw fa-table"></i>
-          <span>채팅관리</span></a>
+          <span>상담관리</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/manager_policy">
@@ -113,7 +110,6 @@ $(function(){
           <span>Q&A관리</span></a>
       </li>
 
-
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
@@ -124,6 +120,7 @@ $(function(){
 
     </ul>
     <!-- End of Sidebar -->
+
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -163,7 +160,6 @@ $(function(){
             </li>
 
 
-
             @if(session('login_ID') == false)
               <li><a href="/Login">Login</a></li>
               <li><a href="/sign_rull">sign up</a></li>
@@ -192,7 +188,7 @@ $(function(){
             @endif
           </ul>
 
-        </nav>
+          </nav>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -200,96 +196,71 @@ $(function(){
 
           <!-- 관리자페이지 -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">방문기록페이지</h1>
-
+            <h1 class="h3 mb-0 text-gray-800">회원관리</h1>
           </div>
 
-          <!-- Begin Page Content -->
-          <div class="container-fluid">
 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">한달간 방문자 수</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$dat}}명</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+
+
+          {{-- 인터페이스 시작 --}}
+
+          <div class="tableset">
+            <div class="table1">
+              <h4>Q&A정보</h4>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#staticBackdrop" id="warn_but" name="button1" style="float:right;" >
+                답변하기
+              </button>
+              {{-- 모델 --}}
+                <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">답변하기</h5>
+                        <button type="button" class="close" data-dismiss="modal"  name="button1" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                    <form action="/qna_answer/{{$qna[0]->qna_number}}" method="post">
+                        @csrf
+                      <div class="modal-body">
+                          <textarea name='answer1' class="form-control col-sm-10" rows="5"></textarea>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                        <input type="hidden" name='item_number' class="form-control">
+                        <button type="submit" class="btn btn-primary">답변하기</button>
+                        </form>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+                {{-- 모델끝 --}}
 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">주간 방문자 수</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$dat2}}명</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              <table class="table-bordered table table-hover table-responsive"  style="width:40%;" >
+                <tr>
+                  <th>번호</th>
+                  <td>{{$qna[0]->qna_number}}</td>
+                </tr>
+                <tr>
+                  <th style="width:10%;">아이디</th>
+                  <td style="width:20%;">{{$qna[0]->qna_id}}</td>
+                </tr>
+                <tr>
+                  <th>제목</th>
+                  <td>{{$qna[0]->qna_title}}
+                </tr>
+                <tr>
+                  <th>내용</th>
+                  <td>{{$qna[0]->qna_text}}</td>
+                </tr>
+                <tr>
+                  <th>답변</th>
+                  <td>{{$qna[0]->a_text}}</td>
+                </tr>
 
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">오늘방문자수</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{$dat1}}명</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">사용자 로그인 기록</h6>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                      <tr>
-                        <th>아이디</th>
-                        <th>이름</th>
-                        <th>로그인기록</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
-                        @foreach ($calander as $key => $value)
-                        <td>{{$value->id}}</td>
-                        <td>{{$value->name}}</td>
-                        <td>{{$value->updated_at}}</td>
-                      </tr>
-                      @endforeach
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-
+            </table>
 
           </div>
-          <!-- /.container-fluid -->
-
-        </div>
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
           <div class="container my-auto">
