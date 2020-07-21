@@ -282,6 +282,27 @@ class UserController extends Controller
     DB::table('qna')->where(['qna_number'=>$qna_number])->delete();
     return redirect('/Servicecenter');
   }
+  public function qna_sending(Request $request){
+    $sending = $request->input('qna_key');
+    $qna= Qna::select('*')->where(['qna_number'=>$sending])->get();
+    return view('/qna-modify',[
+      'sending'=>$sending,
+      'qna'=>$qna
+    ]);
+  }
+  public function qna_modify(Request $request){
+    $upup= $request->input('upup');
+    $id = session()->get('login_ID');
+    $qna=Qna::select('*')->where(['qna_number'=>$upup])->first();
+
+    $update=Qna::where(['qna_number'=>$upup])->update([
+      'qna_text'=>$request->input('qnatext'),
+      'qna_pass'=>$request->input('qnapass'),
+      'qna_title'=>$request->input('qnatitle')
+    ]);
+    return redirect('/');
+  }
+  
   public function ban(Request $request,$id){
     $date_de = DB::table('bantime')->select('ban_enddate')->where(['user_id'=>$id])->get();
     $rede =  strtotime(date("Y-m-d"));

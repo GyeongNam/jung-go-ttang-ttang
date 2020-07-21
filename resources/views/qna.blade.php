@@ -52,7 +52,11 @@
                       @csrf
                       <button class="del_comment" type="submit" name="button">삭제하기</button>
                     </form>
-                    <button class="qnamody" type="button" name="button">수정하기</button>
+                    <form class="" action="{{url('/qna-modify')}}" method="get">
+                      @csrf
+                      <input type="hidden" name="qna_key" value="{{$qnat[0]->qna_number}}">
+                      <button class="qnamody" type="submit" name="button">수정하기</button>
+                    </form>
                     <button class="qnalist" type="button" name="button" onClick="location.href='/Servicecenter'">목록으로</button>
                   </td>
                 </tr>

@@ -77,6 +77,9 @@ Route::get('/qna', function () {
 Route::get('/manager_qna', function(){
     return view('manager_qna');
 });
+Route::get('/qna-modify', function () {
+    return view('qna-modify');
+});
 // Route::get('/cahtroom', function(){
 //
 //   return view('cahtroom');
@@ -95,7 +98,8 @@ Route::get('/Servicecenter','UserController@qna')->name('Servicecenter1');
 Route::get('/qna11','UserController@qna1');
 Route::post('/qna_contents/{qna_number}','UserController@qnacont');
 Route::post('/qnadelete/{qna_number}','UserController@qna_delete');
-
+Route::get('/qna-modify','UserController@qna_sending');
+Route::post('/qna_modifyupdate','UserController@qna_modify');
 
 
 
