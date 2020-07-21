@@ -28,7 +28,7 @@ a{
   right:60px;
   top: 120px;
   hight: auto;
-  border: 1px solid #bdbdbd;
+  /* border: 1px solid #bdbdbd; */
   background-color: #ffffff;
   text-align: center;
   z-index: 1;
@@ -69,6 +69,7 @@ a{
   position: relative;
   background-color: #ffffff;
   border: 1px solid #bdbdbd;
+  border-radius: 20px;
 }
 
 /* 실시간 인기 검색어 */
