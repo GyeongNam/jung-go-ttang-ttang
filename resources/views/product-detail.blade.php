@@ -522,19 +522,21 @@ function commentliketoggles(data) {
                 <div class="otr_prod_item_label">
                   <span>판매자가 경매중인 물품</span>
                 </div>
-                @for($key=0; $key < count($myStat) ; $key++)
+                @for($key=0; $key < count($myStats); $key++)
                   @if($key < 4)
-                    <a href="/product-detail/{{$myStat[$key]->item_number}}">
+                    @if($myStats[$key]->item_success == 1)
+                    <a href="/product-detail/{{$myStats[$key]->item_number}}">
                       <div class="otr_prod">
                       <div class="otr_prod_item"  style=" cursor: pointer;" onclick="">
-                        <img class="otr_prod_item_img" name="" src="/img/item/{{$myStat[$key]->item_picture}}" alt="">
+                        <img class="otr_prod_item_img" name="" src="/img/item/{{$myStats[$key]->item_picture}}" alt="">
                         <div class="otr_prod_item_np">
-                          <span class="otr_name" name="">{{$myStat[$key]->item_name}}</span><br>
-                          <span class="otr_price" name="">현재가격{{ number_format($myStat[$key]->item_startprice)}}</span>
+                          <span class="otr_name" name="">{{$myStats[$key]->item_name}}</span><br>
+                          <span class="otr_price" name="">현재가격{{ number_format($myStats[$key]->item_startprice)}}</span>
                         </div>
                       </div>
                     </div>
                     </a>
+                    @endif
                   @endif
                 @endfor
               </div>
@@ -679,7 +681,7 @@ function commentliketoggles(data) {
                         <div id="largcoment{{$value->comment_num}}"class="larg">
                           <div class="reaq"></div>
                           <div id="laco_texts" class="reco_texts {{$value->comment_num}}">
-                            <textarea class="largcomment_text {{$value->comment_num}}" name="lecomment_texts" id="lecomment_texts" rows="8" cols="80" placeholder="답글 입력"></textarea>
+                            <textarea class="largcomment_text {{$value->comment_num}}" name="lecomment_texts" id="lecomment_texts" rows="8" cols="80" placeholder="답글 입력"required></textarea>
                             <button type="submit" name="button">답글달기</button>
                           </div>
                         </div>
@@ -706,7 +708,7 @@ function commentliketoggles(data) {
                                   </div>
                                   <div id="hidcoment{{$largcommentitem[$key][$i]->largecomment_num}}"class="hiderecomment">
                                     <div id="reco_texts" class="reco_texts {{$largcommentitem[$key][$i]->largecomment_num}}">
-                                      <textarea class="recomment_text {{$largcommentitem[$key][$i]->largecomment_num}}" name="lecomment_texts" id="lecomment_texts" rows="8" cols="80" placeholder="수정할 답글 입력">{{$largcommentitem[$key][$i]->largecomments}}</textarea>
+                                      <textarea class="recomment_text {{$largcommentitem[$key][$i]->largecomment_num}}" name="lecomment_texts" id="lecomment_texts" rows="8" cols="80" placeholder="수정할 답글 입력" required> {{$largcommentitem[$key][$i]->largecomments}} </textarea>
                                       <div class="comment_fontlength">
                                         <div class="sc-fontlength dlqfurrmff">0 / 200</div>
                                         <button type="submit" name="button">수정완료</button>
@@ -731,7 +733,7 @@ function commentliketoggles(data) {
                             </div>
                             <div id="hidcoment{{$value->comment_num}}"class="hiderecomment">
                               <div id="reco_texts" class="reco_texts {{$value->comment_num}}">
-                                <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력">{{$value->comments}}</textarea>
+                                <textarea class="recomment_text {{$value->comment_num}}" name="recomment_texts" id="recomment_texts" rows="8" cols="80" placeholder="수정할 댓글 입력" required>{{$value->comments}}</textarea>
                                 <div class="comment_fontlength">
                                   <div class="sc-fontlength dlqfurrmff">0 / 200</div>
                                   <button type="submit" name="button">수정완료</button>
