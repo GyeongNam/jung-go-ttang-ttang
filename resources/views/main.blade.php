@@ -11,7 +11,7 @@
 @section('js')
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 
-  <script type="text/javascript">
+  {{-- <script type="text/javascript">
   //변수를 선언
   var itm = $('.mapproduct');
   console.log(itm);
@@ -33,7 +33,7 @@
     // 쿠키에 넣는다.
     document.cookie = willCookie;
   }
-  </script>
+  </script> --}}
 @endsection
 
 @section('content')
@@ -49,23 +49,20 @@
       <!-- 퀵 메뉴, top button -->
       <div class="right_menu">
         <div class="quickBox">
-          {{-- <p>최근 본 상품</p>
+          <p>QUICK MENU</p>
           <div class="re_view">
             <div class="view_box">
               <div class="view_list">
-
-                <a class="view_item" href="#">
-                  <img src="/img/product.png" alt="상품 이미지">
-                </a>
-                <a class="view_item" href="#">
-                  <img src="/img/product.png" alt="상품 이미지">
-                </a>
-                <a class="view_item" href="#">
-                  <img src="/img/product.png" alt="상품 이미지">
-                </a>
+                <a class="view_item" href="#man">남성의류</a><br>
+                <a class="view_item" href="#woman">여성의류</a><br>
+                <a class="view_item" href="#fashion">패션잡화</a><br>
+                <a class="view_item" href="#beauty">뷰티미용</a><br>
+                <a class="view_item" href="#mobile">모바일/태블릿</a><br>
+                <a class="view_item" href="#Elec_products">가전제품</a><br>
+                <a class="view_item" href="#laptop">노트북/PC</a>
               </div>
             </div>
-          </div> --}}
+          </div>
           <div class="btn_top">
             <p class="btn_top"><a href="#none">top</a></p>
           </div>

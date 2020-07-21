@@ -36,16 +36,17 @@ a{
 .re_view{
   border: 1px solid #bdbdbd;
   background-color: #ffffff;
-  height: 200px;
+  height: auto;
   width:auto;
 
 }
-
+.view_box{
+  width: 100%;
+}
 .view_list {
-  display: block;
-  width: auto;
+  display: ;
+  width: 100%;
   height: auto;
-  margin-bottom: 5px;
   position: relative;
   font-size: 13px;
   border-width: 1px;
