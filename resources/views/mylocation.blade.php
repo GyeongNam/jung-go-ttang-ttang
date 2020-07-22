@@ -30,21 +30,20 @@
     // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
     var zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-    kakao.maps.event.addListener(map, 'idle', function() {
-      var marker = new kakao.maps.Marker({
-        // 지도 중심좌표에 마커를 생성합니다
-        position: map.getCenter()
-      });
-      // 지도에 마커를 표시합니다
-      marker.setMap(map);
-    });
-
-    // // 마커 클러스터러를 생성합니다
-    // var clusterer = new kakao.maps.MarkerClusterer({
-    //     map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
-    //     averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-    //     minLevel: 10 // 클러스터 할 최소 지도 레벨
+    // kakao.maps.event.addListener(map, 'idle', function() {
+    // //   // var imageSrc = '/img/map-maker.png', // 마커이미지의 주소입니다
+    // //   // imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+    // //   // imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+    // //   // var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+    //   var marker = new kakao.maps.Marker({
+    //     // 지도 중심좌표에 마커를 생성합니다
+    //     position: map.getCenter()
+    //     // image: markerImage // 마커이미지 설정
+    //   });
+    //   // 지도에 마커를 표시합니다
+    //   marker.setMap(map);
     // });
+
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
     if (navigator.geolocation) {
 
@@ -59,7 +58,6 @@
 
         // 마커와 인포윈도우를 표시합니다
         displayMarker(locPosition, message);
-
       });
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
@@ -122,7 +120,7 @@
     for (i = 0; i < mappicture.length; i++) {
       picture.push(mappicture[i].value);
     }
-    console.log(picture);
+    // console.log(picture);
     for (i = 0; i < mapname.length; i++) {
       name.push(mapname[i].value);
     }
@@ -149,7 +147,7 @@
           // markers.push(marker);
           var link = mapproduct[i];
           var pic = picture[i];
-          console.log(pic);
+          // console.log(pic);
           // iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
           var iwContent =
           '<div class="wrap">' +
@@ -219,15 +217,15 @@
               var radius = 100000;
               circle.setMap(null);
             }
-            console.log(radius);
+            // console.log(radius);
             // 상품을 표시할 원의 반경 미터
             var c1 = map.getCenter(locPosition);
             var c2 = marker.getPosition();
             // 지도에 표시할 원을 생성합니다
             // 지도에 원을 표시합니다
             // circle.setMap(map);
-            console.log(radius);
-            console.log(c2);
+            // console.log(radius);
+            // console.log(c2);
             var poly = new kakao.maps.Polyline({
               path: [c1, c2]
             });
