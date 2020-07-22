@@ -3,6 +3,9 @@
   padding:0;
 
 }
+body {
+  background-color: #f5f6f7;
+}
 .find_id li{
   list-style: none;
   display: block;
@@ -10,29 +13,26 @@
 }
 
 .find_account{
-    border: 10px solid #263343;
-    border-radius: 12px;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    width:460px;
-    display: block;
-    background-image: url("/img/dadang.jpg");
+  border-radius: 12px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  width:460px;
+  display: block;
 }
 .line {
-  border: solid #263343;
   border-width: 10px 0 0;
   margin: auto;
 }
 
 .find_id{
-  padding: 70px 0;
+  padding: 50px 0;
   text-align: center;
 }
 
 .find_password{
-  padding: 70px 0;
+  padding: 50px 0;
   text-align: center;
 }
 
@@ -42,17 +42,26 @@
 }
 
 #my_names, #phone, #find_id, #my_id, #phon_num, #find_pw{
-    margin: 2%;
-    width: 90%;
-    height: 50px;
+  margin: 2%;
+  width: 90%;
+  height: 50px;
+  border: 1px solid #dadada;
 
 }
-
+#find_id, #find_pw
+{
+  color: #fff;
+  background-color: #3858a6;
+}
+.main{
+  text-align: center;
+  align-items: center;
+}
 .center-block{
-    margin:auto;
-    padding: 10%;
-    width: 60%;
-    height: auto;
+  margin:auto;
+  padding: 10%;
+  width: 60%;
+  height: auto;
 }
 @media screen and (max-width: 460px){
   .find_account{
