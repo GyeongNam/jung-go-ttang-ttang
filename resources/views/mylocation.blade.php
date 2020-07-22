@@ -31,6 +31,12 @@
     var zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
+    kakao.maps.event.addListener(map, 'center_changed', function() {
+
+      // 지도의 중심좌표를 얻어옵니다
+      var latlng = map.getCenter();
+
+    });
     // // 마커 클러스터러를 생성합니다
     // var clusterer = new kakao.maps.MarkerClusterer({
     //     map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
@@ -183,8 +189,8 @@
             strokeColor: '#75B8FA', // 선의 색깔입니다
             strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
             strokeStyle: 'dashed', // 선의 스타일 입니다
-            // fillColor: '#CFE7FF', // 채우기 색깔입니다
-            // fillOpacity: 0.7  // 채우기 불투명도 입니다
+            fillColor: '#CFE7FF', // 채우기 색깔입니다
+            fillOpacity: 0.05  // 채우기 불투명도 입니다
           });
           $("input:radio[name=chk_km]").change(function(){
             var locPosition = map.getCenter(locPosition);
@@ -217,7 +223,7 @@
             var c2 = marker.getPosition();
             // 지도에 표시할 원을 생성합니다
             // 지도에 원을 표시합니다
-            circle.setMap(map);
+            // circle.setMap(map);
             console.log(radius);
             console.log(c2);
             var poly = new kakao.maps.Polyline({
@@ -262,7 +268,7 @@
   <input class="samkm" type="radio" name="chk_km" value="3km">3km
   <input class="okm" type="radio" name="chk_km" value="5km">5km
   <input class="allkm" type="radio" name="chk_km" value="all_maker" checked="checked">모두보기
-  <button onclick="setBounds()">지도 범위 재설정 하기</button>
+  <button onclick="setBounds()">내위치</button>
   <div id="map">
     <div class="wa d">
       <a href="#" class="hi"></a>
