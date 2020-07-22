@@ -30,20 +30,14 @@
     // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
     var zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-    // kakao.maps.event.addListener(map, 'idle', function() {
-    // //   // var imageSrc = '/img/map-maker.png', // 마커이미지의 주소입니다
-    // //   // imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-    // //   // imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-    // //   // var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
-    //   var marker = new kakao.maps.Marker({
-    //     // 지도 중심좌표에 마커를 생성합니다
-    //     position: map.getCenter()
-    //     // image: markerImage // 마커이미지 설정
-    //   });
-    //   // 지도에 마커를 표시합니다
-    //   marker.setMap(map);
-    // });
 
+    kakao.maps.event.addListener(map, 'dragend', function() {
+      var marker = new kakao.maps.Marker({
+        // 지도 중심좌표에 마커를 생성합니다
+        position: map.getCenter()
+      });
+      marker.setMap(map);
+    });
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
     if (navigator.geolocation) {
 
@@ -223,9 +217,6 @@
             var c2 = marker.getPosition();
             // 지도에 표시할 원을 생성합니다
             // 지도에 원을 표시합니다
-            // circle.setMap(map);
-            // console.log(radius);
-            // console.log(c2);
             var poly = new kakao.maps.Polyline({
               path: [c1, c2]
             });
