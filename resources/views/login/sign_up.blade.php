@@ -351,15 +351,17 @@
           </li>
           <li>
             <input type="text" name="email_ck" id="security" size="61" placeholder=" 인증번호 입력하세요" required>
-            <button onclick="mainsends()" type ="button" id ="bt_secu"><b>인증번호 전송</b></button>
+            <button class="sand" onclick="mainsends()" type ="button" id ="bt_secu"><b>인증번호 전송</b></button>
           </li>
 
 
           <li>
-            <button  id="sub" >
+            <button class="sand"  id="sub" >
               <b>가입하기</b>
             </button>
-
+            <button class="canslbtn" onclick="location.href='/' "  id="subcc" >
+              <b>취소</b>
+            </button>
           </li>
         </ul>
       </form>

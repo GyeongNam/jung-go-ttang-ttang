@@ -60,7 +60,7 @@ body {
   color:red;
 }
 
-.sign_up button{
+.sand{
   font-size: 15px;
   padding: 1px;
   cursor: pointer;
@@ -78,9 +78,17 @@ body {
   width: 40%;
   display: block;
   background-color: #3858a6;
-
+  border: solid 1px #dadada
 }
-
+.canslbtn{
+  margin: 2%;
+  width: 90%;
+  height: 50px;
+  font-size: 15px;
+  color:white;
+  background-color: #8e8e8e;
+  border: solid 1px #dadada
+}
 .sub{
   padding:20px 200px;
 
