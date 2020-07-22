@@ -9,7 +9,6 @@
 @section('js')
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a82332350bc18d282d500e361ee79da&libraries=services"></script>
 <script>
-// console.log(a);
 $(document).ready(function(){
 
   var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -154,8 +153,8 @@ $(document).ready(function(){
         });
         // markers.push(marker);
         var link = mapproduct[i];
-        var fuck = picture[i];
-        console.log(fuck);
+        var pic = picture[i];
+        console.log(pic);
         // iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
         var iwContent =
         '<div class="wrap">' +
@@ -165,7 +164,7 @@ $(document).ready(function(){
         '        </div>'+
         '        <div class="body">' +
         '            <div class="img">' +
-        '                  <img src="/img/item/'+fuck+'" width="73" height="70">' +
+        '                  <img src="/img/item/'+pic+'" width="73" height="70">' +
         '            </div>' +
         '            <div class="desc">' +
         '                <div class="ellipsis">'+ add[i]+'</div>' +
@@ -248,10 +247,10 @@ $(document).ready(function(){
 @foreach($road as $key => $value)
 <input  id="maparry{{$value->item_number}}" class ="maparry" type="hidden"  value="{{$value->roadAddress}}">
 @endforeach
-<input class="illkm" type="radio" name="chk_km" value="1km" checked="checked">1km
+<input class="illkm" type="radio" name="chk_km" value="1km" >1km
 <input class="samkm" type="radio" name="chk_km" value="3km">3km
 <input class="okm" type="radio" name="chk_km" value="5km">5km
-<input class="allkm" type="radio" name="chk_km" value="all_maker">모두보기
+<input class="allkm" type="radio" name="chk_km" value="all_maker" checked="checked">모두보기
 <div id="map">
   <div class="wa d">
     <a href="#" class="hi"></a>
