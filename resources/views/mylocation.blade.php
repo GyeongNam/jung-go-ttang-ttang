@@ -30,13 +30,15 @@
     // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
     var zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-
-    kakao.maps.event.addListener(map, 'center_changed', function() {
-
-      // 지도의 중심좌표를 얻어옵니다
-      var latlng = map.getCenter();
-
+    kakao.maps.event.addListener(map, 'idle', function() {
+      var marker = new kakao.maps.Marker({
+        // 지도 중심좌표에 마커를 생성합니다
+        position: map.getCenter()
+      });
+      // 지도에 마커를 표시합니다
+      marker.setMap(map);
     });
+
     // // 마커 클러스터러를 생성합니다
     // var clusterer = new kakao.maps.MarkerClusterer({
     //     map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
@@ -193,7 +195,7 @@
             fillOpacity: 0.05  // 채우기 불투명도 입니다
           });
           $("input:radio[name=chk_km]").change(function(){
-            var locPosition = map.getCenter(locPosition);
+            var locPosition = map.getCenter();
             var line = new kakao.maps.Polyline();
             if ($('input:radio[name=chk_km]:checked').val() == "1km") {
               var radius = 1000;
