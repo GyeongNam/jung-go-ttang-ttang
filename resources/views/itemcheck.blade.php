@@ -79,19 +79,19 @@ $(function(){
      </div>
      <div class="table1">
      <table width="100%" align = "center" class="tab" >
-       <th width="30%"><b>목록</b></th>
-       <th width="30%"><b>입찰가격</b></th>
-       <th width="20%"><b>진행상태</b> </th>
-       <th width="20%"><b>낙찰여부</b></th>
+       <th width="30%">목록</th>
+       <th width="30%">입찰가격</th>
+       <th width="20%">진행상태</th>
+       <th width="20%">낙찰여부</th>
      </table>
 
      {{-- 내가참여한경매 --}}
      <div class="">
      @foreach ($myAuction as $key => $value)
-     <table class ="it_if1" width="100%" border="1"  align = "center" class="matab">
+     <table class ="it_if1" width="100%"  align ="center" class="matab" >
        <tbody width="100%">
-         <tr width="100%">
-           <td width="30%"><button type="button" name="button" class="but2">
+         <tr width="100%" style="border-bottom:1px" >
+           <td width="30%"><button type="button" name="button" class="but2" style="border:none; width:60%;">
              <a href="/product-detail/{{$value->item_number}}"><img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img"></a>
            </button>
            <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
@@ -129,6 +129,7 @@ $(function(){
           @endif
         @endif
       @endif
+        </tr>
        </tbody>
        </table>
       @endforeach
@@ -137,10 +138,10 @@ $(function(){
      {{-- 내가올린경매 --}}
      <div class="">
      @foreach ($myStat as $key => $value)
-     <table class ="it_if2" width="100%" border="1"  align = "center" class="matab">
+     <table class ="it_if2" width="100%" lign = "center" class="matab">
        <tbody width="100%">
-         <tr width="100%">
-           <td width="30%"><button type="button" name="button" class="but2">
+         <tr width="100%" >
+           <td width="30%"><button type="button" name="button" class="but2" style="border:none; width:60%;">
               <a href="/product-detail/{{$value->item_number}}"><img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img"></a>
            </button>
            <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
@@ -155,7 +156,7 @@ $(function(){
            @else
            <td width="20%">
              판매종료
-             <div>
+             <div style="margin-top:1rem;">
              <button type="button" id="bid_info_btn2" class="bid_info_btn2" onclick="modal_mys({{$value->item_number}})" name="button">낙찰현황확인</button>
              </div>
            </td>
@@ -187,39 +188,38 @@ $(function(){
      <div class="bid_info">
        @if(!Empty($end[$key][0]->buyer))
        @if(decrypt(session('login_ID')) == $end[$key][0]->buyer)
-       <div class="nakchalgood">
-         낙찰했습니다.
+       <div class="nakchalgood" style="margin:3%;">
+         <h4>축하합니다!! 상품이 낙찰되었습니다.</h4>
        </div>
-
+       <hr style="margin-top:3%; margin-bottom:3%;">
        <div class="nak_info">
 
          <div class="nak_p_lab">
-           입찰금액 :
-         </div>
-         <div class="nak_p">
-           @if(count($myAuction)>0)
-           {{ number_format($value->item_price)}}원
+          <span>입찰금액 :</span>
+           <span>@if(count($myAuction)>0)
+           {{ number_format($value->item_price)}}원</span>
            @endif
          </div>
+         <hr style="margin-top:3%; margin-bottom:3%;">
        <!--</div>-->
          <div class="nak_naeyong">
-           낙찰!!
            <div class="nak_name">
              <div class="nak_seller">
-               경매 판매자 :
-             </div>
-             <div class="nak_people">
+              <span>경매 판매자 :</span>
+              <span>
                @if(count($myAuction)>0)
-               {{$value->seller_id}}
-               @endif
+              {{$value->seller_id}}
+             @endif
+           </span>
              </div>
+             <hr style="margin-top:3%; margin-bottom:3%;">
            </div>
-           <div class="nak_time">
+           {{-- <div class="nak_time">
              구매 가능시간 :
            </div>
            <div class="buy_time">
              시간
-           </div>
+           </div> --}}
            <div class="nak_date">
              2일 이내에 거래 완료를 하지 않으면 다음 낙찰 대기자에게 상품이 넘어갑니다.
              빨리 판매자에게 쪽지하세요!
@@ -228,12 +228,12 @@ $(function(){
        </div>
 
     @else
-      <div class="nakchalgood">
-        낙찰에 실패했습니다.
+      <div class="nakchalgood" style="text-align:center">
+        <h3>낙찰에 실패했습니다.</h3>
       </div>
        @if(!Empty($end[$key][0]->success_user2))
        @if(decrypt(session('login_ID')) == $end[$key][0]->success_user2)
-         <div class="nak_sunwe">
+         <div class="nak_sunwe" style="text-align:center">
          순위 2위
          </div>
        @endif
@@ -241,7 +241,7 @@ $(function(){
 
        @if(!Empty($end[$key][0]->success_user3))
        @if(decrypt(session('login_ID')) == $end[$key][0]->success_user3)
-         <div class="nak_sunwe">
+         <div class="nak_sunwe" style="text-align:center">
          순위 3위
          </div>
        @endif
@@ -249,7 +249,7 @@ $(function(){
 
        @if(!Empty($end[$key][0]->success_user4))
        @if(decrypt(session('login_ID')) == $end[$key][0]->success_user4)
-         <div class="nak_sunwe">
+         <div class="nak_sunwe" style="text-align:center">
          순위 4위
          </div>
        @endif
@@ -257,7 +257,7 @@ $(function(){
 
        @if(!Empty($end[$key][0]->success_user5))
        @if(decrypt(session('login_ID')) == $end[$key][0]->success_user5)
-         <div class="nak_sunwe">
+         <div class="nak_sunwe" style="text-align:center">
          순위 5위
          </div>
        @endif
@@ -266,19 +266,15 @@ $(function(){
     @endif
     </div>
 
-    <div class="">
-      <button class="close" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button">돌아가기</button>
+    <div class="" style="text-align:center;">
+      <button class="close" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button" style="margin-top:2rem;">돌아가기</button>
       {{-- <a href="/remove_enditem/{{$value->item_number}}/{{session('login_ID')}}">  <button class="" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button" >포기하기</button></a> --}}
     </div>
   @else
-      <div class="nakchalgood">
-        낙찰에 실패했습니다.
+      <div class="nakchalgood" style="margin:3%;">
+        <h3>낙찰에 실패했습니다.</h3>
       </div>
-
-
-     </div>
-
-     <div class="">
+     <div class="" style="text-align:center;">
        <button class="close" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button">돌아가기</button>
        <a href="/remove_enditem/{{$value->item_number}}/{{session('login_ID')}}">  <button class="" id="del_per" onclick="modal_out_mya({{$value->item_number}})" type="button" name="button" >포기하기</button></a>
      </div>
@@ -297,42 +293,49 @@ $(function(){
      </div>
        @if ($value->success == 1)
      <div class="bid_info">
-       <div class="nakchalgood">
-         1순위부터 5순위까지 확인해 주세요!
+       <div class="nakchalgood" style="margin:3%;">
+         <h4>1순위부터 5순위까지 확인해 주세요!</h4>
        </div>
        <div class="nak_info">
          <div class="nak_p_lab">
            @if(!Empty($users[$key][0]->success_price1))
-           1위:{{$users[$key][0]->success_price1}} @if(!Empty($rank1[$key][0]))원 {{$rank1[$key][0]->buyer_ID}}
+           1위:{{$users[$key][0]->success_price1}}@if(!Empty($rank1[$key][0]))원   ID:{{$rank1[$key][0]->buyer_ID}}
            @endif
          @endif
+       </div>
+       <hr style="margin-top:2%; margin-bottom:2%;">
          <div class="nak_p_lab">
             @if(!Empty($users[$key][0]->success_price2))
-           2위:{{$users[$key][0]->success_price2}} @if(!Empty($rank2[$key][0]))원 {{$rank2[$key][0]->buyer_ID}}
+          <span> 2위:{{$users[$key][0]->success_price2}}@if(!Empty($rank2[$key][0]))원</span> <span style=" text-align:justify">ID:{{$rank2[$key][0]->buyer_ID}}</span>
            @endif
          @endif
          </div>
+         <hr style="margin-top:2%; margin-bottom:2%;">
          <div class="nak_p_lab">
             @if(!Empty($users[$key][0]->success_price3))
-           3위:{{$users[$key][0]->success_price3}} @if(!Empty($rank3[$key][0]))원 {{$rank3[$key][0]->buyer_ID}}
+           3위:{{$users[$key][0]->success_price3}}@if(!Empty($rank3[$key][0]))원   ID:{{$rank3[$key][0]->buyer_ID}}
            @endif
          @endif
          </div>
+         <hr style="margin-top:2%; margin-bottom:2%;">
          <div class="nak_p_lab">
             @if(!Empty($users[$key][0]->success_price1))
-           4위:{{$users[$key][0]->success_price4}} @if(!Empty($rank4[$key][0]))원 {{$rank4[$key][0]->buyer_ID}}
+           4위:{{$users[$key][0]->success_price4}}@if(!Empty($rank4[$key][0]))원   ID:{{$rank4[$key][0]->buyer_ID}}
            @endif
          @endif
          </div>
+         <hr style="margin-top:2%; margin-bottom:2%;">
          <div class="nak_p_lab">
             @if(!Empty($users[$key][0]->success_price1))
-           5위:{{$users[$key][0]->success_price5}} @if(!Empty($rank5[$key][0]))원 {{$rank5[$key][0]->buyer_ID}}
+           5위:{{$users[$key][0]->success_price5}}@if(!Empty($rank5[$key][0]))원   ID:{{$rank5[$key][0]->buyer_ID}}
            @endif
          @endif
          </div>
+         <hr style="margin-top:2%; margin-bottom:2%;">
          <div class="nak_p">
            현재 낙찰자:@if(!Empty($buyer[$key][0])) {{$buyer[$key][0]->buyer}} @endif
          </div>
+         <hr style="margin-top:2%; margin-bottom:2%;">
          {{-- <span class="nak_p_lab">
            낙찰가:
          </span>
@@ -350,13 +353,15 @@ $(function(){
        </div>
      </div>
 
-     <div class="">
+     <div class="" style="text-align:center;">
        <button class="close2" id="del_per2" onclick="modal_out_mys({{$value->item_number}})" type="button" name="button" >돌아가기</button>
-       <button class="" id="del_per" type="button" name="button"onclick="location.href='/end/{{$value->item_number}}'" >거래완료하기</button>
+       <button class="close2" id="del_per" type="button" name="button"onclick="location.href='/end/{{$value->item_number}}'" >거래완료하기</button>
      </div>
    @else
-     안타깝게도 경매 참여자가 없어 유찰되었습니다.
-     <div class="">
+     <div class="" style="margin:3%;">
+       안타깝게도 경매 참여자가 없어 유찰되었습니다.
+     </div>
+     <div class="" style="text-align:center;">
        <button class="close2" id="del_per2" onclick="modal_out_mys({{$value->item_number}})" type="button" name="button" >돌아가기</button>
      </div>
    @endif

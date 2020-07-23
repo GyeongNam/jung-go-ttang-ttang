@@ -209,7 +209,6 @@
                         <th>상품번호</th>
                         <th>상품이름</th>
                         <th>경매시작가</th>
-                        <th>경매최고가</th>
                         <th>판매자 이름</th>
                         <th>경매등록일</th>
                         <th>경매마감일</th>
@@ -217,7 +216,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach ($item_joins as $key => $value)
+                      @foreach ($item_join as $key => $value)
 
                       <tr style="cursor:pointer;" class="trhover">
                         <td onclick="location.href='/manager_item_info/{{$value->item_number}}'">
@@ -227,13 +226,6 @@
                           {{$value->item_name}}</td>
                         <td onclick="location.href='/manager_item_info/{{$value->item_number}}'">
                           {{$value->item_startprice}}</td>
-                        @if(!empty($item_joins[$key]))
-                        <td onclick="location.href='/manager_item_info/{{$value->item_number}}'">
-                          {{$item_joins[$key]->item_price}}</td>
-                        @else
-                        <td onclick="location.href='/manager_item_info/{{$value->item_number}}'">
-                          0</td>
-                        @endif
                         <td onclick="location.href='/manager_item_info/{{$value->item_number}}'">
                           {{$value->seller_id}}</td>
                         <td onclick="location.href='/manager_item_info/{{$value->item_number}}'">

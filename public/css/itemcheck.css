@@ -1,3 +1,7 @@
+table{
+  border-bottom: 1px solid #dadada;
+  margin-bottom: 3px;
+}
 .it_layout{
   border-bottom:1px;
   border-top: 1px;
@@ -43,35 +47,61 @@
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  font-size: 2rem;
+  font-size: 1.2rem;
   width: 50%;
 
 }
 .modal_bidheader{
 
   background-color: #31376c;
-  font-size: 3rem;
+  font-size: 2rem;
   color: #ffffff;
+  text-align: center;
 
 }
+
 .modal-bid{
-  text-align: center;
+
 }
 .bid_info{
-  text-align: center;
+
 }
 .nak_price{
   display: flex;
 }
-/* The Close Button */
+.nak_info{
+  margin: 3%;
+}
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: #a1ddf0;
   text-decoration: none;
   cursor: pointer;
 }
+.close2{
+    padding: 0;
+    line-height: 46px;
+    font-size: 16px;
+    width: 29%;
+    text-align: center;
+    height: 48px;
+    margin-right:3%;
+    font-family: 'IBMPlexSansKR-Text';
+    border: 1px solid #dadada;
+}
+.close{
+  padding: 0;
+  line-height: 46px;
+  font-size: 16px;
+  width: 29%;
+  text-align: center;
+  height: 48px;
+  margin-right:3%;
+  font-family: 'IBMPlexSansKR-Text';
+  border: 1px solid #dadada;
 
+}
 
 /*--- 삭제시 모달창 부분 ---*/
 @media screen and (max-width: 800px){
@@ -92,6 +122,14 @@
 
 
 }
+.bid_info_btn{
+  font-family: 'IBMPlexSansKR-Text';
+}
+.bid_info_btn2{
+  font-size: 12px;
+  font-family: 'IBMPlexSansKR-Text';
+
+}
 .namesize {
   font-size: 30px;
   margin-left: 10px;
@@ -101,9 +139,7 @@
 float: right;
 font-size: 30px;
 }
-.it_main_lime{
 
-}
 .it_button{
   display: flex;
   margin: 3%;
@@ -113,12 +149,6 @@ font-size: 30px;
 .it_subbutton1 {
   margin:1%;
 }
-b{
-
-  height:auto;
-}
-
-
 #but1{
   border-style: none;
   flex:none;
@@ -160,31 +190,17 @@ b{
   border-radius: 4%;
 
 }
-table{
-  border-collapse: collapse;
-}
-
-th {
-  border-bottom: 1px solid #ddd;
-
-
-}
 
 
 .it_if1 , .it_if2{
   text-align: center;
-  height: auto;
+  height:50px;
   position: relative;
-  margin-bottom: 1rem;
 
 }
 .tab{
-
   height: 3rem;
   font-size: 22px;
-
-  margin-bottom: 1rem;
-
 
 
 }
@@ -196,7 +212,7 @@ th {
 }
 .ite_img{
   width:100%;
-  height:180px;
+  height:130px;
 
 }
 .but2{
@@ -235,9 +251,3 @@ th {
     margin-top: 5%;
 
   }
-
-  .hide_but{
-
-  }
-
-  /* 테이블 */
