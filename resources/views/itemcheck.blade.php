@@ -303,30 +303,34 @@ $(function(){
            @endif
          @endif
        </div>
-       <hr style="margin-top:2%; margin-bottom:2%;">
+
          <div class="nak_p_lab">
             @if(!Empty($users[$key][0]->success_price2))
+              <hr style="margin-top:2%; margin-bottom:2%;">
           <span> 2위:{{$users[$key][0]->success_price2}}@if(!Empty($rank2[$key][0]))원</span> <span style=" text-align:justify">ID:{{$rank2[$key][0]->buyer_ID}}</span>
            @endif
          @endif
          </div>
-         <hr style="margin-top:2%; margin-bottom:2%;">
+
          <div class="nak_p_lab">
             @if(!Empty($users[$key][0]->success_price3))
+              <hr style="margin-top:2%; margin-bottom:2%;">
            3위:{{$users[$key][0]->success_price3}}@if(!Empty($rank3[$key][0]))원   ID:{{$rank3[$key][0]->buyer_ID}}
            @endif
          @endif
          </div>
-         <hr style="margin-top:2%; margin-bottom:2%;">
+
          <div class="nak_p_lab">
-            @if(!Empty($users[$key][0]->success_price1))
+            @if(!Empty($users[$key][0]->success_price4))
+              <hr style="margin-top:2%; margin-bottom:2%;">
            4위:{{$users[$key][0]->success_price4}}@if(!Empty($rank4[$key][0]))원   ID:{{$rank4[$key][0]->buyer_ID}}
            @endif
          @endif
          </div>
-         <hr style="margin-top:2%; margin-bottom:2%;">
+
          <div class="nak_p_lab">
-            @if(!Empty($users[$key][0]->success_price1))
+            @if(!Empty($users[$key][0]->success_price5))
+              <hr style="margin-top:2%; margin-bottom:2%;">
            5위:{{$users[$key][0]->success_price5}}@if(!Empty($rank5[$key][0]))원   ID:{{$rank5[$key][0]->buyer_ID}}
            @endif
          @endif
