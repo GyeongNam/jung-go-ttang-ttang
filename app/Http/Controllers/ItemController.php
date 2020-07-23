@@ -472,10 +472,11 @@ class ItemController extends Controller
 
   public function wishitem_remove(Request $request, $favorite_itemnum, $favorite_name){
       $id = session() -> get('login_ID');
-      $chack = $request->input('chk');
+      // $chack = $request->input('chk');
       Favorite::where([
-        'favorite_itemnum' => $chack
+        'favorite_itemnum' => $favorite_itemnum
         ]) -> delete();
+        // echo $chack;
         return redirect()->back();
   }
 

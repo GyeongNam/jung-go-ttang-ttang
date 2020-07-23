@@ -31,20 +31,21 @@
     var zoomControl = new kakao.maps.ZoomControl();
     map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-    kakao.maps.event.addListener(map, 'dragend', function() {
-      var marker = new kakao.maps.Marker({
-        // 지도 중심좌표에 마커를 생성합니다
-        position: map.getCenter()
-      });
-      marker.setMap(map);
-    });
+    // kakao.maps.event.addListener(map, 'dragend', function() {
+    //
+    //   var marker = new kakao.maps.Marker({
+    //     // 지도 중심좌표에 마커를 생성합니다
+    //     position: map.getCenter()
+    //   });
+    //   marker.setMap(map);
+    // });
     // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
     if (navigator.geolocation) {
 
       // GeoLocation을 이용해서 접속 위치를 얻어옵니다
       navigator.geolocation.getCurrentPosition(function(position) {
 
-        var lat = position.coords.latitude, // 위도
+        let lat = position.coords.latitude, // 위도
         lon = position.coords.longitude; // 경도
 
         var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
@@ -186,6 +187,7 @@
             fillColor: '#CFE7FF', // 채우기 색깔입니다
             fillOpacity: 0.05  // 채우기 불투명도 입니다
           });
+
           $("input:radio[name=chk_km]").change(function(){
             var locPosition = map.getCenter();
             var line = new kakao.maps.Polyline();
