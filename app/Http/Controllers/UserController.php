@@ -302,7 +302,7 @@ class UserController extends Controller
     ]);
     return redirect('/');
   }
-  
+
   public function ban(Request $request,$id){
     $date_de = DB::table('bantime')->select('ban_enddate')->where(['user_id'=>$id])->get();
     $rede =  strtotime(date("Y-m-d"));
@@ -459,7 +459,7 @@ class UserController extends Controller
         'a_text'=>$answer,
         'qna_answer'=>1
       ]);
-      return redirect('/manager_qna_info/{qna_number}');
+      return back();
   }
 
 }
