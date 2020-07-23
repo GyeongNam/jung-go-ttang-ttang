@@ -258,8 +258,8 @@ class ItemController extends Controller
 
   public function myview(Request $request){
     $id = session()->get('login_ID');
-    $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> decrypt($id)])->get();
-    $Auction = Auction::join('items', 'items.item_number','=', 'auction.auction_itemnum')->select('*')->where(['buyer_ID'=>decrypt($id)])->get();
+    $myStat = Item::select('item_number', 'item_name', 'item_picture', 'item_startprice', 'item_success', 'success')->where(['seller_id'=> decrypt($id)])->orderBy('item_number', 'desc')->get();
+    $Auction = Auction::join('items', 'items.item_number','=', 'auction.auction_itemnum')->select('*')->where(['buyer_ID'=>decrypt($id)])->orderBy('items.item_number', 'desc')->get();
 
     $end = collect([]);
     $buyer = collect([]);
