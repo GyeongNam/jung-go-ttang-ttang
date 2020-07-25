@@ -345,17 +345,20 @@ function commentliketoggles(data) {
           <div class="dpbox">
             <div class="d_info">
               <div class="tit_pri">
+
+                <div class="dtitnbt">
                 <div class="d_title">
                   {{$myproduct[0]->item_name}}
-                  {{-- // 버튼 추가 --}}
-                  <div class="bt-Wla" style="float:right;">
-                    <div class="Wla_click">
-                      <button  id="myBtn" class="unWla" type="button" >
-                        <i class="fas fa-exclamation-circle"></i>
-                        <span>신고</span>
-                      </button>
-                    </div>
+                </div>
+                {{-- // 버튼 추가 --}}
+                <div class="bt-Wla" style="float:right;">
+                  <div class="Wla_click">
+                    <button  id="myBtn" class="unWla" type="button" >
+                      <i class="fas fa-exclamation-circle"></i>
+                      <span>신고</span>
+                    </button>
                   </div>
+                </div>
                 </div>
                 <div class="time_price">
                   <div class="d_price">
@@ -462,7 +465,7 @@ function commentliketoggles(data) {
               <div class="bt-Wla">
                 <form class="" action="{{url('/wish_lst')}}" method="get">
                   <div class="Wla_click">
-                    <button   class="unWla" type="submit" name="likejim" value="{{$myproduct[0]->item_number}}" onclick="toggleImg()">
+                    <button   class="" type="submit" name="likejim" value="{{$myproduct[0]->item_number}}" onclick="toggleImg()">
                       @if($likeheart<1)
                         <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
                       @else

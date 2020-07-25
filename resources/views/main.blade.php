@@ -148,7 +148,7 @@
               <h2>인기상품</h2>
 
               @foreach($topview as $key => $value)
-                @if($key < 13)
+                @if($key < 12)
                   @if ($value->item_success==1)
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}">

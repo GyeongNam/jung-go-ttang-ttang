@@ -33,7 +33,7 @@
         @csrf
         <ul>
           <li>
-            <img src="/img/tangtang.png"  alt="로고" class="center-block">
+            <a href="/"><img src="/img/tangtang.png"  alt="로고" class="center-block"></a>
           </li>
           <li>
             <label><strong>ID(아이디)</strong><br>
@@ -51,6 +51,9 @@
           <li>
             <a href="/find_act">ID/Password 찾기</a>
             <a href="/sign_rull">회원가입</a>
+          </li>
+          <li>
+            <a href="/">메인으로</a>
           </li>
         </ul>
       </form>
