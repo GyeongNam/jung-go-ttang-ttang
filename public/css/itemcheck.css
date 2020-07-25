@@ -2,7 +2,9 @@ table{
   border-bottom: 1px solid #dadada;
   margin-bottom: 3px;
 }
-
+td{
+  font-size: 20px;
+}
 .ite_img{
   width:17rem;
   height:17rem;
@@ -87,7 +89,7 @@ table{
   padding: 20px;
   border: 1px solid #888;
   font-size: 1.2rem;
-  width: 50%;
+  width: 30%;
 
 }
 .modal_bidheader{
@@ -154,8 +156,32 @@ table{
   }
 
   .ite_img{
-    width:100%;
-    height:100%;
+    width:120px;
+    height:120px;
+
+  }
+  th{
+    font-size: 15px;
+  }
+  td{
+    font-size: 15px;
+  }
+  #but1{
+    font-size: 10px;
+  }
+  #but2{
+    font-size: 10px;
+  }
+  .pdpg{
+    text-align: center;
+  }
+  .modal-bid {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    font-size: 1.2rem;
+    width: auto;
 
   }
 }
@@ -199,8 +225,9 @@ table{
   font-size: 18px;
   flex:none;
   width: 50%;
+  height: 70px;
   /* margin: 3%; */
-  padding: 18px 40px;
+  /* padding: 18px 40px; */
   /* align-items: center; */
   border: 1px solid #dadada;
   outline: 0;
@@ -210,9 +237,10 @@ table{
   font-size: 18px;
   flex:none;
   width: 50%;
+  height: 70px;
   /* margin: 3%; */
   /* margin-left: auto; */
-  padding: 18px 40px;
+  /* padding: 18px 40px; */
   border: 1px solid #dadada;
   outline: 0;
 }
@@ -268,6 +296,7 @@ th{
 
 }
 @media screen and (max-width: 300px){
+
   .matab{
     width: auto;
     height: auto;
@@ -299,3 +328,4 @@ th{
     margin-top: 5%;
 
   }
+}

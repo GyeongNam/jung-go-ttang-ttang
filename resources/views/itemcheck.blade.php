@@ -81,10 +81,10 @@ function modal_out_mys(data){
   <div class="it_button" id="it_but">
     <button id="but1" class="on1">
       <img class="nachp" src="/img/cg_img/law.png" alt="">
-      <b>내가참여한경매</b></button>
+      내가참여한경매</button>
       <button id="but2"class="on">
         <img class="naalp" src="/img/cg_img/upload.png" alt="">
-        <b>내가올린경매</b></button>
+        내가올린경매</button>
       </div>
       <div class="table1">
         <table width="100%" align = "center" class="tab" >
@@ -100,7 +100,7 @@ function modal_out_mys(data){
           <table class ="it_if1" width="100%"  align ="center" class="matab" >
             <tbody width="100%">
               <tr width="100%" style="border-bottom:1px" >
-                <td width="30%"><button type="button" name="button" class="but2" style="border:none; width:60%;">
+                <td width="30%"><button type="button" name="button" class="but2" style="border:none;">
                   <a href="/product-detail/{{$value->item_number}}"><img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img"></a>
                 </button>
                 <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
@@ -303,7 +303,7 @@ function modal_out_mys(data){
       @if ($value->success == 1)
       <div class="bid_info">
         <div class="nakchalgood" style="margin:3%;">
-          <h4>1순위부터 5순위까지 확인해 주세요!</h4>
+          <storng>1순위부터 5순위까지 확인해 주세요!</storng>
         </div>
         <div class="nak_info">
           <div class="nak_p_lab">
@@ -368,7 +368,7 @@ function modal_out_mys(data){
 
       <div class="" style="text-align:center;">
         <button class="close2" id="del_per2" onclick="modal_out_mys({{$value->item_number}})" type="button" name="button" >돌아가기</button>
-        <button class="close2" id="del_per" type="button" name="button"onclick="location.href='/end/{{$value->item_number}}'" >거래완료하기</button>
+        <button class="close2" id="del_per" type="button" name="button"onclick="location.href='/end/{{$value->item_number}}'" >거래완료</button>
       </div>
       @else
       <div class="" style="margin:3%;">
