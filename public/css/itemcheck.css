@@ -2,12 +2,26 @@ table{
   border-bottom: 1px solid #dadada;
   margin-bottom: 3px;
 }
+
+.ite_img{
+  width:17rem;
+  height:17rem;
+
+}
+.dlok{
+  border: 1px solid #dadada;
+  width:10rem;
+  /* height: 3rem; */
+  padding: 10px;
+  font-size: 15px;
+  margin: 0;
+}
 .it_layout{
-  border-bottom:1px;
-  border-top: 1px;
+  /* border-bottom:1px; */
+  /* border-top: 1px; */
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 70%;
   margin: 2% auto;
   word-break:break-all;
 
@@ -113,6 +127,12 @@ table{
   bid_info{
     font-size: 5px;
   }
+
+  .ite_img{
+    width:100%;
+    height:100%;
+
+  }
 }
 
 .it_main{
@@ -142,7 +162,7 @@ font-size: 30px;
 
 .it_button{
   display: flex;
-  margin: 3%;
+  margin-bottom: 3%;
 
 
 }
@@ -152,19 +172,22 @@ font-size: 30px;
 #but1{
   border-style: none;
   flex:none;
-  width: 40%;
-  margin: 3%;
+  width: 50%;
+  /* margin: 3%; */
   padding: 18px 40px;
+  /* align-items: center; */
+  border: 1px solid #dadada;
+  outline: 0;
 }
 #but2{
   border-style: none;
   flex:none;
-  width: 40%;
-  margin: 3%;
-  margin-left: auto;
+  width: 50%;
+  /* margin: 3%; */
+  /* margin-left: auto; */
   padding: 18px 40px;
-
-
+  border: 1px solid #dadada;
+  outline: 0;
 }
 #su_but2{
   flex:none;
@@ -210,13 +233,9 @@ font-size: 30px;
 
   text-decoration: none;
 }
-.ite_img{
-  width:100%;
-  height:130px;
 
-}
 .but2{
-  width: 100%;
+  /* width: 100%; */
 
 }
 @media screen and (max-width: 300px){

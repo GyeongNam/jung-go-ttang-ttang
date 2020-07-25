@@ -14,20 +14,20 @@
 $(function(){
 
   $(".it_if2").hide();
-  $(".on1").css("background-color","rgb(219, 252, 255)");
+  $(".on1").css("background-color","rgb(255, 255, 255)");
   $(".on").css("background-color","rgb(214, 214, 214)");
 
   $(".on").on("click",function(){
     $(".it_if1").hide();
     $(".it_if2").show();
-    $(".on").css("background-color","rgb(219, 252, 255)");
+    $(".on").css("background-color","rgb(255, 255, 255)");
     $(".on1").css("background-color","rgb(214, 214, 214)");
   });
   $(".on1").on("click",function(){
     $(".it_if2").hide();
     $(".it_if1").show();
     $(".on").css("background-color","rgb(214, 214, 214)");
-    $(".on1").css("background-color","rgb(219, 252, 255)");
+    $(".on1").css("background-color","rgb(255, 255, 255)");
   });
 //   $(".bid_info_btn").click(function(){
 //     $("#bidmyModal").fadeIn();
@@ -66,11 +66,10 @@ $(function(){
  <div class="it_header">
    <div class="it_main">
      <span class ="namesize">경매중인 품목확인하기</span>
-     <span><a href="item/product" class="plus"><i class="fas fa-plus"></i>
+     <span><a href="item/product" class="plus"><p class="dlok">상품등록</p>
      </a></span>
    </div>
  </div>
-<hr class="it_main_line">
  <div class="it_button" id="it_but">
    <button id="but1" class="on1">
      <b>내가참여한경매</b></button>
@@ -141,7 +140,7 @@ $(function(){
      <table class ="it_if2" width="100%" lign = "center" class="matab">
        <tbody width="100%">
          <tr width="100%" >
-           <td width="30%"><button type="button" name="button" class="but2" style="border:none; width:60%;">
+           <td width="30%"><button type="button" name="button" class="but2" style="border:none;">
               <a href="/product-detail/{{$value->item_number}}"><img src="/img/item/{{$value->item_picture}}" alt="상품사진" name="#" class="ite_img"></a>
            </button>
            <div class="ite_na" name="item_name" value="{{$value->item_name}}"> {{$value->item_name}}</div>
