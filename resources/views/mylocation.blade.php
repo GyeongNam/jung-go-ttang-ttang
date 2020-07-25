@@ -257,11 +257,23 @@
   @foreach($road as $key => $value)
     <input  id="maparry{{$value->item_number}}" class ="maparry" type="hidden"  value="{{$value->roadAddress}}">
   @endforeach
-  <input class="illkm" type="radio" name="chk_km" value="1km" >1km
-  <input class="samkm" type="radio" name="chk_km" value="3km">3km
-  <input class="okm" type="radio" name="chk_km" value="5km">5km
-  <input class="allkm" type="radio" name="chk_km" value="all_maker" checked="checked">모두보기
-  <button onclick="setBounds()">내위치</button>
+  <div class="controller">
+    <div class="lie">
+      <input class="illkm rad" type="radio" name="chk_km" value="1km" ><p>1km</p>
+    </div>
+    <div class="lie">
+      <input class="samkm rad" type="radio" name="chk_km" value="3km"><p>3km</p>
+    </div>
+    <div class="lie">
+      <input class="okm rad" type="radio" name="chk_km" value="5km"><p>5km</p>
+    </div>
+    <div class="lie">
+      <input class="allkm rad" type="radio" name="chk_km" value="all_maker" checked="checked"><p>모두보기</p>
+    </div>
+    <div class="">
+      <button onclick="setBounds()">내위치</button>
+    </div>
+</div>
   <div id="map">
     <div class="wa d">
       <a href="#" class="hi"></a>

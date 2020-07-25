@@ -84,7 +84,8 @@ function modal_out_mys(data){
       내가참여한경매</button>
       <button id="but2"class="on">
         <img class="naalp" src="/img/cg_img/upload.png" alt="">
-        내가올린경매</button>
+        내가올린경매
+      </button>
       </div>
       <div class="table1">
         <table width="100%" align = "center" class="tab" >
@@ -308,7 +309,7 @@ function modal_out_mys(data){
         <div class="nak_info">
           <div class="nak_p_lab">
             @if(!Empty($users[$key][0]->success_price1))
-            1위:{{$users[$key][0]->success_price1}}@if(!Empty($rank1[$key][0]))원   ID:{{$rank1[$key][0]->buyer_ID}}
+            1위:{{$users[$key][0]->success_price1}}@if(!Empty($rank1[$key][0]))원 <br> ID:{{$rank1[$key][0]->buyer_ID}}
             @endif
             @endif
           </div>
@@ -324,7 +325,7 @@ function modal_out_mys(data){
           <div class="nak_p_lab">
             @if(!Empty($users[$key][0]->success_price3))
             <hr style="margin-top:2%; margin-bottom:2%;">
-            3위:{{$users[$key][0]->success_price3}}@if(!Empty($rank3[$key][0]))원   ID:{{$rank3[$key][0]->buyer_ID}}
+            3위:{{$users[$key][0]->success_price3}}@if(!Empty($rank3[$key][0]))원 <br> ID:{{$rank3[$key][0]->buyer_ID}}
             @endif
             @endif
           </div>
@@ -332,7 +333,7 @@ function modal_out_mys(data){
           <div class="nak_p_lab">
             @if(!Empty($users[$key][0]->success_price4))
             <hr style="margin-top:2%; margin-bottom:2%;">
-            4위:{{$users[$key][0]->success_price4}}@if(!Empty($rank4[$key][0]))원   ID:{{$rank4[$key][0]->buyer_ID}}
+            4위:{{$users[$key][0]->success_price4}}@if(!Empty($rank4[$key][0]))원 <br> ID:{{$rank4[$key][0]->buyer_ID}}
             @endif
             @endif
           </div>
@@ -340,7 +341,7 @@ function modal_out_mys(data){
           <div class="nak_p_lab">
             @if(!Empty($users[$key][0]->success_price5))
             <hr style="margin-top:2%; margin-bottom:2%;">
-            5위:{{$users[$key][0]->success_price5}}@if(!Empty($rank5[$key][0]))원   ID:{{$rank5[$key][0]->buyer_ID}}
+            5위:{{$users[$key][0]->success_price5}}@if(!Empty($rank5[$key][0]))원 <br> ID:{{$rank5[$key][0]->buyer_ID}}
             @endif
             @endif
           </div>
