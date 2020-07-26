@@ -33,25 +33,16 @@ $(document).ready(function(){
   var zoomControl = new kakao.maps.ZoomControl();
   map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
-  // kakao.maps.event.addListener(map, 'dragend', function() {
-  //
-  //   var marker = new kakao.maps.Marker({
-  //     // 지도 중심좌표에 마커를 생성합니다
-  //     position: map.getCenter()
-  //   });
-  //   marker.setMap(map);
-  // });
   // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
   if (navigator.geolocation) {
+      // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+      navigator.geolocation.getCurrentPosition(function(position) {
 
-    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-    navigator.geolocation.getCurrentPosition(function(position) {
+        let lat = position.coords.latitude, // 위도
+        lon = position.coords.longitude; // 경도
 
-      let lat = position.coords.latitude, // 위도
-      lon = position.coords.longitude; // 경도
-
-      // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-      var locPosition = new kakao.maps.LatLng(lat, lon),
+        // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+        var locPosition = new kakao.maps.LatLng(lat, lon),
       // 인포윈도우에 표시될 내용입니다
       message = '<div class="locationmy">현재 사용자의 위치입니다</div>';
 
@@ -66,7 +57,6 @@ $(document).ready(function(){
 
     displayMarker(locPosition, message);
   }
-
   // 지도에 마커와 인포윈도우를 표시하는 함수입니다
   function displayMarker(locPosition, message) {
     // 마커 이미지의 이미지 주소입니다
@@ -97,6 +87,8 @@ $(document).ready(function(){
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);
   }
+
+
   // 주소-좌표 변환 객체를 생성합니다
   var geocoder = new kakao.maps.services.Geocoder();
 
@@ -152,7 +144,7 @@ $(document).ready(function(){
         // markers.push(marker);
         var link = mapproduct[i];
         var pic = picture[i];
-        // console.log(pic);
+        console.log(marker);
         // iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
         var iwContent =
         '<div class="wrap">' +
@@ -268,29 +260,29 @@ $(document).ready(function(){
 <input  id="maparry{{$value->item_number}}" class ="maparry" type="hidden"  value="{{$value->roadAddress}}">
 @endforeach
 <div class="controller">
-  <div class="lie">
-    <input class="illkm rad" type="radio" name="chk_km" value="1km" ><p>1km</p>
-  </div>
-  <div class="lie">
-    <input class="samkm rad" type="radio" name="chk_km" value="3km"><p>3km</p>
-  </div>
-  <div class="lie">
-    <input class="okm rad" type="radio" name="chk_km" value="5km"><p>5km</p>
-  </div>
-  <div class="lie">
-    <input class="allkm rad" type="radio" name="chk_km" value="all_maker" checked="checked"><p>모두보기</p>
-  </div>
-  <div class="">
-    <button onclick="setBounds()">내위치</button>
-  </div>
+<div class="lie">
+<input class="illkm rad" type="radio" name="chk_km" value="1km" ><p>1km</p>
+</div>
+<div class="lie">
+<input class="samkm rad" type="radio" name="chk_km" value="3km"><p>3km</p>
+</div>
+<div class="lie">
+<input class="okm rad" type="radio" name="chk_km" value="5km"><p>5km</p>
+</div>
+<div class="lie">
+<input class="allkm rad" type="radio" name="chk_km" value="all_maker" checked="checked"><p>모두보기</p>
+</div>
+<div class="">
+<button onclick="setCenter()">내위치</button>
+</div>
 </div>
 <div id="map">
-  <div class="wa d">
-    <a href="#" class="hi"></a>
-  </div>
+<div class="wa d">
+<a href="#" class="hi"></a>
+</div>
 </div>
 <div class="jidosul">
-  <p>웹에서는 사용자의 정확한 위치가 나오지 않을 수 있습니다...!</p>
-  <p>이점 참고해주세요!!</p>
+<p>웹에서는 사용자의 정확한 위치가 나오지 않을 수 있습니다...!</p>
+<p>이점 참고해주세요!!</p>
 </div>
 @endsection
