@@ -353,7 +353,7 @@ function commentliketoggles(data) {
                 {{-- // 버튼 추가 --}}
                 <div class="bt-Wla" style="float:right;">
                   <div class="Wla_click">
-                    <button  id="myBtn" class="unWla" type="button" >
+                    <button  id="myBtn" class="singo" type="button" >
                       <i class="fas fa-exclamation-circle"></i>
                       <span>신고</span>
                     </button>
@@ -465,7 +465,7 @@ function commentliketoggles(data) {
               <div class="bt-Wla">
                 <form class="" action="{{url('/wish_lst')}}" method="get">
                   <div class="Wla_click">
-                    <button   class="" type="submit" name="likejim" value="{{$myproduct[0]->item_number}}" onclick="toggleImg()">
+                    <button   class="unWla" type="submit" name="likejim" value="{{$myproduct[0]->item_number}}" onclick="toggleImg()">
                       @if($likeheart<1)
                         <img id="likep" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
                       @else
@@ -483,6 +483,7 @@ function commentliketoggles(data) {
                     $('.ckadu').attr('disabled',true);
                     $('.wjsghk').attr('disabled',true);
                     $('.unWla').attr('disabled',true);
+                    $('.singo').attr('disabled',true);
                   })
                   </script>
                   <a href="/bidding-info/{{$myproduct[0]->item_number}}"><button class="ckadu" type="submit" name="rudaockadu"> 경매참여 </button></a>
