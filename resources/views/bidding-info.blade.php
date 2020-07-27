@@ -60,7 +60,7 @@
           <div id="popmenu">
             <h1>입찰확인</h1>
             <hr>
-            <p class="po1"><h2>입찰 하시겠습니까?.</h2></p>
+            <p class="po1"><h2>입찰 하시겠습니까?</h2></p>
             <hr>
             <p><h2>
               <span>입찰금액:</span>
@@ -69,12 +69,12 @@
             </h2></p>
             <hr>
             <p><b>
-              <span>이름:</span>
+              <span>ID:</span>
               <span>{{$ids}}</span>
             </b></p>
             <div class="exit">
-              <button type="submit" name="button">입찰</button>
-              <button type="button" name="button">닫기</button>
+              <button type="submit" class="mo_but" name="button">입찰</button>
+              <button type="button" class="mo_but" name="button">닫기</button>
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@
         </div>
         <div class="bd_main2">
           <div class="bd_name">
-            <span class="bd_name1"></span>
+            <span class="bd_name1">{{$sendd[0]->item_name}}</span>
           </div>
           <div class="bd_price">
             <span>현재가격:</span>
@@ -117,7 +117,7 @@
         </div>
         <div class="but_head">
           <div class="bd_button">
-            <button type="button" class="bd_but1" onclick="history.back(-1);">취소하기</button>
+            <button type="button" class="bd_but1"  onclick="history.back(-1);">취소하기</button>
           </div>
           <div class="bd_button">
             <button type="button" class="bd_but1" id="sus_but">입찰하기</button>
