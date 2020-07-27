@@ -610,7 +610,7 @@ function commentliketoggles(data) {
                     <p> {{$comm2->comments}} </p>
                   </div>
                   <div class="largecommentgood">
-                    <button id="comentlike" type="button" name="comlike" value="">
+                    <button class="datlike" id="comentlike" type="button" name="comlike" value="">
                       <img id="likecoment" src="/img/b_gkxm.png" alt="찜 아이콘" width="16" height="16">
                     </button>
                     <span>{{$comm->becount}}</span>
@@ -658,7 +658,7 @@ function commentliketoggles(data) {
                         <form class="" action="/commentlike/{{$value->comment_num}}"method="get">
                           <div class="largecommentgood">
                             @if(!empty($likecomment[$key]))
-                              <button id="comentlike" type="submit" name="comlike" value="{{$value->comment_num}}" onclick="commentliketoggle({{$value->comment_num}},{{count($likecomment[$key])}})">
+                              <button class="datlike" id="comentlike" type="submit" name="comlike" value="{{$value->comment_num}}" onclick="commentliketoggle({{$value->comment_num}},{{count($likecomment[$key])}})">
 
                                 @if(count($likecomment[$key]) <1)
                                   <img id="likecoment" src="/img/heart.png" alt="찜 아이콘" width="16" height="16">
@@ -679,7 +679,7 @@ function commentliketoggles(data) {
                         <form class="" action="/product-largecomment/{{$myproduct[0]->item_number}}/{{$value->comment_num}}" method="post">
                           @csrf
                           <div class="val_re">
-                            <button type="button" name="button" onclick="largcomments({{$value->comment_num}})">답글 쓰기</button>
+                            <button class="datlike" type="button" name="button" onclick="largcomments({{$value->comment_num}})">답글 쓰기</button>
                           </div>
                         </div>
                         <div id="largcoment{{$value->comment_num}}"class="larg">

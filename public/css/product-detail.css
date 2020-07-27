@@ -593,6 +593,12 @@ display: flex;
 .tkdvnainfo{
   height: 50%;
 }
+.datlike{
+  background-color: transparent !important;
+    background-image: none !important;
+    border-color: transparent;
+    border: none;
+}
 .btdg{
   width: 24rem;
   height: 2rem;
