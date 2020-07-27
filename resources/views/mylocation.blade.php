@@ -272,9 +272,6 @@ $(document).ready(function(){
 <div class="lie">
 <input class="allkm rad" type="radio" name="chk_km" value="all_maker" checked="checked"><p>모두보기</p>
 </div>
-<div class="">
-<button onclick="setCenter()">내위치</button>
-</div>
 </div>
 <div id="map">
 <div class="wa d">
