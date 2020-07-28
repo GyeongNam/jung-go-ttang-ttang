@@ -2,6 +2,31 @@
 <html lang="en">
 
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171253102-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('set', {
+    'contentGroup1': '패션잡화',
+    'contentGroup1': '남성의류',
+    'contentGroup1': '여성의류',
+    'contentGroup1': '뷰티미용',
+    'contentGroup1': '유아용/출산',
+    'contentGroup1': '모바일/태블릿',
+    'contentGroup1': '가전제품',
+    'contentGroup1': '노트북/데스크탑',
+    'contentGroup1': '카메라/캠코더',
+    'contentGroup1': '가구/인테리어',
+    'contentGroup1': '리빙/생활',
+    'contentGroup1': '도서/음반/문구',
+    'contentGroup1': '티켓/쿠폰',
+    'contentGroup1': '스포츠'
+  });
+    gtag('config', 'UA-171253102-1');
+  </script>
+
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
