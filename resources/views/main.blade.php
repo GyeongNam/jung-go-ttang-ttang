@@ -174,7 +174,7 @@
                 <h2 id="man">남성의류 <a href="/manclothing?id=남성의류">전체보기</a></h2>
               </div>
               @foreach ($cate as $key => $value)
-                @if($key < 10)
+                @if($key < 12)
                   @if ($value->item_success==1)
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}">
