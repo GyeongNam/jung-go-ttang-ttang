@@ -279,7 +279,7 @@ $(document).ready(function(){
 </div>
 </div>
 <div class="jidosul">
-<p>웹에서는 사용자의 정확한 위치가 나오지 않을 수 있습니다...!</p>
+<p>PC에서는 사용자의 정확한 위치가 나오지 않을 수 있습니다...!</p>
 <p>이점 참고해주세요!!</p>
 </div>
 @endsection
