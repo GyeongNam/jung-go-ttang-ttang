@@ -110,6 +110,7 @@ $(function (){
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 {{-- 카카오지도API --}}
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a82332350bc18d282d500e361ee79da&libraries=services"></script>
+<script type="text/javascript" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
 <script>
 $(document).ready(function(){
 
