@@ -502,7 +502,7 @@ display: flex;
   border-bottom: 1px solid #bdbdbd;
 }
 .d_title{
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 .time_price{
@@ -513,20 +513,20 @@ display: flex;
   display: flex;
 }
 .deadtime_lab{
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 .d_price{
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 .d_price_info{
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-bottom: 1rem;
   margin-left:0.5rem;
 }
 .lvt{
   display: flex;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 .isk{
   display: flex;
@@ -543,7 +543,7 @@ display: flex;
 .pd_st{
   display:flex;
   margin-bottom: 1rem;
-  font-size: 1.2rem;
+  /* font-size: 1.2rem; */
 }
 .bt_box{
   display: flex;
