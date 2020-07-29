@@ -123,11 +123,6 @@ $(function(){
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="/manager_tok">
-          <i class="fas fa-fw fa-table"></i>
-          <span>채팅관리</span></a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="/manager_policy">
           <i class="fas fa-fw fa-table"></i>
           <span>정책관리</span></a>
