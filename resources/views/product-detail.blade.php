@@ -386,7 +386,7 @@ function commentliketoggles(data) {
               <div class="d_kyeword">
                 <div class="lvt">
                   <div class="like isk">
-                    <img src="/img/heart.png/" width="16" height="16" alt="좋아요 한 항목 아이콘">
+                    <img src="/img/heart.png" width="16" height="16" alt="좋아요 한 항목 아이콘">
                     <div class="like_num intf" name="" >
                       @if ($like !=0)
                         <span>{{$like}}</span>
@@ -396,7 +396,7 @@ function commentliketoggles(data) {
                     </div>
                   </div>
                   <div class="view isk">
-                    <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                    <img src="/img/eye.png" width="16" height="16" alt="상품 조회수">
                     <div class="see_num intf" name="">
                       @if ($count[0]->visit_count !=0)
                         <span>{{$count[0]->visit_count}}</span>
@@ -406,7 +406,7 @@ function commentliketoggles(data) {
                     </div>
                   </div>
                   <div class="time isk">
-                    <img src="/img/clock.png/" width="16" height="16" alt="업로드된시간">
+                    <img src="/img/clock.png" width="16" height="16" alt="업로드된시간">
                     <div class="time_num intf" name="" id="timeplace">
                       {{$myproduct[0]->created_at->diffForHumans()}}
                     </div>
