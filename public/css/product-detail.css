@@ -628,6 +628,7 @@ display: flex;
   height: 3rem;
   font-size: 18px;
   border-style: none;
+  color: rgb(255, 255, 255);
   background-color: #292a77;
   align-items: center;
 }
