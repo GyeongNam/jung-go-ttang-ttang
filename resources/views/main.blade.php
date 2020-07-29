@@ -155,7 +155,7 @@
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
                           <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
                           <div class="whghltn">
-                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            <img src="/img/eye.png" width="16" height="16" alt="상품 조회수">
                             조회수:{{$value->visit_count}}
                           </div>
                         </div><br>
