@@ -59,7 +59,7 @@
                 <a class="view_item" href="#beauty">뷰티미용</a><br>
                 <a class="view_item" href="#mobile">모바일/태블릿</a><br>
                 <a class="view_item" href="#Elec_products">가전제품</a><br>
-                <a class="view_item" href="#laptop">노트북/PC</a>
+                <a class="view_item" href="#laptop">노트북/데스크탑</a>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@
             <a href="#beauty">뷰티미용</a>
             <a href="#mobile">모바일/태블릿</a>
             <a href="#Elec_products">가전제품</a>
-            <a href="#laptop">노트북/PC</a>
+            <a href="#laptop">노트북/데스크탑</a>
           </div>
           <div class="best_item">
 
