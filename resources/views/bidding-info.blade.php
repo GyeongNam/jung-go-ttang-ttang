@@ -60,8 +60,8 @@
           <div id="popmenu">
             <h1>입찰확인</h1>
             <hr>
-            <div class="">
-              <h3> 무분별한 입찰은 제제대상이 될 수 있습니다.</h3>
+            <div class="" style="margin-top:3%; margin-bottom:3%;">
+              <h4>단, 무분별한 입찰은 제제대상이 될 수 있습니다.</h4>
             </div>
             <hr>
             <p class="po1"><h2>입찰 하시겠습니까?</h2></p>

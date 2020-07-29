@@ -315,7 +315,7 @@
             </div>
             <div class="item_list">
               <div class="list_hd">
-                <h2 id="laptop">노트북/PC <a href="/manclothing?id=노트북/PC">전체보기</a></h2>
+                <h2 id="laptop">노트북/데스크탑 <a href="/manclothing?id=노트북/데스크탑">전체보기</a></h2>
               </div>
               @foreach ($catel as $key => $value)
                 @if($key < 10)
