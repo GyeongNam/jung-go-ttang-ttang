@@ -106,7 +106,7 @@ for (i = 0; i < acc.length; i++) {
                   </div>
                   <button class="accordion" type="button" name="button">▶낙찰을 포기할시에 어떻게되나요??</button>
                   <div class="panel">
-                    <p>낙찰가를 악용하여 실제로 상품을 원하는 사람에게 </p>
+                    <p>낙찰가를 악용하여 실제로 상품을 원하는 사람에게 판매 못할 것을 우려하여 낙찰가를 악용한 유저를 제제 합니다. </p>
                   </div>
                 </div>
               </div>
