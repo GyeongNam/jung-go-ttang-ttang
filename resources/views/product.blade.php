@@ -3,17 +3,17 @@
 
 @section('css')
   <link rel="stylesheet" href="/css/product.css">
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
 @endsection
 @section('js')
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
   <!-- 에디터CDN -->
-  <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+  <script src="//cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 
 
   {{-- 도로명주소 API --}}
-  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+  <script src="//dmaps.daum.net/map_js_init/postcode.v2.js"></script>
   <script>
   //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
   function sample4_execDaumPostcode() {
