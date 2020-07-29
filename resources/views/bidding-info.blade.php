@@ -60,6 +60,10 @@
           <div id="popmenu">
             <h1>입찰확인</h1>
             <hr>
+            <div class="">
+              <h3> 무분별한 입찰은 제제대상이 될 수 있습니다.</h3>
+            </div>
+            <hr>
             <p class="po1"><h2>입찰 하시겠습니까?</h2></p>
             <hr>
             <p><h2>
@@ -72,6 +76,8 @@
               <span>ID:</span>
               <span>{{$ids}}</span>
             </b></p>
+
+
             <div class="exit">
               <button type="submit" class="mo_but" name="button">입찰</button>
               <button type="button" class="mo_but" name="button">닫기</button>
