@@ -6,14 +6,24 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
 @endsection
 @section('js')
+<<<<<<< HEAD
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
   <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+=======
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+>>>>>>> 50b3f28592b107737ad981319288b46625d6d7a8
   <!-- 에디터CDN -->
   <script src="//cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 
 
   {{-- 도로명주소 API --}}
+<<<<<<< HEAD
   <script src="//dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+=======
+  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+  <script src='https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js'></script>
+>>>>>>> 50b3f28592b107737ad981319288b46625d6d7a8
   <script>
   //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
   function sample4_execDaumPostcode() {
@@ -133,7 +143,12 @@ function previewImage(f, divid){
 
 }
 $(function() {
-  $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
+  $("#datepicker").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: 'yy-mm-dd' ,
+    minDate: 0,
+  });
 });
 </script>
 @endsection
