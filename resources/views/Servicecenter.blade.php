@@ -136,11 +136,11 @@ for (i = 0; i < acc.length; i++) {
                       <tr>
                         <td colspan="5">
 
-                          <form class="123"  action="/qna_contents/{{$value->qna_number}}" method="post">
+                          <form class="123" style="margin-bottom:1rem;" action="/qna_contents/{{$value->qna_number}}" method="post">
                             @csrf
                           <label for="">비밀번호를 입력하세요!</label><br>
-                          비밀번호 : <input type="text" class="pass" name="password" value="">
-                          <button type="submit" class="123" name="button">확인</button>
+                          비밀번호 : <input type="text" class="pass" style="height:20px;" name="password" value="">
+                          <button type="submit" class="abc" name="button">확인</button>
                             </form>
                         </td>
                       </tr>
