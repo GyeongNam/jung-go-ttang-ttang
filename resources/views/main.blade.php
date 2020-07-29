@@ -148,8 +148,8 @@
               <h2>인기상품</h2>
 
               @foreach($topview as $key => $value)
-                @if($key < 17)
-                  @if ($value->item_success==1)
+                @if($key < 10)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
@@ -163,7 +163,7 @@
                         <a href="#">상품가격: {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
@@ -174,8 +174,8 @@
                 <h2 id="man">남성의류 <a href="/manclothing?id=남성의류">전체보기</a></h2>
               </div>
               @foreach ($cate as $key => $value)
-                @if($key < 13)
-                  @if ($value->item_success==1)
+                @if($key < 10)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
@@ -189,7 +189,7 @@
                         <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
@@ -199,7 +199,7 @@
               </div>
               @foreach ($catef as $key => $value)
                 @if($key < 10)
-                  @if ($value->item_success==1)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}  ">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
@@ -213,7 +213,7 @@
                         <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
@@ -222,8 +222,8 @@
                 <h2 id="fashion">패션잡화 <a href="/manclothing?id=패션잡화">전체보기</a></h2>
               </div>
               @foreach ($categ as $key => $value)
-                @if($key < 11)
-                  @if ($value->item_success==1)
+                @if($key < 10)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}  ">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
@@ -237,7 +237,7 @@
                         <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
@@ -247,7 +247,7 @@
               </div>
               @foreach ($cateh as $key => $value)
                 @if($key < 10)
-                  @if ($value->item_success==1)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}  ">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
@@ -261,7 +261,7 @@
                         <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
@@ -271,7 +271,7 @@
               </div>
               @foreach ($catej as $key => $value)
                 @if($key < 10)
-                  @if ($value->item_success==1)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}  ">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
@@ -286,7 +286,7 @@
                       </a>
                     </div>
                   @endif
-                @endif
+                {{-- @endif --}}
               @endforeach
             </div>
             <div class="item_list">
@@ -295,7 +295,7 @@
               </div>
               @foreach ($catek as $key => $value)
                 @if($key < 10)
-                  @if ($value->item_success==1)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}  ">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
@@ -309,7 +309,7 @@
                         <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
@@ -319,7 +319,7 @@
               </div>
               @foreach ($catel as $key => $value)
                 @if($key < 10)
-                  @if ($value->item_success==1)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}  ">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
@@ -333,7 +333,7 @@
                         <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
