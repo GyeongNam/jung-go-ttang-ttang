@@ -7,7 +7,7 @@
 @endsection
 @section('js')
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
   <!-- 에디터CDN -->
   <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 
@@ -134,7 +134,12 @@ function previewImage(f, divid){
 
 }
 $(function() {
-  $("#datepicker").datepicker({dateFormat: 'yy-mm-dd' , minDate: 0});
+  $("#datepicker").datepicker({
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: 'yy-mm-dd' ,
+    minDate: 0,
+  });
 });
 </script>
 @endsection
