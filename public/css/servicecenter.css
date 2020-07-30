@@ -6,6 +6,9 @@
   padding: 2% 0px;
   letter-spacing: 1px;
 }
+button:hover{
+  background: rgb(136, 130, 131);
+}
 /* 아코디언 메뉴 */
 /* Style the buttons that are used to open and close the accordion panel */
 .accordionheader{
@@ -35,6 +38,8 @@
   background-color: #ffffff;
   display: none;
   overflow: hidden;
+  border: 1px solid rgb(238, 238, 238);
+
 }
 /* 아코디언 메뉴 끝 */
 
@@ -126,7 +131,21 @@ h1 {
 .rmf{
   margin-top: 1rem;
   border: none;
+  border: 1px solid #dadada;
+  font-family: 'IBMPlexSansKR-Text';
+  cursor: pointer;
+  width: 10%;
+  height: 30px;
+
 }
 .qnainput{
   display: none;
+}
+.abc{
+  border: none;
+  border: 1px solid #dadada;
+  font-family: 'IBMPlexSansKR-Text';
+  cursor: pointer;
+  width: 5%;
+  height: 24px;
 }

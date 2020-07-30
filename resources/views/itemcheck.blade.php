@@ -16,16 +16,19 @@ $(function(){
   $(".it_if2").hide();
   $(".on1").css("background-color","rgb(255, 255, 255)");
   $(".on").css("background-color","rgb(214, 214, 214)");
-
+ // 내가 올린경매
   $(".on").on("click",function(){
     $(".it_if1").hide();
     $(".it_if2").show();
+    $(".menu").text("시작가격");
     $(".on").css("background-color","rgb(255, 255, 255)");
     $(".on1").css("background-color","rgb(214, 214, 214)");
   });
+  //내가 참여한 경매
   $(".on1").on("click",function(){
     $(".it_if2").hide();
     $(".it_if1").show();
+    $(".menu").text("입찰가격");
     $(".on").css("background-color","rgb(214, 214, 214)");
     $(".on1").css("background-color","rgb(255, 255, 255)");
   });
@@ -90,7 +93,7 @@ function modal_out_mys(data){
       <div class="table1">
         <table width="100%" align = "center" class="tab" >
           <th width="30%">목록</th>
-          <th width="30%">입찰가격</th>
+          <th class="menu" width="30%">입찰가격</th>
           <th width="20%">진행상태</th>
           <th width="20%">낙찰여부</th>
         </table>

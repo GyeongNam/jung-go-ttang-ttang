@@ -217,14 +217,15 @@ class ItemController extends Controller
     $user = User::select('*')->get();
     $collection =Item::select(['item_number'])->get();
     $count=count($collection);
-    $topview = DB::table('items')->orderBy('visit_count', 'desc')->get();
-    $cate=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'남성의류'])->get();
-    $catef=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'여성의류'])->get();
-    $categ=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'패션잡화'])->get();
-    $cateh=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'뷰티미용'])->get();
-    $catej=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'모바일/태블릿'])->get();
-    $catek=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'가전제품'])->get();
-    $catel=DB::table('items')->orderBy('visit_count' ,'desc')->where(['item_category'=>'노트북/PC'])->get();
+    $topview = DB::table('items')->where('item_success','=',1)->orderBy('visit_count', 'desc')->get();
+    $cate=DB::table('items')->orderBy('visit_count' ,'desc')->where([['item_category','남성의류'],['item_success',1]])->get();
+    $catef=DB::table('items')->orderBy('visit_count' ,'desc')->where([['item_category','여성의류'],['item_success',1]])->get();
+    $cateh=DB::table('items')->orderBy('visit_count' ,'desc')->where([['item_category','뷰티미용'],['item_success',1]])->get();
+    $categ=DB::table('items')->orderBy('visit_count' ,'desc')->where([['item_category','패션잡화'],['item_success',1]])->get();
+    $catej=DB::table('items')->orderBy('visit_count' ,'desc')->where([['item_category','모바일/태블릿'],['item_success',1]])->get();
+    $catek=DB::table('items')->orderBy('visit_count' ,'desc')->where([['item_category','가전제품'],['item_success',1]])->get();
+    $catel=DB::table('items')->orderBy('visit_count' ,'desc')->where([['item_category','노트북/데스크탑'],['item_success',1]])->get();
+    // echo $topview;
     return view('/main', [
       'myproduct'=>$myproduct,
       'road'=> $roAd,

@@ -98,11 +98,6 @@ $(function(){
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="/manager_tok">
-          <i class="fas fa-fw fa-table"></i>
-          <span>채팅관리</span></a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="/manager_policy">
           <i class="fas fa-fw fa-table"></i>
           <span>정책관리</span></a>
@@ -217,20 +212,15 @@ $(function(){
                   <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
-                        <th>상품번호</th>
-                        <th>상품이름</th>
-                        <th>판매자</th>
-                        <th>낙찰자</th>
-
+                        <th>아이디</th>
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($chat as $key => $value)
                       <tr onclick="location.href='#'" style="cursor:pointer;" class="trhover">
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
+                        <td>{{$value->user1_ID}}</td>
                       </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

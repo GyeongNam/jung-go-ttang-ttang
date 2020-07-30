@@ -59,7 +59,7 @@
                 <a class="view_item" href="#beauty">뷰티미용</a><br>
                 <a class="view_item" href="#mobile">모바일/태블릿</a><br>
                 <a class="view_item" href="#Elec_products">가전제품</a><br>
-                <a class="view_item" href="#laptop">노트북/PC</a>
+                <a class="view_item" href="#laptop">노트북/데스크탑</a>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@
             <a href="#beauty">뷰티미용</a>
             <a href="#mobile">모바일/태블릿</a>
             <a href="#Elec_products">가전제품</a>
-            <a href="#laptop">노트북/PC</a>
+            <a href="#laptop">노트북/데스크탑</a>
           </div>
           <div class="best_item">
 
@@ -148,14 +148,14 @@
               <h2>인기상품</h2>
 
               @foreach($topview as $key => $value)
-                @if($key < 17)
-                  @if ($value->item_success==1)
+                @if($key < 10)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
                           <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
                           <div class="whghltn">
-                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            <img src="/img/eye.png" width="16" height="16" alt="상품 조회수">
                             조회수:{{$value->visit_count}}
                           </div>
                         </div><br>
@@ -163,7 +163,7 @@
                         <a href="#">상품가격: {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
@@ -174,14 +174,14 @@
                 <h2 id="man">남성의류 <a href="/manclothing?id=남성의류">전체보기</a></h2>
               </div>
               @foreach ($cate as $key => $value)
-                @if($key < 13)
-                  @if ($value->item_success==1)
+                @if($key < 10)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
                           <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
                           <div class="whghltn">
-                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            <img src="/img/eye.png" width="16" height="16" alt="상품 조회수">
                             조회수:{{$value->visit_count}}
                           </div>
                         </div><br>
@@ -189,7 +189,7 @@
                         <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
@@ -199,13 +199,13 @@
               </div>
               @foreach ($catef as $key => $value)
                 @if($key < 10)
-                  @if ($value->item_success==1)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}  ">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
                           <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
                           <div class="whghltn">
-                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            <img src="/img/eye.png" width="16" height="16" alt="상품 조회수">
                             조회수:{{$value->visit_count}}
                           </div>
                         </div><br>
@@ -213,7 +213,7 @@
                         <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
@@ -222,14 +222,14 @@
                 <h2 id="fashion">패션잡화 <a href="/manclothing?id=패션잡화">전체보기</a></h2>
               </div>
               @foreach ($categ as $key => $value)
-                @if($key < 11)
-                  @if ($value->item_success==1)
+                @if($key < 10)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}  ">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
                           <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
                           <div class="whghltn">
-                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            <img src="/img/eye.png" width="16" height="16" alt="상품 조회수">
                             조회수:{{$value->visit_count}}
                           </div>
                         </div><br>
@@ -237,7 +237,7 @@
                         <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
@@ -247,13 +247,13 @@
               </div>
               @foreach ($cateh as $key => $value)
                 @if($key < 10)
-                  @if ($value->item_success==1)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}  ">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
                           <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
                           <div class="whghltn">
-                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            <img src="/img/eye.png" width="16" height="16" alt="상품 조회수">
                             조회수:{{$value->visit_count}}
                           </div>
                         </div><br>
@@ -261,7 +261,7 @@
                         <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
@@ -271,13 +271,13 @@
               </div>
               @foreach ($catej as $key => $value)
                 @if($key < 10)
-                  @if ($value->item_success==1)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}  ">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
                           <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
                           <div class="whghltn">
-                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            <img src="/img/eye.png" width="16" height="16" alt="상품 조회수">
                             조회수:{{$value->visit_count}}
                           </div>
                         </div><br>
@@ -286,7 +286,7 @@
                       </a>
                     </div>
                   @endif
-                @endif
+                {{-- @endif --}}
               @endforeach
             </div>
             <div class="item_list">
@@ -295,13 +295,13 @@
               </div>
               @foreach ($catek as $key => $value)
                 @if($key < 10)
-                  @if ($value->item_success==1)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}  ">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
                           <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
                           <div class="whghltn">
-                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            <img src="/img/eye.png" width="16" height="16" alt="상품 조회수">
                             조회수:{{$value->visit_count}}
                           </div>
                         </div><br>
@@ -309,23 +309,23 @@
                         <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
             <div class="item_list">
               <div class="list_hd">
-                <h2 id="laptop">노트북/PC <a href="/manclothing?id=노트북/PC">전체보기</a></h2>
+                <h2 id="laptop">노트북/데스크탑 <a href="/manclothing?id=노트북/데스크탑">전체보기</a></h2>
               </div>
               @foreach ($catel as $key => $value)
                 @if($key < 10)
-                  @if ($value->item_success==1)
+                  {{-- @if ($value->item_success==1) --}}
                     <div class="item">
                       <a href="/product-detail/{{$value->item_number}}  ">
                         <div OnClick="location.href ='/' " style="cursor:pointer;" >
                           <img id="itmg" src="/img/item/{{$value->item_picture}}" alt="">
                           <div class="whghltn">
-                            <img src="/img/eye.png/" width="16" height="16" alt="상품 조회수">
+                            <img src="/img/eye.png" width="16" height="16" alt="상품 조회수">
                             조회수:{{$value->visit_count}}
                           </div>
                         </div><br>
@@ -333,7 +333,7 @@
                         <a href="#">상품가격 : {{number_format($value->item_startprice)}}원 </a>
                       </a>
                     </div>
-                  @endif
+                  {{-- @endif --}}
                 @endif
               @endforeach
             </div>
