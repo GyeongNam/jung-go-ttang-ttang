@@ -327,8 +327,8 @@ text-align: center !important;
     font-size: 5px;
   }
   .item{
-    width: auto;
-    height: auto;
+    /* width: auto; */
+    height: 25rem;
   }
 
   .item a,p{
