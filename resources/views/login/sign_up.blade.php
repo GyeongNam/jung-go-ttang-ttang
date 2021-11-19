@@ -36,20 +36,23 @@
     var p3 = $('#str_phone03').val();
     RandomNum = random;
     var phone = p1+'-'+p2+'-'+p3;
-    $.ajax({
-      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-      url: "/sms_send",
-      data: {phone:phone, random:random},
-      type: "post",
-      success:function(data){
-        var datas = data.data;
-        console.log(datas);
-        alert(phone+"으로 인증번호를 발송했습니다.");
-      },
-      error : function(){
-        console.log("실패");
-      }
-    });
+    // alert(phone+"으로 인증번호를 발송했습니다.");
+    console.log("인증번호는 :"+ random + " 입니다");
+    alert(phone+"Cafe24.com SMS 서비스 이용 갯수가 끝나서 콘솔로 알려드립니다. \n DevTool (F12) -> Console 클릭!");
+    // $.ajax({
+    //   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    //   url: "/sms_send",
+    //   data: {phone:phone, random:random},
+    //   type: "post",
+    //   success:function(data){
+    //     var datas = data.data;
+    //     console.log(datas);
+    //     alert(phone+"으로 인증번호를 발송했습니다.");
+    //   },
+    //   error : function(){
+    //     console.log("실패");
+    //   }
+    // });
   }
 
 
